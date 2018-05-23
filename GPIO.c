@@ -32,13 +32,13 @@ void GPIO_dataDirectionPIN
             switch(portName)
             {
                 case GPIO_A:
-                    TRISA &= ~(0<<pin);
+                    TRISA &= (0<<pin);
                     break;
                 case GPIO_B:
-                    TRISB &= ~(0<<pin);
+                    TRISB &= (0<<pin);
                     break;
                 case GPIO_C:
-                    TRISC &= ~(0<<pin);
+                    TRISC &= (0<<pin);
                     break;
                 default:
                     break;
@@ -100,7 +100,7 @@ void GPIO_analogSelector
             ANSEL0 |= 1<<pin;
             break;
         case GPIO_DIGITAL:
-            ANSEL0 &= ~(0<<pin);
+            ANSEL0 &= 0<<pin);
             break;
     }
 }

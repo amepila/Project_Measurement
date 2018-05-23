@@ -1,6 +1,6 @@
 
-#ifndef XC_HEADER_TEMPLATE_H
-#define	XC_HEADER_TEMPLATE_H
+#ifndef GPIO_H
+#define	GPIO_H
 
 #include <stdint.h>
 
@@ -36,5 +36,5 @@ void GPIO_analogSelector
 (GPIO_analogType type, uint8_t pin);
 
 
-#endif	/* XC_HEADER_TEMPLATE_H */
+#endif	
 
