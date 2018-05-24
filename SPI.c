@@ -69,13 +69,9 @@ static void SPI_enablePins(SPI_SerialClk serial)
     TRISCbits.TRISC4 = 1;
     /**SDO pin as output*/
     TRISCbits.TRISC7 = 0;
-    /**CS pin as output*/
-    TRISCbits.TRISC6 = 0;
     
     /**Enable pins of SPI*/
     SSPCON |= SPI_ENABLE_PINS;
-    /**Disable the ChipSelect*/
-    PORTCbits.RC6 = 1;
 }
 
 void SPI_init(const SPI_ConfigType* SPI_Config)

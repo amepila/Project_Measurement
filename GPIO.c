@@ -6,6 +6,47 @@
 #define PORTA_INPUT_VALUE       (0x3F)
 #define PORTBC_INPUT_VALUE      (0xFF)
 #define PORT_OUTPUT_VALUE       (0x0)
+#define CLOCK_8MHZ              (0x70)
+#define CLOCK_4MHZ              (0x60)
+#define CLOCK_2MHZ              (0x50)
+#define CLOCK_1MHZ              (0x40)
+#define CLOCK_500KHZ            (0x30)
+#define CLOCK_250KHZ            (0x20)
+#define CLOCK_125KHZ            (0x10)
+#define CLOCK_31KHZ             (0x00)
+
+void GPIO_sourceClock(GPIO_SourceClk clk)
+{
+    switch(clk)
+    {
+        case CLK_8MHZ:
+            OSCCON |= CLOCK_8MHZ;
+            break;
+        case CLK_4MHZ:
+            OSCCON |= CLOCK_4MHZ;
+            break;
+        case CLK_2MHZ:
+            OSCCON |= CLOCK_2MHZ;
+            break;
+        case CLK_1MHZ:
+            OSCCON |= CLOCK_1MHZ;
+            break;
+        case CLK_500KHZ:
+            OSCCON |= CLOCK_500KHZ;
+            break;
+        case CLK_250KHZ:
+            OSCCON |= CLOCK_250KHZ;
+            break;
+        case CLK_125KHZ:
+            OSCCON |= CLOCK_125KHZ;
+            break;
+        case CLK_31KHZ:
+            OSCCON |= CLOCK_31KHZ;
+            break;
+        default:
+            break;
+    }
+}
 
 void GPIO_dataDirectionPIN
 (GPIO_portNameType portName, uint8_t pin, GPIO_state state)

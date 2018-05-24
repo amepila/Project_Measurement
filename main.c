@@ -15,6 +15,9 @@ const SPI_ConfigType SPI_Config =
 
 void main(void) 
 {
+    /**Select the 8MHz as source clock*/
+    GPIO_sourceClock(CLK_8MHZ);
+
     /**Configurations of devices**/
 	SPI_init(&SPI_Config);
     

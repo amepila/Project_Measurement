@@ -4,6 +4,18 @@
 
 #include <stdint.h>
 
+typedef enum
+{
+    CLK_8MHZ,
+    CLK_4MHZ,
+    CLK_2MHZ,
+    CLK_1MHZ,
+    CLK_500KHZ,
+    CLK_250KHZ,
+    CLK_125KHZ,
+    CLK_31KHZ
+}GPIO_SourceClk;
+
 /*! This definition is used to configure whether a pin is an input or an output*/
 typedef enum 
 {
