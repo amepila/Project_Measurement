@@ -1,17 +1,20 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"9 main.c
-[c E3146 0 1 .. ]
-[n E3146 . SPI_LOW_POLARITY SPI_HIGH_POLARITY  ]
-[c E3150 0 1 .. ]
-[n E3150 . SPI_LOW_PHASE SPI_HIGH_PHASE  ]
-[c E3154 0 1 2 .. ]
-[n E3154 . SPI_SERIAL_CLK4 SPI_SERIAL_CLK16 SPI_SERIAL_CLK64  ]
-"30 SPI.h
-[s S286 `E3146 1 `E3150 1 `E3154 1 ]
-[n S286 . SPI_Polarity SPI_Phase SPI_Clk ]
-[p mainexit ]
-"36
-[v _SPI_init `(v ~T0 @X0 0 ef1`*CS286 ]
+"12 GPIO.c
+[c E3065 0 1 2 .. ]
+[n E3065 . GPIO_A GPIO_B GPIO_C  ]
+[c E3061 0 1 .. ]
+[n E3061 . GPIO_INPUT GPIO_OUTPUT  ]
+"1936 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f2331.h
+[v _TRISA `Vuc ~T0 @X0 0 e@3986 ]
+"2138
+[v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
+"2360
+[v _TRISC `Vuc ~T0 @X0 0 e@3988 ]
+"96 GPIO.c
+[c E3070 0 1 .. ]
+[n E3070 . GPIO_DIGITAL GPIO_ANALOG  ]
+"4471 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f2331.h
+[v _ANSEL0 `Vuc ~T0 @X0 0 e@4024 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -2916,36 +2919,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 164: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 166: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
-[; ;__size_t.h: 4: typedef unsigned size_t;
-[; ;stdarg.h: 7: typedef void * va_list[1];
-[; ;stdarg.h: 10: extern void * __va_start(void);
-[; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
-[; ;stdio.h: 43: struct __prbuf
-[; ;stdio.h: 44: {
-[; ;stdio.h: 45: char * ptr;
-[; ;stdio.h: 46: void (* func)(char);
-[; ;stdio.h: 47: };
-[; ;errno.h: 29: extern int errno;
-[; ;conio.h: 12: extern void init_uart(void);
-[; ;conio.h: 14: extern char getch(void);
-[; ;conio.h: 15: extern char getche(void);
-[; ;conio.h: 16: extern void putch(char);
-[; ;conio.h: 17: extern void ungetch(char);
-[; ;conio.h: 19: extern __bit kbhit(void);
-[; ;conio.h: 23: extern char * cgets(char *);
-[; ;conio.h: 24: extern void cputs(const char *);
-[; ;stdio.h: 88: extern int cprintf(char *, ...);
-[; ;stdio.h: 93: extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-[; ;stdio.h: 183: extern char * gets(char *);
-[; ;stdio.h: 184: extern int puts(const char *);
-[; ;stdio.h: 185: extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-[; ;stdio.h: 186: extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-[; ;stdio.h: 187: extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-[; ;stdio.h: 188: extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-[; ;stdio.h: 189: extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-[; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-[; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
-[; ;stdio.h: 195: extern int printf(const char *, ...);
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -2996,80 +2969,370 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;GPIO.h: 33: (GPIO_portNameType portName, GPIO_state state);
 [; ;GPIO.h: 35: void GPIO_analogSelector
 [; ;GPIO.h: 36: (GPIO_analogType type, uint8_t pin);
-[; ;SPI.h: 7: typedef enum
-[; ;SPI.h: 8: {
-[; ;SPI.h: 9: SPI_LOW_POLARITY,
-[; ;SPI.h: 10: SPI_HIGH_POLARITY
-[; ;SPI.h: 11: } SPI_PolarityType;
-[; ;SPI.h: 14: typedef enum
-[; ;SPI.h: 15: {
-[; ;SPI.h: 16: SPI_LOW_PHASE,
-[; ;SPI.h: 17: SPI_HIGH_PHASE
-[; ;SPI.h: 18: } SPI_PhaseType;
-[; ;SPI.h: 20: typedef enum
-[; ;SPI.h: 21: {
-[; ;SPI.h: 22: SPI_SERIAL_CLK4,
-[; ;SPI.h: 23: SPI_SERIAL_CLK16,
-[; ;SPI.h: 24: SPI_SERIAL_CLK64
-[; ;SPI.h: 25: } SPI_SerialClk;
-[; ;SPI.h: 29: typedef struct
-[; ;SPI.h: 30: {
-[; ;SPI.h: 31: SPI_PolarityType SPI_Polarity;
-[; ;SPI.h: 32: SPI_PhaseType SPI_Phase;
-[; ;SPI.h: 33: SPI_SerialClk SPI_Clk;
-[; ;SPI.h: 34: } SPI_ConfigType;
-[; ;SPI.h: 36: void SPI_init(const SPI_ConfigType* SPI_Config);
-[; ;SPI.h: 38: int8_t SPI_write(uint8_t data);
-[; ;SPI.h: 40: uint8_t SPI_read(void);
-"9 main.c
-[v _SPI_Config `CS286 ~T0 @X0 1 e ]
-[i _SPI_Config
-:U ..
-:U ..
-"11
-. `E3146 0
+"10 GPIO.c
+[v _GPIO_dataDirectionPIN `(v ~T0 @X0 1 ef3`E3065`uc`E3061 ]
 "12
-. `E3150 0
+{
+[; ;GPIO.c: 10: void GPIO_dataDirectionPIN
+[; ;GPIO.c: 11: (GPIO_portNameType portName, uint8_t pin, GPIO_state state)
+[; ;GPIO.c: 12: {
+[e :U _GPIO_dataDirectionPIN ]
+"11
+[v _portName `E3065 ~T0 @X0 1 r1 ]
+[v _pin `uc ~T0 @X0 1 r2 ]
+[v _state `E3061 ~T0 @X0 1 r3 ]
+"12
+[f ]
+[; ;GPIO.c: 13: switch(state)
+"13
+[e $U 287  ]
+[; ;GPIO.c: 14: {
 "14
-. `E3154 0
-..
-..
-]
-[; ;main.c: 9: const SPI_ConfigType SPI_Config =
-[; ;main.c: 10: {
-[; ;main.c: 11: SPI_LOW_POLARITY,
-[; ;main.c: 12: SPI_LOW_PHASE,
-[; ;main.c: 13: SPI_SERIAL_CLK4
-[; ;main.c: 14: };
-[v $root$_main `(v ~T0 @X0 0 e ]
+{
+[; ;GPIO.c: 15: case GPIO_INPUT:
+"15
+[e :U 288 ]
+[; ;GPIO.c: 16: switch(portName)
 "16
-[v _main `(v ~T0 @X0 1 ef ]
+[e $U 290  ]
+[; ;GPIO.c: 17: {
 "17
 {
-[; ;main.c: 16: void main(void)
-[; ;main.c: 17: {
-[e :U _main ]
-[f ]
-[; ;main.c: 19: SPI_init(&SPI_Config);
+[; ;GPIO.c: 18: case GPIO_A:
+"18
+[e :U 291 ]
+[; ;GPIO.c: 19: TRISA |= 1<<pin;
 "19
-[e ( _SPI_init (1 &U _SPI_Config ]
-[; ;main.c: 21: for(;;)
+[e =| _TRISA -> << -> 1 `i _pin `uc ]
+[; ;GPIO.c: 20: break;
+"20
+[e $U 289  ]
+[; ;GPIO.c: 21: case GPIO_B:
 "21
-{
+[e :U 292 ]
+[; ;GPIO.c: 22: TRISB |= 1<<pin;
 "22
-[e :U 288 ]
-[; ;main.c: 22: {
-{
+[e =| _TRISB -> << -> 1 `i _pin `uc ]
+[; ;GPIO.c: 23: break;
+"23
+[e $U 289  ]
+[; ;GPIO.c: 24: case GPIO_C:
 "24
-}
-[; ;main.c: 24: }
-[e $U 288  ]
-[e :U 289 ]
-}
-[; ;main.c: 26: return;
+[e :U 293 ]
+[; ;GPIO.c: 25: TRISC |= 1<<pin;
+"25
+[e =| _TRISC -> << -> 1 `i _pin `uc ]
+[; ;GPIO.c: 26: break;
 "26
-[e $UE 287  ]
-[; ;main.c: 27: }
+[e $U 289  ]
+[; ;GPIO.c: 27: default:
 "27
-[e :UE 287 ]
+[e :U 294 ]
+[; ;GPIO.c: 28: break;
+"28
+[e $U 289  ]
+"29
+}
+[; ;GPIO.c: 29: }
+[e $U 289  ]
+"16
+[e :U 290 ]
+[e [\ _portName , $ . `E3065 0 291
+ , $ . `E3065 1 292
+ , $ . `E3065 2 293
+ 294 ]
+"29
+[e :U 289 ]
+[; ;GPIO.c: 30: break;
+"30
+[e $U 286  ]
+[; ;GPIO.c: 31: case GPIO_OUTPUT:
+"31
+[e :U 295 ]
+[; ;GPIO.c: 32: switch(portName)
+"32
+[e $U 297  ]
+[; ;GPIO.c: 33: {
+"33
+{
+[; ;GPIO.c: 34: case GPIO_A:
+"34
+[e :U 298 ]
+[; ;GPIO.c: 35: TRISA &= (0<<pin);
+"35
+[e =& _TRISA -> << -> 0 `i _pin `uc ]
+[; ;GPIO.c: 36: break;
+"36
+[e $U 296  ]
+[; ;GPIO.c: 37: case GPIO_B:
+"37
+[e :U 299 ]
+[; ;GPIO.c: 38: TRISB &= (0<<pin);
+"38
+[e =& _TRISB -> << -> 0 `i _pin `uc ]
+[; ;GPIO.c: 39: break;
+"39
+[e $U 296  ]
+[; ;GPIO.c: 40: case GPIO_C:
+"40
+[e :U 300 ]
+[; ;GPIO.c: 41: TRISC &= (0<<pin);
+"41
+[e =& _TRISC -> << -> 0 `i _pin `uc ]
+[; ;GPIO.c: 42: break;
+"42
+[e $U 296  ]
+[; ;GPIO.c: 43: default:
+"43
+[e :U 301 ]
+[; ;GPIO.c: 44: break;
+"44
+[e $U 296  ]
+"45
+}
+[; ;GPIO.c: 45: }
+[e $U 296  ]
+"32
+[e :U 297 ]
+[e [\ _portName , $ . `E3065 0 298
+ , $ . `E3065 1 299
+ , $ . `E3065 2 300
+ 301 ]
+"45
+[e :U 296 ]
+[; ;GPIO.c: 46: break;
+"46
+[e $U 286  ]
+[; ;GPIO.c: 47: default:
+"47
+[e :U 302 ]
+[; ;GPIO.c: 48: break;
+"48
+[e $U 286  ]
+"49
+}
+[; ;GPIO.c: 49: }
+[e $U 286  ]
+"13
+[e :U 287 ]
+[e [\ _state , $ . `E3061 0 288
+ , $ . `E3061 1 295
+ 302 ]
+"49
+[e :U 286 ]
+[; ;GPIO.c: 50: }
+"50
+[e :UE 285 ]
+}
+"52
+[v _GPIO_dataDirectionPORT `(v ~T0 @X0 1 ef2`E3065`E3061 ]
+"54
+{
+[; ;GPIO.c: 52: void GPIO_dataDirectionPORT
+[; ;GPIO.c: 53: (GPIO_portNameType portName, GPIO_state state)
+[; ;GPIO.c: 54: {
+[e :U _GPIO_dataDirectionPORT ]
+"53
+[v _portName `E3065 ~T0 @X0 1 r1 ]
+[v _state `E3061 ~T0 @X0 1 r2 ]
+"54
+[f ]
+[; ;GPIO.c: 55: switch(state)
+"55
+[e $U 305  ]
+[; ;GPIO.c: 56: {
+"56
+{
+[; ;GPIO.c: 57: case GPIO_INPUT:
+"57
+[e :U 306 ]
+[; ;GPIO.c: 58: switch(portName)
+"58
+[e $U 308  ]
+[; ;GPIO.c: 59: {
+"59
+{
+[; ;GPIO.c: 60: case GPIO_A:
+"60
+[e :U 309 ]
+[; ;GPIO.c: 61: TRISA = (0x3F);
+"61
+[e = _TRISA -> -> 63 `i `uc ]
+[; ;GPIO.c: 62: break;
+"62
+[e $U 307  ]
+[; ;GPIO.c: 63: case GPIO_B:
+"63
+[e :U 310 ]
+[; ;GPIO.c: 64: TRISB = (0xFF);
+"64
+[e = _TRISB -> -> 255 `i `uc ]
+[; ;GPIO.c: 65: break;
+"65
+[e $U 307  ]
+[; ;GPIO.c: 66: case GPIO_C:
+"66
+[e :U 311 ]
+[; ;GPIO.c: 67: TRISC = (0xFF);
+"67
+[e = _TRISC -> -> 255 `i `uc ]
+[; ;GPIO.c: 68: break;
+"68
+[e $U 307  ]
+[; ;GPIO.c: 69: default:
+"69
+[e :U 312 ]
+[; ;GPIO.c: 70: break;
+"70
+[e $U 307  ]
+"71
+}
+[; ;GPIO.c: 71: }
+[e $U 307  ]
+"58
+[e :U 308 ]
+[e [\ _portName , $ . `E3065 0 309
+ , $ . `E3065 1 310
+ , $ . `E3065 2 311
+ 312 ]
+"71
+[e :U 307 ]
+[; ;GPIO.c: 72: break;
+"72
+[e $U 304  ]
+[; ;GPIO.c: 73: case GPIO_OUTPUT:
+"73
+[e :U 313 ]
+[; ;GPIO.c: 74: switch(portName)
+"74
+[e $U 315  ]
+[; ;GPIO.c: 75: {
+"75
+{
+[; ;GPIO.c: 76: case GPIO_A:
+"76
+[e :U 316 ]
+[; ;GPIO.c: 77: TRISA = (0x0);
+"77
+[e = _TRISA -> -> 0 `i `uc ]
+[; ;GPIO.c: 78: break;
+"78
+[e $U 314  ]
+[; ;GPIO.c: 79: case GPIO_B:
+"79
+[e :U 317 ]
+[; ;GPIO.c: 80: TRISB = (0x0);
+"80
+[e = _TRISB -> -> 0 `i `uc ]
+[; ;GPIO.c: 81: break;
+"81
+[e $U 314  ]
+[; ;GPIO.c: 82: case GPIO_C:
+"82
+[e :U 318 ]
+[; ;GPIO.c: 83: TRISC = (0x0);
+"83
+[e = _TRISC -> -> 0 `i `uc ]
+[; ;GPIO.c: 84: break;
+"84
+[e $U 314  ]
+[; ;GPIO.c: 85: default:
+"85
+[e :U 319 ]
+[; ;GPIO.c: 86: break;
+"86
+[e $U 314  ]
+"87
+}
+[; ;GPIO.c: 87: }
+[e $U 314  ]
+"74
+[e :U 315 ]
+[e [\ _portName , $ . `E3065 0 316
+ , $ . `E3065 1 317
+ , $ . `E3065 2 318
+ 319 ]
+"87
+[e :U 314 ]
+[; ;GPIO.c: 88: break;
+"88
+[e $U 304  ]
+[; ;GPIO.c: 89: default:
+"89
+[e :U 320 ]
+[; ;GPIO.c: 90: break;
+"90
+[e $U 304  ]
+"91
+}
+[; ;GPIO.c: 91: }
+[e $U 304  ]
+"55
+[e :U 305 ]
+[e [\ _state , $ . `E3061 0 306
+ , $ . `E3061 1 313
+ 320 ]
+"91
+[e :U 304 ]
+[; ;GPIO.c: 92: }
+"92
+[e :UE 303 ]
+}
+"94
+[v _GPIO_analogSelector `(v ~T0 @X0 1 ef2`E3070`uc ]
+"96
+{
+[; ;GPIO.c: 94: void GPIO_analogSelector
+[; ;GPIO.c: 95: (GPIO_analogType type, uint8_t pin)
+[; ;GPIO.c: 96: {
+[e :U _GPIO_analogSelector ]
+"95
+[v _type `E3070 ~T0 @X0 1 r1 ]
+[v _pin `uc ~T0 @X0 1 r2 ]
+"96
+[f ]
+[; ;GPIO.c: 97: switch(type)
+"97
+[e $U 323  ]
+[; ;GPIO.c: 98: {
+"98
+{
+[; ;GPIO.c: 99: case GPIO_ANALOG:
+"99
+[e :U 324 ]
+[; ;GPIO.c: 100: ANSEL0 |= 1<<pin;
+"100
+[e =| _ANSEL0 -> << -> 1 `i _pin `uc ]
+[; ;GPIO.c: 101: break;
+"101
+[e $U 322  ]
+[; ;GPIO.c: 102: case GPIO_DIGITAL:
+"102
+[e :U 325 ]
+[; ;GPIO.c: 103: ANSEL0 &= 0<<pin;
+"103
+[e =& _ANSEL0 -> << -> 0 `i _pin `uc ]
+[; ;GPIO.c: 104: break;
+"104
+[e $U 322  ]
+[; ;GPIO.c: 105: default:
+"105
+[e :U 326 ]
+[; ;GPIO.c: 106: break;
+"106
+[e $U 322  ]
+"107
+}
+[; ;GPIO.c: 107: }
+[e $U 322  ]
+"97
+[e :U 323 ]
+[e [\ _type , $ . `E3070 1 324
+ , $ . `E3070 0 325
+ 326 ]
+"107
+[e :U 322 ]
+[; ;GPIO.c: 108: }
+"108
+[e :UE 321 ]
 }

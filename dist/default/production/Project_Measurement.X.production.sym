@@ -1,17 +1,21 @@
 __S0 30000E 0 ABS 0
-__S1 0 0 ABS 0
+__S1 7 0 ABS 0
 __S2 0 0 ABS 0
 __Hintentry 0 0 ABS 0
 __Lintentry 0 0 ABS 0
-_main 1FF6 0 CODE 0
+_main 3C0 0 CODE 0
 ___sp 0 0 STACK 2
 start 0 0 CODE 0
+_TRISA F92 0 ABS 0
+_TRISB F93 0 ABS 0
+_TRISC F94 0 ABS 0
 __Hirdata 0 0 CODE 0
 __Lirdata 0 0 CODE 0
 __HRAM 0 0 ABS 0
 __LRAM 1 0 ABS 0
 __Hconfig 30000E 0 CONFIG 0
 __Lconfig 300000 0 CONFIG 0
+__end_of_SPI_init 34E 0 CODE 0
 __Hbigram 0 0 ABS 0
 __Lbigram 0 0 ABS 0
 __Hrparam 0 0 COMRAM 1
@@ -27,8 +31,10 @@ __Lbss 0 0 RAM 1
 ___param_bank 0 0 ABS 0
 __Hnvrram 0 0 COMRAM 1
 __Lnvrram 0 0 COMRAM 1
+_ANSEL0 FB8 0 ABS 0
 __Heeprom_data 0 0 EEDATA 0
 __Leeprom_data 0 0 EEDATA 0
+_SPI_init 306 0 CODE 0
 __Hintsave_regs 0 0 BIGRAM 1
 __Lintsave_regs 0 0 BIGRAM 1
 __Hbigbss 0 0 BIGRAM 1
@@ -46,13 +52,17 @@ __Lmediumconst 0 0 MEDIUMCONST 0
 __Hfarbss 0 0 FARRAM 0
 __Lfarbss 0 0 FARRAM 0
 __Hintcode 0 0 CODE 0
+_SSPBUF FC9 0 ABS 0
 __Lintcode 0 0 CODE 0
 __Hfardata 0 0 FARRAM 0
 __Lfardata 0 0 FARRAM 0
 __Habs1 0 0 ABS 0
 __Labs1 0 0 ABS 0
+_SSPCON FC6 0 ABS 0
 __HnvFARRAM 0 0 FARRAM 0
 __LnvFARRAM 0 0 FARRAM 0
+__end_of_SPI_enablePins 3C0 0 CODE 0
+SPI_init@SPI_Config 3 0 COMRAM 1
 __Hdata 0 0 ABS 0
 __Ldata 0 0 ABS 0
 stackhi 2FF 0 ABS 0
@@ -66,11 +76,16 @@ __Linit 0 0 CODE 0
 __Hintcodelo 0 0 CODE 0
 __Lintcodelo 0 0 CODE 0
 __Hrbss 0 0 COMRAM 1
-__end_of_main 1FFA 0 CODE 0
+__end_of_main 3CE 0 CODE 0
 __Lrbss 0 0 COMRAM 1
 __Htext 0 0 ABS 0
 __Ltext 0 0 ABS 0
-end_of_initialization 1FFA 0 CODE 0
+end_of_initialization 3CE 0 CODE 0
+_SPI_enableClock 34E 0 CODE 0
+_SPI_enablePins 38C 0 CODE 0
+_TRISCbits F94 0 ABS 0
+_PORTCbits F82 0 ABS 0
+__end_of_SPI_Config 304 0 SMALLCONST 0
 __Hibigdata 0 0 CODE 0
 __Libigdata 0 0 CODE 0
 __Hifardata 0 0 CODE 0
@@ -82,14 +97,28 @@ __Lbank1 0 0 ABS 0
 __Hbank2 0 0 ABS 0
 __Lbank2 0 0 ABS 0
 __Hpowerup 0 0 CODE 0
+_SSPSTAT FC7 0 ABS 0
 __Lpowerup 0 0 CODE 0
 __Htext0 0 0 ABS 0
 __Ltext0 0 0 ABS 0
-__ptext0 1FF6 0 CODE 0
+__Htext1 0 0 ABS 0
+__Ltext1 0 0 ABS 0
+__ptext0 3C0 0 CODE 0
+__Htext2 0 0 ABS 0
+__Ltext2 0 0 ABS 0
+__ptext1 306 0 CODE 0
+_SPI_Config 301 0 SMALLCONST 0
+__Htext3 0 0 ABS 0
+__Ltext3 0 0 ABS 0
+__ptext2 38C 0 CODE 0
+__ptext3 34E 0 CODE 0
 __Hclrtext 0 0 ABS 0
 __Lclrtext 0 0 ABS 0
-__end_of__initialization 1FFA 0 CODE 0
+__end_of_SPI_enableClock 38C 0 CODE 0
+__end_of__initialization 3CE 0 CODE 0
 ___rparam_used 1 0 ABS 0
+_SSPSTATbits FC7 0 ABS 0
+__size_of_SPI_enableClock 0 0 ABS 0
 __Hidata 0 0 CODE 0
 __Lidata 0 0 CODE 0
 __Hrdata 0 0 COMRAM 1
@@ -104,26 +133,31 @@ __Hspace_0 30000E 0 ABS 0
 __HcstackCOMRAM 0 0 ABS 0
 __Lspace_0 0 0 ABS 0
 __LcstackCOMRAM 0 0 ABS 0
-__pcstackCOMRAM 0 0 COMRAM 1
-__Hspace_1 0 0 ABS 0
+__pcstackCOMRAM 1 0 COMRAM 1
+__Hspace_1 7 0 ABS 0
 __Lspace_1 0 0 ABS 0
-__Hsmallconst 0 0 SMALLCONST 0
-__Lsmallconst 0 0 SMALLCONST 0
+__Hsmallconst 306 0 SMALLCONST 0
+__Lsmallconst 300 0 SMALLCONST 0
+__psmallconst 300 0 SMALLCONST 0
 __Hspace_2 0 0 ABS 0
 __Lspace_2 0 0 ABS 0
 __Hnvbit 0 0 COMRAM 1
 __Lnvbit 0 0 COMRAM 1
 __Hcinit 0 0 ABS 0
 __Lcinit 0 0 ABS 0
-__pcinit 1FFA 0 CODE 0
+__pcinit 3CE 0 CODE 0
 __ramtop 300 0 RAM 0
 __mediumconst 0 0 MEDIUMCONST 0
 __size_of_main 0 0 ABS 0
 __Hconst 0 0 CONST 0
 __Lconst 0 0 CONST 0
 ___inthi_sp 0 0 STACK 2
+SPI_enableClock@cpol 1 0 COMRAM 1
 ___intlo_sp 0 0 STACK 2
-__smallconst 0 0 SMALLCONST 0
+_SSPCONbits FC6 0 ABS 0
+SPI_enableClock@phase 2 0 COMRAM 1
+__size_of_SPI_init 0 0 ABS 0
+__smallconst 300 0 SMALLCONST 0
 __Hreset_vec 0 0 CODE 0
 __Lreset_vec 0 0 CODE 0
 __accesstop 60 0 ABS 0
@@ -133,25 +167,81 @@ intlevel0 0 0 CODE 0
 intlevel1 0 0 CODE 0
 intlevel2 0 0 CODE 0
 intlevel3 0 0 CODE 0
-start_initialization 1FFA 0 CODE 0
-__initialization 1FFA 0 CODE 0
-__activetblptr 0 0 ABS 0
+SPI_enablePins@serial 1 0 COMRAM 1
+start_initialization 3CE 0 CODE 0
+__initialization 3CE 0 CODE 0
+__activetblptr 2 0 ABS 0
+__size_of_SPI_enablePins 0 0 ABS 0
 %segments
 reset_vec 0 3 CODE 0 0
+smallconst 300 305 SMALLCONST 300 0
 config 300000 30000D CONFIG 300000 0
 idloc 200000 200007 IDLOC 200000 0
-cinit 1FFA 1FFF CODE 1FFA 0
-text0 1FF6 1FF9 CODE 1FF6 0
+cstackCOMRAM 1 6 COMRAM 1 1
+text1 306 3D7 CODE 306 0
 %locals
 dist/default/production\Project_Measurement.X.production.obj
 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f2331.h
-C:\Users\ANDRES~1\AppData\Local\Temp\s15bg.
-391 1FFA 0 CODE 0
-393 1FFA 0 CODE 0
-396 1FFA 0 CODE 0
-402 1FFA 0 CODE 0
-404 1FFA 0 CODE 0
-405 1FFC 0 CODE 0
+C:\Users\ANDRES~1\AppData\Local\Temp\s1d98.
+1110 3CE 0 CODE 0
+1112 3CE 0 CODE 0
+1115 3CE 0 CODE 0
+1121 3CE 0 CODE 0
+1124 3CE 0 CODE 0
+1125 3D0 0 CODE 0
+1126 3D2 0 CODE 0
+1127 3D4 0 CODE 0
+C:\Users\ANDRES~1\AppData\Local\Temp\s1d98.
+16 3C0 0 CODE 0
 main.c
-5 1FF6 0 CODE 0
-10 1FF6 0 CODE 0
+16 3C0 0 CODE 0
+19 3C0 0 CODE 0
+22 3CC 0 CODE 0
+24 3CC 0 CODE 0
+SPI.c
+81 306 0 CODE 0
+83 306 0 CODE 0
+84 330 0 CODE 0
+85 34C 0 CODE 0
+SPI.c
+49 38C 0 CODE 0
+51 38E 0 CODE 0
+53 390 0 CODE 0
+54 390 0 CODE 0
+55 394 0 CODE 0
+56 396 0 CODE 0
+57 396 0 CODE 0
+58 398 0 CODE 0
+59 39A 0 CODE 0
+60 39A 0 CODE 0
+64 39C 0 CODE 0
+51 39E 0 CODE 0
+64 3B2 0 CODE 0
+67 3B2 0 CODE 0
+69 3B4 0 CODE 0
+71 3B6 0 CODE 0
+73 3B8 0 CODE 0
+76 3BA 0 CODE 0
+78 3BC 0 CODE 0
+79 3BE 0 CODE 0
+SPI.c
+15 34E 0 CODE 0
+18 350 0 CODE 0
+19 354 0 CODE 0
+22 358 0 CODE 0
+24 35A 0 CODE 0
+26 35C 0 CODE 0
+27 35C 0 CODE 0
+28 35E 0 CODE 0
+29 360 0 CODE 0
+30 360 0 CODE 0
+34 362 0 CODE 0
+24 364 0 CODE 0
+36 372 0 CODE 0
+38 374 0 CODE 0
+39 374 0 CODE 0
+40 376 0 CODE 0
+41 378 0 CODE 0
+42 378 0 CODE 0
+46 37A 0 CODE 0
+36 37C 0 CODE 0

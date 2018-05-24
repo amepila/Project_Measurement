@@ -1,7 +1,6 @@
 
 #include <xc.h>
 #include <stdint.h>
-#include "GPIO.h"
 #include "SPI.h"
 
 #define SPI_MASTER          (0x40)
@@ -47,7 +46,7 @@ static void SPI_enableClock(SPI_PhaseType phase, SPI_PolarityType cpol)
     }
 }
 
-static void SPI_enablePINS(SPI_SerialClk serial)
+static void SPI_enablePins(SPI_SerialClk serial)
 {
     switch(serial)
     {
@@ -79,15 +78,36 @@ static void SPI_enablePINS(SPI_SerialClk serial)
     PORTCbits.RC6 = 1;
 }
 
-uint8_t SPI_write(uint8_t data)
+void SPI_init(const SPI_ConfigType* SPI_Config)
 {
-    /**Enable the Chip Select*/
-    PORTCbits.RC6 = 0;
+    SPI_enableClock(SPI_Config->SPI_Polarity, SPI_Config->SPI_Phase);
+    SPI_enablePins(SPI_Config->SPI_Clk);
+}
+
+int8_t SPI_write(uint8_t data)
+{
+    int8_t success;
     
+    SSPCONbits.WCOL = 0;
+    SSPBUF = data;
+    while(!SSPSTATbits.BF);
     
+    success = (SSPCONbits.WCOL == 1) ? 0: 1;
+ 
+    return success;
+}
+
+uint8_t SPI_read(void)
+{
+    const uint8_t dummy = 0;
     
-    /*Disable the Chip Select*/
-    PORTCbits.RC6 = 1;
+    /**Send the dummy data*/
+    SSPBUF = dummy;
+            
+    /**Wait the data*/
+    while(!SSPSTATbits.BF);
+    
+    return SSPBUF;
 }
 
 

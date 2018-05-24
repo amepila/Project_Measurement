@@ -100,7 +100,9 @@ void GPIO_analogSelector
             ANSEL0 |= 1<<pin;
             break;
         case GPIO_DIGITAL:
-            ANSEL0 &= 0<<pin);
+            ANSEL0 &= 0<<pin;
+            break;
+        default:
             break;
     }
 }

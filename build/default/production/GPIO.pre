@@ -1,5 +1,5 @@
 
-# 1 "main.c"
+# 1 "GPIO.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.44\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -4036,69 +4036,6 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 4 "C:\Program Files (x86)\Microchip\xc8\v1.44\include\__size_t.h"
-typedef unsigned size_t;
-
-# 7 "C:\Program Files (x86)\Microchip\xc8\v1.44\include\stdarg.h"
-typedef void * va_list[1];
-
-#pragma intrinsic(__va_start)
-extern void * __va_start(void);
-
-#pragma intrinsic(__va_arg)
-extern void * __va_arg(void *, ...);
-
-# 43 "C:\Program Files (x86)\Microchip\xc8\v1.44\include\stdio.h"
-struct __prbuf
-{
-char * ptr;
-void (* func)(char);
-};
-
-# 29 "C:\Program Files (x86)\Microchip\xc8\v1.44\include\errno.h"
-extern int errno;
-
-# 12 "C:\Program Files (x86)\Microchip\xc8\v1.44\include\conio.h"
-extern void init_uart(void);
-
-extern char getch(void);
-extern char getche(void);
-extern void putch(char);
-extern void ungetch(char);
-
-extern __bit kbhit(void);
-
-# 23
-extern char * cgets(char *);
-extern void cputs(const char *);
-
-# 88 "C:\Program Files (x86)\Microchip\xc8\v1.44\include\stdio.h"
-extern int cprintf(char *, ...);
-#pragma printf_check(cprintf)
-
-
-
-extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-
-
-# 180
-#pragma printf_check(vprintf) const
-#pragma printf_check(vsprintf) const
-
-extern char * gets(char *);
-extern int puts(const char *);
-extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-
-#pragma printf_check(printf) const
-#pragma printf_check(sprintf) const
-extern int sprintf(char *, const char *, ...);
-extern int printf(const char *, ...);
-
 # 13 "C:\Program Files (x86)\Microchip\xc8\v1.44\include\stdint.h"
 typedef signed char int8_t;
 
@@ -4220,58 +4157,103 @@ void GPIO_dataDirectionPORT
 void GPIO_analogSelector
 (GPIO_analogType type, uint8_t pin);
 
-# 7 "SPI.h"
-typedef enum
+# 10 "GPIO.c"
+void GPIO_dataDirectionPIN
+(GPIO_portNameType portName, uint8_t pin, GPIO_state state)
 {
-SPI_LOW_POLARITY,
-SPI_HIGH_POLARITY
-} SPI_PolarityType;
-
-
-typedef enum
+switch(state)
 {
-SPI_LOW_PHASE,
-SPI_HIGH_PHASE
-} SPI_PhaseType;
-
-typedef enum
+case GPIO_INPUT:
+switch(portName)
 {
-SPI_SERIAL_CLK4,
-SPI_SERIAL_CLK16,
-SPI_SERIAL_CLK64
-} SPI_SerialClk;
-
-# 29
-typedef struct
+case GPIO_A:
+TRISA |= 1<<pin;
+break;
+case GPIO_B:
+TRISB |= 1<<pin;
+break;
+case GPIO_C:
+TRISC |= 1<<pin;
+break;
+default:
+break;
+}
+break;
+case GPIO_OUTPUT:
+switch(portName)
 {
-SPI_PolarityType SPI_Polarity;
-SPI_PhaseType SPI_Phase;
-SPI_SerialClk SPI_Clk;
-} SPI_ConfigType;
-
-void SPI_init(const SPI_ConfigType* SPI_Config);
-
-int8_t SPI_write(uint8_t data);
-
-uint8_t SPI_read(void);
-
-# 9 "main.c"
-const SPI_ConfigType SPI_Config =
-{
-SPI_LOW_POLARITY,
-SPI_LOW_PHASE,
-SPI_SERIAL_CLK4
-};
-
-void main(void)
-{
-
-SPI_init(&SPI_Config);
-
-for(;;)
-{
-
+case GPIO_A:
+TRISA &= (0<<pin);
+break;
+case GPIO_B:
+TRISB &= (0<<pin);
+break;
+case GPIO_C:
+TRISC &= (0<<pin);
+break;
+default:
+break;
+}
+break;
+default:
+break;
+}
 }
 
-return;
+void GPIO_dataDirectionPORT
+(GPIO_portNameType portName, GPIO_state state)
+{
+switch(state)
+{
+case GPIO_INPUT:
+switch(portName)
+{
+case GPIO_A:
+TRISA = (0x3F);
+break;
+case GPIO_B:
+TRISB = (0xFF);
+break;
+case GPIO_C:
+TRISC = (0xFF);
+break;
+default:
+break;
+}
+break;
+case GPIO_OUTPUT:
+switch(portName)
+{
+case GPIO_A:
+TRISA = (0x0);
+break;
+case GPIO_B:
+TRISB = (0x0);
+break;
+case GPIO_C:
+TRISC = (0x0);
+break;
+default:
+break;
+}
+break;
+default:
+break;
+}
+}
+
+void GPIO_analogSelector
+(GPIO_analogType type, uint8_t pin)
+{
+switch(type)
+{
+case GPIO_ANALOG:
+ANSEL0 |= 1<<pin;
+break;
+case GPIO_DIGITAL:
+ANSEL0 &= 0<<pin;
+break;
+default:
+break;
+}
 }

@@ -15,8 +15,10 @@
       <itemPath>main.c</itemPath>
       <itemPath>GPIO.h</itemPath>
       <itemPath>GPIO.c</itemPath>
-      <itemPath>SPI.h</itemPath>
       <itemPath>SPI.c</itemPath>
+      <itemPath>SPI.h</itemPath>
+      <itemPath>UART.c</itemPath>
+      <itemPath>UART.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

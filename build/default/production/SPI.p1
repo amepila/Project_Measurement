@@ -1,17 +1,116 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"9 main.c
-[c E3146 0 1 .. ]
-[n E3146 . SPI_LOW_POLARITY SPI_HIGH_POLARITY  ]
-[c E3150 0 1 .. ]
-[n E3150 . SPI_LOW_PHASE SPI_HIGH_PHASE  ]
-[c E3154 0 1 2 .. ]
-[n E3154 . SPI_SERIAL_CLK4 SPI_SERIAL_CLK16 SPI_SERIAL_CLK64  ]
+"16 SPI.c
+[c E3065 0 1 .. ]
+[n E3065 . SPI_LOW_PHASE SPI_HIGH_PHASE  ]
+[c E3061 0 1 .. ]
+[n E3061 . SPI_LOW_POLARITY SPI_HIGH_POLARITY  ]
+"5165 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f2331.h
+[v _SSPSTAT `Vuc ~T0 @X0 0 e@4039 ]
+"5027
+[v _SSPCON `Vuc ~T0 @X0 0 e@4038 ]
+"5038
+[s S207 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S207 . SSPM CKP SSPEN SSPOV WCOL ]
+"5045
+[s S208 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S208 . SSPM0 SSPM1 SSPM2 SSPM3 ]
+"5037
+[u S206 `S207 1 `S208 1 ]
+[n S206 . . . ]
+"5052
+[v _SSPCONbits `VS206 ~T0 @X0 0 e@4038 ]
+"5171
+[s S213 :2 `uc 1 :1 `uc 1 ]
+[n S213 . . R_NOT_W ]
+"5175
+[s S214 :5 `uc 1 :1 `uc 1 ]
+[n S214 . . D_NOT_A ]
+"5179
+[s S215 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S215 . BF UA R_nW S P D_nA CKE SMP ]
+"5189
+[s S216 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S216 . . R_W . D_A ]
+"5195
+[s S217 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S217 . . nW . nA ]
+"5201
+[s S218 :2 `uc 1 :1 `uc 1 ]
+[n S218 . . NOT_WRITE ]
+"5205
+[s S219 :5 `uc 1 :1 `uc 1 ]
+[n S219 . . NOT_ADDRESS ]
+"5209
+[s S220 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S220 . . nWRITE . nADDRESS ]
+"5215
+[s S221 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S221 . . READ_WRITE . DATA_ADDRESS ]
+"5221
+[s S222 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S222 . . R . D ]
+"5227
+[s S223 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S223 . . RW START STOP DA ]
+"5234
+[s S224 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S224 . . NOT_W . NOT_A ]
+"5170
+[u S212 `S213 1 `S214 1 `S215 1 `S216 1 `S217 1 `S218 1 `S219 1 `S220 1 `S221 1 `S222 1 `S223 1 `S224 1 ]
+[n S212 . . . . . . . . . . . . . ]
+"5241
+[v _SSPSTATbits `VS212 ~T0 @X0 0 e@4039 ]
+"50 SPI.c
+[c E3069 0 1 2 .. ]
+[n E3069 . SPI_SERIAL_CLK4 SPI_SERIAL_CLK16 SPI_SERIAL_CLK64  ]
+"2371 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f2331.h
+[s S83 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S83 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
+"2381
+[s S84 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S84 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
+"2370
+[u S82 `S83 1 `S84 1 ]
+[n S82 . . . ]
+"2392
+[v _TRISCbits `VS82 ~T0 @X0 0 e@3988 ]
+"1242
+[s S45 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S45 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
+"1252
+[s S46 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S46 . T1OSO T1OSI CCP1 INT0 INT1 INT2 TX RX ]
+"1262
+[s S47 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S47 . T13CKI CCP2 . T0CKI SDA SCK CK DT ]
+"1272
+[s S48 :1 `uc 1 :1 `uc 1 ]
+[n S48 . . NOT_FLTA ]
+"1276
+[s S49 :2 `uc 1 :1 `uc 1 ]
+[n S49 . . NOT_FLTB ]
+"1280
+[s S50 :6 `uc 1 :1 `uc 1 ]
+[n S50 . . NOT_SS ]
+"1284
+[s S51 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S51 . . nFLTA nFLTB T5CKI SDI SCL nSS SDO ]
+"1294
+[s S52 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 ]
+[n S52 . . FLTA FLTB . SS ]
+"1301
+[s S53 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S53 . . PA2 PA1 ]
+"1241
+[u S44 `S45 1 `S46 1 `S47 1 `S48 1 `S49 1 `S50 1 `S51 1 `S52 1 `S53 1 ]
+[n S44 . . . . . . . . . . ]
+"1307
+[v _PORTCbits `VS44 ~T0 @X0 0 e@3970 ]
 "30 SPI.h
-[s S286 `E3146 1 `E3150 1 `E3154 1 ]
-[n S286 . SPI_Polarity SPI_Phase SPI_Clk ]
-[p mainexit ]
-"36
-[v _SPI_init `(v ~T0 @X0 0 ef1`*CS286 ]
+[s S285 `E3061 1 `E3065 1 `E3069 1 ]
+[n S285 . SPI_Polarity SPI_Phase SPI_Clk ]
+"5393 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f2331.h
+[v _SSPBUF `Vuc ~T0 @X0 0 e@4041 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -2916,36 +3015,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 164: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 166: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
-[; ;__size_t.h: 4: typedef unsigned size_t;
-[; ;stdarg.h: 7: typedef void * va_list[1];
-[; ;stdarg.h: 10: extern void * __va_start(void);
-[; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
-[; ;stdio.h: 43: struct __prbuf
-[; ;stdio.h: 44: {
-[; ;stdio.h: 45: char * ptr;
-[; ;stdio.h: 46: void (* func)(char);
-[; ;stdio.h: 47: };
-[; ;errno.h: 29: extern int errno;
-[; ;conio.h: 12: extern void init_uart(void);
-[; ;conio.h: 14: extern char getch(void);
-[; ;conio.h: 15: extern char getche(void);
-[; ;conio.h: 16: extern void putch(char);
-[; ;conio.h: 17: extern void ungetch(char);
-[; ;conio.h: 19: extern __bit kbhit(void);
-[; ;conio.h: 23: extern char * cgets(char *);
-[; ;conio.h: 24: extern void cputs(const char *);
-[; ;stdio.h: 88: extern int cprintf(char *, ...);
-[; ;stdio.h: 93: extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-[; ;stdio.h: 183: extern char * gets(char *);
-[; ;stdio.h: 184: extern int puts(const char *);
-[; ;stdio.h: 185: extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-[; ;stdio.h: 186: extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-[; ;stdio.h: 187: extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-[; ;stdio.h: 188: extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-[; ;stdio.h: 189: extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-[; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-[; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
-[; ;stdio.h: 195: extern int printf(const char *, ...);
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -2974,28 +3043,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 205: typedef uint32_t uintmax_t;
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
-[; ;GPIO.h: 8: typedef enum
-[; ;GPIO.h: 9: {
-[; ;GPIO.h: 10: GPIO_INPUT,
-[; ;GPIO.h: 11: GPIO_OUTPUT
-[; ;GPIO.h: 12: } GPIO_state;
-[; ;GPIO.h: 15: typedef enum
-[; ;GPIO.h: 16: {
-[; ;GPIO.h: 17: GPIO_A,
-[; ;GPIO.h: 18: GPIO_B,
-[; ;GPIO.h: 19: GPIO_C
-[; ;GPIO.h: 20: } GPIO_portNameType;
-[; ;GPIO.h: 22: typedef enum
-[; ;GPIO.h: 23: {
-[; ;GPIO.h: 24: GPIO_DIGITAL,
-[; ;GPIO.h: 25: GPIO_ANALOG
-[; ;GPIO.h: 26: } GPIO_analogType;
-[; ;GPIO.h: 29: void GPIO_dataDirectionPIN
-[; ;GPIO.h: 30: (GPIO_portNameType portName, uint8_t pin, GPIO_state state);
-[; ;GPIO.h: 32: void GPIO_dataDirectionPORT
-[; ;GPIO.h: 33: (GPIO_portNameType portName, GPIO_state state);
-[; ;GPIO.h: 35: void GPIO_analogSelector
-[; ;GPIO.h: 36: (GPIO_analogType type, uint8_t pin);
 [; ;SPI.h: 7: typedef enum
 [; ;SPI.h: 8: {
 [; ;SPI.h: 9: SPI_LOW_POLARITY,
@@ -3021,55 +3068,283 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SPI.h: 36: void SPI_init(const SPI_ConfigType* SPI_Config);
 [; ;SPI.h: 38: int8_t SPI_write(uint8_t data);
 [; ;SPI.h: 40: uint8_t SPI_read(void);
-"9 main.c
-[v _SPI_Config `CS286 ~T0 @X0 1 e ]
-[i _SPI_Config
-:U ..
-:U ..
-"11
-. `E3146 0
-"12
-. `E3150 0
-"14
-. `E3154 0
-..
-..
-]
-[; ;main.c: 9: const SPI_ConfigType SPI_Config =
-[; ;main.c: 10: {
-[; ;main.c: 11: SPI_LOW_POLARITY,
-[; ;main.c: 12: SPI_LOW_PHASE,
-[; ;main.c: 13: SPI_SERIAL_CLK4
-[; ;main.c: 14: };
-[v $root$_main `(v ~T0 @X0 0 e ]
+"15 SPI.c
+[v _SPI_enableClock `(v ~T0 @X0 1 sf2`E3065`E3061 ]
 "16
-[v _main `(v ~T0 @X0 1 ef ]
-"17
 {
-[; ;main.c: 16: void main(void)
-[; ;main.c: 17: {
-[e :U _main ]
+[; ;SPI.c: 15: static void SPI_enableClock(SPI_PhaseType phase, SPI_PolarityType cpol)
+[; ;SPI.c: 16: {
+[e :U _SPI_enableClock ]
+"15
+[v _phase `E3065 ~T0 @X0 1 r1 ]
+[v _cpol `E3061 ~T0 @X0 1 r2 ]
+"16
 [f ]
-[; ;main.c: 19: SPI_init(&SPI_Config);
+[; ;SPI.c: 18: SSPSTAT &= (0x3F);
+"18
+[e =& _SSPSTAT -> -> 63 `i `uc ]
+[; ;SPI.c: 19: SSPCON &= (0xC0);
 "19
-[e ( _SPI_init (1 &U _SPI_Config ]
-[; ;main.c: 21: for(;;)
-"21
-{
+[e =& _SSPCON -> -> 192 `i `uc ]
+[; ;SPI.c: 22: SSPSTAT |= (0x40);
 "22
-[e :U 288 ]
-[; ;main.c: 22: {
-{
+[e =| _SSPSTAT -> -> 64 `i `uc ]
+[; ;SPI.c: 24: switch(phase)
 "24
-}
-[; ;main.c: 24: }
 [e $U 288  ]
-[e :U 289 ]
-}
-[; ;main.c: 26: return;
+[; ;SPI.c: 25: {
+"25
+{
+[; ;SPI.c: 26: case SPI_LOW_PHASE:
 "26
-[e $UE 287  ]
-[; ;main.c: 27: }
+[e :U 289 ]
+[; ;SPI.c: 27: SSPCONbits.CKP = 0;
 "27
-[e :UE 287 ]
+[e = . . _SSPCONbits 0 1 -> -> 0 `i `uc ]
+[; ;SPI.c: 28: break;
+"28
+[e $U 287  ]
+[; ;SPI.c: 29: case SPI_HIGH_PHASE:
+"29
+[e :U 290 ]
+[; ;SPI.c: 30: SSPCONbits.CKP = 1;
+"30
+[e = . . _SSPCONbits 0 1 -> -> 1 `i `uc ]
+[; ;SPI.c: 31: break;
+"31
+[e $U 287  ]
+[; ;SPI.c: 32: default:
+"32
+[e :U 291 ]
+[; ;SPI.c: 33: break;
+"33
+[e $U 287  ]
+"34
+}
+[; ;SPI.c: 34: }
+[e $U 287  ]
+"24
+[e :U 288 ]
+[e [\ _phase , $ . `E3065 0 289
+ , $ . `E3065 1 290
+ 291 ]
+"34
+[e :U 287 ]
+[; ;SPI.c: 36: switch(cpol)
+"36
+[e $U 293  ]
+[; ;SPI.c: 37: {
+"37
+{
+[; ;SPI.c: 38: case SPI_LOW_POLARITY:
+"38
+[e :U 294 ]
+[; ;SPI.c: 39: SSPSTATbits.CKE = 0;
+"39
+[e = . . _SSPSTATbits 2 6 -> -> 0 `i `uc ]
+[; ;SPI.c: 40: break;
+"40
+[e $U 292  ]
+[; ;SPI.c: 41: case SPI_HIGH_POLARITY:
+"41
+[e :U 295 ]
+[; ;SPI.c: 42: SSPSTATbits.CKE = 1;
+"42
+[e = . . _SSPSTATbits 2 6 -> -> 1 `i `uc ]
+[; ;SPI.c: 43: break;
+"43
+[e $U 292  ]
+[; ;SPI.c: 44: default:
+"44
+[e :U 296 ]
+[; ;SPI.c: 45: break;
+"45
+[e $U 292  ]
+"46
+}
+[; ;SPI.c: 46: }
+[e $U 292  ]
+"36
+[e :U 293 ]
+[e [\ _cpol , $ . `E3061 0 294
+ , $ . `E3061 1 295
+ 296 ]
+"46
+[e :U 292 ]
+[; ;SPI.c: 47: }
+"47
+[e :UE 286 ]
+}
+"49
+[v _SPI_enablePins `(v ~T0 @X0 1 sf1`E3069 ]
+"50
+{
+[; ;SPI.c: 49: static void SPI_enablePins(SPI_SerialClk serial)
+[; ;SPI.c: 50: {
+[e :U _SPI_enablePins ]
+"49
+[v _serial `E3069 ~T0 @X0 1 r1 ]
+"50
+[f ]
+[; ;SPI.c: 51: switch(serial)
+"51
+[e $U 299  ]
+[; ;SPI.c: 52: {
+"52
+{
+[; ;SPI.c: 53: case SPI_SERIAL_CLK4:
+"53
+[e :U 300 ]
+[; ;SPI.c: 54: SSPCON &= (0x00);
+"54
+[e =& _SSPCON -> -> 0 `i `uc ]
+[; ;SPI.c: 55: break;
+"55
+[e $U 298  ]
+[; ;SPI.c: 56: case SPI_SERIAL_CLK16:
+"56
+[e :U 301 ]
+[; ;SPI.c: 57: SSPCON |= (0x01);
+"57
+[e =| _SSPCON -> -> 1 `i `uc ]
+[; ;SPI.c: 58: break;
+"58
+[e $U 298  ]
+[; ;SPI.c: 59: case SPI_SERIAL_CLK64:
+"59
+[e :U 302 ]
+[; ;SPI.c: 60: SSPCON |= (0x02);
+"60
+[e =| _SSPCON -> -> 2 `i `uc ]
+[; ;SPI.c: 61: break;
+"61
+[e $U 298  ]
+[; ;SPI.c: 62: default:
+"62
+[e :U 303 ]
+[; ;SPI.c: 63: break;
+"63
+[e $U 298  ]
+"64
+}
+[; ;SPI.c: 64: }
+[e $U 298  ]
+"51
+[e :U 299 ]
+[e [\ _serial , $ . `E3069 0 300
+ , $ . `E3069 1 301
+ , $ . `E3069 2 302
+ 303 ]
+"64
+[e :U 298 ]
+[; ;SPI.c: 67: TRISCbits.TRISC5 = 0;
+"67
+[e = . . _TRISCbits 0 5 -> -> 0 `i `uc ]
+[; ;SPI.c: 69: TRISCbits.TRISC4 = 1;
+"69
+[e = . . _TRISCbits 0 4 -> -> 1 `i `uc ]
+[; ;SPI.c: 71: TRISCbits.TRISC7 = 0;
+"71
+[e = . . _TRISCbits 0 7 -> -> 0 `i `uc ]
+[; ;SPI.c: 73: TRISCbits.TRISC6 = 0;
+"73
+[e = . . _TRISCbits 0 6 -> -> 0 `i `uc ]
+[; ;SPI.c: 76: SSPCON |= (0x20);
+"76
+[e =| _SSPCON -> -> 32 `i `uc ]
+[; ;SPI.c: 78: PORTCbits.RC6 = 1;
+"78
+[e = . . _PORTCbits 0 6 -> -> 1 `i `uc ]
+[; ;SPI.c: 79: }
+"79
+[e :UE 297 ]
+}
+"81
+[v _SPI_init `(v ~T0 @X0 1 ef1`*CS285 ]
+"82
+{
+[; ;SPI.c: 81: void SPI_init(const SPI_ConfigType* SPI_Config)
+[; ;SPI.c: 82: {
+[e :U _SPI_init ]
+"81
+[v _SPI_Config `*CS285 ~T0 @X0 1 r1 ]
+"82
+[f ]
+[; ;SPI.c: 83: SPI_enableClock(SPI_Config->SPI_Polarity, SPI_Config->SPI_Phase);
+"83
+[e ( _SPI_enableClock (2 , . *U _SPI_Config 0 . *U _SPI_Config 1 ]
+[; ;SPI.c: 84: SPI_enablePins(SPI_Config->SPI_Clk);
+"84
+[e ( _SPI_enablePins (1 . *U _SPI_Config 2 ]
+[; ;SPI.c: 85: }
+"85
+[e :UE 304 ]
+}
+"87
+[v _SPI_write `(c ~T0 @X0 1 ef1`uc ]
+"88
+{
+[; ;SPI.c: 87: int8_t SPI_write(uint8_t data)
+[; ;SPI.c: 88: {
+[e :U _SPI_write ]
+"87
+[v _data `uc ~T0 @X0 1 r1 ]
+"88
+[f ]
+"89
+[v _success `c ~T0 @X0 1 a ]
+[; ;SPI.c: 89: int8_t success;
+[; ;SPI.c: 91: SSPCONbits.WCOL = 0;
+"91
+[e = . . _SSPCONbits 0 4 -> -> 0 `i `uc ]
+[; ;SPI.c: 92: SSPBUF = data;
+"92
+[e = _SSPBUF _data ]
+[; ;SPI.c: 93: while(!SSPSTATbits.BF);
+"93
+[e $U 306  ]
+[e :U 307 ]
+[e :U 306 ]
+[e $ ! != -> . . _SSPSTATbits 2 0 `i -> -> -> 0 `i `Vuc `i 307  ]
+[e :U 308 ]
+[; ;SPI.c: 95: success = (SSPCONbits.WCOL == 1) ? 0: 1;
+"95
+[e = _success -> ? == -> . . _SSPCONbits 0 4 `i -> 1 `i : -> 0 `i -> 1 `i `c ]
+[; ;SPI.c: 97: return success;
+"97
+[e ) _success ]
+[e $UE 305  ]
+[; ;SPI.c: 98: }
+"98
+[e :UE 305 ]
+}
+"100
+[v _SPI_read `(uc ~T0 @X0 1 ef ]
+"101
+{
+[; ;SPI.c: 100: uint8_t SPI_read(void)
+[; ;SPI.c: 101: {
+[e :U _SPI_read ]
+[f ]
+"102
+[v _dummy `Cuc ~T0 @X0 1 a ]
+[; ;SPI.c: 102: const uint8_t dummy = 0;
+[e = _dummy -> -> 0 `i `uc ]
+[; ;SPI.c: 105: SSPBUF = dummy;
+"105
+[e = _SSPBUF _dummy ]
+[; ;SPI.c: 108: while(!SSPSTATbits.BF);
+"108
+[e $U 310  ]
+[e :U 311 ]
+[e :U 310 ]
+[e $ ! != -> . . _SSPSTATbits 2 0 `i -> -> -> 0 `i `Vuc `i 311  ]
+[e :U 312 ]
+[; ;SPI.c: 110: return SSPBUF;
+"110
+[e ) _SSPBUF ]
+[e $UE 309  ]
+[; ;SPI.c: 111: }
+"111
+[e :UE 309 ]
 }
