@@ -3,14 +3,14 @@
 
 #include <stdint.h>
 #include "States.h"
+
 /************************************************************/
 /**
  * \brief This data type define the data type in MAIN MENU
  */
 typedef enum
 {
-    INITIAL_LOAD1,
-    INITIAL_LOAD2,
+    INITIAL_LOAD,
 	GENERAL_VIEW,
 	VIEW_MENU
 }PhaseStateMenu_Type;
@@ -23,43 +23,51 @@ typedef struct
 
 typedef PhaseMainMenu_Type(*fptrPhaseMainMenu)(PhaseMainMenu_Type);
 
-typedef const struct PhaseMainMenu{
+typedef const struct PhaseMainMenu
+{
 	PhaseMainMenu_Type(*PhaseMainMenu)(PhaseMainMenu_Type);
 }PhasePtrMainMenu_Type;
+
 /***********************************************************/
 /***********************************************************/
 /**
  * \brief This data type define the data type in MESSAGES
  */
 
-typedef enum{WRITE_NUMBER,
-			WRITE_MESSAGES,
-			SEND_MESSAGES,
-			EXIT_MESSAGES
-}PhaseStateMessages_Type;
+typedef enum
+{
+    ACTIVE_POWER,
+	REACTIVE_POWER,
+	APPARENT_POWER,
+	EXIT_POWER1
+}PhaseStatePower1_Type;
 
-typedef struct{
-	PhaseStateMessages_Type phaseState;
+typedef struct
+{
+	PhaseStatePower1_Type phaseState;
 	States_MenuType stateMain;
-}PhaseMessages_Type;
+}PhasePower1_Type;
 
-typedef PhaseMessages_Type(*fptrPhaseMessages)(PhaseMessages_Type);
+typedef PhasePower1_Type(*fptrPhasePower1)(PhasePower1_Type);
 
-typedef const struct PhaseMessages{
-	PhaseMessages_Type(*PhaseMessages)(PhaseMessages_Type);
-}PhasePtrMessages_Type;
+typedef const struct PhasePower1
+{
+	PhasePower1_Type(*PhasePower1)(PhasePower1_Type);
+}PhasePtrPower1_Type;
+
 /**********************************************************/
 /***********************************************************/
 /**
  * \brief This data type define the data type in CONTACTS
  */
-typedef enum{MODE_ADD,MODE_EDIT}ModeContact_Type;
 
-typedef enum{CONTACT_MENU,
-			VIEW_CONTACTS,
-			ADD_CONTACTS,
-			SAVE_CONTACTS
-}PhaseStateContacts_Type;
+typedef enum
+{
+    CONTACT_MENU,
+	VIEW_CONTACTS,
+	ADD_CONTACTS,
+	SAVE_CONTACTS
+}PhaseStatePower2_Type;
 
 typedef struct{
 	uint8 name[30];
