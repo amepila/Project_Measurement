@@ -4,35 +4,57 @@
 [d chip 18F2331 ]
 [d frameptr 4065 ]
 "9 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\main.c
-[e E3146 . `uc
+[e E3160 . `uc
 SPI_LOW_POLARITY 0
 SPI_HIGH_POLARITY 1
 ]
-[e E3150 . `uc
+[e E3164 . `uc
 SPI_LOW_PHASE 0
 SPI_HIGH_PHASE 1
 ]
-[e E3154 . `uc
+[e E3168 . `uc
 SPI_SERIAL_CLK4 0
 SPI_SERIAL_CLK16 1
 SPI_SERIAL_CLK64 2
 ]
-"12 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
-[e E3065 . `uc
+"19
+[e E3123 . `uc
+CLK_8MHZ 0
+CLK_4MHZ 1
+CLK_2MHZ 2
+CLK_1MHZ 3
+CLK_500KHZ 4
+CLK_250KHZ 5
+CLK_125KHZ 6
+CLK_31KHZ 7
+]
+"19 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+[e E3061 . `uc
+CLK_8MHZ 0
+CLK_4MHZ 1
+CLK_2MHZ 2
+CLK_1MHZ 3
+CLK_500KHZ 4
+CLK_250KHZ 5
+CLK_125KHZ 6
+CLK_31KHZ 7
+]
+"53
+[e E3075 . `uc
 GPIO_A 0
 GPIO_B 1
 GPIO_C 2
 ]
-[e E3061 . `uc
+[e E3071 . `uc
 GPIO_INPUT 0
 GPIO_OUTPUT 1
 ]
-"96
-[e E3070 . `uc
+"137
+[e E3080 . `uc
 GPIO_DIGITAL 0
 GPIO_ANALOG 1
 ]
-"16 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\SPI.c
+"15 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\SPI.c
 [e E3065 . `uc
 SPI_LOW_PHASE 0
 SPI_HIGH_PHASE 1
@@ -41,11 +63,27 @@ SPI_HIGH_PHASE 1
 SPI_LOW_POLARITY 0
 SPI_HIGH_POLARITY 1
 ]
-"50
+"49
 [e E3069 . `uc
 SPI_SERIAL_CLK4 0
 SPI_SERIAL_CLK16 1
 SPI_SERIAL_CLK64 2
+]
+"12 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\UART.c
+[e E3061 . `ui
+BD_1200 1200
+BD_2400 2400
+BD_9600 9600
+]
+"13
+[e E3092 . `uc
+GPIO_A 0
+GPIO_B 1
+GPIO_C 2
+]
+[e E3088 . `uc
+GPIO_INPUT 0
+GPIO_OUTPUT 1
 ]
 "62 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\float.c
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
@@ -67,79 +105,29 @@ SPI_SERIAL_CLK64 2
 [v ___flmul __flmul `(d  1 e 3 0 ]
 "15 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
+"18 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+[v _GPIO_sourceClock GPIO_sourceClock `(v  1 e 1 0 ]
+"51
+[v _GPIO_dataDirectionPIN GPIO_dataDirectionPIN `(v  1 e 1 0 ]
+"151
+[v _delay delay `(v  1 e 1 0 ]
 "16 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"15 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\SPI.c
+"14 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\SPI.c
 [v _SPI_enableClock SPI_enableClock `(v  1 s 1 SPI_enableClock ]
-"49
+"48
 [v _SPI_enablePins SPI_enablePins `(v  1 s 1 SPI_enablePins ]
-"81
+"76
 [v _SPI_init SPI_init `(v  1 e 1 0 ]
-[s S248 . 1 `uc 1 RC0 1 0 :1:0 
-`uc 1 RC1 1 0 :1:1 
-`uc 1 RC2 1 0 :1:2 
-`uc 1 RC3 1 0 :1:3 
-`uc 1 RC4 1 0 :1:4 
-`uc 1 RC5 1 0 :1:5 
-`uc 1 RC6 1 0 :1:6 
-`uc 1 RC7 1 0 :1:7 
-]
-"1307 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f2331.h
-[s S288 . 1 `uc 1 T1OSO 1 0 :1:0 
-`uc 1 T1OSI 1 0 :1:1 
-`uc 1 CCP1 1 0 :1:2 
-`uc 1 INT0 1 0 :1:3 
-`uc 1 INT1 1 0 :1:4 
-`uc 1 INT2 1 0 :1:5 
-`uc 1 TX 1 0 :1:6 
-`uc 1 RX 1 0 :1:7 
-]
-[s S297 . 1 `uc 1 T13CKI 1 0 :1:0 
-`uc 1 CCP2 1 0 :1:1 
-`uc 1 . 1 0 :1:2 
-`uc 1 T0CKI 1 0 :1:3 
-`uc 1 SDA 1 0 :1:4 
-`uc 1 SCK 1 0 :1:5 
-`uc 1 CK 1 0 :1:6 
-`uc 1 DT 1 0 :1:7 
-]
-[s S306 . 1 `uc 1 . 1 0 :1:0 
-`uc 1 NOT_FLTA 1 0 :1:1 
-]
-[s S309 . 1 `uc 1 . 1 0 :2:0 
-`uc 1 NOT_FLTB 1 0 :1:2 
-]
-[s S312 . 1 `uc 1 . 1 0 :6:0 
-`uc 1 NOT_SS 1 0 :1:6 
-]
-[s S315 . 1 `uc 1 . 1 0 :1:0 
-`uc 1 nFLTA 1 0 :1:1 
-`uc 1 nFLTB 1 0 :1:2 
-`uc 1 T5CKI 1 0 :1:3 
-`uc 1 SDI 1 0 :1:4 
-`uc 1 SCL 1 0 :1:5 
-`uc 1 nSS 1 0 :1:6 
-`uc 1 SDO 1 0 :1:7 
-]
-[s S324 . 1 `uc 1 . 1 0 :1:0 
-`uc 1 FLTA 1 0 :1:1 
-`uc 1 FLTB 1 0 :1:2 
-`uc 1 . 1 0 :3:3 
-`uc 1 SS 1 0 :1:6 
-]
-[s S330 . 1 `uc 1 . 1 0 :1:0 
-`uc 1 PA2 1 0 :1:1 
-`uc 1 PA1 1 0 :1:2 
-]
-[u S334 . 1 `S248 1 . 1 0 `S288 1 . 1 0 `S297 1 . 1 0 `S306 1 . 1 0 `S309 1 . 1 0 `S312 1 . 1 0 `S315 1 . 1 0 `S324 1 . 1 0 `S330 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES334  1 e 1 @3970 ]
-"1936
+"70 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\UART.c
+[v _expBASE10 expBASE10 `(ul  1 e 4 0 ]
+"1936 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f2331.h
 [v _TRISA TRISA `VEuc  1 e 1 @3986 ]
 "2138
 [v _TRISB TRISB `VEuc  1 e 1 @3987 ]
 "2360
 [v _TRISC TRISC `VEuc  1 e 1 @3988 ]
-[s S239 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S268 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -149,36 +137,124 @@ SPI_SERIAL_CLK64 2
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "2392
-[u S257 . 1 `S239 1 . 1 0 `S248 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES257  1 e 1 @3988 ]
+[s S277 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+[u S286 . 1 `S268 1 . 1 0 `S277 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES286  1 e 1 @3988 ]
+[s S469 . 1 `uc 1 ABDEN 1 0 :1:0 
+`uc 1 WUE 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 BRG16 1 0 :1:3 
+`uc 1 TXCKP 1 0 :1:4 
+`uc 1 RXDTP 1 0 :1:5 
+`uc 1 RCIDL 1 0 :1:6 
+`uc 1 ABDOVF 1 0 :1:7 
+]
+"3632
+[s S478 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 SCKP 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 RCMT 1 0 :1:6 
+]
+[s S483 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 RXCKP 1 0 :1:5 
+]
+[s S486 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 W4E 1 0 :1:1 
+]
+[u S489 . 1 `S469 1 . 1 0 `S478 1 . 1 0 `S483 1 . 1 0 `S486 1 . 1 0 ]
+[v _BAUDCTLbits BAUDCTLbits `VES489  1 e 1 @4010 ]
+[s S415 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+"3733
+[s S424 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 ADEN 1 0 :1:3 
+]
+[s S427 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 SRENA 1 0 :1:5 
+]
+[s S430 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC8_9 1 0 :1:6 
+]
+[s S433 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC9 1 0 :1:6 
+]
+[s S436 . 1 `uc 1 RCD8 1 0 :1:0 
+]
+[u S438 . 1 `S415 1 . 1 0 `S424 1 . 1 0 `S427 1 . 1 0 `S430 1 . 1 0 `S433 1 . 1 0 `S436 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES438  1 e 1 @4011 ]
+[s S363 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 SENDB 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+"3941
+[s S372 . 1 `uc 1 TX9D1 1 0 :1:0 
+`uc 1 TRMT1 1 0 :1:1 
+`uc 1 BRGH1 1 0 :1:2 
+`uc 1 SENDB1 1 0 :1:3 
+`uc 1 SYNC1 1 0 :1:4 
+`uc 1 TXEN1 1 0 :1:5 
+`uc 1 TX91 1 0 :1:6 
+`uc 1 CSRC1 1 0 :1:7 
+]
+[s S381 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 TX8_9 1 0 :1:6 
+]
+[s S384 . 1 `uc 1 TXD8 1 0 :1:0 
+]
+[u S386 . 1 `S363 1 . 1 0 `S372 1 . 1 0 `S381 1 . 1 0 `S384 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES386  1 e 1 @4012 ]
+"4158
+[v _TXREG TXREG `VEuc  1 e 1 @4013 ]
+"4182
+[v _SPBRG SPBRG `VEuc  1 e 1 @4015 ]
 "4471
 [v _ANSEL0 ANSEL0 `VEuc  1 e 1 @4024 ]
 "5027
 [v _SSPCON SSPCON `VEuc  1 e 1 @4038 ]
-[s S81 . 1 `uc 1 SSPM 1 0 :4:0 
+[s S110 . 1 `uc 1 SSPM 1 0 :4:0 
 `uc 1 CKP 1 0 :1:4 
 `uc 1 SSPEN 1 0 :1:5 
 `uc 1 SSPOV 1 0 :1:6 
 `uc 1 WCOL 1 0 :1:7 
 ]
 "5052
-[s S87 . 1 `uc 1 SSPM0 1 0 :1:0 
+[s S116 . 1 `uc 1 SSPM0 1 0 :1:0 
 `uc 1 SSPM1 1 0 :1:1 
 `uc 1 SSPM2 1 0 :1:2 
 `uc 1 SSPM3 1 0 :1:3 
 ]
-[u S92 . 1 `S81 1 . 1 0 `S87 1 . 1 0 ]
-[v _SSPCONbits SSPCONbits `VES92  1 e 1 @4038 ]
+[u S121 . 1 `S110 1 . 1 0 `S116 1 . 1 0 ]
+[v _SSPCONbits SSPCONbits `VES121  1 e 1 @4038 ]
 "5165
 [v _SSPSTAT SSPSTAT `VEuc  1 e 1 @4039 ]
-[s S107 . 1 `uc 1 . 1 0 :2:0 
+[s S136 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_NOT_W 1 0 :1:2 
 ]
 "5241
-[s S110 . 1 `uc 1 . 1 0 :5:0 
+[s S139 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 D_NOT_A 1 0 :1:5 
 ]
-[s S113 . 1 `uc 1 BF 1 0 :1:0 
+[s S142 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -187,82 +263,92 @@ SPI_SERIAL_CLK64 2
 `uc 1 CKE 1 0 :1:6 
 `uc 1 SMP 1 0 :1:7 
 ]
-[s S122 . 1 `uc 1 . 1 0 :2:0 
+[s S151 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S127 . 1 `uc 1 . 1 0 :2:0 
+[s S156 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S132 . 1 `uc 1 . 1 0 :2:0 
+[s S161 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_WRITE 1 0 :1:2 
 ]
-[s S135 . 1 `uc 1 . 1 0 :5:0 
+[s S164 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_ADDRESS 1 0 :1:5 
 ]
-[s S138 . 1 `uc 1 . 1 0 :2:0 
+[s S167 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S143 . 1 `uc 1 . 1 0 :2:0 
+[s S172 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 DATA_ADDRESS 1 0 :1:5 
 ]
-[s S148 . 1 `uc 1 . 1 0 :2:0 
+[s S177 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D 1 0 :1:5 
 ]
-[s S153 . 1 `uc 1 . 1 0 :2:0 
+[s S182 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 RW 1 0 :1:2 
 `uc 1 START 1 0 :1:3 
 `uc 1 STOP 1 0 :1:4 
 `uc 1 DA 1 0 :1:5 
 ]
-[s S159 . 1 `uc 1 . 1 0 :2:0 
+[s S188 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 NOT_A 1 0 :1:5 
 ]
-[u S164 . 1 `S107 1 . 1 0 `S110 1 . 1 0 `S113 1 . 1 0 `S122 1 . 1 0 `S127 1 . 1 0 `S132 1 . 1 0 `S135 1 . 1 0 `S138 1 . 1 0 `S143 1 . 1 0 `S148 1 . 1 0 `S153 1 . 1 0 `S159 1 . 1 0 ]
-[v _SSPSTATbits SSPSTATbits `VES164  1 e 1 @4039 ]
+[u S193 . 1 `S136 1 . 1 0 `S139 1 . 1 0 `S142 1 . 1 0 `S151 1 . 1 0 `S156 1 . 1 0 `S161 1 . 1 0 `S164 1 . 1 0 `S167 1 . 1 0 `S172 1 . 1 0 `S177 1 . 1 0 `S182 1 . 1 0 `S188 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES193  1 e 1 @4039 ]
 "5393
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @4041 ]
-[s S31 . 3 `E3146 1 SPI_Polarity 1 0 `E3150 1 SPI_Phase 1 1 `E3154 1 SPI_Clk 1 2 ]
+"5983
+[v _OSCCON OSCCON `VEuc  1 e 1 @4051 ]
+[s S31 . 3 `E3160 1 SPI_Polarity 1 0 `E3164 1 SPI_Phase 1 1 `E3168 1 SPI_Clk 1 2 ]
 "9 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\main.c
 [v _SPI_Config SPI_Config `CS31  1 e 3 0 ]
 "16
 [v _main main `(v  1 e 1 0 ]
 {
-"27
+"28
 } 0
-"81 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\SPI.c
+"76 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\SPI.c
 [v _SPI_init SPI_init `(v  1 e 1 0 ]
 {
-[s S31 . 3 `E3146 1 SPI_Polarity 1 0 `E3150 1 SPI_Phase 1 1 `E3154 1 SPI_Clk 1 2 ]
+[s S31 . 3 `E3160 1 SPI_Polarity 1 0 `E3164 1 SPI_Phase 1 1 `E3168 1 SPI_Clk 1 2 ]
 [v SPI_init@SPI_Config SPI_Config `*.25CS31  1 p 2 2 ]
-"85
+"80
 } 0
-"49
+"48
 [v _SPI_enablePins SPI_enablePins `(v  1 s 1 SPI_enablePins ]
 {
 [v SPI_enablePins@serial serial `E3069  1 a 1 wreg ]
 [v SPI_enablePins@serial serial `E3069  1 a 1 wreg ]
 [v SPI_enablePins@serial serial `E3069  1 a 1 0 ]
-"79
+"74
 } 0
-"15
+"14
 [v _SPI_enableClock SPI_enableClock `(v  1 s 1 SPI_enableClock ]
 {
 [v SPI_enableClock@phase phase `E3065  1 a 1 wreg ]
 [v SPI_enableClock@phase phase `E3065  1 a 1 wreg ]
 [v SPI_enableClock@cpol cpol `E3061  1 p 1 0 ]
-"18
+"17
 [v SPI_enableClock@phase phase `E3065  1 a 1 1 ]
-"47
+"46
+} 0
+"18 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+[v _GPIO_sourceClock GPIO_sourceClock `(v  1 e 1 0 ]
+{
+[v GPIO_sourceClock@clk clk `E3061  1 a 1 wreg ]
+[v GPIO_sourceClock@clk clk `E3061  1 a 1 wreg ]
+[v GPIO_sourceClock@clk clk `E3061  1 a 1 0 ]
+"49
 } 0

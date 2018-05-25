@@ -1,5 +1,5 @@
 
-# 1 "SPI.c"
+# 1 "UART.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.44\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -4126,133 +4126,201 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 7 "SPI.h"
+# 9 "UART.h"
 typedef enum
 {
-SPI_LOW_POLARITY,
-SPI_HIGH_POLARITY
-} SPI_PolarityType;
+BD_1200 = 1200,
+BD_2400 = 2400,
+BD_9600 = 9600
+} UART_BaudRateType;
+
+void UART_init(UART_BaudRateType baudRate);
+
+void UART_putChar(uint8_t character);
+
+void UART_putString(int8_t* string);
+
+uint32_t expBASE10(uint8_t limit);
+
+uint32_t Convert_numberASCIItoDATA(uint8_t *string);
+
+uint8_t Convert_wordASCIItoDATA(uint8_t word);
+
+# 7 "GPIO.h"
+typedef enum
+{
+CLK_8MHZ,
+CLK_4MHZ,
+CLK_2MHZ,
+CLK_1MHZ,
+CLK_500KHZ,
+CLK_250KHZ,
+CLK_125KHZ,
+CLK_31KHZ
+}GPIO_SourceClk;
 
 
 typedef enum
 {
-SPI_LOW_PHASE,
-SPI_HIGH_PHASE
-} SPI_PhaseType;
+GPIO_INPUT,
+GPIO_OUTPUT
+} GPIO_state;
+
 
 typedef enum
 {
-SPI_SERIAL_CLK4,
-SPI_SERIAL_CLK16,
-SPI_SERIAL_CLK64
-} SPI_SerialClk;
+GPIO_A,
+GPIO_B,
+GPIO_C
+} GPIO_portNameType;
 
-# 29
-typedef struct
+typedef enum
 {
-SPI_PolarityType SPI_Polarity;
-SPI_PhaseType SPI_Phase;
-SPI_SerialClk SPI_Clk;
-} SPI_ConfigType;
+GPIO_DIGITAL,
+GPIO_ANALOG
+} GPIO_analogType;
 
-void SPI_init(const SPI_ConfigType* SPI_Config);
+void GPIO_sourceClock(GPIO_SourceClk clk);
 
-int8_t SPI_write(uint8_t data);
+void GPIO_dataDirectionPIN
+(GPIO_portNameType portName, uint8_t pin, GPIO_state state);
 
-uint8_t SPI_read(void);
+void GPIO_dataDirectionPORT
+(GPIO_portNameType portName, GPIO_state state);
 
-# 14 "SPI.c"
-static void SPI_enableClock(SPI_PhaseType phase, SPI_PolarityType cpol)
+void GPIO_analogSelector
+(GPIO_analogType type, uint8_t pin);
+
+void delay(uint32_t delay);
+
+# 11 "UART.c"
+void UART_init(UART_BaudRateType baudRate)
 {
+GPIO_dataDirectionPIN(GPIO_C, 6, GPIO_OUTPUT);
+GPIO_dataDirectionPIN(GPIO_C, 7, GPIO_INPUT);
 
-SSPSTAT &= (0x3F);
-SSPCON &= (0xC0);
+
+TXSTAbits.SYNC = 0;
+
+TXSTAbits.TX9 = 0;
+
+TXSTAbits.TXEN = 1;
 
 
-SSPSTAT |= (0x40);
+RCSTAbits.RX9 = 0;
 
-switch(phase)
+RCSTAbits.CREN = 1;
+
+RCSTAbits.SPEN = 1;
+
+
+BAUDCTLbits.BRG16 = 0;
+
+TXSTAbits.BRGH = 0;
+
+switch(baudRate)
 {
-case SPI_LOW_PHASE:
-SSPCONbits.CKP = 0;
+case BD_1200:
+SPBRG = (103);
 break;
-case SPI_HIGH_PHASE:
-SSPCONbits.CKP = 1;
+case BD_2400:
+SPBRG = (51);
+break;
+case BD_9600:
+SPBRG = (12);
 break;
 default:
 break;
 }
+}
 
-switch(cpol)
+void UART_putChar(uint8_t character)
 {
-case SPI_LOW_POLARITY:
-SSPSTATbits.CKE = 0;
-break;
-case SPI_HIGH_POLARITY:
-SSPSTATbits.CKE = 1;
-break;
-default:
-break;
-}
+while(0 == TXSTAbits.TRMT);
+TXREG = character;
+delay((6500));
 }
 
-static void SPI_enablePins(SPI_SerialClk serial)
+void UART_putString(int8_t* string)
 {
-switch(serial)
+uint8_t counter = 0;
+while(0 == TXSTAbits.TRMT);
+
+while(string[counter] != '\0')
 {
-case SPI_SERIAL_CLK4:
-SSPCON &= (0x00);
-break;
-case SPI_SERIAL_CLK16:
-SSPCON |= (0x01);
-break;
-case SPI_SERIAL_CLK64:
-SSPCON |= (0x02);
-break;
-default:
-break;
+TXREG = string[counter];
+delay((6500));
+}
 }
 
-
-TRISCbits.TRISC5 = 0;
-
-TRISCbits.TRISC4 = 1;
-
-TRISCbits.TRISC7 = 0;
-
-
-SSPCON |= (0x20);
-}
-
-void SPI_init(const SPI_ConfigType* SPI_Config)
+uint32_t expBASE10(uint8_t limit)
 {
-SPI_enableClock(SPI_Config->SPI_Polarity, SPI_Config->SPI_Phase);
-SPI_enablePins(SPI_Config->SPI_Clk);
-}
 
-int8_t SPI_write(uint8_t data)
+static uint32_t value;
+
+if(0 == limit)
 {
-int8_t success;
-
-SSPCONbits.WCOL = 0;
-SSPBUF = data;
-while(!SSPSTATbits.BF);
-
-success = (SSPCONbits.WCOL == 1) ? 0: 1;
-
-return success;
+value = 1;
 }
-
-uint8_t SPI_read(void)
+if(1 == limit)
 {
-const uint8_t dummy = 0;
-
-
-SSPBUF = dummy;
-
-
-while(!SSPSTATbits.BF);
-
-return SSPBUF;
+value = 10;
+}
+if(limit > 1)
+{
+value *= 10;
 }
 
+return value;
+}
+uint32_t Convert_numberASCIItoDATA(uint8_t *string)
+{
+const uint32_t adjustASCII = 48;
+const uint32_t CR = 13;
+uint32_t counter1 = 0;
+uint32_t counter2 = 0;
+uint32_t counter3 = 0;
+uint32_t data;
+uint32_t tmpData1 = 0;
+uint32_t tmpData2 = 0;
+uint32_t expValue;
+
+
+while(string[counter1] != CR){
+counter1++;
+}
+
+
+for(counter2 = counter1; counter2 != 0; counter2--)
+{
+
+expValue = expBASE10(counter3);
+
+
+if(counter3 == 0)
+{
+tmpData2 = string[counter2 - 1];
+tmpData2 -= adjustASCII;
+tmpData1 += tmpData2;
+}
+
+if(counter3 > 0)
+{
+tmpData2 = string[counter2 - 1];
+tmpData2 -= adjustASCII;
+tmpData2 *= expValue;
+tmpData1 += tmpData2;
+}
+counter3++;
+}
+
+data = tmpData1;
+return (data);
+}
+
+uint8_t Convert_wordASCIItoDATA(uint8_t word)
+{
+
+uint8_t valueWord = (uint8_t)word;
+return (valueWord);
+}

@@ -147,3 +147,11 @@ void GPIO_analogSelector
             break;
     }
 }
+
+void delay(uint32_t delay)
+{
+	volatile uint32_t counter;
+
+	for(counter = delay; counter > 0; counter--)
+    {}
+}

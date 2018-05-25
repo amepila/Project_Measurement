@@ -1,16 +1,21 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "9 main.c
-[c E3146 0 1 .. ]
-[n E3146 . SPI_LOW_POLARITY SPI_HIGH_POLARITY  ]
-[c E3150 0 1 .. ]
-[n E3150 . SPI_LOW_PHASE SPI_HIGH_PHASE  ]
-[c E3154 0 1 2 .. ]
-[n E3154 . SPI_SERIAL_CLK4 SPI_SERIAL_CLK16 SPI_SERIAL_CLK64  ]
+[c E3160 0 1 .. ]
+[n E3160 . SPI_LOW_POLARITY SPI_HIGH_POLARITY  ]
+[c E3164 0 1 .. ]
+[n E3164 . SPI_LOW_PHASE SPI_HIGH_PHASE  ]
+[c E3168 0 1 2 .. ]
+[n E3168 . SPI_SERIAL_CLK4 SPI_SERIAL_CLK16 SPI_SERIAL_CLK64  ]
 "30 SPI.h
-[s S286 `E3146 1 `E3150 1 `E3154 1 ]
+[s S286 `E3160 1 `E3164 1 `E3168 1 ]
 [n S286 . SPI_Polarity SPI_Phase SPI_Clk ]
 [p mainexit ]
-"36
+"19 main.c
+[c E3123 0 1 2 3 4 5 6 7 .. ]
+[n E3123 . CLK_8MHZ CLK_4MHZ CLK_2MHZ CLK_1MHZ CLK_500KHZ CLK_250KHZ CLK_125KHZ CLK_31KHZ  ]
+"40 GPIO.h
+[v _GPIO_sourceClock `(v ~T0 @X0 0 ef1`E3123 ]
+"36 SPI.h
 [v _SPI_init `(v ~T0 @X0 0 ef1`*CS286 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
@@ -2974,28 +2979,41 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 205: typedef uint32_t uintmax_t;
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
-[; ;GPIO.h: 8: typedef enum
-[; ;GPIO.h: 9: {
-[; ;GPIO.h: 10: GPIO_INPUT,
-[; ;GPIO.h: 11: GPIO_OUTPUT
-[; ;GPIO.h: 12: } GPIO_state;
-[; ;GPIO.h: 15: typedef enum
-[; ;GPIO.h: 16: {
-[; ;GPIO.h: 17: GPIO_A,
-[; ;GPIO.h: 18: GPIO_B,
-[; ;GPIO.h: 19: GPIO_C
-[; ;GPIO.h: 20: } GPIO_portNameType;
-[; ;GPIO.h: 22: typedef enum
-[; ;GPIO.h: 23: {
-[; ;GPIO.h: 24: GPIO_DIGITAL,
-[; ;GPIO.h: 25: GPIO_ANALOG
-[; ;GPIO.h: 26: } GPIO_analogType;
-[; ;GPIO.h: 29: void GPIO_dataDirectionPIN
-[; ;GPIO.h: 30: (GPIO_portNameType portName, uint8_t pin, GPIO_state state);
-[; ;GPIO.h: 32: void GPIO_dataDirectionPORT
-[; ;GPIO.h: 33: (GPIO_portNameType portName, GPIO_state state);
-[; ;GPIO.h: 35: void GPIO_analogSelector
-[; ;GPIO.h: 36: (GPIO_analogType type, uint8_t pin);
+[; ;GPIO.h: 7: typedef enum
+[; ;GPIO.h: 8: {
+[; ;GPIO.h: 9: CLK_8MHZ,
+[; ;GPIO.h: 10: CLK_4MHZ,
+[; ;GPIO.h: 11: CLK_2MHZ,
+[; ;GPIO.h: 12: CLK_1MHZ,
+[; ;GPIO.h: 13: CLK_500KHZ,
+[; ;GPIO.h: 14: CLK_250KHZ,
+[; ;GPIO.h: 15: CLK_125KHZ,
+[; ;GPIO.h: 16: CLK_31KHZ
+[; ;GPIO.h: 17: }GPIO_SourceClk;
+[; ;GPIO.h: 20: typedef enum
+[; ;GPIO.h: 21: {
+[; ;GPIO.h: 22: GPIO_INPUT,
+[; ;GPIO.h: 23: GPIO_OUTPUT
+[; ;GPIO.h: 24: } GPIO_state;
+[; ;GPIO.h: 27: typedef enum
+[; ;GPIO.h: 28: {
+[; ;GPIO.h: 29: GPIO_A,
+[; ;GPIO.h: 30: GPIO_B,
+[; ;GPIO.h: 31: GPIO_C
+[; ;GPIO.h: 32: } GPIO_portNameType;
+[; ;GPIO.h: 34: typedef enum
+[; ;GPIO.h: 35: {
+[; ;GPIO.h: 36: GPIO_DIGITAL,
+[; ;GPIO.h: 37: GPIO_ANALOG
+[; ;GPIO.h: 38: } GPIO_analogType;
+[; ;GPIO.h: 40: void GPIO_sourceClock(GPIO_SourceClk clk);
+[; ;GPIO.h: 42: void GPIO_dataDirectionPIN
+[; ;GPIO.h: 43: (GPIO_portNameType portName, uint8_t pin, GPIO_state state);
+[; ;GPIO.h: 45: void GPIO_dataDirectionPORT
+[; ;GPIO.h: 46: (GPIO_portNameType portName, GPIO_state state);
+[; ;GPIO.h: 48: void GPIO_analogSelector
+[; ;GPIO.h: 49: (GPIO_analogType type, uint8_t pin);
+[; ;GPIO.h: 51: void delay(uint32_t delay);
 [; ;SPI.h: 7: typedef enum
 [; ;SPI.h: 8: {
 [; ;SPI.h: 9: SPI_LOW_POLARITY,
@@ -3027,11 +3045,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 :U ..
 :U ..
 "11
-. `E3146 0
+. `E3160 0
 "12
-. `E3150 0
+. `E3164 0
 "14
-. `E3154 0
+. `E3168 0
 ..
 ..
 ]
@@ -3050,26 +3068,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 17: {
 [e :U _main ]
 [f ]
-[; ;main.c: 19: SPI_init(&SPI_Config);
+[; ;main.c: 19: GPIO_sourceClock(CLK_8MHZ);
 "19
-[e ( _SPI_init (1 &U _SPI_Config ]
-[; ;main.c: 21: for(;;)
-"21
-{
+[e ( _GPIO_sourceClock (1 . `E3123 0 ]
+[; ;main.c: 22: SPI_init(&SPI_Config);
 "22
-[e :U 288 ]
-[; ;main.c: 22: {
-{
+[e ( _SPI_init (1 &U _SPI_Config ]
+[; ;main.c: 24: for(;;)
 "24
+{
+"25
+[e :U 288 ]
+[; ;main.c: 25: {
+{
+"27
 }
-[; ;main.c: 24: }
+[; ;main.c: 27: }
 [e $U 288  ]
 [e :U 289 ]
 }
-[; ;main.c: 26: return;
-"26
-[e $UE 287  ]
-[; ;main.c: 27: }
-"27
+[; ;main.c: 28: }
+"28
 [e :UE 287 ]
 }

@@ -1,84 +1,77 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"15 SPI.c
-[c E3065 0 1 .. ]
-[n E3065 . SPI_LOW_PHASE SPI_HIGH_PHASE  ]
-[c E3061 0 1 .. ]
-[n E3061 . SPI_LOW_POLARITY SPI_HIGH_POLARITY  ]
-"5165 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f2331.h
-[v _SSPSTAT `Vuc ~T0 @X0 0 e@4039 ]
-"5027
-[v _SSPCON `Vuc ~T0 @X0 0 e@4038 ]
-"5038
-[s S207 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S207 . SSPM CKP SSPEN SSPOV WCOL ]
-"5045
-[s S208 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S208 . SSPM0 SSPM1 SSPM2 SSPM3 ]
-"5037
-[u S206 `S207 1 `S208 1 ]
-[n S206 . . . ]
-"5052
-[v _SSPCONbits `VS206 ~T0 @X0 0 e@4038 ]
-"5171
-[s S213 :2 `uc 1 :1 `uc 1 ]
-[n S213 . . R_NOT_W ]
-"5175
-[s S214 :5 `uc 1 :1 `uc 1 ]
-[n S214 . . D_NOT_A ]
-"5179
-[s S215 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S215 . BF UA R_nW S P D_nA CKE SMP ]
-"5189
-[s S216 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S216 . . R_W . D_A ]
-"5195
-[s S217 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S217 . . nW . nA ]
-"5201
-[s S218 :2 `uc 1 :1 `uc 1 ]
-[n S218 . . NOT_WRITE ]
-"5205
-[s S219 :5 `uc 1 :1 `uc 1 ]
-[n S219 . . NOT_ADDRESS ]
-"5209
-[s S220 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S220 . . nWRITE . nADDRESS ]
-"5215
-[s S221 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S221 . . READ_WRITE . DATA_ADDRESS ]
-"5221
-[s S222 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S222 . . R . D ]
-"5227
-[s S223 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S223 . . RW START STOP DA ]
-"5234
-[s S224 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S224 . . NOT_W . NOT_A ]
-"5170
-[u S212 `S213 1 `S214 1 `S215 1 `S216 1 `S217 1 `S218 1 `S219 1 `S220 1 `S221 1 `S222 1 `S223 1 `S224 1 ]
-[n S212 . . . . . . . . . . . . . ]
-"5241
-[v _SSPSTATbits `VS212 ~T0 @X0 0 e@4039 ]
-"49 SPI.c
-[c E3069 0 1 2 .. ]
-[n E3069 . SPI_SERIAL_CLK4 SPI_SERIAL_CLK16 SPI_SERIAL_CLK64  ]
-"2371 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f2331.h
-[s S83 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S83 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
-"2381
-[s S84 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S84 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
-"2370
-[u S82 `S83 1 `S84 1 ]
-[n S82 . . . ]
-"2392
-[v _TRISCbits `VS82 ~T0 @X0 0 e@3988 ]
-"30 SPI.h
-[s S285 `E3061 1 `E3065 1 `E3069 1 ]
-[n S285 . SPI_Polarity SPI_Phase SPI_Clk ]
-"5393 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f2331.h
-[v _SSPBUF `Vuc ~T0 @X0 0 e@4041 ]
+"12 UART.c
+[c E3061 1200 2400 9600 .. ]
+[n E3061 . BD_1200 BD_2400 BD_9600  ]
+"13
+[c E3092 0 1 2 .. ]
+[n E3092 . GPIO_A GPIO_B GPIO_C  ]
+[c E3088 0 1 .. ]
+[n E3088 . GPIO_INPUT GPIO_OUTPUT  ]
+"42 GPIO.h
+[v _GPIO_dataDirectionPIN `(v ~T0 @X0 0 ef3`E3092`uc`E3088 ]
+"3913 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f2331.h
+[s S154 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S154 . TX9D TRMT BRGH SENDB SYNC TXEN TX9 CSRC ]
+"3923
+[s S155 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S155 . TX9D1 TRMT1 BRGH1 SENDB1 SYNC1 TXEN1 TX91 CSRC1 ]
+"3933
+[s S156 :6 `uc 1 :1 `uc 1 ]
+[n S156 . . TX8_9 ]
+"3937
+[s S157 :1 `uc 1 ]
+[n S157 . TXD8 ]
+"3912
+[u S153 `S154 1 `S155 1 `S156 1 `S157 1 ]
+[n S153 . . . . . ]
+"3941
+[v _TXSTAbits `VS153 ~T0 @X0 0 e@4012 ]
+"3703
+[s S140 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S140 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
+"3713
+[s S141 :3 `uc 1 :1 `uc 1 ]
+[n S141 . . ADEN ]
+"3717
+[s S142 :5 `uc 1 :1 `uc 1 ]
+[n S142 . . SRENA ]
+"3721
+[s S143 :6 `uc 1 :1 `uc 1 ]
+[n S143 . . RC8_9 ]
+"3725
+[s S144 :6 `uc 1 :1 `uc 1 ]
+[n S144 . . RC9 ]
+"3729
+[s S145 :1 `uc 1 ]
+[n S145 . RCD8 ]
+"3702
+[u S139 `S140 1 `S141 1 `S142 1 `S143 1 `S144 1 `S145 1 ]
+[n S139 . . . . . . . ]
+"3733
+[v _RCSTAbits `VS139 ~T0 @X0 0 e@4011 ]
+"3607
+[s S135 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S135 . ABDEN WUE . BRG16 TXCKP RXDTP RCIDL ABDOVF ]
+"3617
+[s S136 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S136 . . SCKP . RCMT ]
+"3623
+[s S137 :5 `uc 1 :1 `uc 1 ]
+[n S137 . . RXCKP ]
+"3627
+[s S138 :1 `uc 1 :1 `uc 1 ]
+[n S138 . . W4E ]
+"3606
+[u S134 `S135 1 `S136 1 `S137 1 `S138 1 ]
+[n S134 . . . . . ]
+"3632
+[v _BAUDCTLbits `VS134 ~T0 @X0 0 e@4010 ]
+"4182
+[v _SPBRG `Vuc ~T0 @X0 0 e@4015 ]
+"4158
+[v _TXREG `Vuc ~T0 @X0 0 e@4013 ]
+"51 GPIO.h
+[v _delay `(v ~T0 @X0 0 ef1`ul ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3011,302 +3004,441 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 205: typedef uint32_t uintmax_t;
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
-[; ;SPI.h: 7: typedef enum
-[; ;SPI.h: 8: {
-[; ;SPI.h: 9: SPI_LOW_POLARITY,
-[; ;SPI.h: 10: SPI_HIGH_POLARITY
-[; ;SPI.h: 11: } SPI_PolarityType;
-[; ;SPI.h: 14: typedef enum
-[; ;SPI.h: 15: {
-[; ;SPI.h: 16: SPI_LOW_PHASE,
-[; ;SPI.h: 17: SPI_HIGH_PHASE
-[; ;SPI.h: 18: } SPI_PhaseType;
-[; ;SPI.h: 20: typedef enum
-[; ;SPI.h: 21: {
-[; ;SPI.h: 22: SPI_SERIAL_CLK4,
-[; ;SPI.h: 23: SPI_SERIAL_CLK16,
-[; ;SPI.h: 24: SPI_SERIAL_CLK64
-[; ;SPI.h: 25: } SPI_SerialClk;
-[; ;SPI.h: 29: typedef struct
-[; ;SPI.h: 30: {
-[; ;SPI.h: 31: SPI_PolarityType SPI_Polarity;
-[; ;SPI.h: 32: SPI_PhaseType SPI_Phase;
-[; ;SPI.h: 33: SPI_SerialClk SPI_Clk;
-[; ;SPI.h: 34: } SPI_ConfigType;
-[; ;SPI.h: 36: void SPI_init(const SPI_ConfigType* SPI_Config);
-[; ;SPI.h: 38: int8_t SPI_write(uint8_t data);
-[; ;SPI.h: 40: uint8_t SPI_read(void);
-"14 SPI.c
-[v _SPI_enableClock `(v ~T0 @X0 1 sf2`E3065`E3061 ]
-"15
+[; ;UART.h: 9: typedef enum
+[; ;UART.h: 10: {
+[; ;UART.h: 11: BD_1200 = 1200,
+[; ;UART.h: 12: BD_2400 = 2400,
+[; ;UART.h: 13: BD_9600 = 9600
+[; ;UART.h: 14: } UART_BaudRateType;
+[; ;UART.h: 16: void UART_init(UART_BaudRateType baudRate);
+[; ;UART.h: 18: void UART_putChar(uint8_t character);
+[; ;UART.h: 20: void UART_putString(int8_t* string);
+[; ;UART.h: 22: uint32_t expBASE10(uint8_t limit);
+[; ;UART.h: 24: uint32_t Convert_numberASCIItoDATA(uint8_t *string);
+[; ;UART.h: 26: uint8_t Convert_wordASCIItoDATA(uint8_t word);
+[; ;GPIO.h: 7: typedef enum
+[; ;GPIO.h: 8: {
+[; ;GPIO.h: 9: CLK_8MHZ,
+[; ;GPIO.h: 10: CLK_4MHZ,
+[; ;GPIO.h: 11: CLK_2MHZ,
+[; ;GPIO.h: 12: CLK_1MHZ,
+[; ;GPIO.h: 13: CLK_500KHZ,
+[; ;GPIO.h: 14: CLK_250KHZ,
+[; ;GPIO.h: 15: CLK_125KHZ,
+[; ;GPIO.h: 16: CLK_31KHZ
+[; ;GPIO.h: 17: }GPIO_SourceClk;
+[; ;GPIO.h: 20: typedef enum
+[; ;GPIO.h: 21: {
+[; ;GPIO.h: 22: GPIO_INPUT,
+[; ;GPIO.h: 23: GPIO_OUTPUT
+[; ;GPIO.h: 24: } GPIO_state;
+[; ;GPIO.h: 27: typedef enum
+[; ;GPIO.h: 28: {
+[; ;GPIO.h: 29: GPIO_A,
+[; ;GPIO.h: 30: GPIO_B,
+[; ;GPIO.h: 31: GPIO_C
+[; ;GPIO.h: 32: } GPIO_portNameType;
+[; ;GPIO.h: 34: typedef enum
+[; ;GPIO.h: 35: {
+[; ;GPIO.h: 36: GPIO_DIGITAL,
+[; ;GPIO.h: 37: GPIO_ANALOG
+[; ;GPIO.h: 38: } GPIO_analogType;
+[; ;GPIO.h: 40: void GPIO_sourceClock(GPIO_SourceClk clk);
+[; ;GPIO.h: 42: void GPIO_dataDirectionPIN
+[; ;GPIO.h: 43: (GPIO_portNameType portName, uint8_t pin, GPIO_state state);
+[; ;GPIO.h: 45: void GPIO_dataDirectionPORT
+[; ;GPIO.h: 46: (GPIO_portNameType portName, GPIO_state state);
+[; ;GPIO.h: 48: void GPIO_analogSelector
+[; ;GPIO.h: 49: (GPIO_analogType type, uint8_t pin);
+[; ;GPIO.h: 51: void delay(uint32_t delay);
+"11 UART.c
+[v _UART_init `(v ~T0 @X0 1 ef1`E3061 ]
+"12
 {
-[; ;SPI.c: 14: static void SPI_enableClock(SPI_PhaseType phase, SPI_PolarityType cpol)
-[; ;SPI.c: 15: {
-[e :U _SPI_enableClock ]
-"14
-[v _phase `E3065 ~T0 @X0 1 r1 ]
-[v _cpol `E3061 ~T0 @X0 1 r2 ]
-"15
+[; ;UART.c: 11: void UART_init(UART_BaudRateType baudRate)
+[; ;UART.c: 12: {
+[e :U _UART_init ]
+"11
+[v _baudRate `E3061 ~T0 @X0 1 r1 ]
+"12
 [f ]
-[; ;SPI.c: 17: SSPSTAT &= (0x3F);
+[; ;UART.c: 13: GPIO_dataDirectionPIN(GPIO_C, 6, GPIO_OUTPUT);
+"13
+[e ( _GPIO_dataDirectionPIN (3 , , . `E3092 2 -> -> 6 `i `uc . `E3088 1 ]
+[; ;UART.c: 14: GPIO_dataDirectionPIN(GPIO_C, 7, GPIO_INPUT);
+"14
+[e ( _GPIO_dataDirectionPIN (3 , , . `E3092 2 -> -> 7 `i `uc . `E3088 0 ]
+[; ;UART.c: 17: TXSTAbits.SYNC = 0;
 "17
-[e =& _SSPSTAT -> -> 63 `i `uc ]
-[; ;SPI.c: 18: SSPCON &= (0xC0);
-"18
-[e =& _SSPCON -> -> 192 `i `uc ]
-[; ;SPI.c: 21: SSPSTAT |= (0x40);
+[e = . . _TXSTAbits 0 4 -> -> 0 `i `uc ]
+[; ;UART.c: 19: TXSTAbits.TX9 = 0;
+"19
+[e = . . _TXSTAbits 0 6 -> -> 0 `i `uc ]
+[; ;UART.c: 21: TXSTAbits.TXEN = 1;
 "21
-[e =| _SSPSTAT -> -> 64 `i `uc ]
-[; ;SPI.c: 23: switch(phase)
-"23
-[e $U 288  ]
-[; ;SPI.c: 24: {
+[e = . . _TXSTAbits 0 5 -> -> 1 `i `uc ]
+[; ;UART.c: 24: RCSTAbits.RX9 = 0;
 "24
-{
-[; ;SPI.c: 25: case SPI_LOW_PHASE:
-"25
-[e :U 289 ]
-[; ;SPI.c: 26: SSPCONbits.CKP = 0;
+[e = . . _RCSTAbits 0 6 -> -> 0 `i `uc ]
+[; ;UART.c: 26: RCSTAbits.CREN = 1;
 "26
-[e = . . _SSPCONbits 0 1 -> -> 0 `i `uc ]
-[; ;SPI.c: 27: break;
-"27
-[e $U 287  ]
-[; ;SPI.c: 28: case SPI_HIGH_PHASE:
+[e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
+[; ;UART.c: 28: RCSTAbits.SPEN = 1;
 "28
-[e :U 290 ]
-[; ;SPI.c: 29: SSPCONbits.CKP = 1;
-"29
-[e = . . _SSPCONbits 0 1 -> -> 1 `i `uc ]
-[; ;SPI.c: 30: break;
-"30
-[e $U 287  ]
-[; ;SPI.c: 31: default:
+[e = . . _RCSTAbits 0 7 -> -> 1 `i `uc ]
+[; ;UART.c: 31: BAUDCTLbits.BRG16 = 0;
 "31
-[e :U 291 ]
-[; ;SPI.c: 32: break;
-"32
-[e $U 287  ]
+[e = . . _BAUDCTLbits 0 3 -> -> 0 `i `uc ]
+[; ;UART.c: 33: TXSTAbits.BRGH = 0;
 "33
-}
-[; ;SPI.c: 33: }
-[e $U 287  ]
-"23
-[e :U 288 ]
-[e [\ _phase , $ . `E3065 0 289
- , $ . `E3065 1 290
- 291 ]
-"33
-[e :U 287 ]
-[; ;SPI.c: 35: switch(cpol)
+[e = . . _TXSTAbits 0 2 -> -> 0 `i `uc ]
+[; ;UART.c: 35: switch(baudRate)
 "35
-[e $U 293  ]
-[; ;SPI.c: 36: {
+[e $U 287  ]
+[; ;UART.c: 36: {
 "36
 {
-[; ;SPI.c: 37: case SPI_LOW_POLARITY:
+[; ;UART.c: 37: case BD_1200:
 "37
-[e :U 294 ]
-[; ;SPI.c: 38: SSPSTATbits.CKE = 0;
+[e :U 288 ]
+[; ;UART.c: 38: SPBRG = (103);
 "38
-[e = . . _SSPSTATbits 2 6 -> -> 0 `i `uc ]
-[; ;SPI.c: 39: break;
+[e = _SPBRG -> -> 103 `i `uc ]
+[; ;UART.c: 39: break;
 "39
-[e $U 292  ]
-[; ;SPI.c: 40: case SPI_HIGH_POLARITY:
+[e $U 286  ]
+[; ;UART.c: 40: case BD_2400:
 "40
-[e :U 295 ]
-[; ;SPI.c: 41: SSPSTATbits.CKE = 1;
+[e :U 289 ]
+[; ;UART.c: 41: SPBRG = (51);
 "41
-[e = . . _SSPSTATbits 2 6 -> -> 1 `i `uc ]
-[; ;SPI.c: 42: break;
+[e = _SPBRG -> -> 51 `i `uc ]
+[; ;UART.c: 42: break;
 "42
-[e $U 292  ]
-[; ;SPI.c: 43: default:
+[e $U 286  ]
+[; ;UART.c: 43: case BD_9600:
 "43
-[e :U 296 ]
-[; ;SPI.c: 44: break;
+[e :U 290 ]
+[; ;UART.c: 44: SPBRG = (12);
 "44
-[e $U 292  ]
+[e = _SPBRG -> -> 12 `i `uc ]
+[; ;UART.c: 45: break;
 "45
-}
-[; ;SPI.c: 45: }
-[e $U 292  ]
-"35
-[e :U 293 ]
-[e [\ _cpol , $ . `E3061 0 294
- , $ . `E3061 1 295
- 296 ]
-"45
-[e :U 292 ]
-[; ;SPI.c: 46: }
+[e $U 286  ]
+[; ;UART.c: 46: default:
 "46
-[e :UE 286 ]
+[e :U 291 ]
+[; ;UART.c: 47: break;
+"47
+[e $U 286  ]
+"48
 }
+[; ;UART.c: 48: }
+[e $U 286  ]
+"35
+[e :U 287 ]
+[e [\ _baudRate , $ . `E3061 0 288
+ , $ . `E3061 1 289
+ , $ . `E3061 2 290
+ 291 ]
 "48
-[v _SPI_enablePins `(v ~T0 @X0 1 sf1`E3069 ]
+[e :U 286 ]
+[; ;UART.c: 49: }
 "49
-{
-[; ;SPI.c: 48: static void SPI_enablePins(SPI_SerialClk serial)
-[; ;SPI.c: 49: {
-[e :U _SPI_enablePins ]
-"48
-[v _serial `E3069 ~T0 @X0 1 r1 ]
-"49
-[f ]
-[; ;SPI.c: 50: switch(serial)
-"50
-[e $U 299  ]
-[; ;SPI.c: 51: {
+[e :UE 285 ]
+}
 "51
-{
-[; ;SPI.c: 52: case SPI_SERIAL_CLK4:
+[v _UART_putChar `(v ~T0 @X0 1 ef1`uc ]
 "52
-[e :U 300 ]
-[; ;SPI.c: 53: SSPCON &= (0x00);
+{
+[; ;UART.c: 51: void UART_putChar(uint8_t character)
+[; ;UART.c: 52: {
+[e :U _UART_putChar ]
+"51
+[v _character `uc ~T0 @X0 1 r1 ]
+"52
+[f ]
+[; ;UART.c: 53: while(0 == TXSTAbits.TRMT);
 "53
-[e =& _SSPCON -> -> 0 `i `uc ]
-[; ;SPI.c: 54: break;
+[e $U 293  ]
+[e :U 294 ]
+[e :U 293 ]
+[e $ == -> 0 `i -> . . _TXSTAbits 0 1 `i 294  ]
+[e :U 295 ]
+[; ;UART.c: 54: TXREG = character;
 "54
-[e $U 298  ]
-[; ;SPI.c: 55: case SPI_SERIAL_CLK16:
+[e = _TXREG _character ]
+[; ;UART.c: 55: delay((6500));
 "55
-[e :U 301 ]
-[; ;SPI.c: 56: SSPCON |= (0x01);
+[e ( _delay (1 -> -> -> 6500 `i `l `ul ]
+[; ;UART.c: 56: }
 "56
-[e =| _SSPCON -> -> 1 `i `uc ]
-[; ;SPI.c: 57: break;
-"57
-[e $U 298  ]
-[; ;SPI.c: 58: case SPI_SERIAL_CLK64:
+[e :UE 292 ]
+}
 "58
-[e :U 302 ]
-[; ;SPI.c: 59: SSPCON |= (0x02);
+[v _UART_putString `(v ~T0 @X0 1 ef1`*c ]
 "59
-[e =| _SSPCON -> -> 2 `i `uc ]
-[; ;SPI.c: 60: break;
+{
+[; ;UART.c: 58: void UART_putString(int8_t* string)
+[; ;UART.c: 59: {
+[e :U _UART_putString ]
+"58
+[v _string `*c ~T0 @X0 1 r1 ]
+"59
+[f ]
 "60
-[e $U 298  ]
-[; ;SPI.c: 61: default:
+[v _counter `uc ~T0 @X0 1 a ]
+[; ;UART.c: 60: uint8_t counter = 0;
+[e = _counter -> -> 0 `i `uc ]
+[; ;UART.c: 61: while(0 == TXSTAbits.TRMT);
 "61
-[e :U 303 ]
-[; ;SPI.c: 62: break;
-"62
-[e $U 298  ]
-"63
-}
-[; ;SPI.c: 63: }
-[e $U 298  ]
-"50
-[e :U 299 ]
-[e [\ _serial , $ . `E3069 0 300
- , $ . `E3069 1 301
- , $ . `E3069 2 302
- 303 ]
-"63
+[e $U 297  ]
 [e :U 298 ]
-[; ;SPI.c: 66: TRISCbits.TRISC5 = 0;
+[e :U 297 ]
+[e $ == -> 0 `i -> . . _TXSTAbits 0 1 `i 298  ]
+[e :U 299 ]
+[; ;UART.c: 63: while(string[counter] != '\0')
+"63
+[e $U 300  ]
+[e :U 301 ]
+[; ;UART.c: 64: {
+"64
+{
+[; ;UART.c: 65: TXREG = string[counter];
+"65
+[e = _TXREG -> *U + _string * -> _counter `ux -> -> # *U _string `ui `ux `uc ]
+[; ;UART.c: 66: delay((6500));
 "66
-[e = . . _TRISCbits 0 5 -> -> 0 `i `uc ]
-[; ;SPI.c: 68: TRISCbits.TRISC4 = 1;
+[e ( _delay (1 -> -> -> 6500 `i `l `ul ]
+"67
+}
+[e :U 300 ]
+"63
+[e $ != -> -> *U + _string * -> _counter `ux -> -> # *U _string `ui `ux `i `ui -> 0 `ui 301  ]
+[e :U 302 ]
+[; ;UART.c: 67: }
+[; ;UART.c: 68: }
 "68
-[e = . . _TRISCbits 0 4 -> -> 1 `i `uc ]
-[; ;SPI.c: 70: TRISCbits.TRISC7 = 0;
+[e :UE 296 ]
+}
 "70
-[e = . . _TRISCbits 0 7 -> -> 0 `i `uc ]
-[; ;SPI.c: 73: SSPCON |= (0x20);
+[v _expBASE10 `(ul ~T0 @X0 1 ef1`uc ]
+"71
+{
+[; ;UART.c: 70: uint32_t expBASE10(uint8_t limit)
+[; ;UART.c: 71: {
+[e :U _expBASE10 ]
+"70
+[v _limit `uc ~T0 @X0 1 r1 ]
+"71
+[f ]
 "73
-[e =| _SSPCON -> -> 32 `i `uc ]
-[; ;SPI.c: 74: }
-"74
-[e :UE 297 ]
-}
+[v F3120 `ul ~T0 @X0 1 s value ]
+[; ;UART.c: 73: static uint32_t value;
+[; ;UART.c: 75: if(0 == limit)
+"75
+[e $ ! == -> 0 `i -> _limit `i 304  ]
+[; ;UART.c: 76: {
 "76
-[v _SPI_init `(v ~T0 @X0 1 ef1`*CS285 ]
-"77
 {
-[; ;SPI.c: 76: void SPI_init(const SPI_ConfigType* SPI_Config)
-[; ;SPI.c: 77: {
-[e :U _SPI_init ]
-"76
-[v _SPI_Config `*CS285 ~T0 @X0 1 r1 ]
+[; ;UART.c: 77: value = 1;
 "77
-[f ]
-[; ;SPI.c: 78: SPI_enableClock(SPI_Config->SPI_Polarity, SPI_Config->SPI_Phase);
+[e = F3120 -> -> -> 1 `i `l `ul ]
 "78
-[e ( _SPI_enableClock (2 , . *U _SPI_Config 0 . *U _SPI_Config 1 ]
-[; ;SPI.c: 79: SPI_enablePins(SPI_Config->SPI_Clk);
+}
+[e :U 304 ]
+[; ;UART.c: 78: }
+[; ;UART.c: 79: if(1 == limit)
 "79
-[e ( _SPI_enablePins (1 . *U _SPI_Config 2 ]
-[; ;SPI.c: 80: }
+[e $ ! == -> 1 `i -> _limit `i 305  ]
+[; ;UART.c: 80: {
 "80
-[e :UE 304 ]
-}
-"82
-[v _SPI_write `(c ~T0 @X0 1 ef1`uc ]
-"83
 {
-[; ;SPI.c: 82: int8_t SPI_write(uint8_t data)
-[; ;SPI.c: 83: {
-[e :U _SPI_write ]
+[; ;UART.c: 81: value = 10;
+"81
+[e = F3120 -> -> -> 10 `i `l `ul ]
 "82
-[v _data `uc ~T0 @X0 1 r1 ]
+}
+[e :U 305 ]
+[; ;UART.c: 82: }
+[; ;UART.c: 83: if(limit > 1)
 "83
-[f ]
+[e $ ! > -> _limit `i -> 1 `i 306  ]
+[; ;UART.c: 84: {
 "84
-[v _success `c ~T0 @X0 1 a ]
-[; ;SPI.c: 84: int8_t success;
-[; ;SPI.c: 86: SSPCONbits.WCOL = 0;
-"86
-[e = . . _SSPCONbits 0 4 -> -> 0 `i `uc ]
-[; ;SPI.c: 87: SSPBUF = data;
-"87
-[e = _SSPBUF _data ]
-[; ;SPI.c: 88: while(!SSPSTATbits.BF);
-"88
-[e $U 306  ]
-[e :U 307 ]
-[e :U 306 ]
-[e $ ! != -> . . _SSPSTATbits 2 0 `i -> -> -> 0 `i `Vuc `i 307  ]
-[e :U 308 ]
-[; ;SPI.c: 90: success = (SSPCONbits.WCOL == 1) ? 0: 1;
-"90
-[e = _success -> ? == -> . . _SSPCONbits 0 4 `i -> 1 `i : -> 0 `i -> 1 `i `c ]
-[; ;SPI.c: 92: return success;
-"92
-[e ) _success ]
-[e $UE 305  ]
-[; ;SPI.c: 93: }
-"93
-[e :UE 305 ]
-}
-"95
-[v _SPI_read `(uc ~T0 @X0 1 ef ]
-"96
 {
-[; ;SPI.c: 95: uint8_t SPI_read(void)
-[; ;SPI.c: 96: {
-[e :U _SPI_read ]
+[; ;UART.c: 85: value *= 10;
+"85
+[e =* F3120 -> -> -> 10 `i `l `ul ]
+"86
+}
+[e :U 306 ]
+[; ;UART.c: 86: }
+[; ;UART.c: 88: return value;
+"88
+[e ) F3120 ]
+[e $UE 303  ]
+[; ;UART.c: 89: }
+"89
+[e :UE 303 ]
+}
+"90
+[v _Convert_numberASCIItoDATA `(ul ~T0 @X0 1 ef1`*uc ]
+"91
+{
+[; ;UART.c: 90: uint32_t Convert_numberASCIItoDATA(uint8_t *string)
+[; ;UART.c: 91: {
+[e :U _Convert_numberASCIItoDATA ]
+"90
+[v _string `*uc ~T0 @X0 1 r1 ]
+"91
 [f ]
+"92
+[v _adjustASCII `Cul ~T0 @X0 1 a ]
+[; ;UART.c: 92: const uint32_t adjustASCII = 48;
+[e = _adjustASCII -> -> -> 48 `i `l `ul ]
+"93
+[v _CR `Cul ~T0 @X0 1 a ]
+[; ;UART.c: 93: const uint32_t CR = 13;
+[e = _CR -> -> -> 13 `i `l `ul ]
+"94
+[v _counter1 `ul ~T0 @X0 1 a ]
+[; ;UART.c: 94: uint32_t counter1 = 0;
+[e = _counter1 -> -> -> 0 `i `l `ul ]
+"95
+[v _counter2 `ul ~T0 @X0 1 a ]
+[; ;UART.c: 95: uint32_t counter2 = 0;
+[e = _counter2 -> -> -> 0 `i `l `ul ]
+"96
+[v _counter3 `ul ~T0 @X0 1 a ]
+[; ;UART.c: 96: uint32_t counter3 = 0;
+[e = _counter3 -> -> -> 0 `i `l `ul ]
 "97
-[v _dummy `Cuc ~T0 @X0 1 a ]
-[; ;SPI.c: 97: const uint8_t dummy = 0;
-[e = _dummy -> -> 0 `i `uc ]
-[; ;SPI.c: 100: SSPBUF = dummy;
+[v _data `ul ~T0 @X0 1 a ]
+"98
+[v _tmpData1 `ul ~T0 @X0 1 a ]
+[; ;UART.c: 97: uint32_t data;
+[; ;UART.c: 98: uint32_t tmpData1 = 0;
+[e = _tmpData1 -> -> -> 0 `i `l `ul ]
+"99
+[v _tmpData2 `ul ~T0 @X0 1 a ]
+[; ;UART.c: 99: uint32_t tmpData2 = 0;
+[e = _tmpData2 -> -> -> 0 `i `l `ul ]
 "100
-[e = _SSPBUF _dummy ]
-[; ;SPI.c: 103: while(!SSPSTATbits.BF);
+[v _expValue `ul ~T0 @X0 1 a ]
+[; ;UART.c: 100: uint32_t expValue;
+[; ;UART.c: 103: while(string[counter1] != CR){
 "103
-[e $U 310  ]
-[e :U 311 ]
-[e :U 310 ]
-[e $ ! != -> . . _SSPSTATbits 2 0 `i -> -> -> 0 `i `Vuc `i 311  ]
-[e :U 312 ]
-[; ;SPI.c: 105: return SSPBUF;
+[e $U 308  ]
+[e :U 309 ]
+{
+[; ;UART.c: 104: counter1++;
+"104
+[e ++ _counter1 -> -> -> 1 `i `l `ul ]
 "105
-[e ) _SSPBUF ]
-[e $UE 309  ]
-[; ;SPI.c: 106: }
-"106
-[e :UE 309 ]
+}
+[e :U 308 ]
+"103
+[e $ != -> *U + _string * -> _counter1 `ux -> -> # *U _string `ui `ux `ul _CR 309  ]
+[e :U 310 ]
+[; ;UART.c: 105: }
+[; ;UART.c: 108: for(counter2 = counter1; counter2 != 0; counter2--)
+"108
+{
+[e = _counter2 _counter1 ]
+[e $ != _counter2 -> -> -> 0 `i `l `ul 311  ]
+[e $U 312  ]
+"109
+[e :U 311 ]
+[; ;UART.c: 109: {
+{
+[; ;UART.c: 111: expValue = expBASE10(counter3);
+"111
+[e = _expValue ( _expBASE10 (1 -> _counter3 `uc ]
+[; ;UART.c: 114: if(counter3 == 0)
+"114
+[e $ ! == _counter3 -> -> -> 0 `i `l `ul 314  ]
+[; ;UART.c: 115: {
+"115
+{
+[; ;UART.c: 116: tmpData2 = string[counter2 - 1];
+"116
+[e = _tmpData2 -> *U + _string * -> - _counter2 -> -> -> 1 `i `l `ul `ux -> -> # *U _string `ui `ux `ul ]
+[; ;UART.c: 117: tmpData2 -= adjustASCII;
+"117
+[e =- _tmpData2 _adjustASCII ]
+[; ;UART.c: 118: tmpData1 += tmpData2;
+"118
+[e =+ _tmpData1 _tmpData2 ]
+"119
+}
+[e :U 314 ]
+[; ;UART.c: 119: }
+[; ;UART.c: 121: if(counter3 > 0)
+"121
+[e $ ! > _counter3 -> -> -> 0 `i `l `ul 315  ]
+[; ;UART.c: 122: {
+"122
+{
+[; ;UART.c: 123: tmpData2 = string[counter2 - 1];
+"123
+[e = _tmpData2 -> *U + _string * -> - _counter2 -> -> -> 1 `i `l `ul `ux -> -> # *U _string `ui `ux `ul ]
+[; ;UART.c: 124: tmpData2 -= adjustASCII;
+"124
+[e =- _tmpData2 _adjustASCII ]
+[; ;UART.c: 125: tmpData2 *= expValue;
+"125
+[e =* _tmpData2 _expValue ]
+[; ;UART.c: 126: tmpData1 += tmpData2;
+"126
+[e =+ _tmpData1 _tmpData2 ]
+"127
+}
+[e :U 315 ]
+[; ;UART.c: 127: }
+[; ;UART.c: 128: counter3++;
+"128
+[e ++ _counter3 -> -> -> 1 `i `l `ul ]
+"129
+}
+"108
+[e -- _counter2 -> -> -> 1 `i `l `ul ]
+[e $ != _counter2 -> -> -> 0 `i `l `ul 311  ]
+[e :U 312 ]
+"129
+}
+[; ;UART.c: 129: }
+[; ;UART.c: 131: data = tmpData1;
+"131
+[e = _data _tmpData1 ]
+[; ;UART.c: 132: return (data);
+"132
+[e ) _data ]
+[e $UE 307  ]
+[; ;UART.c: 133: }
+"133
+[e :UE 307 ]
+}
+"135
+[v _Convert_wordASCIItoDATA `(uc ~T0 @X0 1 ef1`uc ]
+"136
+{
+[; ;UART.c: 135: uint8_t Convert_wordASCIItoDATA(uint8_t word)
+[; ;UART.c: 136: {
+[e :U _Convert_wordASCIItoDATA ]
+"135
+[v _word `uc ~T0 @X0 1 r1 ]
+"136
+[f ]
+"138
+[v _valueWord `uc ~T0 @X0 1 a ]
+[; ;UART.c: 138: uint8_t valueWord = (uint8_t)word;
+[e = _valueWord _word ]
+[; ;UART.c: 139: return (valueWord);
+"139
+[e ) _valueWord ]
+[e $UE 316  ]
+[; ;UART.c: 140: }
+"140
+[e :UE 316 ]
 }

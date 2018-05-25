@@ -4126,7 +4126,20 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 8 "GPIO.h"
+# 7 "GPIO.h"
+typedef enum
+{
+CLK_8MHZ,
+CLK_4MHZ,
+CLK_2MHZ,
+CLK_1MHZ,
+CLK_500KHZ,
+CLK_250KHZ,
+CLK_125KHZ,
+CLK_31KHZ
+}GPIO_SourceClk;
+
+
 typedef enum
 {
 GPIO_INPUT,
@@ -4147,6 +4160,7 @@ GPIO_DIGITAL,
 GPIO_ANALOG
 } GPIO_analogType;
 
+void GPIO_sourceClock(GPIO_SourceClk clk);
 
 void GPIO_dataDirectionPIN
 (GPIO_portNameType portName, uint8_t pin, GPIO_state state);
@@ -4157,7 +4171,42 @@ void GPIO_dataDirectionPORT
 void GPIO_analogSelector
 (GPIO_analogType type, uint8_t pin);
 
-# 10 "GPIO.c"
+void delay(uint32_t delay);
+
+# 18 "GPIO.c"
+void GPIO_sourceClock(GPIO_SourceClk clk)
+{
+switch(clk)
+{
+case CLK_8MHZ:
+OSCCON |= (0x70);
+break;
+case CLK_4MHZ:
+OSCCON |= (0x60);
+break;
+case CLK_2MHZ:
+OSCCON |= (0x50);
+break;
+case CLK_1MHZ:
+OSCCON |= (0x40);
+break;
+case CLK_500KHZ:
+OSCCON |= (0x30);
+break;
+case CLK_250KHZ:
+OSCCON |= (0x20);
+break;
+case CLK_125KHZ:
+OSCCON |= (0x10);
+break;
+case CLK_31KHZ:
+OSCCON |= (0x00);
+break;
+default:
+break;
+}
+}
+
 void GPIO_dataDirectionPIN
 (GPIO_portNameType portName, uint8_t pin, GPIO_state state)
 {
@@ -4256,4 +4305,12 @@ break;
 default:
 break;
 }
+}
+
+void delay(uint32_t delay)
+{
+volatile uint32_t counter;
+
+for(counter = delay; counter > 0; counter--)
+{}
 }

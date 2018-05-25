@@ -37,6 +37,7 @@ typedef enum
     GPIO_ANALOG
 } GPIO_analogType;
 
+void GPIO_sourceClock(GPIO_SourceClk clk);
 
 void GPIO_dataDirectionPIN
 (GPIO_portNameType portName, uint8_t pin, GPIO_state state);
@@ -47,6 +48,7 @@ void GPIO_dataDirectionPORT
 void GPIO_analogSelector
 (GPIO_analogType type, uint8_t pin);
 
+void delay(uint32_t delay);
 
 #endif	
 

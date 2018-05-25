@@ -11,7 +11,6 @@
 #define SPI_SCLOCK_64       (0x02)
 #define SPI_ENABLE_PINS     (0x20)
 
-
 static void SPI_enableClock(SPI_PhaseType phase, SPI_PolarityType cpol)
 {
     /**Clear the SPI registers*/
