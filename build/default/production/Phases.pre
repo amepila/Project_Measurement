@@ -1,5 +1,5 @@
 
-# 1 "main.c"
+# 1 "Phases.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.44\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -4274,44 +4274,505 @@ States_MenuType stateFrequency(void);
 # 113
 States_MenuType stateTemperature(void);
 
-# 5 "main.c"
-const SPI_ConfigType SPI_Config =
+# 10 "Phases.h"
+typedef enum
 {
-SPI_LOW_POLARITY,
-SPI_LOW_PHASE,
-SPI_SERIAL_CLK4
-};
+INITIAL_LOAD,
+GENERAL_VIEW,
+VIEW_MENU
+}PhaseStateMenu_Type;
 
-
-const StateType StateProgram[8] =
+typedef struct
 {
-{stateMainMenu},
-{statePower1},
-{statePower2},
-{stateRmsVI},
-{statePowerFactor},
-{statePhaseAngle},
-{stateFrequency},
-{stateTemperature}
-};
+PhaseStateMenu_Type phaseState;
+States_MenuType stateMain;
+}PhaseMainMenu_Type;
 
-void main(void)
+typedef PhaseMainMenu_Type(*fptrPhaseMainMenu)(PhaseMainMenu_Type);
+
+typedef const struct PhaseMainMenu
+{
+PhaseMainMenu_Type(*PhaseMainMenu)(PhaseMainMenu_Type);
+}PhasePtrMainMenu_Type;
+
+# 36
+typedef enum
+{
+TYPES_POWER1,
+PHASES_POWER1,
+VECTOR_POWER1,
+EXIT_POWER1
+}PhaseStatePower1_Type;
+
+typedef struct
+{
+uint8_t dummy;
+PhaseStatePower1_Type phaseState;
+States_MenuType stateMain;
+}PhasePower1_Type;
+
+typedef PhasePower1_Type(*fptrPhasePower1)(PhasePower1_Type);
+
+typedef const struct PhasePower1
+{
+PhasePower1_Type(*PhasePower1)(PhasePower1_Type);
+}PhasePtrPower1_Type;
+
+# 64
+typedef enum
+{
+FH_POWER2,
+PHASES_POWER2,
+EXIT_POWER2
+}PhaseStatePower2_Type;
+
+typedef struct
+{
+uint8_t dummy;
+PhaseStatePower2_Type phaseState;
+States_MenuType stateMain;
+}PhasePower2_Type;
+
+typedef PhasePower2_Type(*fptrPhasePower2)(PhasePower2_Type);
+
+typedef const struct PhasePower2
+{
+PhasePower2_Type(*PhasePower2)(PhasePower2_Type);
+}PhasePtrPower2_Type;
+
+# 91
+typedef enum
+{
+PHASES_RMSVI,
+NEUTRAL_RMSVI,
+EXIT_RMSVI
+}PhaseStateRmsVI_Type;
+
+typedef struct
+{
+uint8_t dummy;
+PhaseStateRmsVI_Type phaseState;
+States_MenuType stateMain;
+}PhaseRmsVI_Type;
+
+typedef PhaseRmsVI_Type(*fptrPhaseRmsVI)(PhaseRmsVI_Type);
+
+typedef const struct PhaseRmsVI
+{
+PhaseRmsVI_Type(*PhaseRmsVI)(PhaseRmsVI_Type);
+}PhasePtrRmsVI_Type;
+
+# 117
+typedef enum
+{
+PHASES_PF,
+EXIT_PF
+}PhaseStatePowerFactor_Type;
+
+typedef struct
+{
+PhaseStatePowerFactor_Type phaseState;
+States_MenuType stateMain;
+}PhasePowerFactor_Type;
+
+typedef PhasePowerFactor_Type(*fptrPhasePowerFactor)(PhasePowerFactor_Type);
+
+typedef const struct PhasePowerFactor
+{
+PhasePowerFactor_Type(*PhasePowerFactor)(PhasePowerFactor_Type);
+}PhasePtrPowerFactor_Type;
+
+# 141
+typedef enum
+{
+PHASES_PA,
+VI_PA,
+EXIT_PA
+}PhaseStatePhaseAngle_Type;
+
+typedef struct
+{
+uint8_t dummy;
+PhaseStatePhaseAngle_Type phaseState;
+States_MenuType stateMain;
+}PhasePhaseAngle_Type;
+
+typedef PhasePhaseAngle_Type(*fptrPhasePhaseAngle)(PhasePhaseAngle_Type);
+
+typedef const struct PhasePhaseAngle
+{
+PhasePhaseAngle_Type(*PhasePhaseAngle)(PhasePhaseAngle_Type);
+}PhasePtrPhaseAngle_Type;
+
+# 165
+typedef enum
+{
+SHOW_FREQUENCY,
+EXIT_FREQUENCY
+}PhaseStateFrequency_Type;
+
+typedef struct
+{
+uint8_t dummy;
+PhaseStateFrequency_Type phaseState;
+States_MenuType stateMain;
+}PhaseFrequency_Type;
+
+typedef PhaseFrequency_Type(*fptrPhaseFrequency)(PhaseFrequency_Type);
+
+typedef const struct PhaseFrequency
+{
+PhaseFrequency_Type(*PhaseFrequency)(PhaseFrequency_Type);
+}PhasePtrFrequency_Type;
+
+# 189
+typedef enum
+{
+SHOW_TEMPERATURE,
+EXIT_TEMPERATURE
+}PhaseStateTemperature_Type;
+
+typedef struct
+{
+uint8_t dummy;
+PhaseStateTemperature_Type phaseState;
+States_MenuType stateMain;
+}PhaseTemperature_Type;
+
+typedef PhaseTemperature_Type(*fptrPhaseTemperature)(PhaseTemperature_Type);
+
+typedef const struct PhaseTemperature
+{
+PhaseTemperature_Type(*PhaseTemperature)(PhaseTemperature_Type);
+}PhasePtrTemperature_Type;
+
+# 217
+PhaseMainMenu_Type initialLoad(PhaseMainMenu_Type data);
+
+# 227
+PhaseMainMenu_Type generalView(PhaseMainMenu_Type data);
+
+# 238
+PhaseMainMenu_Type viewMenu(PhaseMainMenu_Type data);
+
+# 249
+PhasePower1_Type typesPower1(PhasePower1_Type data);
+
+# 259
+PhasePower1_Type phPower1(PhasePower1_Type data);
+
+# 270
+PhasePower1_Type vectorPower1(PhasePower1_Type data);
+
+# 282
+PhasePower1_Type exitPower1(PhasePower1_Type data);
+
+# 293
+PhasePower2_Type fhPower2(PhasePower2_Type data);
+
+# 304
+PhasePower2_Type phPower2(PhasePower2_Type data);
+
+# 315
+PhasePower2_Type exitPower2(PhasePower2_Type data);
+
+# 326
+PhaseRmsVI_Type phRmsVI(PhaseRmsVI_Type data);
+
+# 337
+PhaseRmsVI_Type neutralRmsVI(PhaseRmsVI_Type data);
+
+# 348
+PhaseRmsVI_Type exitRmsVI(PhaseRmsVI_Type data);
+
+# 359
+PhasePowerFactor_Type phPowerFactor(PhasePowerFactor_Type data);
+
+# 370
+PhasePowerFactor_Type exitPowerFactor(PhasePowerFactor_Type data);
+
+# 381
+PhasePhaseAngle_Type phPhaseAngle(PhasePhaseAngle_Type data);
+
+# 392
+PhasePhaseAngle_Type viPhaseAngle(PhasePhaseAngle_Type data);
+
+# 403
+PhasePhaseAngle_Type exitPhaseAngle(PhasePhaseAngle_Type data);
+
+# 414
+PhaseFrequency_Type showFrequency(PhaseFrequency_Type data);
+
+# 425
+PhaseFrequency_Type exitFrequency(PhaseFrequency_Type data);
+
+# 436
+PhaseTemperature_Type showTemperature(PhaseTemperature_Type data);
+
+# 447
+PhaseTemperature_Type exitTemperature(PhaseTemperature_Type data);
+
+# 4 "Phases.c"
+PhaseMainMenu_Type initialLoad(PhaseMainMenu_Type data)
 {
 
-States_MenuType currentState = MAIN_MENU;
-States_MenuType(*mainFunctions)(void);
+static PhaseMainMenu_Type currentMainMenu1;
 
+# 13
+currentMainMenu1.phaseState = GENERAL_VIEW;
+currentMainMenu1.stateMain = data.stateMain;
 
-GPIO_sourceClock(CLK_8MHZ);
-
-
-SPI_init(&SPI_Config);
-UART_init(BD_9600);
-
-for(;;)
-{
-
-mainFunctions = StateProgram[currentState].stateFunction;
-currentState = mainFunctions();
+return (currentMainMenu1);
 }
+
+PhaseMainMenu_Type generalView(PhaseMainMenu_Type data)
+{
+
+static PhaseMainMenu_Type currentMainMenu2;
+
+
+currentMainMenu2.phaseState = VIEW_MENU;
+currentMainMenu2.stateMain = data.stateMain;
+
+return (currentMainMenu2);
+}
+
+PhaseMainMenu_Type viewMenu(PhaseMainMenu_Type data)
+{
+
+static PhaseMainMenu_Type currentMainMenu3;
+
+
+currentMainMenu3.phaseState = data.phaseState;
+currentMainMenu3.stateMain = data.stateMain;
+
+return (currentMainMenu3);
+}
+
+PhasePower1_Type typesPower1(PhasePower1_Type data)
+{
+
+static PhasePower1_Type currentPower1_1;
+
+
+currentPower1_1.phaseState = PHASES_POWER1;
+currentPower1_1.stateMain = data.stateMain;
+
+return (currentPower1_1);
+}
+
+PhasePower1_Type phPower1(PhasePower1_Type data)
+{
+
+static PhasePower1_Type currentPower1_2;
+
+
+currentPower1_2.phaseState = VECTOR_POWER1;
+currentPower1_2.stateMain = data.stateMain;
+
+return (currentPower1_2);
+}
+
+PhasePower1_Type vectorPower1(PhasePower1_Type data)
+{
+
+static PhasePower1_Type currentPower1_3;
+
+
+currentPower1_3.phaseState = EXIT_POWER1;
+currentPower1_3.stateMain = data.stateMain;
+
+return (currentPower1_3);
+}
+
+PhasePower1_Type exitPower1(PhasePower1_Type data)
+{
+
+static PhasePower1_Type currentPower1_4;
+
+
+currentPower1_4.phaseState = data.phaseState;
+currentPower1_4.stateMain = data.stateMain;
+
+return (currentPower1_4);
+}
+
+PhasePower2_Type fhPower2(PhasePower2_Type data)
+{
+
+static PhasePower2_Type currentPower2_1;
+
+
+currentPower2_1.phaseState = PHASES_POWER2;
+currentPower2_1.stateMain = data.stateMain;
+
+return (currentPower2_1);
+}
+
+PhasePower2_Type phPower2(PhasePower2_Type data)
+{
+
+static PhasePower2_Type currentPower2_2;
+
+
+currentPower2_2.phaseState = EXIT_POWER2;
+currentPower2_2.stateMain = data.stateMain;
+
+return (currentPower2_2);
+}
+
+PhasePower2_Type exitPower2(PhasePower2_Type data)
+{
+
+static PhasePower2_Type currentPower2_3;
+
+
+currentPower2_3.phaseState = data.phaseState;
+currentPower2_3.stateMain = data.stateMain;
+
+return (currentPower2_3);
+}
+
+PhaseRmsVI_Type phRmsVI(PhaseRmsVI_Type data)
+{
+
+static PhaseRmsVI_Type currentRms1;
+
+
+currentRms1.phaseState = NEUTRAL_RMSVI;
+currentRms1.stateMain = data.stateMain;
+
+return (currentRms1);
+}
+
+PhaseRmsVI_Type neutralRmsVI(PhaseRmsVI_Type data)
+{
+
+static PhaseRmsVI_Type currentRms2;
+
+
+currentRms2.phaseState = EXIT_RMSVI;
+currentRms2.stateMain = data.stateMain;
+
+return (currentRms2);
+}
+
+PhaseRmsVI_Type exitRmsVI(PhaseRmsVI_Type data)
+{
+
+static PhaseRmsVI_Type currentRms3;
+
+
+currentRms3.phaseState = data.phaseState;
+currentRms3.stateMain = data.stateMain;
+
+return (currentRms3);
+}
+
+PhasePowerFactor_Type phPowerFactor(PhasePowerFactor_Type data)
+{
+
+static PhasePowerFactor_Type currentPowerFactor1;
+
+
+currentPowerFactor1.phaseState = EXIT_PF;
+currentPowerFactor1.stateMain = data.stateMain;
+
+return (currentPowerFactor1);
+}
+
+PhasePowerFactor_Type exitPowerFactor(PhasePowerFactor_Type data)
+{
+
+static PhasePowerFactor_Type currentPowerFactor2;
+
+
+currentPowerFactor2.phaseState = data.phaseState;
+currentPowerFactor2.stateMain = data.stateMain;
+
+return (currentPowerFactor2);
+}
+
+PhasePhaseAngle_Type phPhaseAngle(PhasePhaseAngle_Type data)
+{
+
+static PhasePhaseAngle_Type currentPhaseAngle1;
+
+
+currentPhaseAngle1.phaseState = VI_PA;
+currentPhaseAngle1.stateMain = data.stateMain;
+
+return (currentPhaseAngle1);
+}
+
+PhasePhaseAngle_Type viPhaseAngle(PhasePhaseAngle_Type data)
+{
+
+static PhasePhaseAngle_Type currentPhaseAngle2;
+
+
+currentPhaseAngle2.phaseState = EXIT_PA;
+currentPhaseAngle2.stateMain = data.stateMain;
+
+return (currentPhaseAngle2);
+}
+
+PhasePhaseAngle_Type exitPhaseAngle(PhasePhaseAngle_Type data)
+{
+
+static PhasePhaseAngle_Type currentPhaseAngle3;
+
+
+currentPhaseAngle3.phaseState = data.phaseState;
+currentPhaseAngle3.stateMain = data.stateMain;
+
+return (currentPhaseAngle3);
+}
+
+PhaseFrequency_Type showFrequency(PhaseFrequency_Type data)
+{
+
+static PhaseFrequency_Type currentFrequency1;
+
+
+currentFrequency1.phaseState = EXIT_FREQUENCY;
+currentFrequency1.stateMain = data.stateMain;
+
+return (currentFrequency1);
+}
+
+PhaseFrequency_Type exitFrequency(PhaseFrequency_Type data)
+{
+
+static PhaseFrequency_Type currentFrequency2;
+
+
+currentFrequency2.phaseState = data.phaseState;
+currentFrequency2.stateMain = data.stateMain;
+
+return (currentFrequency2);
+}
+
+PhaseTemperature_Type showTemperature(PhaseTemperature_Type data)
+{
+
+static PhaseTemperature_Type currentTemperature1;
+
+
+currentTemperature1.phaseState = EXIT_TEMPERATURE;
+currentTemperature1.stateMain = data.stateMain;
+
+return (currentTemperature1);
+}
+
+PhaseTemperature_Type exitTemperature(PhaseTemperature_Type data)
+{
+
+static PhaseTemperature_Type currentTemperature2;
+
+
+currentTemperature2.phaseState = data.phaseState;
+currentTemperature2.stateMain = data.stateMain;
+
+return (currentTemperature2);
 }

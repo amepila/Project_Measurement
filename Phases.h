@@ -1,7 +1,6 @@
-#ifndef PHASES_H
-#define	PHASES_H
+#ifndef PHASES_H_
+#define	PHASES_H_
 
-#include <stdint.h>
 #include "States.h"
 
 /************************************************************/
@@ -257,7 +256,7 @@ PhasePower1_Type typesPower1(PhasePower1_Type data);
  	 \param[in]  data The current information
  	 \return Updated information
  */
-PhasePower1_Type phasesPower1(PhasePower1_Type data);
+PhasePower1_Type phPower1(PhasePower1_Type data);
 
 
 /********************************************************************************************/
@@ -302,7 +301,7 @@ PhasePower2_Type fhPower2(PhasePower2_Type data);
  	 \param[in]  delay Value of delay
  	 \return void
  */
-PhasePower2_Type phasesPower2(PhasePower2_Type data);
+PhasePower2_Type phPower2(PhasePower2_Type data);
 
 
 /********************************************************************************************/
@@ -324,7 +323,7 @@ PhasePower2_Type exitPower2(PhasePower2_Type data);
  	 \param[in]  data The current information
  	 \return Updated information
  */
-PhaseRmsVI_Type phasesRms(PhaseRmsVI_Type data);
+PhaseRmsVI_Type phRmsVI(PhaseRmsVI_Type data);
 
 
 /********************************************************************************************/

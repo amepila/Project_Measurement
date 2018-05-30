@@ -1,5 +1,5 @@
 
-# 1 "main.c"
+# 1 "States.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.44\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -4274,44 +4274,438 @@ States_MenuType stateFrequency(void);
 # 113
 States_MenuType stateTemperature(void);
 
-# 5 "main.c"
-const SPI_ConfigType SPI_Config =
+# 10 "Phases.h"
+typedef enum
 {
-SPI_LOW_POLARITY,
-SPI_LOW_PHASE,
-SPI_SERIAL_CLK4
+INITIAL_LOAD,
+GENERAL_VIEW,
+VIEW_MENU
+}PhaseStateMenu_Type;
+
+typedef struct
+{
+PhaseStateMenu_Type phaseState;
+States_MenuType stateMain;
+}PhaseMainMenu_Type;
+
+typedef PhaseMainMenu_Type(*fptrPhaseMainMenu)(PhaseMainMenu_Type);
+
+typedef const struct PhaseMainMenu
+{
+PhaseMainMenu_Type(*PhaseMainMenu)(PhaseMainMenu_Type);
+}PhasePtrMainMenu_Type;
+
+# 36
+typedef enum
+{
+TYPES_POWER1,
+PHASES_POWER1,
+VECTOR_POWER1,
+EXIT_POWER1
+}PhaseStatePower1_Type;
+
+typedef struct
+{
+uint8_t dummy;
+PhaseStatePower1_Type phaseState;
+States_MenuType stateMain;
+}PhasePower1_Type;
+
+typedef PhasePower1_Type(*fptrPhasePower1)(PhasePower1_Type);
+
+typedef const struct PhasePower1
+{
+PhasePower1_Type(*PhasePower1)(PhasePower1_Type);
+}PhasePtrPower1_Type;
+
+# 64
+typedef enum
+{
+FH_POWER2,
+PHASES_POWER2,
+EXIT_POWER2
+}PhaseStatePower2_Type;
+
+typedef struct
+{
+uint8_t dummy;
+PhaseStatePower2_Type phaseState;
+States_MenuType stateMain;
+}PhasePower2_Type;
+
+typedef PhasePower2_Type(*fptrPhasePower2)(PhasePower2_Type);
+
+typedef const struct PhasePower2
+{
+PhasePower2_Type(*PhasePower2)(PhasePower2_Type);
+}PhasePtrPower2_Type;
+
+# 91
+typedef enum
+{
+PHASES_RMSVI,
+NEUTRAL_RMSVI,
+EXIT_RMSVI
+}PhaseStateRmsVI_Type;
+
+typedef struct
+{
+uint8_t dummy;
+PhaseStateRmsVI_Type phaseState;
+States_MenuType stateMain;
+}PhaseRmsVI_Type;
+
+typedef PhaseRmsVI_Type(*fptrPhaseRmsVI)(PhaseRmsVI_Type);
+
+typedef const struct PhaseRmsVI
+{
+PhaseRmsVI_Type(*PhaseRmsVI)(PhaseRmsVI_Type);
+}PhasePtrRmsVI_Type;
+
+# 117
+typedef enum
+{
+PHASES_PF,
+EXIT_PF
+}PhaseStatePowerFactor_Type;
+
+typedef struct
+{
+PhaseStatePowerFactor_Type phaseState;
+States_MenuType stateMain;
+}PhasePowerFactor_Type;
+
+typedef PhasePowerFactor_Type(*fptrPhasePowerFactor)(PhasePowerFactor_Type);
+
+typedef const struct PhasePowerFactor
+{
+PhasePowerFactor_Type(*PhasePowerFactor)(PhasePowerFactor_Type);
+}PhasePtrPowerFactor_Type;
+
+# 141
+typedef enum
+{
+PHASES_PA,
+VI_PA,
+EXIT_PA
+}PhaseStatePhaseAngle_Type;
+
+typedef struct
+{
+uint8_t dummy;
+PhaseStatePhaseAngle_Type phaseState;
+States_MenuType stateMain;
+}PhasePhaseAngle_Type;
+
+typedef PhasePhaseAngle_Type(*fptrPhasePhaseAngle)(PhasePhaseAngle_Type);
+
+typedef const struct PhasePhaseAngle
+{
+PhasePhaseAngle_Type(*PhasePhaseAngle)(PhasePhaseAngle_Type);
+}PhasePtrPhaseAngle_Type;
+
+# 165
+typedef enum
+{
+SHOW_FREQUENCY,
+EXIT_FREQUENCY
+}PhaseStateFrequency_Type;
+
+typedef struct
+{
+uint8_t dummy;
+PhaseStateFrequency_Type phaseState;
+States_MenuType stateMain;
+}PhaseFrequency_Type;
+
+typedef PhaseFrequency_Type(*fptrPhaseFrequency)(PhaseFrequency_Type);
+
+typedef const struct PhaseFrequency
+{
+PhaseFrequency_Type(*PhaseFrequency)(PhaseFrequency_Type);
+}PhasePtrFrequency_Type;
+
+# 189
+typedef enum
+{
+SHOW_TEMPERATURE,
+EXIT_TEMPERATURE
+}PhaseStateTemperature_Type;
+
+typedef struct
+{
+uint8_t dummy;
+PhaseStateTemperature_Type phaseState;
+States_MenuType stateMain;
+}PhaseTemperature_Type;
+
+typedef PhaseTemperature_Type(*fptrPhaseTemperature)(PhaseTemperature_Type);
+
+typedef const struct PhaseTemperature
+{
+PhaseTemperature_Type(*PhaseTemperature)(PhaseTemperature_Type);
+}PhasePtrTemperature_Type;
+
+# 217
+PhaseMainMenu_Type initialLoad(PhaseMainMenu_Type data);
+
+# 227
+PhaseMainMenu_Type generalView(PhaseMainMenu_Type data);
+
+# 238
+PhaseMainMenu_Type viewMenu(PhaseMainMenu_Type data);
+
+# 249
+PhasePower1_Type typesPower1(PhasePower1_Type data);
+
+# 259
+PhasePower1_Type phPower1(PhasePower1_Type data);
+
+# 270
+PhasePower1_Type vectorPower1(PhasePower1_Type data);
+
+# 282
+PhasePower1_Type exitPower1(PhasePower1_Type data);
+
+# 293
+PhasePower2_Type fhPower2(PhasePower2_Type data);
+
+# 304
+PhasePower2_Type phPower2(PhasePower2_Type data);
+
+# 315
+PhasePower2_Type exitPower2(PhasePower2_Type data);
+
+# 326
+PhaseRmsVI_Type phRmsVI(PhaseRmsVI_Type data);
+
+# 337
+PhaseRmsVI_Type neutralRmsVI(PhaseRmsVI_Type data);
+
+# 348
+PhaseRmsVI_Type exitRmsVI(PhaseRmsVI_Type data);
+
+# 359
+PhasePowerFactor_Type phPowerFactor(PhasePowerFactor_Type data);
+
+# 370
+PhasePowerFactor_Type exitPowerFactor(PhasePowerFactor_Type data);
+
+# 381
+PhasePhaseAngle_Type phPhaseAngle(PhasePhaseAngle_Type data);
+
+# 392
+PhasePhaseAngle_Type viPhaseAngle(PhasePhaseAngle_Type data);
+
+# 403
+PhasePhaseAngle_Type exitPhaseAngle(PhasePhaseAngle_Type data);
+
+# 414
+PhaseFrequency_Type showFrequency(PhaseFrequency_Type data);
+
+# 425
+PhaseFrequency_Type exitFrequency(PhaseFrequency_Type data);
+
+# 436
+PhaseTemperature_Type showTemperature(PhaseTemperature_Type data);
+
+# 447
+PhaseTemperature_Type exitTemperature(PhaseTemperature_Type data);
+
+# 6 "States.c"
+const PhasePtrMainMenu_Type phasesMainMenu[3] =
+{
+{initialLoad},
+{generalView},
+{viewMenu}
 };
 
 
-const StateType StateProgram[8] =
+const PhasePtrPower1_Type phasesPower1[4] =
 {
-{stateMainMenu},
-{statePower1},
-{statePower2},
-{stateRmsVI},
-{statePowerFactor},
-{statePhaseAngle},
-{stateFrequency},
-{stateTemperature}
+{typesPower1},
+{phPower1},
+{vectorPower1},
+{exitPower1}
 };
 
-void main(void)
+
+const PhasePtrPower2_Type phasesPower2[3] =
+{
+{fhPower2},
+{phPower2},
+{exitPower2}
+};
+
+
+const PhasePtrRmsVI_Type phasesRmsVI[3] =
+{
+{phRmsVI},
+{neutralRmsVI},
+{exitRmsVI}
+};
+
+
+const PhasePtrPowerFactor_Type phasesPowerFactor[2] =
+{
+{phPowerFactor},
+{exitPowerFactor}
+};
+
+
+const PhasePtrPhaseAngle_Type phasesPhaseAngle[3] =
+{
+{phPhaseAngle},
+{viPhaseAngle},
+{exitPhaseAngle}
+};
+
+
+const PhasePtrFrequency_Type phasesFrequency[2] =
+{
+{showFrequency},
+{exitFrequency}
+};
+
+
+const PhasePtrTemperature_Type phasesTemperature[2] =
+{
+{showTemperature},
+{exitTemperature}
+};
+
+States_MenuType stateMainMenu(void)
 {
 
-States_MenuType currentState = MAIN_MENU;
-States_MenuType(*mainFunctions)(void);
+static PhaseStateMenu_Type phase = INITIAL_LOAD;
+static PhaseMainMenu_Type phaseMain;
+PhaseMainMenu_Type(*mainMenuFunctions)(PhaseMainMenu_Type);
+phaseMain.stateMain = MAIN_MENU;
 
 
-GPIO_sourceClock(CLK_8MHZ);
+mainMenuFunctions = phasesMainMenu[phase].PhaseMainMenu;
+phaseMain = mainMenuFunctions(phaseMain);
 
 
-SPI_init(&SPI_Config);
-UART_init(BD_9600);
-
-for(;;)
-{
-
-mainFunctions = StateProgram[currentState].stateFunction;
-currentState = mainFunctions();
+phase = phaseMain.phaseState;
+return (phaseMain.stateMain);
 }
+
+States_MenuType statePower1(void)
+{
+
+static PhaseStatePower1_Type phase = TYPES_POWER1;
+static PhasePower1_Type phasePower1;
+PhasePower1_Type(*power1Functions)(PhasePower1_Type);
+phasePower1.stateMain = POWER_1;
+
+
+power1Functions = phasesPower1[phase].PhasePower1;
+phasePower1 = power1Functions(phasePower1);
+
+
+phase = phasePower1.phaseState;
+return (phasePower1.stateMain);
+}
+
+States_MenuType statePower2(void)
+{
+
+static PhaseStatePower2_Type phase = FH_POWER2;
+static PhasePower2_Type phasePower2;
+PhasePower2_Type(*power2Functions)(PhasePower2_Type);
+phasePower2.stateMain = POWER_2;
+
+
+power2Functions = phasesPower2[phase].PhasePower2;
+phasePower2 = power2Functions(phasePower2);
+
+
+phase = phasePower2.phaseState;
+return (phasePower2.stateMain);
+}
+
+States_MenuType stateRmsVI(void)
+{
+
+static PhaseStateRmsVI_Type phase = PHASES_RMSVI;
+static PhaseRmsVI_Type phaseRmsVI;
+PhaseRmsVI_Type(*rmsVIFunctions)(PhaseRmsVI_Type);
+phaseRmsVI.stateMain = RMS_VI;
+
+
+rmsVIFunctions = phasesRmsVI[phase].PhaseRmsVI;
+phaseRmsVI = rmsVIFunctions(phaseRmsVI);
+
+
+phase = phaseRmsVI.phaseState;
+return (phaseRmsVI.stateMain);
+}
+
+States_MenuType statePowerFactor(void)
+{
+
+static PhaseStatePowerFactor_Type phase = PHASES_PF;
+static PhasePowerFactor_Type phasePowerFactor;
+PhasePowerFactor_Type(*powerFactorFunctions)(PhasePowerFactor_Type);
+phasePowerFactor.stateMain = POWER_FACTOR;
+
+
+powerFactorFunctions = phasesPowerFactor[phase].PhasePowerFactor;
+phasePowerFactor = powerFactorFunctions(phasePowerFactor);
+
+
+phase = phasePowerFactor.phaseState;
+return (phasePowerFactor.stateMain);
+}
+
+States_MenuType statePhaseAngle(void)
+{
+
+static PhaseStatePhaseAngle_Type phase = PHASES_PA;
+static PhasePhaseAngle_Type phasePhaseAngle;
+PhasePhaseAngle_Type(*phaseAngleFunctions)(PhasePhaseAngle_Type);
+phasePhaseAngle.stateMain = PHASE_ANGLE;
+
+
+phaseAngleFunctions = phasesPhaseAngle[phase].PhasePhaseAngle;
+phasePhaseAngle = phaseAngleFunctions(phasePhaseAngle);
+
+
+phase = phasePhaseAngle.phaseState;
+return (phasePhaseAngle.stateMain);
+}
+
+States_MenuType stateFrequency(void)
+{
+
+static PhaseStateFrequency_Type phase = SHOW_FREQUENCY;
+static PhaseFrequency_Type phaseFrequency;
+PhaseFrequency_Type(*frequencyFunctions)(PhaseFrequency_Type);
+phaseFrequency.stateMain = FREQUENCY;
+
+
+frequencyFunctions = phasesFrequency[phase].PhaseFrequency;
+phaseFrequency = frequencyFunctions(phaseFrequency);
+
+
+phase = phaseFrequency.phaseState;
+return (phaseFrequency.stateMain);
+}
+
+States_MenuType stateTemperature(void)
+{
+
+static PhaseStateTemperature_Type phase = SHOW_TEMPERATURE;
+static PhaseTemperature_Type phaseTemperature;
+PhaseTemperature_Type(*temperatureFunctions)(PhaseTemperature_Type);
+phaseTemperature.stateMain = TEMPERATURE;
+
+
+temperatureFunctions = phasesTemperature[phase].PhaseTemperature;
+phaseTemperature = temperatureFunctions(phaseTemperature);
+
+
+phase = phaseTemperature.phaseState;
+return (phaseTemperature.stateMain);
 }

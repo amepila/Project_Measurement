@@ -1,11 +1,6 @@
-
 #include <xc.h>
-#include <stdint.h>
 #include "States.h"
 #include "Phases.h"
-#include "GPIO.h"
-#include "SPI.h"
-#include "UART.h"
 
 /**Pointer to functions of Main Menu*/
 const PhasePtrMainMenu_Type phasesMainMenu[3] =
@@ -19,7 +14,7 @@ const PhasePtrMainMenu_Type phasesMainMenu[3] =
 const PhasePtrPower1_Type phasesPower1[4] =
 {
 		{typesPower1},
-		{phasesPower1},
+		{phPower1},
 		{vectorPower1},
 		{exitPower1}
 };
@@ -28,14 +23,14 @@ const PhasePtrPower1_Type phasesPower1[4] =
 const PhasePtrPower2_Type phasesPower2[3] =
 {
 		{fhPower2},
-		{phasesPower2},
+		{phPower2},
 		{exitPower2}
 };
 
 /**Pointer to functions of Snake*/
 const PhasePtrRmsVI_Type phasesRmsVI[3] =
 {
-		{phasesRms},
+		{phRmsVI},
 		{neutralRmsVI},
 		{exitRmsVI}
 };
@@ -71,7 +66,6 @@ const PhasePtrTemperature_Type phasesTemperature[2] =
 
 States_MenuType stateMainMenu(void)
 {
-
 	/**Initialization of state machine of Main Menu**/
 	static PhaseStateMenu_Type phase = INITIAL_LOAD;
 	static PhaseMainMenu_Type phaseMain;
@@ -177,7 +171,7 @@ States_MenuType stateFrequency(void)
 	/**Initialization of state machine of Compass**/
 	static PhaseStateFrequency_Type phase = SHOW_FREQUENCY;
 	static PhaseFrequency_Type phaseFrequency;
-	PhaseFrequency_Type(*frequencyFunctions)(PhasePowerFactor_Type);
+	PhaseFrequency_Type(*frequencyFunctions)(PhaseFrequency_Type);
 	phaseFrequency.stateMain = FREQUENCY;
 
 	/**Run the state machine and update the state**/

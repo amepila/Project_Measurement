@@ -1,8 +1,11 @@
 
-#ifndef STATES_H
-#define	STATES_H
+#ifndef STATES_H_
+#define	STATES_H_
 
 #include <stdint.h>
+#include "GPIO.h"
+#include "SPI.h"
+#include "UART.h"
 
 /**
  * \brief This data type define the states of program
@@ -23,7 +26,8 @@ typedef enum
 typedef States_MenuType(*fptrState)(void);
 
 /**Data type to machine state**/
-typedef const struct State{
+typedef const struct State
+{
 	States_MenuType (*stateFunction)(void);
 }StateType;
 

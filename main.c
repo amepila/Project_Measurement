@@ -1,12 +1,5 @@
-
 #include <xc.h>
-#include <stdio.h>
-#include <stdint.h>
 #include "States.h"
-#include "Phases.h"
-#include "GPIO.h"
-#include "SPI.h"
-#include "UART.h"
 
 /**Settings of SPI**/
 const SPI_ConfigType SPI_Config = 
@@ -17,6 +10,7 @@ const SPI_ConfigType SPI_Config =
 };
 
 /**Simple machine state only change the tag**/
+
 const StateType StateProgram[8] =
 {
 		{stateMainMenu},
