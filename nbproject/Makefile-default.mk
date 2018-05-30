@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c GPIO.c SPI.c UART.c States.c Phases.c LCDNokia5110.c Bluetooth.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c GPIO.c SPI.c UART.c States.c Phases.c LCDNokia5110.c Bluetooth.c ATM90E36A.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.p1 ${OBJECTDIR}/GPIO.p1 ${OBJECTDIR}/SPI.p1 ${OBJECTDIR}/UART.p1 ${OBJECTDIR}/States.p1 ${OBJECTDIR}/Phases.p1 ${OBJECTDIR}/LCDNokia5110.p1 ${OBJECTDIR}/Bluetooth.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.p1.d ${OBJECTDIR}/GPIO.p1.d ${OBJECTDIR}/SPI.p1.d ${OBJECTDIR}/UART.p1.d ${OBJECTDIR}/States.p1.d ${OBJECTDIR}/Phases.p1.d ${OBJECTDIR}/LCDNokia5110.p1.d ${OBJECTDIR}/Bluetooth.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.p1 ${OBJECTDIR}/GPIO.p1 ${OBJECTDIR}/SPI.p1 ${OBJECTDIR}/UART.p1 ${OBJECTDIR}/States.p1 ${OBJECTDIR}/Phases.p1 ${OBJECTDIR}/LCDNokia5110.p1 ${OBJECTDIR}/Bluetooth.p1 ${OBJECTDIR}/ATM90E36A.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.p1.d ${OBJECTDIR}/GPIO.p1.d ${OBJECTDIR}/SPI.p1.d ${OBJECTDIR}/UART.p1.d ${OBJECTDIR}/States.p1.d ${OBJECTDIR}/Phases.p1.d ${OBJECTDIR}/LCDNokia5110.p1.d ${OBJECTDIR}/Bluetooth.p1.d ${OBJECTDIR}/ATM90E36A.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.p1 ${OBJECTDIR}/GPIO.p1 ${OBJECTDIR}/SPI.p1 ${OBJECTDIR}/UART.p1 ${OBJECTDIR}/States.p1 ${OBJECTDIR}/Phases.p1 ${OBJECTDIR}/LCDNokia5110.p1 ${OBJECTDIR}/Bluetooth.p1
+OBJECTFILES=${OBJECTDIR}/main.p1 ${OBJECTDIR}/GPIO.p1 ${OBJECTDIR}/SPI.p1 ${OBJECTDIR}/UART.p1 ${OBJECTDIR}/States.p1 ${OBJECTDIR}/Phases.p1 ${OBJECTDIR}/LCDNokia5110.p1 ${OBJECTDIR}/Bluetooth.p1 ${OBJECTDIR}/ATM90E36A.p1
 
 # Source Files
-SOURCEFILES=main.c GPIO.c SPI.c UART.c States.c Phases.c LCDNokia5110.c Bluetooth.c
+SOURCEFILES=main.c GPIO.c SPI.c UART.c States.c Phases.c LCDNokia5110.c Bluetooth.c ATM90E36A.c
 
 
 CFLAGS=
@@ -157,6 +157,14 @@ ${OBJECTDIR}/Bluetooth.p1: Bluetooth.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/Bluetooth.d ${OBJECTDIR}/Bluetooth.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/Bluetooth.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/ATM90E36A.p1: ATM90E36A.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/ATM90E36A.p1.d 
+	@${RM} ${OBJECTDIR}/ATM90E36A.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=24 --float=24 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/ATM90E36A.p1  ATM90E36A.c 
+	@-${MV} ${OBJECTDIR}/ATM90E36A.d ${OBJECTDIR}/ATM90E36A.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/ATM90E36A.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/main.p1: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -221,6 +229,14 @@ ${OBJECTDIR}/Bluetooth.p1: Bluetooth.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/Bluetooth.p1  Bluetooth.c 
 	@-${MV} ${OBJECTDIR}/Bluetooth.d ${OBJECTDIR}/Bluetooth.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/Bluetooth.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/ATM90E36A.p1: ATM90E36A.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/ATM90E36A.p1.d 
+	@${RM} ${OBJECTDIR}/ATM90E36A.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=24 --float=24 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/ATM90E36A.p1  ATM90E36A.c 
+	@-${MV} ${OBJECTDIR}/ATM90E36A.d ${OBJECTDIR}/ATM90E36A.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/ATM90E36A.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

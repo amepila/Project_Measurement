@@ -2,11 +2,12 @@
 #ifndef STATES_H_
 #define	STATES_H_
 
-#include <stdint.h>
 #include "GPIO.h"
 #include "SPI.h"
 #include "UART.h"
 #include "LCDNokia5110.h"
+#include "Bluetooth.h"
+#include "ATM90E36A.h"
 
 /**
  * \brief This data type define the states of program
