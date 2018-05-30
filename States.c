@@ -8,10 +8,9 @@
 #include "UART.h"
 
 /**Pointer to functions of Main Menu*/
-const PhasePtrMainMenu_Type phasesMainMenu[4] =
+const PhasePtrMainMenu_Type phasesMainMenu[3] =
 {
-		{initialLoad1},
-		{initialLoad2},
+		{initialLoad},
 		{generalView},
 		{viewMenu}
 };
@@ -19,58 +18,62 @@ const PhasePtrMainMenu_Type phasesMainMenu[4] =
 /**Pointer to functions of Messages*/
 const PhasePtrPower1_Type phasesPower1[4] =
 {
-		{writeNumber},
-		{writeMessages},
-		{sendMessages},
-		{exitMessages}
+		{typesPower1},
+		{phasesPower1},
+		{vectorPower1},
+		{exitPower1}
 };
 
 /**Pointer to functions of Contacts*/
-const PhasePtrPower2_Type phasesPower2[4] =
+const PhasePtrPower2_Type phasesPower2[3] =
 {
-		{contactsMenu},
-		{viewContacts},
-		{addContacts},
-		{saveContacts}
+		{fhPower2},
+		{phasesPower2},
+		{exitPower2}
 };
 
 /**Pointer to functions of Snake*/
-const PhasePtrRmsVI_Type phasesRmsVI[6] =
+const PhasePtrRmsVI_Type phasesRmsVI[3] =
 {
-		{startGame},
-		{runGame},
-		{gameLost},
-		{showScore},
-		{playAgain},
-		{exitGame}
+		{phasesRms},
+		{neutralRmsVI},
+		{exitRmsVI}
 };
 
 /**Pointer to functions of Compass*/
 const PhasePtrPowerFactor_Type phasesPowerFactor[2] =
 {
-		{showCompass},
-		{exitCompass}
+		{phPowerFactor},
+		{exitPowerFactor}
+};
+
+/**Pointer to functions of Wallpapers*/
+const PhasePtrPhaseAngle_Type phasesPhaseAngle[3] =
+{
+		{phPhaseAngle},
+        {viPhaseAngle},
+		{exitPhaseAngle}
 };
 
 /**Pointer to functions of Wallpapers*/
 const PhasePtrFrequency_Type phasesFrequency[2] =
 {
-		{viewWallpaper},
-		{exitWallpaper}
+		{showFrequency},
+		{exitFrequency}
 };
 
 /**Pointer to functions of Wallpapers*/
 const PhasePtrTemperature_Type phasesTemperature[2] =
 {
-		{viewWallpaper},
-		{exitWallpaper}
+		{showTemperature},
+		{exitTemperature}
 };
 
 States_MenuType stateMainMenu(void)
 {
 
 	/**Initialization of state machine of Main Menu**/
-	static PhaseStateMenu_Type phase = INITIAL_LOAD1;
+	static PhaseStateMenu_Type phase = INITIAL_LOAD;
 	static PhaseMainMenu_Type phaseMain;
 	PhaseMainMenu_Type(*mainMenuFunctions)(PhaseMainMenu_Type);
 	phaseMain.stateMain = MAIN_MENU;
@@ -86,92 +89,119 @@ States_MenuType stateMainMenu(void)
 
 States_MenuType statePower1(void)
 {
-
 	/**Initialization of state machine of Contacts**/
-	static PhaseStatePower1_Type phase = CONTACT_MENU;
-	static PhasePower1_Type phaseContacts;
-	PhaseContacts_Type(*contactsFunctions)(PhaseContacts_Type);
-	phaseContacts.stateMain = CONTACTS;
+	static PhaseStatePower1_Type phase = TYPES_POWER1;
+	static PhasePower1_Type phasePower1;
+	PhasePower1_Type(*power1Functions)(PhasePower1_Type);
+	phasePower1.stateMain = POWER_1;
 
 	/**Run the state machine and update the state**/
-	contactsFunctions = phasesContacts[phase].PhaseContacts;
-	phaseContacts = contactsFunctions(phaseContacts);
+	power1Functions = phasesPower1[phase].PhasePower1;
+	phasePower1 = power1Functions(phasePower1);
 
 	/**Verified if there a change flow of program**/
-	phase = phaseContacts.phaseState;
-	return (phaseContacts.stateMain);
+	phase = phasePower1.phaseState;
+	return (phasePower1.stateMain);
 }
 
-States_MenuType stateMessages(void)
+States_MenuType statePower2(void)
 {
-
 	/**Initialization of state machine of Messages**/
-	static PhaseStateMessages_Type phase = WRITE_NUMBER;
-	static PhaseMessages_Type phaseMessages;
-	PhaseMessages_Type(*messagesFunctions)(PhaseMessages_Type);
-	phaseMessages.stateMain = MESSAGES;
+	static PhaseStatePower2_Type phase = FH_POWER2;
+	static PhasePower2_Type phasePower2;
+	PhasePower2_Type(*power2Functions)(PhasePower2_Type);
+	phasePower2.stateMain = POWER_2;
 
 	/**Run the state machine and update the state**/
-	messagesFunctions = phasesMessages[phase].PhaseMessages;
-	phaseMessages = messagesFunctions(phaseMessages);
+	power2Functions = phasesPower2[phase].PhasePower2;
+	phasePower2 = power2Functions(phasePower2);
 
 	/**Verified if there a change flow of program**/
-	phase = phaseMessages.phaseState;
-	return (phaseMessages.stateMain);
+	phase = phasePower2.phaseState;
+	return (phasePower2.stateMain);
 }
 
-States_MenuType stateSnakeGame(void)
+States_MenuType stateRmsVI(void)
 {
-
 	/**Initialization of state machine of Snake game**/
-	static PhaseStateSnake_Type phase = START_GAME;
-	static PhaseSnake_Type phaseSnake;
-	PhaseSnake_Type(*snakeFunctions)(PhaseSnake_Type);
-	phaseSnake.stateMain = SNAKE_GAME;
+	static PhaseStateRmsVI_Type phase = PHASES_RMSVI;
+	static PhaseRmsVI_Type phaseRmsVI;
+	PhaseRmsVI_Type(*rmsVIFunctions)(PhaseRmsVI_Type);
+	phaseRmsVI.stateMain = RMS_VI;
 
 	/**Run the state machine and update the state**/
-	snakeFunctions = phasesSnake[phase].PhaseSnake;
-	phaseSnake = snakeFunctions(phaseSnake);
+	rmsVIFunctions = phasesRmsVI[phase].PhaseRmsVI;
+	phaseRmsVI = rmsVIFunctions(phaseRmsVI);
 
 	/**Verified if there a change flow of program**/
-	phase = phaseSnake.phaseState;
-	return (phaseSnake.stateMain);
+	phase = phaseRmsVI.phaseState;
+	return (phaseRmsVI.stateMain);
 }
 
-States_MenuType stateCompass(void)
+States_MenuType statePowerFactor(void)
 {
-
 	/**Initialization of state machine of Compass**/
-	static PhaseStateCompass_Type phase = SHOW_COMPASS;
-	static PhaseCompass_Type phaseCompass;
-	PhaseCompass_Type(*compassFunctions)(PhaseCompass_Type);
-	phaseCompass.stateMain = COMPASS;
+	static PhaseStatePowerFactor_Type phase = PHASES_PF;
+	static PhasePowerFactor_Type phasePowerFactor;
+	PhasePowerFactor_Type(*powerFactorFunctions)(PhasePowerFactor_Type);
+	phasePowerFactor.stateMain = POWER_FACTOR;
 
 	/**Run the state machine and update the state**/
-	compassFunctions = phasesCompass[phase].PhaseCompass;
-	phaseCompass = compassFunctions(phaseCompass);
+	powerFactorFunctions = phasesPowerFactor[phase].PhasePowerFactor;
+	phasePowerFactor = powerFactorFunctions(phasePowerFactor);
 
 	/**Verified if there a change flow of program**/
-	phase = phaseCompass.phaseState;
-	return (phaseCompass.stateMain);
+	phase = phasePowerFactor.phaseState;
+	return (phasePowerFactor.stateMain);
 }
 
-States_MenuType stateWallpaper(void)
+States_MenuType statePhaseAngle(void)
 {
-
 	/**Initialization of state machine of Wallpaper**/
-	static PhaseStateWallpaper_Type phase = VIEW_WALLPAPER;
-	static PhaseWallpaper_Type phaseWallpaper;
-	PhaseWallpaper_Type(*wallpaperFunctions)(PhaseWallpaper_Type);
-	phaseWallpaper.stateMain = WALLPAPER;
+	static PhaseStatePhaseAngle_Type phase = PHASES_PA;
+	static PhasePhaseAngle_Type phasePhaseAngle;
+	PhasePhaseAngle_Type(*phaseAngleFunctions)(PhasePhaseAngle_Type);
+	phasePhaseAngle.stateMain = PHASE_ANGLE;
 
 	/**Run the state machine and update the state**/
-	wallpaperFunctions = phasesWallpaper[phase].PhaseWallpaper;
-	phaseWallpaper = wallpaperFunctions(phaseWallpaper);
+	phaseAngleFunctions = phasesPhaseAngle[phase].PhasePhaseAngle;
+	phasePhaseAngle = phaseAngleFunctions(phasePhaseAngle);
 
 	/**Verified if there a change flow of program**/
-	phase = phaseWallpaper.phaseState;
-	return (phaseWallpaper.stateMain);
+	phase = phasePhaseAngle.phaseState;
+	return (phasePhaseAngle.stateMain);
 }
 
+States_MenuType stateFrequency(void)
+{
+	/**Initialization of state machine of Compass**/
+	static PhaseStateFrequency_Type phase = SHOW_FREQUENCY;
+	static PhaseFrequency_Type phaseFrequency;
+	PhaseFrequency_Type(*frequencyFunctions)(PhasePowerFactor_Type);
+	phaseFrequency.stateMain = FREQUENCY;
 
+	/**Run the state machine and update the state**/
+	frequencyFunctions = phasesFrequency[phase].PhaseFrequency;
+	phaseFrequency = frequencyFunctions(phaseFrequency);
+
+	/**Verified if there a change flow of program**/
+	phase = phaseFrequency.phaseState;
+	return (phaseFrequency.stateMain);
+}
+
+States_MenuType stateTemperature(void)
+{
+	/**Initialization of state machine of Compass**/
+	static PhaseStateTemperature_Type phase = SHOW_TEMPERATURE;
+	static PhaseTemperature_Type phaseTemperature;
+	PhaseTemperature_Type(*temperatureFunctions)(PhaseTemperature_Type);
+	phaseTemperature.stateMain = TEMPERATURE;
+
+	/**Run the state machine and update the state**/
+	temperatureFunctions = phasesTemperature[phase].PhaseTemperature;
+	phaseTemperature = temperatureFunctions(phaseTemperature);
+
+	/**Verified if there a change flow of program**/
+	phase = phaseTemperature.phaseState;
+	return (phaseTemperature.stateMain);
+}
