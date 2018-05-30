@@ -14,6 +14,7 @@ typedef enum
 	POWER_2,
 	RMS_VI,
 	POWER_FACTOR,
+    PHASE_ANGLE,
 	FREQUENCY,
     TEMPERATURE
 }States_MenuType;
@@ -76,6 +77,16 @@ States_MenuType stateRmsVI(void);
  	 \return The next state
  */
 States_MenuType statePowerFactor(void);
+
+/********************************************************************************************/
+/********************************************************************************************/
+/********************************************************************************************/
+/*!
+ 	 \brief	 Main state of set the wallpaper
+ 	 \param[in]  void
+ 	 \return The next state
+ */
+States_MenuType statePhaseAngle(void);
 
 /********************************************************************************************/
 /********************************************************************************************/

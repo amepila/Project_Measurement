@@ -36,14 +36,15 @@ typedef const struct PhaseMainMenu
 
 typedef enum
 {
-    ACTIVE_POWER,
-	REACTIVE_POWER,
-	APPARENT_POWER,
+    TYPES_POWER1,
+	PHASES_POWER1,
+	VECTOR_POWER1,
 	EXIT_POWER1
 }PhaseStatePower1_Type;
 
 typedef struct
 {
+    uint8_t dummy;
 	PhaseStatePower1_Type phaseState;
 	States_MenuType stateMain;
 }PhasePower1_Type;
@@ -63,27 +64,24 @@ typedef const struct PhasePower1
 
 typedef enum
 {
-    CONTACT_MENU,
-	VIEW_CONTACTS,
-	ADD_CONTACTS,
-	SAVE_CONTACTS
+    FH_POWER2,
+	PHASES_POWER2,
+    EXIT_POWER2
 }PhaseStatePower2_Type;
 
-typedef struct{
-	uint8 name[30];
-	uint8 number[15];
-	uint8 sizeName;
-	uint8 sizeNumber;
-	uint8 noContact;
-	PhaseStateContacts_Type phaseState;
+typedef struct
+{
+	uint8_t dummy;
+	PhaseStatePower2_Type phaseState;
 	States_MenuType stateMain;
-}PhaseContacts_Type;
+}PhasePower2_Type;
 
-typedef PhaseContacts_Type(*fptrPhaseContacts)(PhaseContacts_Type);
+typedef PhasePower2_Type(*fptrPhasePower2)(PhasePower2_Type);
 
-typedef const struct PhaseContacts{
-	PhaseContacts_Type(*PhaseContacts)(PhaseContacts_Type);
-}PhasePtrContacts_Type;
+typedef const struct PhasePower2
+{
+	PhasePower2_Type(*PhasePower2)(PhasePower2_Type);
+}PhasePtrPower2_Type;
 /***********************************************************/
 /***********************************************************/
 
@@ -91,209 +89,123 @@ typedef const struct PhaseContacts{
  * \brief This data type define the data type in SNAKE GAME
  */
 
-typedef enum{START_GAME,
-			RUN_GAME,
-			GAME_LOST,
-			SHOW_SCORE,
-			PLAY_AGAIN,
-			EXIT_GAME
-}PhaseStateSnake_Type;
+typedef enum
+{
+    PHASES_RMSVI,
+    NEUTRAL_RMSVI,
+    EXIT_RMSVI
+}PhaseStateRmsVI_Type;
 
-typedef struct{
-	uint8 score;
-	uint8 lives;
-	uint8 nameSize;
-	PhaseStateSnake_Type phaseState;
+typedef struct
+{
+	uint8_t dummy;
+	PhaseStateRmsVI_Type phaseState;
 	States_MenuType stateMain;
-}PhaseSnake_Type;
+}PhaseRmsVI_Type;
 
-typedef PhaseSnake_Type(*fptrPhaseSnake)(PhaseSnake_Type);
+typedef PhaseRmsVI_Type(*fptrPhaseRmsVI)(PhaseRmsVI_Type);
 
-typedef const struct PhaseSnake{
-	PhaseSnake_Type(*PhaseSnake)(PhaseSnake_Type);
-}PhasePtrSnake_Type;
+typedef const struct PhaseRmsVI
+{
+	PhaseRmsVI_Type(*PhaseRmsVI)(PhaseRmsVI_Type);
+}PhasePtrRmsVI_Type;
 /***********************************************************/
 /***********************************************************/
 /**
  * \brief This data type define the data type in COMPASS
  */
 
-typedef enum{SHOW_COMPASS,
-			EXIT_COMPASS
-}PhaseStateCompass_Type;
+typedef enum
+{
+    PHASES_PF,
+	EXIT_PF
+}PhaseStatePowerFactor_Type;
 
-typedef struct{
-	PhaseStateCompass_Type phaseState;
+typedef struct
+{
+	PhaseStatePowerFactor_Type phaseState;
 	States_MenuType stateMain;
-}PhaseCompass_Type;
+}PhasePowerFactor_Type;
 
-typedef PhaseCompass_Type(*fptrPhaseCompass)(PhaseCompass_Type);
+typedef PhasePowerFactor_Type(*fptrPhasePowerFactor)(PhasePowerFactor_Type);
 
-typedef const struct PhaseCompass{
-	PhaseCompass_Type(*PhaseCompass)(PhaseCompass_Type);
-}PhasePtrCompass_Type;
+typedef const struct PhasePowerFactor
+{
+	PhasePowerFactor_Type(*PhasePowerFactor)(PhasePowerFactor_Type);
+}PhasePtrPowerFactor_Type;
 /***********************************************************/
 /***********************************************************/
 /**
  * \brief This data type define the data type in WALLPAPER
  */
 
-typedef enum{VIEW_WALLPAPER,
-			EXIT_WALLPAPER
-}PhaseStateWallpaper_Type;
+typedef enum
+{
+    PHASES_PA,
+    VI_PA,
+    EXIT_PA
+}PhaseStatePhaseAngle_Type;
 
-typedef struct{
-	PhaseStateWallpaper_Type phaseState;
+typedef struct
+{
+    uint8_t dummy;
+	PhaseStatePhaseAngle_Type phaseState;
 	States_MenuType stateMain;
-}PhaseWallpaper_Type;
+}PhasePhaseAngle_Type;
 
-typedef PhaseWallpaper_Type(*fptrPhaseWallpaper)(PhaseWallpaper_Type);
+typedef PhasePhaseAngle_Type(*fptrPhasePhaseAngle)(PhasePhaseAngle_Type);
 
-typedef const struct PhaseWallpaper{
-	PhaseWallpaper_Type(*PhaseWallpaper)(PhaseWallpaper_Type);
-}PhasePtrWallpaper_Type;
+typedef const struct PhasePhaseAngle
+{
+	PhasePhaseAngle_Type(*PhasePhaseAngle)(PhasePhaseAngle_Type);
+}PhasePtrPhaseAngle_Type;
 /**********************************************************/
 /**
  * \brief This data type define the data type to Show Contacts
  */
-typedef enum{CONTACT1,
-			CONTACT2,
-			CONTACT3,
-			CONTACT4,
-			CONTACT5,
-			CONTACT6,
-			CONTACT7,
-			CONTACT8,
-			CONTACT9,
-			CONTACT10
-}ShowContact_Type;
+typedef enum
+{
+    SHOW_FREQUENCY,
+    EXIT_FREQUENCY
+}PhaseStateFrequency_Type;
 
-typedef ShowContact_Type(*fptrStateShowContact)(void);
+typedef struct
+{
+    uint8_t dummy;
+	PhaseStateFrequency_Type phaseState;
+	States_MenuType stateMain;
+}PhaseFrequency_Type;
 
-typedef const struct StateShowContact{
-	ShowContact_Type(*stateShowContact)(void);
-}StateShowContact_Type;
+typedef PhaseFrequency_Type(*fptrPhaseFrequency)(PhaseFrequency_Type);
 
-/********************************************************************************************/
-/********************************************************************************************/
-/********************************************************************************************/
-/*!
- 	 \brief	 Clean any contact
- 	 \param[in]  contact Contact selected
- 	 \return void
+typedef const struct PhaseFrequency
+{
+	PhaseFrequency_Type(*PhaseFrequency)(PhaseFrequency_Type);
+}PhasePtrFrequency_Type;
+
+/**********************************************************/
+/**
+ * \brief This data type define the data type to Show Contacts
  */
-void cleanContact(uint8 contact);
+typedef enum
+{
+    SHOW_TEMPERATURE,
+    EXIT_TEMPERATURE
+}PhaseStateTemperature_Type;
 
+typedef struct
+{
+    uint8_t dummy;
+	PhaseStateTemperature_Type phaseState;
+	States_MenuType stateMain;
+}PhaseTemperature_Type;
 
-/********************************************************************************************/
-/********************************************************************************************/
-/********************************************************************************************/
-/*!
- 	 \brief	 Print the contact saved
- 	 \param[in]  void
- 	 \return The information of the contact
- */
-ShowContact_Type contactNumber1(void);
+typedef PhaseTemperature_Type(*fptrPhaseTemperature)(PhaseTemperature_Type);
 
-
-/********************************************************************************************/
-/********************************************************************************************/
-/********************************************************************************************/
-/*!
- 	 \brief	 Print the contact saved
- 	 \param[in]  void
- 	 \return The information of the contact
- */
-ShowContact_Type contactNumber2(void);
-
-
-/********************************************************************************************/
-/********************************************************************************************/
-/********************************************************************************************/
-/*!
- 	 \brief	 Print the contact saved
- 	 \param[in]  void
- 	 \return The information of the contact
- */
-ShowContact_Type contactNumber3(void);
-
-
-/********************************************************************************************/
-/********************************************************************************************/
-/********************************************************************************************/
-/*!
- 	 \brief	 Print the contact saved
- 	 \param[in]  void
- 	 \return The information of the contact
- */
-ShowContact_Type contactNumber4(void);
-
-
-/********************************************************************************************/
-/********************************************************************************************/
-/********************************************************************************************/
-/*!
- 	 \brief	 Print the contact saved
- 	 \param[in]  void
- 	 \return The information of the contact
- */
-ShowContact_Type contactNumber5(void);
-
-
-/********************************************************************************************/
-/********************************************************************************************/
-/********************************************************************************************/
-/*!
- 	 \brief	 Print the contact saved
- 	 \param[in]  void
- 	 \return The information of the contact
- */
-ShowContact_Type contactNumber6(void);
-
-
-/********************************************************************************************/
-/********************************************************************************************/
-/********************************************************************************************/
-/*!
- 	 \brief	 Print the contact saved
- 	 \param[in]  void
- 	 \return The information of the contact
- */
-ShowContact_Type contactNumber7(void);
-
-
-/********************************************************************************************/
-/********************************************************************************************/
-/********************************************************************************************/
-/*!
- 	 \brief	 Print the contact saved
- 	 \param[in]  void
- 	 \return The information of the contact
- */
-ShowContact_Type contactNumber8(void);
-
-
-/********************************************************************************************/
-/********************************************************************************************/
-/********************************************************************************************/
-/*!
- 	 \brief	 Print the contact saved
- 	 \param[in]  void
- 	 \return The information of the contact
- */
-ShowContact_Type contactNumber9(void);
-
-
-/********************************************************************************************/
-/********************************************************************************************/
-/********************************************************************************************/
-/*!
- 	 \brief	 Print the contact saved
- 	 \param[in]  void
- 	 \return The information of the contact
- */
-ShowContact_Type contactNumber10(void);
-
+typedef const struct PhaseTemperature
+{
+	PhaseTemperature_Type(*PhaseTemperature)(PhaseTemperature_Type);
+}PhasePtrTemperature_Type;
 
 /********************************************************************************************/
 /********************************************************************************************/
@@ -303,19 +215,7 @@ ShowContact_Type contactNumber10(void);
  	 \param[in]  data The current information
  	 \return Updated information
  */
-PhaseMainMenu_Type initialLoad1(PhaseMainMenu_Type data);
-
-
-/********************************************************************************************/
-/********************************************************************************************/
-/********************************************************************************************/
-/*!
- 	 \brief	 State that charges the second initialization of the program
- 	 \param[in]  data The current information
- 	 \return Updated information
- */
-PhaseMainMenu_Type initialLoad2(PhaseMainMenu_Type data);
-
+PhaseMainMenu_Type initialLoad(PhaseMainMenu_Type data);
 
 /********************************************************************************************/
 /********************************************************************************************/
@@ -347,7 +247,7 @@ PhaseMainMenu_Type viewMenu(PhaseMainMenu_Type data);
  	 \param[in]  data The current information
  	 \return Updated information
  */
-PhaseMessages_Type writeNumber(PhaseMessages_Type data);
+PhasePower1_Type typesPower1(PhasePower1_Type data);
 
 /********************************************************************************************/
 /********************************************************************************************/
@@ -357,7 +257,7 @@ PhaseMessages_Type writeNumber(PhaseMessages_Type data);
  	 \param[in]  data The current information
  	 \return Updated information
  */
-PhaseMessages_Type writeMessages(PhaseMessages_Type data);
+PhasePower1_Type phasesPower1(PhasePower1_Type data);
 
 
 /********************************************************************************************/
@@ -368,7 +268,7 @@ PhaseMessages_Type writeMessages(PhaseMessages_Type data);
  	 \param[in]  data The current information
  	 \return Updated information
  */
-PhaseMessages_Type sendMessages(PhaseMessages_Type data);
+PhasePower1_Type vectorPower1(PhasePower1_Type data);
 
 
 /********************************************************************************************/
@@ -380,7 +280,7 @@ PhaseMessages_Type sendMessages(PhaseMessages_Type data);
  	 \return Updated information
  */
 
-PhaseMessages_Type exitMessages(PhaseMessages_Type data);
+PhasePower1_Type exitPower1(PhasePower1_Type data);
 
 
 /********************************************************************************************/
@@ -391,7 +291,7 @@ PhaseMessages_Type exitMessages(PhaseMessages_Type data);
  	 \param[in]  data The current information
  	 \return Updated information
  */
-PhaseContacts_Type contactsMenu(PhaseContacts_Type data);
+PhasePower2_Type fhPower2(PhasePower2_Type data);
 
 
 /********************************************************************************************/
@@ -402,7 +302,7 @@ PhaseContacts_Type contactsMenu(PhaseContacts_Type data);
  	 \param[in]  delay Value of delay
  	 \return void
  */
-PhaseContacts_Type viewContacts(PhaseContacts_Type data);
+PhasePower2_Type phasesPower2(PhasePower2_Type data);
 
 
 /********************************************************************************************/
@@ -413,7 +313,7 @@ PhaseContacts_Type viewContacts(PhaseContacts_Type data);
  	 \param[in]  data The current information
  	 \return Updated information
  */
-PhaseContacts_Type addContacts(PhaseContacts_Type data);
+PhasePower2_Type exitPower2(PhasePower2_Type data);
 
 
 /********************************************************************************************/
@@ -424,7 +324,7 @@ PhaseContacts_Type addContacts(PhaseContacts_Type data);
  	 \param[in]  data The current information
  	 \return Updated information
  */
-PhaseContacts_Type saveContacts(PhaseContacts_Type data);
+PhaseRmsVI_Type phasesRmsVI(PhaseRmsVI_Type data);
 
 
 /********************************************************************************************/
@@ -435,7 +335,7 @@ PhaseContacts_Type saveContacts(PhaseContacts_Type data);
  	 \param[in]  data The current information
  	 \return Updated information
  */
-PhaseSnake_Type startGame(PhaseSnake_Type data);
+PhaseRmsVI_Type neutralRmsVI(PhaseRmsVI_Type data);
 
 
 /********************************************************************************************/
@@ -446,7 +346,7 @@ PhaseSnake_Type startGame(PhaseSnake_Type data);
  	 \param[in]  data The current information
  	 \return Updated information
  */
-PhaseSnake_Type runGame(PhaseSnake_Type data);
+PhaseRmsVI_Type exitRmsVI(PhaseRmsVI_Type data);
 
 
 /********************************************************************************************/
@@ -457,7 +357,7 @@ PhaseSnake_Type runGame(PhaseSnake_Type data);
  	 \param[in]  data The current information
  	 \return Updated information
  */
-PhaseSnake_Type gameLost(PhaseSnake_Type data);
+PhasePowerFactor_Type phasesPowerFactor(PhasePowerFactor_Type data);
 
 
 /********************************************************************************************/
@@ -468,7 +368,7 @@ PhaseSnake_Type gameLost(PhaseSnake_Type data);
  	 \param[in]  data The current information
  	 \return Updated information
  */
-PhaseSnake_Type showScore(PhaseSnake_Type data);
+PhasePowerFactor_Type exitPowerFactor(PhasePowerFactor_Type data);
 
 
 /********************************************************************************************/
@@ -479,7 +379,7 @@ PhaseSnake_Type showScore(PhaseSnake_Type data);
  	 \param[in]  data The current information
  	 \return Updated information
  */
-PhaseSnake_Type playAgain(PhaseSnake_Type data);
+PhasePhaseAngle_Type phasesPhaseAngle(PhasePhaseAngle_Type data);
 
 
 /********************************************************************************************/
@@ -490,7 +390,7 @@ PhaseSnake_Type playAgain(PhaseSnake_Type data);
  	 \param[in]  data The current information
  	 \return Updated information
  */
-PhaseSnake_Type exitGame(PhaseSnake_Type data);
+PhasePhaseAngle_Type viPhaseAngle(PhasePhaseAngle_Type data);
 
 
 /********************************************************************************************/
@@ -501,7 +401,7 @@ PhaseSnake_Type exitGame(PhaseSnake_Type data);
  	 \param[in]  data The current information
  	 \return Updated information
  */
-PhaseCompass_Type showCompass(PhaseCompass_Type data);
+PhasePhaseAngle_Type exitPhaseAngle(PhasePhaseAngle_Type data);
 
 
 /********************************************************************************************/
@@ -512,7 +412,7 @@ PhaseCompass_Type showCompass(PhaseCompass_Type data);
  	 \param[in]  data The current information
  	 \return Updated information
  */
-PhaseCompass_Type exitCompass(PhaseCompass_Type data);
+PhaseFrequency_Type showFrequency(PhaseFrequency_Type data);
 
 
 /********************************************************************************************/
@@ -523,7 +423,7 @@ PhaseCompass_Type exitCompass(PhaseCompass_Type data);
  	 \param[in]  data The current information
  	 \return Updated information
  */
-PhaseWallpaper_Type viewWallpaper(PhaseWallpaper_Type data);
+PhaseFrequency_Type exitFrequency(PhaseFrequency_Type data);
 
 
 /********************************************************************************************/
@@ -534,7 +434,18 @@ PhaseWallpaper_Type viewWallpaper(PhaseWallpaper_Type data);
  	 \param[in]  data The current information
  	 \return Updated information
  */
-PhaseWallpaper_Type exitWallpaper(PhaseWallpaper_Type data);
+PhaseTemperature_Type showTemperature(PhaseTemperature_Type data);
+
+
+/********************************************************************************************/
+/********************************************************************************************/
+/********************************************************************************************/
+/*!
+ 	 \brief	 State to exit and come back to the menu
+ 	 \param[in]  data The current information
+ 	 \return Updated information
+ */
+PhaseTemperature_Type exitTemperature(PhaseTemperature_Type data);
 
 #endif
 
