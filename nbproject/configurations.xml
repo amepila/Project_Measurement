@@ -23,6 +23,8 @@
       <itemPath>States.h</itemPath>
       <itemPath>Phases.c</itemPath>
       <itemPath>Phases.h</itemPath>
+      <itemPath>LCDNokia5110.h</itemPath>
+      <itemPath>LCDNokia5110.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

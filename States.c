@@ -10,7 +10,7 @@ const PhasePtrMainMenu_Type phasesMainMenu[3] =
 		{viewMenu}
 };
 
-/**Pointer to functions of Messages*/
+/**Pointer to functions of Power1*/
 const PhasePtrPower1_Type phasesPower1[4] =
 {
 		{typesPower1},
@@ -19,7 +19,7 @@ const PhasePtrPower1_Type phasesPower1[4] =
 		{exitPower1}
 };
 
-/**Pointer to functions of Contacts*/
+/**Pointer to functions of Power2*/
 const PhasePtrPower2_Type phasesPower2[3] =
 {
 		{fhPower2},
@@ -27,7 +27,7 @@ const PhasePtrPower2_Type phasesPower2[3] =
 		{exitPower2}
 };
 
-/**Pointer to functions of Snake*/
+/**Pointer to functions of Rms VI*/
 const PhasePtrRmsVI_Type phasesRmsVI[3] =
 {
 		{phRmsVI},
@@ -35,14 +35,14 @@ const PhasePtrRmsVI_Type phasesRmsVI[3] =
 		{exitRmsVI}
 };
 
-/**Pointer to functions of Compass*/
+/**Pointer to functions of Power Factor*/
 const PhasePtrPowerFactor_Type phasesPowerFactor[2] =
 {
 		{phPowerFactor},
 		{exitPowerFactor}
 };
 
-/**Pointer to functions of Wallpapers*/
+/**Pointer to functions of Phase Angle*/
 const PhasePtrPhaseAngle_Type phasesPhaseAngle[3] =
 {
 		{phPhaseAngle},
@@ -50,14 +50,14 @@ const PhasePtrPhaseAngle_Type phasesPhaseAngle[3] =
 		{exitPhaseAngle}
 };
 
-/**Pointer to functions of Wallpapers*/
+/**Pointer to functions of Frequency*/
 const PhasePtrFrequency_Type phasesFrequency[2] =
 {
 		{showFrequency},
 		{exitFrequency}
 };
 
-/**Pointer to functions of Wallpapers*/
+/**Pointer to functions of Temperature*/
 const PhasePtrTemperature_Type phasesTemperature[2] =
 {
 		{showTemperature},
@@ -83,7 +83,7 @@ States_MenuType stateMainMenu(void)
 
 States_MenuType statePower1(void)
 {
-	/**Initialization of state machine of Contacts**/
+	/**Initialization of state machine of Power1**/
 	static PhaseStatePower1_Type phase = TYPES_POWER1;
 	static PhasePower1_Type phasePower1;
 	PhasePower1_Type(*power1Functions)(PhasePower1_Type);
@@ -100,7 +100,7 @@ States_MenuType statePower1(void)
 
 States_MenuType statePower2(void)
 {
-	/**Initialization of state machine of Messages**/
+	/**Initialization of state machine of Power2**/
 	static PhaseStatePower2_Type phase = FH_POWER2;
 	static PhasePower2_Type phasePower2;
 	PhasePower2_Type(*power2Functions)(PhasePower2_Type);
@@ -117,7 +117,7 @@ States_MenuType statePower2(void)
 
 States_MenuType stateRmsVI(void)
 {
-	/**Initialization of state machine of Snake game**/
+	/**Initialization of state machine of RMS VI**/
 	static PhaseStateRmsVI_Type phase = PHASES_RMSVI;
 	static PhaseRmsVI_Type phaseRmsVI;
 	PhaseRmsVI_Type(*rmsVIFunctions)(PhaseRmsVI_Type);
@@ -134,7 +134,7 @@ States_MenuType stateRmsVI(void)
 
 States_MenuType statePowerFactor(void)
 {
-	/**Initialization of state machine of Compass**/
+	/**Initialization of state machine of Power Factor**/
 	static PhaseStatePowerFactor_Type phase = PHASES_PF;
 	static PhasePowerFactor_Type phasePowerFactor;
 	PhasePowerFactor_Type(*powerFactorFunctions)(PhasePowerFactor_Type);
@@ -151,7 +151,7 @@ States_MenuType statePowerFactor(void)
 
 States_MenuType statePhaseAngle(void)
 {
-	/**Initialization of state machine of Wallpaper**/
+	/**Initialization of state machine of Phase Angle**/
 	static PhaseStatePhaseAngle_Type phase = PHASES_PA;
 	static PhasePhaseAngle_Type phasePhaseAngle;
 	PhasePhaseAngle_Type(*phaseAngleFunctions)(PhasePhaseAngle_Type);
@@ -168,7 +168,7 @@ States_MenuType statePhaseAngle(void)
 
 States_MenuType stateFrequency(void)
 {
-	/**Initialization of state machine of Compass**/
+	/**Initialization of state machine of Frequency**/
 	static PhaseStateFrequency_Type phase = SHOW_FREQUENCY;
 	static PhaseFrequency_Type phaseFrequency;
 	PhaseFrequency_Type(*frequencyFunctions)(PhaseFrequency_Type);
@@ -185,7 +185,7 @@ States_MenuType stateFrequency(void)
 
 States_MenuType stateTemperature(void)
 {
-	/**Initialization of state machine of Compass**/
+	/**Initialization of state machine of Temperature**/
 	static PhaseStateTemperature_Type phase = SHOW_TEMPERATURE;
 	static PhaseTemperature_Type phaseTemperature;
 	PhaseTemperature_Type(*temperatureFunctions)(PhaseTemperature_Type);

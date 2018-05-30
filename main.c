@@ -40,6 +40,6 @@ void main(void)
     {
         /**Machine states based on tags**/
     	mainFunctions = StateProgram[currentState].stateFunction;
-    	currentState = mainFunctions();
+    	currentState = mainFunctions(void);
     }
 }
