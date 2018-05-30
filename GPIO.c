@@ -148,6 +148,44 @@ void GPIO_analogSelector
     }
 }
 
+void GPIO_setPIN
+(GPIO_portNameType portName, uint8_t pin)
+{
+    switch(portName)
+    {
+        case GPIO_A:
+            PORTA |= (1<<pin);
+            break;
+        case GPIO_B:
+            PORTB |= (1<<pin);
+            break;
+        case GPIO_C:
+            PORTC |= (1<<pin);
+            break;
+        default:
+            break;
+    }
+}
+
+void GPIO_clearPIN
+(GPIO_portNameType portName, uint8_t pin)
+{
+    switch(portName)
+    {
+        case GPIO_A:
+            PORTA &= ~(1<<pin);
+            break;
+        case GPIO_B:
+            PORTB &= ~(1<<pin);
+            break;
+        case GPIO_C:
+            PORTC &= ~(1<<pin);
+            break;
+        default:
+            break;
+    }
+}
+
 void delay(uint32_t delay)
 {
 	volatile uint32_t counter;

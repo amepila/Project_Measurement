@@ -34,6 +34,8 @@ void main(void)
 
     /**Configurations of devices**/
 	SPI_init(&SPI_Config);
+    LCDNokia_init();
+	LCDNokia_clear();
     UART_init(BD_9600);
 
     for(;;)

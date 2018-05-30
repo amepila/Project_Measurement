@@ -105,21 +105,14 @@ static const uint8_t ASCII[][5] =
 
 void LCDNokia_init(void)
 {
-	GPIO_pinControlRegisterType pinControlRegister = GPIO_MUX1;
-
-	GPIO_clockGating(GPIO_D);
-	GPIO_dataDirectionPIN(GPIO_D,GPIO_OUTPUT,DATA_OR_CMD_PIN);
-	GPIO_pinControlRegister(GPIO_D,BIT3,&pinControlRegister);
-
-
-	GPIO_clockGating(GPIO_D);
-	GPIO_dataDirectionPIN(GPIO_D,GPIO_OUTPUT,RESET_PIN);
-	GPIO_pinControlRegister(GPIO_D,RESET_PIN,&pinControlRegister);
-  //Configure control pins
+    //Configure control pins
+    GPIO_dataDirectionPIN(GPIO_B, DATA_OR_CMD_PIN, GPIO_OUTPUT);
+	GPIO_dataDirectionPIN(GPIO_B, RESET_PIN, GPIO_OUTPUT);
 	
-	GPIO_clearPIN(GPIO_D, RESET_PIN);
+	GPIO_clearPIN(GPIO_B, RESET_PIN);
 	LCD_delay();
-	GPIO_setPIN(GPIO_D, RESET_PIN);
+	GPIO_setPIN(GPIO_B, RESET_PIN);
+    
 	LCDNokia_writeByte(LCD_CMD, 0x21); //Tell LCD that extended commands follow
 	LCDNokia_writeByte(LCD_CMD, 0xB8); //Set LCD Vop (Contrast): Try 0xB1(good @ 3.3V) or 0xBF if your display is too dark
 	LCDNokia_writeByte(LCD_CMD, 0x04); //Set Temp coefficent
@@ -143,16 +136,14 @@ void LCDNokia_writeByte(uint8_t DataOrCmd, uint8_t data)
 {
 	if(DataOrCmd)
     {
-        GPIO_setPIN(GPIO_D, DATA_OR_CMD_PIN);
+        GPIO_setPIN(GPIO_B, DATA_OR_CMD_PIN);
     }
 	else
     {
-        GPIO_clearPIN(GPIO_D, DATA_OR_CMD_PIN);
+        GPIO_clearPIN(GPIO_B, DATA_OR_CMD_PIN);
     }
 	
-	SPI_startTranference(SPI_0);
-	SPI_sendOneByte(data);
-	SPI_stopTranference(SPI_0);
+    SPI_write(data);
 }
 
 void LCDNokia_sendChar(uint8_t character) 

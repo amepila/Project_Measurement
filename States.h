@@ -6,6 +6,7 @@
 #include "GPIO.h"
 #include "SPI.h"
 #include "UART.h"
+#include "LCDNokia5110.h"
 
 /**
  * \brief This data type define the states of program
