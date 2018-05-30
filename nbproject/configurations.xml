@@ -25,6 +25,8 @@
       <itemPath>Phases.h</itemPath>
       <itemPath>LCDNokia5110.h</itemPath>
       <itemPath>LCDNokia5110.c</itemPath>
+      <itemPath>Bluetooth.c</itemPath>
+      <itemPath>Bluetooth.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
