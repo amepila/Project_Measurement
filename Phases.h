@@ -324,7 +324,7 @@ PhasePower2_Type exitPower2(PhasePower2_Type data);
  	 \param[in]  data The current information
  	 \return Updated information
  */
-PhaseRmsVI_Type phasesRmsVI(PhaseRmsVI_Type data);
+PhaseRmsVI_Type phasesRms(PhaseRmsVI_Type data);
 
 
 /********************************************************************************************/
@@ -357,7 +357,7 @@ PhaseRmsVI_Type exitRmsVI(PhaseRmsVI_Type data);
  	 \param[in]  data The current information
  	 \return Updated information
  */
-PhasePowerFactor_Type phasesPowerFactor(PhasePowerFactor_Type data);
+PhasePowerFactor_Type phPowerFactor(PhasePowerFactor_Type data);
 
 
 /********************************************************************************************/
@@ -379,7 +379,7 @@ PhasePowerFactor_Type exitPowerFactor(PhasePowerFactor_Type data);
  	 \param[in]  data The current information
  	 \return Updated information
  */
-PhasePhaseAngle_Type phasesPhaseAngle(PhasePhaseAngle_Type data);
+PhasePhaseAngle_Type phPhaseAngle(PhasePhaseAngle_Type data);
 
 
 /********************************************************************************************/

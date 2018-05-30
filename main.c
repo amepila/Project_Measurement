@@ -2,6 +2,8 @@
 #include <xc.h>
 #include <stdio.h>
 #include <stdint.h>
+#include "States.h"
+#include "Phases.h"
 #include "GPIO.h"
 #include "SPI.h"
 #include "UART.h"
@@ -14,8 +16,25 @@ const SPI_ConfigType SPI_Config =
 	SPI_SERIAL_CLK4     /**FOsc divided by 4**/
 };
 
+/**Simple machine state only change the tag**/
+const StateType StateProgram[8] =
+{
+		{stateMainMenu},
+		{statePower1},
+		{statePower2},
+		{stateRmsVI},
+		{statePowerFactor},
+		{statePhaseAngle},
+        {stateFrequency},
+        {stateTemperature}
+};
+
 void main(void) 
 {
+    /**First state in the program**/
+  	States_MenuType currentState = MAIN_MENU;
+	States_MenuType(*mainFunctions)(void);
+    
     /**Select the 8MHz as source clock*/
     GPIO_sourceClock(CLK_8MHZ);
 
@@ -25,6 +44,8 @@ void main(void)
 
     for(;;)
     {
-        
+        /**Machine states based on tags**/
+    	mainFunctions = StateProgram[currentState].stateFunction;
+    	currentState = mainFunctions();
     }
 }
