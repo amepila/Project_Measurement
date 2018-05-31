@@ -25,10 +25,10 @@
       <itemPath>Phases.h</itemPath>
       <itemPath>LCDNokia5110.h</itemPath>
       <itemPath>LCDNokia5110.c</itemPath>
-      <itemPath>Bluetooth.c</itemPath>
-      <itemPath>Bluetooth.h</itemPath>
       <itemPath>ATM90E36A.c</itemPath>
       <itemPath>ATM90E36A.h</itemPath>
+      <itemPath>Buttons.c</itemPath>
+      <itemPath>Buttons.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

@@ -37,6 +37,8 @@ void main(void)
     LCDNokia_init();
 	LCDNokia_clear();
     UART_init(BD_9600);
+    ButtonInt_config();
+
 
     for(;;)
     {
