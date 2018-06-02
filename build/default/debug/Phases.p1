@@ -1,48 +1,56 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"67 main.c
-[c E3166 0 1 .. ]
-[n E3166 . SPI_LOW_POLARITY SPI_HIGH_POLARITY  ]
-[c E3170 0 1 .. ]
-[n E3170 . SPI_LOW_PHASE SPI_HIGH_PHASE  ]
-[c E3174 0 1 2 .. ]
-[n E3174 . SPI_SERIAL_CLK4 SPI_SERIAL_CLK16 SPI_SERIAL_CLK64  ]
-"30 SPI.h
-[s S286 `E3166 1 `E3170 1 `E3174 1 ]
-[n S286 . SPI_Polarity SPI_Phase SPI_Clk ]
-"76 main.c
-[c E3234 0 1 2 3 4 5 6 7 .. ]
-[n E3234 . MAIN_MENU POWER_1 POWER_2 RMS_VI POWER_FACTOR PHASE_ANGLE FREQUENCY TEMPERATURE  ]
-[v F3249 `(E3234 ~T0 @X0 0 tf ]
-"32 States.h
-[s S288 `*F3249 1 ]
-[n S288 State stateFunction ]
-"46
-[v _stateMainMenu `(E3234 ~T0 @X0 0 ef ]
-"56
-[v _statePower1 `(E3234 ~T0 @X0 0 ef ]
-"66
-[v _statePower2 `(E3234 ~T0 @X0 0 ef ]
-"76
-[v _stateRmsVI `(E3234 ~T0 @X0 0 ef ]
-"86
-[v _statePowerFactor `(E3234 ~T0 @X0 0 ef ]
-"96
-[v _statePhaseAngle `(E3234 ~T0 @X0 0 ef ]
-"106
-[v _stateFrequency `(E3234 ~T0 @X0 0 ef ]
-"116
-[v _stateTemperature `(E3234 ~T0 @X0 0 ef ]
-[p mainexit ]
-"36 SPI.h
-[v _SPI_init `(v ~T0 @X0 0 ef1`*CS286 ]
-"24 LCDNokia5110.h
-[v _LCDNokia_init `(v ~T0 @X0 0 ef ]
-"31
+"5 Phases.c
+[c E3206 0 1 2 .. ]
+[n E3206 . INITIAL_LOAD GENERAL_VIEW VIEW_MENU  ]
+[c E3172 0 1 2 3 4 5 6 7 .. ]
+[n E3172 . MAIN_MENU POWER_1 POWER_2 RMS_VI POWER_FACTOR PHASE_ANGLE FREQUENCY TEMPERATURE  ]
+"18 Phases.h
+[s S288 `E3206 1 `E3172 1 ]
+[n S288 . phaseState stateMain ]
+"31 LCDNokia5110.h
 [v _LCDNokia_clear `(v ~T0 @X0 0 ef ]
-"39
-[v _LCDNokia_sendChar `(v ~T0 @X0 0 ef1`uc ]
-"59 GPIO.h
-[v _delay `(v ~T0 @X0 0 ef1`ul ]
+"44 Phases.c
+[c E3223 0 1 2 3 .. ]
+[n E3223 . TYPES_POWER1 PHASES_POWER1 VECTOR_POWER1 EXIT_POWER1  ]
+"45 Phases.h
+[s S290 `uc 1 `E3223 1 `E3172 1 ]
+[n S290 . dummy phaseState stateMain ]
+"92 Phases.c
+[c E3242 0 1 2 .. ]
+[n E3242 . FH_POWER2 PHASES_POWER2 EXIT_POWER2  ]
+"72 Phases.h
+[s S292 `uc 1 `E3242 1 `E3172 1 ]
+[n S292 . dummy phaseState stateMain ]
+"128 Phases.c
+[c E3260 0 1 2 .. ]
+[n E3260 . PHASES_RMSVI NEUTRAL_RMSVI EXIT_RMSVI  ]
+"99 Phases.h
+[s S294 `uc 1 `E3260 1 `E3172 1 ]
+[n S294 . dummy phaseState stateMain ]
+"164 Phases.c
+[c E3278 0 1 .. ]
+[n E3278 . PHASES_PF EXIT_PF  ]
+"124 Phases.h
+[s S296 `E3278 1 `E3172 1 ]
+[n S296 . phaseState stateMain ]
+"188 Phases.c
+[c E3294 0 1 2 .. ]
+[n E3294 . PHASES_PA VI_PA EXIT_PA  ]
+"149 Phases.h
+[s S298 `uc 1 `E3294 1 `E3172 1 ]
+[n S298 . dummy phaseState stateMain ]
+"224 Phases.c
+[c E3312 0 1 .. ]
+[n E3312 . SHOW_FREQUENCY EXIT_FREQUENCY  ]
+"172 Phases.h
+[s S300 `uc 1 `E3312 1 `E3172 1 ]
+[n S300 . dummy phaseState stateMain ]
+"248 Phases.c
+[c E3329 0 1 .. ]
+[n E3329 . SHOW_TEMPERATURE EXIT_TEMPERATURE  ]
+"196 Phases.h
+[s S302 `uc 1 `E3329 1 `E3172 1 ]
+[n S302 . dummy phaseState stateMain ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -2947,36 +2955,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 164: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 166: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
-[; ;__size_t.h: 4: typedef unsigned size_t;
-[; ;stdarg.h: 7: typedef void * va_list[1];
-[; ;stdarg.h: 10: extern void * __va_start(void);
-[; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
-[; ;stdio.h: 43: struct __prbuf
-[; ;stdio.h: 44: {
-[; ;stdio.h: 45: char * ptr;
-[; ;stdio.h: 46: void (* func)(char);
-[; ;stdio.h: 47: };
-[; ;errno.h: 29: extern int errno;
-[; ;conio.h: 12: extern void init_uart(void);
-[; ;conio.h: 14: extern char getch(void);
-[; ;conio.h: 15: extern char getche(void);
-[; ;conio.h: 16: extern void putch(char);
-[; ;conio.h: 17: extern void ungetch(char);
-[; ;conio.h: 19: extern __bit kbhit(void);
-[; ;conio.h: 23: extern char * cgets(char *);
-[; ;conio.h: 24: extern void cputs(const char *);
-[; ;stdio.h: 88: extern int cprintf(char *, ...);
-[; ;stdio.h: 93: extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-[; ;stdio.h: 183: extern char * gets(char *);
-[; ;stdio.h: 184: extern int puts(const char *);
-[; ;stdio.h: 185: extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-[; ;stdio.h: 186: extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-[; ;stdio.h: 187: extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-[; ;stdio.h: 188: extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-[; ;stdio.h: 189: extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-[; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-[; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
-[; ;stdio.h: 195: extern int printf(const char *, ...);
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -3121,192 +3099,776 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;States.h: 96: States_MenuType statePhaseAngle(void);
 [; ;States.h: 106: States_MenuType stateFrequency(void);
 [; ;States.h: 116: States_MenuType stateTemperature(void);
-"12 main.c
-[p x OSC=IRCIO ]
-"13
-[p x FCMEN=ON ]
-"14
-[p x IESO=ON ]
-"17
-[p x PWRTEN=OFF ]
-"18
-[p x BOREN=ON ]
-"22
-[p x WDTEN=OFF ]
-"23
-[p x WDPS=32768 ]
-"24
-[p x WINEN=OFF ]
-"27
-[p x PWMPIN=OFF ]
-"28
-[p x LPOL=HIGH ]
-"29
-[p x HPOL=HIGH ]
-"30
-[p x T1OSCMX=ON ]
-"33
-[p x MCLRE=OFF ]
-"36
-[p x STVREN=ON ]
-"37
-[p x LVP=OFF ]
-"40
-[p x CP0=OFF ]
-"41
-[p x CP1=OFF ]
-"44
-[p x CPB=OFF ]
-"45
-[p x CPD=OFF ]
-"48
-[p x WRT0=OFF ]
-"49
-[p x WRT1=OFF ]
-"52
-[p x WRTC=OFF ]
-"53
-[p x WRTB=OFF ]
-"54
-[p x WRTD=OFF ]
-"57
-[p x EBTR0=OFF ]
-"58
-[p x EBTR1=OFF ]
-"61
-[p x EBTRB=OFF ]
-"67
-[v _SPI_Config `CS286 ~T0 @X0 1 e ]
-[i _SPI_Config
-:U ..
-:U ..
-"69
-. `E3166 0
-"70
-. `E3170 0
-"72
-. `E3174 0
-..
-..
-]
-[; ;main.c: 67: const SPI_ConfigType SPI_Config =
-[; ;main.c: 68: {
-[; ;main.c: 69: SPI_LOW_POLARITY,
-[; ;main.c: 70: SPI_LOW_PHASE,
-[; ;main.c: 71: SPI_SERIAL_CLK4
-[; ;main.c: 72: };
-"76
-[v _StateProgram `CS288 ~T0 @X0 -> 8 `i e ]
-[i _StateProgram
-:U ..
-:U ..
-"78
-&U _stateMainMenu
-..
-:U ..
-"79
-&U _statePower1
-..
-:U ..
-"80
-&U _statePower2
-..
-:U ..
-"81
-&U _stateRmsVI
-..
-:U ..
-"82
-&U _statePowerFactor
-..
-:U ..
-"83
-&U _statePhaseAngle
-..
-:U ..
-"84
-&U _stateFrequency
-..
-:U ..
-"85
-&U _stateTemperature
-..
-..
-]
-[; ;main.c: 76: const StateType StateProgram[8] =
-[; ;main.c: 77: {
-[; ;main.c: 78: {stateMainMenu},
-[; ;main.c: 79: {statePower1},
-[; ;main.c: 80: {statePower2},
-[; ;main.c: 81: {stateRmsVI},
-[; ;main.c: 82: {statePowerFactor},
-[; ;main.c: 83: {statePhaseAngle},
-[; ;main.c: 84: {stateFrequency},
-[; ;main.c: 85: {stateTemperature}
-[; ;main.c: 86: };
-[v $root$_main `(v ~T0 @X0 0 e ]
-"88
-[v _main `(v ~T0 @X0 1 ef ]
-"89
+[; ;Phases.h: 10: typedef enum
+[; ;Phases.h: 11: {
+[; ;Phases.h: 12: INITIAL_LOAD,
+[; ;Phases.h: 13: GENERAL_VIEW,
+[; ;Phases.h: 14: VIEW_MENU
+[; ;Phases.h: 15: }PhaseStateMenu_Type;
+[; ;Phases.h: 17: typedef struct
+[; ;Phases.h: 18: {
+[; ;Phases.h: 19: PhaseStateMenu_Type phaseState;
+[; ;Phases.h: 20: States_MenuType stateMain;
+[; ;Phases.h: 21: }PhaseMainMenu_Type;
+[; ;Phases.h: 23: typedef PhaseMainMenu_Type(*fptrPhaseMainMenu)(PhaseMainMenu_Type);
+[; ;Phases.h: 25: typedef const struct PhaseMainMenu
+[; ;Phases.h: 26: {
+[; ;Phases.h: 27: PhaseMainMenu_Type(*PhaseMainMenu)(PhaseMainMenu_Type);
+[; ;Phases.h: 28: }PhasePtrMainMenu_Type;
+[; ;Phases.h: 36: typedef enum
+[; ;Phases.h: 37: {
+[; ;Phases.h: 38: TYPES_POWER1,
+[; ;Phases.h: 39: PHASES_POWER1,
+[; ;Phases.h: 40: VECTOR_POWER1,
+[; ;Phases.h: 41: EXIT_POWER1
+[; ;Phases.h: 42: }PhaseStatePower1_Type;
+[; ;Phases.h: 44: typedef struct
+[; ;Phases.h: 45: {
+[; ;Phases.h: 46: uint8_t dummy;
+[; ;Phases.h: 47: PhaseStatePower1_Type phaseState;
+[; ;Phases.h: 48: States_MenuType stateMain;
+[; ;Phases.h: 49: }PhasePower1_Type;
+[; ;Phases.h: 51: typedef PhasePower1_Type(*fptrPhasePower1)(PhasePower1_Type);
+[; ;Phases.h: 53: typedef const struct PhasePower1
+[; ;Phases.h: 54: {
+[; ;Phases.h: 55: PhasePower1_Type(*PhasePower1)(PhasePower1_Type);
+[; ;Phases.h: 56: }PhasePtrPower1_Type;
+[; ;Phases.h: 64: typedef enum
+[; ;Phases.h: 65: {
+[; ;Phases.h: 66: FH_POWER2,
+[; ;Phases.h: 67: PHASES_POWER2,
+[; ;Phases.h: 68: EXIT_POWER2
+[; ;Phases.h: 69: }PhaseStatePower2_Type;
+[; ;Phases.h: 71: typedef struct
+[; ;Phases.h: 72: {
+[; ;Phases.h: 73: uint8_t dummy;
+[; ;Phases.h: 74: PhaseStatePower2_Type phaseState;
+[; ;Phases.h: 75: States_MenuType stateMain;
+[; ;Phases.h: 76: }PhasePower2_Type;
+[; ;Phases.h: 78: typedef PhasePower2_Type(*fptrPhasePower2)(PhasePower2_Type);
+[; ;Phases.h: 80: typedef const struct PhasePower2
+[; ;Phases.h: 81: {
+[; ;Phases.h: 82: PhasePower2_Type(*PhasePower2)(PhasePower2_Type);
+[; ;Phases.h: 83: }PhasePtrPower2_Type;
+[; ;Phases.h: 91: typedef enum
+[; ;Phases.h: 92: {
+[; ;Phases.h: 93: PHASES_RMSVI,
+[; ;Phases.h: 94: NEUTRAL_RMSVI,
+[; ;Phases.h: 95: EXIT_RMSVI
+[; ;Phases.h: 96: }PhaseStateRmsVI_Type;
+[; ;Phases.h: 98: typedef struct
+[; ;Phases.h: 99: {
+[; ;Phases.h: 100: uint8_t dummy;
+[; ;Phases.h: 101: PhaseStateRmsVI_Type phaseState;
+[; ;Phases.h: 102: States_MenuType stateMain;
+[; ;Phases.h: 103: }PhaseRmsVI_Type;
+[; ;Phases.h: 105: typedef PhaseRmsVI_Type(*fptrPhaseRmsVI)(PhaseRmsVI_Type);
+[; ;Phases.h: 107: typedef const struct PhaseRmsVI
+[; ;Phases.h: 108: {
+[; ;Phases.h: 109: PhaseRmsVI_Type(*PhaseRmsVI)(PhaseRmsVI_Type);
+[; ;Phases.h: 110: }PhasePtrRmsVI_Type;
+[; ;Phases.h: 117: typedef enum
+[; ;Phases.h: 118: {
+[; ;Phases.h: 119: PHASES_PF,
+[; ;Phases.h: 120: EXIT_PF
+[; ;Phases.h: 121: }PhaseStatePowerFactor_Type;
+[; ;Phases.h: 123: typedef struct
+[; ;Phases.h: 124: {
+[; ;Phases.h: 125: PhaseStatePowerFactor_Type phaseState;
+[; ;Phases.h: 126: States_MenuType stateMain;
+[; ;Phases.h: 127: }PhasePowerFactor_Type;
+[; ;Phases.h: 129: typedef PhasePowerFactor_Type(*fptrPhasePowerFactor)(PhasePowerFactor_Type);
+[; ;Phases.h: 131: typedef const struct PhasePowerFactor
+[; ;Phases.h: 132: {
+[; ;Phases.h: 133: PhasePowerFactor_Type(*PhasePowerFactor)(PhasePowerFactor_Type);
+[; ;Phases.h: 134: }PhasePtrPowerFactor_Type;
+[; ;Phases.h: 141: typedef enum
+[; ;Phases.h: 142: {
+[; ;Phases.h: 143: PHASES_PA,
+[; ;Phases.h: 144: VI_PA,
+[; ;Phases.h: 145: EXIT_PA
+[; ;Phases.h: 146: }PhaseStatePhaseAngle_Type;
+[; ;Phases.h: 148: typedef struct
+[; ;Phases.h: 149: {
+[; ;Phases.h: 150: uint8_t dummy;
+[; ;Phases.h: 151: PhaseStatePhaseAngle_Type phaseState;
+[; ;Phases.h: 152: States_MenuType stateMain;
+[; ;Phases.h: 153: }PhasePhaseAngle_Type;
+[; ;Phases.h: 155: typedef PhasePhaseAngle_Type(*fptrPhasePhaseAngle)(PhasePhaseAngle_Type);
+[; ;Phases.h: 157: typedef const struct PhasePhaseAngle
+[; ;Phases.h: 158: {
+[; ;Phases.h: 159: PhasePhaseAngle_Type(*PhasePhaseAngle)(PhasePhaseAngle_Type);
+[; ;Phases.h: 160: }PhasePtrPhaseAngle_Type;
+[; ;Phases.h: 165: typedef enum
+[; ;Phases.h: 166: {
+[; ;Phases.h: 167: SHOW_FREQUENCY,
+[; ;Phases.h: 168: EXIT_FREQUENCY
+[; ;Phases.h: 169: }PhaseStateFrequency_Type;
+[; ;Phases.h: 171: typedef struct
+[; ;Phases.h: 172: {
+[; ;Phases.h: 173: uint8_t dummy;
+[; ;Phases.h: 174: PhaseStateFrequency_Type phaseState;
+[; ;Phases.h: 175: States_MenuType stateMain;
+[; ;Phases.h: 176: }PhaseFrequency_Type;
+[; ;Phases.h: 178: typedef PhaseFrequency_Type(*fptrPhaseFrequency)(PhaseFrequency_Type);
+[; ;Phases.h: 180: typedef const struct PhaseFrequency
+[; ;Phases.h: 181: {
+[; ;Phases.h: 182: PhaseFrequency_Type(*PhaseFrequency)(PhaseFrequency_Type);
+[; ;Phases.h: 183: }PhasePtrFrequency_Type;
+[; ;Phases.h: 189: typedef enum
+[; ;Phases.h: 190: {
+[; ;Phases.h: 191: SHOW_TEMPERATURE,
+[; ;Phases.h: 192: EXIT_TEMPERATURE
+[; ;Phases.h: 193: }PhaseStateTemperature_Type;
+[; ;Phases.h: 195: typedef struct
+[; ;Phases.h: 196: {
+[; ;Phases.h: 197: uint8_t dummy;
+[; ;Phases.h: 198: PhaseStateTemperature_Type phaseState;
+[; ;Phases.h: 199: States_MenuType stateMain;
+[; ;Phases.h: 200: }PhaseTemperature_Type;
+[; ;Phases.h: 202: typedef PhaseTemperature_Type(*fptrPhaseTemperature)(PhaseTemperature_Type);
+[; ;Phases.h: 204: typedef const struct PhaseTemperature
+[; ;Phases.h: 205: {
+[; ;Phases.h: 206: PhaseTemperature_Type(*PhaseTemperature)(PhaseTemperature_Type);
+[; ;Phases.h: 207: }PhasePtrTemperature_Type;
+[; ;Phases.h: 217: PhaseMainMenu_Type initialLoad(PhaseMainMenu_Type data);
+[; ;Phases.h: 227: PhaseMainMenu_Type generalView(PhaseMainMenu_Type data);
+[; ;Phases.h: 238: PhaseMainMenu_Type viewMenu(PhaseMainMenu_Type data);
+[; ;Phases.h: 249: PhasePower1_Type typesPower1(PhasePower1_Type data);
+[; ;Phases.h: 259: PhasePower1_Type phPower1(PhasePower1_Type data);
+[; ;Phases.h: 270: PhasePower1_Type vectorPower1(PhasePower1_Type data);
+[; ;Phases.h: 282: PhasePower1_Type exitPower1(PhasePower1_Type data);
+[; ;Phases.h: 293: PhasePower2_Type fhPower2(PhasePower2_Type data);
+[; ;Phases.h: 304: PhasePower2_Type phPower2(PhasePower2_Type data);
+[; ;Phases.h: 315: PhasePower2_Type exitPower2(PhasePower2_Type data);
+[; ;Phases.h: 326: PhaseRmsVI_Type phRmsVI(PhaseRmsVI_Type data);
+[; ;Phases.h: 337: PhaseRmsVI_Type neutralRmsVI(PhaseRmsVI_Type data);
+[; ;Phases.h: 348: PhaseRmsVI_Type exitRmsVI(PhaseRmsVI_Type data);
+[; ;Phases.h: 359: PhasePowerFactor_Type phPowerFactor(PhasePowerFactor_Type data);
+[; ;Phases.h: 370: PhasePowerFactor_Type exitPowerFactor(PhasePowerFactor_Type data);
+[; ;Phases.h: 381: PhasePhaseAngle_Type phPhaseAngle(PhasePhaseAngle_Type data);
+[; ;Phases.h: 392: PhasePhaseAngle_Type viPhaseAngle(PhasePhaseAngle_Type data);
+[; ;Phases.h: 403: PhasePhaseAngle_Type exitPhaseAngle(PhasePhaseAngle_Type data);
+[; ;Phases.h: 414: PhaseFrequency_Type showFrequency(PhaseFrequency_Type data);
+[; ;Phases.h: 425: PhaseFrequency_Type exitFrequency(PhaseFrequency_Type data);
+[; ;Phases.h: 436: PhaseTemperature_Type showTemperature(PhaseTemperature_Type data);
+[; ;Phases.h: 447: PhaseTemperature_Type exitTemperature(PhaseTemperature_Type data);
+"4 Phases.c
+[v _initialLoad `(S288 ~T0 @X0 1 ef1`S288 ]
+"5
 {
-[; ;main.c: 88: void main(void)
-[; ;main.c: 89: {
-[e :U _main ]
+[; ;Phases.c: 4: PhaseMainMenu_Type initialLoad(PhaseMainMenu_Type data)
+[; ;Phases.c: 5: {
+[e :U _initialLoad ]
+"4
+[v _data `S288 ~T0 @X0 1 r1 ]
+"5
 [f ]
-[; ;main.c: 100: SPI_init(&SPI_Config);
-"100
-[e ( _SPI_init (1 &U _SPI_Config ]
-[; ;main.c: 101: LCDNokia_init();
-"101
-[e ( _LCDNokia_init ..  ]
-[; ;main.c: 102: LCDNokia_clear();
-"102
+"7
+[v F3391 `S288 ~T0 @X0 1 s currentMainMenu1 ]
+[; ;Phases.c: 7: static PhaseMainMenu_Type currentMainMenu1;
+[; ;Phases.c: 10: LCDNokia_clear();
+"10
 [e ( _LCDNokia_clear ..  ]
-"108
-[v _test `uc ~T0 @X0 1 a ]
-[; ;main.c: 108: uint8_t test = 'A';
-[e = _test -> -> 65 `ui `uc ]
-[v F3282 `uc ~T0 @X0 -> 0 `x s ]
-[i F3282
-:U ..
--> 72 `c
--> 111 `c
--> 108 `c
--> 97 `c
--> 32 `c
--> 77 `c
--> 117 `c
--> 110 `c
--> 100 `c
--> 111 `c
--> 13 `c
--> 0 `c
-..
-]
+[; ;Phases.c: 13: currentMainMenu1.phaseState = GENERAL_VIEW;
+"13
+[e = . F3391 0 . `E3206 1 ]
+[; ;Phases.c: 14: currentMainMenu1.stateMain = data.stateMain;
+"14
+[e = . F3391 1 . _data 1 ]
+[; ;Phases.c: 16: return (currentMainMenu1);
+"16
+[e ) F3391 ]
+[e $UE 304  ]
+[; ;Phases.c: 17: }
+"17
+[e :UE 304 ]
+}
+"19
+[v _generalView `(S288 ~T0 @X0 1 ef1`S288 ]
+"20
+{
+[; ;Phases.c: 19: PhaseMainMenu_Type generalView(PhaseMainMenu_Type data)
+[; ;Phases.c: 20: {
+[e :U _generalView ]
+"19
+[v _data `S288 ~T0 @X0 1 r1 ]
+"20
+[f ]
+"22
+[v F3393 `S288 ~T0 @X0 1 s currentMainMenu2 ]
+[; ;Phases.c: 22: static PhaseMainMenu_Type currentMainMenu2;
+[; ;Phases.c: 25: currentMainMenu2.phaseState = VIEW_MENU;
+"25
+[e = . F3393 0 . `E3206 2 ]
+[; ;Phases.c: 26: currentMainMenu2.stateMain = data.stateMain;
+"26
+[e = . F3393 1 . _data 1 ]
+[; ;Phases.c: 28: return (currentMainMenu2);
+"28
+[e ) F3393 ]
+[e $UE 305  ]
+[; ;Phases.c: 29: }
+"29
+[e :UE 305 ]
+}
+"31
+[v _viewMenu `(S288 ~T0 @X0 1 ef1`S288 ]
+"32
+{
+[; ;Phases.c: 31: PhaseMainMenu_Type viewMenu(PhaseMainMenu_Type data)
+[; ;Phases.c: 32: {
+[e :U _viewMenu ]
+"31
+[v _data `S288 ~T0 @X0 1 r1 ]
+"32
+[f ]
+"34
+[v F3395 `S288 ~T0 @X0 1 s currentMainMenu3 ]
+[; ;Phases.c: 34: static PhaseMainMenu_Type currentMainMenu3;
+[; ;Phases.c: 37: currentMainMenu3.phaseState = data.phaseState;
+"37
+[e = . F3395 0 . _data 0 ]
+[; ;Phases.c: 38: currentMainMenu3.stateMain = data.stateMain;
+"38
+[e = . F3395 1 . _data 1 ]
+[; ;Phases.c: 40: return (currentMainMenu3);
+"40
+[e ) F3395 ]
+[e $UE 306  ]
+[; ;Phases.c: 41: }
+"41
+[e :UE 306 ]
+}
+"43
+[v _typesPower1 `(S290 ~T0 @X0 1 ef1`S290 ]
+"44
+{
+[; ;Phases.c: 43: PhasePower1_Type typesPower1(PhasePower1_Type data)
+[; ;Phases.c: 44: {
+[e :U _typesPower1 ]
+"43
+[v _data `S290 ~T0 @X0 1 r1 ]
+"44
+[f ]
+"46
+[v F3397 `S290 ~T0 @X0 1 s currentPower1_1 ]
+[; ;Phases.c: 46: static PhasePower1_Type currentPower1_1;
+[; ;Phases.c: 49: currentPower1_1.phaseState = PHASES_POWER1;
+"49
+[e = . F3397 1 . `E3223 1 ]
+[; ;Phases.c: 50: currentPower1_1.stateMain = data.stateMain;
+"50
+[e = . F3397 2 . _data 2 ]
+[; ;Phases.c: 52: return (currentPower1_1);
+"52
+[e ) F3397 ]
+[e $UE 307  ]
+[; ;Phases.c: 53: }
+"53
+[e :UE 307 ]
+}
+"55
+[v _phPower1 `(S290 ~T0 @X0 1 ef1`S290 ]
+"56
+{
+[; ;Phases.c: 55: PhasePower1_Type phPower1(PhasePower1_Type data)
+[; ;Phases.c: 56: {
+[e :U _phPower1 ]
+"55
+[v _data `S290 ~T0 @X0 1 r1 ]
+"56
+[f ]
+"58
+[v F3399 `S290 ~T0 @X0 1 s currentPower1_2 ]
+[; ;Phases.c: 58: static PhasePower1_Type currentPower1_2;
+[; ;Phases.c: 61: currentPower1_2.phaseState = VECTOR_POWER1;
+"61
+[e = . F3399 1 . `E3223 2 ]
+[; ;Phases.c: 62: currentPower1_2.stateMain = data.stateMain;
+"62
+[e = . F3399 2 . _data 2 ]
+[; ;Phases.c: 64: return (currentPower1_2);
+"64
+[e ) F3399 ]
+[e $UE 308  ]
+[; ;Phases.c: 65: }
+"65
+[e :UE 308 ]
+}
+"67
+[v _vectorPower1 `(S290 ~T0 @X0 1 ef1`S290 ]
+"68
+{
+[; ;Phases.c: 67: PhasePower1_Type vectorPower1(PhasePower1_Type data)
+[; ;Phases.c: 68: {
+[e :U _vectorPower1 ]
+"67
+[v _data `S290 ~T0 @X0 1 r1 ]
+"68
+[f ]
+"70
+[v F3401 `S290 ~T0 @X0 1 s currentPower1_3 ]
+[; ;Phases.c: 70: static PhasePower1_Type currentPower1_3;
+[; ;Phases.c: 73: currentPower1_3.phaseState = EXIT_POWER1;
+"73
+[e = . F3401 1 . `E3223 3 ]
+[; ;Phases.c: 74: currentPower1_3.stateMain = data.stateMain;
+"74
+[e = . F3401 2 . _data 2 ]
+[; ;Phases.c: 76: return (currentPower1_3);
+"76
+[e ) F3401 ]
+[e $UE 309  ]
+[; ;Phases.c: 77: }
+"77
+[e :UE 309 ]
+}
+"79
+[v _exitPower1 `(S290 ~T0 @X0 1 ef1`S290 ]
+"80
+{
+[; ;Phases.c: 79: PhasePower1_Type exitPower1(PhasePower1_Type data)
+[; ;Phases.c: 80: {
+[e :U _exitPower1 ]
+"79
+[v _data `S290 ~T0 @X0 1 r1 ]
+"80
+[f ]
+"82
+[v F3403 `S290 ~T0 @X0 1 s currentPower1_4 ]
+[; ;Phases.c: 82: static PhasePower1_Type currentPower1_4;
+[; ;Phases.c: 85: currentPower1_4.phaseState = data.phaseState;
+"85
+[e = . F3403 1 . _data 1 ]
+[; ;Phases.c: 86: currentPower1_4.stateMain = data.stateMain;
+"86
+[e = . F3403 2 . _data 2 ]
+[; ;Phases.c: 88: return (currentPower1_4);
+"88
+[e ) F3403 ]
+[e $UE 310  ]
+[; ;Phases.c: 89: }
+"89
+[e :UE 310 ]
+}
+"91
+[v _fhPower2 `(S292 ~T0 @X0 1 ef1`S292 ]
+"92
+{
+[; ;Phases.c: 91: PhasePower2_Type fhPower2(PhasePower2_Type data)
+[; ;Phases.c: 92: {
+[e :U _fhPower2 ]
+"91
+[v _data `S292 ~T0 @X0 1 r1 ]
+"92
+[f ]
+"94
+[v F3405 `S292 ~T0 @X0 1 s currentPower2_1 ]
+[; ;Phases.c: 94: static PhasePower2_Type currentPower2_1;
+[; ;Phases.c: 97: currentPower2_1.phaseState = PHASES_POWER2;
+"97
+[e = . F3405 1 . `E3242 1 ]
+[; ;Phases.c: 98: currentPower2_1.stateMain = data.stateMain;
+"98
+[e = . F3405 2 . _data 2 ]
+[; ;Phases.c: 100: return (currentPower2_1);
+"100
+[e ) F3405 ]
+[e $UE 311  ]
+[; ;Phases.c: 101: }
+"101
+[e :UE 311 ]
+}
+"103
+[v _phPower2 `(S292 ~T0 @X0 1 ef1`S292 ]
+"104
+{
+[; ;Phases.c: 103: PhasePower2_Type phPower2(PhasePower2_Type data)
+[; ;Phases.c: 104: {
+[e :U _phPower2 ]
+"103
+[v _data `S292 ~T0 @X0 1 r1 ]
+"104
+[f ]
+"106
+[v F3407 `S292 ~T0 @X0 1 s currentPower2_2 ]
+[; ;Phases.c: 106: static PhasePower2_Type currentPower2_2;
+[; ;Phases.c: 109: currentPower2_2.phaseState = EXIT_POWER2;
 "109
-[v _arrayTest `uc ~T0 @X0 12  a ]
-[; ;main.c: 109: uint8_t arrayTest[] = "Hola Mundo\r";
-[e = _arrayTest F3282 ]
-[; ;main.c: 110: for(;;)
+[e = . F3407 1 . `E3242 2 ]
+[; ;Phases.c: 110: currentPower2_2.stateMain = data.stateMain;
 "110
-{
-"111
-[e :U 290 ]
-[; ;main.c: 111: {
-{
-[; ;main.c: 113: LCDNokia_sendChar(test);
+[e = . F3407 2 . _data 2 ]
+[; ;Phases.c: 112: return (currentPower2_2);
+"112
+[e ) F3407 ]
+[e $UE 312  ]
+[; ;Phases.c: 113: }
 "113
-[e ( _LCDNokia_sendChar (1 _test ]
-[; ;main.c: 115: delay(6500);
+[e :UE 312 ]
+}
 "115
-[e ( _delay (1 -> -> -> 6500 `i `l `ul ]
+[v _exitPower2 `(S292 ~T0 @X0 1 ef1`S292 ]
+"116
+{
+[; ;Phases.c: 115: PhasePower2_Type exitPower2(PhasePower2_Type data)
+[; ;Phases.c: 116: {
+[e :U _exitPower2 ]
+"115
+[v _data `S292 ~T0 @X0 1 r1 ]
+"116
+[f ]
+"118
+[v F3409 `S292 ~T0 @X0 1 s currentPower2_3 ]
+[; ;Phases.c: 118: static PhasePower2_Type currentPower2_3;
+[; ;Phases.c: 121: currentPower2_3.phaseState = data.phaseState;
+"121
+[e = . F3409 1 . _data 1 ]
+[; ;Phases.c: 122: currentPower2_3.stateMain = data.stateMain;
 "122
+[e = . F3409 2 . _data 2 ]
+[; ;Phases.c: 124: return (currentPower2_3);
+"124
+[e ) F3409 ]
+[e $UE 313  ]
+[; ;Phases.c: 125: }
+"125
+[e :UE 313 ]
 }
-[; ;main.c: 122: }
-[e $U 290  ]
-[e :U 291 ]
+"127
+[v _phRmsVI `(S294 ~T0 @X0 1 ef1`S294 ]
+"128
+{
+[; ;Phases.c: 127: PhaseRmsVI_Type phRmsVI(PhaseRmsVI_Type data)
+[; ;Phases.c: 128: {
+[e :U _phRmsVI ]
+"127
+[v _data `S294 ~T0 @X0 1 r1 ]
+"128
+[f ]
+"130
+[v F3411 `S294 ~T0 @X0 1 s currentRms1 ]
+[; ;Phases.c: 130: static PhaseRmsVI_Type currentRms1;
+[; ;Phases.c: 133: currentRms1.phaseState = NEUTRAL_RMSVI;
+"133
+[e = . F3411 1 . `E3260 1 ]
+[; ;Phases.c: 134: currentRms1.stateMain = data.stateMain;
+"134
+[e = . F3411 2 . _data 2 ]
+[; ;Phases.c: 136: return (currentRms1);
+"136
+[e ) F3411 ]
+[e $UE 314  ]
+[; ;Phases.c: 137: }
+"137
+[e :UE 314 ]
 }
-[; ;main.c: 123: }
-"123
-[e :UE 289 ]
+"139
+[v _neutralRmsVI `(S294 ~T0 @X0 1 ef1`S294 ]
+"140
+{
+[; ;Phases.c: 139: PhaseRmsVI_Type neutralRmsVI(PhaseRmsVI_Type data)
+[; ;Phases.c: 140: {
+[e :U _neutralRmsVI ]
+"139
+[v _data `S294 ~T0 @X0 1 r1 ]
+"140
+[f ]
+"142
+[v F3413 `S294 ~T0 @X0 1 s currentRms2 ]
+[; ;Phases.c: 142: static PhaseRmsVI_Type currentRms2;
+[; ;Phases.c: 145: currentRms2.phaseState = EXIT_RMSVI;
+"145
+[e = . F3413 1 . `E3260 2 ]
+[; ;Phases.c: 146: currentRms2.stateMain = data.stateMain;
+"146
+[e = . F3413 2 . _data 2 ]
+[; ;Phases.c: 148: return (currentRms2);
+"148
+[e ) F3413 ]
+[e $UE 315  ]
+[; ;Phases.c: 149: }
+"149
+[e :UE 315 ]
+}
+"151
+[v _exitRmsVI `(S294 ~T0 @X0 1 ef1`S294 ]
+"152
+{
+[; ;Phases.c: 151: PhaseRmsVI_Type exitRmsVI(PhaseRmsVI_Type data)
+[; ;Phases.c: 152: {
+[e :U _exitRmsVI ]
+"151
+[v _data `S294 ~T0 @X0 1 r1 ]
+"152
+[f ]
+"154
+[v F3415 `S294 ~T0 @X0 1 s currentRms3 ]
+[; ;Phases.c: 154: static PhaseRmsVI_Type currentRms3;
+[; ;Phases.c: 157: currentRms3.phaseState = data.phaseState;
+"157
+[e = . F3415 1 . _data 1 ]
+[; ;Phases.c: 158: currentRms3.stateMain = data.stateMain;
+"158
+[e = . F3415 2 . _data 2 ]
+[; ;Phases.c: 160: return (currentRms3);
+"160
+[e ) F3415 ]
+[e $UE 316  ]
+[; ;Phases.c: 161: }
+"161
+[e :UE 316 ]
+}
+"163
+[v _phPowerFactor `(S296 ~T0 @X0 1 ef1`S296 ]
+"164
+{
+[; ;Phases.c: 163: PhasePowerFactor_Type phPowerFactor(PhasePowerFactor_Type data)
+[; ;Phases.c: 164: {
+[e :U _phPowerFactor ]
+"163
+[v _data `S296 ~T0 @X0 1 r1 ]
+"164
+[f ]
+"166
+[v F3417 `S296 ~T0 @X0 1 s currentPowerFactor1 ]
+[; ;Phases.c: 166: static PhasePowerFactor_Type currentPowerFactor1;
+[; ;Phases.c: 169: currentPowerFactor1.phaseState = EXIT_PF;
+"169
+[e = . F3417 0 . `E3278 1 ]
+[; ;Phases.c: 170: currentPowerFactor1.stateMain = data.stateMain;
+"170
+[e = . F3417 1 . _data 1 ]
+[; ;Phases.c: 172: return (currentPowerFactor1);
+"172
+[e ) F3417 ]
+[e $UE 317  ]
+[; ;Phases.c: 173: }
+"173
+[e :UE 317 ]
+}
+"175
+[v _exitPowerFactor `(S296 ~T0 @X0 1 ef1`S296 ]
+"176
+{
+[; ;Phases.c: 175: PhasePowerFactor_Type exitPowerFactor(PhasePowerFactor_Type data)
+[; ;Phases.c: 176: {
+[e :U _exitPowerFactor ]
+"175
+[v _data `S296 ~T0 @X0 1 r1 ]
+"176
+[f ]
+"178
+[v F3419 `S296 ~T0 @X0 1 s currentPowerFactor2 ]
+[; ;Phases.c: 178: static PhasePowerFactor_Type currentPowerFactor2;
+[; ;Phases.c: 181: currentPowerFactor2.phaseState = data.phaseState;
+"181
+[e = . F3419 0 . _data 0 ]
+[; ;Phases.c: 182: currentPowerFactor2.stateMain = data.stateMain;
+"182
+[e = . F3419 1 . _data 1 ]
+[; ;Phases.c: 184: return (currentPowerFactor2);
+"184
+[e ) F3419 ]
+[e $UE 318  ]
+[; ;Phases.c: 185: }
+"185
+[e :UE 318 ]
+}
+"187
+[v _phPhaseAngle `(S298 ~T0 @X0 1 ef1`S298 ]
+"188
+{
+[; ;Phases.c: 187: PhasePhaseAngle_Type phPhaseAngle(PhasePhaseAngle_Type data)
+[; ;Phases.c: 188: {
+[e :U _phPhaseAngle ]
+"187
+[v _data `S298 ~T0 @X0 1 r1 ]
+"188
+[f ]
+"190
+[v F3421 `S298 ~T0 @X0 1 s currentPhaseAngle1 ]
+[; ;Phases.c: 190: static PhasePhaseAngle_Type currentPhaseAngle1;
+[; ;Phases.c: 193: currentPhaseAngle1.phaseState = VI_PA;
+"193
+[e = . F3421 1 . `E3294 1 ]
+[; ;Phases.c: 194: currentPhaseAngle1.stateMain = data.stateMain;
+"194
+[e = . F3421 2 . _data 2 ]
+[; ;Phases.c: 196: return (currentPhaseAngle1);
+"196
+[e ) F3421 ]
+[e $UE 319  ]
+[; ;Phases.c: 197: }
+"197
+[e :UE 319 ]
+}
+"199
+[v _viPhaseAngle `(S298 ~T0 @X0 1 ef1`S298 ]
+"200
+{
+[; ;Phases.c: 199: PhasePhaseAngle_Type viPhaseAngle(PhasePhaseAngle_Type data)
+[; ;Phases.c: 200: {
+[e :U _viPhaseAngle ]
+"199
+[v _data `S298 ~T0 @X0 1 r1 ]
+"200
+[f ]
+"202
+[v F3423 `S298 ~T0 @X0 1 s currentPhaseAngle2 ]
+[; ;Phases.c: 202: static PhasePhaseAngle_Type currentPhaseAngle2;
+[; ;Phases.c: 205: currentPhaseAngle2.phaseState = EXIT_PA;
+"205
+[e = . F3423 1 . `E3294 2 ]
+[; ;Phases.c: 206: currentPhaseAngle2.stateMain = data.stateMain;
+"206
+[e = . F3423 2 . _data 2 ]
+[; ;Phases.c: 208: return (currentPhaseAngle2);
+"208
+[e ) F3423 ]
+[e $UE 320  ]
+[; ;Phases.c: 209: }
+"209
+[e :UE 320 ]
+}
+"211
+[v _exitPhaseAngle `(S298 ~T0 @X0 1 ef1`S298 ]
+"212
+{
+[; ;Phases.c: 211: PhasePhaseAngle_Type exitPhaseAngle(PhasePhaseAngle_Type data)
+[; ;Phases.c: 212: {
+[e :U _exitPhaseAngle ]
+"211
+[v _data `S298 ~T0 @X0 1 r1 ]
+"212
+[f ]
+"214
+[v F3425 `S298 ~T0 @X0 1 s currentPhaseAngle3 ]
+[; ;Phases.c: 214: static PhasePhaseAngle_Type currentPhaseAngle3;
+[; ;Phases.c: 217: currentPhaseAngle3.phaseState = data.phaseState;
+"217
+[e = . F3425 1 . _data 1 ]
+[; ;Phases.c: 218: currentPhaseAngle3.stateMain = data.stateMain;
+"218
+[e = . F3425 2 . _data 2 ]
+[; ;Phases.c: 220: return (currentPhaseAngle3);
+"220
+[e ) F3425 ]
+[e $UE 321  ]
+[; ;Phases.c: 221: }
+"221
+[e :UE 321 ]
+}
+"223
+[v _showFrequency `(S300 ~T0 @X0 1 ef1`S300 ]
+"224
+{
+[; ;Phases.c: 223: PhaseFrequency_Type showFrequency(PhaseFrequency_Type data)
+[; ;Phases.c: 224: {
+[e :U _showFrequency ]
+"223
+[v _data `S300 ~T0 @X0 1 r1 ]
+"224
+[f ]
+"226
+[v F3427 `S300 ~T0 @X0 1 s currentFrequency1 ]
+[; ;Phases.c: 226: static PhaseFrequency_Type currentFrequency1;
+[; ;Phases.c: 229: currentFrequency1.phaseState = EXIT_FREQUENCY;
+"229
+[e = . F3427 1 . `E3312 1 ]
+[; ;Phases.c: 230: currentFrequency1.stateMain = data.stateMain;
+"230
+[e = . F3427 2 . _data 2 ]
+[; ;Phases.c: 232: return (currentFrequency1);
+"232
+[e ) F3427 ]
+[e $UE 322  ]
+[; ;Phases.c: 233: }
+"233
+[e :UE 322 ]
+}
+"235
+[v _exitFrequency `(S300 ~T0 @X0 1 ef1`S300 ]
+"236
+{
+[; ;Phases.c: 235: PhaseFrequency_Type exitFrequency(PhaseFrequency_Type data)
+[; ;Phases.c: 236: {
+[e :U _exitFrequency ]
+"235
+[v _data `S300 ~T0 @X0 1 r1 ]
+"236
+[f ]
+"238
+[v F3429 `S300 ~T0 @X0 1 s currentFrequency2 ]
+[; ;Phases.c: 238: static PhaseFrequency_Type currentFrequency2;
+[; ;Phases.c: 241: currentFrequency2.phaseState = data.phaseState;
+"241
+[e = . F3429 1 . _data 1 ]
+[; ;Phases.c: 242: currentFrequency2.stateMain = data.stateMain;
+"242
+[e = . F3429 2 . _data 2 ]
+[; ;Phases.c: 244: return (currentFrequency2);
+"244
+[e ) F3429 ]
+[e $UE 323  ]
+[; ;Phases.c: 245: }
+"245
+[e :UE 323 ]
+}
+"247
+[v _showTemperature `(S302 ~T0 @X0 1 ef1`S302 ]
+"248
+{
+[; ;Phases.c: 247: PhaseTemperature_Type showTemperature(PhaseTemperature_Type data)
+[; ;Phases.c: 248: {
+[e :U _showTemperature ]
+"247
+[v _data `S302 ~T0 @X0 1 r1 ]
+"248
+[f ]
+"250
+[v F3431 `S302 ~T0 @X0 1 s currentTemperature1 ]
+[; ;Phases.c: 250: static PhaseTemperature_Type currentTemperature1;
+[; ;Phases.c: 253: currentTemperature1.phaseState = EXIT_TEMPERATURE;
+"253
+[e = . F3431 1 . `E3329 1 ]
+[; ;Phases.c: 254: currentTemperature1.stateMain = data.stateMain;
+"254
+[e = . F3431 2 . _data 2 ]
+[; ;Phases.c: 256: return (currentTemperature1);
+"256
+[e ) F3431 ]
+[e $UE 324  ]
+[; ;Phases.c: 257: }
+"257
+[e :UE 324 ]
+}
+"259
+[v _exitTemperature `(S302 ~T0 @X0 1 ef1`S302 ]
+"260
+{
+[; ;Phases.c: 259: PhaseTemperature_Type exitTemperature(PhaseTemperature_Type data)
+[; ;Phases.c: 260: {
+[e :U _exitTemperature ]
+"259
+[v _data `S302 ~T0 @X0 1 r1 ]
+"260
+[f ]
+"262
+[v F3433 `S302 ~T0 @X0 1 s currentTemperature2 ]
+[; ;Phases.c: 262: static PhaseTemperature_Type currentTemperature2;
+[; ;Phases.c: 265: currentTemperature2.phaseState = data.phaseState;
+"265
+[e = . F3433 1 . _data 1 ]
+[; ;Phases.c: 266: currentTemperature2.stateMain = data.stateMain;
+"266
+[e = . F3433 2 . _data 2 ]
+[; ;Phases.c: 268: return (currentTemperature2);
+"268
+[e ) F3433 ]
+[e $UE 325  ]
+[; ;Phases.c: 269: }
+"269
+[e :UE 325 ]
 }

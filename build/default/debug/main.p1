@@ -33,14 +33,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 "116
 [v _stateTemperature `(E3234 ~T0 @X0 0 ef ]
 [p mainexit ]
+"97 main.c
+[c E3123 0 1 2 3 4 5 6 7 .. ]
+[n E3123 . CLK_8MHZ CLK_4MHZ CLK_2MHZ CLK_1MHZ CLK_500KHZ CLK_250KHZ CLK_125KHZ CLK_31KHZ  ]
+"42 GPIO.h
+[v _GPIO_sourceClock `(v ~T0 @X0 0 ef1`E3123 ]
 "36 SPI.h
 [v _SPI_init `(v ~T0 @X0 0 ef1`*CS286 ]
 "24 LCDNokia5110.h
 [v _LCDNokia_init `(v ~T0 @X0 0 ef ]
 "31
 [v _LCDNokia_clear `(v ~T0 @X0 0 ef ]
-"39
-[v _LCDNokia_sendChar `(v ~T0 @X0 0 ef1`uc ]
+"41
+[v _LCDNokia_sendString `(v ~T0 @X0 0 ef1`*uc ]
 "59 GPIO.h
 [v _delay `(v ~T0 @X0 0 ef1`ul ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
@@ -3253,6 +3258,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 89: {
 [e :U _main ]
 [f ]
+[; ;main.c: 97: GPIO_sourceClock(CLK_8MHZ);
+"97
+[e ( _GPIO_sourceClock (1 . `E3123 0 ]
 [; ;main.c: 100: SPI_init(&SPI_Config);
 "100
 [e ( _SPI_init (1 &U _SPI_Config ]
@@ -3294,9 +3302,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 290 ]
 [; ;main.c: 111: {
 {
-[; ;main.c: 113: LCDNokia_sendChar(test);
-"113
-[e ( _LCDNokia_sendChar (1 _test ]
+[; ;main.c: 114: LCDNokia_sendString(arrayTest);
+"114
+[e ( _LCDNokia_sendString (1 &U _arrayTest ]
 [; ;main.c: 115: delay(6500);
 "115
 [e ( _delay (1 -> -> -> 6500 `i `l `ul ]

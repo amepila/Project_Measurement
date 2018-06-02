@@ -1,46 +1,75 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"67 main.c
-[c E3166 0 1 .. ]
-[n E3166 . SPI_LOW_POLARITY SPI_HIGH_POLARITY  ]
-[c E3170 0 1 .. ]
-[n E3170 . SPI_LOW_PHASE SPI_HIGH_PHASE  ]
-[c E3174 0 1 2 .. ]
-[n E3174 . SPI_SERIAL_CLK4 SPI_SERIAL_CLK16 SPI_SERIAL_CLK64  ]
-"30 SPI.h
-[s S286 `E3166 1 `E3170 1 `E3174 1 ]
-[n S286 . SPI_Polarity SPI_Phase SPI_Clk ]
-"76 main.c
-[c E3234 0 1 2 3 4 5 6 7 .. ]
-[n E3234 . MAIN_MENU POWER_1 POWER_2 RMS_VI POWER_FACTOR PHASE_ANGLE FREQUENCY TEMPERATURE  ]
-[v F3249 `(E3234 ~T0 @X0 0 tf ]
-"32 States.h
-[s S288 `*F3249 1 ]
-[n S288 State stateFunction ]
-"46
-[v _stateMainMenu `(E3234 ~T0 @X0 0 ef ]
-"56
-[v _statePower1 `(E3234 ~T0 @X0 0 ef ]
-"66
-[v _statePower2 `(E3234 ~T0 @X0 0 ef ]
-"76
-[v _stateRmsVI `(E3234 ~T0 @X0 0 ef ]
-"86
-[v _statePowerFactor `(E3234 ~T0 @X0 0 ef ]
-"96
-[v _statePhaseAngle `(E3234 ~T0 @X0 0 ef ]
-"106
-[v _stateFrequency `(E3234 ~T0 @X0 0 ef ]
-"116
-[v _stateTemperature `(E3234 ~T0 @X0 0 ef ]
-[p mainexit ]
-"36 SPI.h
-[v _SPI_init `(v ~T0 @X0 0 ef1`*CS286 ]
-"24 LCDNokia5110.h
-[v _LCDNokia_init `(v ~T0 @X0 0 ef ]
-"31
-[v _LCDNokia_clear `(v ~T0 @X0 0 ef ]
-"39
-[v _LCDNokia_sendChar `(v ~T0 @X0 0 ef1`uc ]
+"12 UART.c
+[c E3061 1200 2400 9600 .. ]
+[n E3061 . BD_1200 BD_2400 BD_9600  ]
+"13
+[c E3092 0 1 2 .. ]
+[n E3092 . GPIO_A GPIO_B GPIO_C  ]
+[c E3088 0 1 .. ]
+[n E3088 . GPIO_INPUT GPIO_OUTPUT  ]
+"44 GPIO.h
+[v _GPIO_dataDirectionPIN `(v ~T0 @X0 0 ef3`E3092`uc`E3088 ]
+"3913 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f2331.h
+[s S154 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S154 . TX9D TRMT BRGH SENDB SYNC TXEN TX9 CSRC ]
+"3923
+[s S155 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S155 . TX9D1 TRMT1 BRGH1 SENDB1 SYNC1 TXEN1 TX91 CSRC1 ]
+"3933
+[s S156 :6 `uc 1 :1 `uc 1 ]
+[n S156 . . TX8_9 ]
+"3937
+[s S157 :1 `uc 1 ]
+[n S157 . TXD8 ]
+"3912
+[u S153 `S154 1 `S155 1 `S156 1 `S157 1 ]
+[n S153 . . . . . ]
+"3941
+[v _TXSTAbits `VS153 ~T0 @X0 0 e@4012 ]
+"3703
+[s S140 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S140 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
+"3713
+[s S141 :3 `uc 1 :1 `uc 1 ]
+[n S141 . . ADEN ]
+"3717
+[s S142 :5 `uc 1 :1 `uc 1 ]
+[n S142 . . SRENA ]
+"3721
+[s S143 :6 `uc 1 :1 `uc 1 ]
+[n S143 . . RC8_9 ]
+"3725
+[s S144 :6 `uc 1 :1 `uc 1 ]
+[n S144 . . RC9 ]
+"3729
+[s S145 :1 `uc 1 ]
+[n S145 . RCD8 ]
+"3702
+[u S139 `S140 1 `S141 1 `S142 1 `S143 1 `S144 1 `S145 1 ]
+[n S139 . . . . . . . ]
+"3733
+[v _RCSTAbits `VS139 ~T0 @X0 0 e@4011 ]
+"3607
+[s S135 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S135 . ABDEN WUE . BRG16 TXCKP RXDTP RCIDL ABDOVF ]
+"3617
+[s S136 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S136 . . SCKP . RCMT ]
+"3623
+[s S137 :5 `uc 1 :1 `uc 1 ]
+[n S137 . . RXCKP ]
+"3627
+[s S138 :1 `uc 1 :1 `uc 1 ]
+[n S138 . . W4E ]
+"3606
+[u S134 `S135 1 `S136 1 `S137 1 `S138 1 ]
+[n S134 . . . . . ]
+"3632
+[v _BAUDCTLbits `VS134 ~T0 @X0 0 e@4010 ]
+"4182
+[v _SPBRG `Vuc ~T0 @X0 0 e@4015 ]
+"4158
+[v _TXREG `Vuc ~T0 @X0 0 e@4013 ]
 "59 GPIO.h
 [v _delay `(v ~T0 @X0 0 ef1`ul ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
@@ -2947,36 +2976,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 164: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 166: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
-[; ;__size_t.h: 4: typedef unsigned size_t;
-[; ;stdarg.h: 7: typedef void * va_list[1];
-[; ;stdarg.h: 10: extern void * __va_start(void);
-[; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
-[; ;stdio.h: 43: struct __prbuf
-[; ;stdio.h: 44: {
-[; ;stdio.h: 45: char * ptr;
-[; ;stdio.h: 46: void (* func)(char);
-[; ;stdio.h: 47: };
-[; ;errno.h: 29: extern int errno;
-[; ;conio.h: 12: extern void init_uart(void);
-[; ;conio.h: 14: extern char getch(void);
-[; ;conio.h: 15: extern char getche(void);
-[; ;conio.h: 16: extern void putch(char);
-[; ;conio.h: 17: extern void ungetch(char);
-[; ;conio.h: 19: extern __bit kbhit(void);
-[; ;conio.h: 23: extern char * cgets(char *);
-[; ;conio.h: 24: extern void cputs(const char *);
-[; ;stdio.h: 88: extern int cprintf(char *, ...);
-[; ;stdio.h: 93: extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-[; ;stdio.h: 183: extern char * gets(char *);
-[; ;stdio.h: 184: extern int puts(const char *);
-[; ;stdio.h: 185: extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-[; ;stdio.h: 186: extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-[; ;stdio.h: 187: extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-[; ;stdio.h: 188: extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-[; ;stdio.h: 189: extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-[; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-[; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
-[; ;stdio.h: 195: extern int printf(const char *, ...);
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -3005,6 +3004,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 205: typedef uint32_t uintmax_t;
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
+[; ;UART.h: 9: typedef enum
+[; ;UART.h: 10: {
+[; ;UART.h: 11: BD_1200 = 1200,
+[; ;UART.h: 12: BD_2400 = 2400,
+[; ;UART.h: 13: BD_9600 = 9600
+[; ;UART.h: 14: } UART_BaudRateType;
+[; ;UART.h: 16: void UART_init(UART_BaudRateType baudRate);
+[; ;UART.h: 18: void UART_putChar(uint8_t character);
+[; ;UART.h: 20: void UART_putString(int8_t* string);
+[; ;UART.h: 22: uint32_t expBASE10(uint8_t limit);
+[; ;UART.h: 24: uint32_t Convert_numberASCIItoDATA(uint8_t *string);
+[; ;UART.h: 26: uint8_t Convert_wordASCIItoDATA(uint8_t word);
 [; ;GPIO.h: 7: typedef enum
 [; ;GPIO.h: 8: {
 [; ;GPIO.h: 9: CLK_8MHZ,
@@ -3044,269 +3055,394 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;GPIO.h: 56: void GPIO_clearPIN
 [; ;GPIO.h: 57: (GPIO_portNameType portName, uint8_t pin);
 [; ;GPIO.h: 59: void delay(uint32_t delay);
-[; ;SPI.h: 7: typedef enum
-[; ;SPI.h: 8: {
-[; ;SPI.h: 9: SPI_LOW_POLARITY,
-[; ;SPI.h: 10: SPI_HIGH_POLARITY
-[; ;SPI.h: 11: } SPI_PolarityType;
-[; ;SPI.h: 14: typedef enum
-[; ;SPI.h: 15: {
-[; ;SPI.h: 16: SPI_LOW_PHASE,
-[; ;SPI.h: 17: SPI_HIGH_PHASE
-[; ;SPI.h: 18: } SPI_PhaseType;
-[; ;SPI.h: 20: typedef enum
-[; ;SPI.h: 21: {
-[; ;SPI.h: 22: SPI_SERIAL_CLK4,
-[; ;SPI.h: 23: SPI_SERIAL_CLK16,
-[; ;SPI.h: 24: SPI_SERIAL_CLK64
-[; ;SPI.h: 25: } SPI_SerialClk;
-[; ;SPI.h: 29: typedef struct
-[; ;SPI.h: 30: {
-[; ;SPI.h: 31: SPI_PolarityType SPI_Polarity;
-[; ;SPI.h: 32: SPI_PhaseType SPI_Phase;
-[; ;SPI.h: 33: SPI_SerialClk SPI_Clk;
-[; ;SPI.h: 34: } SPI_ConfigType;
-[; ;SPI.h: 36: void SPI_init(const SPI_ConfigType* SPI_Config);
-[; ;SPI.h: 38: int8_t SPI_write(uint8_t data);
-[; ;SPI.h: 40: uint8_t SPI_read(void);
-[; ;UART.h: 9: typedef enum
-[; ;UART.h: 10: {
-[; ;UART.h: 11: BD_1200 = 1200,
-[; ;UART.h: 12: BD_2400 = 2400,
-[; ;UART.h: 13: BD_9600 = 9600
-[; ;UART.h: 14: } UART_BaudRateType;
-[; ;UART.h: 16: void UART_init(UART_BaudRateType baudRate);
-[; ;UART.h: 18: void UART_putChar(uint8_t character);
-[; ;UART.h: 20: void UART_putString(int8_t* string);
-[; ;UART.h: 22: uint32_t expBASE10(uint8_t limit);
-[; ;UART.h: 24: uint32_t Convert_numberASCIItoDATA(uint8_t *string);
-[; ;UART.h: 26: uint8_t Convert_wordASCIItoDATA(uint8_t word);
-[; ;LCDNokia5110.h: 17: typedef struct
-[; ;LCDNokia5110.h: 18: {
-[; ;LCDNokia5110.h: 19: uint8_t numberDigits;
-[; ;LCDNokia5110.h: 20: uint8_t realDigit[7];
-[; ;LCDNokia5110.h: 21: }formatASCII;
-[; ;LCDNokia5110.h: 24: void LCDNokia_init(void);
-[; ;LCDNokia5110.h: 29: void LCDNokia_writeByte(uint8_t, uint8_t);
-[; ;LCDNokia5110.h: 31: void LCDNokia_clear(void);
-[; ;LCDNokia5110.h: 35: void LCDNokia_gotoXY(uint8_t x, uint8_t y);
-[; ;LCDNokia5110.h: 37: void LCDNokia_bitmap(const uint8_t*);
-[; ;LCDNokia5110.h: 39: void LCDNokia_sendChar(uint8_t);
-[; ;LCDNokia5110.h: 41: void LCDNokia_sendString(uint8_t*);
-[; ;LCDNokia5110.h: 43: void LCD_delay(void);
-[; ;LCDNokia5110.h: 46: void LCDNokia_printValue(uint32_t value);
-[; ;LCDNokia5110.h: 48: void LCDNokia_printFloatValue(float value);
-[; ;Buttons.h: 6: void ButtonInt_config();
-[; ;States.h: 16: typedef enum
-[; ;States.h: 17: {
-[; ;States.h: 18: MAIN_MENU,
-[; ;States.h: 19: POWER_1,
-[; ;States.h: 20: POWER_2,
-[; ;States.h: 21: RMS_VI,
-[; ;States.h: 22: POWER_FACTOR,
-[; ;States.h: 23: PHASE_ANGLE,
-[; ;States.h: 24: FREQUENCY,
-[; ;States.h: 25: TEMPERATURE
-[; ;States.h: 26: }States_MenuType;
-[; ;States.h: 29: typedef States_MenuType(*fptrState)(void);
-[; ;States.h: 32: typedef const struct State
-[; ;States.h: 33: {
-[; ;States.h: 34: States_MenuType (*stateFunction)(void);
-[; ;States.h: 35: }StateType;
-[; ;States.h: 46: States_MenuType stateMainMenu(void);
-[; ;States.h: 56: States_MenuType statePower1(void);
-[; ;States.h: 66: States_MenuType statePower2(void);
-[; ;States.h: 76: States_MenuType stateRmsVI(void);
-[; ;States.h: 86: States_MenuType statePowerFactor(void);
-[; ;States.h: 96: States_MenuType statePhaseAngle(void);
-[; ;States.h: 106: States_MenuType stateFrequency(void);
-[; ;States.h: 116: States_MenuType stateTemperature(void);
-"12 main.c
-[p x OSC=IRCIO ]
-"13
-[p x FCMEN=ON ]
-"14
-[p x IESO=ON ]
-"17
-[p x PWRTEN=OFF ]
-"18
-[p x BOREN=ON ]
-"22
-[p x WDTEN=OFF ]
-"23
-[p x WDPS=32768 ]
-"24
-[p x WINEN=OFF ]
-"27
-[p x PWMPIN=OFF ]
-"28
-[p x LPOL=HIGH ]
-"29
-[p x HPOL=HIGH ]
-"30
-[p x T1OSCMX=ON ]
-"33
-[p x MCLRE=OFF ]
-"36
-[p x STVREN=ON ]
-"37
-[p x LVP=OFF ]
-"40
-[p x CP0=OFF ]
-"41
-[p x CP1=OFF ]
-"44
-[p x CPB=OFF ]
-"45
-[p x CPD=OFF ]
-"48
-[p x WRT0=OFF ]
-"49
-[p x WRT1=OFF ]
-"52
-[p x WRTC=OFF ]
-"53
-[p x WRTB=OFF ]
-"54
-[p x WRTD=OFF ]
-"57
-[p x EBTR0=OFF ]
-"58
-[p x EBTR1=OFF ]
-"61
-[p x EBTRB=OFF ]
-"67
-[v _SPI_Config `CS286 ~T0 @X0 1 e ]
-[i _SPI_Config
-:U ..
-:U ..
-"69
-. `E3166 0
-"70
-. `E3170 0
-"72
-. `E3174 0
-..
-..
-]
-[; ;main.c: 67: const SPI_ConfigType SPI_Config =
-[; ;main.c: 68: {
-[; ;main.c: 69: SPI_LOW_POLARITY,
-[; ;main.c: 70: SPI_LOW_PHASE,
-[; ;main.c: 71: SPI_SERIAL_CLK4
-[; ;main.c: 72: };
-"76
-[v _StateProgram `CS288 ~T0 @X0 -> 8 `i e ]
-[i _StateProgram
-:U ..
-:U ..
-"78
-&U _stateMainMenu
-..
-:U ..
-"79
-&U _statePower1
-..
-:U ..
-"80
-&U _statePower2
-..
-:U ..
-"81
-&U _stateRmsVI
-..
-:U ..
-"82
-&U _statePowerFactor
-..
-:U ..
-"83
-&U _statePhaseAngle
-..
-:U ..
-"84
-&U _stateFrequency
-..
-:U ..
-"85
-&U _stateTemperature
-..
-..
-]
-[; ;main.c: 76: const StateType StateProgram[8] =
-[; ;main.c: 77: {
-[; ;main.c: 78: {stateMainMenu},
-[; ;main.c: 79: {statePower1},
-[; ;main.c: 80: {statePower2},
-[; ;main.c: 81: {stateRmsVI},
-[; ;main.c: 82: {statePowerFactor},
-[; ;main.c: 83: {statePhaseAngle},
-[; ;main.c: 84: {stateFrequency},
-[; ;main.c: 85: {stateTemperature}
-[; ;main.c: 86: };
-[v $root$_main `(v ~T0 @X0 0 e ]
-"88
-[v _main `(v ~T0 @X0 1 ef ]
-"89
+"11 UART.c
+[v _UART_init `(v ~T0 @X0 1 ef1`E3061 ]
+"12
 {
-[; ;main.c: 88: void main(void)
-[; ;main.c: 89: {
-[e :U _main ]
+[; ;UART.c: 11: void UART_init(UART_BaudRateType baudRate)
+[; ;UART.c: 12: {
+[e :U _UART_init ]
+"11
+[v _baudRate `E3061 ~T0 @X0 1 r1 ]
+"12
 [f ]
-[; ;main.c: 100: SPI_init(&SPI_Config);
-"100
-[e ( _SPI_init (1 &U _SPI_Config ]
-[; ;main.c: 101: LCDNokia_init();
-"101
-[e ( _LCDNokia_init ..  ]
-[; ;main.c: 102: LCDNokia_clear();
-"102
-[e ( _LCDNokia_clear ..  ]
-"108
-[v _test `uc ~T0 @X0 1 a ]
-[; ;main.c: 108: uint8_t test = 'A';
-[e = _test -> -> 65 `ui `uc ]
-[v F3282 `uc ~T0 @X0 -> 0 `x s ]
-[i F3282
-:U ..
--> 72 `c
--> 111 `c
--> 108 `c
--> 97 `c
--> 32 `c
--> 77 `c
--> 117 `c
--> 110 `c
--> 100 `c
--> 111 `c
--> 13 `c
--> 0 `c
-..
-]
-"109
-[v _arrayTest `uc ~T0 @X0 12  a ]
-[; ;main.c: 109: uint8_t arrayTest[] = "Hola Mundo\r";
-[e = _arrayTest F3282 ]
-[; ;main.c: 110: for(;;)
-"110
+[; ;UART.c: 13: GPIO_dataDirectionPIN(GPIO_C, 6, GPIO_OUTPUT);
+"13
+[e ( _GPIO_dataDirectionPIN (3 , , . `E3092 2 -> -> 6 `i `uc . `E3088 1 ]
+[; ;UART.c: 14: GPIO_dataDirectionPIN(GPIO_C, 7, GPIO_INPUT);
+"14
+[e ( _GPIO_dataDirectionPIN (3 , , . `E3092 2 -> -> 7 `i `uc . `E3088 0 ]
+[; ;UART.c: 17: TXSTAbits.SYNC = 0;
+"17
+[e = . . _TXSTAbits 0 4 -> -> 0 `i `uc ]
+[; ;UART.c: 19: TXSTAbits.TX9 = 0;
+"19
+[e = . . _TXSTAbits 0 6 -> -> 0 `i `uc ]
+[; ;UART.c: 21: TXSTAbits.TXEN = 1;
+"21
+[e = . . _TXSTAbits 0 5 -> -> 1 `i `uc ]
+[; ;UART.c: 24: RCSTAbits.RX9 = 0;
+"24
+[e = . . _RCSTAbits 0 6 -> -> 0 `i `uc ]
+[; ;UART.c: 26: RCSTAbits.CREN = 1;
+"26
+[e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
+[; ;UART.c: 28: RCSTAbits.SPEN = 1;
+"28
+[e = . . _RCSTAbits 0 7 -> -> 1 `i `uc ]
+[; ;UART.c: 31: BAUDCTLbits.BRG16 = 0;
+"31
+[e = . . _BAUDCTLbits 0 3 -> -> 0 `i `uc ]
+[; ;UART.c: 33: TXSTAbits.BRGH = 0;
+"33
+[e = . . _TXSTAbits 0 2 -> -> 0 `i `uc ]
+[; ;UART.c: 35: switch(baudRate)
+"35
+[e $U 287  ]
+[; ;UART.c: 36: {
+"36
 {
-"111
+[; ;UART.c: 37: case BD_1200:
+"37
+[e :U 288 ]
+[; ;UART.c: 38: SPBRG = (103);
+"38
+[e = _SPBRG -> -> 103 `i `uc ]
+[; ;UART.c: 39: break;
+"39
+[e $U 286  ]
+[; ;UART.c: 40: case BD_2400:
+"40
+[e :U 289 ]
+[; ;UART.c: 41: SPBRG = (51);
+"41
+[e = _SPBRG -> -> 51 `i `uc ]
+[; ;UART.c: 42: break;
+"42
+[e $U 286  ]
+[; ;UART.c: 43: case BD_9600:
+"43
 [e :U 290 ]
-[; ;main.c: 111: {
-{
-[; ;main.c: 113: LCDNokia_sendChar(test);
-"113
-[e ( _LCDNokia_sendChar (1 _test ]
-[; ;main.c: 115: delay(6500);
-"115
-[e ( _delay (1 -> -> -> 6500 `i `l `ul ]
-"122
-}
-[; ;main.c: 122: }
-[e $U 290  ]
+[; ;UART.c: 44: SPBRG = (12);
+"44
+[e = _SPBRG -> -> 12 `i `uc ]
+[; ;UART.c: 45: break;
+"45
+[e $U 286  ]
+[; ;UART.c: 46: default:
+"46
 [e :U 291 ]
+[; ;UART.c: 47: break;
+"47
+[e $U 286  ]
+"48
 }
-[; ;main.c: 123: }
+[; ;UART.c: 48: }
+[e $U 286  ]
+"35
+[e :U 287 ]
+[e [\ _baudRate , $ . `E3061 0 288
+ , $ . `E3061 1 289
+ , $ . `E3061 2 290
+ 291 ]
+"48
+[e :U 286 ]
+[; ;UART.c: 49: }
+"49
+[e :UE 285 ]
+}
+"51
+[v _UART_putChar `(v ~T0 @X0 1 ef1`uc ]
+"52
+{
+[; ;UART.c: 51: void UART_putChar(uint8_t character)
+[; ;UART.c: 52: {
+[e :U _UART_putChar ]
+"51
+[v _character `uc ~T0 @X0 1 r1 ]
+"52
+[f ]
+[; ;UART.c: 53: while(0 == TXSTAbits.TRMT);
+"53
+[e $U 293  ]
+[e :U 294 ]
+[e :U 293 ]
+[e $ == -> 0 `i -> . . _TXSTAbits 0 1 `i 294  ]
+[e :U 295 ]
+[; ;UART.c: 54: TXREG = character;
+"54
+[e = _TXREG _character ]
+[; ;UART.c: 55: delay((6500));
+"55
+[e ( _delay (1 -> -> -> 6500 `i `l `ul ]
+[; ;UART.c: 56: }
+"56
+[e :UE 292 ]
+}
+"58
+[v _UART_putString `(v ~T0 @X0 1 ef1`*c ]
+"59
+{
+[; ;UART.c: 58: void UART_putString(int8_t* string)
+[; ;UART.c: 59: {
+[e :U _UART_putString ]
+"58
+[v _string `*c ~T0 @X0 1 r1 ]
+"59
+[f ]
+"60
+[v _counter `uc ~T0 @X0 1 a ]
+[; ;UART.c: 60: uint8_t counter = 0;
+[e = _counter -> -> 0 `i `uc ]
+[; ;UART.c: 61: while(0 == TXSTAbits.TRMT);
+"61
+[e $U 297  ]
+[e :U 298 ]
+[e :U 297 ]
+[e $ == -> 0 `i -> . . _TXSTAbits 0 1 `i 298  ]
+[e :U 299 ]
+[; ;UART.c: 63: while(string[counter] != '\0')
+"63
+[e $U 300  ]
+[e :U 301 ]
+[; ;UART.c: 64: {
+"64
+{
+[; ;UART.c: 65: TXREG = string[counter];
+"65
+[e = _TXREG -> *U + _string * -> _counter `ux -> -> # *U _string `ui `ux `uc ]
+[; ;UART.c: 66: delay((6500));
+"66
+[e ( _delay (1 -> -> -> 6500 `i `l `ul ]
+"67
+}
+[e :U 300 ]
+"63
+[e $ != -> -> *U + _string * -> _counter `ux -> -> # *U _string `ui `ux `i `ui -> 0 `ui 301  ]
+[e :U 302 ]
+[; ;UART.c: 67: }
+[; ;UART.c: 68: }
+"68
+[e :UE 296 ]
+}
+"70
+[v _expBASE10 `(ul ~T0 @X0 1 ef1`uc ]
+"71
+{
+[; ;UART.c: 70: uint32_t expBASE10(uint8_t limit)
+[; ;UART.c: 71: {
+[e :U _expBASE10 ]
+"70
+[v _limit `uc ~T0 @X0 1 r1 ]
+"71
+[f ]
+"73
+[v F3126 `ul ~T0 @X0 1 s value ]
+[; ;UART.c: 73: static uint32_t value;
+[; ;UART.c: 75: if(0 == limit)
+"75
+[e $ ! == -> 0 `i -> _limit `i 304  ]
+[; ;UART.c: 76: {
+"76
+{
+[; ;UART.c: 77: value = 1;
+"77
+[e = F3126 -> -> -> 1 `i `l `ul ]
+"78
+}
+[e :U 304 ]
+[; ;UART.c: 78: }
+[; ;UART.c: 79: if(1 == limit)
+"79
+[e $ ! == -> 1 `i -> _limit `i 305  ]
+[; ;UART.c: 80: {
+"80
+{
+[; ;UART.c: 81: value = 10;
+"81
+[e = F3126 -> -> -> 10 `i `l `ul ]
+"82
+}
+[e :U 305 ]
+[; ;UART.c: 82: }
+[; ;UART.c: 83: if(limit > 1)
+"83
+[e $ ! > -> _limit `i -> 1 `i 306  ]
+[; ;UART.c: 84: {
+"84
+{
+[; ;UART.c: 85: value *= 10;
+"85
+[e =* F3126 -> -> -> 10 `i `l `ul ]
+"86
+}
+[e :U 306 ]
+[; ;UART.c: 86: }
+[; ;UART.c: 88: return value;
+"88
+[e ) F3126 ]
+[e $UE 303  ]
+[; ;UART.c: 89: }
+"89
+[e :UE 303 ]
+}
+"90
+[v _Convert_numberASCIItoDATA `(ul ~T0 @X0 1 ef1`*uc ]
+"91
+{
+[; ;UART.c: 90: uint32_t Convert_numberASCIItoDATA(uint8_t *string)
+[; ;UART.c: 91: {
+[e :U _Convert_numberASCIItoDATA ]
+"90
+[v _string `*uc ~T0 @X0 1 r1 ]
+"91
+[f ]
+"92
+[v _adjustASCII `Cul ~T0 @X0 1 a ]
+[; ;UART.c: 92: const uint32_t adjustASCII = 48;
+[e = _adjustASCII -> -> -> 48 `i `l `ul ]
+"93
+[v _CR `Cul ~T0 @X0 1 a ]
+[; ;UART.c: 93: const uint32_t CR = 13;
+[e = _CR -> -> -> 13 `i `l `ul ]
+"94
+[v _counter1 `ul ~T0 @X0 1 a ]
+[; ;UART.c: 94: uint32_t counter1 = 0;
+[e = _counter1 -> -> -> 0 `i `l `ul ]
+"95
+[v _counter2 `ul ~T0 @X0 1 a ]
+[; ;UART.c: 95: uint32_t counter2 = 0;
+[e = _counter2 -> -> -> 0 `i `l `ul ]
+"96
+[v _counter3 `ul ~T0 @X0 1 a ]
+[; ;UART.c: 96: uint32_t counter3 = 0;
+[e = _counter3 -> -> -> 0 `i `l `ul ]
+"97
+[v _data `ul ~T0 @X0 1 a ]
+"98
+[v _tmpData1 `ul ~T0 @X0 1 a ]
+[; ;UART.c: 97: uint32_t data;
+[; ;UART.c: 98: uint32_t tmpData1 = 0;
+[e = _tmpData1 -> -> -> 0 `i `l `ul ]
+"99
+[v _tmpData2 `ul ~T0 @X0 1 a ]
+[; ;UART.c: 99: uint32_t tmpData2 = 0;
+[e = _tmpData2 -> -> -> 0 `i `l `ul ]
+"100
+[v _expValue `ul ~T0 @X0 1 a ]
+[; ;UART.c: 100: uint32_t expValue;
+[; ;UART.c: 103: while(string[counter1] != CR){
+"103
+[e $U 308  ]
+[e :U 309 ]
+{
+[; ;UART.c: 104: counter1++;
+"104
+[e ++ _counter1 -> -> -> 1 `i `l `ul ]
+"105
+}
+[e :U 308 ]
+"103
+[e $ != -> *U + _string * -> _counter1 `ux -> -> # *U _string `ui `ux `ul _CR 309  ]
+[e :U 310 ]
+[; ;UART.c: 105: }
+[; ;UART.c: 108: for(counter2 = counter1; counter2 != 0; counter2--)
+"108
+{
+[e = _counter2 _counter1 ]
+[e $ != _counter2 -> -> -> 0 `i `l `ul 311  ]
+[e $U 312  ]
+"109
+[e :U 311 ]
+[; ;UART.c: 109: {
+{
+[; ;UART.c: 111: expValue = expBASE10(counter3);
+"111
+[e = _expValue ( _expBASE10 (1 -> _counter3 `uc ]
+[; ;UART.c: 114: if(counter3 == 0)
+"114
+[e $ ! == _counter3 -> -> -> 0 `i `l `ul 314  ]
+[; ;UART.c: 115: {
+"115
+{
+[; ;UART.c: 116: tmpData2 = string[counter2 - 1];
+"116
+[e = _tmpData2 -> *U + _string * -> - _counter2 -> -> -> 1 `i `l `ul `ux -> -> # *U _string `ui `ux `ul ]
+[; ;UART.c: 117: tmpData2 -= adjustASCII;
+"117
+[e =- _tmpData2 _adjustASCII ]
+[; ;UART.c: 118: tmpData1 += tmpData2;
+"118
+[e =+ _tmpData1 _tmpData2 ]
+"119
+}
+[e :U 314 ]
+[; ;UART.c: 119: }
+[; ;UART.c: 121: if(counter3 > 0)
+"121
+[e $ ! > _counter3 -> -> -> 0 `i `l `ul 315  ]
+[; ;UART.c: 122: {
+"122
+{
+[; ;UART.c: 123: tmpData2 = string[counter2 - 1];
 "123
-[e :UE 289 ]
+[e = _tmpData2 -> *U + _string * -> - _counter2 -> -> -> 1 `i `l `ul `ux -> -> # *U _string `ui `ux `ul ]
+[; ;UART.c: 124: tmpData2 -= adjustASCII;
+"124
+[e =- _tmpData2 _adjustASCII ]
+[; ;UART.c: 125: tmpData2 *= expValue;
+"125
+[e =* _tmpData2 _expValue ]
+[; ;UART.c: 126: tmpData1 += tmpData2;
+"126
+[e =+ _tmpData1 _tmpData2 ]
+"127
+}
+[e :U 315 ]
+[; ;UART.c: 127: }
+[; ;UART.c: 128: counter3++;
+"128
+[e ++ _counter3 -> -> -> 1 `i `l `ul ]
+"129
+}
+"108
+[e -- _counter2 -> -> -> 1 `i `l `ul ]
+[e $ != _counter2 -> -> -> 0 `i `l `ul 311  ]
+[e :U 312 ]
+"129
+}
+[; ;UART.c: 129: }
+[; ;UART.c: 131: data = tmpData1;
+"131
+[e = _data _tmpData1 ]
+[; ;UART.c: 132: return (data);
+"132
+[e ) _data ]
+[e $UE 307  ]
+[; ;UART.c: 133: }
+"133
+[e :UE 307 ]
+}
+"135
+[v _Convert_wordASCIItoDATA `(uc ~T0 @X0 1 ef1`uc ]
+"136
+{
+[; ;UART.c: 135: uint8_t Convert_wordASCIItoDATA(uint8_t word)
+[; ;UART.c: 136: {
+[e :U _Convert_wordASCIItoDATA ]
+"135
+[v _word `uc ~T0 @X0 1 r1 ]
+"136
+[f ]
+"138
+[v _valueWord `uc ~T0 @X0 1 a ]
+[; ;UART.c: 138: uint8_t valueWord = (uint8_t)word;
+[e = _valueWord _word ]
+[; ;UART.c: 139: return (valueWord);
+"139
+[e ) _valueWord ]
+[e $UE 316  ]
+[; ;UART.c: 140: }
+"140
+[e :UE 316 ]
 }

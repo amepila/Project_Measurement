@@ -1,0 +1,1501 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"109 LCDNokia5110.c
+[c E43 0 1 2 .. ]
+[n E43 . GPIO_A GPIO_B GPIO_C  ]
+[c E39 0 1 .. ]
+[n E39 . GPIO_INPUT GPIO_OUTPUT  ]
+"44 GPIO.h
+[v _GPIO_dataDirectionPIN `(v ~T0 @X0 0 ef3`E43`uc`E39 ]
+"56
+[v _GPIO_clearPIN `(v ~T0 @X0 0 ef2`E43`uc ]
+"43 LCDNokia5110.h
+[v _LCD_delay `(v ~T0 @X0 0 ef ]
+"53 GPIO.h
+[v _GPIO_setPIN `(v ~T0 @X0 0 ef2`E43`uc ]
+"29 LCDNokia5110.h
+[v _LCDNokia_writeByte `(v ~T0 @X0 0 ef2`uc`uc ]
+"38 SPI.h
+[v _SPI_write `(c ~T0 @X0 0 ef1`uc ]
+"35 LCDNokia5110.h
+[v _LCDNokia_gotoXY `(v ~T0 @X0 0 ef2`uc`uc ]
+"18
+[s S2 `uc 1 `uc -> 7 `i ]
+[n S2 . numberDigits realDigit ]
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 28: typedef signed short long int int24_t;
+[; ;stdint.h: 36: typedef signed long int int32_t;
+[; ;stdint.h: 43: typedef unsigned char uint8_t;
+[; ;stdint.h: 49: typedef unsigned int uint16_t;
+[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
+[; ;stdint.h: 63: typedef unsigned long int uint32_t;
+[; ;stdint.h: 71: typedef signed char int_least8_t;
+[; ;stdint.h: 78: typedef signed int int_least16_t;
+[; ;stdint.h: 90: typedef signed short long int int_least24_t;
+[; ;stdint.h: 98: typedef signed long int int_least32_t;
+[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
+[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 137: typedef signed char int_fast8_t;
+[; ;stdint.h: 144: typedef signed int int_fast16_t;
+[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
+[; ;stdint.h: 164: typedef signed long int int_fast32_t;
+[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
+[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 200: typedef int32_t intmax_t;
+[; ;stdint.h: 205: typedef uint32_t uintmax_t;
+[; ;stdint.h: 210: typedef int16_t intptr_t;
+[; ;stdint.h: 215: typedef uint16_t uintptr_t;
+[; ;GPIO.h: 7: typedef enum
+[; ;GPIO.h: 8: {
+[; ;GPIO.h: 9: CLK_8MHZ,
+[; ;GPIO.h: 10: CLK_4MHZ,
+[; ;GPIO.h: 11: CLK_2MHZ,
+[; ;GPIO.h: 12: CLK_1MHZ,
+[; ;GPIO.h: 13: CLK_500KHZ,
+[; ;GPIO.h: 14: CLK_250KHZ,
+[; ;GPIO.h: 15: CLK_125KHZ,
+[; ;GPIO.h: 16: CLK_31KHZ
+[; ;GPIO.h: 17: } GPIO_SourceClk;
+[; ;GPIO.h: 21: typedef enum
+[; ;GPIO.h: 22: {
+[; ;GPIO.h: 23: GPIO_INPUT,
+[; ;GPIO.h: 24: GPIO_OUTPUT
+[; ;GPIO.h: 25: } GPIO_state;
+[; ;GPIO.h: 29: typedef enum
+[; ;GPIO.h: 30: {
+[; ;GPIO.h: 31: GPIO_A,
+[; ;GPIO.h: 32: GPIO_B,
+[; ;GPIO.h: 33: GPIO_C
+[; ;GPIO.h: 34: } GPIO_portNameType;
+[; ;GPIO.h: 36: typedef enum
+[; ;GPIO.h: 37: {
+[; ;GPIO.h: 38: GPIO_DIGITAL,
+[; ;GPIO.h: 39: GPIO_ANALOG
+[; ;GPIO.h: 40: } GPIO_analogType;
+[; ;GPIO.h: 42: void GPIO_sourceClock(GPIO_SourceClk clk);
+[; ;GPIO.h: 44: void GPIO_dataDirectionPIN
+[; ;GPIO.h: 45: (GPIO_portNameType portName, uint8_t pin, GPIO_state state);
+[; ;GPIO.h: 47: void GPIO_dataDirectionPORT
+[; ;GPIO.h: 48: (GPIO_portNameType portName, GPIO_state state);
+[; ;GPIO.h: 50: void GPIO_analogSelector
+[; ;GPIO.h: 51: (GPIO_analogType type, uint8_t pin);
+[; ;GPIO.h: 53: void GPIO_setPIN
+[; ;GPIO.h: 54: (GPIO_portNameType portName, uint8_t pin);
+[; ;GPIO.h: 56: void GPIO_clearPIN
+[; ;GPIO.h: 57: (GPIO_portNameType portName, uint8_t pin);
+[; ;GPIO.h: 59: void delay(uint32_t delay);
+[; ;SPI.h: 7: typedef enum
+[; ;SPI.h: 8: {
+[; ;SPI.h: 9: SPI_LOW_POLARITY,
+[; ;SPI.h: 10: SPI_HIGH_POLARITY
+[; ;SPI.h: 11: } SPI_PolarityType;
+[; ;SPI.h: 14: typedef enum
+[; ;SPI.h: 15: {
+[; ;SPI.h: 16: SPI_LOW_PHASE,
+[; ;SPI.h: 17: SPI_HIGH_PHASE
+[; ;SPI.h: 18: } SPI_PhaseType;
+[; ;SPI.h: 20: typedef enum
+[; ;SPI.h: 21: {
+[; ;SPI.h: 22: SPI_SERIAL_CLK4,
+[; ;SPI.h: 23: SPI_SERIAL_CLK16,
+[; ;SPI.h: 24: SPI_SERIAL_CLK64
+[; ;SPI.h: 25: } SPI_SerialClk;
+[; ;SPI.h: 29: typedef struct
+[; ;SPI.h: 30: {
+[; ;SPI.h: 31: SPI_PolarityType SPI_Polarity;
+[; ;SPI.h: 32: SPI_PhaseType SPI_Phase;
+[; ;SPI.h: 33: SPI_SerialClk SPI_Clk;
+[; ;SPI.h: 34: } SPI_ConfigType;
+[; ;SPI.h: 36: void SPI_init(const SPI_ConfigType* SPI_Config);
+[; ;SPI.h: 38: int8_t SPI_write(uint8_t data);
+[; ;SPI.h: 40: uint8_t SPI_read(void);
+[; ;LCDNokia5110.h: 17: typedef struct
+[; ;LCDNokia5110.h: 18: {
+[; ;LCDNokia5110.h: 19: uint8_t numberDigits;
+[; ;LCDNokia5110.h: 20: uint8_t realDigit[7];
+[; ;LCDNokia5110.h: 21: }formatASCII;
+[; ;LCDNokia5110.h: 24: void LCDNokia_init(void);
+[; ;LCDNokia5110.h: 29: void LCDNokia_writeByte(uint8_t, uint8_t);
+[; ;LCDNokia5110.h: 31: void LCDNokia_clear(void);
+[; ;LCDNokia5110.h: 35: void LCDNokia_gotoXY(uint8_t x, uint8_t y);
+[; ;LCDNokia5110.h: 37: void LCDNokia_bitmap(const uint8_t*);
+[; ;LCDNokia5110.h: 39: void LCDNokia_sendChar(uint8_t);
+[; ;LCDNokia5110.h: 41: void LCDNokia_sendString(uint8_t*);
+[; ;LCDNokia5110.h: 43: void LCD_delay(void);
+[; ;LCDNokia5110.h: 46: void LCDNokia_printValue(uint32_t value);
+[; ;LCDNokia5110.h: 48: void LCDNokia_printFloatValue(float value);
+[v F123 `Cuc ~T0 @X0 -> 5 `i t ]
+"5 LCDNokia5110.c
+[v _ASCII `F123 ~T0 @X0 -> 0 `x s ]
+[i _ASCII
+:U ..
+:U ..
+"7
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+"8
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 95 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+"9
+-> -> 0 `i `uc
+-> -> 7 `i `uc
+-> -> 0 `i `uc
+-> -> 7 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+"10
+-> -> 20 `i `uc
+-> -> 127 `i `uc
+-> -> 20 `i `uc
+-> -> 127 `i `uc
+-> -> 20 `i `uc
+..
+:U ..
+"11
+-> -> 36 `i `uc
+-> -> 42 `i `uc
+-> -> 127 `i `uc
+-> -> 42 `i `uc
+-> -> 18 `i `uc
+..
+:U ..
+"12
+-> -> 35 `i `uc
+-> -> 19 `i `uc
+-> -> 8 `i `uc
+-> -> 100 `i `uc
+-> -> 98 `i `uc
+..
+:U ..
+"13
+-> -> 54 `i `uc
+-> -> 73 `i `uc
+-> -> 85 `i `uc
+-> -> 34 `i `uc
+-> -> 80 `i `uc
+..
+:U ..
+"14
+-> -> 0 `i `uc
+-> -> 5 `i `uc
+-> -> 3 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+"15
+-> -> 0 `i `uc
+-> -> 28 `i `uc
+-> -> 34 `i `uc
+-> -> 65 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+"16
+-> -> 0 `i `uc
+-> -> 65 `i `uc
+-> -> 34 `i `uc
+-> -> 28 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+"17
+-> -> 20 `i `uc
+-> -> 8 `i `uc
+-> -> 62 `i `uc
+-> -> 8 `i `uc
+-> -> 20 `i `uc
+..
+:U ..
+"18
+-> -> 8 `i `uc
+-> -> 8 `i `uc
+-> -> 62 `i `uc
+-> -> 8 `i `uc
+-> -> 8 `i `uc
+..
+:U ..
+"19
+-> -> 0 `i `uc
+-> -> 80 `i `uc
+-> -> 48 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+"20
+-> -> 8 `i `uc
+-> -> 8 `i `uc
+-> -> 8 `i `uc
+-> -> 8 `i `uc
+-> -> 8 `i `uc
+..
+:U ..
+"21
+-> -> 0 `i `uc
+-> -> 96 `i `uc
+-> -> 96 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+"22
+-> -> 32 `i `uc
+-> -> 16 `i `uc
+-> -> 8 `i `uc
+-> -> 4 `i `uc
+-> -> 2 `i `uc
+..
+:U ..
+"23
+-> -> 62 `i `uc
+-> -> 81 `i `uc
+-> -> 73 `i `uc
+-> -> 69 `i `uc
+-> -> 62 `i `uc
+..
+:U ..
+"24
+-> -> 0 `i `uc
+-> -> 66 `i `uc
+-> -> 127 `i `uc
+-> -> 64 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+"25
+-> -> 66 `i `uc
+-> -> 97 `i `uc
+-> -> 81 `i `uc
+-> -> 73 `i `uc
+-> -> 70 `i `uc
+..
+:U ..
+"26
+-> -> 33 `i `uc
+-> -> 65 `i `uc
+-> -> 69 `i `uc
+-> -> 75 `i `uc
+-> -> 49 `i `uc
+..
+:U ..
+"27
+-> -> 24 `i `uc
+-> -> 20 `i `uc
+-> -> 18 `i `uc
+-> -> 127 `i `uc
+-> -> 16 `i `uc
+..
+:U ..
+"28
+-> -> 39 `i `uc
+-> -> 69 `i `uc
+-> -> 69 `i `uc
+-> -> 69 `i `uc
+-> -> 57 `i `uc
+..
+:U ..
+"29
+-> -> 60 `i `uc
+-> -> 74 `i `uc
+-> -> 73 `i `uc
+-> -> 73 `i `uc
+-> -> 48 `i `uc
+..
+:U ..
+"30
+-> -> 1 `i `uc
+-> -> 113 `i `uc
+-> -> 9 `i `uc
+-> -> 5 `i `uc
+-> -> 3 `i `uc
+..
+:U ..
+"31
+-> -> 54 `i `uc
+-> -> 73 `i `uc
+-> -> 73 `i `uc
+-> -> 73 `i `uc
+-> -> 54 `i `uc
+..
+:U ..
+"32
+-> -> 6 `i `uc
+-> -> 73 `i `uc
+-> -> 73 `i `uc
+-> -> 41 `i `uc
+-> -> 30 `i `uc
+..
+:U ..
+"33
+-> -> 0 `i `uc
+-> -> 54 `i `uc
+-> -> 54 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+"34
+-> -> 0 `i `uc
+-> -> 86 `i `uc
+-> -> 54 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+"35
+-> -> 8 `i `uc
+-> -> 20 `i `uc
+-> -> 34 `i `uc
+-> -> 65 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+"36
+-> -> 20 `i `uc
+-> -> 20 `i `uc
+-> -> 20 `i `uc
+-> -> 20 `i `uc
+-> -> 20 `i `uc
+..
+:U ..
+"37
+-> -> 0 `i `uc
+-> -> 65 `i `uc
+-> -> 34 `i `uc
+-> -> 20 `i `uc
+-> -> 8 `i `uc
+..
+:U ..
+"38
+-> -> 2 `i `uc
+-> -> 1 `i `uc
+-> -> 81 `i `uc
+-> -> 9 `i `uc
+-> -> 6 `i `uc
+..
+:U ..
+"39
+-> -> 50 `i `uc
+-> -> 73 `i `uc
+-> -> 121 `i `uc
+-> -> 65 `i `uc
+-> -> 62 `i `uc
+..
+:U ..
+"40
+-> -> 126 `i `uc
+-> -> 17 `i `uc
+-> -> 17 `i `uc
+-> -> 17 `i `uc
+-> -> 126 `i `uc
+..
+:U ..
+"41
+-> -> 127 `i `uc
+-> -> 73 `i `uc
+-> -> 73 `i `uc
+-> -> 73 `i `uc
+-> -> 54 `i `uc
+..
+:U ..
+"42
+-> -> 62 `i `uc
+-> -> 65 `i `uc
+-> -> 65 `i `uc
+-> -> 65 `i `uc
+-> -> 34 `i `uc
+..
+:U ..
+"43
+-> -> 127 `i `uc
+-> -> 65 `i `uc
+-> -> 65 `i `uc
+-> -> 34 `i `uc
+-> -> 28 `i `uc
+..
+:U ..
+"44
+-> -> 127 `i `uc
+-> -> 73 `i `uc
+-> -> 73 `i `uc
+-> -> 73 `i `uc
+-> -> 65 `i `uc
+..
+:U ..
+"45
+-> -> 127 `i `uc
+-> -> 9 `i `uc
+-> -> 9 `i `uc
+-> -> 9 `i `uc
+-> -> 1 `i `uc
+..
+:U ..
+"46
+-> -> 62 `i `uc
+-> -> 65 `i `uc
+-> -> 73 `i `uc
+-> -> 73 `i `uc
+-> -> 122 `i `uc
+..
+:U ..
+"47
+-> -> 127 `i `uc
+-> -> 8 `i `uc
+-> -> 8 `i `uc
+-> -> 8 `i `uc
+-> -> 127 `i `uc
+..
+:U ..
+"48
+-> -> 0 `i `uc
+-> -> 65 `i `uc
+-> -> 127 `i `uc
+-> -> 65 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+"49
+-> -> 32 `i `uc
+-> -> 64 `i `uc
+-> -> 65 `i `uc
+-> -> 63 `i `uc
+-> -> 1 `i `uc
+..
+:U ..
+"50
+-> -> 127 `i `uc
+-> -> 8 `i `uc
+-> -> 20 `i `uc
+-> -> 34 `i `uc
+-> -> 65 `i `uc
+..
+:U ..
+"51
+-> -> 127 `i `uc
+-> -> 64 `i `uc
+-> -> 64 `i `uc
+-> -> 64 `i `uc
+-> -> 64 `i `uc
+..
+:U ..
+"52
+-> -> 127 `i `uc
+-> -> 2 `i `uc
+-> -> 12 `i `uc
+-> -> 2 `i `uc
+-> -> 127 `i `uc
+..
+:U ..
+"53
+-> -> 127 `i `uc
+-> -> 4 `i `uc
+-> -> 8 `i `uc
+-> -> 16 `i `uc
+-> -> 127 `i `uc
+..
+:U ..
+"54
+-> -> 62 `i `uc
+-> -> 65 `i `uc
+-> -> 65 `i `uc
+-> -> 65 `i `uc
+-> -> 62 `i `uc
+..
+:U ..
+"55
+-> -> 127 `i `uc
+-> -> 9 `i `uc
+-> -> 9 `i `uc
+-> -> 9 `i `uc
+-> -> 6 `i `uc
+..
+:U ..
+"56
+-> -> 62 `i `uc
+-> -> 65 `i `uc
+-> -> 81 `i `uc
+-> -> 33 `i `uc
+-> -> 94 `i `uc
+..
+:U ..
+"57
+-> -> 127 `i `uc
+-> -> 9 `i `uc
+-> -> 25 `i `uc
+-> -> 41 `i `uc
+-> -> 70 `i `uc
+..
+:U ..
+"58
+-> -> 70 `i `uc
+-> -> 73 `i `uc
+-> -> 73 `i `uc
+-> -> 73 `i `uc
+-> -> 49 `i `uc
+..
+:U ..
+"59
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+-> -> 127 `i `uc
+-> -> 1 `i `uc
+-> -> 1 `i `uc
+..
+:U ..
+"60
+-> -> 63 `i `uc
+-> -> 64 `i `uc
+-> -> 64 `i `uc
+-> -> 64 `i `uc
+-> -> 63 `i `uc
+..
+:U ..
+"61
+-> -> 31 `i `uc
+-> -> 32 `i `uc
+-> -> 64 `i `uc
+-> -> 32 `i `uc
+-> -> 31 `i `uc
+..
+:U ..
+"62
+-> -> 63 `i `uc
+-> -> 64 `i `uc
+-> -> 56 `i `uc
+-> -> 64 `i `uc
+-> -> 63 `i `uc
+..
+:U ..
+"63
+-> -> 99 `i `uc
+-> -> 20 `i `uc
+-> -> 8 `i `uc
+-> -> 20 `i `uc
+-> -> 99 `i `uc
+..
+:U ..
+"64
+-> -> 7 `i `uc
+-> -> 8 `i `uc
+-> -> 112 `i `uc
+-> -> 8 `i `uc
+-> -> 7 `i `uc
+..
+:U ..
+"65
+-> -> 97 `i `uc
+-> -> 81 `i `uc
+-> -> 73 `i `uc
+-> -> 69 `i `uc
+-> -> 67 `i `uc
+..
+:U ..
+"66
+-> -> 0 `i `uc
+-> -> 127 `i `uc
+-> -> 65 `i `uc
+-> -> 65 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+"67
+-> -> 2 `i `uc
+-> -> 4 `i `uc
+-> -> 8 `i `uc
+-> -> 16 `i `uc
+-> -> 32 `i `uc
+..
+:U ..
+"68
+-> -> 0 `i `uc
+-> -> 65 `i `uc
+-> -> 65 `i `uc
+-> -> 127 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+"69
+-> -> 4 `i `uc
+-> -> 2 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 4 `i `uc
+..
+:U ..
+"70
+-> -> 64 `i `uc
+-> -> 64 `i `uc
+-> -> 64 `i `uc
+-> -> 64 `i `uc
+-> -> 64 `i `uc
+..
+:U ..
+"71
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 4 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+"72
+-> -> 32 `i `uc
+-> -> 84 `i `uc
+-> -> 84 `i `uc
+-> -> 84 `i `uc
+-> -> 120 `i `uc
+..
+:U ..
+"73
+-> -> 127 `i `uc
+-> -> 72 `i `uc
+-> -> 68 `i `uc
+-> -> 68 `i `uc
+-> -> 56 `i `uc
+..
+:U ..
+"74
+-> -> 56 `i `uc
+-> -> 68 `i `uc
+-> -> 68 `i `uc
+-> -> 68 `i `uc
+-> -> 32 `i `uc
+..
+:U ..
+"75
+-> -> 56 `i `uc
+-> -> 68 `i `uc
+-> -> 68 `i `uc
+-> -> 72 `i `uc
+-> -> 127 `i `uc
+..
+:U ..
+"76
+-> -> 56 `i `uc
+-> -> 84 `i `uc
+-> -> 84 `i `uc
+-> -> 84 `i `uc
+-> -> 24 `i `uc
+..
+:U ..
+"77
+-> -> 8 `i `uc
+-> -> 126 `i `uc
+-> -> 9 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+..
+:U ..
+"78
+-> -> 12 `i `uc
+-> -> 82 `i `uc
+-> -> 82 `i `uc
+-> -> 82 `i `uc
+-> -> 62 `i `uc
+..
+:U ..
+"79
+-> -> 127 `i `uc
+-> -> 8 `i `uc
+-> -> 4 `i `uc
+-> -> 4 `i `uc
+-> -> 120 `i `uc
+..
+:U ..
+"80
+-> -> 0 `i `uc
+-> -> 68 `i `uc
+-> -> 125 `i `uc
+-> -> 64 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+"81
+-> -> 32 `i `uc
+-> -> 64 `i `uc
+-> -> 68 `i `uc
+-> -> 61 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+"82
+-> -> 127 `i `uc
+-> -> 16 `i `uc
+-> -> 40 `i `uc
+-> -> 68 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+"83
+-> -> 0 `i `uc
+-> -> 65 `i `uc
+-> -> 127 `i `uc
+-> -> 64 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+"84
+-> -> 124 `i `uc
+-> -> 4 `i `uc
+-> -> 24 `i `uc
+-> -> 4 `i `uc
+-> -> 120 `i `uc
+..
+:U ..
+"85
+-> -> 124 `i `uc
+-> -> 8 `i `uc
+-> -> 4 `i `uc
+-> -> 4 `i `uc
+-> -> 120 `i `uc
+..
+:U ..
+"86
+-> -> 56 `i `uc
+-> -> 68 `i `uc
+-> -> 68 `i `uc
+-> -> 68 `i `uc
+-> -> 56 `i `uc
+..
+:U ..
+"87
+-> -> 124 `i `uc
+-> -> 20 `i `uc
+-> -> 20 `i `uc
+-> -> 20 `i `uc
+-> -> 8 `i `uc
+..
+:U ..
+"88
+-> -> 8 `i `uc
+-> -> 20 `i `uc
+-> -> 20 `i `uc
+-> -> 24 `i `uc
+-> -> 124 `i `uc
+..
+:U ..
+"89
+-> -> 124 `i `uc
+-> -> 8 `i `uc
+-> -> 4 `i `uc
+-> -> 4 `i `uc
+-> -> 8 `i `uc
+..
+:U ..
+"90
+-> -> 72 `i `uc
+-> -> 84 `i `uc
+-> -> 84 `i `uc
+-> -> 84 `i `uc
+-> -> 32 `i `uc
+..
+:U ..
+"91
+-> -> 4 `i `uc
+-> -> 63 `i `uc
+-> -> 68 `i `uc
+-> -> 64 `i `uc
+-> -> 32 `i `uc
+..
+:U ..
+"92
+-> -> 60 `i `uc
+-> -> 64 `i `uc
+-> -> 64 `i `uc
+-> -> 32 `i `uc
+-> -> 124 `i `uc
+..
+:U ..
+"93
+-> -> 28 `i `uc
+-> -> 32 `i `uc
+-> -> 64 `i `uc
+-> -> 32 `i `uc
+-> -> 28 `i `uc
+..
+:U ..
+"94
+-> -> 60 `i `uc
+-> -> 64 `i `uc
+-> -> 48 `i `uc
+-> -> 64 `i `uc
+-> -> 60 `i `uc
+..
+:U ..
+"95
+-> -> 68 `i `uc
+-> -> 40 `i `uc
+-> -> 16 `i `uc
+-> -> 40 `i `uc
+-> -> 68 `i `uc
+..
+:U ..
+"96
+-> -> 12 `i `uc
+-> -> 80 `i `uc
+-> -> 80 `i `uc
+-> -> 80 `i `uc
+-> -> 60 `i `uc
+..
+:U ..
+"97
+-> -> 68 `i `uc
+-> -> 100 `i `uc
+-> -> 84 `i `uc
+-> -> 76 `i `uc
+-> -> 68 `i `uc
+..
+:U ..
+"98
+-> -> 0 `i `uc
+-> -> 8 `i `uc
+-> -> 54 `i `uc
+-> -> 65 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+"99
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 127 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+"100
+-> -> 0 `i `uc
+-> -> 65 `i `uc
+-> -> 54 `i `uc
+-> -> 8 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+"101
+-> -> 16 `i `uc
+-> -> 8 `i `uc
+-> -> 8 `i `uc
+-> -> 16 `i `uc
+-> -> 8 `i `uc
+..
+:U ..
+"102
+-> -> 120 `i `uc
+-> -> 70 `i `uc
+-> -> 65 `i `uc
+-> -> 70 `i `uc
+-> -> 120 `i `uc
+..
+..
+]
+[; ;LCDNokia5110.c: 5: static const uint8_t ASCII[][5] =
+[; ;LCDNokia5110.c: 6: {
+[; ;LCDNokia5110.c: 7: {0x00, 0x00, 0x00, 0x00, 0x00}
+[; ;LCDNokia5110.c: 8: ,{0x00, 0x00, 0x5f, 0x00, 0x00}
+[; ;LCDNokia5110.c: 9: ,{0x00, 0x07, 0x00, 0x07, 0x00}
+[; ;LCDNokia5110.c: 10: ,{0x14, 0x7f, 0x14, 0x7f, 0x14}
+[; ;LCDNokia5110.c: 11: ,{0x24, 0x2a, 0x7f, 0x2a, 0x12}
+[; ;LCDNokia5110.c: 12: ,{0x23, 0x13, 0x08, 0x64, 0x62}
+[; ;LCDNokia5110.c: 13: ,{0x36, 0x49, 0x55, 0x22, 0x50}
+[; ;LCDNokia5110.c: 14: ,{0x00, 0x05, 0x03, 0x00, 0x00}
+[; ;LCDNokia5110.c: 15: ,{0x00, 0x1c, 0x22, 0x41, 0x00}
+[; ;LCDNokia5110.c: 16: ,{0x00, 0x41, 0x22, 0x1c, 0x00}
+[; ;LCDNokia5110.c: 17: ,{0x14, 0x08, 0x3e, 0x08, 0x14}
+[; ;LCDNokia5110.c: 18: ,{0x08, 0x08, 0x3e, 0x08, 0x08}
+[; ;LCDNokia5110.c: 19: ,{0x00, 0x50, 0x30, 0x00, 0x00}
+[; ;LCDNokia5110.c: 20: ,{0x08, 0x08, 0x08, 0x08, 0x08}
+[; ;LCDNokia5110.c: 21: ,{0x00, 0x60, 0x60, 0x00, 0x00}
+[; ;LCDNokia5110.c: 22: ,{0x20, 0x10, 0x08, 0x04, 0x02}
+[; ;LCDNokia5110.c: 23: ,{0x3e, 0x51, 0x49, 0x45, 0x3e}
+[; ;LCDNokia5110.c: 24: ,{0x00, 0x42, 0x7f, 0x40, 0x00}
+[; ;LCDNokia5110.c: 25: ,{0x42, 0x61, 0x51, 0x49, 0x46}
+[; ;LCDNokia5110.c: 26: ,{0x21, 0x41, 0x45, 0x4b, 0x31}
+[; ;LCDNokia5110.c: 27: ,{0x18, 0x14, 0x12, 0x7f, 0x10}
+[; ;LCDNokia5110.c: 28: ,{0x27, 0x45, 0x45, 0x45, 0x39}
+[; ;LCDNokia5110.c: 29: ,{0x3c, 0x4a, 0x49, 0x49, 0x30}
+[; ;LCDNokia5110.c: 30: ,{0x01, 0x71, 0x09, 0x05, 0x03}
+[; ;LCDNokia5110.c: 31: ,{0x36, 0x49, 0x49, 0x49, 0x36}
+[; ;LCDNokia5110.c: 32: ,{0x06, 0x49, 0x49, 0x29, 0x1e}
+[; ;LCDNokia5110.c: 33: ,{0x00, 0x36, 0x36, 0x00, 0x00}
+[; ;LCDNokia5110.c: 34: ,{0x00, 0x56, 0x36, 0x00, 0x00}
+[; ;LCDNokia5110.c: 35: ,{0x08, 0x14, 0x22, 0x41, 0x00}
+[; ;LCDNokia5110.c: 36: ,{0x14, 0x14, 0x14, 0x14, 0x14}
+[; ;LCDNokia5110.c: 37: ,{0x00, 0x41, 0x22, 0x14, 0x08}
+[; ;LCDNokia5110.c: 38: ,{0x02, 0x01, 0x51, 0x09, 0x06}
+[; ;LCDNokia5110.c: 39: ,{0x32, 0x49, 0x79, 0x41, 0x3e}
+[; ;LCDNokia5110.c: 40: ,{0x7e, 0x11, 0x11, 0x11, 0x7e}
+[; ;LCDNokia5110.c: 41: ,{0x7f, 0x49, 0x49, 0x49, 0x36}
+[; ;LCDNokia5110.c: 42: ,{0x3e, 0x41, 0x41, 0x41, 0x22}
+[; ;LCDNokia5110.c: 43: ,{0x7f, 0x41, 0x41, 0x22, 0x1c}
+[; ;LCDNokia5110.c: 44: ,{0x7f, 0x49, 0x49, 0x49, 0x41}
+[; ;LCDNokia5110.c: 45: ,{0x7f, 0x09, 0x09, 0x09, 0x01}
+[; ;LCDNokia5110.c: 46: ,{0x3e, 0x41, 0x49, 0x49, 0x7a}
+[; ;LCDNokia5110.c: 47: ,{0x7f, 0x08, 0x08, 0x08, 0x7f}
+[; ;LCDNokia5110.c: 48: ,{0x00, 0x41, 0x7f, 0x41, 0x00}
+[; ;LCDNokia5110.c: 49: ,{0x20, 0x40, 0x41, 0x3f, 0x01}
+[; ;LCDNokia5110.c: 50: ,{0x7f, 0x08, 0x14, 0x22, 0x41}
+[; ;LCDNokia5110.c: 51: ,{0x7f, 0x40, 0x40, 0x40, 0x40}
+[; ;LCDNokia5110.c: 52: ,{0x7f, 0x02, 0x0c, 0x02, 0x7f}
+[; ;LCDNokia5110.c: 53: ,{0x7f, 0x04, 0x08, 0x10, 0x7f}
+[; ;LCDNokia5110.c: 54: ,{0x3e, 0x41, 0x41, 0x41, 0x3e}
+[; ;LCDNokia5110.c: 55: ,{0x7f, 0x09, 0x09, 0x09, 0x06}
+[; ;LCDNokia5110.c: 56: ,{0x3e, 0x41, 0x51, 0x21, 0x5e}
+[; ;LCDNokia5110.c: 57: ,{0x7f, 0x09, 0x19, 0x29, 0x46}
+[; ;LCDNokia5110.c: 58: ,{0x46, 0x49, 0x49, 0x49, 0x31}
+[; ;LCDNokia5110.c: 59: ,{0x01, 0x01, 0x7f, 0x01, 0x01}
+[; ;LCDNokia5110.c: 60: ,{0x3f, 0x40, 0x40, 0x40, 0x3f}
+[; ;LCDNokia5110.c: 61: ,{0x1f, 0x20, 0x40, 0x20, 0x1f}
+[; ;LCDNokia5110.c: 62: ,{0x3f, 0x40, 0x38, 0x40, 0x3f}
+[; ;LCDNokia5110.c: 63: ,{0x63, 0x14, 0x08, 0x14, 0x63}
+[; ;LCDNokia5110.c: 64: ,{0x07, 0x08, 0x70, 0x08, 0x07}
+[; ;LCDNokia5110.c: 65: ,{0x61, 0x51, 0x49, 0x45, 0x43}
+[; ;LCDNokia5110.c: 66: ,{0x00, 0x7f, 0x41, 0x41, 0x00}
+[; ;LCDNokia5110.c: 67: ,{0x02, 0x04, 0x08, 0x10, 0x20}
+[; ;LCDNokia5110.c: 68: ,{0x00, 0x41, 0x41, 0x7f, 0x00}
+[; ;LCDNokia5110.c: 69: ,{0x04, 0x02, 0x01, 0x02, 0x04}
+[; ;LCDNokia5110.c: 70: ,{0x40, 0x40, 0x40, 0x40, 0x40}
+[; ;LCDNokia5110.c: 71: ,{0x00, 0x01, 0x02, 0x04, 0x00}
+[; ;LCDNokia5110.c: 72: ,{0x20, 0x54, 0x54, 0x54, 0x78}
+[; ;LCDNokia5110.c: 73: ,{0x7f, 0x48, 0x44, 0x44, 0x38}
+[; ;LCDNokia5110.c: 74: ,{0x38, 0x44, 0x44, 0x44, 0x20}
+[; ;LCDNokia5110.c: 75: ,{0x38, 0x44, 0x44, 0x48, 0x7f}
+[; ;LCDNokia5110.c: 76: ,{0x38, 0x54, 0x54, 0x54, 0x18}
+[; ;LCDNokia5110.c: 77: ,{0x08, 0x7e, 0x09, 0x01, 0x02}
+[; ;LCDNokia5110.c: 78: ,{0x0c, 0x52, 0x52, 0x52, 0x3e}
+[; ;LCDNokia5110.c: 79: ,{0x7f, 0x08, 0x04, 0x04, 0x78}
+[; ;LCDNokia5110.c: 80: ,{0x00, 0x44, 0x7d, 0x40, 0x00}
+[; ;LCDNokia5110.c: 81: ,{0x20, 0x40, 0x44, 0x3d, 0x00}
+[; ;LCDNokia5110.c: 82: ,{0x7f, 0x10, 0x28, 0x44, 0x00}
+[; ;LCDNokia5110.c: 83: ,{0x00, 0x41, 0x7f, 0x40, 0x00}
+[; ;LCDNokia5110.c: 84: ,{0x7c, 0x04, 0x18, 0x04, 0x78}
+[; ;LCDNokia5110.c: 85: ,{0x7c, 0x08, 0x04, 0x04, 0x78}
+[; ;LCDNokia5110.c: 86: ,{0x38, 0x44, 0x44, 0x44, 0x38}
+[; ;LCDNokia5110.c: 87: ,{0x7c, 0x14, 0x14, 0x14, 0x08}
+[; ;LCDNokia5110.c: 88: ,{0x08, 0x14, 0x14, 0x18, 0x7c}
+[; ;LCDNokia5110.c: 89: ,{0x7c, 0x08, 0x04, 0x04, 0x08}
+[; ;LCDNokia5110.c: 90: ,{0x48, 0x54, 0x54, 0x54, 0x20}
+[; ;LCDNokia5110.c: 91: ,{0x04, 0x3f, 0x44, 0x40, 0x20}
+[; ;LCDNokia5110.c: 92: ,{0x3c, 0x40, 0x40, 0x20, 0x7c}
+[; ;LCDNokia5110.c: 93: ,{0x1c, 0x20, 0x40, 0x20, 0x1c}
+[; ;LCDNokia5110.c: 94: ,{0x3c, 0x40, 0x30, 0x40, 0x3c}
+[; ;LCDNokia5110.c: 95: ,{0x44, 0x28, 0x10, 0x28, 0x44}
+[; ;LCDNokia5110.c: 96: ,{0x0c, 0x50, 0x50, 0x50, 0x3c}
+[; ;LCDNokia5110.c: 97: ,{0x44, 0x64, 0x54, 0x4c, 0x44}
+[; ;LCDNokia5110.c: 98: ,{0x00, 0x08, 0x36, 0x41, 0x00}
+[; ;LCDNokia5110.c: 99: ,{0x00, 0x00, 0x7f, 0x00, 0x00}
+[; ;LCDNokia5110.c: 100: ,{0x00, 0x41, 0x36, 0x08, 0x00}
+[; ;LCDNokia5110.c: 101: ,{0x10, 0x08, 0x08, 0x10, 0x08}
+[; ;LCDNokia5110.c: 102: ,{0x78, 0x46, 0x41, 0x46, 0x78}
+[; ;LCDNokia5110.c: 103: };
+"106
+[v _LCDNokia_init `(v ~T0 @X0 1 ef ]
+"107
+{
+[; ;LCDNokia5110.c: 106: void LCDNokia_init(void)
+[; ;LCDNokia5110.c: 107: {
+[e :U _LCDNokia_init ]
+[f ]
+[; ;LCDNokia5110.c: 109: GPIO_dataDirectionPIN(GPIO_B, 2, GPIO_OUTPUT);
+"109
+[e ( _GPIO_dataDirectionPIN (3 , , . `E43 1 -> -> 2 `i `uc . `E39 1 ]
+[; ;LCDNokia5110.c: 110: GPIO_dataDirectionPIN(GPIO_B, 1, GPIO_OUTPUT);
+"110
+[e ( _GPIO_dataDirectionPIN (3 , , . `E43 1 -> -> 1 `i `uc . `E39 1 ]
+[; ;LCDNokia5110.c: 112: GPIO_clearPIN(GPIO_B, 1);
+"112
+[e ( _GPIO_clearPIN (2 , . `E43 1 -> -> 1 `i `uc ]
+[; ;LCDNokia5110.c: 113: LCD_delay();
+"113
+[e ( _LCD_delay ..  ]
+[; ;LCDNokia5110.c: 114: GPIO_setPIN(GPIO_B, 1);
+"114
+[e ( _GPIO_setPIN (2 , . `E43 1 -> -> 1 `i `uc ]
+[; ;LCDNokia5110.c: 116: LCDNokia_writeByte(0, 0x21);
+"116
+[e ( _LCDNokia_writeByte (2 , -> -> 0 `i `uc -> -> 33 `i `uc ]
+[; ;LCDNokia5110.c: 117: LCDNokia_writeByte(0, 0xB8);
+"117
+[e ( _LCDNokia_writeByte (2 , -> -> 0 `i `uc -> -> 184 `i `uc ]
+[; ;LCDNokia5110.c: 118: LCDNokia_writeByte(0, 0x04);
+"118
+[e ( _LCDNokia_writeByte (2 , -> -> 0 `i `uc -> -> 4 `i `uc ]
+[; ;LCDNokia5110.c: 119: LCDNokia_writeByte(0, 0x14);
+"119
+[e ( _LCDNokia_writeByte (2 , -> -> 0 `i `uc -> -> 20 `i `uc ]
+[; ;LCDNokia5110.c: 121: LCDNokia_writeByte(0, 0x20);
+"121
+[e ( _LCDNokia_writeByte (2 , -> -> 0 `i `uc -> -> 32 `i `uc ]
+[; ;LCDNokia5110.c: 122: LCDNokia_writeByte(0, 0x0C);
+"122
+[e ( _LCDNokia_writeByte (2 , -> -> 0 `i `uc -> -> 12 `i `uc ]
+[; ;LCDNokia5110.c: 123: }
+"123
+[e :UE 3 ]
+}
+"125
+[v _LCDNokia_bitmap `(v ~T0 @X0 1 ef1`*Cuc ]
+"126
+{
+[; ;LCDNokia5110.c: 125: void LCDNokia_bitmap(const uint8_t* my_array)
+[; ;LCDNokia5110.c: 126: {
+[e :U _LCDNokia_bitmap ]
+"125
+[v _my_array `*Cuc ~T0 @X0 1 r1 ]
+"126
+[f ]
+"127
+[v _index `ui ~T0 @X0 1 a ]
+[; ;LCDNokia5110.c: 127: uint16_t index = 0;
+[e = _index -> -> 0 `i `ui ]
+[; ;LCDNokia5110.c: 129: for (index = 0 ; index < (84 * 48 / 8); index++)
+"129
+{
+[e = _index -> -> 0 `i `ui ]
+[e $ < _index -> / * -> 84 `i -> 48 `i -> 8 `i `ui 5  ]
+[e $U 6  ]
+"130
+[e :U 5 ]
+[; ;LCDNokia5110.c: 130: {
+{
+[; ;LCDNokia5110.c: 131: LCDNokia_writeByte(1, *(my_array + index));
+"131
+[e ( _LCDNokia_writeByte (2 , -> -> 1 `i `uc *U + _my_array * -> _index `ux -> -> # *U _my_array `ui `ux ]
+"132
+}
+"129
+[e ++ _index -> -> 1 `i `ui ]
+[e $ < _index -> / * -> 84 `i -> 48 `i -> 8 `i `ui 5  ]
+[e :U 6 ]
+"132
+}
+[; ;LCDNokia5110.c: 132: }
+[; ;LCDNokia5110.c: 133: }
+"133
+[e :UE 4 ]
+}
+"135
+[v _LCDNokia_writeByte `(v ~T0 @X0 1 ef2`uc`uc ]
+"136
+{
+[; ;LCDNokia5110.c: 135: void LCDNokia_writeByte(uint8_t DataOrCmd, uint8_t data)
+[; ;LCDNokia5110.c: 136: {
+[e :U _LCDNokia_writeByte ]
+"135
+[v _DataOrCmd `uc ~T0 @X0 1 r1 ]
+[v _data `uc ~T0 @X0 1 r2 ]
+"136
+[f ]
+[; ;LCDNokia5110.c: 137: if(DataOrCmd)
+"137
+[e $ ! != -> _DataOrCmd `i -> -> -> 0 `i `uc `i 9  ]
+[; ;LCDNokia5110.c: 138: {
+"138
+{
+[; ;LCDNokia5110.c: 139: GPIO_setPIN(GPIO_B, 2);
+"139
+[e ( _GPIO_setPIN (2 , . `E43 1 -> -> 2 `i `uc ]
+"140
+}
+[; ;LCDNokia5110.c: 140: }
+[e $U 10  ]
+"141
+[e :U 9 ]
+[; ;LCDNokia5110.c: 141: else
+[; ;LCDNokia5110.c: 142: {
+"142
+{
+[; ;LCDNokia5110.c: 143: GPIO_clearPIN(GPIO_B, 2);
+"143
+[e ( _GPIO_clearPIN (2 , . `E43 1 -> -> 2 `i `uc ]
+"144
+}
+[e :U 10 ]
+[; ;LCDNokia5110.c: 144: }
+[; ;LCDNokia5110.c: 146: SPI_write(data);
+"146
+[e ( _SPI_write (1 _data ]
+[; ;LCDNokia5110.c: 147: }
+"147
+[e :UE 8 ]
+}
+"149
+[v _LCDNokia_sendChar `(v ~T0 @X0 1 ef1`uc ]
+"150
+{
+[; ;LCDNokia5110.c: 149: void LCDNokia_sendChar(uint8_t character)
+[; ;LCDNokia5110.c: 150: {
+[e :U _LCDNokia_sendChar ]
+"149
+[v _character `uc ~T0 @X0 1 r1 ]
+"150
+[f ]
+"151
+[v _index `ui ~T0 @X0 1 a ]
+[; ;LCDNokia5110.c: 151: uint16_t index = 0;
+[e = _index -> -> 0 `i `ui ]
+[; ;LCDNokia5110.c: 153: LCDNokia_writeByte(1, 0x00);
+"153
+[e ( _LCDNokia_writeByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+[; ;LCDNokia5110.c: 155: for (index = 0; index < 5; index++)
+"155
+{
+[e = _index -> -> 0 `i `ui ]
+[e $ < _index -> -> 5 `i `ui 12  ]
+[e $U 13  ]
+"156
+[e :U 12 ]
+[; ;LCDNokia5110.c: 156: {
+{
+[; ;LCDNokia5110.c: 157: LCDNokia_writeByte(1, ASCII[character - 0x20][index]);
+"157
+[e ( _LCDNokia_writeByte (2 , -> -> 1 `i `uc *U + &U *U + &U _ASCII * -> -> - -> _character `i -> 32 `i `ui `ux -> * -> # *U &U *U &U _ASCII `ui -> -> 5 `i `ui `ux * -> _index `ux -> -> # *U &U *U + &U _ASCII * -> -> - -> _character `i -> 32 `i `ui `ux -> * -> # *U &U *U &U _ASCII `ui -> -> 5 `i `ui `ux `ui `ux ]
+"161
+}
+"155
+[e ++ _index -> -> 1 `i `ui ]
+[e $ < _index -> -> 5 `i `ui 12  ]
+[e :U 13 ]
+"161
+}
+[; ;LCDNokia5110.c: 161: }
+[; ;LCDNokia5110.c: 163: LCDNokia_writeByte(1, 0x00);
+"163
+[e ( _LCDNokia_writeByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+[; ;LCDNokia5110.c: 164: }
+"164
+[e :UE 11 ]
+}
+"166
+[v _LCDNokia_sendString `(v ~T0 @X0 1 ef1`*uc ]
+"167
+{
+[; ;LCDNokia5110.c: 166: void LCDNokia_sendString(uint8_t *characters)
+[; ;LCDNokia5110.c: 167: {
+[e :U _LCDNokia_sendString ]
+"166
+[v _characters `*uc ~T0 @X0 1 r1 ]
+"167
+[f ]
+[; ;LCDNokia5110.c: 168: while (*characters)
+"168
+[e $U 16  ]
+[e :U 17 ]
+[; ;LCDNokia5110.c: 169: {
+"169
+{
+[; ;LCDNokia5110.c: 170: LCDNokia_sendChar(*characters++);
+"170
+[e ( _LCDNokia_sendChar (1 *U ++ _characters * -> -> 1 `i `x -> -> # *U _characters `i `x ]
+"171
+}
+[e :U 16 ]
+"168
+[e $ != -> *U _characters `i -> -> -> 0 `i `uc `i 17  ]
+[e :U 18 ]
+[; ;LCDNokia5110.c: 171: }
+[; ;LCDNokia5110.c: 172: }
+"172
+[e :UE 15 ]
+}
+"174
+[v _LCDNokia_clear `(v ~T0 @X0 1 ef ]
+"175
+{
+[; ;LCDNokia5110.c: 174: void LCDNokia_clear(void)
+[; ;LCDNokia5110.c: 175: {
+[e :U _LCDNokia_clear ]
+[f ]
+"176
+[v _index `ui ~T0 @X0 1 a ]
+[; ;LCDNokia5110.c: 176: uint16_t index = 0;
+[e = _index -> -> 0 `i `ui ]
+[; ;LCDNokia5110.c: 178: for (index = 0; index < (84 * 48 / 8); index++)
+"178
+{
+[e = _index -> -> 0 `i `ui ]
+[e $ < _index -> / * -> 84 `i -> 48 `i -> 8 `i `ui 20  ]
+[e $U 21  ]
+"179
+[e :U 20 ]
+[; ;LCDNokia5110.c: 179: {
+{
+[; ;LCDNokia5110.c: 180: LCDNokia_writeByte(1, 0x00);
+"180
+[e ( _LCDNokia_writeByte (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+"181
+}
+"178
+[e ++ _index -> -> 1 `i `ui ]
+[e $ < _index -> / * -> 84 `i -> 48 `i -> 8 `i `ui 20  ]
+[e :U 21 ]
+"181
+}
+[; ;LCDNokia5110.c: 181: }
+[; ;LCDNokia5110.c: 183: LCDNokia_gotoXY(0, 0);
+"183
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
+[; ;LCDNokia5110.c: 184: }
+"184
+[e :UE 19 ]
+}
+"186
+[v _LCDNokia_gotoXY `(v ~T0 @X0 1 ef2`uc`uc ]
+"187
+{
+[; ;LCDNokia5110.c: 186: void LCDNokia_gotoXY(uint8_t x, uint8_t y)
+[; ;LCDNokia5110.c: 187: {
+[e :U _LCDNokia_gotoXY ]
+"186
+[v _x `uc ~T0 @X0 1 r1 ]
+[v _y `uc ~T0 @X0 1 r2 ]
+"187
+[f ]
+[; ;LCDNokia5110.c: 188: LCDNokia_writeByte(0, 0x80 | x);
+"188
+[e ( _LCDNokia_writeByte (2 , -> -> 0 `i `uc -> | -> 128 `i -> _x `i `uc ]
+[; ;LCDNokia5110.c: 189: LCDNokia_writeByte(0, 0x40 | y);
+"189
+[e ( _LCDNokia_writeByte (2 , -> -> 0 `i `uc -> | -> 64 `i -> _y `i `uc ]
+[; ;LCDNokia5110.c: 190: }
+"190
+[e :UE 23 ]
+}
+"192
+[v _LCD_delay `(v ~T0 @X0 1 ef ]
+"193
+{
+[; ;LCDNokia5110.c: 192: void LCD_delay(void)
+[; ;LCDNokia5110.c: 193: {
+[e :U _LCD_delay ]
+[f ]
+"194
+[v _counter `ul ~T0 @X0 1 a ]
+[; ;LCDNokia5110.c: 194: uint32_t counter;
+[; ;LCDNokia5110.c: 196: for(counter = 0; counter < 1500; counter++)
+"196
+{
+[e = _counter -> -> -> 0 `i `l `ul ]
+[e $ < _counter -> -> -> 1500 `i `l `ul 25  ]
+[e $U 26  ]
+"197
+[e :U 25 ]
+[; ;LCDNokia5110.c: 197: {
+{
+"198
+}
+"196
+[e ++ _counter -> -> -> 1 `i `l `ul ]
+[e $ < _counter -> -> -> 1500 `i `l `ul 25  ]
+[e :U 26 ]
+"198
+}
+[; ;LCDNokia5110.c: 198: }
+[; ;LCDNokia5110.c: 199: }
+"199
+[e :UE 24 ]
+}
+"201
+[v _LCDNokia_printValue `(v ~T0 @X0 1 ef1`ul ]
+"202
+{
+[; ;LCDNokia5110.c: 201: void LCDNokia_printValue(uint32_t value)
+[; ;LCDNokia5110.c: 202: {
+[e :U _LCDNokia_printValue ]
+"201
+[v _value `ul ~T0 @X0 1 r1 ]
+"202
+[f ]
+"204
+[v _real_Value `S2 ~T0 @X0 1 a ]
+"206
+[v _temp_digit `uc ~T0 @X0 1 a ]
+"208
+[v _counter `uc ~T0 @X0 1 a ]
+"210
+[v _zero `Cuc ~T0 @X0 1 a ]
+[; ;LCDNokia5110.c: 204: formatASCII real_Value;
+[; ;LCDNokia5110.c: 206: uint8_t temp_digit;
+[; ;LCDNokia5110.c: 208: uint8_t counter;
+[; ;LCDNokia5110.c: 210: const uint8_t zero = 48;
+[e = _zero -> -> 48 `i `uc ]
+[; ;LCDNokia5110.c: 212: real_Value.numberDigits = 0;
+"212
+[e = . _real_Value 0 -> -> 0 `i `uc ]
+[; ;LCDNokia5110.c: 215: if(value != 0)
+"215
+[e $ ! != _value -> -> -> 0 `i `l `ul 29  ]
+[; ;LCDNokia5110.c: 216: {
+"216
+{
+[; ;LCDNokia5110.c: 217: while(value > 0)
+"217
+[e $U 30  ]
+[e :U 31 ]
+[; ;LCDNokia5110.c: 218: {
+"218
+{
+[; ;LCDNokia5110.c: 220: temp_digit = value % 10;
+"220
+[e = _temp_digit -> % _value -> -> -> 10 `i `l `ul `uc ]
+[; ;LCDNokia5110.c: 222: temp_digit = '0' + temp_digit;
+"222
+[e = _temp_digit -> + -> 48 `ui -> _temp_digit `ui `uc ]
+[; ;LCDNokia5110.c: 224: real_Value.realDigit[real_Value.numberDigits] = temp_digit;
+"224
+[e = *U + &U . _real_Value 1 * -> . _real_Value 0 `ux -> -> # *U &U . _real_Value 1 `ui `ux _temp_digit ]
+[; ;LCDNokia5110.c: 226: value /= 10;
+"226
+[e =/ _value -> -> 10 `uc `ul ]
+[; ;LCDNokia5110.c: 228: real_Value.numberDigits++;
+"228
+[e ++ . _real_Value 0 -> -> 1 `i `uc ]
+"229
+}
+[e :U 30 ]
+"217
+[e $ > _value -> -> -> 0 `i `l `ul 31  ]
+[e :U 32 ]
+[; ;LCDNokia5110.c: 229: }
+[; ;LCDNokia5110.c: 232: for(counter = real_Value.numberDigits; counter != 0 ; counter--)
+"232
+{
+[e = _counter . _real_Value 0 ]
+[e $ != -> _counter `i -> 0 `i 33  ]
+[e $U 34  ]
+"233
+[e :U 33 ]
+[; ;LCDNokia5110.c: 233: {
+{
+[; ;LCDNokia5110.c: 234: LCDNokia_sendChar(real_Value.realDigit[counter-1]);
+"234
+[e ( _LCDNokia_sendChar (1 *U + &U . _real_Value 1 * -> -> - -> _counter `i -> 1 `i `ui `ux -> -> # *U &U . _real_Value 1 `ui `ux ]
+"235
+}
+"232
+[e -- _counter -> -> 1 `i `uc ]
+[e $ != -> _counter `i -> 0 `i 33  ]
+[e :U 34 ]
+"235
+}
+"236
+}
+[; ;LCDNokia5110.c: 235: }
+[; ;LCDNokia5110.c: 236: }
+[e $U 36  ]
+"237
+[e :U 29 ]
+[; ;LCDNokia5110.c: 237: else
+[; ;LCDNokia5110.c: 238: {
+"238
+{
+[; ;LCDNokia5110.c: 239: LCDNokia_sendChar(zero);
+"239
+[e ( _LCDNokia_sendChar (1 _zero ]
+"240
+}
+[e :U 36 ]
+[; ;LCDNokia5110.c: 240: }
+[; ;LCDNokia5110.c: 241: }
+"241
+[e :UE 28 ]
+}
+"243
+[v _LCDNokia_printFloatValue `(v ~T0 @X0 1 ef1`f ]
+"244
+{
+[; ;LCDNokia5110.c: 243: void LCDNokia_printFloatValue(float value)
+[; ;LCDNokia5110.c: 244: {
+[e :U _LCDNokia_printFloatValue ]
+"243
+[v _value `f ~T0 @X0 1 r1 ]
+"244
+[f ]
+"246
+[v _wordPoint `Cuc ~T0 @X0 1 a ]
+[; ;LCDNokia5110.c: 246: const uint8_t wordPoint = 46;
+[e = _wordPoint -> -> 46 `i `uc ]
+"247
+[v _numZero `Cuc ~T0 @X0 1 a ]
+[; ;LCDNokia5110.c: 247: const uint8_t numZero = 48;
+[e = _numZero -> -> 48 `i `uc ]
+"249
+[v _tmp_Float `f ~T0 @X0 1 a ]
+"251
+[v _part_Float `uc ~T0 @X0 1 a ]
+"252
+[v _part_Int `ul ~T0 @X0 1 a ]
+[; ;LCDNokia5110.c: 249: float tmp_Float;
+[; ;LCDNokia5110.c: 251: uint8_t part_Float;
+[; ;LCDNokia5110.c: 252: uint32_t part_Int;
+[; ;LCDNokia5110.c: 255: tmp_Float = value - (uint8_t)value;
+"255
+[e = _tmp_Float - _value -> -> _value `uc `f ]
+[; ;LCDNokia5110.c: 257: tmp_Float *= 100;
+"257
+[e =* _tmp_Float -> -> 100 `i `f ]
+[; ;LCDNokia5110.c: 259: part_Float = (uint8_t)tmp_Float;
+"259
+[e = _part_Float -> _tmp_Float `uc ]
+[; ;LCDNokia5110.c: 261: part_Int = (uint8_t)value;
+"261
+[e = _part_Int -> -> _value `uc `ul ]
+[; ;LCDNokia5110.c: 264: if(part_Float < 10)
+"264
+[e $ ! < -> _part_Float `i -> 10 `i 38  ]
+[; ;LCDNokia5110.c: 265: {
+"265
+{
+[; ;LCDNokia5110.c: 266: LCDNokia_printValue(part_Int);
+"266
+[e ( _LCDNokia_printValue (1 _part_Int ]
+[; ;LCDNokia5110.c: 267: LCDNokia_sendChar(wordPoint);
+"267
+[e ( _LCDNokia_sendChar (1 _wordPoint ]
+[; ;LCDNokia5110.c: 269: LCDNokia_sendChar(numZero);
+"269
+[e ( _LCDNokia_sendChar (1 _numZero ]
+[; ;LCDNokia5110.c: 270: LCDNokia_printValue(part_Float);
+"270
+[e ( _LCDNokia_printValue (1 -> _part_Float `ul ]
+"271
+}
+[e :U 38 ]
+[; ;LCDNokia5110.c: 271: }
+[; ;LCDNokia5110.c: 273: if(part_Float >= 10)
+"273
+[e $ ! >= -> _part_Float `i -> 10 `i 39  ]
+[; ;LCDNokia5110.c: 274: {
+"274
+{
+[; ;LCDNokia5110.c: 275: LCDNokia_printValue(part_Int);
+"275
+[e ( _LCDNokia_printValue (1 _part_Int ]
+[; ;LCDNokia5110.c: 276: LCDNokia_sendChar(wordPoint);
+"276
+[e ( _LCDNokia_sendChar (1 _wordPoint ]
+[; ;LCDNokia5110.c: 277: LCDNokia_printValue(part_Float);
+"277
+[e ( _LCDNokia_printValue (1 -> _part_Float `ul ]
+"278
+}
+[e :U 39 ]
+[; ;LCDNokia5110.c: 278: }
+[; ;LCDNokia5110.c: 279: }
+"279
+[e :UE 37 ]
+}

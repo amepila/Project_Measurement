@@ -4455,7 +4455,10 @@ const StateType StateProgram[8] =
 void main(void)
 {
 
-# 100
+# 97
+GPIO_sourceClock(CLK_8MHZ);
+
+
 SPI_init(&SPI_Config);
 LCDNokia_init();
 LCDNokia_clear();
@@ -4466,8 +4469,8 @@ uint8_t arrayTest[] = "Hola Mundo\r";
 for(;;)
 {
 
-LCDNokia_sendChar(test);
 
+LCDNokia_sendString(arrayTest);
 delay(6500);
 
 # 122

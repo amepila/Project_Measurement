@@ -1,5 +1,5 @@
 
-# 1 "main.c"
+# 1 "SPI.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.44\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -4036,69 +4036,6 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 4 "C:\Program Files (x86)\Microchip\xc8\v1.44\include\__size_t.h"
-typedef unsigned size_t;
-
-# 7 "C:\Program Files (x86)\Microchip\xc8\v1.44\include\stdarg.h"
-typedef void * va_list[1];
-
-#pragma intrinsic(__va_start)
-extern void * __va_start(void);
-
-#pragma intrinsic(__va_arg)
-extern void * __va_arg(void *, ...);
-
-# 43 "C:\Program Files (x86)\Microchip\xc8\v1.44\include\stdio.h"
-struct __prbuf
-{
-char * ptr;
-void (* func)(char);
-};
-
-# 29 "C:\Program Files (x86)\Microchip\xc8\v1.44\include\errno.h"
-extern int errno;
-
-# 12 "C:\Program Files (x86)\Microchip\xc8\v1.44\include\conio.h"
-extern void init_uart(void);
-
-extern char getch(void);
-extern char getche(void);
-extern void putch(char);
-extern void ungetch(char);
-
-extern __bit kbhit(void);
-
-# 23
-extern char * cgets(char *);
-extern void cputs(const char *);
-
-# 88 "C:\Program Files (x86)\Microchip\xc8\v1.44\include\stdio.h"
-extern int cprintf(char *, ...);
-#pragma printf_check(cprintf)
-
-
-
-extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-
-
-# 180
-#pragma printf_check(vprintf) const
-#pragma printf_check(vsprintf) const
-
-extern char * gets(char *);
-extern int puts(const char *);
-extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-
-#pragma printf_check(printf) const
-#pragma printf_check(sprintf) const
-extern int sprintf(char *, const char *, ...);
-extern int printf(const char *, ...);
-
 # 13 "C:\Program Files (x86)\Microchip\xc8\v1.44\include\stdint.h"
 typedef signed char int8_t;
 
@@ -4189,59 +4126,6 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 7 "GPIO.h"
-typedef enum
-{
-CLK_8MHZ,
-CLK_4MHZ,
-CLK_2MHZ,
-CLK_1MHZ,
-CLK_500KHZ,
-CLK_250KHZ,
-CLK_125KHZ,
-CLK_31KHZ
-} GPIO_SourceClk;
-
-# 21
-typedef enum
-{
-GPIO_INPUT,
-GPIO_OUTPUT
-} GPIO_state;
-
-# 29
-typedef enum
-{
-GPIO_A,
-GPIO_B,
-GPIO_C
-} GPIO_portNameType;
-
-typedef enum
-{
-GPIO_DIGITAL,
-GPIO_ANALOG
-} GPIO_analogType;
-
-void GPIO_sourceClock(GPIO_SourceClk clk);
-
-void GPIO_dataDirectionPIN
-(GPIO_portNameType portName, uint8_t pin, GPIO_state state);
-
-void GPIO_dataDirectionPORT
-(GPIO_portNameType portName, GPIO_state state);
-
-void GPIO_analogSelector
-(GPIO_analogType type, uint8_t pin);
-
-void GPIO_setPIN
-(GPIO_portNameType portName, uint8_t pin);
-
-void GPIO_clearPIN
-(GPIO_portNameType portName, uint8_t pin);
-
-void delay(uint32_t delay);
-
 # 7 "SPI.h"
 typedef enum
 {
@@ -4277,199 +4161,98 @@ int8_t SPI_write(uint8_t data);
 
 uint8_t SPI_read(void);
 
-# 9 "UART.h"
-typedef enum
-{
-BD_1200 = 1200,
-BD_2400 = 2400,
-BD_9600 = 9600
-} UART_BaudRateType;
-
-void UART_init(UART_BaudRateType baudRate);
-
-void UART_putChar(uint8_t character);
-
-void UART_putString(int8_t* string);
-
-uint32_t expBASE10(uint8_t limit);
-
-uint32_t Convert_numberASCIItoDATA(uint8_t *string);
-
-uint8_t Convert_wordASCIItoDATA(uint8_t word);
-
-# 17 "LCDNokia5110.h"
-typedef struct
-{
-uint8_t numberDigits;
-uint8_t realDigit[7];
-}formatASCII;
-
-
-void LCDNokia_init(void);
-
-# 29
-void LCDNokia_writeByte(uint8_t, uint8_t);
-
-void LCDNokia_clear(void);
-
-# 35
-void LCDNokia_gotoXY(uint8_t x, uint8_t y);
-
-void LCDNokia_bitmap(const uint8_t*);
-
-void LCDNokia_sendChar(uint8_t);
-
-void LCDNokia_sendString(uint8_t*);
-
-void LCD_delay(void);
-
-
-void LCDNokia_printValue(uint32_t value);
-
-void LCDNokia_printFloatValue(float value);
-
-# 6 "Buttons.h"
-void ButtonInt_config();
-
-# 16 "States.h"
-typedef enum
-{
-MAIN_MENU,
-POWER_1,
-POWER_2,
-RMS_VI,
-POWER_FACTOR,
-PHASE_ANGLE,
-FREQUENCY,
-TEMPERATURE
-}States_MenuType;
-
-
-typedef States_MenuType(*fptrState)(void);
-
-
-typedef const struct State
-{
-States_MenuType (*stateFunction)(void);
-}StateType;
-
-# 46
-States_MenuType stateMainMenu(void);
-
-# 56
-States_MenuType statePower1(void);
-
-# 66
-States_MenuType statePower2(void);
-
-# 76
-States_MenuType stateRmsVI(void);
-
-# 86
-States_MenuType statePowerFactor(void);
-
-# 96
-States_MenuType statePhaseAngle(void);
-
-# 106
-States_MenuType stateFrequency(void);
-
-# 116
-States_MenuType stateTemperature(void);
-
-
-# 12 "main.c"
-#pragma config OSC = IRCIO
-#pragma config FCMEN = ON
-#pragma config IESO = ON
-
-
-#pragma config PWRTEN = OFF
-#pragma config BOREN = ON
-
-
-
-#pragma config WDTEN = OFF
-#pragma config WDPS = 32768
-#pragma config WINEN = OFF
-
-
-#pragma config PWMPIN = OFF
-#pragma config LPOL = HIGH
-#pragma config HPOL = HIGH
-#pragma config T1OSCMX = ON
-
-
-#pragma config MCLRE = OFF
-
-
-#pragma config STVREN = ON
-#pragma config LVP = OFF
-
-
-#pragma config CP0 = OFF
-#pragma config CP1 = OFF
-
-
-#pragma config CPB = OFF
-#pragma config CPD = OFF
-
-
-#pragma config WRT0 = OFF
-#pragma config WRT1 = OFF
-
-
-#pragma config WRTC = OFF
-#pragma config WRTB = OFF
-#pragma config WRTD = OFF
-
-
-#pragma config EBTR0 = OFF
-#pragma config EBTR1 = OFF
-
-
-#pragma config EBTRB = OFF
-
-# 67
-const SPI_ConfigType SPI_Config =
-{
-SPI_LOW_POLARITY,
-SPI_LOW_PHASE,
-SPI_SERIAL_CLK4
-};
-
-
-
-const StateType StateProgram[8] =
-{
-{stateMainMenu},
-{statePower1},
-{statePower2},
-{stateRmsVI},
-{statePowerFactor},
-{statePhaseAngle},
-{stateFrequency},
-{stateTemperature}
-};
-
-void main(void)
+# 14 "SPI.c"
+static void SPI_enableClock(SPI_PhaseType phase, SPI_PolarityType cpol)
 {
 
-# 100
-SPI_init(&SPI_Config);
-LCDNokia_init();
-LCDNokia_clear();
+SSPSTAT &= (0x3F);
+SSPCON &= (0xC0);
 
-# 108
-uint8_t test = 'A';
-uint8_t arrayTest[] = "Hola Mundo\r";
-for(;;)
+
+SSPSTAT |= (0x40);
+
+switch(phase)
 {
+case SPI_LOW_PHASE:
+SSPCONbits.CKP = 0;
+break;
+case SPI_HIGH_PHASE:
+SSPCONbits.CKP = 1;
+break;
+default:
+break;
+}
 
-LCDNokia_sendChar(test);
-
-delay(6500);
-
-# 122
+switch(cpol)
+{
+case SPI_LOW_POLARITY:
+SSPSTATbits.CKE = 0;
+break;
+case SPI_HIGH_POLARITY:
+SSPSTATbits.CKE = 1;
+break;
+default:
+break;
 }
 }
+
+static void SPI_enablePins(SPI_SerialClk serial)
+{
+switch(serial)
+{
+case SPI_SERIAL_CLK4:
+SSPCON &= (0x00);
+break;
+case SPI_SERIAL_CLK16:
+SSPCON |= (0x01);
+break;
+case SPI_SERIAL_CLK64:
+SSPCON |= (0x02);
+break;
+default:
+break;
+}
+
+
+TRISCbits.TRISC5 = 0;
+
+TRISCbits.TRISC4 = 1;
+
+TRISCbits.TRISC7 = 0;
+
+
+SSPCON |= (0x20);
+}
+
+void SPI_init(const SPI_ConfigType* SPI_Config)
+{
+SPI_enableClock(SPI_Config->SPI_Polarity, SPI_Config->SPI_Phase);
+SPI_enablePins(SPI_Config->SPI_Clk);
+}
+
+int8_t SPI_write(uint8_t data)
+{
+int8_t success;
+
+SSPCONbits.WCOL = 0;
+SSPBUF = data;
+while(!SSPSTATbits.BF);
+
+success = (SSPCONbits.WCOL == 1) ? 0: 1;
+
+return success;
+}
+
+uint8_t SPI_read(void)
+{
+const uint8_t dummy = 0;
+
+
+SSPBUF = dummy;
+
+
+while(!SSPSTATbits.BF);
+
+return SSPBUF;
+}
+

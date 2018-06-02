@@ -1,48 +1,17 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"67 main.c
-[c E3166 0 1 .. ]
-[n E3166 . SPI_LOW_POLARITY SPI_HIGH_POLARITY  ]
-[c E3170 0 1 .. ]
-[n E3170 . SPI_LOW_PHASE SPI_HIGH_PHASE  ]
-[c E3174 0 1 2 .. ]
-[n E3174 . SPI_SERIAL_CLK4 SPI_SERIAL_CLK16 SPI_SERIAL_CLK64  ]
-"30 SPI.h
-[s S286 `E3166 1 `E3170 1 `E3174 1 ]
-[n S286 . SPI_Polarity SPI_Phase SPI_Clk ]
-"76 main.c
-[c E3234 0 1 2 3 4 5 6 7 .. ]
-[n E3234 . MAIN_MENU POWER_1 POWER_2 RMS_VI POWER_FACTOR PHASE_ANGLE FREQUENCY TEMPERATURE  ]
-[v F3249 `(E3234 ~T0 @X0 0 tf ]
-"32 States.h
-[s S288 `*F3249 1 ]
-[n S288 State stateFunction ]
-"46
-[v _stateMainMenu `(E3234 ~T0 @X0 0 ef ]
-"56
-[v _statePower1 `(E3234 ~T0 @X0 0 ef ]
-"66
-[v _statePower2 `(E3234 ~T0 @X0 0 ef ]
-"76
-[v _stateRmsVI `(E3234 ~T0 @X0 0 ef ]
-"86
-[v _statePowerFactor `(E3234 ~T0 @X0 0 ef ]
-"96
-[v _statePhaseAngle `(E3234 ~T0 @X0 0 ef ]
-"106
-[v _stateFrequency `(E3234 ~T0 @X0 0 ef ]
-"116
-[v _stateTemperature `(E3234 ~T0 @X0 0 ef ]
-[p mainexit ]
-"36 SPI.h
-[v _SPI_init `(v ~T0 @X0 0 ef1`*CS286 ]
-"24 LCDNokia5110.h
-[v _LCDNokia_init `(v ~T0 @X0 0 ef ]
-"31
-[v _LCDNokia_clear `(v ~T0 @X0 0 ef ]
-"39
-[v _LCDNokia_sendChar `(v ~T0 @X0 0 ef1`uc ]
-"59 GPIO.h
-[v _delay `(v ~T0 @X0 0 ef1`ul ]
+"7269 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f2331.h
+[v _INT0IF `Vb ~T0 @X0 0 e@32657 ]
+"19 Buttons.c
+[c E3075 0 1 2 .. ]
+[n E3075 . GPIO_A GPIO_B GPIO_C  ]
+[c E3071 0 1 .. ]
+[n E3071 . GPIO_INPUT GPIO_OUTPUT  ]
+"44 GPIO.h
+[v _GPIO_dataDirectionPIN `(v ~T0 @X0 0 ef3`E3075`uc`E3071 ]
+"7267 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f2331.h
+[v _INT0IE `Vb ~T0 @X0 0 e@32660 ]
+"7223
+[v _GIE `Vb ~T0 @X0 0 e@32663 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -2947,36 +2916,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 164: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 166: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
-[; ;__size_t.h: 4: typedef unsigned size_t;
-[; ;stdarg.h: 7: typedef void * va_list[1];
-[; ;stdarg.h: 10: extern void * __va_start(void);
-[; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
-[; ;stdio.h: 43: struct __prbuf
-[; ;stdio.h: 44: {
-[; ;stdio.h: 45: char * ptr;
-[; ;stdio.h: 46: void (* func)(char);
-[; ;stdio.h: 47: };
-[; ;errno.h: 29: extern int errno;
-[; ;conio.h: 12: extern void init_uart(void);
-[; ;conio.h: 14: extern char getch(void);
-[; ;conio.h: 15: extern char getche(void);
-[; ;conio.h: 16: extern void putch(char);
-[; ;conio.h: 17: extern void ungetch(char);
-[; ;conio.h: 19: extern __bit kbhit(void);
-[; ;conio.h: 23: extern char * cgets(char *);
-[; ;conio.h: 24: extern void cputs(const char *);
-[; ;stdio.h: 88: extern int cprintf(char *, ...);
-[; ;stdio.h: 93: extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-[; ;stdio.h: 183: extern char * gets(char *);
-[; ;stdio.h: 184: extern int puts(const char *);
-[; ;stdio.h: 185: extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-[; ;stdio.h: 186: extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-[; ;stdio.h: 187: extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-[; ;stdio.h: 188: extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-[; ;stdio.h: 189: extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-[; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-[; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
-[; ;stdio.h: 195: extern int printf(const char *, ...);
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -3044,269 +2983,55 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;GPIO.h: 56: void GPIO_clearPIN
 [; ;GPIO.h: 57: (GPIO_portNameType portName, uint8_t pin);
 [; ;GPIO.h: 59: void delay(uint32_t delay);
-[; ;SPI.h: 7: typedef enum
-[; ;SPI.h: 8: {
-[; ;SPI.h: 9: SPI_LOW_POLARITY,
-[; ;SPI.h: 10: SPI_HIGH_POLARITY
-[; ;SPI.h: 11: } SPI_PolarityType;
-[; ;SPI.h: 14: typedef enum
-[; ;SPI.h: 15: {
-[; ;SPI.h: 16: SPI_LOW_PHASE,
-[; ;SPI.h: 17: SPI_HIGH_PHASE
-[; ;SPI.h: 18: } SPI_PhaseType;
-[; ;SPI.h: 20: typedef enum
-[; ;SPI.h: 21: {
-[; ;SPI.h: 22: SPI_SERIAL_CLK4,
-[; ;SPI.h: 23: SPI_SERIAL_CLK16,
-[; ;SPI.h: 24: SPI_SERIAL_CLK64
-[; ;SPI.h: 25: } SPI_SerialClk;
-[; ;SPI.h: 29: typedef struct
-[; ;SPI.h: 30: {
-[; ;SPI.h: 31: SPI_PolarityType SPI_Polarity;
-[; ;SPI.h: 32: SPI_PhaseType SPI_Phase;
-[; ;SPI.h: 33: SPI_SerialClk SPI_Clk;
-[; ;SPI.h: 34: } SPI_ConfigType;
-[; ;SPI.h: 36: void SPI_init(const SPI_ConfigType* SPI_Config);
-[; ;SPI.h: 38: int8_t SPI_write(uint8_t data);
-[; ;SPI.h: 40: uint8_t SPI_read(void);
-[; ;UART.h: 9: typedef enum
-[; ;UART.h: 10: {
-[; ;UART.h: 11: BD_1200 = 1200,
-[; ;UART.h: 12: BD_2400 = 2400,
-[; ;UART.h: 13: BD_9600 = 9600
-[; ;UART.h: 14: } UART_BaudRateType;
-[; ;UART.h: 16: void UART_init(UART_BaudRateType baudRate);
-[; ;UART.h: 18: void UART_putChar(uint8_t character);
-[; ;UART.h: 20: void UART_putString(int8_t* string);
-[; ;UART.h: 22: uint32_t expBASE10(uint8_t limit);
-[; ;UART.h: 24: uint32_t Convert_numberASCIItoDATA(uint8_t *string);
-[; ;UART.h: 26: uint8_t Convert_wordASCIItoDATA(uint8_t word);
-[; ;LCDNokia5110.h: 17: typedef struct
-[; ;LCDNokia5110.h: 18: {
-[; ;LCDNokia5110.h: 19: uint8_t numberDigits;
-[; ;LCDNokia5110.h: 20: uint8_t realDigit[7];
-[; ;LCDNokia5110.h: 21: }formatASCII;
-[; ;LCDNokia5110.h: 24: void LCDNokia_init(void);
-[; ;LCDNokia5110.h: 29: void LCDNokia_writeByte(uint8_t, uint8_t);
-[; ;LCDNokia5110.h: 31: void LCDNokia_clear(void);
-[; ;LCDNokia5110.h: 35: void LCDNokia_gotoXY(uint8_t x, uint8_t y);
-[; ;LCDNokia5110.h: 37: void LCDNokia_bitmap(const uint8_t*);
-[; ;LCDNokia5110.h: 39: void LCDNokia_sendChar(uint8_t);
-[; ;LCDNokia5110.h: 41: void LCDNokia_sendString(uint8_t*);
-[; ;LCDNokia5110.h: 43: void LCD_delay(void);
-[; ;LCDNokia5110.h: 46: void LCDNokia_printValue(uint32_t value);
-[; ;LCDNokia5110.h: 48: void LCDNokia_printFloatValue(float value);
 [; ;Buttons.h: 6: void ButtonInt_config();
-[; ;States.h: 16: typedef enum
-[; ;States.h: 17: {
-[; ;States.h: 18: MAIN_MENU,
-[; ;States.h: 19: POWER_1,
-[; ;States.h: 20: POWER_2,
-[; ;States.h: 21: RMS_VI,
-[; ;States.h: 22: POWER_FACTOR,
-[; ;States.h: 23: PHASE_ANGLE,
-[; ;States.h: 24: FREQUENCY,
-[; ;States.h: 25: TEMPERATURE
-[; ;States.h: 26: }States_MenuType;
-[; ;States.h: 29: typedef States_MenuType(*fptrState)(void);
-[; ;States.h: 32: typedef const struct State
-[; ;States.h: 33: {
-[; ;States.h: 34: States_MenuType (*stateFunction)(void);
-[; ;States.h: 35: }StateType;
-[; ;States.h: 46: States_MenuType stateMainMenu(void);
-[; ;States.h: 56: States_MenuType statePower1(void);
-[; ;States.h: 66: States_MenuType statePower2(void);
-[; ;States.h: 76: States_MenuType stateRmsVI(void);
-[; ;States.h: 86: States_MenuType statePowerFactor(void);
-[; ;States.h: 96: States_MenuType statePhaseAngle(void);
-[; ;States.h: 106: States_MenuType stateFrequency(void);
-[; ;States.h: 116: States_MenuType stateTemperature(void);
-"12 main.c
-[p x OSC=IRCIO ]
-"13
-[p x FCMEN=ON ]
-"14
-[p x IESO=ON ]
-"17
-[p x PWRTEN=OFF ]
-"18
-[p x BOREN=ON ]
-"22
-[p x WDTEN=OFF ]
-"23
-[p x WDPS=32768 ]
-"24
-[p x WINEN=OFF ]
-"27
-[p x PWMPIN=OFF ]
-"28
-[p x LPOL=HIGH ]
-"29
-[p x HPOL=HIGH ]
-"30
-[p x T1OSCMX=ON ]
-"33
-[p x MCLRE=OFF ]
-"36
-[p x STVREN=ON ]
-"37
-[p x LVP=OFF ]
-"40
-[p x CP0=OFF ]
-"41
-[p x CP1=OFF ]
-"44
-[p x CPB=OFF ]
-"45
-[p x CPD=OFF ]
-"48
-[p x WRT0=OFF ]
-"49
-[p x WRT1=OFF ]
-"52
-[p x WRTC=OFF ]
-"53
-[p x WRTB=OFF ]
-"54
-[p x WRTD=OFF ]
-"57
-[p x EBTR0=OFF ]
-"58
-[p x EBTR1=OFF ]
-"61
-[p x EBTRB=OFF ]
-"67
-[v _SPI_Config `CS286 ~T0 @X0 1 e ]
-[i _SPI_Config
-:U ..
-:U ..
-"69
-. `E3166 0
-"70
-. `E3170 0
-"72
-. `E3174 0
-..
-..
-]
-[; ;main.c: 67: const SPI_ConfigType SPI_Config =
-[; ;main.c: 68: {
-[; ;main.c: 69: SPI_LOW_POLARITY,
-[; ;main.c: 70: SPI_LOW_PHASE,
-[; ;main.c: 71: SPI_SERIAL_CLK4
-[; ;main.c: 72: };
-"76
-[v _StateProgram `CS288 ~T0 @X0 -> 8 `i e ]
-[i _StateProgram
-:U ..
-:U ..
-"78
-&U _stateMainMenu
-..
-:U ..
-"79
-&U _statePower1
-..
-:U ..
-"80
-&U _statePower2
-..
-:U ..
-"81
-&U _stateRmsVI
-..
-:U ..
-"82
-&U _statePowerFactor
-..
-:U ..
-"83
-&U _statePhaseAngle
-..
-:U ..
-"84
-&U _stateFrequency
-..
-:U ..
-"85
-&U _stateTemperature
-..
-..
-]
-[; ;main.c: 76: const StateType StateProgram[8] =
-[; ;main.c: 77: {
-[; ;main.c: 78: {stateMainMenu},
-[; ;main.c: 79: {statePower1},
-[; ;main.c: 80: {statePower2},
-[; ;main.c: 81: {stateRmsVI},
-[; ;main.c: 82: {statePowerFactor},
-[; ;main.c: 83: {statePhaseAngle},
-[; ;main.c: 84: {stateFrequency},
-[; ;main.c: 85: {stateTemperature}
-[; ;main.c: 86: };
-[v $root$_main `(v ~T0 @X0 0 e ]
-"88
-[v _main `(v ~T0 @X0 1 ef ]
-"89
+[v $root$_Button1 `(v ~T0 @X0 0 e ]
+[v F3107 `(v ~T0 @X0 1 tf ]
+"5 Buttons.c
+[v _Button1 `IF3107 ~T0 @X0 1 e ]
+"6
 {
-[; ;main.c: 88: void main(void)
-[; ;main.c: 89: {
-[e :U _main ]
+[; ;Buttons.c: 5: void interrupt Button1(void)
+[; ;Buttons.c: 6: {
+[e :U _Button1 ]
 [f ]
-[; ;main.c: 100: SPI_init(&SPI_Config);
-"100
-[e ( _SPI_init (1 &U _SPI_Config ]
-[; ;main.c: 101: LCDNokia_init();
-"101
-[e ( _LCDNokia_init ..  ]
-[; ;main.c: 102: LCDNokia_clear();
-"102
-[e ( _LCDNokia_clear ..  ]
-"108
-[v _test `uc ~T0 @X0 1 a ]
-[; ;main.c: 108: uint8_t test = 'A';
-[e = _test -> -> 65 `ui `uc ]
-[v F3282 `uc ~T0 @X0 -> 0 `x s ]
-[i F3282
-:U ..
--> 72 `c
--> 111 `c
--> 108 `c
--> 97 `c
--> 32 `c
--> 77 `c
--> 117 `c
--> 110 `c
--> 100 `c
--> 111 `c
--> 13 `c
--> 0 `c
-..
-]
-"109
-[v _arrayTest `uc ~T0 @X0 12  a ]
-[; ;main.c: 109: uint8_t arrayTest[] = "Hola Mundo\r";
-[e = _arrayTest F3282 ]
-[; ;main.c: 110: for(;;)
-"110
+[; ;Buttons.c: 8: if(INT0IF)
+"8
+[e $ ! _INT0IF 286  ]
+[; ;Buttons.c: 9: {
+"9
 {
-"111
-[e :U 290 ]
-[; ;main.c: 111: {
+[; ;Buttons.c: 11: INT0IF = 0;
+"11
+[e = _INT0IF -> -> 0 `i `b ]
+"13
+}
+[e :U 286 ]
+[; ;Buttons.c: 13: }
+[; ;Buttons.c: 14: }
+"14
+[e :UE 285 ]
+}
+"16
+[v _ButtonInt_config `(v ~T0 @X0 1 ef ]
+"17
 {
-[; ;main.c: 113: LCDNokia_sendChar(test);
-"113
-[e ( _LCDNokia_sendChar (1 _test ]
-[; ;main.c: 115: delay(6500);
-"115
-[e ( _delay (1 -> -> -> 6500 `i `l `ul ]
-"122
-}
-[; ;main.c: 122: }
-[e $U 290  ]
-[e :U 291 ]
-}
-[; ;main.c: 123: }
-"123
-[e :UE 289 ]
+[; ;Buttons.c: 16: void ButtonInt_config()
+[; ;Buttons.c: 17: {
+[e :U _ButtonInt_config ]
+[f ]
+[; ;Buttons.c: 19: GPIO_dataDirectionPIN(GPIO_C, 3, GPIO_INPUT);
+"19
+[e ( _GPIO_dataDirectionPIN (3 , , . `E3075 2 -> -> 3 `i `uc . `E3071 0 ]
+[; ;Buttons.c: 21: INT0IF = 0;
+"21
+[e = _INT0IF -> -> 0 `i `b ]
+[; ;Buttons.c: 23: INT0IE = 1;
+"23
+[e = _INT0IE -> -> 1 `i `b ]
+[; ;Buttons.c: 25: GIE = 1;
+"25
+[e = _GIE -> -> 1 `i `b ]
+[; ;Buttons.c: 26: }
+"26
+[e :UE 287 ]
 }

@@ -3,6 +3,7 @@
 #include "States.h"
 
 #define DEBUG   0
+
 // PIC18F2331 Configuration Bit Settings
 
 // 'C' source line config statements
@@ -93,7 +94,7 @@ void main(void)
 #endif
     
     /**Select the 8MHz as source clock*/
-    GPIO_sourceClock(CLK_8MHZ);
+    //GPIO_sourceClock(CLK_8MHZ);
 
     /**Configurations of devices**/
 	SPI_init(&SPI_Config);
@@ -103,10 +104,14 @@ void main(void)
     UART_init(BD_9600);
     ButtonInt_config();
 #endif
-
+    
+    uint8_t test = 'A';
+    uint8_t arrayTest[] = "Hola Mundo\r";
     for(;;)
     {
         
+        LCDNokia_sendChar(test);
+        //LCDNokia_sendString(arrayTest);
         delay(6500);
 #if DEBUG
         /**Machine states based on tags**/
