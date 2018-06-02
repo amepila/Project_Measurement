@@ -4137,16 +4137,16 @@ CLK_500KHZ,
 CLK_250KHZ,
 CLK_125KHZ,
 CLK_31KHZ
-}GPIO_SourceClk;
+} GPIO_SourceClk;
 
-
+# 21
 typedef enum
 {
 GPIO_INPUT,
 GPIO_OUTPUT
 } GPIO_state;
 
-
+# 29
 typedef enum
 {
 GPIO_A,
@@ -4170,6 +4170,12 @@ void GPIO_dataDirectionPORT
 
 void GPIO_analogSelector
 (GPIO_analogType type, uint8_t pin);
+
+void GPIO_setPIN
+(GPIO_portNameType portName, uint8_t pin);
+
+void GPIO_clearPIN
+(GPIO_portNameType portName, uint8_t pin);
 
 void delay(uint32_t delay);
 
@@ -4228,7 +4234,41 @@ uint32_t Convert_numberASCIItoDATA(uint8_t *string);
 
 uint8_t Convert_wordASCIItoDATA(uint8_t word);
 
-# 13 "States.h"
+# 17 "LCDNokia5110.h"
+typedef struct
+{
+uint8_t numberDigits;
+uint8_t realDigit[7];
+}formatASCII;
+
+
+void LCDNokia_init(void);
+
+# 29
+void LCDNokia_writeByte(uint8_t, uint8_t);
+
+void LCDNokia_clear(void);
+
+# 35
+void LCDNokia_gotoXY(uint8_t x, uint8_t y);
+
+void LCDNokia_bitmap(const uint8_t*);
+
+void LCDNokia_sendChar(uint8_t);
+
+void LCDNokia_sendString(uint8_t*);
+
+void LCD_delay(void);
+
+
+void LCDNokia_printValue(uint32_t value);
+
+void LCDNokia_printFloatValue(float value);
+
+# 6 "Buttons.h"
+void ButtonInt_config();
+
+# 16 "States.h"
 typedef enum
 {
 MAIN_MENU,
@@ -4250,28 +4290,28 @@ typedef const struct State
 States_MenuType (*stateFunction)(void);
 }StateType;
 
-# 43
+# 46
 States_MenuType stateMainMenu(void);
 
-# 53
+# 56
 States_MenuType statePower1(void);
 
-# 63
+# 66
 States_MenuType statePower2(void);
 
-# 73
+# 76
 States_MenuType stateRmsVI(void);
 
-# 83
+# 86
 States_MenuType statePowerFactor(void);
 
-# 93
+# 96
 States_MenuType statePhaseAngle(void);
 
-# 103
+# 106
 States_MenuType stateFrequency(void);
 
-# 113
+# 116
 States_MenuType stateTemperature(void);
 
 # 10 "Phases.h"

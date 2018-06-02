@@ -1,130 +1,130 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "6 States.c
-[c E3173 0 1 2 .. ]
-[n E3173 . INITIAL_LOAD GENERAL_VIEW VIEW_MENU  ]
-[c E3139 0 1 2 3 4 5 6 7 .. ]
-[n E3139 . MAIN_MENU POWER_1 POWER_2 RMS_VI POWER_FACTOR PHASE_ANGLE FREQUENCY TEMPERATURE  ]
+[c E3206 0 1 2 .. ]
+[n E3206 . INITIAL_LOAD GENERAL_VIEW VIEW_MENU  ]
+[c E3172 0 1 2 3 4 5 6 7 .. ]
+[n E3172 . MAIN_MENU POWER_1 POWER_2 RMS_VI POWER_FACTOR PHASE_ANGLE FREQUENCY TEMPERATURE  ]
 "18 Phases.h
-[s S287 `E3173 1 `E3139 1 ]
-[n S287 . phaseState stateMain ]
-[v F3187 `(S287 ~T0 @X0 0 tf1`S287 ]
+[s S288 `E3206 1 `E3172 1 ]
+[n S288 . phaseState stateMain ]
+[v F3220 `(S288 ~T0 @X0 0 tf1`S288 ]
 "25
-[s S288 `*F3187 1 ]
-[n S288 PhaseMainMenu PhaseMainMenu ]
+[s S289 `*F3220 1 ]
+[n S289 PhaseMainMenu PhaseMainMenu ]
 "217
-[v _initialLoad `(S287 ~T0 @X0 0 ef1`S287 ]
+[v _initialLoad `(S288 ~T0 @X0 0 ef1`S288 ]
 "227
-[v _generalView `(S287 ~T0 @X0 0 ef1`S287 ]
+[v _generalView `(S288 ~T0 @X0 0 ef1`S288 ]
 "238
-[v _viewMenu `(S287 ~T0 @X0 0 ef1`S287 ]
+[v _viewMenu `(S288 ~T0 @X0 0 ef1`S288 ]
 "14 States.c
-[c E3190 0 1 2 3 .. ]
-[n E3190 . TYPES_POWER1 PHASES_POWER1 VECTOR_POWER1 EXIT_POWER1  ]
+[c E3223 0 1 2 3 .. ]
+[n E3223 . TYPES_POWER1 PHASES_POWER1 VECTOR_POWER1 EXIT_POWER1  ]
 "45 Phases.h
-[s S289 `uc 1 `E3190 1 `E3139 1 ]
-[n S289 . dummy phaseState stateMain ]
-[v F3206 `(S289 ~T0 @X0 0 tf1`S289 ]
+[s S290 `uc 1 `E3223 1 `E3172 1 ]
+[n S290 . dummy phaseState stateMain ]
+[v F3239 `(S290 ~T0 @X0 0 tf1`S290 ]
 "53
-[s S290 `*F3206 1 ]
-[n S290 PhasePower1 PhasePower1 ]
+[s S291 `*F3239 1 ]
+[n S291 PhasePower1 PhasePower1 ]
 "249
-[v _typesPower1 `(S289 ~T0 @X0 0 ef1`S289 ]
+[v _typesPower1 `(S290 ~T0 @X0 0 ef1`S290 ]
 "259
-[v _phPower1 `(S289 ~T0 @X0 0 ef1`S289 ]
+[v _phPower1 `(S290 ~T0 @X0 0 ef1`S290 ]
 "270
-[v _vectorPower1 `(S289 ~T0 @X0 0 ef1`S289 ]
+[v _vectorPower1 `(S290 ~T0 @X0 0 ef1`S290 ]
 "282
-[v _exitPower1 `(S289 ~T0 @X0 0 ef1`S289 ]
+[v _exitPower1 `(S290 ~T0 @X0 0 ef1`S290 ]
 "23 States.c
-[c E3209 0 1 2 .. ]
-[n E3209 . FH_POWER2 PHASES_POWER2 EXIT_POWER2  ]
+[c E3242 0 1 2 .. ]
+[n E3242 . FH_POWER2 PHASES_POWER2 EXIT_POWER2  ]
 "72 Phases.h
-[s S291 `uc 1 `E3209 1 `E3139 1 ]
-[n S291 . dummy phaseState stateMain ]
-[v F3224 `(S291 ~T0 @X0 0 tf1`S291 ]
+[s S292 `uc 1 `E3242 1 `E3172 1 ]
+[n S292 . dummy phaseState stateMain ]
+[v F3257 `(S292 ~T0 @X0 0 tf1`S292 ]
 "80
-[s S292 `*F3224 1 ]
-[n S292 PhasePower2 PhasePower2 ]
+[s S293 `*F3257 1 ]
+[n S293 PhasePower2 PhasePower2 ]
 "293
-[v _fhPower2 `(S291 ~T0 @X0 0 ef1`S291 ]
+[v _fhPower2 `(S292 ~T0 @X0 0 ef1`S292 ]
 "304
-[v _phPower2 `(S291 ~T0 @X0 0 ef1`S291 ]
+[v _phPower2 `(S292 ~T0 @X0 0 ef1`S292 ]
 "315
-[v _exitPower2 `(S291 ~T0 @X0 0 ef1`S291 ]
+[v _exitPower2 `(S292 ~T0 @X0 0 ef1`S292 ]
 "31 States.c
-[c E3227 0 1 2 .. ]
-[n E3227 . PHASES_RMSVI NEUTRAL_RMSVI EXIT_RMSVI  ]
+[c E3260 0 1 2 .. ]
+[n E3260 . PHASES_RMSVI NEUTRAL_RMSVI EXIT_RMSVI  ]
 "99 Phases.h
-[s S293 `uc 1 `E3227 1 `E3139 1 ]
-[n S293 . dummy phaseState stateMain ]
-[v F3242 `(S293 ~T0 @X0 0 tf1`S293 ]
+[s S294 `uc 1 `E3260 1 `E3172 1 ]
+[n S294 . dummy phaseState stateMain ]
+[v F3275 `(S294 ~T0 @X0 0 tf1`S294 ]
 "107
-[s S294 `*F3242 1 ]
-[n S294 PhaseRmsVI PhaseRmsVI ]
+[s S295 `*F3275 1 ]
+[n S295 PhaseRmsVI PhaseRmsVI ]
 "326
-[v _phRmsVI `(S293 ~T0 @X0 0 ef1`S293 ]
+[v _phRmsVI `(S294 ~T0 @X0 0 ef1`S294 ]
 "337
-[v _neutralRmsVI `(S293 ~T0 @X0 0 ef1`S293 ]
+[v _neutralRmsVI `(S294 ~T0 @X0 0 ef1`S294 ]
 "348
-[v _exitRmsVI `(S293 ~T0 @X0 0 ef1`S293 ]
+[v _exitRmsVI `(S294 ~T0 @X0 0 ef1`S294 ]
 "39 States.c
-[c E3245 0 1 .. ]
-[n E3245 . PHASES_PF EXIT_PF  ]
+[c E3278 0 1 .. ]
+[n E3278 . PHASES_PF EXIT_PF  ]
 "124 Phases.h
-[s S295 `E3245 1 `E3139 1 ]
-[n S295 . phaseState stateMain ]
-[v F3258 `(S295 ~T0 @X0 0 tf1`S295 ]
+[s S296 `E3278 1 `E3172 1 ]
+[n S296 . phaseState stateMain ]
+[v F3291 `(S296 ~T0 @X0 0 tf1`S296 ]
 "131
-[s S296 `*F3258 1 ]
-[n S296 PhasePowerFactor PhasePowerFactor ]
+[s S297 `*F3291 1 ]
+[n S297 PhasePowerFactor PhasePowerFactor ]
 "359
-[v _phPowerFactor `(S295 ~T0 @X0 0 ef1`S295 ]
+[v _phPowerFactor `(S296 ~T0 @X0 0 ef1`S296 ]
 "370
-[v _exitPowerFactor `(S295 ~T0 @X0 0 ef1`S295 ]
+[v _exitPowerFactor `(S296 ~T0 @X0 0 ef1`S296 ]
 "46 States.c
-[c E3261 0 1 2 .. ]
-[n E3261 . PHASES_PA VI_PA EXIT_PA  ]
+[c E3294 0 1 2 .. ]
+[n E3294 . PHASES_PA VI_PA EXIT_PA  ]
 "149 Phases.h
-[s S297 `uc 1 `E3261 1 `E3139 1 ]
-[n S297 . dummy phaseState stateMain ]
-[v F3276 `(S297 ~T0 @X0 0 tf1`S297 ]
+[s S298 `uc 1 `E3294 1 `E3172 1 ]
+[n S298 . dummy phaseState stateMain ]
+[v F3309 `(S298 ~T0 @X0 0 tf1`S298 ]
 "157
-[s S298 `*F3276 1 ]
-[n S298 PhasePhaseAngle PhasePhaseAngle ]
+[s S299 `*F3309 1 ]
+[n S299 PhasePhaseAngle PhasePhaseAngle ]
 "381
-[v _phPhaseAngle `(S297 ~T0 @X0 0 ef1`S297 ]
+[v _phPhaseAngle `(S298 ~T0 @X0 0 ef1`S298 ]
 "392
-[v _viPhaseAngle `(S297 ~T0 @X0 0 ef1`S297 ]
+[v _viPhaseAngle `(S298 ~T0 @X0 0 ef1`S298 ]
 "403
-[v _exitPhaseAngle `(S297 ~T0 @X0 0 ef1`S297 ]
+[v _exitPhaseAngle `(S298 ~T0 @X0 0 ef1`S298 ]
 "54 States.c
-[c E3279 0 1 .. ]
-[n E3279 . SHOW_FREQUENCY EXIT_FREQUENCY  ]
+[c E3312 0 1 .. ]
+[n E3312 . SHOW_FREQUENCY EXIT_FREQUENCY  ]
 "172 Phases.h
-[s S299 `uc 1 `E3279 1 `E3139 1 ]
-[n S299 . dummy phaseState stateMain ]
-[v F3293 `(S299 ~T0 @X0 0 tf1`S299 ]
+[s S300 `uc 1 `E3312 1 `E3172 1 ]
+[n S300 . dummy phaseState stateMain ]
+[v F3326 `(S300 ~T0 @X0 0 tf1`S300 ]
 "180
-[s S300 `*F3293 1 ]
-[n S300 PhaseFrequency PhaseFrequency ]
+[s S301 `*F3326 1 ]
+[n S301 PhaseFrequency PhaseFrequency ]
 "414
-[v _showFrequency `(S299 ~T0 @X0 0 ef1`S299 ]
+[v _showFrequency `(S300 ~T0 @X0 0 ef1`S300 ]
 "425
-[v _exitFrequency `(S299 ~T0 @X0 0 ef1`S299 ]
+[v _exitFrequency `(S300 ~T0 @X0 0 ef1`S300 ]
 "61 States.c
-[c E3296 0 1 .. ]
-[n E3296 . SHOW_TEMPERATURE EXIT_TEMPERATURE  ]
+[c E3329 0 1 .. ]
+[n E3329 . SHOW_TEMPERATURE EXIT_TEMPERATURE  ]
 "196 Phases.h
-[s S301 `uc 1 `E3296 1 `E3139 1 ]
-[n S301 . dummy phaseState stateMain ]
-[v F3310 `(S301 ~T0 @X0 0 tf1`S301 ]
+[s S302 `uc 1 `E3329 1 `E3172 1 ]
+[n S302 . dummy phaseState stateMain ]
+[v F3343 `(S302 ~T0 @X0 0 tf1`S302 ]
 "204
-[s S302 `*F3310 1 ]
-[n S302 PhaseTemperature PhaseTemperature ]
+[s S303 `*F3343 1 ]
+[n S303 PhaseTemperature PhaseTemperature ]
 "436
-[v _showTemperature `(S301 ~T0 @X0 0 ef1`S301 ]
+[v _showTemperature `(S302 ~T0 @X0 0 ef1`S302 ]
 "447
-[v _exitTemperature `(S301 ~T0 @X0 0 ef1`S301 ]
+[v _exitTemperature `(S302 ~T0 @X0 0 ef1`S302 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3067,31 +3067,35 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;GPIO.h: 14: CLK_250KHZ,
 [; ;GPIO.h: 15: CLK_125KHZ,
 [; ;GPIO.h: 16: CLK_31KHZ
-[; ;GPIO.h: 17: }GPIO_SourceClk;
-[; ;GPIO.h: 20: typedef enum
-[; ;GPIO.h: 21: {
-[; ;GPIO.h: 22: GPIO_INPUT,
-[; ;GPIO.h: 23: GPIO_OUTPUT
-[; ;GPIO.h: 24: } GPIO_state;
-[; ;GPIO.h: 27: typedef enum
-[; ;GPIO.h: 28: {
-[; ;GPIO.h: 29: GPIO_A,
-[; ;GPIO.h: 30: GPIO_B,
-[; ;GPIO.h: 31: GPIO_C
-[; ;GPIO.h: 32: } GPIO_portNameType;
-[; ;GPIO.h: 34: typedef enum
-[; ;GPIO.h: 35: {
-[; ;GPIO.h: 36: GPIO_DIGITAL,
-[; ;GPIO.h: 37: GPIO_ANALOG
-[; ;GPIO.h: 38: } GPIO_analogType;
-[; ;GPIO.h: 40: void GPIO_sourceClock(GPIO_SourceClk clk);
-[; ;GPIO.h: 42: void GPIO_dataDirectionPIN
-[; ;GPIO.h: 43: (GPIO_portNameType portName, uint8_t pin, GPIO_state state);
-[; ;GPIO.h: 45: void GPIO_dataDirectionPORT
-[; ;GPIO.h: 46: (GPIO_portNameType portName, GPIO_state state);
-[; ;GPIO.h: 48: void GPIO_analogSelector
-[; ;GPIO.h: 49: (GPIO_analogType type, uint8_t pin);
-[; ;GPIO.h: 51: void delay(uint32_t delay);
+[; ;GPIO.h: 17: } GPIO_SourceClk;
+[; ;GPIO.h: 21: typedef enum
+[; ;GPIO.h: 22: {
+[; ;GPIO.h: 23: GPIO_INPUT,
+[; ;GPIO.h: 24: GPIO_OUTPUT
+[; ;GPIO.h: 25: } GPIO_state;
+[; ;GPIO.h: 29: typedef enum
+[; ;GPIO.h: 30: {
+[; ;GPIO.h: 31: GPIO_A,
+[; ;GPIO.h: 32: GPIO_B,
+[; ;GPIO.h: 33: GPIO_C
+[; ;GPIO.h: 34: } GPIO_portNameType;
+[; ;GPIO.h: 36: typedef enum
+[; ;GPIO.h: 37: {
+[; ;GPIO.h: 38: GPIO_DIGITAL,
+[; ;GPIO.h: 39: GPIO_ANALOG
+[; ;GPIO.h: 40: } GPIO_analogType;
+[; ;GPIO.h: 42: void GPIO_sourceClock(GPIO_SourceClk clk);
+[; ;GPIO.h: 44: void GPIO_dataDirectionPIN
+[; ;GPIO.h: 45: (GPIO_portNameType portName, uint8_t pin, GPIO_state state);
+[; ;GPIO.h: 47: void GPIO_dataDirectionPORT
+[; ;GPIO.h: 48: (GPIO_portNameType portName, GPIO_state state);
+[; ;GPIO.h: 50: void GPIO_analogSelector
+[; ;GPIO.h: 51: (GPIO_analogType type, uint8_t pin);
+[; ;GPIO.h: 53: void GPIO_setPIN
+[; ;GPIO.h: 54: (GPIO_portNameType portName, uint8_t pin);
+[; ;GPIO.h: 56: void GPIO_clearPIN
+[; ;GPIO.h: 57: (GPIO_portNameType portName, uint8_t pin);
+[; ;GPIO.h: 59: void delay(uint32_t delay);
 [; ;SPI.h: 7: typedef enum
 [; ;SPI.h: 8: {
 [; ;SPI.h: 9: SPI_LOW_POLARITY,
@@ -3129,30 +3133,46 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;UART.h: 22: uint32_t expBASE10(uint8_t limit);
 [; ;UART.h: 24: uint32_t Convert_numberASCIItoDATA(uint8_t *string);
 [; ;UART.h: 26: uint8_t Convert_wordASCIItoDATA(uint8_t word);
-[; ;States.h: 13: typedef enum
-[; ;States.h: 14: {
-[; ;States.h: 15: MAIN_MENU,
-[; ;States.h: 16: POWER_1,
-[; ;States.h: 17: POWER_2,
-[; ;States.h: 18: RMS_VI,
-[; ;States.h: 19: POWER_FACTOR,
-[; ;States.h: 20: PHASE_ANGLE,
-[; ;States.h: 21: FREQUENCY,
-[; ;States.h: 22: TEMPERATURE
-[; ;States.h: 23: }States_MenuType;
-[; ;States.h: 26: typedef States_MenuType(*fptrState)(void);
-[; ;States.h: 29: typedef const struct State
-[; ;States.h: 30: {
-[; ;States.h: 31: States_MenuType (*stateFunction)(void);
-[; ;States.h: 32: }StateType;
-[; ;States.h: 43: States_MenuType stateMainMenu(void);
-[; ;States.h: 53: States_MenuType statePower1(void);
-[; ;States.h: 63: States_MenuType statePower2(void);
-[; ;States.h: 73: States_MenuType stateRmsVI(void);
-[; ;States.h: 83: States_MenuType statePowerFactor(void);
-[; ;States.h: 93: States_MenuType statePhaseAngle(void);
-[; ;States.h: 103: States_MenuType stateFrequency(void);
-[; ;States.h: 113: States_MenuType stateTemperature(void);
+[; ;LCDNokia5110.h: 17: typedef struct
+[; ;LCDNokia5110.h: 18: {
+[; ;LCDNokia5110.h: 19: uint8_t numberDigits;
+[; ;LCDNokia5110.h: 20: uint8_t realDigit[7];
+[; ;LCDNokia5110.h: 21: }formatASCII;
+[; ;LCDNokia5110.h: 24: void LCDNokia_init(void);
+[; ;LCDNokia5110.h: 29: void LCDNokia_writeByte(uint8_t, uint8_t);
+[; ;LCDNokia5110.h: 31: void LCDNokia_clear(void);
+[; ;LCDNokia5110.h: 35: void LCDNokia_gotoXY(uint8_t x, uint8_t y);
+[; ;LCDNokia5110.h: 37: void LCDNokia_bitmap(const uint8_t*);
+[; ;LCDNokia5110.h: 39: void LCDNokia_sendChar(uint8_t);
+[; ;LCDNokia5110.h: 41: void LCDNokia_sendString(uint8_t*);
+[; ;LCDNokia5110.h: 43: void LCD_delay(void);
+[; ;LCDNokia5110.h: 46: void LCDNokia_printValue(uint32_t value);
+[; ;LCDNokia5110.h: 48: void LCDNokia_printFloatValue(float value);
+[; ;Buttons.h: 6: void ButtonInt_config();
+[; ;States.h: 16: typedef enum
+[; ;States.h: 17: {
+[; ;States.h: 18: MAIN_MENU,
+[; ;States.h: 19: POWER_1,
+[; ;States.h: 20: POWER_2,
+[; ;States.h: 21: RMS_VI,
+[; ;States.h: 22: POWER_FACTOR,
+[; ;States.h: 23: PHASE_ANGLE,
+[; ;States.h: 24: FREQUENCY,
+[; ;States.h: 25: TEMPERATURE
+[; ;States.h: 26: }States_MenuType;
+[; ;States.h: 29: typedef States_MenuType(*fptrState)(void);
+[; ;States.h: 32: typedef const struct State
+[; ;States.h: 33: {
+[; ;States.h: 34: States_MenuType (*stateFunction)(void);
+[; ;States.h: 35: }StateType;
+[; ;States.h: 46: States_MenuType stateMainMenu(void);
+[; ;States.h: 56: States_MenuType statePower1(void);
+[; ;States.h: 66: States_MenuType statePower2(void);
+[; ;States.h: 76: States_MenuType stateRmsVI(void);
+[; ;States.h: 86: States_MenuType statePowerFactor(void);
+[; ;States.h: 96: States_MenuType statePhaseAngle(void);
+[; ;States.h: 106: States_MenuType stateFrequency(void);
+[; ;States.h: 116: States_MenuType stateTemperature(void);
 [; ;Phases.h: 10: typedef enum
 [; ;Phases.h: 11: {
 [; ;Phases.h: 12: INITIAL_LOAD,
@@ -3308,7 +3328,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Phases.h: 436: PhaseTemperature_Type showTemperature(PhaseTemperature_Type data);
 [; ;Phases.h: 447: PhaseTemperature_Type exitTemperature(PhaseTemperature_Type data);
 "6 States.c
-[v _phasesMainMenu `CS288 ~T0 @X0 -> 3 `i e ]
+[v _phasesMainMenu `CS289 ~T0 @X0 -> 3 `i e ]
 [i _phasesMainMenu
 :U ..
 :U ..
@@ -3332,7 +3352,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;States.c: 10: {viewMenu}
 [; ;States.c: 11: };
 "14
-[v _phasesPower1 `CS290 ~T0 @X0 -> 4 `i e ]
+[v _phasesPower1 `CS291 ~T0 @X0 -> 4 `i e ]
 [i _phasesPower1
 :U ..
 :U ..
@@ -3361,7 +3381,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;States.c: 19: {exitPower1}
 [; ;States.c: 20: };
 "23
-[v _phasesPower2 `CS292 ~T0 @X0 -> 3 `i e ]
+[v _phasesPower2 `CS293 ~T0 @X0 -> 3 `i e ]
 [i _phasesPower2
 :U ..
 :U ..
@@ -3385,7 +3405,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;States.c: 27: {exitPower2}
 [; ;States.c: 28: };
 "31
-[v _phasesRmsVI `CS294 ~T0 @X0 -> 3 `i e ]
+[v _phasesRmsVI `CS295 ~T0 @X0 -> 3 `i e ]
 [i _phasesRmsVI
 :U ..
 :U ..
@@ -3409,7 +3429,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;States.c: 35: {exitRmsVI}
 [; ;States.c: 36: };
 "39
-[v _phasesPowerFactor `CS296 ~T0 @X0 -> 2 `i e ]
+[v _phasesPowerFactor `CS297 ~T0 @X0 -> 2 `i e ]
 [i _phasesPowerFactor
 :U ..
 :U ..
@@ -3428,7 +3448,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;States.c: 42: {exitPowerFactor}
 [; ;States.c: 43: };
 "46
-[v _phasesPhaseAngle `CS298 ~T0 @X0 -> 3 `i e ]
+[v _phasesPhaseAngle `CS299 ~T0 @X0 -> 3 `i e ]
 [i _phasesPhaseAngle
 :U ..
 :U ..
@@ -3452,7 +3472,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;States.c: 50: {exitPhaseAngle}
 [; ;States.c: 51: };
 "54
-[v _phasesFrequency `CS300 ~T0 @X0 -> 2 `i e ]
+[v _phasesFrequency `CS301 ~T0 @X0 -> 2 `i e ]
 [i _phasesFrequency
 :U ..
 :U ..
@@ -3471,7 +3491,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;States.c: 57: {exitFrequency}
 [; ;States.c: 58: };
 "61
-[v _phasesTemperature `CS302 ~T0 @X0 -> 2 `i e ]
+[v _phasesTemperature `CS303 ~T0 @X0 -> 2 `i e ]
 [i _phasesTemperature
 :U ..
 :U ..
@@ -3490,7 +3510,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;States.c: 64: {exitTemperature}
 [; ;States.c: 65: };
 "67
-[v _stateMainMenu `(E3139 ~T0 @X0 1 ef ]
+[v _stateMainMenu `(E3172 ~T0 @X0 1 ef ]
 "68
 {
 [; ;States.c: 67: States_MenuType stateMainMenu(void)
@@ -3498,40 +3518,40 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _stateMainMenu ]
 [f ]
 "70
-[v F3388 `E3173 ~T0 @X0 1 s phase ]
-[i F3388
-. `E3173 0
+[v F3421 `E3206 ~T0 @X0 1 s phase ]
+[i F3421
+. `E3206 0
 ]
 "71
-[v F3389 `S287 ~T0 @X0 1 s phaseMain ]
-[v F3391 `(S287 ~T0 @X0 0 tf1`S287 ]
+[v F3422 `S288 ~T0 @X0 1 s phaseMain ]
+[v F3424 `(S288 ~T0 @X0 0 tf1`S288 ]
 "72
-[v _mainMenuFunctions `*F3391 ~T0 @X0 1 a ]
+[v _mainMenuFunctions `*F3424 ~T0 @X0 1 a ]
 [; ;States.c: 70: static PhaseStateMenu_Type phase = INITIAL_LOAD;
 [; ;States.c: 71: static PhaseMainMenu_Type phaseMain;
 [; ;States.c: 72: PhaseMainMenu_Type(*mainMenuFunctions)(PhaseMainMenu_Type);
 [; ;States.c: 73: phaseMain.stateMain = MAIN_MENU;
 "73
-[e = . F3389 1 . `E3139 0 ]
+[e = . F3422 1 . `E3172 0 ]
 [; ;States.c: 76: mainMenuFunctions = phasesMainMenu[phase].PhaseMainMenu;
 "76
-[e = _mainMenuFunctions -> . *U + &U _phasesMainMenu * -> F3388 `ux -> -> # *U &U _phasesMainMenu `ui `ux 0 `*F3391 ]
+[e = _mainMenuFunctions -> . *U + &U _phasesMainMenu * -> F3421 `ux -> -> # *U &U _phasesMainMenu `ui `ux 0 `*F3424 ]
 [; ;States.c: 77: phaseMain = mainMenuFunctions(phaseMain);
 "77
-[e = F3389 ( *U _mainMenuFunctions (1 F3389 ]
+[e = F3422 ( *U _mainMenuFunctions (1 F3422 ]
 [; ;States.c: 80: phase = phaseMain.phaseState;
 "80
-[e = F3388 . F3389 0 ]
+[e = F3421 . F3422 0 ]
 [; ;States.c: 81: return (phaseMain.stateMain);
 "81
-[e ) . F3389 1 ]
-[e $UE 303  ]
+[e ) . F3422 1 ]
+[e $UE 304  ]
 [; ;States.c: 82: }
 "82
-[e :UE 303 ]
+[e :UE 304 ]
 }
 "84
-[v _statePower1 `(E3139 ~T0 @X0 1 ef ]
+[v _statePower1 `(E3172 ~T0 @X0 1 ef ]
 "85
 {
 [; ;States.c: 84: States_MenuType statePower1(void)
@@ -3539,40 +3559,40 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _statePower1 ]
 [f ]
 "87
-[v F3395 `E3190 ~T0 @X0 1 s phase ]
-[i F3395
-. `E3190 0
+[v F3428 `E3223 ~T0 @X0 1 s phase ]
+[i F3428
+. `E3223 0
 ]
 "88
-[v F3396 `S289 ~T0 @X0 1 s phasePower1 ]
-[v F3398 `(S289 ~T0 @X0 0 tf1`S289 ]
+[v F3429 `S290 ~T0 @X0 1 s phasePower1 ]
+[v F3431 `(S290 ~T0 @X0 0 tf1`S290 ]
 "89
-[v _power1Functions `*F3398 ~T0 @X0 1 a ]
+[v _power1Functions `*F3431 ~T0 @X0 1 a ]
 [; ;States.c: 87: static PhaseStatePower1_Type phase = TYPES_POWER1;
 [; ;States.c: 88: static PhasePower1_Type phasePower1;
 [; ;States.c: 89: PhasePower1_Type(*power1Functions)(PhasePower1_Type);
 [; ;States.c: 90: phasePower1.stateMain = POWER_1;
 "90
-[e = . F3396 2 . `E3139 1 ]
+[e = . F3429 2 . `E3172 1 ]
 [; ;States.c: 93: power1Functions = phasesPower1[phase].PhasePower1;
 "93
-[e = _power1Functions -> . *U + &U _phasesPower1 * -> F3395 `ux -> -> # *U &U _phasesPower1 `ui `ux 0 `*F3398 ]
+[e = _power1Functions -> . *U + &U _phasesPower1 * -> F3428 `ux -> -> # *U &U _phasesPower1 `ui `ux 0 `*F3431 ]
 [; ;States.c: 94: phasePower1 = power1Functions(phasePower1);
 "94
-[e = F3396 ( *U _power1Functions (1 F3396 ]
+[e = F3429 ( *U _power1Functions (1 F3429 ]
 [; ;States.c: 97: phase = phasePower1.phaseState;
 "97
-[e = F3395 . F3396 1 ]
+[e = F3428 . F3429 1 ]
 [; ;States.c: 98: return (phasePower1.stateMain);
 "98
-[e ) . F3396 2 ]
-[e $UE 304  ]
+[e ) . F3429 2 ]
+[e $UE 305  ]
 [; ;States.c: 99: }
 "99
-[e :UE 304 ]
+[e :UE 305 ]
 }
 "101
-[v _statePower2 `(E3139 ~T0 @X0 1 ef ]
+[v _statePower2 `(E3172 ~T0 @X0 1 ef ]
 "102
 {
 [; ;States.c: 101: States_MenuType statePower2(void)
@@ -3580,40 +3600,40 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _statePower2 ]
 [f ]
 "104
-[v F3402 `E3209 ~T0 @X0 1 s phase ]
-[i F3402
-. `E3209 0
+[v F3435 `E3242 ~T0 @X0 1 s phase ]
+[i F3435
+. `E3242 0
 ]
 "105
-[v F3403 `S291 ~T0 @X0 1 s phasePower2 ]
-[v F3405 `(S291 ~T0 @X0 0 tf1`S291 ]
+[v F3436 `S292 ~T0 @X0 1 s phasePower2 ]
+[v F3438 `(S292 ~T0 @X0 0 tf1`S292 ]
 "106
-[v _power2Functions `*F3405 ~T0 @X0 1 a ]
+[v _power2Functions `*F3438 ~T0 @X0 1 a ]
 [; ;States.c: 104: static PhaseStatePower2_Type phase = FH_POWER2;
 [; ;States.c: 105: static PhasePower2_Type phasePower2;
 [; ;States.c: 106: PhasePower2_Type(*power2Functions)(PhasePower2_Type);
 [; ;States.c: 107: phasePower2.stateMain = POWER_2;
 "107
-[e = . F3403 2 . `E3139 2 ]
+[e = . F3436 2 . `E3172 2 ]
 [; ;States.c: 110: power2Functions = phasesPower2[phase].PhasePower2;
 "110
-[e = _power2Functions -> . *U + &U _phasesPower2 * -> F3402 `ux -> -> # *U &U _phasesPower2 `ui `ux 0 `*F3405 ]
+[e = _power2Functions -> . *U + &U _phasesPower2 * -> F3435 `ux -> -> # *U &U _phasesPower2 `ui `ux 0 `*F3438 ]
 [; ;States.c: 111: phasePower2 = power2Functions(phasePower2);
 "111
-[e = F3403 ( *U _power2Functions (1 F3403 ]
+[e = F3436 ( *U _power2Functions (1 F3436 ]
 [; ;States.c: 114: phase = phasePower2.phaseState;
 "114
-[e = F3402 . F3403 1 ]
+[e = F3435 . F3436 1 ]
 [; ;States.c: 115: return (phasePower2.stateMain);
 "115
-[e ) . F3403 2 ]
-[e $UE 305  ]
+[e ) . F3436 2 ]
+[e $UE 306  ]
 [; ;States.c: 116: }
 "116
-[e :UE 305 ]
+[e :UE 306 ]
 }
 "118
-[v _stateRmsVI `(E3139 ~T0 @X0 1 ef ]
+[v _stateRmsVI `(E3172 ~T0 @X0 1 ef ]
 "119
 {
 [; ;States.c: 118: States_MenuType stateRmsVI(void)
@@ -3621,40 +3641,40 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _stateRmsVI ]
 [f ]
 "121
-[v F3409 `E3227 ~T0 @X0 1 s phase ]
-[i F3409
-. `E3227 0
+[v F3442 `E3260 ~T0 @X0 1 s phase ]
+[i F3442
+. `E3260 0
 ]
 "122
-[v F3410 `S293 ~T0 @X0 1 s phaseRmsVI ]
-[v F3412 `(S293 ~T0 @X0 0 tf1`S293 ]
+[v F3443 `S294 ~T0 @X0 1 s phaseRmsVI ]
+[v F3445 `(S294 ~T0 @X0 0 tf1`S294 ]
 "123
-[v _rmsVIFunctions `*F3412 ~T0 @X0 1 a ]
+[v _rmsVIFunctions `*F3445 ~T0 @X0 1 a ]
 [; ;States.c: 121: static PhaseStateRmsVI_Type phase = PHASES_RMSVI;
 [; ;States.c: 122: static PhaseRmsVI_Type phaseRmsVI;
 [; ;States.c: 123: PhaseRmsVI_Type(*rmsVIFunctions)(PhaseRmsVI_Type);
 [; ;States.c: 124: phaseRmsVI.stateMain = RMS_VI;
 "124
-[e = . F3410 2 . `E3139 3 ]
+[e = . F3443 2 . `E3172 3 ]
 [; ;States.c: 127: rmsVIFunctions = phasesRmsVI[phase].PhaseRmsVI;
 "127
-[e = _rmsVIFunctions -> . *U + &U _phasesRmsVI * -> F3409 `ux -> -> # *U &U _phasesRmsVI `ui `ux 0 `*F3412 ]
+[e = _rmsVIFunctions -> . *U + &U _phasesRmsVI * -> F3442 `ux -> -> # *U &U _phasesRmsVI `ui `ux 0 `*F3445 ]
 [; ;States.c: 128: phaseRmsVI = rmsVIFunctions(phaseRmsVI);
 "128
-[e = F3410 ( *U _rmsVIFunctions (1 F3410 ]
+[e = F3443 ( *U _rmsVIFunctions (1 F3443 ]
 [; ;States.c: 131: phase = phaseRmsVI.phaseState;
 "131
-[e = F3409 . F3410 1 ]
+[e = F3442 . F3443 1 ]
 [; ;States.c: 132: return (phaseRmsVI.stateMain);
 "132
-[e ) . F3410 2 ]
-[e $UE 306  ]
+[e ) . F3443 2 ]
+[e $UE 307  ]
 [; ;States.c: 133: }
 "133
-[e :UE 306 ]
+[e :UE 307 ]
 }
 "135
-[v _statePowerFactor `(E3139 ~T0 @X0 1 ef ]
+[v _statePowerFactor `(E3172 ~T0 @X0 1 ef ]
 "136
 {
 [; ;States.c: 135: States_MenuType statePowerFactor(void)
@@ -3662,40 +3682,40 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _statePowerFactor ]
 [f ]
 "138
-[v F3416 `E3245 ~T0 @X0 1 s phase ]
-[i F3416
-. `E3245 0
+[v F3449 `E3278 ~T0 @X0 1 s phase ]
+[i F3449
+. `E3278 0
 ]
 "139
-[v F3417 `S295 ~T0 @X0 1 s phasePowerFactor ]
-[v F3419 `(S295 ~T0 @X0 0 tf1`S295 ]
+[v F3450 `S296 ~T0 @X0 1 s phasePowerFactor ]
+[v F3452 `(S296 ~T0 @X0 0 tf1`S296 ]
 "140
-[v _powerFactorFunctions `*F3419 ~T0 @X0 1 a ]
+[v _powerFactorFunctions `*F3452 ~T0 @X0 1 a ]
 [; ;States.c: 138: static PhaseStatePowerFactor_Type phase = PHASES_PF;
 [; ;States.c: 139: static PhasePowerFactor_Type phasePowerFactor;
 [; ;States.c: 140: PhasePowerFactor_Type(*powerFactorFunctions)(PhasePowerFactor_Type);
 [; ;States.c: 141: phasePowerFactor.stateMain = POWER_FACTOR;
 "141
-[e = . F3417 1 . `E3139 4 ]
+[e = . F3450 1 . `E3172 4 ]
 [; ;States.c: 144: powerFactorFunctions = phasesPowerFactor[phase].PhasePowerFactor;
 "144
-[e = _powerFactorFunctions -> . *U + &U _phasesPowerFactor * -> F3416 `ux -> -> # *U &U _phasesPowerFactor `ui `ux 0 `*F3419 ]
+[e = _powerFactorFunctions -> . *U + &U _phasesPowerFactor * -> F3449 `ux -> -> # *U &U _phasesPowerFactor `ui `ux 0 `*F3452 ]
 [; ;States.c: 145: phasePowerFactor = powerFactorFunctions(phasePowerFactor);
 "145
-[e = F3417 ( *U _powerFactorFunctions (1 F3417 ]
+[e = F3450 ( *U _powerFactorFunctions (1 F3450 ]
 [; ;States.c: 148: phase = phasePowerFactor.phaseState;
 "148
-[e = F3416 . F3417 0 ]
+[e = F3449 . F3450 0 ]
 [; ;States.c: 149: return (phasePowerFactor.stateMain);
 "149
-[e ) . F3417 1 ]
-[e $UE 307  ]
+[e ) . F3450 1 ]
+[e $UE 308  ]
 [; ;States.c: 150: }
 "150
-[e :UE 307 ]
+[e :UE 308 ]
 }
 "152
-[v _statePhaseAngle `(E3139 ~T0 @X0 1 ef ]
+[v _statePhaseAngle `(E3172 ~T0 @X0 1 ef ]
 "153
 {
 [; ;States.c: 152: States_MenuType statePhaseAngle(void)
@@ -3703,40 +3723,40 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _statePhaseAngle ]
 [f ]
 "155
-[v F3423 `E3261 ~T0 @X0 1 s phase ]
-[i F3423
-. `E3261 0
+[v F3456 `E3294 ~T0 @X0 1 s phase ]
+[i F3456
+. `E3294 0
 ]
 "156
-[v F3424 `S297 ~T0 @X0 1 s phasePhaseAngle ]
-[v F3426 `(S297 ~T0 @X0 0 tf1`S297 ]
+[v F3457 `S298 ~T0 @X0 1 s phasePhaseAngle ]
+[v F3459 `(S298 ~T0 @X0 0 tf1`S298 ]
 "157
-[v _phaseAngleFunctions `*F3426 ~T0 @X0 1 a ]
+[v _phaseAngleFunctions `*F3459 ~T0 @X0 1 a ]
 [; ;States.c: 155: static PhaseStatePhaseAngle_Type phase = PHASES_PA;
 [; ;States.c: 156: static PhasePhaseAngle_Type phasePhaseAngle;
 [; ;States.c: 157: PhasePhaseAngle_Type(*phaseAngleFunctions)(PhasePhaseAngle_Type);
 [; ;States.c: 158: phasePhaseAngle.stateMain = PHASE_ANGLE;
 "158
-[e = . F3424 2 . `E3139 5 ]
+[e = . F3457 2 . `E3172 5 ]
 [; ;States.c: 161: phaseAngleFunctions = phasesPhaseAngle[phase].PhasePhaseAngle;
 "161
-[e = _phaseAngleFunctions -> . *U + &U _phasesPhaseAngle * -> F3423 `ux -> -> # *U &U _phasesPhaseAngle `ui `ux 0 `*F3426 ]
+[e = _phaseAngleFunctions -> . *U + &U _phasesPhaseAngle * -> F3456 `ux -> -> # *U &U _phasesPhaseAngle `ui `ux 0 `*F3459 ]
 [; ;States.c: 162: phasePhaseAngle = phaseAngleFunctions(phasePhaseAngle);
 "162
-[e = F3424 ( *U _phaseAngleFunctions (1 F3424 ]
+[e = F3457 ( *U _phaseAngleFunctions (1 F3457 ]
 [; ;States.c: 165: phase = phasePhaseAngle.phaseState;
 "165
-[e = F3423 . F3424 1 ]
+[e = F3456 . F3457 1 ]
 [; ;States.c: 166: return (phasePhaseAngle.stateMain);
 "166
-[e ) . F3424 2 ]
-[e $UE 308  ]
+[e ) . F3457 2 ]
+[e $UE 309  ]
 [; ;States.c: 167: }
 "167
-[e :UE 308 ]
+[e :UE 309 ]
 }
 "169
-[v _stateFrequency `(E3139 ~T0 @X0 1 ef ]
+[v _stateFrequency `(E3172 ~T0 @X0 1 ef ]
 "170
 {
 [; ;States.c: 169: States_MenuType stateFrequency(void)
@@ -3744,40 +3764,40 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _stateFrequency ]
 [f ]
 "172
-[v F3430 `E3279 ~T0 @X0 1 s phase ]
-[i F3430
-. `E3279 0
+[v F3463 `E3312 ~T0 @X0 1 s phase ]
+[i F3463
+. `E3312 0
 ]
 "173
-[v F3431 `S299 ~T0 @X0 1 s phaseFrequency ]
-[v F3433 `(S299 ~T0 @X0 0 tf1`S299 ]
+[v F3464 `S300 ~T0 @X0 1 s phaseFrequency ]
+[v F3466 `(S300 ~T0 @X0 0 tf1`S300 ]
 "174
-[v _frequencyFunctions `*F3433 ~T0 @X0 1 a ]
+[v _frequencyFunctions `*F3466 ~T0 @X0 1 a ]
 [; ;States.c: 172: static PhaseStateFrequency_Type phase = SHOW_FREQUENCY;
 [; ;States.c: 173: static PhaseFrequency_Type phaseFrequency;
 [; ;States.c: 174: PhaseFrequency_Type(*frequencyFunctions)(PhaseFrequency_Type);
 [; ;States.c: 175: phaseFrequency.stateMain = FREQUENCY;
 "175
-[e = . F3431 2 . `E3139 6 ]
+[e = . F3464 2 . `E3172 6 ]
 [; ;States.c: 178: frequencyFunctions = phasesFrequency[phase].PhaseFrequency;
 "178
-[e = _frequencyFunctions -> . *U + &U _phasesFrequency * -> F3430 `ux -> -> # *U &U _phasesFrequency `ui `ux 0 `*F3433 ]
+[e = _frequencyFunctions -> . *U + &U _phasesFrequency * -> F3463 `ux -> -> # *U &U _phasesFrequency `ui `ux 0 `*F3466 ]
 [; ;States.c: 179: phaseFrequency = frequencyFunctions(phaseFrequency);
 "179
-[e = F3431 ( *U _frequencyFunctions (1 F3431 ]
+[e = F3464 ( *U _frequencyFunctions (1 F3464 ]
 [; ;States.c: 182: phase = phaseFrequency.phaseState;
 "182
-[e = F3430 . F3431 1 ]
+[e = F3463 . F3464 1 ]
 [; ;States.c: 183: return (phaseFrequency.stateMain);
 "183
-[e ) . F3431 2 ]
-[e $UE 309  ]
+[e ) . F3464 2 ]
+[e $UE 310  ]
 [; ;States.c: 184: }
 "184
-[e :UE 309 ]
+[e :UE 310 ]
 }
 "186
-[v _stateTemperature `(E3139 ~T0 @X0 1 ef ]
+[v _stateTemperature `(E3172 ~T0 @X0 1 ef ]
 "187
 {
 [; ;States.c: 186: States_MenuType stateTemperature(void)
@@ -3785,35 +3805,35 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U _stateTemperature ]
 [f ]
 "189
-[v F3437 `E3296 ~T0 @X0 1 s phase ]
-[i F3437
-. `E3296 0
+[v F3470 `E3329 ~T0 @X0 1 s phase ]
+[i F3470
+. `E3329 0
 ]
 "190
-[v F3438 `S301 ~T0 @X0 1 s phaseTemperature ]
-[v F3440 `(S301 ~T0 @X0 0 tf1`S301 ]
+[v F3471 `S302 ~T0 @X0 1 s phaseTemperature ]
+[v F3473 `(S302 ~T0 @X0 0 tf1`S302 ]
 "191
-[v _temperatureFunctions `*F3440 ~T0 @X0 1 a ]
+[v _temperatureFunctions `*F3473 ~T0 @X0 1 a ]
 [; ;States.c: 189: static PhaseStateTemperature_Type phase = SHOW_TEMPERATURE;
 [; ;States.c: 190: static PhaseTemperature_Type phaseTemperature;
 [; ;States.c: 191: PhaseTemperature_Type(*temperatureFunctions)(PhaseTemperature_Type);
 [; ;States.c: 192: phaseTemperature.stateMain = TEMPERATURE;
 "192
-[e = . F3438 2 . `E3139 7 ]
+[e = . F3471 2 . `E3172 7 ]
 [; ;States.c: 195: temperatureFunctions = phasesTemperature[phase].PhaseTemperature;
 "195
-[e = _temperatureFunctions -> . *U + &U _phasesTemperature * -> F3437 `ux -> -> # *U &U _phasesTemperature `ui `ux 0 `*F3440 ]
+[e = _temperatureFunctions -> . *U + &U _phasesTemperature * -> F3470 `ux -> -> # *U &U _phasesTemperature `ui `ux 0 `*F3473 ]
 [; ;States.c: 196: phaseTemperature = temperatureFunctions(phaseTemperature);
 "196
-[e = F3438 ( *U _temperatureFunctions (1 F3438 ]
+[e = F3471 ( *U _temperatureFunctions (1 F3471 ]
 [; ;States.c: 199: phase = phaseTemperature.phaseState;
 "199
-[e = F3437 . F3438 1 ]
+[e = F3470 . F3471 1 ]
 [; ;States.c: 200: return (phaseTemperature.stateMain);
 "200
-[e ) . F3438 2 ]
-[e $UE 310  ]
+[e ) . F3471 2 ]
+[e $UE 311  ]
 [; ;States.c: 201: }
 "201
-[e :UE 310 ]
+[e :UE 311 ]
 }

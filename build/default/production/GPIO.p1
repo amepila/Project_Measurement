@@ -20,6 +20,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n E3080 . GPIO_DIGITAL GPIO_ANALOG  ]
 "4471 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f2331.h
 [v _ANSEL0 `Vuc ~T0 @X0 0 e@4024 ]
+"1020
+[v _PORTA `Vuc ~T0 @X0 0 e@3968 ]
+"1165
+[v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
+"1236
+[v _PORTC `Vuc ~T0 @X0 0 e@3970 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -2962,31 +2968,35 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;GPIO.h: 14: CLK_250KHZ,
 [; ;GPIO.h: 15: CLK_125KHZ,
 [; ;GPIO.h: 16: CLK_31KHZ
-[; ;GPIO.h: 17: }GPIO_SourceClk;
-[; ;GPIO.h: 20: typedef enum
-[; ;GPIO.h: 21: {
-[; ;GPIO.h: 22: GPIO_INPUT,
-[; ;GPIO.h: 23: GPIO_OUTPUT
-[; ;GPIO.h: 24: } GPIO_state;
-[; ;GPIO.h: 27: typedef enum
-[; ;GPIO.h: 28: {
-[; ;GPIO.h: 29: GPIO_A,
-[; ;GPIO.h: 30: GPIO_B,
-[; ;GPIO.h: 31: GPIO_C
-[; ;GPIO.h: 32: } GPIO_portNameType;
-[; ;GPIO.h: 34: typedef enum
-[; ;GPIO.h: 35: {
-[; ;GPIO.h: 36: GPIO_DIGITAL,
-[; ;GPIO.h: 37: GPIO_ANALOG
-[; ;GPIO.h: 38: } GPIO_analogType;
-[; ;GPIO.h: 40: void GPIO_sourceClock(GPIO_SourceClk clk);
-[; ;GPIO.h: 42: void GPIO_dataDirectionPIN
-[; ;GPIO.h: 43: (GPIO_portNameType portName, uint8_t pin, GPIO_state state);
-[; ;GPIO.h: 45: void GPIO_dataDirectionPORT
-[; ;GPIO.h: 46: (GPIO_portNameType portName, GPIO_state state);
-[; ;GPIO.h: 48: void GPIO_analogSelector
-[; ;GPIO.h: 49: (GPIO_analogType type, uint8_t pin);
-[; ;GPIO.h: 51: void delay(uint32_t delay);
+[; ;GPIO.h: 17: } GPIO_SourceClk;
+[; ;GPIO.h: 21: typedef enum
+[; ;GPIO.h: 22: {
+[; ;GPIO.h: 23: GPIO_INPUT,
+[; ;GPIO.h: 24: GPIO_OUTPUT
+[; ;GPIO.h: 25: } GPIO_state;
+[; ;GPIO.h: 29: typedef enum
+[; ;GPIO.h: 30: {
+[; ;GPIO.h: 31: GPIO_A,
+[; ;GPIO.h: 32: GPIO_B,
+[; ;GPIO.h: 33: GPIO_C
+[; ;GPIO.h: 34: } GPIO_portNameType;
+[; ;GPIO.h: 36: typedef enum
+[; ;GPIO.h: 37: {
+[; ;GPIO.h: 38: GPIO_DIGITAL,
+[; ;GPIO.h: 39: GPIO_ANALOG
+[; ;GPIO.h: 40: } GPIO_analogType;
+[; ;GPIO.h: 42: void GPIO_sourceClock(GPIO_SourceClk clk);
+[; ;GPIO.h: 44: void GPIO_dataDirectionPIN
+[; ;GPIO.h: 45: (GPIO_portNameType portName, uint8_t pin, GPIO_state state);
+[; ;GPIO.h: 47: void GPIO_dataDirectionPORT
+[; ;GPIO.h: 48: (GPIO_portNameType portName, GPIO_state state);
+[; ;GPIO.h: 50: void GPIO_analogSelector
+[; ;GPIO.h: 51: (GPIO_analogType type, uint8_t pin);
+[; ;GPIO.h: 53: void GPIO_setPIN
+[; ;GPIO.h: 54: (GPIO_portNameType portName, uint8_t pin);
+[; ;GPIO.h: 56: void GPIO_clearPIN
+[; ;GPIO.h: 57: (GPIO_portNameType portName, uint8_t pin);
+[; ;GPIO.h: 59: void delay(uint32_t delay);
 "18 GPIO.c
 [v _GPIO_sourceClock `(v ~T0 @X0 1 ef1`E3061 ]
 "19
@@ -3471,35 +3481,171 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 333 ]
 }
 "151
-[v _delay `(v ~T0 @X0 1 ef1`ul ]
-"152
+[v _GPIO_setPIN `(v ~T0 @X0 1 ef2`E3075`uc ]
+"153
 {
-[; ;GPIO.c: 151: void delay(uint32_t delay)
-[; ;GPIO.c: 152: {
+[; ;GPIO.c: 151: void GPIO_setPIN
+[; ;GPIO.c: 152: (GPIO_portNameType portName, uint8_t pin)
+[; ;GPIO.c: 153: {
+[e :U _GPIO_setPIN ]
+"152
+[v _portName `E3075 ~T0 @X0 1 r1 ]
+[v _pin `uc ~T0 @X0 1 r2 ]
+"153
+[f ]
+[; ;GPIO.c: 154: switch(portName)
+"154
+[e $U 341  ]
+[; ;GPIO.c: 155: {
+"155
+{
+[; ;GPIO.c: 156: case GPIO_A:
+"156
+[e :U 342 ]
+[; ;GPIO.c: 157: PORTA |= (1<<pin);
+"157
+[e =| _PORTA -> << -> 1 `i _pin `uc ]
+[; ;GPIO.c: 158: break;
+"158
+[e $U 340  ]
+[; ;GPIO.c: 159: case GPIO_B:
+"159
+[e :U 343 ]
+[; ;GPIO.c: 160: PORTB |= (1<<pin);
+"160
+[e =| _PORTB -> << -> 1 `i _pin `uc ]
+[; ;GPIO.c: 161: break;
+"161
+[e $U 340  ]
+[; ;GPIO.c: 162: case GPIO_C:
+"162
+[e :U 344 ]
+[; ;GPIO.c: 163: PORTC |= (1<<pin);
+"163
+[e =| _PORTC -> << -> 1 `i _pin `uc ]
+[; ;GPIO.c: 164: break;
+"164
+[e $U 340  ]
+[; ;GPIO.c: 165: default:
+"165
+[e :U 345 ]
+[; ;GPIO.c: 166: break;
+"166
+[e $U 340  ]
+"167
+}
+[; ;GPIO.c: 167: }
+[e $U 340  ]
+"154
+[e :U 341 ]
+[e [\ _portName , $ . `E3075 0 342
+ , $ . `E3075 1 343
+ , $ . `E3075 2 344
+ 345 ]
+"167
+[e :U 340 ]
+[; ;GPIO.c: 168: }
+"168
+[e :UE 339 ]
+}
+"170
+[v _GPIO_clearPIN `(v ~T0 @X0 1 ef2`E3075`uc ]
+"172
+{
+[; ;GPIO.c: 170: void GPIO_clearPIN
+[; ;GPIO.c: 171: (GPIO_portNameType portName, uint8_t pin)
+[; ;GPIO.c: 172: {
+[e :U _GPIO_clearPIN ]
+"171
+[v _portName `E3075 ~T0 @X0 1 r1 ]
+[v _pin `uc ~T0 @X0 1 r2 ]
+"172
+[f ]
+[; ;GPIO.c: 173: switch(portName)
+"173
+[e $U 348  ]
+[; ;GPIO.c: 174: {
+"174
+{
+[; ;GPIO.c: 175: case GPIO_A:
+"175
+[e :U 349 ]
+[; ;GPIO.c: 176: PORTA &= ~(1<<pin);
+"176
+[e =& _PORTA -> ~ << -> 1 `i _pin `uc ]
+[; ;GPIO.c: 177: break;
+"177
+[e $U 347  ]
+[; ;GPIO.c: 178: case GPIO_B:
+"178
+[e :U 350 ]
+[; ;GPIO.c: 179: PORTB &= ~(1<<pin);
+"179
+[e =& _PORTB -> ~ << -> 1 `i _pin `uc ]
+[; ;GPIO.c: 180: break;
+"180
+[e $U 347  ]
+[; ;GPIO.c: 181: case GPIO_C:
+"181
+[e :U 351 ]
+[; ;GPIO.c: 182: PORTC &= ~(1<<pin);
+"182
+[e =& _PORTC -> ~ << -> 1 `i _pin `uc ]
+[; ;GPIO.c: 183: break;
+"183
+[e $U 347  ]
+[; ;GPIO.c: 184: default:
+"184
+[e :U 352 ]
+[; ;GPIO.c: 185: break;
+"185
+[e $U 347  ]
+"186
+}
+[; ;GPIO.c: 186: }
+[e $U 347  ]
+"173
+[e :U 348 ]
+[e [\ _portName , $ . `E3075 0 349
+ , $ . `E3075 1 350
+ , $ . `E3075 2 351
+ 352 ]
+"186
+[e :U 347 ]
+[; ;GPIO.c: 187: }
+"187
+[e :UE 346 ]
+}
+"189
+[v _delay `(v ~T0 @X0 1 ef1`ul ]
+"190
+{
+[; ;GPIO.c: 189: void delay(uint32_t delay)
+[; ;GPIO.c: 190: {
 [e :U _delay ]
 [v _delay `ul ~T0 @X0 1 r1 ]
 [f ]
-"153
+"191
 [v _counter `Vul ~T0 @X0 1 a ]
-[; ;GPIO.c: 153: volatile uint32_t counter;
-[; ;GPIO.c: 155: for(counter = delay; counter > 0; counter--)
-"155
+[; ;GPIO.c: 191: volatile uint32_t counter;
+[; ;GPIO.c: 193: for(counter = delay; counter > 0; counter--)
+"193
 {
 [e = _counter _delay ]
-[e $ > _counter -> -> -> 0 `i `l `ul 340  ]
-[e $U 341  ]
-"156
-[e :U 340 ]
-[; ;GPIO.c: 156: {}
+[e $ > _counter -> -> -> 0 `i `l `ul 354  ]
+[e $U 355  ]
+"194
+[e :U 354 ]
+[; ;GPIO.c: 194: {}
 {
 }
-"155
+"193
 [e -- _counter -> -> -> 1 `i `l `ul ]
-[e $ > _counter -> -> -> 0 `i `l `ul 340  ]
-[e :U 341 ]
-"156
+[e $ > _counter -> -> -> 0 `i `l `ul 354  ]
+[e :U 355 ]
+"194
 }
-[; ;GPIO.c: 157: }
-"157
-[e :UE 339 ]
+[; ;GPIO.c: 195: }
+"195
+[e :UE 353 ]
 }

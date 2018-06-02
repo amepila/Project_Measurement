@@ -1,5 +1,5 @@
 
-# 1 "main.c"
+# 1 "Buttons.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.44\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -4179,183 +4179,29 @@ void GPIO_clearPIN
 
 void delay(uint32_t delay);
 
-# 7 "SPI.h"
-typedef enum
-{
-SPI_LOW_POLARITY,
-SPI_HIGH_POLARITY
-} SPI_PolarityType;
-
-
-typedef enum
-{
-SPI_LOW_PHASE,
-SPI_HIGH_PHASE
-} SPI_PhaseType;
-
-typedef enum
-{
-SPI_SERIAL_CLK4,
-SPI_SERIAL_CLK16,
-SPI_SERIAL_CLK64
-} SPI_SerialClk;
-
-# 29
-typedef struct
-{
-SPI_PolarityType SPI_Polarity;
-SPI_PhaseType SPI_Phase;
-SPI_SerialClk SPI_Clk;
-} SPI_ConfigType;
-
-void SPI_init(const SPI_ConfigType* SPI_Config);
-
-int8_t SPI_write(uint8_t data);
-
-uint8_t SPI_read(void);
-
-# 9 "UART.h"
-typedef enum
-{
-BD_1200 = 1200,
-BD_2400 = 2400,
-BD_9600 = 9600
-} UART_BaudRateType;
-
-void UART_init(UART_BaudRateType baudRate);
-
-void UART_putChar(uint8_t character);
-
-void UART_putString(int8_t* string);
-
-uint32_t expBASE10(uint8_t limit);
-
-uint32_t Convert_numberASCIItoDATA(uint8_t *string);
-
-uint8_t Convert_wordASCIItoDATA(uint8_t word);
-
-# 17 "LCDNokia5110.h"
-typedef struct
-{
-uint8_t numberDigits;
-uint8_t realDigit[7];
-}formatASCII;
-
-
-void LCDNokia_init(void);
-
-# 29
-void LCDNokia_writeByte(uint8_t, uint8_t);
-
-void LCDNokia_clear(void);
-
-# 35
-void LCDNokia_gotoXY(uint8_t x, uint8_t y);
-
-void LCDNokia_bitmap(const uint8_t*);
-
-void LCDNokia_sendChar(uint8_t);
-
-void LCDNokia_sendString(uint8_t*);
-
-void LCD_delay(void);
-
-
-void LCDNokia_printValue(uint32_t value);
-
-void LCDNokia_printFloatValue(float value);
-
 # 6 "Buttons.h"
 void ButtonInt_config();
 
-# 16 "States.h"
-typedef enum
-{
-MAIN_MENU,
-POWER_1,
-POWER_2,
-RMS_VI,
-POWER_FACTOR,
-PHASE_ANGLE,
-FREQUENCY,
-TEMPERATURE
-}States_MenuType;
-
-
-typedef States_MenuType(*fptrState)(void);
-
-
-typedef const struct State
-{
-States_MenuType (*stateFunction)(void);
-}StateType;
-
-# 46
-States_MenuType stateMainMenu(void);
-
-# 56
-States_MenuType statePower1(void);
-
-# 66
-States_MenuType statePower2(void);
-
-# 76
-States_MenuType stateRmsVI(void);
-
-# 86
-States_MenuType statePowerFactor(void);
-
-# 96
-States_MenuType statePhaseAngle(void);
-
-# 106
-States_MenuType stateFrequency(void);
-
-# 116
-States_MenuType stateTemperature(void);
-
-# 5 "main.c"
-const SPI_ConfigType SPI_Config =
-{
-SPI_LOW_POLARITY,
-SPI_LOW_PHASE,
-SPI_SERIAL_CLK4
-};
-
-
-
-const StateType StateProgram[8] =
-{
-{stateMainMenu},
-{statePower1},
-{statePower2},
-{stateRmsVI},
-{statePowerFactor},
-{statePhaseAngle},
-{stateFrequency},
-{stateTemperature}
-};
-
-void main(void)
+# 5 "Buttons.c"
+void interrupt Button1(void)
 {
 
-States_MenuType currentState = MAIN_MENU;
-States_MenuType(*mainFunctions)(void);
-
-
-GPIO_sourceClock(CLK_8MHZ);
-
-
-SPI_init(&SPI_Config);
-LCDNokia_init();
-LCDNokia_clear();
-UART_init(BD_9600);
-ButtonInt_config();
-
-for(;;)
+if(INT0IF)
 {
 
-mainFunctions = StateProgram[currentState].stateFunction;
-currentState = mainFunctions();
+INT0IF = 0;
+
 }
+}
+
+void ButtonInt_config()
+{
+
+GPIO_dataDirectionPIN(GPIO_C, 3, GPIO_INPUT);
+
+INT0IF = 0;
+
+INT0IE = 1;
+
+GIE = 1;
 }

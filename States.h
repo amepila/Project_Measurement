@@ -8,6 +8,7 @@
 #include "LCDNokia5110.h"
 #include "Bluetooth.h"
 #include "ATM90E36A.h"
+#include "Buttons.h"
 
 /**
  * \brief This data type define the states of program

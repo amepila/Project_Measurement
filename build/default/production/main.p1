@@ -1,50 +1,56 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "5 main.c
-[c E3098 0 1 .. ]
-[n E3098 . SPI_LOW_POLARITY SPI_HIGH_POLARITY  ]
-[c E3102 0 1 .. ]
-[n E3102 . SPI_LOW_PHASE SPI_HIGH_PHASE  ]
-[c E3106 0 1 2 .. ]
-[n E3106 . SPI_SERIAL_CLK4 SPI_SERIAL_CLK16 SPI_SERIAL_CLK64  ]
+[c E3104 0 1 .. ]
+[n E3104 . SPI_LOW_POLARITY SPI_HIGH_POLARITY  ]
+[c E3108 0 1 .. ]
+[n E3108 . SPI_LOW_PHASE SPI_HIGH_PHASE  ]
+[c E3112 0 1 2 .. ]
+[n E3112 . SPI_SERIAL_CLK4 SPI_SERIAL_CLK16 SPI_SERIAL_CLK64  ]
 "30 SPI.h
-[s S285 `E3098 1 `E3102 1 `E3106 1 ]
+[s S285 `E3104 1 `E3108 1 `E3112 1 ]
 [n S285 . SPI_Polarity SPI_Phase SPI_Clk ]
-"13 main.c
-[c E3139 0 1 2 3 4 5 6 7 .. ]
-[n E3139 . MAIN_MENU POWER_1 POWER_2 RMS_VI POWER_FACTOR PHASE_ANGLE FREQUENCY TEMPERATURE  ]
-[v F3154 `(E3139 ~T0 @X0 0 tf ]
-"29 States.h
-[s S286 `*F3154 1 ]
-[n S286 State stateFunction ]
-"43
-[v _stateMainMenu `(E3139 ~T0 @X0 0 ef ]
-"53
-[v _statePower1 `(E3139 ~T0 @X0 0 ef ]
-"63
-[v _statePower2 `(E3139 ~T0 @X0 0 ef ]
-"73
-[v _stateRmsVI `(E3139 ~T0 @X0 0 ef ]
-"83
-[v _statePowerFactor `(E3139 ~T0 @X0 0 ef ]
-"93
-[v _statePhaseAngle `(E3139 ~T0 @X0 0 ef ]
-"103
-[v _stateFrequency `(E3139 ~T0 @X0 0 ef ]
-"113
-[v _stateTemperature `(E3139 ~T0 @X0 0 ef ]
+"14 main.c
+[c E3172 0 1 2 3 4 5 6 7 .. ]
+[n E3172 . MAIN_MENU POWER_1 POWER_2 RMS_VI POWER_FACTOR PHASE_ANGLE FREQUENCY TEMPERATURE  ]
+[v F3187 `(E3172 ~T0 @X0 0 tf ]
+"32 States.h
+[s S287 `*F3187 1 ]
+[n S287 State stateFunction ]
+"46
+[v _stateMainMenu `(E3172 ~T0 @X0 0 ef ]
+"56
+[v _statePower1 `(E3172 ~T0 @X0 0 ef ]
+"66
+[v _statePower2 `(E3172 ~T0 @X0 0 ef ]
+"76
+[v _stateRmsVI `(E3172 ~T0 @X0 0 ef ]
+"86
+[v _statePowerFactor `(E3172 ~T0 @X0 0 ef ]
+"96
+[v _statePhaseAngle `(E3172 ~T0 @X0 0 ef ]
+"106
+[v _stateFrequency `(E3172 ~T0 @X0 0 ef ]
+"116
+[v _stateTemperature `(E3172 ~T0 @X0 0 ef ]
 [p mainexit ]
-"32 main.c
+"33 main.c
 [c E3061 0 1 2 3 4 5 6 7 .. ]
 [n E3061 . CLK_8MHZ CLK_4MHZ CLK_2MHZ CLK_1MHZ CLK_500KHZ CLK_250KHZ CLK_125KHZ CLK_31KHZ  ]
-"40 GPIO.h
+"42 GPIO.h
 [v _GPIO_sourceClock `(v ~T0 @X0 0 ef1`E3061 ]
 "36 SPI.h
 [v _SPI_init `(v ~T0 @X0 0 ef1`*CS285 ]
-"36 main.c
-[c E3122 1200 2400 9600 .. ]
-[n E3122 . BD_1200 BD_2400 BD_9600  ]
+"24 LCDNokia5110.h
+[v _LCDNokia_init `(v ~T0 @X0 0 ef ]
+"31
+[v _LCDNokia_clear `(v ~T0 @X0 0 ef ]
+"39 main.c
+[c E3128 1200 2400 9600 .. ]
+[n E3128 . BD_1200 BD_2400 BD_9600  ]
 "16 UART.h
-[v _UART_init `(v ~T0 @X0 0 ef1`E3122 ]
+[v _UART_init `(v ~T0 @X0 0 ef1`E3128 ]
+"6 Buttons.h
+[v _ButtonInt_config `(v ~T0 @X0 0 ef ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -2987,31 +2993,35 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;GPIO.h: 14: CLK_250KHZ,
 [; ;GPIO.h: 15: CLK_125KHZ,
 [; ;GPIO.h: 16: CLK_31KHZ
-[; ;GPIO.h: 17: }GPIO_SourceClk;
-[; ;GPIO.h: 20: typedef enum
-[; ;GPIO.h: 21: {
-[; ;GPIO.h: 22: GPIO_INPUT,
-[; ;GPIO.h: 23: GPIO_OUTPUT
-[; ;GPIO.h: 24: } GPIO_state;
-[; ;GPIO.h: 27: typedef enum
-[; ;GPIO.h: 28: {
-[; ;GPIO.h: 29: GPIO_A,
-[; ;GPIO.h: 30: GPIO_B,
-[; ;GPIO.h: 31: GPIO_C
-[; ;GPIO.h: 32: } GPIO_portNameType;
-[; ;GPIO.h: 34: typedef enum
-[; ;GPIO.h: 35: {
-[; ;GPIO.h: 36: GPIO_DIGITAL,
-[; ;GPIO.h: 37: GPIO_ANALOG
-[; ;GPIO.h: 38: } GPIO_analogType;
-[; ;GPIO.h: 40: void GPIO_sourceClock(GPIO_SourceClk clk);
-[; ;GPIO.h: 42: void GPIO_dataDirectionPIN
-[; ;GPIO.h: 43: (GPIO_portNameType portName, uint8_t pin, GPIO_state state);
-[; ;GPIO.h: 45: void GPIO_dataDirectionPORT
-[; ;GPIO.h: 46: (GPIO_portNameType portName, GPIO_state state);
-[; ;GPIO.h: 48: void GPIO_analogSelector
-[; ;GPIO.h: 49: (GPIO_analogType type, uint8_t pin);
-[; ;GPIO.h: 51: void delay(uint32_t delay);
+[; ;GPIO.h: 17: } GPIO_SourceClk;
+[; ;GPIO.h: 21: typedef enum
+[; ;GPIO.h: 22: {
+[; ;GPIO.h: 23: GPIO_INPUT,
+[; ;GPIO.h: 24: GPIO_OUTPUT
+[; ;GPIO.h: 25: } GPIO_state;
+[; ;GPIO.h: 29: typedef enum
+[; ;GPIO.h: 30: {
+[; ;GPIO.h: 31: GPIO_A,
+[; ;GPIO.h: 32: GPIO_B,
+[; ;GPIO.h: 33: GPIO_C
+[; ;GPIO.h: 34: } GPIO_portNameType;
+[; ;GPIO.h: 36: typedef enum
+[; ;GPIO.h: 37: {
+[; ;GPIO.h: 38: GPIO_DIGITAL,
+[; ;GPIO.h: 39: GPIO_ANALOG
+[; ;GPIO.h: 40: } GPIO_analogType;
+[; ;GPIO.h: 42: void GPIO_sourceClock(GPIO_SourceClk clk);
+[; ;GPIO.h: 44: void GPIO_dataDirectionPIN
+[; ;GPIO.h: 45: (GPIO_portNameType portName, uint8_t pin, GPIO_state state);
+[; ;GPIO.h: 47: void GPIO_dataDirectionPORT
+[; ;GPIO.h: 48: (GPIO_portNameType portName, GPIO_state state);
+[; ;GPIO.h: 50: void GPIO_analogSelector
+[; ;GPIO.h: 51: (GPIO_analogType type, uint8_t pin);
+[; ;GPIO.h: 53: void GPIO_setPIN
+[; ;GPIO.h: 54: (GPIO_portNameType portName, uint8_t pin);
+[; ;GPIO.h: 56: void GPIO_clearPIN
+[; ;GPIO.h: 57: (GPIO_portNameType portName, uint8_t pin);
+[; ;GPIO.h: 59: void delay(uint32_t delay);
 [; ;SPI.h: 7: typedef enum
 [; ;SPI.h: 8: {
 [; ;SPI.h: 9: SPI_LOW_POLARITY,
@@ -3049,41 +3059,57 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;UART.h: 22: uint32_t expBASE10(uint8_t limit);
 [; ;UART.h: 24: uint32_t Convert_numberASCIItoDATA(uint8_t *string);
 [; ;UART.h: 26: uint8_t Convert_wordASCIItoDATA(uint8_t word);
-[; ;States.h: 13: typedef enum
-[; ;States.h: 14: {
-[; ;States.h: 15: MAIN_MENU,
-[; ;States.h: 16: POWER_1,
-[; ;States.h: 17: POWER_2,
-[; ;States.h: 18: RMS_VI,
-[; ;States.h: 19: POWER_FACTOR,
-[; ;States.h: 20: PHASE_ANGLE,
-[; ;States.h: 21: FREQUENCY,
-[; ;States.h: 22: TEMPERATURE
-[; ;States.h: 23: }States_MenuType;
-[; ;States.h: 26: typedef States_MenuType(*fptrState)(void);
-[; ;States.h: 29: typedef const struct State
-[; ;States.h: 30: {
-[; ;States.h: 31: States_MenuType (*stateFunction)(void);
-[; ;States.h: 32: }StateType;
-[; ;States.h: 43: States_MenuType stateMainMenu(void);
-[; ;States.h: 53: States_MenuType statePower1(void);
-[; ;States.h: 63: States_MenuType statePower2(void);
-[; ;States.h: 73: States_MenuType stateRmsVI(void);
-[; ;States.h: 83: States_MenuType statePowerFactor(void);
-[; ;States.h: 93: States_MenuType statePhaseAngle(void);
-[; ;States.h: 103: States_MenuType stateFrequency(void);
-[; ;States.h: 113: States_MenuType stateTemperature(void);
+[; ;LCDNokia5110.h: 17: typedef struct
+[; ;LCDNokia5110.h: 18: {
+[; ;LCDNokia5110.h: 19: uint8_t numberDigits;
+[; ;LCDNokia5110.h: 20: uint8_t realDigit[7];
+[; ;LCDNokia5110.h: 21: }formatASCII;
+[; ;LCDNokia5110.h: 24: void LCDNokia_init(void);
+[; ;LCDNokia5110.h: 29: void LCDNokia_writeByte(uint8_t, uint8_t);
+[; ;LCDNokia5110.h: 31: void LCDNokia_clear(void);
+[; ;LCDNokia5110.h: 35: void LCDNokia_gotoXY(uint8_t x, uint8_t y);
+[; ;LCDNokia5110.h: 37: void LCDNokia_bitmap(const uint8_t*);
+[; ;LCDNokia5110.h: 39: void LCDNokia_sendChar(uint8_t);
+[; ;LCDNokia5110.h: 41: void LCDNokia_sendString(uint8_t*);
+[; ;LCDNokia5110.h: 43: void LCD_delay(void);
+[; ;LCDNokia5110.h: 46: void LCDNokia_printValue(uint32_t value);
+[; ;LCDNokia5110.h: 48: void LCDNokia_printFloatValue(float value);
+[; ;Buttons.h: 6: void ButtonInt_config();
+[; ;States.h: 16: typedef enum
+[; ;States.h: 17: {
+[; ;States.h: 18: MAIN_MENU,
+[; ;States.h: 19: POWER_1,
+[; ;States.h: 20: POWER_2,
+[; ;States.h: 21: RMS_VI,
+[; ;States.h: 22: POWER_FACTOR,
+[; ;States.h: 23: PHASE_ANGLE,
+[; ;States.h: 24: FREQUENCY,
+[; ;States.h: 25: TEMPERATURE
+[; ;States.h: 26: }States_MenuType;
+[; ;States.h: 29: typedef States_MenuType(*fptrState)(void);
+[; ;States.h: 32: typedef const struct State
+[; ;States.h: 33: {
+[; ;States.h: 34: States_MenuType (*stateFunction)(void);
+[; ;States.h: 35: }StateType;
+[; ;States.h: 46: States_MenuType stateMainMenu(void);
+[; ;States.h: 56: States_MenuType statePower1(void);
+[; ;States.h: 66: States_MenuType statePower2(void);
+[; ;States.h: 76: States_MenuType stateRmsVI(void);
+[; ;States.h: 86: States_MenuType statePowerFactor(void);
+[; ;States.h: 96: States_MenuType statePhaseAngle(void);
+[; ;States.h: 106: States_MenuType stateFrequency(void);
+[; ;States.h: 116: States_MenuType stateTemperature(void);
 "5 main.c
 [v _SPI_Config `CS285 ~T0 @X0 1 e ]
 [i _SPI_Config
 :U ..
 :U ..
 "7
-. `E3098 0
+. `E3104 0
 "8
-. `E3102 0
+. `E3108 0
 "10
-. `E3106 0
+. `E3112 0
 ..
 ..
 ]
@@ -3093,101 +3119,110 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 8: SPI_LOW_PHASE,
 [; ;main.c: 9: SPI_SERIAL_CLK4
 [; ;main.c: 10: };
-"13
-[v _StateProgram `CS286 ~T0 @X0 -> 8 `i e ]
+"14
+[v _StateProgram `CS287 ~T0 @X0 -> 8 `i e ]
 [i _StateProgram
 :U ..
 :U ..
-"15
+"16
 &U _stateMainMenu
 ..
 :U ..
-"16
+"17
 &U _statePower1
 ..
 :U ..
-"17
+"18
 &U _statePower2
 ..
 :U ..
-"18
+"19
 &U _stateRmsVI
 ..
 :U ..
-"19
+"20
 &U _statePowerFactor
 ..
 :U ..
-"20
+"21
 &U _statePhaseAngle
 ..
 :U ..
-"21
+"22
 &U _stateFrequency
 ..
 :U ..
-"22
+"23
 &U _stateTemperature
 ..
 ..
 ]
-[; ;main.c: 13: const StateType StateProgram[8] =
-[; ;main.c: 14: {
-[; ;main.c: 15: {stateMainMenu},
-[; ;main.c: 16: {statePower1},
-[; ;main.c: 17: {statePower2},
-[; ;main.c: 18: {stateRmsVI},
-[; ;main.c: 19: {statePowerFactor},
-[; ;main.c: 20: {statePhaseAngle},
-[; ;main.c: 21: {stateFrequency},
-[; ;main.c: 22: {stateTemperature}
-[; ;main.c: 23: };
+[; ;main.c: 14: const StateType StateProgram[8] =
+[; ;main.c: 15: {
+[; ;main.c: 16: {stateMainMenu},
+[; ;main.c: 17: {statePower1},
+[; ;main.c: 18: {statePower2},
+[; ;main.c: 19: {stateRmsVI},
+[; ;main.c: 20: {statePowerFactor},
+[; ;main.c: 21: {statePhaseAngle},
+[; ;main.c: 22: {stateFrequency},
+[; ;main.c: 23: {stateTemperature}
+[; ;main.c: 24: };
 [v $root$_main `(v ~T0 @X0 0 e ]
-"25
-[v _main `(v ~T0 @X0 1 ef ]
 "26
+[v _main `(v ~T0 @X0 1 ef ]
+"27
 {
-[; ;main.c: 25: void main(void)
-[; ;main.c: 26: {
+[; ;main.c: 26: void main(void)
+[; ;main.c: 27: {
 [e :U _main ]
 [f ]
-"28
-[v _currentState `E3139 ~T0 @X0 1 a ]
-[; ;main.c: 28: States_MenuType currentState = MAIN_MENU;
-[e = _currentState . `E3139 0 ]
-[v F3187 `(E3139 ~T0 @X0 0 tf ]
 "29
-[v _mainFunctions `*F3187 ~T0 @X0 1 a ]
-[; ;main.c: 29: States_MenuType(*mainFunctions)(void);
-[; ;main.c: 32: GPIO_sourceClock(CLK_8MHZ);
-"32
+[v _currentState `E3172 ~T0 @X0 1 a ]
+[; ;main.c: 29: States_MenuType currentState = MAIN_MENU;
+[e = _currentState . `E3172 0 ]
+[v F3220 `(E3172 ~T0 @X0 0 tf ]
+"30
+[v _mainFunctions `*F3220 ~T0 @X0 1 a ]
+[; ;main.c: 30: States_MenuType(*mainFunctions)(void);
+[; ;main.c: 33: GPIO_sourceClock(CLK_8MHZ);
+"33
 [e ( _GPIO_sourceClock (1 . `E3061 0 ]
-[; ;main.c: 35: SPI_init(&SPI_Config);
-"35
-[e ( _SPI_init (1 &U _SPI_Config ]
-[; ;main.c: 36: UART_init(BD_9600);
+[; ;main.c: 36: SPI_init(&SPI_Config);
 "36
-[e ( _UART_init (1 . `E3122 2 ]
-[; ;main.c: 38: for(;;)
+[e ( _SPI_init (1 &U _SPI_Config ]
+[; ;main.c: 37: LCDNokia_init();
+"37
+[e ( _LCDNokia_init ..  ]
+[; ;main.c: 38: LCDNokia_clear();
 "38
-{
+[e ( _LCDNokia_clear ..  ]
+[; ;main.c: 39: UART_init(BD_9600);
 "39
-[e :U 288 ]
-[; ;main.c: 39: {
-{
-[; ;main.c: 41: mainFunctions = StateProgram[currentState].stateFunction;
-"41
-[e = _mainFunctions -> . *U + &U _StateProgram * -> _currentState `ux -> -> # *U &U _StateProgram `ui `ux 0 `*F3187 ]
-[; ;main.c: 42: currentState = mainFunctions();
+[e ( _UART_init (1 . `E3128 2 ]
+[; ;main.c: 40: ButtonInt_config();
+"40
+[e ( _ButtonInt_config ..  ]
+[; ;main.c: 42: for(;;)
 "42
-[e = _currentState ( *U _mainFunctions ..  ]
+{
 "43
-}
-[; ;main.c: 43: }
-[e $U 288  ]
 [e :U 289 ]
+[; ;main.c: 43: {
+{
+[; ;main.c: 45: mainFunctions = StateProgram[currentState].stateFunction;
+"45
+[e = _mainFunctions -> . *U + &U _StateProgram * -> _currentState `ux -> -> # *U &U _StateProgram `ui `ux 0 `*F3220 ]
+[; ;main.c: 46: currentState = mainFunctions();
+"46
+[e = _currentState ( *U _mainFunctions ..  ]
+"47
 }
-[; ;main.c: 44: }
-"44
-[e :UE 287 ]
+[; ;main.c: 47: }
+[e $U 289  ]
+[e :U 290 ]
+}
+[; ;main.c: 48: }
+"48
+[e :UE 288 ]
 }

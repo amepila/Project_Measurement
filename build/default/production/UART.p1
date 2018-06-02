@@ -7,7 +7,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n E3092 . GPIO_A GPIO_B GPIO_C  ]
 [c E3088 0 1 .. ]
 [n E3088 . GPIO_INPUT GPIO_OUTPUT  ]
-"42 GPIO.h
+"44 GPIO.h
 [v _GPIO_dataDirectionPIN `(v ~T0 @X0 0 ef3`E3092`uc`E3088 ]
 "3913 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f2331.h
 [s S154 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -70,7 +70,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _SPBRG `Vuc ~T0 @X0 0 e@4015 ]
 "4158
 [v _TXREG `Vuc ~T0 @X0 0 e@4013 ]
-"51 GPIO.h
+"59 GPIO.h
 [v _delay `(v ~T0 @X0 0 ef1`ul ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
@@ -3026,31 +3026,35 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;GPIO.h: 14: CLK_250KHZ,
 [; ;GPIO.h: 15: CLK_125KHZ,
 [; ;GPIO.h: 16: CLK_31KHZ
-[; ;GPIO.h: 17: }GPIO_SourceClk;
-[; ;GPIO.h: 20: typedef enum
-[; ;GPIO.h: 21: {
-[; ;GPIO.h: 22: GPIO_INPUT,
-[; ;GPIO.h: 23: GPIO_OUTPUT
-[; ;GPIO.h: 24: } GPIO_state;
-[; ;GPIO.h: 27: typedef enum
-[; ;GPIO.h: 28: {
-[; ;GPIO.h: 29: GPIO_A,
-[; ;GPIO.h: 30: GPIO_B,
-[; ;GPIO.h: 31: GPIO_C
-[; ;GPIO.h: 32: } GPIO_portNameType;
-[; ;GPIO.h: 34: typedef enum
-[; ;GPIO.h: 35: {
-[; ;GPIO.h: 36: GPIO_DIGITAL,
-[; ;GPIO.h: 37: GPIO_ANALOG
-[; ;GPIO.h: 38: } GPIO_analogType;
-[; ;GPIO.h: 40: void GPIO_sourceClock(GPIO_SourceClk clk);
-[; ;GPIO.h: 42: void GPIO_dataDirectionPIN
-[; ;GPIO.h: 43: (GPIO_portNameType portName, uint8_t pin, GPIO_state state);
-[; ;GPIO.h: 45: void GPIO_dataDirectionPORT
-[; ;GPIO.h: 46: (GPIO_portNameType portName, GPIO_state state);
-[; ;GPIO.h: 48: void GPIO_analogSelector
-[; ;GPIO.h: 49: (GPIO_analogType type, uint8_t pin);
-[; ;GPIO.h: 51: void delay(uint32_t delay);
+[; ;GPIO.h: 17: } GPIO_SourceClk;
+[; ;GPIO.h: 21: typedef enum
+[; ;GPIO.h: 22: {
+[; ;GPIO.h: 23: GPIO_INPUT,
+[; ;GPIO.h: 24: GPIO_OUTPUT
+[; ;GPIO.h: 25: } GPIO_state;
+[; ;GPIO.h: 29: typedef enum
+[; ;GPIO.h: 30: {
+[; ;GPIO.h: 31: GPIO_A,
+[; ;GPIO.h: 32: GPIO_B,
+[; ;GPIO.h: 33: GPIO_C
+[; ;GPIO.h: 34: } GPIO_portNameType;
+[; ;GPIO.h: 36: typedef enum
+[; ;GPIO.h: 37: {
+[; ;GPIO.h: 38: GPIO_DIGITAL,
+[; ;GPIO.h: 39: GPIO_ANALOG
+[; ;GPIO.h: 40: } GPIO_analogType;
+[; ;GPIO.h: 42: void GPIO_sourceClock(GPIO_SourceClk clk);
+[; ;GPIO.h: 44: void GPIO_dataDirectionPIN
+[; ;GPIO.h: 45: (GPIO_portNameType portName, uint8_t pin, GPIO_state state);
+[; ;GPIO.h: 47: void GPIO_dataDirectionPORT
+[; ;GPIO.h: 48: (GPIO_portNameType portName, GPIO_state state);
+[; ;GPIO.h: 50: void GPIO_analogSelector
+[; ;GPIO.h: 51: (GPIO_analogType type, uint8_t pin);
+[; ;GPIO.h: 53: void GPIO_setPIN
+[; ;GPIO.h: 54: (GPIO_portNameType portName, uint8_t pin);
+[; ;GPIO.h: 56: void GPIO_clearPIN
+[; ;GPIO.h: 57: (GPIO_portNameType portName, uint8_t pin);
+[; ;GPIO.h: 59: void delay(uint32_t delay);
 "11 UART.c
 [v _UART_init `(v ~T0 @X0 1 ef1`E3061 ]
 "12
@@ -3233,7 +3237,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "71
 [f ]
 "73
-[v F3120 `ul ~T0 @X0 1 s value ]
+[v F3126 `ul ~T0 @X0 1 s value ]
 [; ;UART.c: 73: static uint32_t value;
 [; ;UART.c: 75: if(0 == limit)
 "75
@@ -3243,7 +3247,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;UART.c: 77: value = 1;
 "77
-[e = F3120 -> -> -> 1 `i `l `ul ]
+[e = F3126 -> -> -> 1 `i `l `ul ]
 "78
 }
 [e :U 304 ]
@@ -3256,7 +3260,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;UART.c: 81: value = 10;
 "81
-[e = F3120 -> -> -> 10 `i `l `ul ]
+[e = F3126 -> -> -> 10 `i `l `ul ]
 "82
 }
 [e :U 305 ]
@@ -3269,14 +3273,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;UART.c: 85: value *= 10;
 "85
-[e =* F3120 -> -> -> 10 `i `l `ul ]
+[e =* F3126 -> -> -> 10 `i `l `ul ]
 "86
 }
 [e :U 306 ]
 [; ;UART.c: 86: }
 [; ;UART.c: 88: return value;
 "88
-[e ) F3120 ]
+[e ) F3126 ]
 [e $UE 303  ]
 [; ;UART.c: 89: }
 "89
