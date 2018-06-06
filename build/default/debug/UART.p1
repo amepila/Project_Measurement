@@ -3199,7 +3199,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;UART.c: 64: UART_putChar(string[counter]);
 "64
 [e ( _UART_putChar (1 -> *U + _string * -> _counter `ux -> -> # *U _string `ui `ux `uc ]
-[; ;UART.c: 65: delay(1500);
+[; ;UART.c: 65: delay((1500));
 "65
 [e ( _delay (1 -> -> -> 1500 `i `l `ul ]
 "66

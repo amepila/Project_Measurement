@@ -4157,7 +4157,7 @@ SPI_SerialClk SPI_Clk;
 
 void SPI_init(const SPI_ConfigType* SPI_Config);
 
-int8_t SPI_write(uint8_t data);
+void SPI_write(uint8_t data);
 
 uint8_t SPI_read(void);
 
@@ -4230,22 +4230,10 @@ SPI_enableClock(SPI_Config->SPI_Polarity, SPI_Config->SPI_Phase);
 SPI_enablePins(SPI_Config->SPI_Clk);
 }
 
-int8_t SPI_write(uint8_t data)
+void SPI_write(uint8_t data)
 {
-const uint8_t dummy = 0;
-int8_t success = 1;
-
-
 SSPBUF = data;
-
-# 97
-while(!PIR1bits.SSPIF);
-PIR1bits.SSPIF = 0;
-
-SSPBUF = dummy;
-
-
-return (success);
+while(!SSPSTATbits.BF);
 }
 
 uint8_t SPI_read(void)
@@ -4255,7 +4243,7 @@ const uint8_t dummy = 0;
 
 SSPBUF = dummy;
 
-# 116
+# 102
 while(!PIR1bits.SSPIF);
 PIR1bits.SSPIF = 0;
 return (SSPBUF);

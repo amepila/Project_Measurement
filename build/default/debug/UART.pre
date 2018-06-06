@@ -4254,7 +4254,7 @@ uint8_t counter;
 for(counter = 0; string[counter] != '\0'; counter++)
 {
 UART_putChar(string[counter]);
-delay(1500);
+delay((1500));
 }
 }
 

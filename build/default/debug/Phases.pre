@@ -4210,7 +4210,7 @@ SPI_SerialClk SPI_Clk;
 
 void SPI_init(const SPI_ConfigType* SPI_Config);
 
-int8_t SPI_write(uint8_t data);
+void SPI_write(uint8_t data);
 
 uint8_t SPI_read(void);
 
@@ -4266,6 +4266,18 @@ void LCDNokia_printValue(uint32_t value);
 void LCDNokia_printFloatValue(float value);
 
 # 6 "Buttons.h"
+uint8_t getButton1(void);
+
+void setButton1(uint8_t set);
+
+uint8_t getButton2(void);
+
+void setButton2(uint8_t set);
+
+uint8_t getButton3(void);
+
+void setButton3(uint8_t set);
+
 void ButtonInt_config();
 
 # 16 "States.h"
@@ -4319,7 +4331,8 @@ typedef enum
 {
 INITIAL_LOAD,
 GENERAL_VIEW,
-VIEW_MENU
+VIEW_MENU,
+SEND_DATA
 }PhaseStateMenu_Type;
 
 typedef struct
@@ -4335,7 +4348,7 @@ typedef const struct PhaseMainMenu
 PhaseMainMenu_Type(*PhaseMainMenu)(PhaseMainMenu_Type);
 }PhasePtrMainMenu_Type;
 
-# 36
+# 37
 typedef enum
 {
 TYPES_POWER1,
@@ -4358,7 +4371,7 @@ typedef const struct PhasePower1
 PhasePower1_Type(*PhasePower1)(PhasePower1_Type);
 }PhasePtrPower1_Type;
 
-# 64
+# 65
 typedef enum
 {
 FH_POWER2,
@@ -4380,7 +4393,7 @@ typedef const struct PhasePower2
 PhasePower2_Type(*PhasePower2)(PhasePower2_Type);
 }PhasePtrPower2_Type;
 
-# 91
+# 92
 typedef enum
 {
 PHASES_RMSVI,
@@ -4402,7 +4415,7 @@ typedef const struct PhaseRmsVI
 PhaseRmsVI_Type(*PhaseRmsVI)(PhaseRmsVI_Type);
 }PhasePtrRmsVI_Type;
 
-# 117
+# 118
 typedef enum
 {
 PHASES_PF,
@@ -4422,7 +4435,7 @@ typedef const struct PhasePowerFactor
 PhasePowerFactor_Type(*PhasePowerFactor)(PhasePowerFactor_Type);
 }PhasePtrPowerFactor_Type;
 
-# 141
+# 142
 typedef enum
 {
 PHASES_PA,
@@ -4444,7 +4457,7 @@ typedef const struct PhasePhaseAngle
 PhasePhaseAngle_Type(*PhasePhaseAngle)(PhasePhaseAngle_Type);
 }PhasePtrPhaseAngle_Type;
 
-# 165
+# 166
 typedef enum
 {
 SHOW_FREQUENCY,
@@ -4465,7 +4478,7 @@ typedef const struct PhaseFrequency
 PhaseFrequency_Type(*PhaseFrequency)(PhaseFrequency_Type);
 }PhasePtrFrequency_Type;
 
-# 189
+# 190
 typedef enum
 {
 SHOW_TEMPERATURE,
@@ -4486,70 +4499,73 @@ typedef const struct PhaseTemperature
 PhaseTemperature_Type(*PhaseTemperature)(PhaseTemperature_Type);
 }PhasePtrTemperature_Type;
 
-# 217
+# 218
 PhaseMainMenu_Type initialLoad(PhaseMainMenu_Type data);
 
-# 227
+# 228
 PhaseMainMenu_Type generalView(PhaseMainMenu_Type data);
 
-# 238
+# 239
 PhaseMainMenu_Type viewMenu(PhaseMainMenu_Type data);
 
 # 249
-PhasePower1_Type typesPower1(PhasePower1_Type data);
+PhaseMainMenu_Type sendData(PhaseMainMenu_Type data);
 
 # 259
+PhasePower1_Type typesPower1(PhasePower1_Type data);
+
+# 269
 PhasePower1_Type phPower1(PhasePower1_Type data);
 
-# 270
+# 280
 PhasePower1_Type vectorPower1(PhasePower1_Type data);
 
-# 282
+# 292
 PhasePower1_Type exitPower1(PhasePower1_Type data);
 
-# 293
+# 303
 PhasePower2_Type fhPower2(PhasePower2_Type data);
 
-# 304
+# 314
 PhasePower2_Type phPower2(PhasePower2_Type data);
 
-# 315
+# 325
 PhasePower2_Type exitPower2(PhasePower2_Type data);
 
-# 326
+# 336
 PhaseRmsVI_Type phRmsVI(PhaseRmsVI_Type data);
 
-# 337
+# 347
 PhaseRmsVI_Type neutralRmsVI(PhaseRmsVI_Type data);
 
-# 348
+# 358
 PhaseRmsVI_Type exitRmsVI(PhaseRmsVI_Type data);
 
-# 359
+# 369
 PhasePowerFactor_Type phPowerFactor(PhasePowerFactor_Type data);
 
-# 370
+# 380
 PhasePowerFactor_Type exitPowerFactor(PhasePowerFactor_Type data);
 
-# 381
+# 391
 PhasePhaseAngle_Type phPhaseAngle(PhasePhaseAngle_Type data);
 
-# 392
+# 402
 PhasePhaseAngle_Type viPhaseAngle(PhasePhaseAngle_Type data);
 
-# 403
+# 413
 PhasePhaseAngle_Type exitPhaseAngle(PhasePhaseAngle_Type data);
 
-# 414
+# 424
 PhaseFrequency_Type showFrequency(PhaseFrequency_Type data);
 
-# 425
+# 435
 PhaseFrequency_Type exitFrequency(PhaseFrequency_Type data);
 
-# 436
+# 446
 PhaseTemperature_Type showTemperature(PhaseTemperature_Type data);
 
-# 447
+# 457
 PhaseTemperature_Type exitTemperature(PhaseTemperature_Type data);
 
 # 4 "Phases.c"
@@ -4558,11 +4574,7 @@ PhaseMainMenu_Type initialLoad(PhaseMainMenu_Type data)
 
 static PhaseMainMenu_Type currentMainMenu1;
 
-
-LCDNokia_clear();
-
-
-
+# 13
 currentMainMenu1.phaseState = GENERAL_VIEW;
 currentMainMenu1.stateMain = data.stateMain;
 
@@ -4571,11 +4583,49 @@ return (currentMainMenu1);
 
 PhaseMainMenu_Type generalView(PhaseMainMenu_Type data)
 {
+const uint8_t msgInitial1[] = "MEDICION DE";
+const uint8_t msgInitial2[] = "TRIFASICO";
+const uint8_t buttonRight[] = "Enviar";
+const uint8_t buttonLeft[] = "Menu";
+
+static uint8_t lockClear = 0;
 
 static PhaseMainMenu_Type currentMainMenu2;
 
+currentMainMenu2.phaseState = GENERAL_VIEW;
 
+if(0 == lockClear)
+{
+
+LCDNokia_clear();
+lockClear = 1;
+}
+
+LCDNokia_gotoXY(20,1);
+LCDNokia_sendString(msgInitial1);
+
+LCDNokia_gotoXY(27,1);
+LCDNokia_sendString(msgInitial2);
+
+LCDNokia_gotoXY(0,4);
+LCDNokia_sendString(buttonLeft);
+
+LCDNokia_gotoXY(65,4);
+LCDNokia_sendString(buttonRight);
+
+
+if(1 == getButton1())
+{
 currentMainMenu2.phaseState = VIEW_MENU;
+lockClear = 0;
+}
+if(1 == getButton3())
+{
+currentMainMenu2.phaseState = SEND_DATA;
+lockClear = 1;
+}
+
+
 currentMainMenu2.stateMain = data.stateMain;
 
 return (currentMainMenu2);
@@ -4587,11 +4637,30 @@ PhaseMainMenu_Type viewMenu(PhaseMainMenu_Type data)
 static PhaseMainMenu_Type currentMainMenu3;
 
 
+LCDNokia_clear();
+
+
 currentMainMenu3.phaseState = data.phaseState;
-currentMainMenu3.stateMain = data.stateMain;
+currentMainMenu3.stateMain = POWER_1;
 
 return (currentMainMenu3);
 }
+
+PhaseMainMenu_Type sendData(PhaseMainMenu_Type data)
+{
+const uint8_t test[] = "TEST";
+
+static PhaseMainMenu_Type currentMainMenu4;
+
+UART_putString(test);
+
+# 96
+currentMainMenu4.phaseState = GENERAL_VIEW;
+currentMainMenu4.stateMain = data.stateMain;
+
+return (currentMainMenu4);
+}
+
 
 PhasePower1_Type typesPower1(PhasePower1_Type data)
 {

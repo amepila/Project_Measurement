@@ -35,7 +35,7 @@ typedef struct
 
 void SPI_init(const SPI_ConfigType* SPI_Config);
 
-int8_t SPI_write(uint8_t data);
+void SPI_write(uint8_t data);
 
 uint8_t SPI_read(void);
 

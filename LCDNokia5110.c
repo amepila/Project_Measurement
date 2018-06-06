@@ -116,18 +116,18 @@ void LCDNokia_init(void)
 	GPIO_setPIN(GPIO_B, RESET_PIN);
     
 	LCDNokia_writeByte(LCD_CMD, 0x21); //Tell LCD that extended commands follow
-    delay(T);
-	LCDNokia_writeByte(LCD_CMD, 0xC0); //Set LCD Vop (Contrast): Try 0xB1(good @ 3.3V) or 0xBF if your display is too dark
-	delay(T);
-    LCDNokia_writeByte(LCD_CMD, 0x07); //Set Temp coefficent
-	delay(T);
-    LCDNokia_writeByte(LCD_CMD, 0x13); //LCD bias mode 1:48: Try 0x13 or 0x14
-    
-    delay(T);
+    //delay(T);
+    LCDNokia_writeByte(LCD_CMD, 0x84); //Set LCD Vop (Contrast): Try 0xB1(good @ 3.3V) or 0xBF if your display is too dark
+    //delay(T);
+    LCDNokia_writeByte(LCD_CMD, 0x07); //Set Temp coefficent 
+    //delay(T);
+    LCDNokia_writeByte(LCD_CMD, 0xC0); //LCD bias mode 1:48: Try 0x13 or 0x14
+    //delay(T);
+
 	LCDNokia_writeByte(LCD_CMD, 0x20); //We must send 0x20 before modifying the display control mode
-	delay(T);
+    //delay(T);
     LCDNokia_writeByte(LCD_CMD, 0x0D); //Set display control, normal mode. 0x0D for inverse
-    delay(T);
+    //delay(T);
 }
 
 void LCDNokia_bitmap(const uint8_t* my_array)
@@ -201,7 +201,7 @@ void LCD_delay(void)
 {
 	uint32_t counter;
 	
-	for(counter =  0; counter < 100000; counter++)
+	for(counter =  0; counter < 1000000; counter++)
 	{	   
 	}
 }

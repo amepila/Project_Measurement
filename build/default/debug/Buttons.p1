@@ -1,7 +1,7 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "7269 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f2331.h
 [v _INT0IF `Vb ~T0 @X0 0 e@32657 ]
-"19 Buttons.c
+"65 Buttons.c
 [c E3075 0 1 2 .. ]
 [n E3075 . GPIO_A GPIO_B GPIO_C  ]
 [c E3071 0 1 .. ]
@@ -12,6 +12,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _INT0IE `Vb ~T0 @X0 0 e@32660 ]
 "7223
 [v _GIE `Vb ~T0 @X0 0 e@32663 ]
+"4477
+[s S180 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S180 . ANS0 ANS1 ANS2 ANS3 ANS4 ]
+"4476
+[u S179 `S180 1 ]
+[n S179 . . ]
+"4485
+[v _ANSEL0bits `VS179 ~T0 @X0 0 e@4024 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -2983,55 +2991,220 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;GPIO.h: 56: void GPIO_clearPIN
 [; ;GPIO.h: 57: (GPIO_portNameType portName, uint8_t pin);
 [; ;GPIO.h: 59: void delay(uint32_t delay);
-[; ;Buttons.h: 6: void ButtonInt_config();
-[v $root$_Button1 `(v ~T0 @X0 0 e ]
-[v F3107 `(v ~T0 @X0 1 tf ]
+[; ;Buttons.h: 6: uint8_t getButton1(void);
+[; ;Buttons.h: 8: void setButton1(uint8_t set);
+[; ;Buttons.h: 10: uint8_t getButton2(void);
+[; ;Buttons.h: 12: void setButton2(uint8_t set);
+[; ;Buttons.h: 14: uint8_t getButton3(void);
+[; ;Buttons.h: 16: void setButton3(uint8_t set);
+[; ;Buttons.h: 18: void ButtonInt_config();
 "5 Buttons.c
-[v _Button1 `IF3107 ~T0 @X0 1 e ]
+[v _FlagButton1 `uc ~T0 @X0 1 e ]
+[i _FlagButton1
+-> -> 0 `i `uc
+]
+[; ;Buttons.c: 5: uint8_t FlagButton1 = 0;
 "6
+[v _FlagButton2 `uc ~T0 @X0 1 e ]
+[i _FlagButton2
+-> -> 0 `i `uc
+]
+[; ;Buttons.c: 6: uint8_t FlagButton2 = 0;
+"7
+[v _FlagButton3 `uc ~T0 @X0 1 e ]
+[i _FlagButton3
+-> -> 0 `i `uc
+]
+[; ;Buttons.c: 7: uint8_t FlagButton3 = 0;
+[v $root$_Button1 `(v ~T0 @X0 0 e ]
+[v F3122 `(v ~T0 @X0 1 tf ]
+"9
+[v _Button1 `IF3122 ~T0 @X0 1 e ]
+"10
 {
-[; ;Buttons.c: 5: void interrupt Button1(void)
-[; ;Buttons.c: 6: {
+[; ;Buttons.c: 9: void interrupt Button1(void)
+[; ;Buttons.c: 10: {
 [e :U _Button1 ]
 [f ]
-[; ;Buttons.c: 8: if(INT0IF)
-"8
+[; ;Buttons.c: 12: if(INT0IF)
+"12
 [e $ ! _INT0IF 286  ]
-[; ;Buttons.c: 9: {
-"9
-{
-[; ;Buttons.c: 11: INT0IF = 0;
-"11
-[e = _INT0IF -> -> 0 `i `b ]
+[; ;Buttons.c: 13: {
 "13
+{
+[; ;Buttons.c: 15: INT0IF = 0;
+"15
+[e = _INT0IF -> -> 0 `i `b ]
+[; ;Buttons.c: 16: FlagButton1 = 1;
+"16
+[e = _FlagButton1 -> -> 1 `i `uc ]
+"17
 }
 [e :U 286 ]
-[; ;Buttons.c: 13: }
-[; ;Buttons.c: 14: }
-"14
+[; ;Buttons.c: 17: }
+[; ;Buttons.c: 18: }
+"18
 [e :UE 285 ]
 }
-"16
-[v _ButtonInt_config `(v ~T0 @X0 1 ef ]
-"17
+"20
+[v _Button2 `(v ~T0 @X0 1 ef ]
+"21
 {
-[; ;Buttons.c: 16: void ButtonInt_config()
-[; ;Buttons.c: 17: {
+[; ;Buttons.c: 20: void Button2(void)
+[; ;Buttons.c: 21: {
+[e :U _Button2 ]
+[f ]
+[; ;Buttons.c: 23: }
+"23
+[e :UE 287 ]
+}
+"25
+[v _Button3 `(v ~T0 @X0 1 ef ]
+"26
+{
+[; ;Buttons.c: 25: void Button3(void)
+[; ;Buttons.c: 26: {
+[e :U _Button3 ]
+[f ]
+[; ;Buttons.c: 28: }
+"28
+[e :UE 288 ]
+}
+"30
+[v _getButton1 `(uc ~T0 @X0 1 ef ]
+"31
+{
+[; ;Buttons.c: 30: uint8_t getButton1(void)
+[; ;Buttons.c: 31: {
+[e :U _getButton1 ]
+[f ]
+[; ;Buttons.c: 32: return (FlagButton1);
+"32
+[e ) _FlagButton1 ]
+[e $UE 289  ]
+[; ;Buttons.c: 33: }
+"33
+[e :UE 289 ]
+}
+"35
+[v _setButton1 `(v ~T0 @X0 1 ef1`uc ]
+"36
+{
+[; ;Buttons.c: 35: void setButton1(uint8_t set)
+[; ;Buttons.c: 36: {
+[e :U _setButton1 ]
+"35
+[v _set `uc ~T0 @X0 1 r1 ]
+"36
+[f ]
+[; ;Buttons.c: 37: FlagButton1 = set;
+"37
+[e = _FlagButton1 _set ]
+[; ;Buttons.c: 38: }
+"38
+[e :UE 290 ]
+}
+"40
+[v _getButton2 `(uc ~T0 @X0 1 ef ]
+"41
+{
+[; ;Buttons.c: 40: uint8_t getButton2(void)
+[; ;Buttons.c: 41: {
+[e :U _getButton2 ]
+[f ]
+[; ;Buttons.c: 42: return (FlagButton2);
+"42
+[e ) _FlagButton2 ]
+[e $UE 291  ]
+[; ;Buttons.c: 43: }
+"43
+[e :UE 291 ]
+}
+"45
+[v _setButton2 `(v ~T0 @X0 1 ef1`uc ]
+"46
+{
+[; ;Buttons.c: 45: void setButton2(uint8_t set)
+[; ;Buttons.c: 46: {
+[e :U _setButton2 ]
+"45
+[v _set `uc ~T0 @X0 1 r1 ]
+"46
+[f ]
+[; ;Buttons.c: 47: FlagButton2 = set;
+"47
+[e = _FlagButton2 _set ]
+[; ;Buttons.c: 48: }
+"48
+[e :UE 292 ]
+}
+"50
+[v _getButton3 `(uc ~T0 @X0 1 ef ]
+"51
+{
+[; ;Buttons.c: 50: uint8_t getButton3(void)
+[; ;Buttons.c: 51: {
+[e :U _getButton3 ]
+[f ]
+[; ;Buttons.c: 52: return (FlagButton3);
+"52
+[e ) _FlagButton3 ]
+[e $UE 293  ]
+[; ;Buttons.c: 53: }
+"53
+[e :UE 293 ]
+}
+"55
+[v _setButton3 `(v ~T0 @X0 1 ef1`uc ]
+"56
+{
+[; ;Buttons.c: 55: void setButton3(uint8_t set)
+[; ;Buttons.c: 56: {
+[e :U _setButton3 ]
+"55
+[v _set `uc ~T0 @X0 1 r1 ]
+"56
+[f ]
+[; ;Buttons.c: 57: FlagButton3 = set;
+"57
+[e = _FlagButton3 _set ]
+[; ;Buttons.c: 58: }
+"58
+[e :UE 294 ]
+}
+"62
+[v _ButtonInt_config `(v ~T0 @X0 1 ef ]
+"63
+{
+[; ;Buttons.c: 62: void ButtonInt_config()
+[; ;Buttons.c: 63: {
 [e :U _ButtonInt_config ]
 [f ]
-[; ;Buttons.c: 19: GPIO_dataDirectionPIN(GPIO_C, 3, GPIO_INPUT);
-"19
+[; ;Buttons.c: 65: GPIO_dataDirectionPIN(GPIO_C, 3, GPIO_INPUT);
+"65
 [e ( _GPIO_dataDirectionPIN (3 , , . `E3075 2 -> -> 3 `i `uc . `E3071 0 ]
-[; ;Buttons.c: 21: INT0IF = 0;
-"21
+[; ;Buttons.c: 67: INT0IF = 0;
+"67
 [e = _INT0IF -> -> 0 `i `b ]
-[; ;Buttons.c: 23: INT0IE = 1;
-"23
+[; ;Buttons.c: 69: INT0IE = 1;
+"69
 [e = _INT0IE -> -> 1 `i `b ]
-[; ;Buttons.c: 25: GIE = 1;
-"25
+[; ;Buttons.c: 71: GIE = 1;
+"71
 [e = _GIE -> -> 1 `i `b ]
-[; ;Buttons.c: 26: }
-"26
-[e :UE 287 ]
+[; ;Buttons.c: 73: GPIO_dataDirectionPIN(GPIO_A, 3, GPIO_INPUT);
+"73
+[e ( _GPIO_dataDirectionPIN (3 , , . `E3075 0 -> -> 3 `i `uc . `E3071 0 ]
+[; ;Buttons.c: 74: ANSEL0bits.ANS3 = 1;
+"74
+[e = . . _ANSEL0bits 0 3 -> -> 1 `i `uc ]
+[; ;Buttons.c: 76: GPIO_dataDirectionPIN(GPIO_A, 4, GPIO_INPUT);
+"76
+[e ( _GPIO_dataDirectionPIN (3 , , . `E3075 0 -> -> 4 `i `uc . `E3071 0 ]
+[; ;Buttons.c: 77: ANSEL0bits.ANS4 = 1;
+"77
+[e = . . _ANSEL0bits 0 4 -> -> 1 `i `uc ]
+[; ;Buttons.c: 79: }
+"79
+[e :UE 295 ]
 }

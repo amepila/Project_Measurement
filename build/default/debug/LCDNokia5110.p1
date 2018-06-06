@@ -14,10 +14,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _GPIO_setPIN `(v ~T0 @X0 0 ef2`E43`uc ]
 "29 LCDNokia5110.h
 [v _LCDNokia_writeByte `(v ~T0 @X0 0 ef2`uc`uc ]
-"59 GPIO.h
-[v _delay `(v ~T0 @X0 0 ef1`ul ]
 "38 SPI.h
-[v _SPI_write `(c ~T0 @X0 0 ef1`uc ]
+[v _SPI_write `(v ~T0 @X0 0 ef1`uc ]
 "35 LCDNokia5110.h
 [v _LCDNokia_gotoXY `(v ~T0 @X0 0 ef2`uc`uc ]
 "18
@@ -113,7 +111,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SPI.h: 33: SPI_SerialClk SPI_Clk;
 [; ;SPI.h: 34: } SPI_ConfigType;
 [; ;SPI.h: 36: void SPI_init(const SPI_ConfigType* SPI_Config);
-[; ;SPI.h: 38: int8_t SPI_write(uint8_t data);
+[; ;SPI.h: 38: void SPI_write(uint8_t data);
 [; ;SPI.h: 40: uint8_t SPI_read(void);
 [; ;LCDNokia5110.h: 17: typedef struct
 [; ;LCDNokia5110.h: 18: {
@@ -1030,39 +1028,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LCDNokia5110.c: 118: LCDNokia_writeByte(0, 0x21);
 "118
 [e ( _LCDNokia_writeByte (2 , -> -> 0 `i `uc -> -> 33 `i `uc ]
-[; ;LCDNokia5110.c: 119: delay(1000);
-"119
-[e ( _delay (1 -> -> -> 1000 `i `l `ul ]
-[; ;LCDNokia5110.c: 120: LCDNokia_writeByte(0, 0xC0);
+[; ;LCDNokia5110.c: 120: LCDNokia_writeByte(0, 0x84);
 "120
-[e ( _LCDNokia_writeByte (2 , -> -> 0 `i `uc -> -> 192 `i `uc ]
-[; ;LCDNokia5110.c: 121: delay(1000);
-"121
-[e ( _delay (1 -> -> -> 1000 `i `l `ul ]
+[e ( _LCDNokia_writeByte (2 , -> -> 0 `i `uc -> -> 132 `i `uc ]
 [; ;LCDNokia5110.c: 122: LCDNokia_writeByte(0, 0x07);
 "122
 [e ( _LCDNokia_writeByte (2 , -> -> 0 `i `uc -> -> 7 `i `uc ]
-[; ;LCDNokia5110.c: 123: delay(1000);
-"123
-[e ( _delay (1 -> -> -> 1000 `i `l `ul ]
-[; ;LCDNokia5110.c: 124: LCDNokia_writeByte(0, 0x13);
+[; ;LCDNokia5110.c: 124: LCDNokia_writeByte(0, 0xC0);
 "124
-[e ( _LCDNokia_writeByte (2 , -> -> 0 `i `uc -> -> 19 `i `uc ]
-[; ;LCDNokia5110.c: 126: delay(1000);
-"126
-[e ( _delay (1 -> -> -> 1000 `i `l `ul ]
+[e ( _LCDNokia_writeByte (2 , -> -> 0 `i `uc -> -> 192 `i `uc ]
 [; ;LCDNokia5110.c: 127: LCDNokia_writeByte(0, 0x20);
 "127
 [e ( _LCDNokia_writeByte (2 , -> -> 0 `i `uc -> -> 32 `i `uc ]
-[; ;LCDNokia5110.c: 128: delay(1000);
-"128
-[e ( _delay (1 -> -> -> 1000 `i `l `ul ]
 [; ;LCDNokia5110.c: 129: LCDNokia_writeByte(0, 0x0D);
 "129
 [e ( _LCDNokia_writeByte (2 , -> -> 0 `i `uc -> -> 13 `i `uc ]
-[; ;LCDNokia5110.c: 130: delay(1000);
-"130
-[e ( _delay (1 -> -> -> 1000 `i `l `ul ]
 [; ;LCDNokia5110.c: 131: }
 "131
 [e :UE 3 ]
@@ -1306,11 +1286,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 "202
 [v _counter `ul ~T0 @X0 1 a ]
 [; ;LCDNokia5110.c: 202: uint32_t counter;
-[; ;LCDNokia5110.c: 204: for(counter = 0; counter < 100000; counter++)
+[; ;LCDNokia5110.c: 204: for(counter = 0; counter < 1000000; counter++)
 "204
 {
 [e = _counter -> -> -> 0 `i `l `ul ]
-[e $ < _counter -> -> 100000 `l `ul 25  ]
+[e $ < _counter -> -> 1000000 `l `ul 25  ]
 [e $U 26  ]
 "205
 [e :U 25 ]
@@ -1320,7 +1300,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "204
 [e ++ _counter -> -> -> 1 `i `l `ul ]
-[e $ < _counter -> -> 100000 `l `ul 25  ]
+[e $ < _counter -> -> 1000000 `l `ul 25  ]
 [e :U 26 ]
 "206
 }

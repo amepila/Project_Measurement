@@ -18,7 +18,7 @@ SPI_SERIAL_CLK16 1
 SPI_SERIAL_CLK64 2
 ]
 "76
-[e E3234 . `uc
+[e E3246 . `uc
 MAIN_MENU 0
 POWER_1 1
 POWER_2 2
@@ -28,7 +28,7 @@ PHASE_ANGLE 5
 FREQUENCY 6
 TEMPERATURE 7
 ]
-"97
+"96
 [e E3123 . `uc
 CLK_8MHZ 0
 CLK_4MHZ 1
@@ -97,12 +97,13 @@ GPIO_INPUT 0
 GPIO_OUTPUT 1
 ]
 "6 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\States.c
-[e E3206 . `uc
+[e E3218 . `uc
 INITIAL_LOAD 0
 GENERAL_VIEW 1
 VIEW_MENU 2
+SEND_DATA 3
 ]
-[e E3172 . `uc
+[e E3184 . `uc
 MAIN_MENU 0
 POWER_1 1
 POWER_2 2
@@ -112,53 +113,54 @@ PHASE_ANGLE 5
 FREQUENCY 6
 TEMPERATURE 7
 ]
-"14
-[e E3223 . `uc
+"15
+[e E3236 . `uc
 TYPES_POWER1 0
 PHASES_POWER1 1
 VECTOR_POWER1 2
 EXIT_POWER1 3
 ]
-"23
-[e E3242 . `uc
+"24
+[e E3255 . `uc
 FH_POWER2 0
 PHASES_POWER2 1
 EXIT_POWER2 2
 ]
-"31
-[e E3260 . `uc
+"32
+[e E3273 . `uc
 PHASES_RMSVI 0
 NEUTRAL_RMSVI 1
 EXIT_RMSVI 2
 ]
-"39
-[e E3278 . `uc
+"40
+[e E3291 . `uc
 PHASES_PF 0
 EXIT_PF 1
 ]
-"46
-[e E3294 . `uc
+"47
+[e E3307 . `uc
 PHASES_PA 0
 VI_PA 1
 EXIT_PA 2
 ]
-"54
-[e E3312 . `uc
+"55
+[e E3325 . `uc
 SHOW_FREQUENCY 0
 EXIT_FREQUENCY 1
 ]
-"61
-[e E3329 . `uc
+"62
+[e E3342 . `uc
 SHOW_TEMPERATURE 0
 EXIT_TEMPERATURE 1
 ]
 "5 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
-[e E3206 . `uc
+[e E3218 . `uc
 INITIAL_LOAD 0
 GENERAL_VIEW 1
 VIEW_MENU 2
+SEND_DATA 3
 ]
-[e E3172 . `uc
+[e E3184 . `uc
 MAIN_MENU 0
 POWER_1 1
 POWER_2 2
@@ -168,43 +170,43 @@ PHASE_ANGLE 5
 FREQUENCY 6
 TEMPERATURE 7
 ]
-"45
-[e E3223 . `uc
+"104
+[e E3236 . `uc
 TYPES_POWER1 0
 PHASES_POWER1 1
 VECTOR_POWER1 2
 EXIT_POWER1 3
 ]
-"93
-[e E3242 . `uc
+"152
+[e E3255 . `uc
 FH_POWER2 0
 PHASES_POWER2 1
 EXIT_POWER2 2
 ]
-"129
-[e E3260 . `uc
+"188
+[e E3273 . `uc
 PHASES_RMSVI 0
 NEUTRAL_RMSVI 1
 EXIT_RMSVI 2
 ]
-"165
-[e E3278 . `uc
+"224
+[e E3291 . `uc
 PHASES_PF 0
 EXIT_PF 1
 ]
-"189
-[e E3294 . `uc
+"248
+[e E3307 . `uc
 PHASES_PA 0
 VI_PA 1
 EXIT_PA 2
 ]
-"225
-[e E3312 . `uc
+"284
+[e E3325 . `uc
 SHOW_FREQUENCY 0
 EXIT_FREQUENCY 1
 ]
-"249
-[e E3329 . `uc
+"308
+[e E3342 . `uc
 SHOW_TEMPERATURE 0
 EXIT_TEMPERATURE 1
 ]
@@ -218,7 +220,7 @@ GPIO_C 2
 GPIO_INPUT 0
 GPIO_OUTPUT 1
 ]
-"19 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Buttons.c
+"65 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Buttons.c
 [e E3075 . `uc
 GPIO_A 0
 GPIO_B 1
@@ -228,8 +230,12 @@ GPIO_C 2
 GPIO_INPUT 0
 GPIO_OUTPUT 1
 ]
-"5
+"9
 [v _Button1 Button1 `II(v  1 e 1 0 ]
+"30
+[v _getButton1 getButton1 `(uc  1 e 1 0 ]
+"50
+[v _getButton3 getButton3 `(uc  1 e 1 0 ]
 "62 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\float.c
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
 "86 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\ftadd.c
@@ -278,6 +284,8 @@ GPIO_OUTPUT 1
 [v _LCDNokia_writeByte LCDNokia_writeByte `(v  1 e 1 0 ]
 "157
 [v _LCDNokia_sendChar LCDNokia_sendChar `(v  1 e 1 0 ]
+"174
+[v _LCDNokia_sendString LCDNokia_sendString `(v  1 e 1 0 ]
 "182
 [v _LCDNokia_clear LCDNokia_clear `(v  1 e 1 0 ]
 "194
@@ -288,94 +296,98 @@ GPIO_OUTPUT 1
 [v _LCDNokia_printValue LCDNokia_printValue `(v  1 e 1 0 ]
 "88 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\main.c
 [v _main main `(v  1 e 1 0 ]
-"18 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
-[s S701 . 2 `E3206 1 phaseState 1 0 `E3172 1 stateMain 1 1 ]
+"19 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S700 . 2 `E3218 1 phaseState 1 0 `E3184 1 stateMain 1 1 ]
 "4 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
-[v _initialLoad initialLoad `(S701  1 e 2 0 ]
-"18 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
-[s S701 . 2 `E3206 1 phaseState 1 0 `E3172 1 stateMain 1 1 ]
-"20 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
-[v _generalView generalView `(S701  1 e 2 0 ]
-"18 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
-[s S701 . 2 `E3206 1 phaseState 1 0 `E3172 1 stateMain 1 1 ]
-"32 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
-[v _viewMenu viewMenu `(S701  1 e 2 0 ]
-"45 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
-[s S731 . 3 `uc 1 dummy 1 0 `E3223 1 phaseState 1 1 `E3172 1 stateMain 1 2 ]
-"44 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
-[v _typesPower1 typesPower1 `(S731  1 e 3 0 ]
-"45 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
-[s S731 . 3 `uc 1 dummy 1 0 `E3223 1 phaseState 1 1 `E3172 1 stateMain 1 2 ]
-"56 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
-[v _phPower1 phPower1 `(S731  1 e 3 0 ]
-"45 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
-[s S731 . 3 `uc 1 dummy 1 0 `E3223 1 phaseState 1 1 `E3172 1 stateMain 1 2 ]
-"68 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
-[v _vectorPower1 vectorPower1 `(S731  1 e 3 0 ]
-"45 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
-[s S731 . 3 `uc 1 dummy 1 0 `E3223 1 phaseState 1 1 `E3172 1 stateMain 1 2 ]
-"80 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
-[v _exitPower1 exitPower1 `(S731  1 e 3 0 ]
-"72 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
-[s S766 . 3 `uc 1 dummy 1 0 `E3242 1 phaseState 1 1 `E3172 1 stateMain 1 2 ]
-"92 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
-[v _fhPower2 fhPower2 `(S766  1 e 3 0 ]
-"72 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
-[s S766 . 3 `uc 1 dummy 1 0 `E3242 1 phaseState 1 1 `E3172 1 stateMain 1 2 ]
-"104 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
-[v _phPower2 phPower2 `(S766  1 e 3 0 ]
-"72 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
-[s S766 . 3 `uc 1 dummy 1 0 `E3242 1 phaseState 1 1 `E3172 1 stateMain 1 2 ]
-"116 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
-[v _exitPower2 exitPower2 `(S766  1 e 3 0 ]
-"72 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
-[s S766 . 3 `uc 1 dummy 1 0 `E3242 1 phaseState 1 1 `E3172 1 stateMain 1 2 ]
-"128 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
-[v _phRmsVI phRmsVI `(S766  1 e 3 0 ]
-"72 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
-[s S766 . 3 `uc 1 dummy 1 0 `E3242 1 phaseState 1 1 `E3172 1 stateMain 1 2 ]
-"140 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
-[v _neutralRmsVI neutralRmsVI `(S766  1 e 3 0 ]
-"72 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
-[s S766 . 3 `uc 1 dummy 1 0 `E3242 1 phaseState 1 1 `E3172 1 stateMain 1 2 ]
-"152 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
-[v _exitRmsVI exitRmsVI `(S766  1 e 3 0 ]
-"124 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
-[s S825 . 2 `E3278 1 phaseState 1 0 `E3172 1 stateMain 1 1 ]
-"164 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
-[v _phPowerFactor phPowerFactor `(S825  1 e 2 0 ]
-"124 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
-[s S825 . 2 `E3278 1 phaseState 1 0 `E3172 1 stateMain 1 1 ]
-"176 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
-[v _exitPowerFactor exitPowerFactor `(S825  1 e 2 0 ]
-"72 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
-[s S766 . 3 `uc 1 dummy 1 0 `E3242 1 phaseState 1 1 `E3172 1 stateMain 1 2 ]
-"188 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
-[v _phPhaseAngle phPhaseAngle `(S766  1 e 3 0 ]
-"72 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
-[s S766 . 3 `uc 1 dummy 1 0 `E3242 1 phaseState 1 1 `E3172 1 stateMain 1 2 ]
-"200 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
-[v _viPhaseAngle viPhaseAngle `(S766  1 e 3 0 ]
-"72 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
-[s S766 . 3 `uc 1 dummy 1 0 `E3242 1 phaseState 1 1 `E3172 1 stateMain 1 2 ]
-"212 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
-[v _exitPhaseAngle exitPhaseAngle `(S766  1 e 3 0 ]
-"172 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
-[s S878 . 3 `uc 1 dummy 1 0 `E3312 1 phaseState 1 1 `E3172 1 stateMain 1 2 ]
-"224 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
-[v _showFrequency showFrequency `(S878  1 e 3 0 ]
-"172 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
-[s S878 . 3 `uc 1 dummy 1 0 `E3312 1 phaseState 1 1 `E3172 1 stateMain 1 2 ]
-"236 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
-[v _exitFrequency exitFrequency `(S878  1 e 3 0 ]
-"172 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
-[s S878 . 3 `uc 1 dummy 1 0 `E3312 1 phaseState 1 1 `E3172 1 stateMain 1 2 ]
-"248 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
-[v _showTemperature showTemperature `(S878  1 e 3 0 ]
-"172 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
-[s S878 . 3 `uc 1 dummy 1 0 `E3312 1 phaseState 1 1 `E3172 1 stateMain 1 2 ]
-"260 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
-[v _exitTemperature exitTemperature `(S878  1 e 3 0 ]
+[v _initialLoad initialLoad `(S700  1 e 2 0 ]
+"19 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S700 . 2 `E3218 1 phaseState 1 0 `E3184 1 stateMain 1 1 ]
+"19 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _generalView generalView `(S700  1 e 2 0 ]
+"19 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S700 . 2 `E3218 1 phaseState 1 0 `E3184 1 stateMain 1 1 ]
+"69 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _viewMenu viewMenu `(S700  1 e 2 0 ]
+"19 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S700 . 2 `E3218 1 phaseState 1 0 `E3184 1 stateMain 1 1 ]
+"84 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _sendData sendData `(S700  1 e 2 0 ]
+"46 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S735 . 3 `uc 1 dummy 1 0 `E3236 1 phaseState 1 1 `E3184 1 stateMain 1 2 ]
+"103 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _typesPower1 typesPower1 `(S735  1 e 3 0 ]
+"46 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S735 . 3 `uc 1 dummy 1 0 `E3236 1 phaseState 1 1 `E3184 1 stateMain 1 2 ]
+"115 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _phPower1 phPower1 `(S735  1 e 3 0 ]
+"46 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S735 . 3 `uc 1 dummy 1 0 `E3236 1 phaseState 1 1 `E3184 1 stateMain 1 2 ]
+"127 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _vectorPower1 vectorPower1 `(S735  1 e 3 0 ]
+"46 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S735 . 3 `uc 1 dummy 1 0 `E3236 1 phaseState 1 1 `E3184 1 stateMain 1 2 ]
+"139 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _exitPower1 exitPower1 `(S735  1 e 3 0 ]
+"73 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S770 . 3 `uc 1 dummy 1 0 `E3255 1 phaseState 1 1 `E3184 1 stateMain 1 2 ]
+"151 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _fhPower2 fhPower2 `(S770  1 e 3 0 ]
+"73 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S770 . 3 `uc 1 dummy 1 0 `E3255 1 phaseState 1 1 `E3184 1 stateMain 1 2 ]
+"163 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _phPower2 phPower2 `(S770  1 e 3 0 ]
+"73 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S770 . 3 `uc 1 dummy 1 0 `E3255 1 phaseState 1 1 `E3184 1 stateMain 1 2 ]
+"175 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _exitPower2 exitPower2 `(S770  1 e 3 0 ]
+"73 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S770 . 3 `uc 1 dummy 1 0 `E3255 1 phaseState 1 1 `E3184 1 stateMain 1 2 ]
+"187 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _phRmsVI phRmsVI `(S770  1 e 3 0 ]
+"73 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S770 . 3 `uc 1 dummy 1 0 `E3255 1 phaseState 1 1 `E3184 1 stateMain 1 2 ]
+"199 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _neutralRmsVI neutralRmsVI `(S770  1 e 3 0 ]
+"73 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S770 . 3 `uc 1 dummy 1 0 `E3255 1 phaseState 1 1 `E3184 1 stateMain 1 2 ]
+"211 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _exitRmsVI exitRmsVI `(S770  1 e 3 0 ]
+"125 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S829 . 2 `E3291 1 phaseState 1 0 `E3184 1 stateMain 1 1 ]
+"223 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _phPowerFactor phPowerFactor `(S829  1 e 2 0 ]
+"125 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S829 . 2 `E3291 1 phaseState 1 0 `E3184 1 stateMain 1 1 ]
+"235 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _exitPowerFactor exitPowerFactor `(S829  1 e 2 0 ]
+"73 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S770 . 3 `uc 1 dummy 1 0 `E3255 1 phaseState 1 1 `E3184 1 stateMain 1 2 ]
+"247 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _phPhaseAngle phPhaseAngle `(S770  1 e 3 0 ]
+"73 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S770 . 3 `uc 1 dummy 1 0 `E3255 1 phaseState 1 1 `E3184 1 stateMain 1 2 ]
+"259 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _viPhaseAngle viPhaseAngle `(S770  1 e 3 0 ]
+"73 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S770 . 3 `uc 1 dummy 1 0 `E3255 1 phaseState 1 1 `E3184 1 stateMain 1 2 ]
+"271 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _exitPhaseAngle exitPhaseAngle `(S770  1 e 3 0 ]
+"173 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S882 . 3 `uc 1 dummy 1 0 `E3325 1 phaseState 1 1 `E3184 1 stateMain 1 2 ]
+"283 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _showFrequency showFrequency `(S882  1 e 3 0 ]
+"173 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S882 . 3 `uc 1 dummy 1 0 `E3325 1 phaseState 1 1 `E3184 1 stateMain 1 2 ]
+"295 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _exitFrequency exitFrequency `(S882  1 e 3 0 ]
+"173 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S882 . 3 `uc 1 dummy 1 0 `E3325 1 phaseState 1 1 `E3184 1 stateMain 1 2 ]
+"307 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _showTemperature showTemperature `(S882  1 e 3 0 ]
+"173 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S882 . 3 `uc 1 dummy 1 0 `E3325 1 phaseState 1 1 `E3184 1 stateMain 1 2 ]
+"319 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _exitTemperature exitTemperature `(S882  1 e 3 0 ]
 "14 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\SPI.c
 [v _SPI_enableClock SPI_enableClock `(v  1 s 1 SPI_enableClock ]
 "56
@@ -383,27 +395,35 @@ GPIO_OUTPUT 1
 "80
 [v _SPI_init SPI_init `(v  1 e 1 0 ]
 "86
-[v _SPI_write SPI_write `(c  1 e 1 0 ]
-"67 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\States.c
-[v _stateMainMenu stateMainMenu `(E3234  1 e 1 0 ]
-"84
-[v _statePower1 statePower1 `(E3234  1 e 1 0 ]
-"101
-[v _statePower2 statePower2 `(E3234  1 e 1 0 ]
-"118
-[v _stateRmsVI stateRmsVI `(E3234  1 e 1 0 ]
-"135
-[v _statePowerFactor statePowerFactor `(E3234  1 e 1 0 ]
-"152
-[v _statePhaseAngle statePhaseAngle `(E3234  1 e 1 0 ]
-"169
-[v _stateFrequency stateFrequency `(E3234  1 e 1 0 ]
-"186
-[v _stateTemperature stateTemperature `(E3234  1 e 1 0 ]
+[v _SPI_write SPI_write `(v  1 e 1 0 ]
+"68 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\States.c
+[v _stateMainMenu stateMainMenu `(E3246  1 e 1 0 ]
+"85
+[v _statePower1 statePower1 `(E3246  1 e 1 0 ]
+"102
+[v _statePower2 statePower2 `(E3246  1 e 1 0 ]
+"119
+[v _stateRmsVI stateRmsVI `(E3246  1 e 1 0 ]
+"136
+[v _statePowerFactor statePowerFactor `(E3246  1 e 1 0 ]
+"153
+[v _statePhaseAngle statePhaseAngle `(E3246  1 e 1 0 ]
+"170
+[v _stateFrequency stateFrequency `(E3246  1 e 1 0 ]
+"187
+[v _stateTemperature stateTemperature `(E3246  1 e 1 0 ]
 "52 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\UART.c
 [v _UART_putChar UART_putChar `(v  1 e 1 0 ]
+"58
+[v _UART_putString UART_putString `(v  1 e 1 0 ]
 "69
 [v _expBASE10 expBASE10 `(ul  1 e 4 0 ]
+"5 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Buttons.c
+[v _FlagButton1 FlagButton1 `uc  1 e 1 0 ]
+"6
+[v _FlagButton2 FlagButton2 `uc  1 e 1 0 ]
+"7
+[v _FlagButton3 FlagButton3 `uc  1 e 1 0 ]
 "1020 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f2331.h
 [v _PORTA PORTA `VEuc  1 e 1 @3968 ]
 "1165
@@ -455,7 +475,7 @@ GPIO_OUTPUT 1
 ]
 [u S399 . 1 `S384 1 . 1 0 `S392 1 . 1 0 `S395 1 . 1 0 ]
 [v _PIR1bits PIR1bits `VES399  1 e 1 @3998 ]
-[s S589 . 1 `uc 1 ABDEN 1 0 :1:0 
+[s S587 . 1 `uc 1 ABDEN 1 0 :1:0 
 `uc 1 WUE 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 BRG16 1 0 :1:3 
@@ -465,20 +485,20 @@ GPIO_OUTPUT 1
 `uc 1 ABDOVF 1 0 :1:7 
 ]
 "3632
-[s S598 . 1 `uc 1 . 1 0 :4:0 
+[s S596 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 SCKP 1 0 :1:4 
 `uc 1 . 1 0 :1:5 
 `uc 1 RCMT 1 0 :1:6 
 ]
-[s S603 . 1 `uc 1 . 1 0 :5:0 
+[s S601 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 RXCKP 1 0 :1:5 
 ]
-[s S606 . 1 `uc 1 . 1 0 :1:0 
+[s S604 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 W4E 1 0 :1:1 
 ]
-[u S609 . 1 `S589 1 . 1 0 `S598 1 . 1 0 `S603 1 . 1 0 `S606 1 . 1 0 ]
-[v _BAUDCTLbits BAUDCTLbits `VES609  1 e 1 @4010 ]
-[s S535 . 1 `uc 1 RX9D 1 0 :1:0 
+[u S607 . 1 `S587 1 . 1 0 `S596 1 . 1 0 `S601 1 . 1 0 `S604 1 . 1 0 ]
+[v _BAUDCTLbits BAUDCTLbits `VES607  1 e 1 @4010 ]
+[s S533 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -488,23 +508,23 @@ GPIO_OUTPUT 1
 `uc 1 SPEN 1 0 :1:7 
 ]
 "3733
-[s S544 . 1 `uc 1 . 1 0 :3:0 
+[s S542 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 ADEN 1 0 :1:3 
 ]
-[s S547 . 1 `uc 1 . 1 0 :5:0 
+[s S545 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 SRENA 1 0 :1:5 
 ]
-[s S550 . 1 `uc 1 . 1 0 :6:0 
+[s S548 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC8_9 1 0 :1:6 
 ]
-[s S553 . 1 `uc 1 . 1 0 :6:0 
+[s S551 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC9 1 0 :1:6 
 ]
-[s S556 . 1 `uc 1 RCD8 1 0 :1:0 
+[s S554 . 1 `uc 1 RCD8 1 0 :1:0 
 ]
-[u S558 . 1 `S535 1 . 1 0 `S544 1 . 1 0 `S547 1 . 1 0 `S550 1 . 1 0 `S553 1 . 1 0 `S556 1 . 1 0 ]
-[v _RCSTAbits RCSTAbits `VES558  1 e 1 @4011 ]
-[s S483 . 1 `uc 1 TX9D 1 0 :1:0 
+[u S556 . 1 `S533 1 . 1 0 `S542 1 . 1 0 `S545 1 . 1 0 `S548 1 . 1 0 `S551 1 . 1 0 `S554 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES556  1 e 1 @4011 ]
+[s S481 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
 `uc 1 SENDB 1 0 :1:3 
@@ -514,7 +534,7 @@ GPIO_OUTPUT 1
 `uc 1 CSRC 1 0 :1:7 
 ]
 "3941
-[s S492 . 1 `uc 1 TX9D1 1 0 :1:0 
+[s S490 . 1 `uc 1 TX9D1 1 0 :1:0 
 `uc 1 TRMT1 1 0 :1:1 
 `uc 1 BRGH1 1 0 :1:2 
 `uc 1 SENDB1 1 0 :1:3 
@@ -523,19 +543,28 @@ GPIO_OUTPUT 1
 `uc 1 TX91 1 0 :1:6 
 `uc 1 CSRC1 1 0 :1:7 
 ]
-[s S501 . 1 `uc 1 . 1 0 :6:0 
+[s S499 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 TX8_9 1 0 :1:6 
 ]
-[s S504 . 1 `uc 1 TXD8 1 0 :1:0 
+[s S502 . 1 `uc 1 TXD8 1 0 :1:0 
 ]
-[u S506 . 1 `S483 1 . 1 0 `S492 1 . 1 0 `S501 1 . 1 0 `S504 1 . 1 0 ]
-[v _TXSTAbits TXSTAbits `VES506  1 e 1 @4012 ]
+[u S504 . 1 `S481 1 . 1 0 `S490 1 . 1 0 `S499 1 . 1 0 `S502 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES504  1 e 1 @4012 ]
 "4158
 [v _TXREG TXREG `VEuc  1 e 1 @4013 ]
 "4182
 [v _SPBRG SPBRG `VEuc  1 e 1 @4015 ]
 "4471
 [v _ANSEL0 ANSEL0 `VEuc  1 e 1 @4024 ]
+[s S1411 . 1 `uc 1 ANS0 1 0 :1:0 
+`uc 1 ANS1 1 0 :1:1 
+`uc 1 ANS2 1 0 :1:2 
+`uc 1 ANS3 1 0 :1:3 
+`uc 1 ANS4 1 0 :1:4 
+]
+"4485
+[u S1417 . 1 `S1411 1 . 1 0 ]
+[v _ANSEL0bits ANSEL0bits `VES1417  1 e 1 @4024 ]
 "5027
 [v _SSPCON SSPCON `VEuc  1 e 1 @4038 ]
 [s S353 . 1 `uc 1 SSPM 1 0 :4:0 
@@ -629,44 +658,53 @@ GPIO_OUTPUT 1
 [s S31 . 3 `E3166 1 SPI_Polarity 1 0 `E3170 1 SPI_Phase 1 1 `E3174 1 SPI_Clk 1 2 ]
 "67 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\main.c
 [v _SPI_Config SPI_Config `CS31  1 e 3 0 ]
-[s S701 . 2 `E3206 1 phaseState 1 0 `E3172 1 stateMain 1 1 ]
+[s S700 . 2 `E3218 1 phaseState 1 0 `E3184 1 stateMain 1 1 ]
 "6 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\States.c
-[s S705 PhaseMainMenu 2 `*.37(S701 1 PhaseMainMenu 2 0 ]
-[v _phasesMainMenu phasesMainMenu `C[3]S705  1 e 6 0 ]
-[s S731 . 3 `uc 1 dummy 1 0 `E3223 1 phaseState 1 1 `E3172 1 stateMain 1 2 ]
-"14
-[s S736 PhasePower1 2 `*.37(S731 1 PhasePower1 2 0 ]
-[v _phasesPower1 phasesPower1 `C[4]S736  1 e 8 0 ]
-[s S766 . 3 `uc 1 dummy 1 0 `E3242 1 phaseState 1 1 `E3172 1 stateMain 1 2 ]
-"23
-[s S771 PhasePower2 2 `*.37(S766 1 PhasePower2 2 0 ]
-[v _phasesPower2 phasesPower2 `C[3]S771  1 e 6 0 ]
-"31
-[s S801 PhaseRmsVI 2 `*.37(S766 1 PhaseRmsVI 2 0 ]
-[v _phasesRmsVI phasesRmsVI `C[3]S801  1 e 6 0 ]
-[s S825 . 2 `E3278 1 phaseState 1 0 `E3172 1 stateMain 1 1 ]
-"39
-[s S829 PhasePowerFactor 2 `*.37(S825 1 PhasePowerFactor 2 0 ]
-[v _phasesPowerFactor phasesPowerFactor `C[2]S829  1 e 4 0 ]
-"46
-[s S854 PhasePhaseAngle 2 `*.37(S766 1 PhasePhaseAngle 2 0 ]
-[v _phasesPhaseAngle phasesPhaseAngle `C[3]S854  1 e 6 0 ]
-[s S878 . 3 `uc 1 dummy 1 0 `E3312 1 phaseState 1 1 `E3172 1 stateMain 1 2 ]
-"54
-[s S883 PhaseFrequency 2 `*.37(S878 1 PhaseFrequency 2 0 ]
-[v _phasesFrequency phasesFrequency `C[2]S883  1 e 4 0 ]
-"61
-[s S907 PhaseTemperature 2 `*.37(S878 1 PhaseTemperature 2 0 ]
-[v _phasesTemperature phasesTemperature `C[2]S907  1 e 4 0 ]
+[s S704 PhaseMainMenu 2 `*.37(S700 1 PhaseMainMenu 2 0 ]
+[v _phasesMainMenu phasesMainMenu `C[4]S704  1 e 8 0 ]
+[s S735 . 3 `uc 1 dummy 1 0 `E3236 1 phaseState 1 1 `E3184 1 stateMain 1 2 ]
+"15
+[s S740 PhasePower1 2 `*.37(S735 1 PhasePower1 2 0 ]
+[v _phasesPower1 phasesPower1 `C[4]S740  1 e 8 0 ]
+[s S770 . 3 `uc 1 dummy 1 0 `E3255 1 phaseState 1 1 `E3184 1 stateMain 1 2 ]
+"24
+[s S775 PhasePower2 2 `*.37(S770 1 PhasePower2 2 0 ]
+[v _phasesPower2 phasesPower2 `C[3]S775  1 e 6 0 ]
+"32
+[s S805 PhaseRmsVI 2 `*.37(S770 1 PhaseRmsVI 2 0 ]
+[v _phasesRmsVI phasesRmsVI `C[3]S805  1 e 6 0 ]
+[s S829 . 2 `E3291 1 phaseState 1 0 `E3184 1 stateMain 1 1 ]
+"40
+[s S833 PhasePowerFactor 2 `*.37(S829 1 PhasePowerFactor 2 0 ]
+[v _phasesPowerFactor phasesPowerFactor `C[2]S833  1 e 4 0 ]
+"47
+[s S858 PhasePhaseAngle 2 `*.37(S770 1 PhasePhaseAngle 2 0 ]
+[v _phasesPhaseAngle phasesPhaseAngle `C[3]S858  1 e 6 0 ]
+[s S882 . 3 `uc 1 dummy 1 0 `E3325 1 phaseState 1 1 `E3184 1 stateMain 1 2 ]
+"55
+[s S887 PhaseFrequency 2 `*.37(S882 1 PhaseFrequency 2 0 ]
+[v _phasesFrequency phasesFrequency `C[2]S887  1 e 4 0 ]
+"62
+[s S911 PhaseTemperature 2 `*.37(S882 1 PhaseTemperature 2 0 ]
+[v _phasesTemperature phasesTemperature `C[2]S911  1 e 4 0 ]
 "88 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"108
-[v main@arrayTest arrayTest `[11]uc  1 a 11 5 ]
 "107
+[v main@arrayTest arrayTest `[11]uc  1 a 11 5 ]
+"106
 [v main@test test `uc  1 a 1 16 ]
-[v main@F3282 F3282 `[11]uc  1 s 11 F3282 ]
-"120
+[v main@F3294 F3294 `[11]uc  1 s 11 F3294 ]
+"121
+} 0
+"189 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+[v _delay delay `(v  1 e 1 0 ]
+{
+"191
+[v delay@counter counter `VEul  1 a 4 22 ]
+"190
+[v delay@delay delay `ul  1 p 4 18 ]
+"195
 } 0
 "80 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\SPI.c
 [v _SPI_init SPI_init `(v  1 e 1 0 ]
@@ -720,16 +758,7 @@ GPIO_OUTPUT 1
 {
 "131
 } 0
-"189 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
-[v _delay delay `(v  1 e 1 0 ]
-{
-"191
-[v delay@counter counter `VEul  1 a 4 22 ]
-"190
-[v delay@delay delay `ul  1 p 4 18 ]
-"195
-} 0
-"200 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+"200
 [v _LCD_delay LCD_delay `(v  1 e 1 0 ]
 {
 "202
@@ -776,18 +805,13 @@ GPIO_OUTPUT 1
 "155
 } 0
 "86 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\SPI.c
-[v _SPI_write SPI_write `(c  1 e 1 0 ]
+[v _SPI_write SPI_write `(v  1 e 1 0 ]
 {
 [v SPI_write@data data `uc  1 a 1 wreg ]
-"88
-[v SPI_write@dummy dummy `Cuc  1 a 1 20 ]
-"89
-[v SPI_write@success success `c  1 a 1 18 ]
-"86
 [v SPI_write@data data `uc  1 a 1 wreg ]
 "88
-[v SPI_write@data data `uc  1 a 1 19 ]
-"104
+[v SPI_write@data data `uc  1 a 1 18 ]
+"90
 } 0
 "151 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
 [v _GPIO_setPIN GPIO_setPIN `(v  1 e 1 0 ]
@@ -819,8 +843,8 @@ GPIO_OUTPUT 1
 [v GPIO_sourceClock@clk clk `E3061  1 a 1 18 ]
 "49
 } 0
-"5 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Buttons.c
+"9 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Buttons.c
 [v _Button1 Button1 `II(v  1 e 1 0 ]
 {
-"14
+"18
 } 0

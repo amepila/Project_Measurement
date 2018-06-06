@@ -4,6 +4,7 @@
 
 uint8_t FlagButton1 = 0;
 uint8_t FlagButton2 = 0;
+uint8_t FlagButton3 = 0;
 
 void interrupt Button1(void)
 {
@@ -14,6 +15,16 @@ void interrupt Button1(void)
         INT0IF = 0;
         FlagButton1 = 1;
     }
+}
+
+void Button2(void)
+{
+
+}
+
+void Button3(void)
+{
+    
 }
 
 uint8_t getButton1(void)
@@ -36,6 +47,17 @@ void setButton2(uint8_t set)
     FlagButton2 = set;
 }
 
+uint8_t getButton3(void)
+{
+    return (FlagButton3);
+}
+
+void setButton3(uint8_t set)
+{
+    FlagButton3 = set;
+}
+
+
 
 void ButtonInt_config()
 {
@@ -47,4 +69,11 @@ void ButtonInt_config()
     INT0IE = 1;
     /**Global interrupt enable*/
     GIE = 1;
+    
+    GPIO_dataDirectionPIN(GPIO_A, 3, GPIO_INPUT);
+    ANSEL0bits.ANS3 = 1;
+    
+    GPIO_dataDirectionPIN(GPIO_A, 4, GPIO_INPUT);
+    ANSEL0bits.ANS4 = 1;
+    
 }

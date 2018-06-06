@@ -175,7 +175,7 @@ SPI_SerialClk SPI_Clk;
 
 void SPI_init(const SPI_ConfigType* SPI_Config);
 
-int8_t SPI_write(uint8_t data);
+void SPI_write(uint8_t data);
 
 uint8_t SPI_read(void);
 
@@ -323,18 +323,18 @@ LCD_delay();
 GPIO_setPIN(GPIO_B, 1);
 
 LCDNokia_writeByte(0, 0x21);
-delay(1000);
-LCDNokia_writeByte(0, 0xC0);
-delay(1000);
-LCDNokia_writeByte(0, 0x07);
-delay(1000);
-LCDNokia_writeByte(0, 0x13);
 
-delay(1000);
+LCDNokia_writeByte(0, 0x84);
+
+LCDNokia_writeByte(0, 0x07);
+
+LCDNokia_writeByte(0, 0xC0);
+
+
 LCDNokia_writeByte(0, 0x20);
-delay(1000);
+
 LCDNokia_writeByte(0, 0x0D);
-delay(1000);
+
 }
 
 void LCDNokia_bitmap(const uint8_t* my_array)
@@ -407,7 +407,7 @@ void LCD_delay(void)
 {
 uint32_t counter;
 
-for(counter = 0; counter < 100000; counter++)
+for(counter = 0; counter < 1000000; counter++)
 {
 }
 }

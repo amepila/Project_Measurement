@@ -92,7 +92,6 @@ void main(void)
   	States_MenuType currentState = MAIN_MENU;
 	States_MenuType(*mainFunctions)(void);
 #endif
-    
     /**Select the 8MHz as source clock*/
     GPIO_sourceClock(CLK_8MHZ);
 
@@ -104,10 +103,12 @@ void main(void)
     UART_init(BD_9600);
     ButtonInt_config();
 #endif
-    uint8_t test = 'O';
+    uint8_t test = 'o';
     uint8_t arrayTest[] = "Hola Mundo";
     for(;;)
     {
+        
+        //LCDNokia_writeByte(LCD_DATA, 0x11);
         LCDNokia_sendChar(test);
         //LCDNokia_sendString(arrayTest);
         delay(1000); 

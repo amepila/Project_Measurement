@@ -83,24 +83,10 @@ void SPI_init(const SPI_ConfigType* SPI_Config)
     SPI_enablePins(SPI_Config->SPI_Clk);
 }
 
-int8_t SPI_write(uint8_t data)
+void SPI_write(uint8_t data)
 {
-    const uint8_t dummy = 0;
-    int8_t success = 1;
-    
-    //SSPCONbits.WCOL = 0;
     SSPBUF = data;
-    
-#if 0
-    while(0 == SSPSTATbits.BF);
-#endif
-    while(!PIR1bits.SSPIF);
-    PIR1bits.SSPIF = 0;
-    
-    SSPBUF = dummy;
-    //success = (SSPCONbits.WCOL == 1) ? 0: 1;
- 
-    return (success);
+    while(!SSPSTATbits.BF);
 }
 
 uint8_t SPI_read(void)

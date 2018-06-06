@@ -8,7 +8,7 @@ PhaseMainMenu_Type initialLoad(PhaseMainMenu_Type data)
 
     /**Load the value of register of IC*/
     //Code
-
+    
 	/**Set with the current state and phase**/
 	currentMainMenu1.phaseState = GENERAL_VIEW;
 	currentMainMenu1.stateMain = data.stateMain;
@@ -22,11 +22,19 @@ PhaseMainMenu_Type generalView(PhaseMainMenu_Type data)
     const uint8_t msgInitial2[] = "TRIFASICO";
     const uint8_t buttonRight[] = "Enviar";
     const uint8_t buttonLeft[] = "Menu";
+    
+    static uint8_t lockClear = 0;
     /**Create the variable with current data**/
 	static PhaseMainMenu_Type currentMainMenu2;
 
-    /**Clear the nokia LCD*/
-	LCDNokia_clear();
+    currentMainMenu2.phaseState = GENERAL_VIEW;
+
+    if(0 == lockClear)
+    {
+        /**Clear the nokia LCD*/
+        LCDNokia_clear();
+        lockClear = 1;
+    }
     
     LCDNokia_gotoXY(20,1);
     LCDNokia_sendString(msgInitial1);
@@ -41,9 +49,18 @@ PhaseMainMenu_Type generalView(PhaseMainMenu_Type data)
     LCDNokia_sendString(buttonRight);
     
     
+    if(1 == getButton1())
+    {
+        currentMainMenu2.phaseState = VIEW_MENU;
+        lockClear = 0;
+    }
+    if(1 == getButton3())
+    {
+        currentMainMenu2.phaseState = SEND_DATA;
+        lockClear = 1;
+    }
     
 	/**Set with the current state and phase**/
-	currentMainMenu2.phaseState = VIEW_MENU;
 	currentMainMenu2.stateMain = data.stateMain;
 
 	return (currentMainMenu2);
@@ -54,20 +71,29 @@ PhaseMainMenu_Type viewMenu(PhaseMainMenu_Type data)
 	/**Create the variable with current data**/
 	static PhaseMainMenu_Type currentMainMenu3;
 
+    /**Clear the nokia LCD*/
+	LCDNokia_clear();
+    
 	/**Set with the current state and phase**/
 	currentMainMenu3.phaseState = data.phaseState;
-    currentMainMenu3.stateMain = data.stateMain;
+    currentMainMenu3.stateMain = POWER_1;
 
 	return (currentMainMenu3);
 }
 
 PhaseMainMenu_Type sendData(PhaseMainMenu_Type data)
 {
+    const uint8_t test[] = "TEST";
 	/**Create the variable with current data**/
 	static PhaseMainMenu_Type currentMainMenu4;
 
+    UART_putString(test);
+    /*
+     ...Send all the info of the IC
+     */
+    
 	/**Set with the current state and phase**/
-	currentMainMenu4.phaseState = data.phaseState;
+	currentMainMenu4.phaseState = GENERAL_VIEW;
     currentMainMenu4.stateMain = data.stateMain;
 
 	return (currentMainMenu4);
