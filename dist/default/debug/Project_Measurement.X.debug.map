@@ -5,9 +5,9 @@ Linker command line:
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v1.44\dat\en_msgs.txt -cs \
   -h+dist/default/debug\Project_Measurement.X.debug.sym \
   --cmf=dist/default/debug\Project_Measurement.X.debug.cmf -z -Q18F2331 \
-  -oC:\Users\ANDRES~1\AppData\Local\Temp\s24ig.2 \
+  -oC:\Users\ANDRES~1\AppData\Local\Temp\sv8.2 \
   -Mdist/default/debug/Project_Measurement.X.debug.map -E1 -ver=XC8 \
-  -ASTACK=0AEh-02eeh -pstack=STACK -ACODE=00h-01CFFh -ACONST=00h-01CFFh \
+  -ASTACK=0A5h-02eeh -pstack=STACK -ACODE=00h-01CFFh -ACONST=00h-01CFFh \
   -ASMALLCONST=0300h-03FFhx26 -AMEDIUMCONST=0300h-01CFFh -ACOMRAM=01h-05Fh \
   -AABS1=00h-02EEh -ABIGRAM=01h-02EEh \
   -ARAM=060h-0FFh,0100h-01FFh,0200h-02EEh -ABANK0=060h-0FFh \
@@ -22,7 +22,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\ANDRES~1\AppData\Local\Temp\s24ig.obj \
+  C:\Users\ANDRES~1\AppData\Local\Temp\sv8.obj \
   dist/default/debug\Project_Measurement.X.debug.obj 
 
 Object code version is 3.11
@@ -35,40 +35,28 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\ANDRES~1\AppData\Local\Temp\s24ig.obj
+C:\Users\ANDRES~1\AppData\Local\Temp\sv8.obj
                 init                                 A2       A2        4        4       0
                 reset_vec                             0        0        6        0       0
                 idloc                            200000   200000        8   200000       0
                 config                           300000   300000        E   300000       0
 dist/default/debug\Project_Measurement.X.debug.obj
                 intcode                               8        8       9A        4       0
-                temp                                 4C       4C        1        1       1
+                temp                                 4D       4D        1        1       1
                 mediumconst                        1ADE     1ADE      222      D6F       0
-                text17                              352      352       60        4       0
-                text16                              27C      27C       6E        4       0
-                text15                              2EA      2EA       68        4       0
-                text14                              628      628       1A        4       0
-                text13                              5E6      5E6       26        4       0
-                text12                              60C      60C       1C        4       0
-                text11                              4D4      4D4       3C        4       0
-                text10                               A6       A6       DC        4       0
-                text9                               510      510       32        4       0
-                text8                               20A      20A       72        4       0
-                text7                               5C0      5C0       26        4       0
-                text6                               182      182       88        4       0
-                text5                               59A      59A       26        4       0
-                text4                               496      496       3E        4       0
-                text3                               542      542       30        4       0
-                text2                               408      408       48        4       0
-                text1                               572      572       28        4       0
-                text0                               3B2      3B2       56        4       0
-                cstackCOMRAM                         30       30       1C        1       1
-                cstackBANK0                          90       90       12       60       1
-                dataBANK0                            A2       A2        C       60       1
-                bssBANK0                             60       60       30       60       1
-                bssCOMRAM                             1        1       2F        1       1
-                cinit                               450      450       46        4       0
-                idataBANK0                          642      642        C        4       0
+                text5                               1EE      1EE       60        4       0
+                text4                                A6       A6       DC        4       0
+                text3                               182      182       6C        4       0
+                text2                               306      306        C        4       0
+                text1                               2DC      2DC       2A        4       0
+                text0                               24E      24E       48        4       0
+                cstackCOMRAM                         36       36       17        1       1
+                cstackBANK0                          8A       8A       10       60       1
+                dataBANK0                            9A       9A        B       60       1
+                bssBANK0                             60       60       2A       60       1
+                bssCOMRAM                             1        1       35        1       1
+                cinit                               296      296       46        4       0
+                idataBANK0                          312      312        B        4       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
@@ -77,26 +65,14 @@ TOTAL           Name                               Link     Load   Length     Sp
                 intcode                               8        8       9A         0
                 init                                 A2       A2        4         0
                 reset_vec                             0        0        6         0
-                text17                              352      352       60         0
-                text16                              27C      27C       6E         0
-                text15                              2EA      2EA       68         0
-                text14                              628      628       1A         0
-                text13                              5E6      5E6       26         0
-                text12                              60C      60C       1C         0
-                text11                              4D4      4D4       3C         0
-                text10                               A6       A6       DC         0
-                text9                               510      510       32         0
-                text8                               20A      20A       72         0
-                text7                               5C0      5C0       26         0
-                text6                               182      182       88         0
-                text5                               59A      59A       26         0
-                text4                               496      496       3E         0
-                text3                               542      542       30         0
-                text2                               408      408       48         0
-                text1                               572      572       28         0
-                text0                               3B2      3B2       56         0
-                cinit                               450      450       46         0
-                idataBANK0                          642      642        C         0
+                text5                               1EE      1EE       60         0
+                text4                                A6       A6       DC         0
+                text3                               182      182       6C         0
+                text2                               306      306        C         0
+                text1                               2DC      2DC       2A         0
+                text0                               24E      24E       48         0
+                cinit                               296      296       46         0
+                idataBANK0                          312      312        B         0
 
         CLASS   CONST          
 
@@ -106,9 +82,9 @@ TOTAL           Name                               Link     Load   Length     Sp
                 mediumconst                        1ADE     1ADE      222         0
 
         CLASS   COMRAM         
-                temp                                 4C       4C        1         1
-                cstackCOMRAM                         30       30       1C         1
-                bssCOMRAM                             1        1       2F         1
+                temp                                 4D       4D        1         1
+                cstackCOMRAM                         36       36       17         1
+                bssCOMRAM                             1        1       35         1
 
         CLASS   ABS1           
 
@@ -117,9 +93,9 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   RAM            
 
         CLASS   BANK0          
-                cstackBANK0                          90       90       12         1
-                dataBANK0                            A2       A2        C         1
-                bssBANK0                             60       60       30         1
+                cstackBANK0                          8A       8A       10         1
+                dataBANK0                            9A       9A        B         1
+                bssBANK0                             60       60       2A         1
 
         CLASS   BANK1          
 
@@ -142,9 +118,9 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class
 
                 reset_vec                      000000  000006  000006         0       0  CODE    
-                bssCOMRAM                      000001  00004C  00004D         1       1  COMRAM  
-                intcode                        000008  000646  00064E         4       0  CODE    
-                bssBANK0                       000060  00004E  0000AE        60       1  BANK0   
+                bssCOMRAM                      000001  00004D  00004E         1       1  COMRAM  
+                intcode                        000008  000315  00031D         4       0  CODE    
+                bssBANK0                       000060  000045  0000A5        60       1  BANK0   
                 mediumconst                    001ADE  000222  001D00       D6F       0  MEDIUMCO
                 idloc                          200000  000008  200008    200000       0  IDLOC   
                 config                         300000  00000E  30000E    300000       0  CONFIG  
@@ -153,83 +129,53 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
 UNUSED ADDRESS RANGES
 
         Name                Unused          Largest block    Delta
-        BANK0            0000AE-0000FF               52
+        BANK0            0000A5-0000FF               5B
         BANK1            000100-0001FF              100
         BANK2            000200-0002EE               EF
-        BIGRAM           00004D-00005F               13
-                         0000AE-0002EE              241
+        BIGRAM           00004E-00005F               12
+                         0000A5-0002EE              24A
         CODE             000006-000007                2
-                         00064E-001ADD             1490
-        COMRAM           00004D-00005F               13
+                         00031D-001ADD             17C1
+        COMRAM           00004E-00005F               12
         CONST            000006-000007                2
-                         00064E-001ADD             1490
+                         00031D-001ADD             17C1
         EEDATA           F00000-F000FF              100
-        MEDIUMCONST      00064E-001ADD             1490
-        RAM              0000AE-0002EE              100
+        MEDIUMCONST      00031D-001ADD             17C1
+        RAM              0000A5-0002EE              100
         SFR              000F60-000F9B               3C
                          000F9D-000FD3               37
                          000FD5-000FDA                6
                          000FE0-000FE2                3
                          000FE8-000FEA                3
                          000FF0-000FFB                C
-        SMALLCONST       00064E-001ADD              100
-        STACK            0000AE-0002EE              241
+        SMALLCONST       00031D-001ADD              100
+        STACK            0000A5-0002EE              24A
 
                                   Symbol Table
 
-?___wmul                            cstackCOMRAM 000042
-GPIO_clearPIN@pin                   cstackCOMRAM 000042
-GPIO_clearPIN@portName              cstackCOMRAM 000045
-GPIO_dataDirectionPIN@pin           cstackCOMRAM 000042
-GPIO_dataDirectionPIN@portName      cstackCOMRAM 000046
-GPIO_dataDirectionPIN@state         cstackCOMRAM 000043
-GPIO_setPIN@pin                     cstackCOMRAM 000042
-GPIO_setPIN@portName                cstackCOMRAM 000045
-GPIO_sourceClock@clk                cstackCOMRAM 000042
-LCDNokia_clear@index                cstackBANK0  000090
-LCDNokia_gotoXY@x                   cstackCOMRAM 00004B
-LCDNokia_gotoXY@y                   cstackCOMRAM 00004A
-LCDNokia_sendChar@character         cstackBANK0  000090
-LCDNokia_sendChar@index             cstackBANK0  000091
-LCDNokia_sendString@characters      cstackBANK0  000093
-LCDNokia_writeByte@DataOrCmd        cstackCOMRAM 000049
-LCDNokia_writeByte@data             cstackCOMRAM 000048
-LCD_delay@counter                   cstackCOMRAM 000042
-SPI_enableClock@cpol                cstackCOMRAM 000042
-SPI_enableClock@phase               cstackCOMRAM 000043
-SPI_enablePins@serial               cstackCOMRAM 000042
-SPI_init@SPI_Config                 cstackCOMRAM 000044
-SPI_write@data                      cstackCOMRAM 000043
-SPI_write@success                   cstackCOMRAM 000042
+GPIO_dataDirectionPIN@pin           cstackCOMRAM 000048
+GPIO_dataDirectionPIN@portName      cstackCOMRAM 00004C
+GPIO_dataDirectionPIN@state         cstackCOMRAM 000049
+GPIO_sourceClock@clk                cstackCOMRAM 000048
+UART_init@baudRate                  cstackBANK0  00008A
+UART_putChar@character              cstackCOMRAM 000048
 _ANSEL0                             (abs)        000FB8
 _ASCII                              mediumconst  001ADF
 _BAUDCTLbits                        (abs)        000FAA
 _Button1                            intcode      000008
 _GIE                                (abs)        007F97
-_GPIO_clearPIN                      text16       00027C
-_GPIO_dataDirectionPIN              text10       0000A6
-_GPIO_setPIN                        text15       0002EA
-_GPIO_sourceClock                   text17       000352
+_GPIO_dataDirectionPIN              text4        0000A6
+_GPIO_sourceClock                   text5        0001EE
 _INT0IE                             (abs)        007F94
 _INT0IF                             (abs)        007F91
-_LCDNokia_clear                     text11       0004D4
-_LCDNokia_gotoXY                    text12       00060C
-_LCDNokia_init                      text8        00020A
-_LCDNokia_sendChar                  text6        000182
-_LCDNokia_sendString                text5        00059A
-_LCDNokia_writeByte                 text13       0005E6
-_LCD_delay                          text9        000510
 _OSCCON                             (abs)        000FD3
+_PIR1bits                           (abs)        000F9E
 _PORTA                              (abs)        000F80
 _PORTB                              (abs)        000F81
 _PORTC                              (abs)        000F82
 _RCSTAbits                          (abs)        000FAB
 _SPBRG                              (abs)        000FAF
 _SPI_Config                         mediumconst  001CFB
-_SPI_enableClock                    text4        000496
-_SPI_enablePins                     text3        000542
-_SPI_init                           text2        000408
-_SPI_write                          text14       000628
 _SSPBUF                             (abs)        000FC9
 _SSPCON                             (abs)        000FC6
 _SSPCONbits                         (abs)        000FC6
@@ -242,6 +188,8 @@ _TRISC                              (abs)        000F94
 _TRISCbits                          (abs)        000F94
 _TXREG                              (abs)        000FAD
 _TXSTAbits                          (abs)        000FAC
+_UART_init                          text3        000182
+_UART_putChar                       text2        000306
 __CFG_BOREN$ON                      (abs)        000000
 __CFG_CP0$OFF                       (abs)        000000
 __CFG_CP1$OFF                       (abs)        000000
@@ -321,30 +269,18 @@ __Hrparam                           rparam       000000
 __Hsfr                              sfr          000000
 __Hsmallconst                       smallconst   000000
 __Hspace_0                          (abs)        30000E
-__Hspace_1                          (abs)        0000AE
+__Hspace_1                          (abs)        0000A5
 __Hspace_2                          (abs)        000000
 __Hstack                            stack        000000
 __Hstruct                           struct       000000
-__Htemp                             temp         00004D
+__Htemp                             temp         00004E
 __Htext                             text         000000
 __Htext0                            text0        000000
 __Htext1                            text1        000000
-__Htext10                           text10       000000
-__Htext11                           text11       000000
-__Htext12                           text12       000000
-__Htext13                           text13       000000
-__Htext14                           text14       000000
-__Htext15                           text15       000000
-__Htext16                           text16       000000
-__Htext17                           text17       000000
 __Htext2                            text2        000000
 __Htext3                            text3        000000
 __Htext4                            text4        000000
 __Htext5                            text5        000000
-__Htext6                            text6        000000
-__Htext7                            text7        000000
-__Htext8                            text8        000000
-__Htext9                            text9        000000
 __LRAM                              (abs)        000001
 __Labs1                             abs1         000000
 __Lbank0                            bank0        000000
@@ -401,63 +337,35 @@ __Lspace_1                          (abs)        000000
 __Lspace_2                          (abs)        000000
 __Lstack                            stack        000000
 __Lstruct                           struct       000000
-__Ltemp                             temp         00004C
+__Ltemp                             temp         00004D
 __Ltext                             text         000000
 __Ltext0                            text0        000000
 __Ltext1                            text1        000000
-__Ltext10                           text10       000000
-__Ltext11                           text11       000000
-__Ltext12                           text12       000000
-__Ltext13                           text13       000000
-__Ltext14                           text14       000000
-__Ltext15                           text15       000000
-__Ltext16                           text16       000000
-__Ltext17                           text17       000000
 __Ltext2                            text2        000000
 __Ltext3                            text3        000000
 __Ltext4                            text4        000000
 __Ltext5                            text5        000000
-__Ltext6                            text6        000000
-__Ltext7                            text7        000000
-__Ltext8                            text8        000000
-__Ltext9                            text9        000000
 __S0                                (abs)        30000E
-__S1                                (abs)        0000AE
+__S1                                (abs)        0000A5
 __S2                                (abs)        000000
 ___inthi_sp                         stack        000000
 ___intlo_sp                         stack        000000
 ___param_bank                       (abs)        000000
 ___rparam_used                      (abs)        000001
 ___sp                               stack        000000
-___wmul                             text7        0005C0
-___wmul@multiplicand                cstackCOMRAM 000044
-___wmul@multiplier                  cstackCOMRAM 000042
-___wmul@product                     cstackCOMRAM 000046
 __accesstop                         (abs)        000060
 __activetblptr                      (abs)        000002
 __end_of_ASCII                      mediumconst  001CBF
 __end_of_Button1                    intcode      0000A2
-__end_of_GPIO_clearPIN              text16       0002EA
-__end_of_GPIO_dataDirectionPIN      text10       000182
-__end_of_GPIO_setPIN                text15       000352
-__end_of_GPIO_sourceClock           text17       0003B2
-__end_of_LCDNokia_clear             text11       000510
-__end_of_LCDNokia_gotoXY            text12       000628
-__end_of_LCDNokia_init              text8        00027C
-__end_of_LCDNokia_sendChar          text6        00020A
-__end_of_LCDNokia_sendString        text5        0005C0
-__end_of_LCDNokia_writeByte         text13       00060C
-__end_of_LCD_delay                  text9        000542
+__end_of_GPIO_dataDirectionPIN      text4        000182
+__end_of_GPIO_sourceClock           text5        00024E
 __end_of_SPI_Config                 mediumconst  001CFE
-__end_of_SPI_enableClock            text4        0004D4
-__end_of_SPI_enablePins             text3        000572
-__end_of_SPI_init                   text2        000450
-__end_of_SPI_write                  text14       000642
 __end_of_StateProgram               mediumconst  001CCF
-__end_of___wmul                     text7        0005E6
-__end_of__initialization            cinit        000488
-__end_of_delay                      text1        00059A
-__end_of_main                       text0        000408
+__end_of_UART_init                  text3        0001EE
+__end_of_UART_putChar               text2        000312
+__end_of__initialization            cinit        0002CE
+__end_of_delay                      text1        000306
+__end_of_main                       text0        000296
 __end_of_phasesFrequency            mediumconst  001CF7
 __end_of_phasesMainMenu             mediumconst  001CEF
 __end_of_phasesPhaseAngle           mediumconst  001CDD
@@ -466,57 +374,33 @@ __end_of_phasesPower2               mediumconst  001CE9
 __end_of_phasesPowerFactor          mediumconst  001CFB
 __end_of_phasesRmsVI                mediumconst  001CE3
 __end_of_phasesTemperature          mediumconst  001CF3
-__initialization                    cinit        000450
+__initialization                    cinit        000296
 __mediumconst                       mediumconst  001ADE
 __pbssBANK0                         bssBANK0     000060
 __pbssCOMRAM                        bssCOMRAM    000001
-__pcinit                            cinit        000450
-__pcstackBANK0                      cstackBANK0  000090
-__pcstackCOMRAM                     cstackCOMRAM 000030
-__pdataBANK0                        dataBANK0    0000A2
-__pidataBANK0                       idataBANK0   000642
+__pcinit                            cinit        000296
+__pcstackBANK0                      cstackBANK0  00008A
+__pcstackCOMRAM                     cstackCOMRAM 000036
+__pdataBANK0                        dataBANK0    00009A
+__pidataBANK0                       idataBANK0   000312
 __pintcode                          intcode      000008
 __pmediumconst                      mediumconst  001ADE
-__ptext0                            text0        0003B2
-__ptext1                            text1        000572
-__ptext10                           text10       0000A6
-__ptext11                           text11       0004D4
-__ptext12                           text12       00060C
-__ptext13                           text13       0005E6
-__ptext14                           text14       000628
-__ptext15                           text15       0002EA
-__ptext16                           text16       00027C
-__ptext17                           text17       000352
-__ptext2                            text2        000408
-__ptext3                            text3        000542
-__ptext4                            text4        000496
-__ptext5                            text5        00059A
-__ptext6                            text6        000182
-__ptext7                            text7        0005C0
-__ptext8                            text8        00020A
-__ptext9                            text9        000510
+__ptext0                            text0        00024E
+__ptext1                            text1        0002DC
+__ptext2                            text2        000306
+__ptext3                            text3        000182
+__ptext4                            text4        0000A6
+__ptext5                            text5        0001EE
 __ramtop                            ramtop       000300
 __size_of_Button1                   (abs)        000000
-__size_of_GPIO_clearPIN             (abs)        000000
 __size_of_GPIO_dataDirectionPIN     (abs)        000000
-__size_of_GPIO_setPIN               (abs)        000000
 __size_of_GPIO_sourceClock          (abs)        000000
-__size_of_LCDNokia_clear            (abs)        000000
-__size_of_LCDNokia_gotoXY           (abs)        000000
-__size_of_LCDNokia_init             (abs)        000000
-__size_of_LCDNokia_sendChar         (abs)        000000
-__size_of_LCDNokia_sendString       (abs)        000000
-__size_of_LCDNokia_writeByte        (abs)        000000
-__size_of_LCD_delay                 (abs)        000000
-__size_of_SPI_enableClock           (abs)        000000
-__size_of_SPI_enablePins            (abs)        000000
-__size_of_SPI_init                  (abs)        000000
-__size_of_SPI_write                 (abs)        000000
-__size_of___wmul                    (abs)        000000
+__size_of_UART_init                 (abs)        000000
+__size_of_UART_putChar              (abs)        000000
 __size_of_delay                     (abs)        000000
 __size_of_main                      (abs)        000000
 __smallconst                        smallconst   000000
-_delay                              text1        000572
+_delay                              text1        0002DC
 _exitFrequency                      (abs)        000000
 _exitPhaseAngle                     (abs)        000000
 _exitPower1                         (abs)        000000
@@ -527,7 +411,7 @@ _exitTemperature                    (abs)        000000
 _fhPower2                           (abs)        000000
 _generalView                        (abs)        000000
 _initialLoad                        (abs)        000000
-_main                               text0        0003B2
+_main                               text0        00024E
 _neutralRmsVI                       (abs)        000000
 _phPhaseAngle                       (abs)        000000
 _phPower1                           (abs)        000000
@@ -556,62 +440,62 @@ _typesPower1                        (abs)        000000
 _vectorPower1                       (abs)        000000
 _viPhaseAngle                       (abs)        000000
 _viewMenu                           (abs)        000000
-btemp                               temp         00004C
-delay@counter                       cstackCOMRAM 000046
-delay@delay                         cstackCOMRAM 000042
-end_of_initialization               cinit        000488
+btemp                               temp         00004D
+delay@counter                       cstackBANK0  00008A
+delay@delay                         cstackCOMRAM 000048
+end_of_initialization               cinit        0002CE
 exitFrequency@currentFrequency2     bssBANK0     000066
 exitPhaseAngle@currentPhaseAngle3   bssBANK0     00006C
 exitPower1@currentPower1_4          bssBANK0     000087
 exitPower2@currentPower2_3          bssBANK0     00007E
-exitPowerFactor@currentPowerFactor2 bssCOMRAM    00001A
+exitPowerFactor@currentPowerFactor2 bssCOMRAM    000020
 exitRmsVI@currentRms3               bssBANK0     000075
 exitTemperature@currentTemperature2 bssBANK0     000060
 expBASE10@value                     bssCOMRAM    000001
 fhPower2@currentPower2_1            bssBANK0     000084
-generalView@currentMainMenu2        bssCOMRAM    000020
-initialLoad@currentMainMenu1        bssCOMRAM    000022
-int$flags                           temp         00004C
+generalView@currentMainMenu2        bssCOMRAM    000026
+initialLoad@currentMainMenu1        bssCOMRAM    000028
+int$flags                           temp         00004D
 intlevel0                           text         000000
 intlevel1                           text         000000
 intlevel2                           text         000000
 intlevel3                           text         000000
-main@F3282                          dataBANK0    0000A2
-main@arrayTest                      cstackBANK0  000095
-main@test                           cstackBANK0  0000A1
+main@F3282                          dataBANK0    00009A
+main@arrayTest                      cstackBANK0  00008E
+main@test                           cstackBANK0  000099
 neutralRmsVI@currentRms2            bssBANK0     000078
 phPhaseAngle@currentPhaseAngle1     bssBANK0     000072
-phPower1@currentPower1_2            bssBANK0     00008D
+phPower1@currentPower1_2            bssCOMRAM    000008
 phPower2@currentPower2_2            bssBANK0     000081
-phPowerFactor@currentPowerFactor1   bssCOMRAM    00001C
+phPowerFactor@currentPowerFactor1   bssCOMRAM    000022
 phRmsVI@currentRms1                 bssBANK0     00007B
 showFrequency@currentFrequency1     bssBANK0     000069
 showTemperature@currentTemperature1 bssBANK0     000063
 stackhi                             (abs)        0002EE
-stacklo                             (abs)        0000AE
+stacklo                             (abs)        0000A5
 start                               init         0000A2
-start_initialization                cinit        000450
-stateFrequency@phase                bssCOMRAM    000029
-stateFrequency@phaseFrequency       bssCOMRAM    00000B
-stateMainMenu@phase                 bssCOMRAM    00002F
-stateMainMenu@phaseMain             bssCOMRAM    000026
-statePhaseAngle@phase               bssCOMRAM    00002A
-statePhaseAngle@phasePhaseAngle     bssCOMRAM    00000E
-statePower1@phase                   bssCOMRAM    00002E
-statePower1@phasePower1             bssCOMRAM    000017
-statePower2@phase                   bssCOMRAM    00002D
-statePower2@phasePower2             bssCOMRAM    000014
-statePowerFactor@phase              bssCOMRAM    00002B
-statePowerFactor@phasePowerFactor   bssCOMRAM    000024
-stateRmsVI@phase                    bssCOMRAM    00002C
-stateRmsVI@phaseRmsVI               bssCOMRAM    000011
-stateTemperature@phase              bssCOMRAM    000028
-stateTemperature@phaseTemperature   bssCOMRAM    000008
-typesPower1@currentPower1_1         bssCOMRAM    000005
-vectorPower1@currentPower1_3        bssBANK0     00008A
+start_initialization                cinit        000296
+stateFrequency@phase                bssCOMRAM    00002F
+stateFrequency@phaseFrequency       bssCOMRAM    000011
+stateMainMenu@phase                 bssCOMRAM    000035
+stateMainMenu@phaseMain             bssCOMRAM    00002C
+statePhaseAngle@phase               bssCOMRAM    000030
+statePhaseAngle@phasePhaseAngle     bssCOMRAM    000014
+statePower1@phase                   bssCOMRAM    000034
+statePower1@phasePower1             bssCOMRAM    00001D
+statePower2@phase                   bssCOMRAM    000033
+statePower2@phasePower2             bssCOMRAM    00001A
+statePowerFactor@phase              bssCOMRAM    000031
+statePowerFactor@phasePowerFactor   bssCOMRAM    00002A
+stateRmsVI@phase                    bssCOMRAM    000032
+stateRmsVI@phaseRmsVI               bssCOMRAM    000017
+stateTemperature@phase              bssCOMRAM    00002E
+stateTemperature@phaseTemperature   bssCOMRAM    00000E
+typesPower1@currentPower1_1         bssCOMRAM    00000B
+vectorPower1@currentPower1_3        bssCOMRAM    000005
 viPhaseAngle@currentPhaseAngle2     bssBANK0     00006F
-viewMenu@currentMainMenu3           bssCOMRAM    00001E
-wtemp6                              temp         00004D
+viewMenu@currentMainMenu3           bssCOMRAM    000024
+wtemp6                              temp         00004E
 
 
 FUNCTION INFORMATION:
@@ -622,29 +506,27 @@ FUNCTION INFORMATION:
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
-  arrayTest      12    5[BANK0 ] unsigned char [12]
-  test            1   17[BANK0 ] unsigned char 
+  arrayTest      11    4[BANK0 ] unsigned char [11]
+  test            1   15[BANK0 ] unsigned char 
  Return value:  Size  Location     Type
                   1    wreg      void 
  Registers used:
-		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, cstack
  Tracked objects:
 		On entry : 
 		On exit  : 
 		Unchanged: 
  Data sizes:     COMRAM   BANK0   BANK1   BANK2
       Params:         0       0       0       0
-      Locals:         0      13       0       0
+      Locals:         0      12       0       0
       Temps:          0       0       0       0
-      Totals:         0      13       0       0
-Total ram usage:       13 bytes
- Hardware stack levels required when called:    5
+      Totals:         0      12       0       0
+Total ram usage:       12 bytes
+ Hardware stack levels required when called:    3
  This function calls:
 		_GPIO_sourceClock
-		_LCDNokia_clear
-		_LCDNokia_init
-		_LCDNokia_sendString
-		_SPI_init
+		_UART_init
+		_UART_putChar
 		_delay
  This function is called by:
 		Startup code after reset
@@ -657,7 +539,7 @@ Total ram usage:       13 bytes
  Parameters:    Size  Location     Type
   delay           4   18[COMRAM] unsigned long 
  Auto vars:     Size  Location     Type
-  counter         4   22[COMRAM] volatile unsigned long 
+  counter         4    0[BANK0 ] volatile unsigned long 
  Return value:  Size  Location     Type
                   1    wreg      void 
  Registers used:
@@ -668,9 +550,9 @@ Total ram usage:       13 bytes
 		Unchanged: 
  Data sizes:     COMRAM   BANK0   BANK1   BANK2
       Params:         4       0       0       0
-      Locals:         4       0       0       0
+      Locals:         0       4       0       0
       Temps:          0       0       0       0
-      Totals:         8       0       0       0
+      Totals:         4       4       0       0
 Total ram usage:        8 bytes
  Hardware stack levels used:    1
  Hardware stack levels required when called:    1
@@ -678,54 +560,22 @@ Total ram usage:        8 bytes
 		Nothing
  This function is called by:
 		_main
-		_UART_putChar
 		_UART_putString
+		_LCDNokia_init
  This function uses a non-reentrant model
 
 
- *************** function _SPI_init *****************
+ *************** function _UART_putChar *****************
  Defined at:
-		line 76 in file "SPI.c"
+		line 52 in file "UART.c"
  Parameters:    Size  Location     Type
-  SPI_Config      2   20[COMRAM] PTR const struct .
-		 -> SPI_Config(3), 
+  character       1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
-		None
+  character       1   18[COMRAM] unsigned char 
  Return value:  Size  Location     Type
                   1    wreg      void 
  Registers used:
-		wreg, status,2, status,0, tblptrl, tblptrh, tblptru, cstack
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMRAM   BANK0   BANK1   BANK2
-      Params:         2       0       0       0
-      Locals:         0       0       0       0
-      Temps:          2       0       0       0
-      Totals:         4       0       0       0
-Total ram usage:        4 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:    2
- This function calls:
-		_SPI_enableClock
-		_SPI_enablePins
- This function is called by:
-		_main
- This function uses a non-reentrant model
-
-
- *************** function _SPI_enablePins *****************
- Defined at:
-		line 48 in file "SPI.c"
- Parameters:    Size  Location     Type
-  serial          1    wreg     enum E3069
- Auto vars:     Size  Location     Type
-  serial          1   18[COMRAM] enum E3069
- Return value:  Size  Location     Type
-                  1    wreg      void 
- Registers used:
-		wreg, status,2, status,0
+		wreg
  Tracked objects:
 		On entry : 
 		On exit  : 
@@ -741,142 +591,16 @@ Total ram usage:        1 bytes
  This function calls:
 		Nothing
  This function is called by:
-		_SPI_init
- This function uses a non-reentrant model
-
-
- *************** function _SPI_enableClock *****************
- Defined at:
-		line 14 in file "SPI.c"
- Parameters:    Size  Location     Type
-  phase           1    wreg     enum E3065
-  cpol            1   18[COMRAM] enum E3061
- Auto vars:     Size  Location     Type
-  phase           1   19[COMRAM] enum E3065
- Return value:  Size  Location     Type
-                  1    wreg      void 
- Registers used:
-		wreg, status,2, status,0
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMRAM   BANK0   BANK1   BANK2
-      Params:         1       0       0       0
-      Locals:         1       0       0       0
-      Temps:          0       0       0       0
-      Totals:         2       0       0       0
-Total ram usage:        2 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:    1
- This function calls:
-		Nothing
- This function is called by:
-		_SPI_init
- This function uses a non-reentrant model
-
-
- *************** function _LCDNokia_sendString *****************
- Defined at:
-		line 166 in file "LCDNokia5110.c"
- Parameters:    Size  Location     Type
-  characters      2    3[BANK0 ] PTR unsigned char 
-		 -> main@arrayTest(12), 
- Auto vars:     Size  Location     Type
-		None
- Return value:  Size  Location     Type
-                  1    wreg      void 
- Registers used:
-		wreg, fsr2l, fsr2h, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMRAM   BANK0   BANK1   BANK2
-      Params:         0       2       0       0
-      Locals:         0       0       0       0
-      Temps:          0       0       0       0
-      Totals:         0       2       0       0
-Total ram usage:        2 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:    4
- This function calls:
-		_LCDNokia_sendChar
- This function is called by:
 		_main
+		_UART_putString
  This function uses a non-reentrant model
 
 
- *************** function _LCDNokia_sendChar *****************
+ *************** function _UART_init *****************
  Defined at:
-		line 149 in file "LCDNokia5110.c"
+		line 11 in file "UART.c"
  Parameters:    Size  Location     Type
-  character       1    wreg     unsigned char 
- Auto vars:     Size  Location     Type
-  character       1    0[BANK0 ] unsigned char 
-  index           2    1[BANK0 ] unsigned int 
- Return value:  Size  Location     Type
-                  1    wreg      void 
- Registers used:
-		wreg, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMRAM   BANK0   BANK1   BANK2
-      Params:         0       0       0       0
-      Locals:         0       3       0       0
-      Temps:          2       0       0       0
-      Totals:         2       3       0       0
-Total ram usage:        5 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:    3
- This function calls:
-		_LCDNokia_writeByte
-		___wmul
- This function is called by:
-		_LCDNokia_sendString
-		_LCDNokia_printValue
-		_LCDNokia_printFloatValue
- This function uses a non-reentrant model
-
-
- *************** function ___wmul *****************
- Defined at:
-		line 15 in file "C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\Umul16.c"
- Parameters:    Size  Location     Type
-  multiplier      2   18[COMRAM] unsigned int 
-  multiplicand    2   20[COMRAM] unsigned int 
- Auto vars:     Size  Location     Type
-  product         2   22[COMRAM] unsigned int 
- Return value:  Size  Location     Type
-                  2   18[COMRAM] unsigned int 
- Registers used:
-		wreg, status,2, status,0, prodl, prodh
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMRAM   BANK0   BANK1   BANK2
-      Params:         4       0       0       0
-      Locals:         2       0       0       0
-      Temps:          0       0       0       0
-      Totals:         6       0       0       0
-Total ram usage:        6 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:    1
- This function calls:
-		Nothing
- This function is called by:
-		_LCDNokia_sendChar
- This function uses a non-reentrant model
-
-
- *************** function _LCDNokia_init *****************
- Defined at:
-		line 106 in file "LCDNokia5110.c"
- Parameters:    Size  Location     Type
-		None
+  baudRate        2    0[BANK0 ] enum E3061
  Auto vars:     Size  Location     Type
 		None
  Return value:  Size  Location     Type
@@ -888,51 +612,17 @@ Total ram usage:        6 bytes
 		On exit  : 
 		Unchanged: 
  Data sizes:     COMRAM   BANK0   BANK1   BANK2
-      Params:         0       0       0       0
+      Params:         0       2       0       0
       Locals:         0       0       0       0
-      Temps:          0       0       0       0
-      Totals:         0       0       0       0
-Total ram usage:        0 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:    3
- This function calls:
-		_GPIO_clearPIN
-		_GPIO_dataDirectionPIN
-		_GPIO_setPIN
-		_LCDNokia_writeByte
-		_LCD_delay
- This function is called by:
-		_main
- This function uses a non-reentrant model
-
-
- *************** function _LCD_delay *****************
- Defined at:
-		line 192 in file "LCDNokia5110.c"
- Parameters:    Size  Location     Type
-		None
- Auto vars:     Size  Location     Type
-  counter         4   18[COMRAM] unsigned long 
- Return value:  Size  Location     Type
-                  1    wreg      void 
- Registers used:
-		wreg, status,2, status,0
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMRAM   BANK0   BANK1   BANK2
-      Params:         0       0       0       0
-      Locals:         4       0       0       0
-      Temps:          0       0       0       0
-      Totals:         4       0       0       0
+      Temps:          0       2       0       0
+      Totals:         0       4       0       0
 Total ram usage:        4 bytes
  Hardware stack levels used:    1
- Hardware stack levels required when called:    1
+ Hardware stack levels required when called:    2
  This function calls:
-		Nothing
+		_GPIO_dataDirectionPIN
  This function is called by:
-		_LCDNokia_init
+		_main
  This function uses a non-reentrant model
 
 
@@ -964,204 +654,9 @@ Total ram usage:        5 bytes
  This function calls:
 		Nothing
  This function is called by:
-		_LCDNokia_init
 		_UART_init
+		_LCDNokia_init
 		_ButtonInt_config
- This function uses a non-reentrant model
-
-
- *************** function _LCDNokia_clear *****************
- Defined at:
-		line 174 in file "LCDNokia5110.c"
- Parameters:    Size  Location     Type
-		None
- Auto vars:     Size  Location     Type
-  index           2    0[BANK0 ] unsigned int 
- Return value:  Size  Location     Type
-                  1    wreg      void 
- Registers used:
-		wreg, status,2, status,0, cstack
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMRAM   BANK0   BANK1   BANK2
-      Params:         0       0       0       0
-      Locals:         0       2       0       0
-      Temps:          0       0       0       0
-      Totals:         0       2       0       0
-Total ram usage:        2 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:    4
- This function calls:
-		_LCDNokia_gotoXY
-		_LCDNokia_writeByte
- This function is called by:
-		_main
-		_initialLoad
- This function uses a non-reentrant model
-
-
- *************** function _LCDNokia_gotoXY *****************
- Defined at:
-		line 186 in file "LCDNokia5110.c"
- Parameters:    Size  Location     Type
-  x               1    wreg     unsigned char 
-  y               1   26[COMRAM] unsigned char 
- Auto vars:     Size  Location     Type
-  x               1   27[COMRAM] unsigned char 
- Return value:  Size  Location     Type
-                  1    wreg      void 
- Registers used:
-		wreg, status,2, status,0, cstack
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMRAM   BANK0   BANK1   BANK2
-      Params:         1       0       0       0
-      Locals:         1       0       0       0
-      Temps:          0       0       0       0
-      Totals:         2       0       0       0
-Total ram usage:        2 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:    3
- This function calls:
-		_LCDNokia_writeByte
- This function is called by:
-		_LCDNokia_clear
- This function uses a non-reentrant model
-
-
- *************** function _LCDNokia_writeByte *****************
- Defined at:
-		line 135 in file "LCDNokia5110.c"
- Parameters:    Size  Location     Type
-  DataOrCmd       1    wreg     unsigned char 
-  data            1   24[COMRAM] unsigned char 
- Auto vars:     Size  Location     Type
-  DataOrCmd       1   25[COMRAM] unsigned char 
- Return value:  Size  Location     Type
-                  1    wreg      void 
- Registers used:
-		wreg, status,2, status,0, cstack
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMRAM   BANK0   BANK1   BANK2
-      Params:         1       0       0       0
-      Locals:         1       0       0       0
-      Temps:          0       0       0       0
-      Totals:         2       0       0       0
-Total ram usage:        2 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:    2
- This function calls:
-		_GPIO_clearPIN
-		_GPIO_setPIN
-		_SPI_write
- This function is called by:
-		_LCDNokia_init
-		_LCDNokia_sendChar
-		_LCDNokia_clear
-		_LCDNokia_gotoXY
-		_LCDNokia_bitmap
- This function uses a non-reentrant model
-
-
- *************** function _SPI_write *****************
- Defined at:
-		line 82 in file "SPI.c"
- Parameters:    Size  Location     Type
-  data            1    wreg     unsigned char 
- Auto vars:     Size  Location     Type
-  data            1   19[COMRAM] unsigned char 
-  success         1   18[COMRAM] char 
- Return value:  Size  Location     Type
-                  1    wreg      char 
- Registers used:
-		wreg, status,2
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMRAM   BANK0   BANK1   BANK2
-      Params:         0       0       0       0
-      Locals:         2       0       0       0
-      Temps:          0       0       0       0
-      Totals:         2       0       0       0
-Total ram usage:        2 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:    1
- This function calls:
-		Nothing
- This function is called by:
-		_LCDNokia_writeByte
- This function uses a non-reentrant model
-
-
- *************** function _GPIO_setPIN *****************
- Defined at:
-		line 151 in file "GPIO.c"
- Parameters:    Size  Location     Type
-  portName        1    wreg     enum E3075
-  pin             1   18[COMRAM] unsigned char 
- Auto vars:     Size  Location     Type
-  portName        1   21[COMRAM] enum E3075
- Return value:  Size  Location     Type
-                  1    wreg      void 
- Registers used:
-		wreg, status,2, status,0
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMRAM   BANK0   BANK1   BANK2
-      Params:         1       0       0       0
-      Locals:         1       0       0       0
-      Temps:          2       0       0       0
-      Totals:         4       0       0       0
-Total ram usage:        4 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:    1
- This function calls:
-		Nothing
- This function is called by:
-		_LCDNokia_init
-		_LCDNokia_writeByte
- This function uses a non-reentrant model
-
-
- *************** function _GPIO_clearPIN *****************
- Defined at:
-		line 170 in file "GPIO.c"
- Parameters:    Size  Location     Type
-  portName        1    wreg     enum E3075
-  pin             1   18[COMRAM] unsigned char 
- Auto vars:     Size  Location     Type
-  portName        1   21[COMRAM] enum E3075
- Return value:  Size  Location     Type
-                  1    wreg      void 
- Registers used:
-		wreg, status,2, status,0
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMRAM   BANK0   BANK1   BANK2
-      Params:         1       0       0       0
-      Locals:         1       0       0       0
-      Temps:          2       0       0       0
-      Totals:         4       0       0       0
-Total ram usage:        4 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:    1
- This function calls:
-		Nothing
- This function is called by:
-		_LCDNokia_init
-		_LCDNokia_writeByte
  This function uses a non-reentrant model
 
 
@@ -1228,21 +723,11 @@ Total ram usage:       18 bytes
 MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
-LCDNokia5110.c
-		_LCDNokia_sendString		CODE           	059A	0000	39
-		_LCDNokia_init 		CODE           	020A	0000	115
-		_LCDNokia_sendChar		CODE           	0182	0000	137
-		_LCDNokia_clear		CODE           	04D4	0000	61
-		_LCDNokia_gotoXY		CODE           	060C	0000	29
-		_LCDNokia_writeByte		CODE           	05E6	0000	39
-		_LCD_delay     		CODE           	0510	0000	51
+UART.c
+		_UART_init     		CODE           	0182	0000	109
+		_UART_putChar  		CODE           	0306	0000	13
 
-LCDNokia5110.c estimated size: 471
-
-C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\Umul16.c
-		___wmul        		CODE           	05C0	0000	39
-
-C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\Umul16.c estimated size: 39
+UART.c estimated size: 122
 
 Buttons.c
 		_Button1       		CODE           	0008	0000	155
@@ -1253,7 +738,7 @@ shared
 		_phasesFrequency		MEDIUMCONST    	1CF3	0000	5
 		_ASCII         		MEDIUMCONST    	1ADF	0000	481
 		_SPI_Config    		MEDIUMCONST    	1CFB	0000	4
-		__initialization		CODE           	0450	0000	57
+		__initialization		CODE           	0296	0000	57
 		_phasesPower1  		MEDIUMCONST    	1CCF	0000	9
 		_phasesPower2  		MEDIUMCONST    	1CE3	0000	7
 		_phasesTemperature		MEDIUMCONST    	1CEF	0000	5
@@ -1266,24 +751,14 @@ shared
 shared estimated size: 611
 
 GPIO.c
-		_delay         		CODE           	0572	0000	41
-		_GPIO_clearPIN 		CODE           	027C	0000	111
+		_delay         		CODE           	02DC	0000	43
 		_GPIO_dataDirectionPIN		CODE           	00A6	0000	221
-		_GPIO_sourceClock		CODE           	0352	0000	97
-		_GPIO_setPIN   		CODE           	02EA	0000	105
+		_GPIO_sourceClock		CODE           	01EE	0000	97
 
-GPIO.c estimated size: 575
-
-SPI.c
-		_SPI_init      		CODE           	0408	0000	73
-		_SPI_enablePins		CODE           	0542	0000	49
-		_SPI_enableClock		CODE           	0496	0000	63
-		_SPI_write     		CODE           	0628	0000	27
-
-SPI.c estimated size: 212
+GPIO.c estimated size: 361
 
 main.c
-		_main          		CODE           	03B2	0000	87
+		_main          		CODE           	024E	0000	73
 
-main.c estimated size: 87
+main.c estimated size: 73
 

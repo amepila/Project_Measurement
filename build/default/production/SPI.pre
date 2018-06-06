@@ -4165,11 +4165,15 @@ uint8_t SPI_read(void);
 static void SPI_enableClock(SPI_PhaseType phase, SPI_PolarityType cpol)
 {
 
-SSPSTAT &= (0x3F);
-SSPCON &= (0xC0);
+TRISCbits.TRISC5 = 0;
 
+TRISCbits.TRISC4 = 1;
 
+TRISCbits.TRISC7 = 0;
+
+# 28
 SSPSTAT |= (0x40);
+SSPSTATbits.BF = 0;
 
 switch(phase)
 {
@@ -4214,14 +4218,10 @@ break;
 }
 
 
-TRISCbits.TRISC5 = 0;
-
-TRISCbits.TRISC4 = 1;
-
-TRISCbits.TRISC7 = 0;
-
-
 SSPCON |= (0x20);
+
+
+PIR1bits.SSPIF = 0;
 }
 
 void SPI_init(const SPI_ConfigType* SPI_Config)
@@ -4232,15 +4232,20 @@ SPI_enablePins(SPI_Config->SPI_Clk);
 
 int8_t SPI_write(uint8_t data)
 {
-int8_t success;
+const uint8_t dummy = 0;
+int8_t success = 1;
 
-SSPCONbits.WCOL = 0;
+
 SSPBUF = data;
-while(!SSPSTATbits.BF);
 
-success = (SSPCONbits.WCOL == 1) ? 0: 1;
+# 97
+while(!PIR1bits.SSPIF);
+PIR1bits.SSPIF = 0;
 
-return success;
+SSPBUF = dummy;
+
+
+return (success);
 }
 
 uint8_t SPI_read(void)
@@ -4250,9 +4255,8 @@ const uint8_t dummy = 0;
 
 SSPBUF = dummy;
 
-
-while(!SSPSTATbits.BF);
-
-return SSPBUF;
+# 116
+while(!PIR1bits.SSPIF);
+PIR1bits.SSPIF = 0;
+return (SSPBUF);
 }
-

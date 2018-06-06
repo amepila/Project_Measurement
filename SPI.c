@@ -13,12 +13,20 @@
 
 static void SPI_enableClock(SPI_PhaseType phase, SPI_PolarityType cpol)
 {
+    /**Clock pin as output*/
+    TRISCbits.TRISC5 = 0;
+    /**SDI pin as input*/
+    TRISCbits.TRISC4 = 1;
+    /**SDO pin as output*/
+    TRISCbits.TRISC7 = 0;
+    
     /**Clear the SPI registers*/
-    SSPSTAT &= SPI_CLEAR_SSPSTAT;
-    SSPCON &= SPI_CLEAR_SSPCON;
+    //SSPSTAT &= 0x00;
+    //SSPCON &= 0x00;
     
     /**Select SPI Master Mode*/
     SSPSTAT |= SPI_MASTER;
+    SSPSTATbits.BF = 0;
     
     switch(phase)
     {
@@ -62,15 +70,11 @@ static void SPI_enablePins(SPI_SerialClk serial)
             break;
     }
     
-    /**Clock pin as output*/
-    TRISCbits.TRISC5 = 0;
-    /**SDI pin as input*/
-    TRISCbits.TRISC4 = 1;
-    /**SDO pin as output*/
-    TRISCbits.TRISC7 = 0;
-    
     /**Enable pins of SPI*/
     SSPCON |= SPI_ENABLE_PINS;
+
+    /**Clean the interrupt flag*/
+    PIR1bits.SSPIF = 0;
 }
 
 void SPI_init(const SPI_ConfigType* SPI_Config)
@@ -81,15 +85,22 @@ void SPI_init(const SPI_ConfigType* SPI_Config)
 
 int8_t SPI_write(uint8_t data)
 {
-    int8_t success;
+    const uint8_t dummy = 0;
+    int8_t success = 1;
     
-    SSPCONbits.WCOL = 0;
+    //SSPCONbits.WCOL = 0;
     SSPBUF = data;
-    while(!SSPSTATbits.BF);
     
-    success = (SSPCONbits.WCOL == 1) ? 0: 1;
+#if 0
+    while(0 == SSPSTATbits.BF);
+#endif
+    while(!PIR1bits.SSPIF);
+    PIR1bits.SSPIF = 0;
+    
+    SSPBUF = dummy;
+    //success = (SSPCONbits.WCOL == 1) ? 0: 1;
  
-    return success;
+    return (success);
 }
 
 uint8_t SPI_read(void)
@@ -98,13 +109,11 @@ uint8_t SPI_read(void)
     
     /**Send the dummy data*/
     SSPBUF = dummy;
-            
+#if 0
     /**Wait the data*/
-    while(!SSPSTATbits.BF);
-    
-    return SSPBUF;
+    while(0 == SSPSTATbits.BF);
+#endif
+    while(!PIR1bits.SSPIF);
+    PIR1bits.SSPIF = 0;
+    return (SSPBUF);
 }
-
-
-
-

@@ -6,32 +6,14 @@
 #define SPBRG_BAUDRATE_1200 (103)
 #define SPBRG_BAUDRATE_2400 (51)
 #define SPBRG_BAUDRATE_9600 (12)
-#define DELAY_UART          (6500)
+#define DELAY_UART          (1500)
 
 void UART_init(UART_BaudRateType baudRate)
 {
-    GPIO_dataDirectionPIN(GPIO_C, 6, GPIO_OUTPUT);  //TX
-    GPIO_dataDirectionPIN(GPIO_C, 7, GPIO_INPUT);   //RX
 
-    /**Asychronous mode*/
-    TXSTAbits.SYNC = 0;
-    /**Select 8 bits-transmission*/
-    TXSTAbits.TX9 = 0;
-    /**Enable trasmitter*/
-    TXSTAbits.TXEN = 1;
-    
-    /**Select 8 bits-transmission*/
-    RCSTAbits.RX9 = 0;
-    /**Enable receiver*/
-    RCSTAbits.CREN = 1;
-    /**Serial port enabled*/
-    RCSTAbits.SPEN = 1;
-    
-    /**Only 8 bit baud rate generator*/
-    BAUDCTLbits.BRG16 = 0;
-    /**Low speed*/
-    TXSTAbits.BRGH = 0;
-    
+    GPIO_dataDirectionPIN(GPIO_C, 6, GPIO_OUTPUT);  //TX
+    //GPIO_dataDirectionPIN(GPIO_C, 7, GPIO_INPUT);   //RX
+
     switch(baudRate)
     {
         case BD_1200:
@@ -46,23 +28,40 @@ void UART_init(UART_BaudRateType baudRate)
         default:
             break;
     }
+        
+    /**Asychronous mode*/
+    TXSTAbits.SYNC = 0;
+    /**Select 8 bits-transmission*/
+    TXSTAbits.TX9 = 0;
+    /**Enable trasmitter*/
+    TXSTAbits.TXEN = 1;
+    
+    /**Select 8 bits-transmission*/
+    RCSTAbits.RX9 = 0;
+    /**Enable receiver*/
+    RCSTAbits.CREN = 0;
+    /**Serial port enabled*/
+    RCSTAbits.SPEN = 1;
+    
+    /**Only 8 bit baud rate generator*/
+    BAUDCTLbits.BRG16 = 0;
+    /**Low speed*/
+    TXSTAbits.BRGH = 0;
 }
 
 void UART_putChar(uint8_t character)
 {
-    while(0 == TXSTAbits.TRMT);
+    while(!TXSTAbits.TRMT);
     TXREG = character;
-    delay(DELAY_UART);
 }
 
 void UART_putString(int8_t* string)
 {
-    uint8_t counter = 0;
-    while(0 == TXSTAbits.TRMT);
+    uint8_t counter;
 
-    while(string[counter] != '\0')
+    for(counter = 0; string[counter] != '\0'; counter++)
     {
-        TXREG = string[counter];
+        UART_putChar(string[counter]);
         delay(DELAY_UART);
     }
 }

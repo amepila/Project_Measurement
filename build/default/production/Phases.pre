@@ -4562,6 +4562,7 @@ static PhaseMainMenu_Type currentMainMenu1;
 LCDNokia_clear();
 
 
+
 currentMainMenu1.phaseState = GENERAL_VIEW;
 currentMainMenu1.stateMain = data.stateMain;
 

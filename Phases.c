@@ -8,6 +8,7 @@ PhaseMainMenu_Type initialLoad(PhaseMainMenu_Type data)
 
 	/**Clear the nokia LCD*/
 	LCDNokia_clear();
+    
 
 	/**Set with the current state and phase**/
 	currentMainMenu1.phaseState = GENERAL_VIEW;

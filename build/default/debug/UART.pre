@@ -4202,27 +4202,9 @@ void delay(uint32_t delay);
 # 11 "UART.c"
 void UART_init(UART_BaudRateType baudRate)
 {
+
 GPIO_dataDirectionPIN(GPIO_C, 6, GPIO_OUTPUT);
-GPIO_dataDirectionPIN(GPIO_C, 7, GPIO_INPUT);
 
-
-TXSTAbits.SYNC = 0;
-
-TXSTAbits.TX9 = 0;
-
-TXSTAbits.TXEN = 1;
-
-
-RCSTAbits.RX9 = 0;
-
-RCSTAbits.CREN = 1;
-
-RCSTAbits.SPEN = 1;
-
-
-BAUDCTLbits.BRG16 = 0;
-
-TXSTAbits.BRGH = 0;
 
 switch(baudRate)
 {
@@ -4238,24 +4220,41 @@ break;
 default:
 break;
 }
+
+
+TXSTAbits.SYNC = 0;
+
+TXSTAbits.TX9 = 0;
+
+TXSTAbits.TXEN = 1;
+
+
+RCSTAbits.RX9 = 0;
+
+RCSTAbits.CREN = 0;
+
+RCSTAbits.SPEN = 1;
+
+
+BAUDCTLbits.BRG16 = 0;
+
+TXSTAbits.BRGH = 0;
 }
 
 void UART_putChar(uint8_t character)
 {
-while(0 == TXSTAbits.TRMT);
+while(!TXSTAbits.TRMT);
 TXREG = character;
-delay((6500));
 }
 
 void UART_putString(int8_t* string)
 {
-uint8_t counter = 0;
-while(0 == TXSTAbits.TRMT);
+uint8_t counter;
 
-while(string[counter] != '\0')
+for(counter = 0; string[counter] != '\0'; counter++)
 {
-TXREG = string[counter];
-delay((6500));
+UART_putChar(string[counter]);
+delay(1500);
 }
 }
 

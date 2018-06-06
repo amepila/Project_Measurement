@@ -33,14 +33,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 "116
 [v _stateTemperature `(E3234 ~T0 @X0 0 ef ]
 [p mainexit ]
-"36 SPI.h
-[v _SPI_init `(v ~T0 @X0 0 ef1`*CS286 ]
-"24 LCDNokia5110.h
-[v _LCDNokia_init `(v ~T0 @X0 0 ef ]
-"31
-[v _LCDNokia_clear `(v ~T0 @X0 0 ef ]
-"39
-[v _LCDNokia_sendChar `(v ~T0 @X0 0 ef1`uc ]
+"97 main.c
+[c E3123 0 1 2 3 4 5 6 7 .. ]
+[n E3123 . CLK_8MHZ CLK_4MHZ CLK_2MHZ CLK_1MHZ CLK_500KHZ CLK_250KHZ CLK_125KHZ CLK_31KHZ  ]
+"42 GPIO.h
+[v _GPIO_sourceClock `(v ~T0 @X0 0 ef1`E3123 ]
+"104 main.c
+[c E3190 1200 2400 9600 .. ]
+[n E3190 . BD_1200 BD_2400 BD_9600  ]
+"16 UART.h
+[v _UART_init `(v ~T0 @X0 0 ef1`E3190 ]
+"20
+[v _UART_putString `(v ~T0 @X0 0 ef1`*c ]
 "59 GPIO.h
 [v _delay `(v ~T0 @X0 0 ef1`ul ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
@@ -3185,7 +3189,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "70
 . `E3170 0
 "72
-. `E3174 0
+. `E3174 2
 ..
 ..
 ]
@@ -3193,7 +3197,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 68: {
 [; ;main.c: 69: SPI_LOW_POLARITY,
 [; ;main.c: 70: SPI_LOW_PHASE,
-[; ;main.c: 71: SPI_SERIAL_CLK4
+[; ;main.c: 71: SPI_SERIAL_CLK64
 [; ;main.c: 72: };
 "76
 [v _StateProgram `CS288 ~T0 @X0 -> 8 `i e ]
@@ -3253,19 +3257,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 89: {
 [e :U _main ]
 [f ]
-[; ;main.c: 100: SPI_init(&SPI_Config);
-"100
-[e ( _SPI_init (1 &U _SPI_Config ]
-[; ;main.c: 101: LCDNokia_init();
-"101
-[e ( _LCDNokia_init ..  ]
-[; ;main.c: 102: LCDNokia_clear();
-"102
-[e ( _LCDNokia_clear ..  ]
-"108
+[; ;main.c: 97: GPIO_sourceClock(CLK_8MHZ);
+"97
+[e ( _GPIO_sourceClock (1 . `E3123 0 ]
+[; ;main.c: 104: UART_init(BD_9600);
+"104
+[e ( _UART_init (1 . `E3190 2 ]
+"109
 [v _test `uc ~T0 @X0 1 a ]
-[; ;main.c: 108: uint8_t test = 'A';
-[e = _test -> -> 65 `ui `uc ]
+[; ;main.c: 109: uint8_t test = 'O';
+[e = _test -> -> 79 `ui `uc ]
 [v F3282 `uc ~T0 @X0 -> 0 `x s ]
 [i F3282
 :U ..
@@ -3279,34 +3280,33 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 110 `c
 -> 100 `c
 -> 111 `c
--> 13 `c
 -> 0 `c
 ..
 ]
-"109
-[v _arrayTest `uc ~T0 @X0 12  a ]
-[; ;main.c: 109: uint8_t arrayTest[] = "Hola Mundo\r";
-[e = _arrayTest F3282 ]
-[; ;main.c: 110: for(;;)
 "110
-{
+[v _arrayTest `uc ~T0 @X0 11  a ]
+[; ;main.c: 110: uint8_t arrayTest[] = "Hola Mundo";
+[e = _arrayTest F3282 ]
+[; ;main.c: 111: for(;;)
 "111
-[e :U 290 ]
-[; ;main.c: 111: {
 {
-[; ;main.c: 113: LCDNokia_sendChar(test);
+"112
+[e :U 290 ]
+[; ;main.c: 112: {
+{
+[; ;main.c: 113: UART_putString(arrayTest);
 "113
-[e ( _LCDNokia_sendChar (1 _test ]
-[; ;main.c: 115: delay(6500);
-"115
-[e ( _delay (1 -> -> -> 6500 `i `l `ul ]
-"122
+[e ( _UART_putString (1 -> &U _arrayTest `*c ]
+[; ;main.c: 114: delay(1000);
+"114
+[e ( _delay (1 -> -> -> 1000 `i `l `ul ]
+"126
 }
-[; ;main.c: 122: }
+[; ;main.c: 126: }
 [e $U 290  ]
 [e :U 291 ]
 }
-[; ;main.c: 123: }
-"123
+[; ;main.c: 127: }
+"127
 [e :UE 289 ]
 }

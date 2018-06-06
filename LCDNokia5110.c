@@ -2,6 +2,8 @@
 #include "SPI.h"
 #include "LCDNokia5110.h"
 
+#define T   1000
+
 static const uint8_t ASCII[][5] =
 {
  {0x00, 0x00, 0x00, 0x00, 0x00} // 20  
@@ -114,12 +116,18 @@ void LCDNokia_init(void)
 	GPIO_setPIN(GPIO_B, RESET_PIN);
     
 	LCDNokia_writeByte(LCD_CMD, 0x21); //Tell LCD that extended commands follow
-	LCDNokia_writeByte(LCD_CMD, 0xB8); //Set LCD Vop (Contrast): Try 0xB1(good @ 3.3V) or 0xBF if your display is too dark
-	LCDNokia_writeByte(LCD_CMD, 0x04); //Set Temp coefficent
-	LCDNokia_writeByte(LCD_CMD, 0x14); //LCD bias mode 1:48: Try 0x13 or 0x14
-
+    delay(T);
+	LCDNokia_writeByte(LCD_CMD, 0xC0); //Set LCD Vop (Contrast): Try 0xB1(good @ 3.3V) or 0xBF if your display is too dark
+	delay(T);
+    LCDNokia_writeByte(LCD_CMD, 0x07); //Set Temp coefficent
+	delay(T);
+    LCDNokia_writeByte(LCD_CMD, 0x13); //LCD bias mode 1:48: Try 0x13 or 0x14
+    
+    delay(T);
 	LCDNokia_writeByte(LCD_CMD, 0x20); //We must send 0x20 before modifying the display control mode
-	LCDNokia_writeByte(LCD_CMD, 0x0C); //Set display control, normal mode. 0x0D for inverse
+	delay(T);
+    LCDNokia_writeByte(LCD_CMD, 0x0D); //Set display control, normal mode. 0x0D for inverse
+    delay(T);
 }
 
 void LCDNokia_bitmap(const uint8_t* my_array)
@@ -193,7 +201,7 @@ void LCD_delay(void)
 {
 	uint32_t counter;
 	
-	for(counter =  0; counter < 1500; counter++)
+	for(counter =  0; counter < 100000; counter++)
 	{	   
 	}
 }

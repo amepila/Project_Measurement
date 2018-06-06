@@ -4185,7 +4185,7 @@ void GPIO_sourceClock(GPIO_SourceClk clk)
 switch(clk)
 {
 case CLK_8MHZ:
-OSCCON |= (0x70);
+OSCCON |= (0x72);
 break;
 case CLK_4MHZ:
 OSCCON |= (0x60);

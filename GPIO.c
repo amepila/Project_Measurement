@@ -6,7 +6,7 @@
 #define PORTA_INPUT_VALUE       (0x3F)
 #define PORTBC_INPUT_VALUE      (0xFF)
 #define PORT_OUTPUT_VALUE       (0x0)
-#define CLOCK_8MHZ              (0x70)
+#define CLOCK_8MHZ              (0x72)
 #define CLOCK_4MHZ              (0x60)
 #define CLOCK_2MHZ              (0x50)
 #define CLOCK_1MHZ              (0x40)

@@ -4435,7 +4435,7 @@ const SPI_ConfigType SPI_Config =
 {
 SPI_LOW_POLARITY,
 SPI_LOW_PHASE,
-SPI_SERIAL_CLK4
+SPI_SERIAL_CLK64
 };
 
 
@@ -4455,21 +4455,20 @@ const StateType StateProgram[8] =
 void main(void)
 {
 
-# 100
-SPI_init(&SPI_Config);
-LCDNokia_init();
-LCDNokia_clear();
+# 97
+GPIO_sourceClock(CLK_8MHZ);
 
-# 108
-uint8_t test = 'A';
-uint8_t arrayTest[] = "Hola Mundo\r";
+# 104
+UART_init(BD_9600);
+
+# 109
+uint8_t test = 'O';
+uint8_t arrayTest[] = "Hola Mundo";
 for(;;)
 {
+UART_putString(arrayTest);
+delay(1000);
 
-LCDNokia_sendChar(test);
-
-delay(6500);
-
-# 122
+# 126
 }
 }

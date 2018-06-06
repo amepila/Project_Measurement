@@ -68,7 +68,7 @@ const SPI_ConfigType SPI_Config =
 {
 	SPI_LOW_POLARITY,	/**Low Polarity to SPI**/
 	SPI_LOW_PHASE,		/**Low Phase to SPI**/
-	SPI_SERIAL_CLK4     /**FOsc divided by 4**/
+	SPI_SERIAL_CLK64     /**FOsc divided by 4**/
 };
 
 /**Simple machine state only change the tag**/
@@ -94,30 +94,34 @@ void main(void)
 #endif
     
     /**Select the 8MHz as source clock*/
-    //GPIO_sourceClock(CLK_8MHZ);
-
+    GPIO_sourceClock(CLK_8MHZ);
+#if DEBUG
     /**Configurations of devices**/
 	SPI_init(&SPI_Config);
     LCDNokia_init();
 	LCDNokia_clear();
-#if DEBUG
+#endif
     UART_init(BD_9600);
+
+#if DEBUG
     ButtonInt_config();
 #endif
-    
-    uint8_t test = 'A';
-    uint8_t arrayTest[] = "Hola Mundo\r";
+    uint8_t test = 'O';
+    uint8_t arrayTest[] = "Hola Mundo";
     for(;;)
     {
-        
+        UART_putString(arrayTest);
+        delay(1000);
+
+#if DEBUG
         LCDNokia_sendChar(test);
-        //LCDNokia_sendString(arrayTest);
-        delay(6500);
+        LCDNokia_sendString(arrayTest);
+#endif
+        
 #if DEBUG
         /**Machine states based on tags**/
     	mainFunctions = StateProgram[currentState].stateFunction;
     	currentState = mainFunctions();
 #endif
-        
     }
 }

@@ -3017,9 +3017,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;GPIO.c: 22: case CLK_8MHZ:
 "22
 [e :U 288 ]
-[; ;GPIO.c: 23: OSCCON |= (0x70);
+[; ;GPIO.c: 23: OSCCON |= (0x72);
 "23
-[e =| _OSCCON -> -> 112 `i `uc ]
+[e =| _OSCCON -> -> 114 `i `uc ]
 [; ;GPIO.c: 24: break;
 "24
 [e $U 286  ]
