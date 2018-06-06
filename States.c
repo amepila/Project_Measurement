@@ -3,11 +3,12 @@
 #include "Phases.h"
 
 /**Pointer to functions of Main Menu*/
-const PhasePtrMainMenu_Type phasesMainMenu[3] =
+const PhasePtrMainMenu_Type phasesMainMenu[4] =
 {
 		{initialLoad},
 		{generalView},
-		{viewMenu}
+		{viewMenu},
+        {sendData}
 };
 
 /**Pointer to functions of Power1*/

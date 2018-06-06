@@ -6,9 +6,8 @@ PhaseMainMenu_Type initialLoad(PhaseMainMenu_Type data)
     /**Create the variable with current data**/
 	static PhaseMainMenu_Type currentMainMenu1;
 
-	/**Clear the nokia LCD*/
-	LCDNokia_clear();
-    
+    /**Load the value of register of IC*/
+    //Code
 
 	/**Set with the current state and phase**/
 	currentMainMenu1.phaseState = GENERAL_VIEW;
@@ -19,9 +18,30 @@ PhaseMainMenu_Type initialLoad(PhaseMainMenu_Type data)
 
 PhaseMainMenu_Type generalView(PhaseMainMenu_Type data)
 {
+    const uint8_t msgInitial1[] = "MEDICION DE";
+    const uint8_t msgInitial2[] = "TRIFASICO";
+    const uint8_t buttonRight[] = "Enviar";
+    const uint8_t buttonLeft[] = "Menu";
     /**Create the variable with current data**/
 	static PhaseMainMenu_Type currentMainMenu2;
 
+    /**Clear the nokia LCD*/
+	LCDNokia_clear();
+    
+    LCDNokia_gotoXY(20,1);
+    LCDNokia_sendString(msgInitial1);
+    
+    LCDNokia_gotoXY(27,1);
+    LCDNokia_sendString(msgInitial2);
+    
+    LCDNokia_gotoXY(0,4);
+    LCDNokia_sendString(buttonLeft);
+    
+    LCDNokia_gotoXY(65,4);
+    LCDNokia_sendString(buttonRight);
+    
+    
+    
 	/**Set with the current state and phase**/
 	currentMainMenu2.phaseState = VIEW_MENU;
 	currentMainMenu2.stateMain = data.stateMain;
@@ -40,6 +60,19 @@ PhaseMainMenu_Type viewMenu(PhaseMainMenu_Type data)
 
 	return (currentMainMenu3);
 }
+
+PhaseMainMenu_Type sendData(PhaseMainMenu_Type data)
+{
+	/**Create the variable with current data**/
+	static PhaseMainMenu_Type currentMainMenu4;
+
+	/**Set with the current state and phase**/
+	currentMainMenu4.phaseState = data.phaseState;
+    currentMainMenu4.stateMain = data.stateMain;
+
+	return (currentMainMenu4);
+}
+
 
 PhasePower1_Type typesPower1(PhasePower1_Type data)
 {

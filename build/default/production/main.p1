@@ -38,13 +38,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n E3123 . CLK_8MHZ CLK_4MHZ CLK_2MHZ CLK_1MHZ CLK_500KHZ CLK_250KHZ CLK_125KHZ CLK_31KHZ  ]
 "42 GPIO.h
 [v _GPIO_sourceClock `(v ~T0 @X0 0 ef1`E3123 ]
-"104 main.c
-[c E3190 1200 2400 9600 .. ]
-[n E3190 . BD_1200 BD_2400 BD_9600  ]
-"16 UART.h
-[v _UART_init `(v ~T0 @X0 0 ef1`E3190 ]
-"20
-[v _UART_putString `(v ~T0 @X0 0 ef1`*c ]
+"36 SPI.h
+[v _SPI_init `(v ~T0 @X0 0 ef1`*CS286 ]
+"24 LCDNokia5110.h
+[v _LCDNokia_init `(v ~T0 @X0 0 ef ]
+"31
+[v _LCDNokia_clear `(v ~T0 @X0 0 ef ]
+"39
+[v _LCDNokia_sendChar `(v ~T0 @X0 0 ef1`uc ]
 "59 GPIO.h
 [v _delay `(v ~T0 @X0 0 ef1`ul ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
@@ -3260,12 +3261,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 97: GPIO_sourceClock(CLK_8MHZ);
 "97
 [e ( _GPIO_sourceClock (1 . `E3123 0 ]
-[; ;main.c: 104: UART_init(BD_9600);
-"104
-[e ( _UART_init (1 . `E3190 2 ]
-"109
+[; ;main.c: 100: SPI_init(&SPI_Config);
+"100
+[e ( _SPI_init (1 &U _SPI_Config ]
+[; ;main.c: 101: LCDNokia_init();
+"101
+[e ( _LCDNokia_init ..  ]
+[; ;main.c: 102: LCDNokia_clear();
+"102
+[e ( _LCDNokia_clear ..  ]
+"107
 [v _test `uc ~T0 @X0 1 a ]
-[; ;main.c: 109: uint8_t test = 'O';
+[; ;main.c: 107: uint8_t test = 'O';
 [e = _test -> -> 79 `ui `uc ]
 [v F3282 `uc ~T0 @X0 -> 0 `x s ]
 [i F3282
@@ -3283,30 +3290,30 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 0 `c
 ..
 ]
-"110
+"108
 [v _arrayTest `uc ~T0 @X0 11  a ]
-[; ;main.c: 110: uint8_t arrayTest[] = "Hola Mundo";
+[; ;main.c: 108: uint8_t arrayTest[] = "Hola Mundo";
 [e = _arrayTest F3282 ]
-[; ;main.c: 111: for(;;)
-"111
+[; ;main.c: 109: for(;;)
+"109
 {
-"112
+"110
 [e :U 290 ]
-[; ;main.c: 112: {
+[; ;main.c: 110: {
 {
-[; ;main.c: 113: UART_putString(arrayTest);
+[; ;main.c: 111: LCDNokia_sendChar(test);
+"111
+[e ( _LCDNokia_sendChar (1 _test ]
+[; ;main.c: 113: delay(1000);
 "113
-[e ( _UART_putString (1 -> &U _arrayTest `*c ]
-[; ;main.c: 114: delay(1000);
-"114
 [e ( _delay (1 -> -> -> 1000 `i `l `ul ]
-"126
+"119
 }
-[; ;main.c: 126: }
+[; ;main.c: 119: }
 [e $U 290  ]
 [e :U 291 ]
 }
-[; ;main.c: 127: }
-"127
+[; ;main.c: 120: }
+"120
 [e :UE 289 ]
 }

@@ -2,6 +2,9 @@
 #include "GPIO.h"
 #include "Buttons.h"
 
+uint8_t FlagButton1 = 0;
+uint8_t FlagButton2 = 0;
+
 void interrupt Button1(void)
 {
     /**Activate the function*/
@@ -9,9 +12,30 @@ void interrupt Button1(void)
     {
         /**Clear the interrupt flag*/
         INT0IF = 0;
-        /**Do something*/
+        FlagButton1 = 1;
     }
 }
+
+uint8_t getButton1(void)
+{
+    return (FlagButton1);
+}
+
+void setButton1(uint8_t set)
+{
+    FlagButton1 = set;
+}
+
+uint8_t getButton2(void)
+{
+    return (FlagButton2);
+}
+
+void setButton2(uint8_t set)
+{
+    FlagButton2 = set;
+}
+
 
 void ButtonInt_config()
 {

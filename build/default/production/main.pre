@@ -4458,17 +4458,20 @@ void main(void)
 # 97
 GPIO_sourceClock(CLK_8MHZ);
 
-# 104
-UART_init(BD_9600);
 
-# 109
+SPI_init(&SPI_Config);
+LCDNokia_init();
+LCDNokia_clear();
+
+# 107
 uint8_t test = 'O';
 uint8_t arrayTest[] = "Hola Mundo";
 for(;;)
 {
-UART_putString(arrayTest);
+LCDNokia_sendChar(test);
+
 delay(1000);
 
-# 126
+# 119
 }
 }

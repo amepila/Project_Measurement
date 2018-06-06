@@ -95,29 +95,22 @@ void main(void)
     
     /**Select the 8MHz as source clock*/
     GPIO_sourceClock(CLK_8MHZ);
-#if DEBUG
+
     /**Configurations of devices**/
 	SPI_init(&SPI_Config);
     LCDNokia_init();
 	LCDNokia_clear();
-#endif
-    UART_init(BD_9600);
-
 #if DEBUG
+    UART_init(BD_9600);
     ButtonInt_config();
 #endif
     uint8_t test = 'O';
     uint8_t arrayTest[] = "Hola Mundo";
     for(;;)
     {
-        UART_putString(arrayTest);
-        delay(1000);
-
-#if DEBUG
         LCDNokia_sendChar(test);
-        LCDNokia_sendString(arrayTest);
-#endif
-        
+        //LCDNokia_sendString(arrayTest);
+        delay(1000); 
 #if DEBUG
         /**Machine states based on tags**/
     	mainFunctions = StateProgram[currentState].stateFunction;

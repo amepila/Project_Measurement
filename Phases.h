@@ -11,7 +11,8 @@ typedef enum
 {
     INITIAL_LOAD,
 	GENERAL_VIEW,
-	VIEW_MENU
+	VIEW_MENU,
+    SEND_DATA
 }PhaseStateMenu_Type;
 
 typedef struct
@@ -237,6 +238,15 @@ PhaseMainMenu_Type generalView(PhaseMainMenu_Type data);
  */
 PhaseMainMenu_Type viewMenu(PhaseMainMenu_Type data);
 
+/********************************************************************************************/
+/********************************************************************************************/
+/********************************************************************************************/
+/*!
+ 	 \brief	 State that enters in the menu
+ 	 \param[in]  data The current information
+ 	 \return Updated information
+ */
+PhaseMainMenu_Type sendData(PhaseMainMenu_Type data);
 
 /********************************************************************************************/
 /********************************************************************************************/
