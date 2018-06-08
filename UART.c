@@ -37,9 +37,9 @@ void UART_init(UART_BaudRateType baudRate)
     TXSTAbits.TXEN = 1;
     
     /**Select 8 bits-transmission*/
-    RCSTAbits.RX9 = 0;
+    //RCSTAbits.RX9 = 0;
     /**Enable receiver*/
-    RCSTAbits.CREN = 0;
+    //RCSTAbits.CREN = 0;
     /**Serial port enabled*/
     RCSTAbits.SPEN = 1;
     

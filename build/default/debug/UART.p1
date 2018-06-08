@@ -3129,12 +3129,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;UART.c: 37: TXSTAbits.TXEN = 1;
 "37
 [e = . . _TXSTAbits 0 5 -> -> 1 `i `uc ]
-[; ;UART.c: 40: RCSTAbits.RX9 = 0;
-"40
-[e = . . _RCSTAbits 0 6 -> -> 0 `i `uc ]
-[; ;UART.c: 42: RCSTAbits.CREN = 0;
-"42
-[e = . . _RCSTAbits 0 4 -> -> 0 `i `uc ]
 [; ;UART.c: 44: RCSTAbits.SPEN = 1;
 "44
 [e = . . _RCSTAbits 0 7 -> -> 1 `i `uc ]

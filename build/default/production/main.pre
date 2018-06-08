@@ -4442,12 +4442,12 @@ States_MenuType stateTemperature(void);
 
 #pragma config EBTRB = OFF
 
-# 67
+# 68
 const SPI_ConfigType SPI_Config =
 {
 SPI_LOW_POLARITY,
 SPI_LOW_PHASE,
-SPI_SERIAL_CLK64
+SPI_SERIAL_CLK4
 };
 
 
@@ -4467,25 +4467,28 @@ const StateType StateProgram[8] =
 void main(void)
 {
 
-# 96
+# 97
 GPIO_sourceClock(CLK_8MHZ);
 
-
-SPI_init(&SPI_Config);
-LCDNokia_init();
-LCDNokia_clear();
-
-# 106
+# 105
+ButtonInt_config();
 uint8_t test = 'o';
 uint8_t arrayTest[] = "Hola Mundo";
+GPIO_dataDirectionPIN(GPIO_B, 0, GPIO_OUTPUT);
+GPIO_clearPIN(GPIO_B,0);
 for(;;)
 {
 
+if(getButton1() == 1)
+{
+GPIO_clearPIN(GPIO_B,0);
+}
 
-LCDNokia_sendChar(test);
+if(getButton2() == 1)
+{
+GPIO_setPIN(GPIO_B,0);
+}
 
-delay(1000);
-
-# 120
+# 130
 }
 }

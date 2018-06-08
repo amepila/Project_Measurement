@@ -4228,11 +4228,7 @@ TXSTAbits.TX9 = 0;
 
 TXSTAbits.TXEN = 1;
 
-
-RCSTAbits.RX9 = 0;
-
-RCSTAbits.CREN = 0;
-
+# 44
 RCSTAbits.SPEN = 1;
 
 

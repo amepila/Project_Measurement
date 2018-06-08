@@ -4210,16 +4210,6 @@ FlagButton1 = 1;
 }
 }
 
-void Button2(void)
-{
-
-}
-
-void Button3(void)
-{
-
-}
-
 uint8_t getButton1(void)
 {
 return (FlagButton1);
@@ -4232,6 +4222,14 @@ FlagButton1 = set;
 
 uint8_t getButton2(void)
 {
+if(1 == PORTAbits.RA3)
+{
+FlagButton2 = 1;
+}
+else
+{
+FlagButton2 = 0;
+}
 return (FlagButton2);
 }
 
@@ -4242,6 +4240,14 @@ FlagButton2 = set;
 
 uint8_t getButton3(void)
 {
+if(1 == PORTAbits.RA4)
+{
+FlagButton3 = 1;
+}
+else
+{
+FlagButton3 = 0;
+}
 return (FlagButton3);
 }
 
@@ -4256,17 +4262,16 @@ void ButtonInt_config()
 {
 
 GPIO_dataDirectionPIN(GPIO_C, 3, GPIO_INPUT);
+INTCONbits.INT0E = 1;
+INTCONbits.GIE = 0;
+INTCON2bits.INTEDG0 = 1;
+INTCONbits.INT0F = 0;
 
-INT0IF = 0;
-
-INT0IE = 1;
-
-GIE = 1;
-
+# 83
 GPIO_dataDirectionPIN(GPIO_A, 3, GPIO_INPUT);
-ANSEL0bits.ANS3 = 1;
+ANSEL0bits.ANS3 = 0;
 
 GPIO_dataDirectionPIN(GPIO_A, 4, GPIO_INPUT);
-ANSEL0bits.ANS4 = 1;
+ANSEL0bits.ANS4 = 0;
 
 }

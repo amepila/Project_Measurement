@@ -38,16 +38,23 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n E3123 . CLK_8MHZ CLK_4MHZ CLK_2MHZ CLK_1MHZ CLK_500KHZ CLK_250KHZ CLK_125KHZ CLK_31KHZ  ]
 "42 GPIO.h
 [v _GPIO_sourceClock `(v ~T0 @X0 0 ef1`E3123 ]
-"36 SPI.h
-[v _SPI_init `(v ~T0 @X0 0 ef1`*CS286 ]
-"24 LCDNokia5110.h
-[v _LCDNokia_init `(v ~T0 @X0 0 ef ]
-"31
-[v _LCDNokia_clear `(v ~T0 @X0 0 ef ]
-"39
-[v _LCDNokia_sendChar `(v ~T0 @X0 0 ef1`uc ]
-"59 GPIO.h
-[v _delay `(v ~T0 @X0 0 ef1`ul ]
+"18 Buttons.h
+[v _ButtonInt_config `(v ~T0 @X0 0 ef ]
+"107 main.c
+[c E3137 0 1 2 .. ]
+[n E3137 . GPIO_A GPIO_B GPIO_C  ]
+[c E3133 0 1 .. ]
+[n E3133 . GPIO_INPUT GPIO_OUTPUT  ]
+"44 GPIO.h
+[v _GPIO_dataDirectionPIN `(v ~T0 @X0 0 ef3`E3137`uc`E3133 ]
+"56
+[v _GPIO_clearPIN `(v ~T0 @X0 0 ef2`E3137`uc ]
+"6 Buttons.h
+[v _getButton1 `(uc ~T0 @X0 0 ef ]
+"10
+[v _getButton2 `(uc ~T0 @X0 0 ef ]
+"53 GPIO.h
+[v _GPIO_setPIN `(v ~T0 @X0 0 ef2`E3137`uc ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3196,7 +3203,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "70
 . `E3170 0
 "72
-. `E3174 2
+. `E3174 0
 ..
 ..
 ]
@@ -3204,7 +3211,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 68: {
 [; ;main.c: 69: SPI_LOW_POLARITY,
 [; ;main.c: 70: SPI_LOW_PHASE,
-[; ;main.c: 71: SPI_SERIAL_CLK64
+[; ;main.c: 71: SPI_SERIAL_CLK4
 [; ;main.c: 72: };
 "76
 [v _StateProgram `CS288 ~T0 @X0 -> 8 `i e ]
@@ -3267,18 +3274,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 96: GPIO_sourceClock(CLK_8MHZ);
 "96
 [e ( _GPIO_sourceClock (1 . `E3123 0 ]
-[; ;main.c: 99: SPI_init(&SPI_Config);
-"99
-[e ( _SPI_init (1 &U _SPI_Config ]
-[; ;main.c: 100: LCDNokia_init();
-"100
-[e ( _LCDNokia_init ..  ]
-[; ;main.c: 101: LCDNokia_clear();
-"101
-[e ( _LCDNokia_clear ..  ]
-"106
+[; ;main.c: 104: ButtonInt_config();
+"104
+[e ( _ButtonInt_config ..  ]
+"105
 [v _test `uc ~T0 @X0 1 a ]
-[; ;main.c: 106: uint8_t test = 'o';
+[; ;main.c: 105: uint8_t test = 'o';
 [e = _test -> -> 111 `ui `uc ]
 [v F3294 `uc ~T0 @X0 -> 0 `x s ]
 [i F3294
@@ -3296,30 +3297,56 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 0 `c
 ..
 ]
-"107
+"106
 [v _arrayTest `uc ~T0 @X0 11  a ]
-[; ;main.c: 107: uint8_t arrayTest[] = "Hola Mundo";
+[; ;main.c: 106: uint8_t arrayTest[] = "Hola Mundo";
 [e = _arrayTest F3294 ]
-[; ;main.c: 108: for(;;)
+[; ;main.c: 107: GPIO_dataDirectionPIN(GPIO_B, 0, GPIO_OUTPUT);
+"107
+[e ( _GPIO_dataDirectionPIN (3 , , . `E3137 1 -> -> 0 `i `uc . `E3133 1 ]
+[; ;main.c: 108: GPIO_clearPIN(GPIO_B,0);
 "108
-{
+[e ( _GPIO_clearPIN (2 , . `E3137 1 -> -> 0 `i `uc ]
+[; ;main.c: 109: for(;;)
 "109
-[e :U 290 ]
-[; ;main.c: 109: {
 {
-[; ;main.c: 112: LCDNokia_sendChar(test);
+"110
+[e :U 290 ]
+[; ;main.c: 110: {
+{
+[; ;main.c: 112: if(getButton1() == 1)
 "112
-[e ( _LCDNokia_sendChar (1 _test ]
-[; ;main.c: 114: delay(1000);
+[e $ ! == -> ( _getButton1 ..  `i -> 1 `i 293  ]
+[; ;main.c: 113: {
+"113
+{
+[; ;main.c: 114: GPIO_clearPIN(GPIO_B,0);
 "114
-[e ( _delay (1 -> -> -> 1000 `i `l `ul ]
-"120
+[e ( _GPIO_clearPIN (2 , . `E3137 1 -> -> 0 `i `uc ]
+"115
 }
-[; ;main.c: 120: }
+[e :U 293 ]
+[; ;main.c: 115: }
+[; ;main.c: 116: if(getButton2() == 1)
+"116
+[e $ ! == -> ( _getButton2 ..  `i -> 1 `i 294  ]
+[; ;main.c: 117: {
+"117
+{
+[; ;main.c: 118: GPIO_setPIN(GPIO_B,0);
+"118
+[e ( _GPIO_setPIN (2 , . `E3137 1 -> -> 0 `i `uc ]
+"119
+}
+[e :U 294 ]
+"128
+}
+[; ;main.c: 119: }
+[; ;main.c: 128: }
 [e $U 290  ]
 [e :U 291 ]
 }
-[; ;main.c: 121: }
-"121
+[; ;main.c: 129: }
+"129
 [e :UE 289 ]
 }

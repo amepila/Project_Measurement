@@ -323,18 +323,11 @@ LCD_delay();
 GPIO_setPIN(GPIO_B, 1);
 
 LCDNokia_writeByte(0, 0x21);
-
-LCDNokia_writeByte(0, 0x84);
-
-LCDNokia_writeByte(0, 0x07);
-
-LCDNokia_writeByte(0, 0xC0);
-
-
+LCDNokia_writeByte(0, 0xB1);
+LCDNokia_writeByte(0, 0x04);
+LCDNokia_writeByte(0, 0x14);
 LCDNokia_writeByte(0, 0x20);
-
-LCDNokia_writeByte(0, 0x0D);
-
+LCDNokia_writeByte(0, 0x0C);
 }
 
 void LCDNokia_bitmap(const uint8_t* my_array)
@@ -371,7 +364,7 @@ for (index = 0; index < 5; index++)
 {
 LCDNokia_writeByte(1, ASCII[character - 0x20][index]);
 
-# 169
+# 162
 }
 
 LCDNokia_writeByte(1, 0x00);
@@ -389,7 +382,7 @@ void LCDNokia_clear(void)
 {
 uint16_t index = 0;
 
-for (index = 0; index < (84 * 48 / 8); index++)
+for (index = 0; index < ((84 * 48) / 8); index++)
 {
 LCDNokia_writeByte(1, 0x00);
 }
@@ -407,7 +400,7 @@ void LCD_delay(void)
 {
 uint32_t counter;
 
-for(counter = 0; counter < 1000000; counter++)
+for(counter = 0; counter < 2000000; counter++)
 {
 }
 }
