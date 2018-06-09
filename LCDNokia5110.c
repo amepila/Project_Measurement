@@ -194,7 +194,7 @@ void LCD_delay(void)
 {
 	uint32_t counter;
 	
-	for(counter =  0; counter < 2000000; counter++)
+	for(counter =  0; counter < 50000; counter++)
 	{	   
 	}
 }

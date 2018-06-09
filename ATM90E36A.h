@@ -3,5 +3,7 @@
 
 #include <stdint.h>
 
+void ATM_IC(void);
+
 #endif	
 

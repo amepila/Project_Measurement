@@ -4126,3 +4126,103 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
+# 6 "ATM90E36A.h"
+void ATM_IC(void);
+
+# 7 "GPIO.h"
+typedef enum
+{
+CLK_8MHZ,
+CLK_4MHZ,
+CLK_2MHZ,
+CLK_1MHZ,
+CLK_500KHZ,
+CLK_250KHZ,
+CLK_125KHZ,
+CLK_31KHZ
+} GPIO_SourceClk;
+
+# 21
+typedef enum
+{
+GPIO_INPUT,
+GPIO_OUTPUT
+} GPIO_state;
+
+# 29
+typedef enum
+{
+GPIO_A,
+GPIO_B,
+GPIO_C
+} GPIO_portNameType;
+
+typedef enum
+{
+GPIO_DIGITAL,
+GPIO_ANALOG
+} GPIO_analogType;
+
+void GPIO_sourceClock(GPIO_SourceClk clk);
+
+void GPIO_dataDirectionPIN
+(GPIO_portNameType portName, uint8_t pin, GPIO_state state);
+
+void GPIO_dataDirectionPORT
+(GPIO_portNameType portName, GPIO_state state);
+
+void GPIO_analogSelector
+(GPIO_analogType type, uint8_t pin);
+
+void GPIO_setPIN
+(GPIO_portNameType portName, uint8_t pin);
+
+void GPIO_clearPIN
+(GPIO_portNameType portName, uint8_t pin);
+
+void delay(uint32_t delay);
+
+# 7 "SPI.h"
+typedef enum
+{
+SPI_LOW_POLARITY,
+SPI_HIGH_POLARITY
+} SPI_PolarityType;
+
+
+typedef enum
+{
+SPI_LOW_PHASE,
+SPI_HIGH_PHASE
+} SPI_PhaseType;
+
+typedef enum
+{
+SPI_SERIAL_CLK4,
+SPI_SERIAL_CLK16,
+SPI_SERIAL_CLK64
+} SPI_SerialClk;
+
+# 29
+typedef struct
+{
+SPI_PolarityType SPI_Polarity;
+SPI_PhaseType SPI_Phase;
+SPI_SerialClk SPI_Clk;
+} SPI_ConfigType;
+
+void SPI_init(const SPI_ConfigType* SPI_Config);
+
+void SPI_write(uint8_t data);
+
+uint8_t SPI_read(void);
+
+# 6 "ATM90E36A.c"
+void ATM_IC(void)
+{
+
+GPIO_dataDirectionPIN(GPIO_B, 3, GPIO_OUTPUT);
+
+
+
+}

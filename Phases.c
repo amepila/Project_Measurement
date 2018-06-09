@@ -7,7 +7,7 @@ PhaseMainMenu_Type initialLoad(PhaseMainMenu_Type data)
 	static PhaseMainMenu_Type currentMainMenu1;
 
     /**Load the value of register of IC*/
-    //Code
+    //Calibration Normal Mode
     
 	/**Set with the current state and phase**/
 	currentMainMenu1.phaseState = GENERAL_VIEW;
@@ -24,6 +24,7 @@ PhaseMainMenu_Type generalView(PhaseMainMenu_Type data)
     const uint8_t buttonLeft[] = "Menu";
     
     static uint8_t lockClear = 0;
+    static uint8_t lockWrite = 0;
     /**Create the variable with current data**/
 	static PhaseMainMenu_Type currentMainMenu2;
 
@@ -33,31 +34,38 @@ PhaseMainMenu_Type generalView(PhaseMainMenu_Type data)
     {
         /**Clear the nokia LCD*/
         LCDNokia_clear();
+        /**Execute once time*/
         lockClear = 1;
     }
     
-    LCDNokia_gotoXY(20,1);
-    LCDNokia_sendString(msgInitial1);
+    if(0 == lockWrite)
+    {
+        LCDNokia_gotoXY(20,1);
+        LCDNokia_sendString(msgInitial1);
     
-    LCDNokia_gotoXY(27,1);
-    LCDNokia_sendString(msgInitial2);
+        LCDNokia_gotoXY(27,1);
+        LCDNokia_sendString(msgInitial2);
     
-    LCDNokia_gotoXY(0,4);
-    LCDNokia_sendString(buttonLeft);
+        LCDNokia_gotoXY(0,4);
+        LCDNokia_sendString(buttonLeft);
     
-    LCDNokia_gotoXY(65,4);
-    LCDNokia_sendString(buttonRight);
-    
-    
-    if(1 == getButton1())
+        LCDNokia_gotoXY(65,4);
+        LCDNokia_sendString(buttonRight);
+        
+        lockWrite = 1;
+    }
+
+    if(getButton1() == 1)
     {
         currentMainMenu2.phaseState = VIEW_MENU;
         lockClear = 0;
+        lockWrite = 0;
     }
-    if(1 == getButton3())
+    if(getButton3() == 1)
     {
         currentMainMenu2.phaseState = SEND_DATA;
-        lockClear = 1;
+        lockClear = 0;
+        lockWrite = 0;
     }
     
 	/**Set with the current state and phase**/
@@ -68,11 +76,175 @@ PhaseMainMenu_Type generalView(PhaseMainMenu_Type data)
 
 PhaseMainMenu_Type viewMenu(PhaseMainMenu_Type data)
 {
+    const uint8_t string1_Power1[] = "Potencia Activa";
+    const uint8_t string2_Power1[] = "Reactiva, Aparente";
+    
+    const uint8_t string1_Power2[] = "Potencia";
+    const uint8_t string2_Power2[] = "Fundamental";
+    const uint8_t string3_Power2[] = "Armonica";
+
+    const uint8_t string1_RMS[] = "Voltage Corriente";
+    const uint8_t string2_RMS[] = "RMS";
+    
+    const uint8_t string1_PowerFactor[] = "Factor de";
+    const uint8_t string2_PowerFactor[] = "Potencia";
+    
+    const uint8_t string1_PhaseAngle[] = "Angulo de";
+    const uint8_t string2_PhaseAngle[] = "Fase";
+    
+    const uint8_t string1_Frequency[] = "Frecuencia";
+    
+    const uint8_t string1_Temperature[] = "Temperatura";
+    
+    const uint8_t buttonRight[] = "D";
+    const uint8_t buttonCenter[] = "E";
+    const uint8_t buttonLeft[] = "I";
+    
+    static uint8_t lockClear = 0;
+    static uint8_t lockWrite = 0;
+    static uint8_t counterMenu = 0;
 	/**Create the variable with current data**/
 	static PhaseMainMenu_Type currentMainMenu3;
 
-    /**Clear the nokia LCD*/
-	LCDNokia_clear();
+    currentMainMenu3.phaseState = VIEW_MENU;
+    currentMainMenu3.stateMain = data.stateMain;
+    
+    if(0 == lockClear)
+    {
+        /**Clear the nokia LCD*/
+        LCDNokia_clear();
+        /**Execute once time*/
+        lockClear = 1;
+    }
+    
+    if(0 == lockWrite)
+    {
+        switch(counterMenu)
+        {
+            case 0:
+                LCDNokia_gotoXY(15,1);
+                LCDNokia_sendString(string1_Power1);
+    
+                LCDNokia_gotoXY(0,2);
+                LCDNokia_sendString(string2_Power1);
+                break;
+            case 1:
+                LCDNokia_gotoXY(15,1);
+                LCDNokia_sendString(string1_Power2);
+    
+                LCDNokia_gotoXY(15,2);
+                LCDNokia_sendString(string2_Power2);
+                
+                LCDNokia_gotoXY(15,3);
+                LCDNokia_sendString(string3_Power2);
+                break;
+            case 2:
+                LCDNokia_gotoXY(15,1);
+                LCDNokia_sendString(string1_RMS);
+    
+                LCDNokia_gotoXY(15,2);
+                LCDNokia_sendString(string2_RMS);
+                break;
+            case 3:
+                LCDNokia_gotoXY(15,1);
+                LCDNokia_sendString(string1_PowerFactor);
+    
+                LCDNokia_gotoXY(15,2);
+                LCDNokia_sendString(string2_PowerFactor);
+                break;
+            case 4:
+                LCDNokia_gotoXY(15,1);
+                LCDNokia_sendString(string1_PhaseAngle);
+    
+                LCDNokia_gotoXY(15,2);
+                LCDNokia_sendString(string2_PhaseAngle);
+                break;
+            case 5:
+                LCDNokia_gotoXY(15,1);
+                LCDNokia_sendString(string1_Frequency);
+                break;
+            case 6:
+                LCDNokia_gotoXY(15,1);
+                LCDNokia_sendString(string1_Temperature);
+                break;
+            default:
+                break;
+        }
+        
+        LCDNokia_gotoXY(0,4);
+        LCDNokia_sendString(buttonLeft);
+    
+        LCDNokia_gotoXY(40,4);
+        LCDNokia_sendString(buttonCenter);
+        
+        LCDNokia_gotoXY(80,4);
+        LCDNokia_sendString(buttonRight);
+        
+        lockWrite = 1;
+    }
+    
+    if(getButton1() == 1)
+    {
+        if(0 == counterMenu)
+        {
+            counterMenu = 6;
+        }
+        else
+        {
+            counterMenu--;
+        }
+
+        lockClear = 0;
+        lockWrite = 0;
+    }
+    if(getButton2() == 1)
+    {
+        switch(counterMenu)
+        {
+            case 0:
+                currentMainMenu3.phaseState = TYPES_POWER1;
+                currentMainMenu3.stateMain = POWER_1;
+                break;
+            case 1:
+                currentMainMenu3.phaseState = FH_POWER2;
+                currentMainMenu3.stateMain = POWER_2;
+                break;
+            case 2:
+                currentMainMenu3.phaseState = PHASES_RMSVI;
+                currentMainMenu3.stateMain = RMS_VI;
+                break;
+            case 3:
+                currentMainMenu3.phaseState = PHASES_PF;
+                currentMainMenu3.stateMain = POWER_FACTOR;
+                break;
+            case 4:
+                currentMainMenu3.phaseState = PHASES_PA;
+                currentMainMenu3.stateMain = PHASE_ANGLE;
+                break;
+            case 5:
+                currentMainMenu3.phaseState = SHOW_FREQUENCY;
+                currentMainMenu3.stateMain = FREQUENCY;
+                break;
+            case 6:
+                currentMainMenu3.phaseState = SHOW_TEMPERATURE;
+                currentMainMenu3.stateMain = TEMPERATURE;
+                break;
+            default:
+                break;
+        }
+        lockClear = 0;
+        lockWrite = 0;
+    }
+    if(getButton3() == 1)
+    {
+        counterMenu++;
+        if(counterMenu > 6)
+        {
+            counterMenu = 0;
+        }
+        lockClear = 0;
+        lockWrite = 0;
+    }
     
 	/**Set with the current state and phase**/
 	currentMainMenu3.phaseState = data.phaseState;
@@ -87,6 +259,7 @@ PhaseMainMenu_Type sendData(PhaseMainMenu_Type data)
 	/**Create the variable with current data**/
 	static PhaseMainMenu_Type currentMainMenu4;
 
+    
     UART_putString(test);
     /*
      ...Send all the info of the IC
@@ -105,6 +278,8 @@ PhasePower1_Type typesPower1(PhasePower1_Type data)
     /**Create the variable with current data**/
 	static PhasePower1_Type currentPower1_1;
 
+
+    
 	/**Set with the current state and phase**/
 	currentPower1_1.phaseState = PHASES_POWER1;
 	currentPower1_1.stateMain = data.stateMain;

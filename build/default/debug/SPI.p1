@@ -3267,50 +3267,56 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _data `uc ~T0 @X0 1 r1 ]
 "87
 [f ]
-[; ;SPI.c: 88: SSPBUF = data;
 "88
-[e = _SSPBUF _data ]
-[; ;SPI.c: 89: while(!SSPSTATbits.BF);
+[v _flushData `uc ~T0 @X0 1 a ]
+[; ;SPI.c: 88: uint8_t flushData;
+[; ;SPI.c: 89: SSPBUF = data;
 "89
+[e = _SSPBUF _data ]
+[; ;SPI.c: 91: while(!PIR1bits.SSPIF);
+"91
 [e $U 306  ]
 [e :U 307 ]
 [e :U 306 ]
-[e $ ! != -> . . _SSPSTATbits 2 0 `i -> -> -> 0 `i `Vuc `i 307  ]
+[e $ ! != -> . . _PIR1bits 0 3 `i -> -> -> 0 `i `Vuc `i 307  ]
 [e :U 308 ]
-[; ;SPI.c: 90: }
-"90
+[; ;SPI.c: 92: PIR1bits.SSPIF = 0;
+"92
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+[; ;SPI.c: 94: }
+"94
 [e :UE 305 ]
 }
-"92
+"96
 [v _SPI_read `(uc ~T0 @X0 1 ef ]
-"93
+"97
 {
-[; ;SPI.c: 92: uint8_t SPI_read(void)
-[; ;SPI.c: 93: {
+[; ;SPI.c: 96: uint8_t SPI_read(void)
+[; ;SPI.c: 97: {
 [e :U _SPI_read ]
 [f ]
-"94
+"98
 [v _dummy `Cuc ~T0 @X0 1 a ]
-[; ;SPI.c: 94: const uint8_t dummy = 0;
+[; ;SPI.c: 98: const uint8_t dummy = 0;
 [e = _dummy -> -> 0 `i `uc ]
-[; ;SPI.c: 97: SSPBUF = dummy;
-"97
+[; ;SPI.c: 101: SSPBUF = dummy;
+"101
 [e = _SSPBUF _dummy ]
-[; ;SPI.c: 102: while(!PIR1bits.SSPIF);
-"102
+[; ;SPI.c: 106: while(!PIR1bits.SSPIF);
+"106
 [e $U 310  ]
 [e :U 311 ]
 [e :U 310 ]
 [e $ ! != -> . . _PIR1bits 0 3 `i -> -> -> 0 `i `Vuc `i 311  ]
 [e :U 312 ]
-[; ;SPI.c: 103: PIR1bits.SSPIF = 0;
-"103
+[; ;SPI.c: 107: PIR1bits.SSPIF = 0;
+"107
 [e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
-[; ;SPI.c: 104: return (SSPBUF);
-"104
+[; ;SPI.c: 108: return (SSPBUF);
+"108
 [e ) _SSPBUF ]
 [e $UE 309  ]
-[; ;SPI.c: 105: }
-"105
+[; ;SPI.c: 109: }
+"109
 [e :UE 309 ]
 }

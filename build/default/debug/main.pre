@@ -4328,18 +4328,21 @@ void LCDNokia_printValue(uint32_t value);
 
 void LCDNokia_printFloatValue(float value);
 
+# 6 "ATM90E36A.h"
+void ATM_IC(void);
+
 # 6 "Buttons.h"
 uint8_t getButton1(void);
 
-void setButton1(uint8_t set);
+void clearButton1(void);
 
 uint8_t getButton2(void);
 
-void setButton2(uint8_t set);
+void clearButton2(void);
 
 uint8_t getButton3(void);
 
-void setButton3(uint8_t set);
+void clearButton3(void);
 
 void ButtonInt_config();
 
@@ -4442,12 +4445,12 @@ States_MenuType stateTemperature(void);
 
 #pragma config EBTRB = OFF
 
-# 67
+# 68
 const SPI_ConfigType SPI_Config =
 {
 SPI_LOW_POLARITY,
 SPI_LOW_PHASE,
-SPI_SERIAL_CLK4
+SPI_SERIAL_CLK64
 };
 
 
@@ -4467,27 +4470,27 @@ const StateType StateProgram[8] =
 void main(void)
 {
 
-# 96
+States_MenuType currentState = MAIN_MENU;
+States_MenuType(*mainFunctions)(void);
+
+
 GPIO_sourceClock(CLK_8MHZ);
 
-# 104
+SPI_init(&SPI_Config);
+LCDNokia_init();
+LCDNokia_clear();
+
 ButtonInt_config();
+
 uint8_t test = 'o';
 uint8_t arrayTest[] = "Hola Mundo";
-GPIO_dataDirectionPIN(GPIO_B, 0, GPIO_OUTPUT);
-GPIO_clearPIN(GPIO_B,0);
+
 for(;;)
 {
+LCDNokia_sendChar(test);
 
-if(getButton1() == 1)
-{
-GPIO_clearPIN(GPIO_B,0);
-}
-if(getButton2() == 1)
-{
-GPIO_setPIN(GPIO_B,0);
-}
+delay(50000);
 
-# 128
+# 119
 }
 }

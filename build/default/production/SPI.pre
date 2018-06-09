@@ -4232,8 +4232,12 @@ SPI_enablePins(SPI_Config->SPI_Clk);
 
 void SPI_write(uint8_t data)
 {
+uint8_t flushData;
 SSPBUF = data;
-while(!SSPSTATbits.BF);
+
+while(!PIR1bits.SSPIF);
+PIR1bits.SSPIF = 0;
+
 }
 
 uint8_t SPI_read(void)
@@ -4243,7 +4247,7 @@ const uint8_t dummy = 0;
 
 SSPBUF = dummy;
 
-# 102
+# 106
 while(!PIR1bits.SSPIF);
 PIR1bits.SSPIF = 0;
 return (SSPBUF);

@@ -1286,11 +1286,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 "195
 [v _counter `ul ~T0 @X0 1 a ]
 [; ;LCDNokia5110.c: 195: uint32_t counter;
-[; ;LCDNokia5110.c: 197: for(counter = 0; counter < 2000000; counter++)
+[; ;LCDNokia5110.c: 197: for(counter = 0; counter < 50000; counter++)
 "197
 {
 [e = _counter -> -> -> 0 `i `l `ul ]
-[e $ < _counter -> -> 2000000 `l `ul 25  ]
+[e $ < _counter -> -> 50000 `l `ul 25  ]
 [e $U 26  ]
 "198
 [e :U 25 ]
@@ -1300,7 +1300,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "197
 [e ++ _counter -> -> -> 1 `i `l `ul ]
-[e $ < _counter -> -> 2000000 `l `ul 25  ]
+[e $ < _counter -> -> 50000 `l `ul 25  ]
 [e :U 26 ]
 "199
 }

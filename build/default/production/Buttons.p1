@@ -1,5 +1,22 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"1242 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f2331.h
+"1026 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f2331.h
+[s S37 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S37 . RA0 RA1 RA2 RA3 RA4 . RA6 RA7 ]
+"1036
+[s S38 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S38 . AN0 AN1 AN2 AN3 AN4 . OSC2 OSC1 ]
+"1046
+[s S39 :2 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S39 . . VREFM VREFP . CLKO CLKI ]
+"1054
+[s S40 :1 `uc 1 :6 `uc 1 :1 `uc 1 ]
+[n S40 . ULPWUIN . RJPU ]
+"1025
+[u S36 `S37 1 `S38 1 `S39 1 `S40 1 ]
+[n S36 . . . . . ]
+"1060
+[v _PORTAbits `VS36 ~T0 @X0 0 e@3968 ]
+"1242
 [s S45 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S45 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
 "1252
@@ -31,24 +48,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S44 . . . . . . . . . . ]
 "1307
 [v _PORTCbits `VS44 ~T0 @X0 0 e@3970 ]
-"1026
-[s S37 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S37 . RA0 RA1 RA2 RA3 RA4 . RA6 RA7 ]
-"1036
-[s S38 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S38 . AN0 AN1 AN2 AN3 AN4 . OSC2 OSC1 ]
-"1046
-[s S39 :2 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S39 . . VREFM VREFP . CLKO CLKI ]
-"1054
-[s S40 :1 `uc 1 :6 `uc 1 :1 `uc 1 ]
-[n S40 . ULPWUIN . RJPU ]
-"1025
-[u S36 `S37 1 `S38 1 `S39 1 `S40 1 ]
-[n S36 . . . . . ]
-"1060
-[v _PORTAbits `VS36 ~T0 @X0 0 e@3968 ]
-"65 Buttons.c
+"66 Buttons.c
 [c E3075 0 1 2 .. ]
 [n E3075 . GPIO_A GPIO_B GPIO_C  ]
 [c E3071 0 1 .. ]
@@ -3035,11 +3035,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;GPIO.h: 57: (GPIO_portNameType portName, uint8_t pin);
 [; ;GPIO.h: 59: void delay(uint32_t delay);
 [; ;Buttons.h: 6: uint8_t getButton1(void);
-[; ;Buttons.h: 8: void setButton1(uint8_t set);
+[; ;Buttons.h: 8: void clearButton1(void);
 [; ;Buttons.h: 10: uint8_t getButton2(void);
-[; ;Buttons.h: 12: void setButton2(uint8_t set);
+[; ;Buttons.h: 12: void clearButton2(void);
 [; ;Buttons.h: 14: uint8_t getButton3(void);
-[; ;Buttons.h: 16: void setButton3(uint8_t set);
+[; ;Buttons.h: 16: void clearButton3(void);
 [; ;Buttons.h: 18: void ButtonInt_config();
 "5 Buttons.c
 [v _FlagButton1 `uc ~T0 @X0 1 e ]
@@ -3067,9 +3067,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Buttons.c: 10: {
 [e :U _getButton1 ]
 [f ]
-[; ;Buttons.c: 11: if(1 == PORTCbits.RC3)
+[; ;Buttons.c: 11: if(1 == PORTAbits.RA3)
 "11
-[e $ ! == -> 1 `i -> . . _PORTCbits 0 3 `i 286  ]
+[e $ ! == -> 1 `i -> . . _PORTAbits 0 3 `i 286  ]
 [; ;Buttons.c: 12: {
 "12
 {
@@ -3102,19 +3102,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 285 ]
 }
 "22
-[v _setButton1 `(v ~T0 @X0 1 ef1`uc ]
+[v _clearButton1 `(v ~T0 @X0 1 ef ]
 "23
 {
-[; ;Buttons.c: 22: void setButton1(uint8_t set)
+[; ;Buttons.c: 22: void clearButton1(void)
 [; ;Buttons.c: 23: {
-[e :U _setButton1 ]
-"22
-[v _set `uc ~T0 @X0 1 r1 ]
-"23
+[e :U _clearButton1 ]
 [f ]
-[; ;Buttons.c: 24: FlagButton1 = set;
+[; ;Buttons.c: 24: FlagButton1 = 0;
 "24
-[e = _FlagButton1 _set ]
+[e = _FlagButton1 -> -> 0 `i `uc ]
 [; ;Buttons.c: 25: }
 "25
 [e :UE 288 ]
@@ -3127,9 +3124,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Buttons.c: 28: {
 [e :U _getButton2 ]
 [f ]
-[; ;Buttons.c: 29: if(1 == PORTAbits.RA3)
+[; ;Buttons.c: 29: if(1 == PORTAbits.RA4)
 "29
-[e $ ! == -> 1 `i -> . . _PORTAbits 0 3 `i 290  ]
+[e $ ! == -> 1 `i -> . . _PORTAbits 0 4 `i 290  ]
 [; ;Buttons.c: 30: {
 "30
 {
@@ -3162,19 +3159,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 289 ]
 }
 "40
-[v _setButton2 `(v ~T0 @X0 1 ef1`uc ]
+[v _clearButton2 `(v ~T0 @X0 1 ef ]
 "41
 {
-[; ;Buttons.c: 40: void setButton2(uint8_t set)
+[; ;Buttons.c: 40: void clearButton2(void)
 [; ;Buttons.c: 41: {
-[e :U _setButton2 ]
-"40
-[v _set `uc ~T0 @X0 1 r1 ]
-"41
+[e :U _clearButton2 ]
 [f ]
-[; ;Buttons.c: 42: FlagButton2 = set;
+[; ;Buttons.c: 42: FlagButton2 = 0;
 "42
-[e = _FlagButton2 _set ]
+[e = _FlagButton2 -> -> 0 `i `uc ]
 [; ;Buttons.c: 43: }
 "43
 [e :UE 292 ]
@@ -3187,9 +3181,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Buttons.c: 46: {
 [e :U _getButton3 ]
 [f ]
-[; ;Buttons.c: 47: if(1 == PORTAbits.RA4)
+[; ;Buttons.c: 47: if(1 == PORTCbits.RC3)
 "47
-[e $ ! == -> 1 `i -> . . _PORTAbits 0 4 `i 294  ]
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 3 `i 294  ]
 [; ;Buttons.c: 48: {
 "48
 {
@@ -3222,19 +3216,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 293 ]
 }
 "58
-[v _setButton3 `(v ~T0 @X0 1 ef1`uc ]
+[v _setButton3 `(v ~T0 @X0 1 ef ]
 "59
 {
-[; ;Buttons.c: 58: void setButton3(uint8_t set)
+[; ;Buttons.c: 58: void setButton3(void)
 [; ;Buttons.c: 59: {
 [e :U _setButton3 ]
-"58
-[v _set `uc ~T0 @X0 1 r1 ]
-"59
 [f ]
-[; ;Buttons.c: 60: FlagButton3 = set;
+[; ;Buttons.c: 60: FlagButton3 = 0;
 "60
-[e = _FlagButton3 _set ]
+[e = _FlagButton3 -> -> 0 `i `uc ]
 [; ;Buttons.c: 61: }
 "61
 [e :UE 296 ]
@@ -3247,22 +3238,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Buttons.c: 64: {
 [e :U _ButtonInt_config ]
 [f ]
-[; ;Buttons.c: 65: GPIO_dataDirectionPIN(GPIO_C, 3, GPIO_INPUT);
-"65
-[e ( _GPIO_dataDirectionPIN (3 , , . `E3075 2 -> -> 3 `i `uc . `E3071 0 ]
-[; ;Buttons.c: 70: GPIO_dataDirectionPIN(GPIO_A, 3, GPIO_INPUT);
-"70
+[; ;Buttons.c: 66: GPIO_dataDirectionPIN(GPIO_A, 3, GPIO_INPUT);
+"66
 [e ( _GPIO_dataDirectionPIN (3 , , . `E3075 0 -> -> 3 `i `uc . `E3071 0 ]
-[; ;Buttons.c: 71: ANSEL0bits.ANS3 = 0;
-"71
+[; ;Buttons.c: 67: ANSEL0bits.ANS3 = 0;
+"67
 [e = . . _ANSEL0bits 0 3 -> -> 0 `i `uc ]
-[; ;Buttons.c: 73: GPIO_dataDirectionPIN(GPIO_A, 4, GPIO_INPUT);
-"73
+[; ;Buttons.c: 69: GPIO_dataDirectionPIN(GPIO_A, 4, GPIO_INPUT);
+"69
 [e ( _GPIO_dataDirectionPIN (3 , , . `E3075 0 -> -> 4 `i `uc . `E3071 0 ]
-[; ;Buttons.c: 74: ANSEL0bits.ANS4 = 0;
-"74
+[; ;Buttons.c: 70: ANSEL0bits.ANS4 = 0;
+"70
 [e = . . _ANSEL0bits 0 4 -> -> 0 `i `uc ]
-[; ;Buttons.c: 76: }
-"76
+[; ;Buttons.c: 72: GPIO_dataDirectionPIN(GPIO_C, 3, GPIO_INPUT);
+"72
+[e ( _GPIO_dataDirectionPIN (3 , , . `E3075 2 -> -> 3 `i `uc . `E3071 0 ]
+[; ;Buttons.c: 73: }
+"73
 [e :UE 297 ]
 }
