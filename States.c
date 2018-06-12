@@ -54,10 +54,11 @@ const PhasePtrPowerFactor_Type phasesPowerFactor[2] =
 };
 
 /**Pointer to functions of Phase Angle*/
-const PhasePtrPhaseAngle_Type phasesPhaseAngle[3] =
+const PhasePtrPhaseAngle_Type phasesPhaseAngle[4] =
 {
 		{phPhaseAngle},
         {viPhaseAngle},
+        {THDNPhaseAngle},
 		{exitPhaseAngle}
 };
 

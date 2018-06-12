@@ -172,6 +172,7 @@ typedef enum
 {
     PHASES_PA,
     VI_PA,
+    THDN_PA,
     EXIT_PA
 }PhaseStatePhaseAngle_Type;
 
@@ -489,6 +490,16 @@ PhasePhaseAngle_Type phPhaseAngle(PhasePhaseAngle_Type data);
  	 \return Updated information
  */
 PhasePhaseAngle_Type viPhaseAngle(PhasePhaseAngle_Type data);
+
+/********************************************************************************************/
+/********************************************************************************************/
+/********************************************************************************************/
+/*!
+ 	 \brief	 State to exit and back to the menu
+ 	 \param[in]  data The current information
+ 	 \return Updated information
+ */
+PhasePhaseAngle_Type THDNPhaseAngle(PhasePhaseAngle_Type data);
 
 
 /********************************************************************************************/

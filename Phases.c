@@ -1425,11 +1425,11 @@ PhasePhaseAngle_Type viPhaseAngle(PhasePhaseAngle_Type data)
     if(getButton1() == 1)
     {
         currentPhaseAngle2.phaseState = EXIT_PA;
-
     }
     if(getButton2() == 1)
     {
-       	currentPhaseAngle2.phaseState = EXIT_PA;  
+       	currentPhaseAngle2.phaseState = THDN_PA;
+        LCDNokia_clear();
     }
     
     LCDNokia_gotoXY(0,1);
@@ -1440,6 +1440,67 @@ PhasePhaseAngle_Type viPhaseAngle(PhasePhaseAngle_Type data)
     LCDNokia_sendString(angle_VoltageP3);
 
 	return (currentPhaseAngle2); 
+}
+
+PhasePhaseAngle_Type THDNPhaseAngle(PhasePhaseAngle_Type data)
+{
+    static uint8_t counter = 0;
+    const uint8_t maxScreens = 1;
+    const uint8_t voltage1_THDN[] = "PA vTHDN: ";
+    const uint8_t voltage2_THDN[] = "PB vTHDN: ";
+    const uint8_t voltage3_THDN[] = "PC vTHDN: ";
+
+    const uint8_t current1_THDN[] = "PA cTHDN: ";
+    const uint8_t current2_THDN[] = "PB cTHDN: ";
+    const uint8_t current3_THDN[] = "PC cTHDN: ";
+    
+    /**Create the variable with current data**/
+	static PhasePower1_Type currentPhaseAngle3;
+    
+    /**Set with the current state and phase**/
+	currentPhaseAngle3.phaseState = THDN_PA;
+	currentPhaseAngle3.stateMain = data.stateMain;
+    
+    if(getButton1() == 1)
+    {
+        currentPhaseAngle3.phaseState = EXIT_PA;
+
+    }
+    if(getButton2() == 1)
+    {
+       	currentPhaseAngle3.phaseState = EXIT_PA;  
+    }
+    if(getButton3() == 1)
+    {
+        counter++;
+        LCDNokia_clear();
+        if(counter > maxScreens)
+        {
+            counter = 0;
+        }
+    }
+    switch(counter)
+    {
+        case 0:
+            LCDNokia_gotoXY(0,1);
+            LCDNokia_sendString(voltage1_THDN);
+            LCDNokia_gotoXY(0,2);
+            LCDNokia_sendString(voltage2_THDN);
+            LCDNokia_gotoXY(0,3);
+            LCDNokia_sendString(voltage3_THDN);
+            break;
+        case 1:
+            LCDNokia_gotoXY(0,1);
+            LCDNokia_sendString(current1_THDN);
+            LCDNokia_gotoXY(0,2);
+            LCDNokia_sendString(current2_THDN);
+            LCDNokia_gotoXY(0,3);
+            LCDNokia_sendString(current3_THDN);
+            break;
+        default:
+            break;
+    }
+    return (currentPhaseAngle3);
 }
 
 PhasePhaseAngle_Type exitPhaseAngle(PhasePhaseAngle_Type data)
