@@ -87,7 +87,7 @@ PhaseMainMenu_Type viewMenu(PhaseMainMenu_Type data)
     const uint8_t maxScreens = 7;
     const uint8_t string_Energy[] = "Energy";
     
-    const uint8_t string1_Power1[] = "Active Reactiva";
+    const uint8_t string1_Power1[] = "Active Reactive";
     const uint8_t string2_Power1[] = "Apparent Power";
     
     const uint8_t string1_Power2[] = "Fundamental";
@@ -264,10 +264,6 @@ PhaseMainMenu_Type viewMenu(PhaseMainMenu_Type data)
         lockClear = 0;
         lockWrite = 0;
     }
-    
-	/**Set with the current state and phase**/
-	currentMainMenu3.phaseState = data.phaseState;
-    currentMainMenu3.stateMain = POWER_1;
 
 	return (currentMainMenu3);
 }
@@ -300,7 +296,7 @@ PhaseMainMenu_Type sendData(PhaseMainMenu_Type data)
     const uint8_t reactive_fp1[] = "Phase A Forward Reactive Energy = \t";
     const uint8_t reactive_fp2[] = "Phase B Forward Reactive Energy = \t";
     const uint8_t reactive_fp3[] = "Phase C Forward Reactive Energy = \t";
-    const uint8_t reactive_fTotal[] = "Total Active Energy = \t";
+    const uint8_t reactive_fTotal[] = "Total Forward Reactive Energy = \t";
     
     const uint8_t reactive_rp1[] = "Phase A Reverse Reactive Energy = \t";
     const uint8_t reactive_rp2[] = "Phase B Reverse Reactive Energy = \t";
@@ -635,10 +631,24 @@ PhaseMainMenu_Type sendData(PhaseMainMenu_Type data)
 PhaseEnergy_Type activeEnergy(PhaseEnergy_Type data)
 {
     static uint8_t counter = 0;
-    const uint8_t maxScreens = 4;
+    const uint8_t maxScreens = 3;
+    const uint8_t active_Forward1[] = "PA Forw Act: ";
+    const uint8_t active_Forward2[] = "PB Forw Act: ";
+    const uint8_t active_Forward3[] = "PC Forw Act: ";
+    
+    const uint8_t active_Reverse1[] = "PA Rev Act: ";
+    const uint8_t active_Reverse2[] = "PB Rev Act: ";
+    const uint8_t active_Reverse3[] = "PC Rev Act: ";
+    
+    const uint8_t active_Forward_Total[] = "Total Forw Act: ";
+    const uint8_t active_Reverse_Total[] = "Total Rev Act: ";
     
     /**Create the variable with current data**/
 	static PhasePower1_Type currentEnergy1;
+    
+    /**Set with the current state and phase**/
+	currentEnergy1.phaseState = ACTIVE_ENERGY;
+	currentEnergy1.stateMain = data.stateMain;
 
     if(getButton1() == 1)
     {
@@ -652,8 +662,9 @@ PhaseEnergy_Type activeEnergy(PhaseEnergy_Type data)
         }
     }
     if(getButton2() == 1)
-    {
-         
+    {        
+        currentEnergy1.phaseState = VIEW_MENU;
+        currentEnergy1.stateMain = MAIN_MENU;
     }
     if(getButton3() == 1)
     {
@@ -664,9 +675,33 @@ PhaseEnergy_Type activeEnergy(PhaseEnergy_Type data)
         }
     }
     
-	/**Set with the current state and phase**/
-	currentEnergy1.phaseState = VECTOR_POWER1;
-	currentEnergy1.stateMain = data.stateMain;
+    switch(counter)
+    {
+        case 0:
+            LCDNokia_gotoXY(0,1);
+            LCDNokia_sendString(active_Forward1);
+            LCDNokia_gotoXY(0,2);
+            LCDNokia_sendString(active_Forward2);
+            LCDNokia_gotoXY(0,3);
+            LCDNokia_sendString(active_Forward3);
+            break;
+        case 1:
+            LCDNokia_gotoXY(0,1);
+            LCDNokia_sendString(active_Reverse1);
+            LCDNokia_gotoXY(0,2);
+            LCDNokia_sendString(active_Reverse2);
+            LCDNokia_gotoXY(0,3);
+            LCDNokia_sendString(active_Reverse3);
+            break;
+        case 2:
+            LCDNokia_gotoXY(0,1);
+            LCDNokia_sendString(active_Forward_Total);
+            LCDNokia_gotoXY(0,2);
+            LCDNokia_sendString(active_Reverse_Total);
+            break;
+        default:
+            break;
+    }
 
 	return (currentEnergy1);
 }
@@ -674,10 +709,24 @@ PhaseEnergy_Type activeEnergy(PhaseEnergy_Type data)
 PhaseEnergy_Type reactiveEnergy(PhaseEnergy_Type data)
 {
     static uint8_t counter = 0;
-    const uint8_t maxScreens = 4;
+    const uint8_t maxScreens = 3;
+    const uint8_t reactive_Forward1[] = "PA Forw React: ";
+    const uint8_t reactive_Forward2[] = "PB Forw Reac: ";
+    const uint8_t reactive_Forward3[] = "PC Forw React: ";
+    
+    const uint8_t reactive_Reverse1[] = "PA Rev React: ";
+    const uint8_t reactive_Reverse2[] = "PB Rev React: ";
+    const uint8_t reactive_Reverse3[] = "PC Rev React: ";
+    
+    const uint8_t reactive_Forward_Total[] = "Total Forw React: ";
+    const uint8_t reactive_Reverse_Total[] = "Total Rev React: ";
     
     /**Create the variable with current data**/
 	static PhasePower1_Type currentEnergy2;
+    
+    /**Set with the current state and phase**/
+	currentEnergy2.phaseState = REACTIVE_ENERGY;
+	currentEnergy2.stateMain = data.stateMain;
 
     if(getButton1() == 1)
     {
@@ -692,7 +741,8 @@ PhaseEnergy_Type reactiveEnergy(PhaseEnergy_Type data)
     }
     if(getButton2() == 1)
     {
-         
+        currentEnergy2.phaseState = VIEW_MENU;
+        currentEnergy2.stateMain = MAIN_MENU;
     }
     if(getButton3() == 1)
     {
@@ -702,10 +752,33 @@ PhaseEnergy_Type reactiveEnergy(PhaseEnergy_Type data)
             counter = 0;
         }
     }
-    
-	/**Set with the current state and phase**/
-	currentEnergy2.phaseState = VECTOR_POWER1;
-	currentEnergy2.stateMain = data.stateMain;
+        switch(counter)
+    {
+        case 0:
+            LCDNokia_gotoXY(0,1);
+            LCDNokia_sendString(reactive_Forward1);
+            LCDNokia_gotoXY(0,2);
+            LCDNokia_sendString(reactive_Forward2);
+            LCDNokia_gotoXY(0,3);
+            LCDNokia_sendString(reactive_Forward3);
+            break;
+        case 1:
+            LCDNokia_gotoXY(0,1);
+            LCDNokia_sendString(reactive_Reverse1);
+            LCDNokia_gotoXY(0,2);
+            LCDNokia_sendString(reactive_Reverse2);
+            LCDNokia_gotoXY(0,3);
+            LCDNokia_sendString(reactive_Reverse3);
+            break;
+        case 2:
+            LCDNokia_gotoXY(0,1);
+            LCDNokia_sendString(reactive_Forward_Total);
+            LCDNokia_gotoXY(0,2);
+            LCDNokia_sendString(reactive_Reverse_Total);
+            break;
+        default:
+            break;
+    }
 
 	return (currentEnergy2);
 }
@@ -740,6 +813,13 @@ PhaseEnergy_Type apparentEnergy(PhaseEnergy_Type data)
         {
             counter = 0;
         }
+    }
+    
+    switch(counter)
+    {
+        case 0:
+            
+            break;
     }
 
 	/**Set with the current state and phase**/
