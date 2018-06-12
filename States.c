@@ -23,11 +23,10 @@ const PhasePtrEnergy_Type phasesEnergy[6] =
 };
 
 /**Pointer to functions of Power1*/
-const PhasePtrPower1_Type phasesPower1[4] =
+const PhasePtrPower1_Type phasesPower1[3] =
 {
 		{typesPower1},
 		{phPower1},
-		{vectorPower1},
 		{exitPower1}
 };
 

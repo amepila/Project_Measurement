@@ -68,7 +68,6 @@ typedef enum
 {
     TYPES_POWER1,
 	PHASES_POWER1,
-	VECTOR_POWER1,
 	EXIT_POWER1
 }PhaseStatePower1_Type;
 

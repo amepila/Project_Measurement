@@ -652,29 +652,22 @@ PhaseEnergy_Type activeEnergy(PhaseEnergy_Type data)
 
     if(getButton1() == 1)
     {
-        if(0 == counter)
-        {
-            counter = maxScreens;
-        }
-        else
-        {
-            counter--;
-        }
+        currentEnergy1.phaseState = EXIT_ENERGY;
     }
     if(getButton2() == 1)
     {        
-        currentEnergy1.phaseState = VIEW_MENU;
-        currentEnergy1.stateMain = MAIN_MENU;
+        currentEnergy1.phaseState = REACTIVE_ENERGY;
+        LCDNokia_clear();
     }
     if(getButton3() == 1)
     {
         counter++;
+        LCDNokia_clear();
         if(counter > maxScreens)
         {
             counter = 0;
         }
-    }
-    
+    }  
     switch(counter)
     {
         case 0:
@@ -730,29 +723,23 @@ PhaseEnergy_Type reactiveEnergy(PhaseEnergy_Type data)
 
     if(getButton1() == 1)
     {
-        if(0 == counter)
-        {
-            counter = maxScreens;
-        }
-        else
-        {
-            counter--;
-        }
+        currentEnergy2.phaseState = EXIT_ENERGY;
     }
     if(getButton2() == 1)
     {
-        currentEnergy2.phaseState = VIEW_MENU;
-        currentEnergy2.stateMain = MAIN_MENU;
+        currentEnergy2.phaseState = APPARENT_ENERGY;  
+        LCDNokia_clear();
     }
     if(getButton3() == 1)
     {
         counter++;
+        LCDNokia_clear();
         if(counter > maxScreens)
         {
             counter = 0;
         }
     }
-        switch(counter)
+    switch(counter)
     {
         case 0:
             LCDNokia_gotoXY(0,1);
@@ -786,45 +773,61 @@ PhaseEnergy_Type reactiveEnergy(PhaseEnergy_Type data)
 PhaseEnergy_Type apparentEnergy(PhaseEnergy_Type data)
 {
     static uint8_t counter = 0;
-    const uint8_t maxScreens = 4;
+    const uint8_t maxScreens = 1;
+    const uint8_t apparent_energyP1[] = "PA App: ";
+    const uint8_t apparent_energyP2[] = "PB App: ";
+    const uint8_t apparent_energyP3[] = "PC App: ";
     
+    const uint8_t apparentAri_energyTotal[] = "Total AriApp En: ";
+    const uint8_t apparentVec_energyTotal[] = "Total VecApp En: ";
+    const uint8_t apparentVec_powerTotal[] = "Total VectApp Pow: ";
+
     /**Create the variable with current data**/
 	static PhasePower1_Type currentEnergy3;
     
+    /**Set with the current state and phase**/
+	currentEnergy3.phaseState = APPARENT_ENERGY;
+	currentEnergy3.stateMain = data.stateMain;
+    
     if(getButton1() == 1)
     {
-        if(0 == counter)
-        {
-            counter = maxScreens;
-        }
-        else
-        {
-            counter--;
-        }
+        currentEnergy3.phaseState = EXIT_ENERGY;
     }
     if(getButton2() == 1)
     {
-         
+      	currentEnergy3.phaseState = FUNDAMENTAL_ENERGY;  
+        LCDNokia_clear();
     }
     if(getButton3() == 1)
     {
         counter++;
+        LCDNokia_clear();
         if(counter > maxScreens)
         {
             counter = 0;
         }
     }
-    
     switch(counter)
     {
         case 0:
-            
+            LCDNokia_gotoXY(0,1);
+            LCDNokia_sendString(apparent_energyP1);
+            LCDNokia_gotoXY(0,2);
+            LCDNokia_sendString(apparent_energyP2);
+            LCDNokia_gotoXY(0,3);
+            LCDNokia_sendString(apparent_energyP3);
+            break;
+        case 1:
+            LCDNokia_gotoXY(0,1);
+            LCDNokia_sendString(apparentAri_energyTotal);
+            LCDNokia_gotoXY(0,2);
+            LCDNokia_sendString(apparentVec_energyTotal);
+            LCDNokia_gotoXY(0,3);
+            LCDNokia_sendString(apparentVec_powerTotal);
+            break;
+        default:
             break;
     }
-
-	/**Set with the current state and phase**/
-	currentEnergy3.phaseState = VECTOR_POWER1;
-	currentEnergy3.stateMain = data.stateMain;
 
 	return (currentEnergy3);
 }
@@ -832,38 +835,70 @@ PhaseEnergy_Type apparentEnergy(PhaseEnergy_Type data)
 PhaseEnergy_Type fundamentalEnergy(PhaseEnergy_Type data)
 {
     static uint8_t counter = 0;
-    const uint8_t maxScreens = 4;
+    const uint8_t maxScreens = 2;
+    const uint8_t fund_ForwardP1[] = "PA ForwFund E: ";
+    const uint8_t fund_ForwardP2[] = "PB ForwFund E: ";
+    const uint8_t fund_ForwardP3[] = "PC ForwFund E: ";
     
+    const uint8_t fund_ReverseP1[] = "PA RevFund E: ";
+    const uint8_t fund_ReverseP2[] = "PB RevFund E: ";
+    const uint8_t fund_ReverseP3[] = "PC RevFund E: ";
+    
+    const uint8_t fund_ForwardTotal[] = "Total ForwFund E: ";
+    const uint8_t fund_ReverseTotal[] = "Total RevFund E: ";
+   
     /**Create the variable with current data**/
 	static PhasePower1_Type currentEnergy4;
+    
+    /**Set with the current state and phase**/
+	currentEnergy4.phaseState = FUNDAMENTAL_ENERGY;
+	currentEnergy4.stateMain = data.stateMain;
 
     if(getButton1() == 1)
     {
-        if(0 == counter)
-        {
-            counter = maxScreens;
-        }
-        else
-        {
-            counter--;
-        }
+        currentEnergy4.phaseState = EXIT_ENERGY;
     }
     if(getButton2() == 1)
     {
-         
+        currentEnergy4.phaseState = HARMONIC_ENERGY;
+        LCDNokia_clear();
     }
     if(getButton3() == 1)
     {
         counter++;
+        LCDNokia_clear();
         if(counter > maxScreens)
         {
             counter = 0;
         }
     }
-    
-	/**Set with the current state and phase**/
-	currentEnergy4.phaseState = VECTOR_POWER1;
-	currentEnergy4.stateMain = data.stateMain;
+    switch(counter)
+    {
+        case 0:
+            LCDNokia_gotoXY(0,1);
+            LCDNokia_sendString(fund_ForwardP1);
+            LCDNokia_gotoXY(0,2);
+            LCDNokia_sendString(fund_ForwardP2);
+            LCDNokia_gotoXY(0,3);
+            LCDNokia_sendString(fund_ForwardP3);
+            break;
+        case 1:
+            LCDNokia_gotoXY(0,1);
+            LCDNokia_sendString(fund_ReverseP1);
+            LCDNokia_gotoXY(0,2);
+            LCDNokia_sendString(fund_ReverseP2);
+            LCDNokia_gotoXY(0,3);
+            LCDNokia_sendString(fund_ReverseP3);
+            break;
+        case 2: 
+            LCDNokia_gotoXY(0,1);
+            LCDNokia_sendString(fund_ForwardTotal);
+            LCDNokia_gotoXY(0,2);
+            LCDNokia_sendString(fund_ReverseTotal);
+            break;
+        default:
+            break;
+    }
 
 	return (currentEnergy4);
 }
@@ -871,39 +906,69 @@ PhaseEnergy_Type fundamentalEnergy(PhaseEnergy_Type data)
 PhaseEnergy_Type harmonicEnergy(PhaseEnergy_Type data)
 {
     static uint8_t counter = 0;
-    const uint8_t maxScreens = 4;
+    const uint8_t maxScreens = 2;
+    const uint8_t harmonic_ForwardP1[] = "PA ForwHE: ";
+    const uint8_t harmonic_ForwardP2[] = "PB ForwHE: ";
+    const uint8_t harmonic_ForwardP3[] = "PC ForwHE: ";
     
+    const uint8_t harmonic_ReverseP1[] = "PA RevHE: ";
+    const uint8_t harmonic_ReverseP2[] = "PB RevHE: ";
+    const uint8_t harmonic_ReverseP3[] = "PC RevHE: ";
+  
+    const uint8_t harmonic_ForwardTotal[] = "Total ForwHE: ";
+    const uint8_t harmonic_ReverseTotal[] = "Total RevHE: ";
+
     /**Create the variable with current data**/
 	static PhasePower1_Type currentEnergy5;
 
+    /**Set with the current state and phase**/
+	currentEnergy5.phaseState = HARMONIC_ENERGY;
+	currentEnergy5.stateMain = data.stateMain;
+    
     if(getButton1() == 1)
     {
-        if(0 == counter)
-        {
-            counter = maxScreens;
-        }
-        else
-        {
-            counter--;
-        }
+        currentEnergy5.phaseState = EXIT_ENERGY;
     }
     if(getButton2() == 1)
     {
-         
+        currentEnergy5.phaseState = EXIT_ENERGY;
     }
     if(getButton3() == 1)
     {
         counter++;
+        LCDNokia_clear();
         if(counter > maxScreens)
         {
             counter = 0;
         }
     }
-    
-	/**Set with the current state and phase**/
-	currentEnergy5.phaseState = VECTOR_POWER1;
-	currentEnergy5.stateMain = data.stateMain;
-
+    switch(counter)
+    {
+        case 0:
+            LCDNokia_gotoXY(0,1);
+            LCDNokia_sendString(harmonic_ForwardP1);
+            LCDNokia_gotoXY(0,2);
+            LCDNokia_sendString(harmonic_ForwardP2);
+            LCDNokia_gotoXY(0,3);
+            LCDNokia_sendString(harmonic_ForwardP3);
+            break;
+        case 1:
+            LCDNokia_gotoXY(0,1);
+            LCDNokia_sendString(harmonic_ReverseP1);
+            LCDNokia_gotoXY(0,2);
+            LCDNokia_sendString(harmonic_ReverseP2);
+            LCDNokia_gotoXY(0,3);
+            LCDNokia_sendString(harmonic_ReverseP3);
+            break;
+        case 2: 
+            LCDNokia_gotoXY(0,1);
+            LCDNokia_sendString(harmonic_ForwardTotal);
+            LCDNokia_gotoXY(0,2);
+            LCDNokia_sendString(harmonic_ReverseTotal);
+            break;
+        default:
+            break;
+    }
 	return (currentEnergy5);
 }
 
@@ -912,9 +977,10 @@ PhaseEnergy_Type exitEnergy(PhaseEnergy_Type data)
     /**Create the variable with current data**/
 	static PhasePower1_Type currentEnergy6;
 
+    LCDNokia_clear();
 	/**Set with the current state and phase**/
-	currentEnergy6.phaseState = VECTOR_POWER1;
-	currentEnergy6.stateMain = data.stateMain;
+	currentEnergy6.phaseState = VIEW_MENU;
+	currentEnergy6.stateMain = MAIN_MENU;
 
 	return (currentEnergy6);
 }
@@ -922,115 +988,107 @@ PhaseEnergy_Type exitEnergy(PhaseEnergy_Type data)
 PhasePower1_Type typesPower1(PhasePower1_Type data)
 {
     static uint8_t counter = 0;
-    const uint8_t maxScreens = 4;
+    const uint8_t maxScreens = 2;
+    const uint8_t active_powerP1[] = "PA APow: ";
+    const uint8_t active_powerP2[] = "PB APow: ";
+    const uint8_t active_powerP3[] = "PC APow: ";;
+
+    const uint8_t reactive_powerP1[] = "PA RPow: ";
+    const uint8_t reactive_powerP2[] = "PB RPow: ";
+    const uint8_t reactive_powerP3[] = "PC RPow: ";
+    
+    const uint8_t apparent_powerP1[] = "PA APPow: ";
+    const uint8_t apparent_powerP2[] = "PB APPow: ";
+    const uint8_t apparent_powerP3[] = "PC APPow: ";
+
     /**Create the variable with current data**/
 	static PhasePower1_Type currentPower1_1;
 
+    /**Set with the current state and phase**/
+	currentPower1_1.phaseState = TYPES_POWER1;
+	currentPower1_1.stateMain = data.stateMain;
+    
     if(getButton1() == 1)
     {
-        if(0 == counter)
-        {
-            counter = maxScreens;
-        }
-        else
-        {
-            counter--;
-        }
+        currentPower1_1.phaseState = EXIT_POWER1;
     }
     if(getButton2() == 1)
     {
-         
+        currentPower1_1.phaseState = PHASES_POWER1;
+        LCDNokia_clear();
     }
     if(getButton3() == 1)
     {
         counter++;
+        LCDNokia_clear();
         if(counter > maxScreens)
         {
             counter = 0;
         }
     }
-    
-	/**Set with the current state and phase**/
-	currentPower1_1.phaseState = PHASES_POWER1;
-	currentPower1_1.stateMain = data.stateMain;
-
+    switch(counter)
+    {
+        case 0:
+            LCDNokia_gotoXY(0,1);
+            LCDNokia_sendString(active_powerP1);
+            LCDNokia_gotoXY(0,2);
+            LCDNokia_sendString(active_powerP2);
+            LCDNokia_gotoXY(0,3);
+            LCDNokia_sendString(active_powerP3);
+            break;
+        case 1:
+            LCDNokia_gotoXY(0,1);
+            LCDNokia_sendString(reactive_powerP1);
+            LCDNokia_gotoXY(0,2);
+            LCDNokia_sendString(reactive_powerP2);
+            LCDNokia_gotoXY(0,3);
+            LCDNokia_sendString(reactive_powerP3);
+            break;
+        case 2: 
+            LCDNokia_gotoXY(0,1);
+            LCDNokia_sendString(apparent_powerP1);
+            LCDNokia_gotoXY(0,2);
+            LCDNokia_sendString(apparent_powerP2);
+            LCDNokia_gotoXY(0,3);
+            LCDNokia_sendString(apparent_powerP3);
+            break;
+        default:
+            break;
+    }
 	return (currentPower1_1);
 }
 
 PhasePower1_Type phPower1(PhasePower1_Type data)
 {
-    static uint8_t counter = 0;
-    const uint8_t maxScreens = 4;
+    const uint8_t total_active_power[] = "Total APow: ";
+    const uint8_t total_reactive_power[] = "Total RPow: ";
+    const uint8_t total_apparent_power[] = "Total APPow: ";
+    
     /**Create the variable with current data**/
 	static PhasePower1_Type currentPower1_2;
 
+    /**Set with the current state and phase**/
+	currentPower1_2.phaseState = PHASES_POWER1;
+	currentPower1_2.stateMain = data.stateMain;
+    
     if(getButton1() == 1)
     {
-        if(0 == counter)
-        {
-            counter = maxScreens;
-        }
-        else
-        {
-            counter--;
-        }
+        currentPower1_2.phaseState = EXIT_POWER1;
     }
     if(getButton2() == 1)
     {
-         
-    }
-    if(getButton3() == 1)
-    {
-        counter++;
-        if(counter > maxScreens)
-        {
-            counter = 0;
-        }
+        currentPower1_2.phaseState = VECTOR_POWER1;
+        LCDNokia_clear();
     }
 
-	/**Set with the current state and phase**/
-	currentPower1_2.phaseState = VECTOR_POWER1;
-	currentPower1_2.stateMain = data.stateMain;
+    LCDNokia_gotoXY(0,1);
+    LCDNokia_sendString(total_active_power);
+    LCDNokia_gotoXY(0,2);
+    LCDNokia_sendString(total_reactive_power);
+    LCDNokia_gotoXY(0,3);
+    LCDNokia_sendString(total_apparent_power);
 
 	return (currentPower1_2);
-}
-
-PhasePower1_Type vectorPower1(PhasePower1_Type data)
-{
-    static uint8_t counter = 0;
-    const uint8_t maxScreens = 4;
-    /**Create the variable with current data**/
-	static PhasePower1_Type currentPower1_3;
-
-    if(getButton1() == 1)
-    {
-        if(0 == counter)
-        {
-            counter = maxScreens;
-        }
-        else
-        {
-            counter--;
-        }
-    }
-    if(getButton2() == 1)
-    {
-         
-    }
-    if(getButton3() == 1)
-    {
-        counter++;
-        if(counter > maxScreens)
-        {
-            counter = 0;
-        }
-    }
-
-	/**Set with the current state and phase**/
-	currentPower1_3.phaseState = EXIT_POWER1;
-	currentPower1_3.stateMain = data.stateMain;
-
-	return (currentPower1_3);
 }
 
 PhasePower1_Type exitPower1(PhasePower1_Type data)
@@ -1038,6 +1096,7 @@ PhasePower1_Type exitPower1(PhasePower1_Type data)
     /**Create the variable with current data**/
 	static PhasePower1_Type currentPower1_4;
 
+    LCDNokia_clear();
 	/**Set with the current state and phase**/
 	currentPower1_4.phaseState = data.phaseState;
 	currentPower1_4.stateMain = data.stateMain;
@@ -1048,76 +1107,89 @@ PhasePower1_Type exitPower1(PhasePower1_Type data)
 PhasePower2_Type fhPower2(PhasePower2_Type data)
 {
     static uint8_t counter = 0;
-    const uint8_t maxScreens = 4;
+    const uint8_t maxScreens = 1;
+    const uint8_t fundamental_PowerP1[] = "PA FPow: ";
+    const uint8_t fundamental_PowerP2[] = "PB FPow: ";
+    const uint8_t fundamental_PowerP3[] = "PC FPow: ";
+ 
+    const uint8_t harmonic_PowerP1[] = "PA HPow: ";
+    const uint8_t harmonic_PowerP2[] = "PB HPow: ";
+    const uint8_t harmonic_PowerP3[] = "PC HPow: ";
+
     /**Create the variable with current data**/
 	static PhasePower1_Type currentPower2_1;
 
+    /**Set with the current state and phase**/
+	currentPower2_1.phaseState = FH_POWER2;
+	currentPower2_1.stateMain = data.stateMain;
+    
     if(getButton1() == 1)
     {
-        if(0 == counter)
-        {
-            counter = maxScreens;
-        }
-        else
-        {
-            counter--;
-        }
+        currentPower2_1.phaseState = EXIT_POWER2;
     }
     if(getButton2() == 1)
     {
-         
+        currentPower2_1.phaseState = PHASES_POWER2;
+        LCDNokia_clear();
     }
     if(getButton3() == 1)
     {
         counter++;
+        LCDNokia_clear();
         if(counter > maxScreens)
         {
             counter = 0;
         }
     }
-
-	/**Set with the current state and phase**/
-	currentPower2_1.phaseState = PHASES_POWER2;
-	currentPower2_1.stateMain = data.stateMain;
-
+    switch(counter)
+    {
+        case 0:
+            LCDNokia_gotoXY(0,1);
+            LCDNokia_sendString(fundamental_PowerP1);
+            LCDNokia_gotoXY(0,2);
+            LCDNokia_sendString(fundamental_PowerP2);
+            LCDNokia_gotoXY(0,3);
+            LCDNokia_sendString(fundamental_PowerP3);
+            break;
+        case 1:
+            LCDNokia_gotoXY(0,1);
+            LCDNokia_sendString(harmonic_PowerP1);
+            LCDNokia_gotoXY(0,2);
+            LCDNokia_sendString(harmonic_PowerP2);
+            LCDNokia_gotoXY(0,3);
+            LCDNokia_sendString(harmonic_PowerP3);
+            break;
+        default:
+            break;
+    }
 	return (currentPower2_1);
 }
 
 PhasePower2_Type phPower2(PhasePower2_Type data)
-{
-    static uint8_t counter = 0;
-    const uint8_t maxScreens = 4;
+{    
+    const uint8_t fundamental_Total_Power[] = "Total FPow: ";
+    const uint8_t harmonic_Total_Power[] = "Total HPow: ";
+  
     /**Create the variable with current data**/
 	static PhasePower1_Type currentPower2_2;
 
+	/**Set with the current state and phase**/
+	currentPower2_2.phaseState = PHASES_POWER2;
+	currentPower2_2.stateMain = data.stateMain;
+    
     if(getButton1() == 1)
     {
-        if(0 == counter)
-        {
-            counter = maxScreens;
-        }
-        else
-        {
-            counter--;
-        }
+        currentPower2_2.phaseState = EXIT_POWER2;
     }
     if(getButton2() == 1)
     {
-         
+        currentPower2_2.phaseState = EXIT_POWER2;
     }
-    if(getButton3() == 1)
-    {
-        counter++;
-        if(counter > maxScreens)
-        {
-            counter = 0;
-        }
-    }
-
-	/**Set with the current state and phase**/
-	currentPower2_2.phaseState = EXIT_POWER2;
-	currentPower2_2.stateMain = data.stateMain;
-
+    LCDNokia_gotoXY(0,1);
+    LCDNokia_sendString(fundamental_Total_Power);
+    LCDNokia_gotoXY(0,2);
+    LCDNokia_sendString(harmonic_Total_Power);
+    
 	return (currentPower2_2);
 }
 
@@ -1126,6 +1198,7 @@ PhasePower2_Type exitPower2(PhasePower2_Type data)
     /**Create the variable with current data**/
 	static PhasePower2_Type currentPower2_3;
 
+    LCDNokia_clear();
 	/**Set with the current state and phase**/
 	currentPower2_3.phaseState = data.phaseState;
 	currentPower2_3.stateMain = data.stateMain;
@@ -1136,76 +1209,90 @@ PhasePower2_Type exitPower2(PhasePower2_Type data)
 PhaseRmsVI_Type phRmsVI(PhaseRmsVI_Type data)
 {
     static uint8_t counter = 0;
-    const uint8_t maxScreens = 4;
+    const uint8_t maxScreens = 1;
+    const uint8_t voltage1_RMS[] = "PA VRMS: ";
+    const uint8_t voltage2_RMS[] = "PB VRMS: ";
+    const uint8_t voltage3_RMS[] = "PC VRMS: ";
+
+    const uint8_t current1_RMS[] = "PA CRMS: ";
+    const uint8_t current2_RMS[] = "PB CRMS: ";
+    const uint8_t current3_RMS[] = "PC CRMS: ";
+    
     /**Create the variable with current data**/
 	static PhasePower1_Type currentRms1;
 
+    /**Set with the current state and phase**/
+	currentRms1.phaseState = PHASES_RMSVI;
+	currentRms1.stateMain = data.stateMain;
+    
     if(getButton1() == 1)
     {
-        if(0 == counter)
-        {
-            counter = maxScreens;
-        }
-        else
-        {
-            counter--;
-        }
+        currentRms1.phaseState = EXIT_RMSVI;
     }
     if(getButton2() == 1)
     {
-         
+        currentRms1.phaseState = NEUTRAL_RMSVI;
+        LCDNokia_clear();
     }
     if(getButton3() == 1)
     {
         counter++;
+        LCDNokia_clear();
         if(counter > maxScreens)
         {
             counter = 0;
         }
     }
-
-	/**Set with the current state and phase**/
-	currentRms1.phaseState = NEUTRAL_RMSVI;
-	currentRms1.stateMain = data.stateMain;
-
+    switch(counter)
+    {
+        case 0:
+            LCDNokia_gotoXY(0,1);
+            LCDNokia_sendString(voltage1_RMS);
+            LCDNokia_gotoXY(0,2);
+            LCDNokia_sendString(voltage2_RMS);
+            LCDNokia_gotoXY(0,3);
+            LCDNokia_sendString(voltage3_RMS);
+            break;
+        case 1:
+            LCDNokia_gotoXY(0,1);
+            LCDNokia_sendString(current1_RMS);
+            LCDNokia_gotoXY(0,2);
+            LCDNokia_sendString(current2_RMS);
+            LCDNokia_gotoXY(0,3);
+            LCDNokia_sendString(current3_RMS);
+            break;
+        default:
+            break;
+    }
 	return (currentRms1);
 }
 
 PhaseRmsVI_Type neutralRmsVI(PhaseRmsVI_Type data)
 {
-    static uint8_t counter = 0;
-    const uint8_t maxScreens = 4;
+    const uint8_t nline_calculated_RMS[] = "N CalCRMS: ";
+    const uint8_t nline_sampled_RMS[] = "N SamCRMS: ";
+
     /**Create the variable with current data**/
 	static PhasePower1_Type currentRms2;
 
+    /**Set with the current state and phase**/
+	currentRms2.phaseState = NEUTRAL_RMSVI;
+	currentRms2.stateMain = data.stateMain;
+    
     if(getButton1() == 1)
     {
-        if(0 == counter)
-        {
-            counter = maxScreens;
-        }
-        else
-        {
-            counter--;
-        }
+       currentRms2.phaseState = EXIT_RMSVI;
+       
     }
     if(getButton2() == 1)
     {
-         
+       currentRms2.phaseState = EXIT_RMSVI;
     }
-    if(getButton3() == 1)
-    {
-        counter++;
-        if(counter > maxScreens)
-        {
-            counter = 0;
-        }
-    }
-
-	/**Set with the current state and phase**/
-	currentRms2.phaseState = EXIT_RMSVI;
-	currentRms2.stateMain = data.stateMain;
-
+    LCDNokia_gotoXY(0,1);
+    LCDNokia_sendString(nline_calculated_RMS);
+    LCDNokia_gotoXY(0,2);
+    LCDNokia_sendString(nline_sampled_RMS);
+    
 	return (currentRms2);
 }
 
@@ -1214,6 +1301,7 @@ PhaseRmsVI_Type exitRmsVI(PhaseRmsVI_Type data)
     /**Create the variable with current data**/
 	static PhaseRmsVI_Type currentRms3;
 
+    LCDNokia_clear();
 	/**Set with the current state and phase**/
 	currentRms3.phaseState = data.phaseState;
 	currentRms3.stateMain = data.stateMain;
@@ -1224,38 +1312,54 @@ PhaseRmsVI_Type exitRmsVI(PhaseRmsVI_Type data)
 PhasePowerFactor_Type phPowerFactor(PhasePowerFactor_Type data)
 {
     static uint8_t counter = 0;
-    const uint8_t maxScreens = 4;
+    const uint8_t maxScreens = 1;
+    const uint8_t factor_powerP1[] = "PA PF: ";
+    const uint8_t factor_powerP2[] = "PB PF: ";
+    const uint8_t factor_powerP3[] = "PC PF: ";
+    
+    const uint8_t total_factor_power[] = "Total PF: ";
+   
     /**Create the variable with current data**/
 	static PhasePower1_Type currentPowerFactor1;
 
+	/**Set with the current state and phase**/
+	currentPowerFactor1.phaseState = PHASES_PF;
+	currentPowerFactor1.stateMain = data.stateMain;
+    
     if(getButton1() == 1)
     {
-        if(0 == counter)
-        {
-            counter = maxScreens;
-        }
-        else
-        {
-            counter--;
-        }
+        currentPowerFactor1.phaseState = EXIT_PF;
     }
     if(getButton2() == 1)
     {
-         
+        currentPowerFactor1.phaseState = EXIT_PF;
     }
     if(getButton3() == 1)
     {
         counter++;
+        LCDNokia_clear();
         if(counter > maxScreens)
         {
             counter = 0;
         }
     }
-
-	/**Set with the current state and phase**/
-	currentPowerFactor1.phaseState = EXIT_PF;
-	currentPowerFactor1.stateMain = data.stateMain;
-
+    switch(counter)
+    {
+        case 0:
+            LCDNokia_gotoXY(0,1);
+            LCDNokia_sendString(factor_powerP1);
+            LCDNokia_gotoXY(0,2);
+            LCDNokia_sendString(factor_powerP2);
+            LCDNokia_gotoXY(0,3);
+            LCDNokia_sendString(factor_powerP3);
+            break;
+        case 1:
+            LCDNokia_gotoXY(0,1);
+            LCDNokia_sendString(total_factor_power);
+            break;
+        default:
+            break;
+    }
 	return (currentPowerFactor1);
 }
 
@@ -1264,6 +1368,7 @@ PhasePowerFactor_Type exitPowerFactor(PhasePowerFactor_Type data)
     /**Create the variable with current data**/
 	static PhasePowerFactor_Type currentPowerFactor2;
 
+    LCDNokia_clear();
 	/**Set with the current state and phase**/
 	currentPowerFactor2.phaseState = data.phaseState;
 	currentPowerFactor2.stateMain = data.stateMain;
@@ -1273,76 +1378,66 @@ PhasePowerFactor_Type exitPowerFactor(PhasePowerFactor_Type data)
 
 PhasePhaseAngle_Type phPhaseAngle(PhasePhaseAngle_Type data)
 {
-    static uint8_t counter = 0;
-    const uint8_t maxScreens = 4;
+    const uint8_t anglePhase1[] = "PA phA: ";
+    const uint8_t anglePhase2[] = "PB phA: ";
+    const uint8_t anglePhase3[] = "PC phA: ";
+
     /**Create the variable with current data**/
 	static PhasePower1_Type currentPhaseAngle1;
 
+    /**Set with the current state and phase**/
+	currentPhaseAngle1.phaseState = PHASES_PA;
+	currentPhaseAngle1.stateMain = data.stateMain;
+    
     if(getButton1() == 1)
     {
-        if(0 == counter)
-        {
-            counter = maxScreens;
-        }
-        else
-        {
-            counter--;
-        }
+        currentPhaseAngle1.phaseState = EXIT_PA;
     }
     if(getButton2() == 1)
     {
-         
-    }
-    if(getButton3() == 1)
-    {
-        counter++;
-        if(counter > maxScreens)
-        {
-            counter = 0;
-        }
+        currentPhaseAngle1.phaseState = VI_PA;
+        LCDNokia_clear();
     }
 
-	/**Set with the current state and phase**/
-	currentPhaseAngle1.phaseState = VI_PA;
-	currentPhaseAngle1.stateMain = data.stateMain;
+    LCDNokia_gotoXY(0,1);
+    LCDNokia_sendString(anglePhase1);
+    LCDNokia_gotoXY(0,2);
+    LCDNokia_sendString(anglePhase2);
+    LCDNokia_gotoXY(0,3);
+    LCDNokia_sendString(anglePhase3);
 
 	return (currentPhaseAngle1);
 }
 
 PhasePhaseAngle_Type viPhaseAngle(PhasePhaseAngle_Type data)
 {
-    static uint8_t counter = 0;
-    const uint8_t maxScreens = 4;
+    const uint8_t angle_VoltageP1[] = "PA VphA: ";
+    const uint8_t angle_VoltageP2[] = "PB VphA: ";
+    const uint8_t angle_VoltageP3[] = "PC VphA: ";
+    
     /**Create the variable with current data**/
 	static PhasePower1_Type currentPhaseAngle2;
 
+    /**Set with the current state and phase**/
+	currentPhaseAngle2.phaseState = VI_PA;
+	currentPhaseAngle2.stateMain = data.stateMain;
+    
     if(getButton1() == 1)
     {
-        if(0 == counter)
-        {
-            counter = maxScreens;
-        }
-        else
-        {
-            counter--;
-        }
+        currentPhaseAngle2.phaseState = EXIT_PA;
+
     }
     if(getButton2() == 1)
     {
-         
+       	currentPhaseAngle2.phaseState = EXIT_PA;  
     }
-    if(getButton3() == 1)
-    {
-        counter++;
-        if(counter > maxScreens)
-        {
-            counter = 0;
-        }
-    }
-
-	/**Set with the current state and phase**/
-	currentPhaseAngle2.phaseState = EXIT_PA;
-	currentPhaseAngle2.stateMain = data.stateMain;
+    
+    LCDNokia_gotoXY(0,1);
+    LCDNokia_sendString(angle_VoltageP1);
+    LCDNokia_gotoXY(0,2);
+    LCDNokia_sendString(angle_VoltageP2);
+    LCDNokia_gotoXY(0,3);
+    LCDNokia_sendString(angle_VoltageP3);
 
 	return (currentPhaseAngle2); 
 }
@@ -1352,6 +1447,7 @@ PhasePhaseAngle_Type exitPhaseAngle(PhasePhaseAngle_Type data)
     /**Create the variable with current data**/
 	static PhasePhaseAngle_Type currentPhaseAngle3;
 
+    LCDNokia_clear();
 	/**Set with the current state and phase**/
 	currentPhaseAngle3.phaseState = data.phaseState;
 	currentPhaseAngle3.stateMain = data.stateMain;
@@ -1361,38 +1457,24 @@ PhasePhaseAngle_Type exitPhaseAngle(PhasePhaseAngle_Type data)
 
 PhaseFrequency_Type showFrequency(PhaseFrequency_Type data)
 {
-    static uint8_t counter = 0;
-    const uint8_t maxScreens = 4;
+    const uint8_t frequency[] = "Freq: ";
     /**Create the variable with current data**/
 	static PhasePower1_Type currentFrequency1;
-
+    
+	/**Set with the current state and phase**/
+	currentFrequency1.phaseState = SHOW_FREQUENCY;
+	currentFrequency1.stateMain = data.stateMain;
+    
     if(getButton1() == 1)
     {
-        if(0 == counter)
-        {
-            counter = maxScreens;
-        }
-        else
-        {
-            counter--;
-        }
+        currentFrequency1.phaseState = EXIT_FREQUENCY;
     }
     if(getButton2() == 1)
     {
-         
+        currentFrequency1.phaseState = EXIT_FREQUENCY;
     }
-    if(getButton3() == 1)
-    {
-        counter++;
-        if(counter > maxScreens)
-        {
-            counter = 0;
-        }
-    }
-
-	/**Set with the current state and phase**/
-	currentFrequency1.phaseState = EXIT_FREQUENCY;
-	currentFrequency1.stateMain = data.stateMain;
+    LCDNokia_gotoXY(0,1);
+    LCDNokia_sendString(frequency);
 
 	return (currentFrequency1);
 }
@@ -1402,6 +1484,7 @@ PhaseFrequency_Type exitFrequency(PhaseFrequency_Type data)
     /**Create the variable with current data**/
 	static PhaseFrequency_Type currentFrequency2;
 
+    LCDNokia_clear();
 	/**Set with the current state and phase**/
 	currentFrequency2.phaseState = data.phaseState;
 	currentFrequency2.stateMain = data.stateMain;
@@ -1411,39 +1494,26 @@ PhaseFrequency_Type exitFrequency(PhaseFrequency_Type data)
 
 PhaseTemperature_Type showTemperature(PhaseTemperature_Type data)
 {
-    static uint8_t counter = 0;
-    const uint8_t maxScreens = 4;
+    const uint8_t temperature[] = "Temp: ";
     /**Create the variable with current data**/
 	static PhasePower1_Type currentTemperature1;
+    
+    /**Set with the current state and phase**/
+	currentTemperature1.phaseState = SHOW_TEMPERATURE;
+	currentTemperature1.stateMain = data.stateMain;
 
     if(getButton1() == 1)
     {
-        if(0 == counter)
-        {
-            counter = maxScreens;
-        }
-        else
-        {
-            counter--;
-        }
+        currentTemperature1.phaseState = EXIT_TEMPERATURE;
     }
     if(getButton2() == 1)
     {
-         
-    }
-    if(getButton3() == 1)
-    {
-        counter++;
-        if(counter > maxScreens)
-        {
-            counter = 0;
-        }
+        currentTemperature1.phaseState = EXIT_TEMPERATURE;
     }
 
-	/**Set with the current state and phase**/
-	currentTemperature1.phaseState = EXIT_TEMPERATURE;
-	currentTemperature1.stateMain = data.stateMain;
-
+    LCDNokia_gotoXY(0,1);
+    LCDNokia_sendString(temperature);
+    
 	return (currentTemperature1);
 }
 
@@ -1452,6 +1522,7 @@ PhaseTemperature_Type exitTemperature(PhaseTemperature_Type data)
     /**Create the variable with current data**/
 	static PhaseTemperature_Type currentTemperature2;
 
+    LCDNokia_clear();
 	/**Set with the current state and phase**/
 	currentTemperature2.phaseState = data.phaseState;
 	currentTemperature2.stateMain = data.stateMain;
