@@ -12,6 +12,17 @@ const PhasePtrMainMenu_Type phasesMainMenu[4] =
 };
 
 /**Pointer to functions of Power1*/
+const PhasePtrEnergy_Type phasesEnergy[6] =
+{
+		{activeEnergy},
+		{reactiveEnergy},
+		{apparentEnergy},
+		{fundamentalEnergy},
+        {harmonicEnergy},
+        {exitEnergy}
+};
+
+/**Pointer to functions of Power1*/
 const PhasePtrPower1_Type phasesPower1[4] =
 {
 		{typesPower1},
@@ -80,6 +91,23 @@ States_MenuType stateMainMenu(void)
 	/**Verified if there a change flow of program**/
 	phase = phaseMain.phaseState;
 	return (phaseMain.stateMain);
+}
+
+States_MenuType stateEnergy(void)
+{
+	/**Initialization of state machine of Energy**/
+	static PhaseStateEnergy_Type phase = ACTIVE_ENERGY;
+	static PhaseEnergy_Type phaseEnergy;
+	PhaseEnergy_Type(*energyFunctions)(PhaseEnergy_Type);
+	phaseEnergy.stateMain = ENERGY;
+
+	/**Run the state machine and update the state**/
+	energyFunctions = phasesEnergy[phase].PhaseEnergy;
+	phaseEnergy = energyFunctions(phaseEnergy);
+
+	/**Verified if there a change flow of program**/
+	phase = phaseEnergy.phaseState;
+	return (phaseEnergy.stateMain);
 }
 
 States_MenuType statePower1(void)

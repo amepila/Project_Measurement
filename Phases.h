@@ -36,6 +36,36 @@ typedef const struct PhaseMainMenu
 
 typedef enum
 {
+    ACTIVE_ENERGY,
+	REACTIVE_ENERGY,
+	APPARENT_ENERGY,
+    FUNDAMENTAL_ENERGY,
+    HARMONIC_ENERGY,
+    EXIT_ENERGY        
+}PhaseStateEnergy_Type;
+
+typedef struct
+{
+    uint8_t dummy;
+	PhaseStateEnergy_Type phaseState;
+	States_MenuType stateMain;
+}PhaseEnergy_Type;
+
+typedef PhaseEnergy_Type(*fptrPhaseEnergy)(PhaseEnergy_Type);
+
+typedef const struct PhaseEnergy
+{
+	PhaseEnergy_Type(*PhaseEnergy)(PhaseEnergy_Type);
+}PhasePtrEnergy_Type;
+
+/**********************************************************/
+/***********************************************************/
+/**
+ * \brief This data type define the data type in MESSAGES
+ */
+
+typedef enum
+{
     TYPES_POWER1,
 	PHASES_POWER1,
 	VECTOR_POWER1,
@@ -247,6 +277,66 @@ PhaseMainMenu_Type viewMenu(PhaseMainMenu_Type data);
  	 \return Updated information
  */
 PhaseMainMenu_Type sendData(PhaseMainMenu_Type data);
+
+/********************************************************************************************/
+/********************************************************************************************/
+/********************************************************************************************/
+/*!
+ 	 \brief	 State to write the number
+ 	 \param[in]  data The current information
+ 	 \return Updated information
+ */
+PhaseEnergy_Type activeEnergy(PhaseEnergy_Type data);
+
+/********************************************************************************************/
+/********************************************************************************************/
+/********************************************************************************************/
+/*!
+ 	 \brief	 State to write the number
+ 	 \param[in]  data The current information
+ 	 \return Updated information
+ */
+PhaseEnergy_Type reactiveEnergy(PhaseEnergy_Type data);
+
+/********************************************************************************************/
+/********************************************************************************************/
+/********************************************************************************************/
+/*!
+ 	 \brief	 State to write the number
+ 	 \param[in]  data The current information
+ 	 \return Updated information
+ */
+PhaseEnergy_Type apparentEnergy(PhaseEnergy_Type data);
+
+/********************************************************************************************/
+/********************************************************************************************/
+/********************************************************************************************/
+/*!
+ 	 \brief	 State to write the number
+ 	 \param[in]  data The current information
+ 	 \return Updated information
+ */
+PhaseEnergy_Type fundamentalEnergy(PhaseEnergy_Type data);
+
+/********************************************************************************************/
+/********************************************************************************************/
+/********************************************************************************************/
+/*!
+ 	 \brief	 State to write the number
+ 	 \param[in]  data The current information
+ 	 \return Updated information
+ */
+PhaseEnergy_Type harmonicEnergy(PhaseEnergy_Type data);
+
+/********************************************************************************************/
+/********************************************************************************************/
+/********************************************************************************************/
+/*!
+ 	 \brief	 State to write the number
+ 	 \param[in]  data The current information
+ 	 \return Updated information
+ */
+PhaseEnergy_Type exitEnergy(PhaseEnergy_Type data);
 
 /********************************************************************************************/
 /********************************************************************************************/

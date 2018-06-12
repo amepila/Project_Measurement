@@ -74,9 +74,10 @@ const SPI_ConfigType SPI_Config =
 
 /**Simple machine state only change the tag**/
 
-const StateType StateProgram[8] =
+const StateType StateProgram[9] =
 {
 		{stateMainMenu},
+        {stateEnergy},
 		{statePower1},
 		{statePower2},
 		{stateRmsVI},
@@ -98,7 +99,6 @@ void main(void)
 	SPI_init(&SPI_Config);
     LCDNokia_init();
 	LCDNokia_clear();
-    //UART_init(BD_9600);
     ButtonInt_config();
     
     uint8_t test = 'o';

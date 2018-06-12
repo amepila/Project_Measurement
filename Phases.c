@@ -26,9 +26,9 @@ PhaseMainMenu_Type initialLoad(PhaseMainMenu_Type data)
 
 PhaseMainMenu_Type generalView(PhaseMainMenu_Type data)
 {
-    const uint8_t msgInitial1[] = "MEDICION DE";
-    const uint8_t msgInitial2[] = "TRIFASICO";
-    const uint8_t buttonRight[] = "Enviar";
+    const uint8_t msgInitial1[] = "Three Phase";
+    const uint8_t msgInitial2[] = "Measurement";
+    const uint8_t buttonRight[] = "Send";
     const uint8_t buttonLeft[] = "Menu";
     
     static uint8_t lockClear = 0;
@@ -84,29 +84,29 @@ PhaseMainMenu_Type generalView(PhaseMainMenu_Type data)
 
 PhaseMainMenu_Type viewMenu(PhaseMainMenu_Type data)
 {
-    const uint8_t string1_Power1[] = "Potencia Activa";
-    const uint8_t string2_Power1[] = "Reactiva, Aparente";
+    const uint8_t string1_Power1[] = "Active Reactiva";
+    const uint8_t string2_Power1[] = "Apparent Power";
     
-    const uint8_t string1_Power2[] = "Potencia";
-    const uint8_t string2_Power2[] = "Fundamental";
-    const uint8_t string3_Power2[] = "Armonica";
+    const uint8_t string1_Power2[] = "Fundamental";
+    const uint8_t string2_Power2[] = "Harmonic";
+    const uint8_t string3_Power2[] = "Power";
 
-    const uint8_t string1_RMS[] = "Voltage Corriente";
+    const uint8_t string1_RMS[] = "Voltage Current";
     const uint8_t string2_RMS[] = "RMS";
     
-    const uint8_t string1_PowerFactor[] = "Factor de";
-    const uint8_t string2_PowerFactor[] = "Potencia";
+    const uint8_t string1_PowerFactor[] = "Power";
+    const uint8_t string2_PowerFactor[] = "Factor";
     
-    const uint8_t string1_PhaseAngle[] = "Angulo de";
-    const uint8_t string2_PhaseAngle[] = "Fase";
+    const uint8_t string1_PhaseAngle[] = "Phase";
+    const uint8_t string2_PhaseAngle[] = "Angle";
     
-    const uint8_t string1_Frequency[] = "Frecuencia";
+    const uint8_t string1_Frequency[] = "Frequency";
     
-    const uint8_t string1_Temperature[] = "Temperatura";
+    const uint8_t string1_Temperature[] = "Temperature";
     
-    const uint8_t buttonRight[] = "D";
+    const uint8_t buttonRight[] = "R";
     const uint8_t buttonCenter[] = "E";
-    const uint8_t buttonLeft[] = "I";
+    const uint8_t buttonLeft[] = "L";
     
     static uint8_t lockClear = 0;
     static uint8_t lockWrite = 0;
@@ -624,10 +624,34 @@ PhaseMainMenu_Type sendData(PhaseMainMenu_Type data)
 
 PhasePower1_Type typesPower1(PhasePower1_Type data)
 {
+    static uint8_t counter = 0;
+    const uint8_t maxScreens = 4;
     /**Create the variable with current data**/
 	static PhasePower1_Type currentPower1_1;
 
-
+    if(getButton1() == 1)
+    {
+        if(0 == counter)
+        {
+            counter = maxScreens;
+        }
+        else
+        {
+            counter--;
+        }
+    }
+    if(getButton2() == 1)
+    {
+         
+    }
+    if(getButton3() == 1)
+    {
+        counter++;
+        if(counter > maxScreens)
+        {
+            counter = 0;
+        }
+    }
     
 	/**Set with the current state and phase**/
 	currentPower1_1.phaseState = PHASES_POWER1;
