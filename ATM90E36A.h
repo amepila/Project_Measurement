@@ -5,5 +5,8 @@
 
 void ATM_init(void);
 
+void ATM_calibration(void);
+
+
 #endif	
 
