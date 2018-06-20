@@ -3,9 +3,9 @@
 #include "UART.h"
 #include "GPIO.h"
 
-#define SPBRG_BAUDRATE_1200 (103)
-#define SPBRG_BAUDRATE_2400 (51)
-#define SPBRG_BAUDRATE_9600 (12)
+#define SPBRG_BAUDRATE_1200 (255)
+#define SPBRG_BAUDRATE_2400 (129)
+#define SPBRG_BAUDRATE_9600 (31)
 #define DELAY_UART          (1500)
 
 void UART_init(UART_BaudRateType baudRate)

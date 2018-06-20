@@ -9,10 +9,9 @@
 // 'C' source line config statements
 
 // CONFIG1H
-#pragma config OSC = IRCIO      // Oscillator Selection bits (Internal oscillator block, port function on RA6 and port function on RA7)
+#pragma config OSC = XT         // Oscillator Selection bits (XT oscillator)
 #pragma config FCMEN = ON       // Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor enabled)
 #pragma config IESO = ON        // Internal External Oscillator Switchover bit (Internal External Switchover mode enabled)
-
 // CONFIG2L
 #pragma config PWRTEN = OFF     // Power-up Timer Enable bit (PWRT disabled)
 #pragma config BOREN = ON       // Brown-out Reset Enable bits (Brown-out Reset enabled)
@@ -69,7 +68,7 @@ const SPI_ConfigType SPI_Config =
 {
 	SPI_LOW_POLARITY,	/**Low Polarity to SPI**/
 	SPI_LOW_PHASE,		/**Low Phase to SPI**/
-	SPI_SERIAL_CLK16     /**FOsc divided by 4**/
+	SPI_SERIAL_CLK64     /**FOsc divided by 4**/
 };
 
 /**Simple machine state only change the tag**/
@@ -94,7 +93,7 @@ void main(void)
 	States_MenuType(*mainFunctions)(void);
     
     /**Select the 8MHz as source clock*/
-    GPIO_sourceClock(CLK_8MHZ);
+    //GPIO_sourceClock(CLK_8MHZ);
     /**Configurations of devices**/
 	SPI_init(&SPI_Config);
     LCDNokia_init();
@@ -106,6 +105,7 @@ void main(void)
     
     for(;;)
     {
+
         LCDNokia_sendChar(test);
         //LCDNokia_sendString(arrayTest);
         delay(50000); 

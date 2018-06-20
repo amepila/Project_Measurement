@@ -6,8 +6,12 @@
 #define LOW_PART_16BITS     0x0F
 #define HIGH_PART_16BITS    0xF0
 #define NEXT_FRAME          8
-#define NUMBER_CONFIG_REG   10
+#define NOCONFIG_REG_CS0    10
+#define NOCONFIG_REG_CS3    14
 #define MOD_CS0             0x100
+#define MOD_CS3             0x00
+#define AV_SAMPLES_RMS      10
+#define SPR_LOW7BITS        7
 
 #define MC_HIGH             0x0861   /**test value*/
 #define MC_LOW              0x4C68  /**test value*/
@@ -49,6 +53,33 @@
 #define Q_PHASE_TH          0x39
 #define S_PHASE_TH          0x3A
 
+/**Measurement calibration registers*/
+#define UGAIN_A             0x61
+#define IGAIN_A             0x62
+#define UOFFSET_A           0x63
+#define IOFFSET_A           0x64
+#define UGAIN_B             0x65
+#define IGAIN_B             0x66
+#define UOFFSET_B           0x67
+#define IOFFSET_B           0x68
+#define UGAIN_C             0x69
+#define IGAIN_C             0x6A
+#define UOFFSET_C           0x6B
+#define IOFFSET_C           0x6C
+#define IGAIN_N             0x6D
+#define IOFFSET_N           0x6E
+
+/**Power Offset registers*/
+#define POFFSET_A           0x41
+#define QOFFSET_A           0x42
+#define POFFSET_B           0x43
+#define QOFFSET_B           0x44
+#define POFFSET_C           0x45
+#define QOFFSET_C           0x46
+#define POFFSET_AF          0x51
+#define POFFSET_BF          0x52
+#define POFFSET_CF          0x53
+
 typedef struct
 {
     uint8_t lowPart;
@@ -57,18 +88,33 @@ typedef struct
     uint16_t dummyHigh;
 } Data_TwoFrames;
 
+typedef struct
+{
+    uint16_t ugainAvg;
+    uint16_t igainAvg;
+    uint16_t uoffsetAvg;
+    uint16_t ioffsetAvg;
+} Data_VI_Avg;
+
+typedef struct
+{
+    uint16_t poffsetAvg;
+    uint16_t qoffsetAvg;
+    uint16_t pfoffsetAvg;
+} Data_Pow_Avg;
+
 static uint16_t calculate_CS0(void)
 {
     uint8_t counter;
     uint8_t lowCS0 = 0;
     uint8_t highCS0 = 0;
     uint16_t totalCS0 = 0;
-    uint16_t dummyLow[10];
-    uint16_t dummyHigh[10];
-    uint8_t lowPart[10];
-    uint8_t highPart[10];
+    uint16_t dummyLow[NOCONFIG_REG_CS0];
+    uint16_t dummyHigh[NOCONFIG_REG_CS0];
+    uint8_t lowPart[NOCONFIG_REG_CS0];
+    uint8_t highPart[NOCONFIG_REG_CS0];
     
-    for(counter = 0; counter < NUMBER_CONFIG_REG; counter++)
+    for(counter = 0; counter < NOCONFIG_REG_CS0; counter++)
     {
         switch(counter)
         {
@@ -123,7 +169,7 @@ static uint16_t calculate_CS0(void)
         highPart[counter] = (uint8_t)dummyHigh[counter];
     }
 
-    for(counter = 0; counter < (2*NUMBER_CONFIG_REG); counter++)
+    for(counter = 0; counter < (2*NOCONFIG_REG_CS0); counter++)
     {
         if(counter < 10)
         {
@@ -141,6 +187,92 @@ static uint16_t calculate_CS0(void)
     totalCS0 |= lowCS0;
 
     return (totalCS0);    
+}
+
+static uint16_t calculate_CS3(void)
+{
+    uint8_t counter;
+    uint8_t lowCS3 = 0;
+    uint8_t highCS3 = 0;
+    uint16_t totalCS3 = 0;
+    uint16_t dummyLow[NOCONFIG_REG_CS3];
+    uint16_t dummyHigh[NOCONFIG_REG_CS3];
+    uint8_t lowPart[NOCONFIG_REG_CS3];
+    uint8_t highPart[NOCONFIG_REG_CS3];
+    
+    for(counter = 0; counter < NOCONFIG_REG_CS3; counter++)
+    {
+        switch(counter)
+        {
+            case 0:
+                dummyLow[counter] = MC_HIGH;
+                dummyHigh[counter] = MC_HIGH;
+                break;
+            case 1: 
+                dummyLow[counter] = MC_LOW;
+                dummyHigh[counter] = MC_LOW;
+                break;
+            case 2: 
+                dummyLow[counter] = MMODE0_DATA;
+                dummyHigh[counter] = MMODE0_DATA;
+                break;
+            case 3:
+                dummyLow[counter] = MMODE1_DATA;
+                dummyHigh[counter] = MMODE1_DATA;
+                break;
+            case 4:
+                dummyLow[counter] = PSTART_TH;
+                dummyHigh[counter] = PSTART_TH;
+                break;
+            case 5:
+                dummyLow[counter] = QSTART_TH;
+                dummyHigh[counter] = QSTART_TH;
+                break;
+            case 6:
+                dummyLow[counter] = SSTART_TH;
+                dummyHigh[counter] = SSTART_TH;
+                break;
+            case 7:
+                dummyLow[counter] = PPHASE_TH;
+                dummyHigh[counter] = PPHASE_TH;
+                break;
+            case 8:
+                dummyLow[counter] = QPHASE_TH;
+                dummyHigh[counter] = QPHASE_TH;
+                break;
+            case 9:
+                dummyLow[counter] = SPHASE_TH;
+                dummyHigh[counter] = SPHASE_TH;
+                break;
+            default:
+                break;
+        }
+        
+        dummyLow[counter] &= LOW_PART_16BITS;
+        dummyHigh[counter] &= HIGH_PART_16BITS;
+        
+        lowPart[counter] = (uint8_t)dummyLow[counter];
+        highPart[counter] = (uint8_t)dummyHigh[counter];
+    }
+
+    for(counter = 0; counter < (2*NOCONFIG_REG_CS3); counter++)
+    {
+        if(counter < 10)
+        {
+            lowCS3 += highPart[counter];
+            highCS3 ^= highPart[counter];
+        }
+        else
+        {
+            lowCS3 += lowPart[counter];
+            highCS3 ^= lowPart[counter];
+        }
+    }
+    lowCS3 = lowCS3 % MOD_CS3;
+    totalCS3 |= (highCS3 << NEXT_FRAME);
+    totalCS3 |= lowCS3;
+
+    return (totalCS3);    
 }
 static void ATM_write(uint16_t register_add, uint16_t data)
 {
@@ -209,16 +341,20 @@ void ATM_init(void)
     GPIO_dataDirectionPIN(GPIO_B, 6, GPIO_OUTPUT);
     /**WarnOut pin*/
     GPIO_dataDirectionPIN(GPIO_B, 7, GPIO_INPUT);
+    
     /**IRQ0 pin*/
     GPIO_dataDirectionPIN(GPIO_C, 2, GPIO_INPUT);
     /**IRQ1 pin*/
     GPIO_dataDirectionPIN(GPIO_C, 1, GPIO_INPUT);
     /**ZX0 pin*/
     GPIO_dataDirectionPIN(GPIO_C, 0, GPIO_INPUT);
+    
     /**ZX1 pin*/
-    GPIO_dataDirectionPIN(GPIO_A, 6, GPIO_INPUT);
+    GPIO_dataDirectionPIN(GPIO_A, 2, GPIO_INPUT);
+    ANS2 = 0;
     /**ZX2 pin*/
-    GPIO_dataDirectionPIN(GPIO_A, 7, GPIO_INPUT);
+    GPIO_dataDirectionPIN(GPIO_A, 1, GPIO_INPUT);
+    ANS1 = 0;
     
     /**Power Mode: Normal*/
     GPIO_setPIN(GPIO_B, 5);
@@ -231,29 +367,229 @@ void ATM_init(void)
 void ATM_calibration(void)
 {
     uint16_t checksum0;
+    uint16_t checksum3;
+    uint8_t counter;
     
-    /**Start the calibration*/
-    ATM_write(CONFIG_START, CALIBRATION);
+    Data_VI_Avg phaseA = {0};
+    Data_VI_Avg phaseB = {0};
+    Data_VI_Avg phaseC = {0};
+    Data_VI_Avg phaseN = {0};
     
-    /**Start the Meter Constant*/
-    ATM_write(PL_CONSTH, MC_HIGH);
-    ATM_write(PL_CONSTL, MC_LOW);
+    Data_Pow_Avg phaseA_pow = {0};
+    Data_Pow_Avg phaseB_pow = {0};
+    Data_Pow_Avg phaseC_pow = {0};
+
+          
+    do
+    {
+        /**Start the calibration*/
+        ATM_write(CONFIG_START, CALIBRATION);
+
+        /**Start the Meter Constant*/
+        ATM_write(PL_CONSTH, MC_HIGH);
+        ATM_write(PL_CONSTL, MC_LOW);
+
+        /**Adjust the Meter Metering Config*/
+        ATM_write(MMODE_0, MMODE0_DATA);
+        ATM_write(MMODE_1, MMODE1_DATA);
+
+        /**Set the thresholds*/
+        ATM_write(P_START_TH, PSTART_TH);
+        ATM_write(Q_START_TH, QSTART_TH);
+        ATM_write(S_START_TH, SSTART_TH);
+        ATM_write(P_PHASE_TH, PPHASE_TH);
+        ATM_write(Q_PHASE_TH, QPHASE_TH);
+        ATM_write(S_PHASE_TH, SPHASE_TH);
+
+        /**Calculate the checksum 0*/
+        checksum0 = calculate_CS0();
+        ATM_write(CHECKSUM_0, checksum0);
+
+        /**Enable checksum checking*/
+        ATM_write(CONFIG_START, OPERATION);
+        
+        /**Check if there is a checksum error*/
+    }while(0 == PORTBbits.RB7);     
     
-    /**Adjust the Meter Metering Config*/
-    ATM_write(MMODE_0, MMODE0_DATA);
-    ATM_write(MMODE_1, MMODE1_DATA);
+    /**Start the measurement calibration registers*/
+    ATM_write(ADJ_START, CALIBRATION);
     
-    /**Set the thresholds*/
-    ATM_write(P_START_TH, PSTART_TH);
-    ATM_write(Q_START_TH, QSTART_TH);
-    ATM_write(S_START_TH, SSTART_TH);
-    ATM_write(P_PHASE_TH, PPHASE_TH);
-    ATM_write(Q_PHASE_TH, QPHASE_TH);
-    ATM_write(S_PHASE_TH, SPHASE_TH);
+    /**Get an average of offset registers of PHASE A*/
+    for(counter = 0; counter < AV_SAMPLES_RMS; counter++)
+    {
+        phaseA.ioffsetAvg += phaseA.ioffsetAvg;
+        phaseA.uoffsetAvg += phaseA.uoffsetAvg;
+        
+        phaseA.ioffsetAvg = ATM_read(IOFFSET_A);    
+        phaseA.uoffsetAvg = ATM_read(UOFFSET_A);
+    }
     
-    /**Calculate the checksum 0*/
-    checksum0 = calculate_CS0();
-    ATM_write(CHECKSUM_0, checksum0);
-  
+    /**Calculate the average of registers of PhaseA*/
+    phaseA.ioffsetAvg /= AV_SAMPLES_RMS;
+    phaseA.uoffsetAvg /= AV_SAMPLES_RMS;
+    
+    phaseA.ioffsetAvg = phaseA.ioffsetAvg >> SPR_LOW7BITS;
+    phaseA.uoffsetAvg = phaseA.uoffsetAvg >> SPR_LOW7BITS;
+    
+    phaseA.ioffsetAvg = ~phaseA.ioffsetAvg;
+    phaseA.uoffsetAvg = ~phaseA.uoffsetAvg;
+    
+    phaseA.ioffsetAvg += 1;
+    phaseA.uoffsetAvg += 1;
+    
+    ATM_write(IOFFSET_A, phaseA.ioffsetAvg);
+    ATM_write(UOFFSET_A, phaseA.uoffsetAvg);
+   
+    /**VOLTAGE/CURRENT OFFSET CALIBRATION*/
+    
+    /**Get an average of offset registers of PHASE B*/
+    for(counter = 0; counter < AV_SAMPLES_RMS; counter++)
+    {
+        phaseB.ioffsetAvg += phaseB.ioffsetAvg;
+        phaseB.uoffsetAvg += phaseB.uoffsetAvg;
+        
+        phaseB.ioffsetAvg = ATM_read(IOFFSET_B);    
+        phaseB.uoffsetAvg = ATM_read(UOFFSET_B);
+    }
+    
+    /**Calculate the average of registers of PhaseB*/
+    phaseB.ioffsetAvg /= AV_SAMPLES_RMS;
+    phaseB.uoffsetAvg /= AV_SAMPLES_RMS;
+    
+    /**Get an average of offset registers of PHASE C*/
+    for(counter = 0; counter < AV_SAMPLES_RMS; counter++)
+    {
+        phaseC.ioffsetAvg += phaseC.ioffsetAvg;
+        phaseC.uoffsetAvg += phaseC.uoffsetAvg;
+        
+        phaseC.ioffsetAvg = ATM_read(IOFFSET_C);    
+        phaseC.uoffsetAvg = ATM_read(UOFFSET_C);
+    }
+    
+    /**Calculate the average of registers of PhaseC*/
+    phaseC.ioffsetAvg /= AV_SAMPLES_RMS;
+    phaseC.uoffsetAvg /= AV_SAMPLES_RMS;
+    
+    /**Get an average of offset registers of PHASE N*/
+    for(counter = 0; counter < AV_SAMPLES_RMS; counter++)
+    {
+        phaseN.ioffsetAvg += phaseN.ioffsetAvg;
+
+        phaseN.ioffsetAvg = ATM_read(IOFFSET_C);    
+    }
+    
+    /**Calculate the average of registers of PhaseN*/
+    phaseN.ioffsetAvg /= AV_SAMPLES_RMS;
+    
+    
+    
+    /**POWER OFFSET CALIBRATION*/
+    
+    /**Get an average of offset registers of PHASE A*/
+    for(counter = 0; counter < AV_SAMPLES_RMS; counter++)
+    {
+        phaseA_pow.poffsetAvg += phaseA_pow.poffsetAvg;
+        phaseA_pow.qoffsetAvg += phaseA_pow.qoffsetAvg;
+        phaseA_pow.pfoffsetAvg += phaseA_pow.pfoffsetAvg;
+        
+        phaseA_pow.poffsetAvg = ATM_read(POFFSET_A);
+        phaseA_pow.qoffsetAvg = ATM_read(QOFFSET_A);
+        phaseA_pow.pfoffsetAvg = ATM_read(POFFSET_AF);
+    }
+    
+    /**Calculate the average of registers of PhaseA*/
+    phaseA_pow.poffsetAvg /= AV_SAMPLES_RMS;
+    phaseA_pow.qoffsetAvg /= AV_SAMPLES_RMS;
+    phaseA_pow.pfoffsetAvg /= AV_SAMPLES_RMS;
+    
+    /**Two's complement of registers*/
+    phaseA_pow.poffsetAvg = phaseA_pow.poffsetAvg >> SPR_LOW7BITS;
+    phaseA_pow.qoffsetAvg = phaseA_pow.qoffsetAvg >> SPR_LOW7BITS;
+    phaseA_pow.pfoffsetAvg = phaseA_pow.pfoffsetAvg >> SPR_LOW7BITS;
+    
+    phaseA_pow.poffsetAvg = ~phaseA_pow.poffsetAvg;
+    phaseA_pow.qoffsetAvg = ~phaseA_pow.qoffsetAvg;
+    phaseA_pow.pfoffsetAvg = ~phaseA_pow.pfoffsetAvg;
+    
+    phaseA_pow.poffsetAvg += 1;
+    phaseA_pow.qoffsetAvg += 1;
+    phaseA_pow.pfoffsetAvg += 1;
+    
+    /**Write the registers*/
+    ATM_write(POFFSET_A, phaseA_pow.poffsetAvg);
+    ATM_write(QOFFSET_A, phaseA_pow.qoffsetAvg); 
+    ATM_write(POFFSET_AF, phaseA_pow.pfoffsetAvg);    
+    
+    /**Get an average of offset registers of PHASE B*/
+    for(counter = 0; counter < AV_SAMPLES_RMS; counter++)
+    {
+        phaseB_pow.poffsetAvg += phaseB_pow.poffsetAvg;
+        phaseB_pow.qoffsetAvg += phaseB_pow.qoffsetAvg;
+        phaseB_pow.pfoffsetAvg += phaseB_pow.pfoffsetAvg;
+        
+        phaseB_pow.poffsetAvg = ATM_read(POFFSET_B);
+        phaseB_pow.qoffsetAvg = ATM_read(QOFFSET_B);
+        phaseB_pow.pfoffsetAvg = ATM_read(POFFSET_BF);
+    }
+    
+    /**Calculate the average of registers of PhaseA*/
+    phaseB_pow.poffsetAvg /= AV_SAMPLES_RMS;
+    phaseB_pow.qoffsetAvg /= AV_SAMPLES_RMS;
+    phaseB_pow.pfoffsetAvg /= AV_SAMPLES_RMS;
+    
+    /**Two's complement of registers*/
+    phaseB_pow.poffsetAvg = phaseB_pow.poffsetAvg >> SPR_LOW7BITS;
+    phaseB_pow.qoffsetAvg = phaseB_pow.qoffsetAvg >> SPR_LOW7BITS;
+    phaseB_pow.pfoffsetAvg = phaseB_pow.pfoffsetAvg >> SPR_LOW7BITS;
+    
+    phaseB_pow.poffsetAvg = ~phaseB_pow.poffsetAvg;
+    phaseB_pow.qoffsetAvg = ~phaseB_pow.qoffsetAvg;
+    phaseB_pow.pfoffsetAvg = ~phaseB_pow.pfoffsetAvg;
+    
+    phaseB_pow.poffsetAvg += 1;
+    phaseB_pow.qoffsetAvg += 1;
+    phaseB_pow.pfoffsetAvg += 1;
+    
+    /**Write the registers*/
+    ATM_write(POFFSET_B, phaseB_pow.poffsetAvg);
+    ATM_write(QOFFSET_B, phaseB_pow.qoffsetAvg); 
+    ATM_write(POFFSET_BF, phaseB_pow.pfoffsetAvg);    
+    
+    
+    /**Get an average of offset registers of PHASE C*/
+    for(counter = 0; counter < AV_SAMPLES_RMS; counter++)
+    {
+        phaseC_pow.poffsetAvg += phaseC_pow.poffsetAvg;
+        phaseC_pow.qoffsetAvg += phaseC_pow.qoffsetAvg;
+        phaseC_pow.pfoffsetAvg += phaseC_pow.pfoffsetAvg;
+        
+        phaseC_pow.poffsetAvg = ATM_read(POFFSET_C);
+        phaseC_pow.qoffsetAvg = ATM_read(QOFFSET_C);
+        phaseC_pow.pfoffsetAvg = ATM_read(POFFSET_CF);
+    }
+    
+    /**Calculate the average of registers of PhaseA*/
+    phaseC_pow.poffsetAvg /= AV_SAMPLES_RMS;
+    phaseC_pow.qoffsetAvg /= AV_SAMPLES_RMS;
+    phaseC_pow.pfoffsetAvg /= AV_SAMPLES_RMS;
+    
+    /**Two's complement of registers*/
+    phaseC_pow.poffsetAvg = phaseC_pow.poffsetAvg >> SPR_LOW7BITS;
+    phaseC_pow.qoffsetAvg = phaseC_pow.qoffsetAvg >> SPR_LOW7BITS;
+    phaseC_pow.pfoffsetAvg = phaseC_pow.pfoffsetAvg >> SPR_LOW7BITS;
+    
+    phaseC_pow.poffsetAvg = ~phaseC_pow.poffsetAvg;
+    phaseC_pow.qoffsetAvg = ~phaseC_pow.qoffsetAvg;
+    phaseC_pow.pfoffsetAvg = ~phaseC_pow.pfoffsetAvg;
+    
+    phaseC_pow.poffsetAvg += 1;
+    phaseC_pow.qoffsetAvg += 1;
+    phaseC_pow.pfoffsetAvg += 1;
+    
+    /**Write the registers*/
+    ATM_write(POFFSET_C, phaseC_pow.poffsetAvg);
+    ATM_write(QOFFSET_C, phaseC_pow.qoffsetAvg); 
+    ATM_write(POFFSET_CF, phaseC_pow.pfoffsetAvg);    
+    
 }
 
