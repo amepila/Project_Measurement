@@ -13,6 +13,9 @@
 #define AV_SAMPLES_RMS      10
 #define SPR_LOW7BITS        7
 #define SPR_LOW8BITS        8
+#define COMPLEMENTARY_EN    32768
+#define GPHASE_50HZ         3763.739F
+#define GPHASE_60HZ         3136.449F
 
 /**REFERENCE VOLTAGE/CURRENT */
 #define VOLTAGE_REF         220
@@ -100,6 +103,40 @@
 #define IRMS_BLSB           0xEE
 #define IRMS_CLSB           0xEF
 
+/**Energy metering calibration registers*/
+#define GAIN_A              0x47
+#define PHI_A               0x48
+#define GAIN_B              0x49
+#define PHI_B               0x4A
+#define GAIN_C              0x4B
+#define PHI_C               0x4C
+
+/**************************************************/
+/**Regular Energy Registers*/
+#define TOTAL_FORW_ACTIVE_ENERGY_ADR        0x80
+#define PHASE_A_FORW_ACTIVE_ENERGY_ADR      0x81
+#define PHASE_B_FORW_ACTIVE_ENERGY_ADR      0x82
+#define PHASE_C_FORW_ACTIVE_ENERGY_ADR      0x83
+#define TOTAL_REV_ACTIVE_ENERGY_ADR         0x84
+#define PHASE_A_REV_ACTIVE_ENERGY_ADR       0x85
+#define PHASE_B_REV_ACTIVE_ENERGY_ADR       0x86
+#define PHASE_C_REV_ACTIVE_ENERGY_ADR       0x87
+#define TOTAL_FORW_REACTIVE_ENERGY_ADR      0x88
+#define PHASE_A_FORW_REACTIVE_ENERGY_ADR    0x89
+#define PHASE_B_FORW_REACTIVE_ENERGY_ADR    0x8A
+#define PHASE_C_FORW_REACTIVE_ENERGY_ADR    0x8B
+#define TOTAL_REVERSE_REACTIVE_ENERGY_ADR   0x8C
+#define PHASE_A_REV_REACTIVE_ENERGY_ADR     0x8D
+#define PHASE_B_REV_REACTIVE_ENERGY_ADR     0x8E
+#define PHASE_C_REV_REACTIVE_ENERGY_ADR     0x8F
+#define TOTAL_ARIT_APPARENT_ENERGY_ADR      0x90
+#define PHASE_A_APPARENT_ENERGY_ADR         0x91
+#define PHASE_B_APPARENT_ENERGY_ADR         0x92
+#define PHASE_C_APPARENT_ENERGY_ADR         0x93
+#define TOTAL_VECT_APPARENT_ENERGY_ADR      0x94
+
+/**Fundamental/Harmonic Energy Register*/
+
 typedef struct
 {
     uint8_t lowPart;
@@ -128,6 +165,14 @@ typedef struct
     uint16_t qoffsetAvg;
     uint16_t pfoffsetAvg;
 } Data_Pow_Avg;
+
+typedef struct
+{
+    uint16_t gain;
+    uint16_t phaseAngle;
+    float dummy_Gain;
+    float dummy_Phi;
+} Data_Energy;
 
 static uint16_t calculate_CS0(void)
 {
@@ -368,19 +413,22 @@ void ATM_init(void)
     /**WarnOut pin*/
     GPIO_dataDirectionPIN(GPIO_B, 7, GPIO_INPUT);
     
-    /**IRQ0 pin*/
-    GPIO_dataDirectionPIN(GPIO_C, 2, GPIO_INPUT);
-    /**IRQ1 pin*/
-    GPIO_dataDirectionPIN(GPIO_C, 1, GPIO_INPUT);
     /**ZX0 pin*/
-    GPIO_dataDirectionPIN(GPIO_C, 0, GPIO_INPUT);
-    
+    GPIO_dataDirectionPIN(GPIO_C, 2, GPIO_INPUT);
     /**ZX1 pin*/
+    GPIO_dataDirectionPIN(GPIO_C, 1, GPIO_INPUT);
+    
+    /**CF1 pin*/
+    GPIO_dataDirectionPIN(GPIO_C, 0, GPIO_INPUT);
+    /**CF2 pin*/
     GPIO_dataDirectionPIN(GPIO_A, 2, GPIO_INPUT);
     ANS2 = 0;
-    /**ZX2 pin*/
+    /**CF3 pin*/
     GPIO_dataDirectionPIN(GPIO_A, 1, GPIO_INPUT);
     ANS1 = 0;
+    /**CF4 pin*/
+    GPIO_dataDirectionPIN(GPIO_A, 0, GPIO_INPUT);
+    ANS0 = 0;
     
     /**Power Mode: Normal*/
     GPIO_setPIN(GPIO_B, 5);
@@ -393,7 +441,10 @@ void ATM_init(void)
 void ATM_calibration(void)
 {
     uint16_t checksum0;
-    uint16_t checksum3;
+    float energy_error;
+    float energy_errorGain;
+    float phi_error;
+    float phi_errorPH;
     uint8_t counter;
     
     Data_VI_Avg phaseA = {0};
@@ -405,7 +456,10 @@ void ATM_calibration(void)
     Data_Pow_Avg phaseB_pow = {0};
     Data_Pow_Avg phaseC_pow = {0};
 
-          
+    Data_Energy phaseA_En = {0};
+    Data_Energy phaseB_En = {0};
+    Data_Energy phaseC_En = {0};
+    
     do
     {
         /**Start the calibration*/
@@ -505,10 +559,74 @@ void ATM_calibration(void)
     }
     
     /**Calculate the average of registers of PhaseN*/
-    phaseN.ioffsetAvg /= AV_SAMPLES_RMS;
+    phaseN.ioffsetAvg /= AV_SAMPLES_RMS;    
     
+    /**VOLTAGE/CURRENT GAIN CALIBRATION*/
+ 
+    /**Current gain calibration*/    
+    phaseA.irmsAvg = ATM_read(IRMS_A);
+    phaseB.irmsAvg = ATM_read(IRMS_B);
+    phaseC.irmsAvg = ATM_read(IRMS_C);
     
+    phaseA.irmsLSB = ATM_read(IRMS_ALSB);
+    phaseB.irmsLSB = ATM_read(IRMS_BLSB);
+    phaseC.irmsLSB = ATM_read(IRMS_CLSB); 
     
+    phaseA.irmsLSB = phaseA.irmsLSB >> NEXT_FRAME;
+    phaseB.irmsLSB = phaseB.irmsLSB >> NEXT_FRAME;
+    phaseC.irmsLSB = phaseC.irmsLSB >> NEXT_FRAME;
+    
+    /**Calculate the current gain per phase*/
+    phaseA.dummy_igain = ((float)phaseA.irmsAvg)*0.01;
+    phaseA.dummy_igain += (((float)phaseA.irmsLSB)*0.01)/256;
+    phaseA.dummy_igain = (CURRENT_REF/phaseA.dummy_igain)*30000;
+    phaseA.igainAvg = (uint16_t)phaseA.dummy_igain;
+    ATM_write(IGAIN_A, phaseA.igainAvg);
+    
+    phaseB.dummy_igain = ((float)phaseB.irmsAvg)*0.01;
+    phaseB.dummy_igain += (((float)phaseB.irmsLSB)*0.01)/256;
+    phaseB.dummy_igain = (CURRENT_REF/phaseB.dummy_igain)*30000;
+    phaseB.igainAvg = (uint16_t)phaseB.dummy_igain;
+    ATM_write(IGAIN_B, phaseB.igainAvg);
+    
+    phaseC.dummy_igain = ((float)phaseC.irmsAvg)*0.01;
+    phaseC.dummy_igain += (((float)phaseC.irmsLSB)*0.01)/256;
+    phaseC.dummy_igain = (CURRENT_REF/phaseC.dummy_igain)*30000;
+    phaseC.igainAvg = (uint16_t)phaseC.dummy_igain;
+    ATM_write(IGAIN_C, phaseC.igainAvg);
+    
+    /**Voltage gain calibration*/    
+    phaseA.urmsAvg = ATM_read(URMS_A);
+    phaseB.urmsAvg = ATM_read(URMS_B);
+    phaseC.urmsAvg = ATM_read(URMS_C);
+    
+    phaseA.urmsLSB = ATM_read(URMS_ALSB);
+    phaseB.urmsLSB = ATM_read(URMS_BLSB);
+    phaseC.urmsLSB = ATM_read(URMS_CLSB); 
+    
+    phaseA.urmsLSB = phaseA.urmsLSB >> NEXT_FRAME;
+    phaseB.urmsLSB = phaseB.urmsLSB >> NEXT_FRAME;
+    phaseC.urmsLSB = phaseC.urmsLSB >> NEXT_FRAME;
+    
+    /**Calculate the current gain per phase*/
+    phaseA.dummy_ugain = ((float)phaseA.urmsAvg)*0.01;
+    phaseA.dummy_ugain += (((float)phaseA.urmsLSB)*0.01)/256;
+    phaseA.dummy_ugain = (CURRENT_REF/phaseA.dummy_ugain)*52800;
+    phaseA.ugainAvg = (uint16_t)phaseA.dummy_ugain;
+    ATM_write(UGAIN_A, phaseA.ugainAvg);
+    
+    phaseB.dummy_ugain = ((float)phaseB.urmsAvg)*0.01;
+    phaseB.dummy_ugain += (((float)phaseB.urmsLSB)*0.01)/256;
+    phaseB.dummy_ugain = (CURRENT_REF/phaseB.dummy_ugain)*52800;
+    phaseB.ugainAvg = (uint16_t)phaseB.dummy_ugain;
+    ATM_write(UGAIN_B, phaseB.ugainAvg);
+    
+    phaseC.dummy_ugain = ((float)phaseC.urmsAvg)*0.01;
+    phaseC.dummy_ugain += (((float)phaseC.urmsLSB)*0.01)/256;
+    phaseC.dummy_ugain = (CURRENT_REF/phaseC.dummy_ugain)*52800;
+    phaseC.ugainAvg = (uint16_t)phaseC.dummy_ugain;
+    ATM_write(UGAIN_C, phaseC.ugainAvg);
+
     /**POWER OFFSET CALIBRATION*/
     
     /**Get an average of offset registers of PHASE A*/
@@ -644,75 +762,65 @@ void ATM_calibration(void)
     ATM_write(QOFFSET_C, phaseC_pow.qoffsetAvg); 
     ATM_write(POFFSET_CF, phaseC_pow.pfoffsetAvg);    
     
-    
-    /**VOLTAGE/CURRENT GAIN CALIBRATION*/
+    /**ENERGY GAIN CALIBRATION*/
  
-    /**Current gain calibration*/    
-    phaseA.irmsAvg = ATM_read(IRMS_A);
-    phaseB.irmsAvg = ATM_read(IRMS_B);
-    phaseC.irmsAvg = ATM_read(IRMS_C);
+    /**Calculate the energy error*/
+    energy_error = 0.1378;
+    energy_errorGain = energy_error/(1-energy_error);
     
-    phaseA.irmsLSB = ATM_read(IRMS_ALSB);
-    phaseB.irmsLSB = ATM_read(IRMS_BLSB);
-    phaseC.irmsLSB = ATM_read(IRMS_CLSB); 
+    /**PHASE A*/
+    /**Calculate the gain*/
+    phaseA_En.dummy_Gain = energy_errorGain * COMPLEMENTARY_EN;
+    phaseA_En.gain = (uint16_t)phaseA_En.dummy_Gain;
     
-    phaseA.irmsLSB = phaseA.irmsLSB >> NEXT_FRAME;
-    phaseB.irmsLSB = phaseB.irmsLSB >> NEXT_FRAME;
-    phaseC.irmsLSB = phaseC.irmsLSB >> NEXT_FRAME;
+    /**Write the gain into register*/
+    ATM_write(GAIN_A, phaseA_En.gain);
     
-    /**Calculate the current gain per phase*/
-    phaseA.dummy_igain = ((float)phaseA.irmsAvg)*0.01;
-    phaseA.dummy_igain += (((float)phaseA.irmsLSB)*0.01)/256;
-    phaseA.dummy_igain = (CURRENT_REF/phaseA.dummy_igain)*30000;
-    phaseA.igainAvg = (uint16_t)phaseA.dummy_igain;
-    ATM_write(IGAIN_A, phaseA.igainAvg);
+    /**PHASE B*/
     
-    phaseB.dummy_igain = ((float)phaseB.irmsAvg)*0.01;
-    phaseB.dummy_igain += (((float)phaseB.irmsLSB)*0.01)/256;
-    phaseB.dummy_igain = (CURRENT_REF/phaseB.dummy_igain)*30000;
-    phaseB.igainAvg = (uint16_t)phaseB.dummy_igain;
-    ATM_write(IGAIN_B, phaseB.igainAvg);
+    /**Calculate the gain*/
+    phaseB_En.dummy_Gain = energy_errorGain * COMPLEMENTARY_EN;
+    phaseB_En.gain = (uint16_t)phaseB_En.dummy_Gain;
     
-    phaseC.dummy_igain = ((float)phaseC.irmsAvg)*0.01;
-    phaseC.dummy_igain += (((float)phaseC.irmsLSB)*0.01)/256;
-    phaseC.dummy_igain = (CURRENT_REF/phaseC.dummy_igain)*30000;
-    phaseC.igainAvg = (uint16_t)phaseC.dummy_igain;
-    ATM_write(IGAIN_C, phaseC.igainAvg);
+    /**Write the gain into register*/
+    ATM_write(GAIN_B, phaseB_En.gain);
     
-    /**Voltage gain calibration*/    
-    phaseA.urmsAvg = ATM_read(URMS_A);
-    phaseB.urmsAvg = ATM_read(URMS_B);
-    phaseC.urmsAvg = ATM_read(URMS_C);
+    /**PHASE C*/
     
-    phaseA.urmsLSB = ATM_read(URMS_ALSB);
-    phaseB.urmsLSB = ATM_read(URMS_BLSB);
-    phaseC.urmsLSB = ATM_read(URMS_CLSB); 
+    /**Calculate the gain*/
+    phaseC_En.dummy_Gain = energy_errorGain * COMPLEMENTARY_EN;
+    phaseC_En.gain = (uint16_t)phaseC_En.dummy_Gain;
     
-    phaseA.urmsLSB = phaseA.urmsLSB >> NEXT_FRAME;
-    phaseB.urmsLSB = phaseB.urmsLSB >> NEXT_FRAME;
-    phaseC.urmsLSB = phaseC.urmsLSB >> NEXT_FRAME;
-    
-    /**Calculate the current gain per phase*/
-    phaseA.dummy_ugain = ((float)phaseA.urmsAvg)*0.01;
-    phaseA.dummy_ugain += (((float)phaseA.urmsLSB)*0.01)/256;
-    phaseA.dummy_ugain = (CURRENT_REF/phaseA.dummy_ugain)*52800;
-    phaseA.ugainAvg = (uint16_t)phaseA.dummy_ugain;
-    ATM_write(UGAIN_A, phaseA.ugainAvg);
-    
-    phaseB.dummy_ugain = ((float)phaseB.urmsAvg)*0.01;
-    phaseB.dummy_ugain += (((float)phaseB.urmsLSB)*0.01)/256;
-    phaseB.dummy_ugain = (CURRENT_REF/phaseB.dummy_ugain)*52800;
-    phaseB.ugainAvg = (uint16_t)phaseB.dummy_ugain;
-    ATM_write(UGAIN_B, phaseB.ugainAvg);
-    
-    phaseC.dummy_ugain = ((float)phaseC.urmsAvg)*0.01;
-    phaseC.dummy_ugain += (((float)phaseC.urmsLSB)*0.01)/256;
-    phaseC.dummy_ugain = (CURRENT_REF/phaseC.dummy_ugain)*52800;
-    phaseC.ugainAvg = (uint16_t)phaseC.dummy_ugain;
-    ATM_write(UGAIN_C, phaseC.ugainAvg);
-
+    /**Write the gain into register*/
+    ATM_write(GAIN_C, phaseC_En.gain);
     
     
+    /**PHASE ANGLE CALIBRATION*/
     
+    /**Calculate the phase angle error*/
+    phi_error = 0.0095;
+    phi_errorPH = phi_error * GPHASE_50HZ;
+    
+    /**PHASE A*/
+    phaseA_En.phaseAngle = (uint16_t)phi_errorPH;
+    /**Write phase angle into register*/
+    ATM_write(PHI_A, phaseA_En.phaseAngle);
+    
+    /**PHASE B*/
+    phaseB_En.phaseAngle = (uint16_t)phi_errorPH;
+    /**Write phase angle into register*/
+    ATM_write(PHI_B, phaseB_En.phaseAngle);
+    
+    /**PHASE C*/
+    phaseC_En.phaseAngle = (uint16_t)phi_errorPH;
+    /**Write phase angle into register*/
+    ATM_write(PHI_C, phaseC_En.phaseAngle);
 }
 
+void ATM_registers(ATM_type_t type, ATM_reg_t register)
+{
+    switch(type)
+    {
+        
+    }
+}
