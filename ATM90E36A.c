@@ -136,6 +136,74 @@
 #define TOTAL_VECT_APPARENT_ENERGY_ADR      0x94
 
 /**Fundamental/Harmonic Energy Register*/
+#define TOTAL_FORW_ACTIVE_FUND_ENERGY_ADR       0xA0
+#define PHASE_A_FORW_ACTIVE_FUND_ENERGY_ADR     0xA1   
+#define PHASE_B_FORW_ACTIVE_FUND_ENERGY_ADR     0xA2
+#define PHASE_C_FORW_ACTIVE_FUND_ENERGY_ADR     0xA3
+#define TOTAL_REV_ACTIVE_FUND_ENERGY_ADR        0xA4
+#define PHASE_A_REV_ACTIVE_FUND_ENERGY_ADR      0xA5
+#define PHASE_B_REV_ACTIVE_FUND_ENERGY_ADR      0xA6
+#define PHASE_C_REV_ACTIVE_FUND_ENERGY_ADR      0xA7
+#define TOTAL_FORW_ACTIVE_HARM_ENERGY_ADR       0xA8
+#define PHASE_A_FORW_ACTIVE_HARM_ENERGY_ADR     0xA9
+#define PHASE_B_FORW_ACTIVE_HARM_ENERGY_ADR     0xAA
+#define PHASE_C_FORW_ACTIVE_HARM_ENERGY_ADR     0xAB
+#define TOTAL_REV_ACTIVE_HARM_ENERGY_ADR        0xAC
+#define PHASE_A_REV_ACTIVE_HARM_ENERGY_ADR      0xAD
+#define PHASE_B_REV_ACTIVE_HARM_ENERGY_ADR      0xAE
+#define PHASE_C_REV_ACTIVE_HARM_ENERGY_ADR      0xAF
+
+/**Power and power factor registers*/
+#define TOTAL_ACTIVE_POWER_ADR      0xB0
+#define PHASE_A_ACTIVE_POWER_ADR    0xB1
+#define PHASE_B_ACTIVE_POWER_ADR    0xB2
+#define PHASE_C_ACTIVE_POWER_ADR    0xB3
+#define TOTAL_REACTIVE_POWER_ADR    0xB4
+#define PHASE_A_REACTIVE_POWER_ADR  0xB5
+#define PHASE_B_REACTIVE_POWER_ADR  0xB6
+#define PHACE_C_REACTIVE_POWER_ADR  0xB7
+#define TOTAL_APPARENT_POWER_ADR    0xB8
+#define PHASE_A_APPARENT_POWER_ADR  0xB9
+#define PHASE_B_APPARENT_POWER_ADR  0xBA
+#define PHASE_C_APPARENT_POWER_ADR  0xBB
+#define TOTAL_POWER_FACTOR_ADR      0xBC
+#define PHASE_A_POWER_FACTOR_ADR    0xBD
+#define PHASE_B_POWER_FACTOR_ADR    0xBE
+#define PHASE_C_POWER_FACTOR_ADR    0xBF
+
+/**Fundamental/Harmonic Power and Voltage/Current RMS registers*/
+#define TOTAL_ACTIVE_FUND_POWER_ADR         0xD0
+#define PHASE_A_ACTIVE_FUND_POWER_ADR       0xD1
+#define PHASE_B_ACTIVE_FUND_POWER_ADR       0xD2
+#define PHASE_C_ACTIVE_FUND_POWER_ADR       0xD3
+#define TOTAL_ACTIVE_HARM_POWER_ADR         0xD4
+#define PHASE_A_ACTIVE_HARM_POWER_ADR       0xD5
+#define PHASE_B_ACTIVE_HARM_POWER_ADR       0xD6
+#define PHASE_C_ACTIVE_HARM_POWER_ADR       0xD7
+#define NLINE_SAMPLED_CURRENT_RMS_ADR       0xD8
+#define PHASE_A_VOLTAGE_RMS_ADR             0xD9
+#define PHASE_B_VOLTAGE_RMS_ADR             0xDA
+#define PHASE_C_VOLTAGE_RMS_ADR             0xDB
+#define NLINE_CALCULATED_CURRENT_RMS_ADR    0xDC
+#define PHASE_A_CURRENT_RMS_ADR             0xDD
+#define PHASE_B_CURRENT_RMS_ADR             0xDE
+#define PHASE_C_CURRENT_RMS_ADR             0xDF
+
+/**THD+N, FREQUENCY, ANGLE AND TEMPERATURE REGISTERS*/
+#define PHASE_A_VOLTAGE_THDN_ADR        0xF1
+#define PHASE_B_VOLTAGE_THDN_ADR        0xF2
+#define PHASE_C_VOLTAGE_THDN_ADR        0xF3
+#define PHASE_A_CURRENT_THDN_ADR        0xF5
+#define PHASE_B_CURRENT_THDN_ADR        0xF6
+#define PHASE_C_CURRENT_THDN_ADR        0xF7    
+#define FREQUENCY_REG_ADR               0xF8
+#define PHASE_A_MEAN_ANGLE_PHASE_ADR    0xF9
+#define PHASE_B_MEAN_ANGLE_PHASE_ADR    0xFA
+#define PHASE_C_MEAN_ANGLE_PHASE_ADR    0xFB
+#define TEMPERATURE_REG_ADR             0xFC
+#define PHASE_A_VOLTAGE_ANGLE_PHASE_ADR 0xFD
+#define PHASE_B_VOLTAGE_ANGLE_PHASE_ADR 0xFE
+#define PHASE_C_VOLTAGE_ANGLE_PHASE_ADR 0xFF
 
 typedef struct
 {
@@ -821,6 +889,41 @@ void ATM_registers(ATM_type_t type, ATM_reg_t register)
 {
     switch(type)
     {
-        
+        case ACTIVE_ENERGY:
+            break;
+        case REACTIVE_ENERGY:
+            break;
+        case APPARENT_ENERGY:
+            break;
+        case FUNDAMENTAL_ENERGY:
+            break;
+        case HARMONIC_ENERGY:
+            break;
+        case ACTIVE_POWER:
+            break;
+        case REACTIVE_POWER:
+            break;
+        case APPARENT_POWER:
+            break;
+        case POWER_FACTOR:
+            break;
+        case FUNDAMENTAL_POWER:
+            break;
+        case HARMONIC_POWER:
+            break;
+        case VOLTAGE_RMS:
+            break;
+        case CURRENT_RMS:
+            break;
+        case THDN_TYPE:
+            break;
+        case FREQUENCY_TYPE:
+            break;
+        case PHASE_ANGLE_TYPE:
+            break;
+        case TEMPERATURE_TYPE:
+            break;
+        default:
+            break;
     }
 }
