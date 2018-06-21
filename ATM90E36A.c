@@ -12,6 +12,11 @@
 #define MOD_CS3             0x00
 #define AV_SAMPLES_RMS      10
 #define SPR_LOW7BITS        7
+#define SPR_LOW8BITS        8
+
+/**REFERENCE VOLTAGE/CURRENT */
+#define VOLTAGE_REF         220
+#define CURRENT_REF         2
 
 #define MC_HIGH             0x0861   /**test value*/
 #define MC_LOW              0x4C68  /**test value*/
@@ -80,6 +85,21 @@
 #define POFFSET_BF          0x52
 #define POFFSET_CF          0x53
 
+/**Measurement value registers*/
+#define URMS_A              0xD9
+#define URMS_B              0xDA
+#define URMS_C              0xDB
+#define IRMS_A              0xDD
+#define IRMS_B              0xDE
+#define IRMS_C              0xDF
+#define IRMS_N1             0xD8
+#define URMS_ALSB           0xE9
+#define URMS_BLSB           0xEA
+#define URMS_CLSB           0xEB
+#define IRMS_ALSB           0xED
+#define IRMS_BLSB           0xEE
+#define IRMS_CLSB           0xEF
+
 typedef struct
 {
     uint8_t lowPart;
@@ -92,6 +112,12 @@ typedef struct
 {
     uint16_t ugainAvg;
     uint16_t igainAvg;
+    float dummy_ugain;
+    float dummy_igain;
+    uint16_t urmsAvg;
+    uint16_t irmsAvg;
+    uint16_t urmsLSB;
+    uint16_t irmsLSB;
     uint16_t uoffsetAvg;
     uint16_t ioffsetAvg;
 } Data_VI_Avg;
@@ -502,10 +528,19 @@ void ATM_calibration(void)
     phaseA_pow.qoffsetAvg /= AV_SAMPLES_RMS;
     phaseA_pow.pfoffsetAvg /= AV_SAMPLES_RMS;
     
+    /**Calculate the calibration*/
+    phaseA_pow.poffsetAvg *= 100000;
+    phaseA_pow.qoffsetAvg *= 100000;
+    phaseA_pow.pfoffsetAvg *= 100000;
+    
+    phaseA_pow.poffsetAvg /= 65536;
+    phaseA_pow.qoffsetAvg /= 65536;
+    phaseA_pow.pfoffsetAvg /= 65536;
+    
     /**Two's complement of registers*/
-    phaseA_pow.poffsetAvg = phaseA_pow.poffsetAvg >> SPR_LOW7BITS;
-    phaseA_pow.qoffsetAvg = phaseA_pow.qoffsetAvg >> SPR_LOW7BITS;
-    phaseA_pow.pfoffsetAvg = phaseA_pow.pfoffsetAvg >> SPR_LOW7BITS;
+    phaseA_pow.poffsetAvg = phaseA_pow.poffsetAvg >> SPR_LOW8BITS;
+    phaseA_pow.qoffsetAvg = phaseA_pow.qoffsetAvg >> SPR_LOW8BITS;
+    phaseA_pow.pfoffsetAvg = phaseA_pow.pfoffsetAvg >> SPR_LOW8BITS;
     
     phaseA_pow.poffsetAvg = ~phaseA_pow.poffsetAvg;
     phaseA_pow.qoffsetAvg = ~phaseA_pow.qoffsetAvg;
@@ -537,10 +572,19 @@ void ATM_calibration(void)
     phaseB_pow.qoffsetAvg /= AV_SAMPLES_RMS;
     phaseB_pow.pfoffsetAvg /= AV_SAMPLES_RMS;
     
+    /**Calculate the calibration*/
+    phaseB_pow.poffsetAvg *= 100000;
+    phaseB_pow.qoffsetAvg *= 100000;
+    phaseB_pow.pfoffsetAvg *= 100000;
+    
+    phaseB_pow.poffsetAvg /= 65536;
+    phaseB_pow.qoffsetAvg /= 65536;
+    phaseB_pow.pfoffsetAvg /= 65536;
+    
     /**Two's complement of registers*/
-    phaseB_pow.poffsetAvg = phaseB_pow.poffsetAvg >> SPR_LOW7BITS;
-    phaseB_pow.qoffsetAvg = phaseB_pow.qoffsetAvg >> SPR_LOW7BITS;
-    phaseB_pow.pfoffsetAvg = phaseB_pow.pfoffsetAvg >> SPR_LOW7BITS;
+    phaseB_pow.poffsetAvg = phaseB_pow.poffsetAvg >> SPR_LOW8BITS;
+    phaseB_pow.qoffsetAvg = phaseB_pow.qoffsetAvg >> SPR_LOW8BITS;
+    phaseB_pow.pfoffsetAvg = phaseB_pow.pfoffsetAvg >> SPR_LOW8BITS;
     
     phaseB_pow.poffsetAvg = ~phaseB_pow.poffsetAvg;
     phaseB_pow.qoffsetAvg = ~phaseB_pow.qoffsetAvg;
@@ -573,10 +617,19 @@ void ATM_calibration(void)
     phaseC_pow.qoffsetAvg /= AV_SAMPLES_RMS;
     phaseC_pow.pfoffsetAvg /= AV_SAMPLES_RMS;
     
+    /**Calculate the calibration*/
+    phaseC_pow.poffsetAvg *= 100000;
+    phaseC_pow.qoffsetAvg *= 100000;
+    phaseC_pow.pfoffsetAvg *= 100000;
+    
+    phaseC_pow.poffsetAvg /= 65536;
+    phaseC_pow.qoffsetAvg /= 65536;
+    phaseC_pow.pfoffsetAvg /= 65536;
+    
     /**Two's complement of registers*/
-    phaseC_pow.poffsetAvg = phaseC_pow.poffsetAvg >> SPR_LOW7BITS;
-    phaseC_pow.qoffsetAvg = phaseC_pow.qoffsetAvg >> SPR_LOW7BITS;
-    phaseC_pow.pfoffsetAvg = phaseC_pow.pfoffsetAvg >> SPR_LOW7BITS;
+    phaseC_pow.poffsetAvg = phaseC_pow.poffsetAvg >> SPR_LOW8BITS;
+    phaseC_pow.qoffsetAvg = phaseC_pow.qoffsetAvg >> SPR_LOW8BITS;
+    phaseC_pow.pfoffsetAvg = phaseC_pow.pfoffsetAvg >> SPR_LOW8BITS;
     
     phaseC_pow.poffsetAvg = ~phaseC_pow.poffsetAvg;
     phaseC_pow.qoffsetAvg = ~phaseC_pow.qoffsetAvg;
@@ -590,6 +643,76 @@ void ATM_calibration(void)
     ATM_write(POFFSET_C, phaseC_pow.poffsetAvg);
     ATM_write(QOFFSET_C, phaseC_pow.qoffsetAvg); 
     ATM_write(POFFSET_CF, phaseC_pow.pfoffsetAvg);    
+    
+    
+    /**VOLTAGE/CURRENT GAIN CALIBRATION*/
+ 
+    /**Current gain calibration*/    
+    phaseA.irmsAvg = ATM_read(IRMS_A);
+    phaseB.irmsAvg = ATM_read(IRMS_B);
+    phaseC.irmsAvg = ATM_read(IRMS_C);
+    
+    phaseA.irmsLSB = ATM_read(IRMS_ALSB);
+    phaseB.irmsLSB = ATM_read(IRMS_BLSB);
+    phaseC.irmsLSB = ATM_read(IRMS_CLSB); 
+    
+    phaseA.irmsLSB = phaseA.irmsLSB >> NEXT_FRAME;
+    phaseB.irmsLSB = phaseB.irmsLSB >> NEXT_FRAME;
+    phaseC.irmsLSB = phaseC.irmsLSB >> NEXT_FRAME;
+    
+    /**Calculate the current gain per phase*/
+    phaseA.dummy_igain = ((float)phaseA.irmsAvg)*0.01;
+    phaseA.dummy_igain += (((float)phaseA.irmsLSB)*0.01)/256;
+    phaseA.dummy_igain = (CURRENT_REF/phaseA.dummy_igain)*30000;
+    phaseA.igainAvg = (uint16_t)phaseA.dummy_igain;
+    ATM_write(IGAIN_A, phaseA.igainAvg);
+    
+    phaseB.dummy_igain = ((float)phaseB.irmsAvg)*0.01;
+    phaseB.dummy_igain += (((float)phaseB.irmsLSB)*0.01)/256;
+    phaseB.dummy_igain = (CURRENT_REF/phaseB.dummy_igain)*30000;
+    phaseB.igainAvg = (uint16_t)phaseB.dummy_igain;
+    ATM_write(IGAIN_B, phaseB.igainAvg);
+    
+    phaseC.dummy_igain = ((float)phaseC.irmsAvg)*0.01;
+    phaseC.dummy_igain += (((float)phaseC.irmsLSB)*0.01)/256;
+    phaseC.dummy_igain = (CURRENT_REF/phaseC.dummy_igain)*30000;
+    phaseC.igainAvg = (uint16_t)phaseC.dummy_igain;
+    ATM_write(IGAIN_C, phaseC.igainAvg);
+    
+    /**Voltage gain calibration*/    
+    phaseA.urmsAvg = ATM_read(URMS_A);
+    phaseB.urmsAvg = ATM_read(URMS_B);
+    phaseC.urmsAvg = ATM_read(URMS_C);
+    
+    phaseA.urmsLSB = ATM_read(URMS_ALSB);
+    phaseB.urmsLSB = ATM_read(URMS_BLSB);
+    phaseC.urmsLSB = ATM_read(URMS_CLSB); 
+    
+    phaseA.urmsLSB = phaseA.urmsLSB >> NEXT_FRAME;
+    phaseB.urmsLSB = phaseB.urmsLSB >> NEXT_FRAME;
+    phaseC.urmsLSB = phaseC.urmsLSB >> NEXT_FRAME;
+    
+    /**Calculate the current gain per phase*/
+    phaseA.dummy_ugain = ((float)phaseA.urmsAvg)*0.01;
+    phaseA.dummy_ugain += (((float)phaseA.urmsLSB)*0.01)/256;
+    phaseA.dummy_ugain = (CURRENT_REF/phaseA.dummy_ugain)*52800;
+    phaseA.ugainAvg = (uint16_t)phaseA.dummy_ugain;
+    ATM_write(UGAIN_A, phaseA.ugainAvg);
+    
+    phaseB.dummy_ugain = ((float)phaseB.urmsAvg)*0.01;
+    phaseB.dummy_ugain += (((float)phaseB.urmsLSB)*0.01)/256;
+    phaseB.dummy_ugain = (CURRENT_REF/phaseB.dummy_ugain)*52800;
+    phaseB.ugainAvg = (uint16_t)phaseB.dummy_ugain;
+    ATM_write(UGAIN_B, phaseB.ugainAvg);
+    
+    phaseC.dummy_ugain = ((float)phaseC.urmsAvg)*0.01;
+    phaseC.dummy_ugain += (((float)phaseC.urmsLSB)*0.01)/256;
+    phaseC.dummy_ugain = (CURRENT_REF/phaseC.dummy_ugain)*52800;
+    phaseC.ugainAvg = (uint16_t)phaseC.dummy_ugain;
+    ATM_write(UGAIN_C, phaseC.ugainAvg);
+
+    
+    
     
 }
 
