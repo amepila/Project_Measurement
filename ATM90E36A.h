@@ -3,11 +3,6 @@
 
 #include <stdint.h>
 
-
-void ATM_init(void);
-
-void ATM_calibration(void);
-
 typedef enum
 {
     ACTIVE_ENERGY,
@@ -75,7 +70,7 @@ typedef enum
     TOTAL_REACTIVE_POWER,
     PHASE_A_REACTIVE_POWER,
     PHASE_B_REACTIVE_POWER,
-    PHACE_C_REACTIVE_POWER,
+    PHASE_C_REACTIVE_POWER,
     TOTAL_APPARENT_POWER,
     PHASE_A_APPARENT_POWER,
     PHASE_B_APPARENT_POWER,
@@ -116,6 +111,11 @@ typedef enum
     PHASE_C_VOLTAGE_ANGLE_PHASE
 } ATM_reg_t;
 
+void ATM_init(void);
+
+void ATM_calibration(void);
+
+uint16_t ATM_registers(ATM_type_t type, ATM_reg_t reg);
 
 #endif	
 

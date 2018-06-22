@@ -161,7 +161,7 @@
 #define TOTAL_REACTIVE_POWER_ADR    0xB4
 #define PHASE_A_REACTIVE_POWER_ADR  0xB5
 #define PHASE_B_REACTIVE_POWER_ADR  0xB6
-#define PHACE_C_REACTIVE_POWER_ADR  0xB7
+#define PHASE_C_REACTIVE_POWER_ADR  0xB7
 #define TOTAL_APPARENT_POWER_ADR    0xB8
 #define PHASE_A_APPARENT_POWER_ADR  0xB9
 #define PHASE_B_APPARENT_POWER_ADR  0xBA
@@ -885,45 +885,368 @@ void ATM_calibration(void)
     ATM_write(PHI_C, phaseC_En.phaseAngle);
 }
 
-void ATM_registers(ATM_type_t type, ATM_reg_t register)
+uint16_t ATM_registers(ATM_type_t type, ATM_reg_t reg)
 {
+    uint16_t info;
+    
     switch(type)
     {
         case ACTIVE_ENERGY:
+            switch(reg)
+            {
+                case TOTAL_FORW_ACTIVE_ENERGY:
+                    info = ATM_read(TOTAL_FORW_ACTIVE_ENERGY_ADR);
+                    break;
+                case PHASE_A_FORW_ACTIVE_ENERGY:
+                    info = ATM_read(PHASE_A_FORW_ACTIVE_ENERGY_ADR);
+                    break;
+                case PHASE_B_FORW_ACTIVE_ENERGY:
+                    info = ATM_read(PHASE_B_FORW_ACTIVE_ENERGY_ADR);
+                    break;
+                case PHASE_C_FORW_ACTIVE_ENERGY:
+                    info = ATM_read(PHASE_C_FORW_ACTIVE_ENERGY_ADR);
+                    break;
+                case TOTAL_REV_ACTIVE_ENERGY:
+                    info = ATM_read(TOTAL_REV_ACTIVE_ENERGY_ADR);
+                    break;
+                case PHASE_A_REV_ACTIVE_ENERGY:
+                    info = ATM_read(PHASE_A_REV_ACTIVE_ENERGY_ADR);
+                    break;
+                case PHASE_B_REV_ACTIVE_ENERGY:
+                    info = ATM_read(PHASE_B_REV_ACTIVE_ENERGY_ADR);
+                    break;
+                case PHASE_C_REV_ACTIVE_ENERGY:
+                    info = ATM_read(PHASE_C_REV_ACTIVE_ENERGY_ADR);
+                    break;
+                default:
+                    break;
+            }
             break;
         case REACTIVE_ENERGY:
+            switch(reg)
+            {
+                case TOTAL_FORW_REACTIVE_ENERGY:
+                    info = ATM_read(TOTAL_FORW_REACTIVE_ENERGY_ADR);
+                    break;
+                case PHASE_A_FORW_REACTIVE_ENERGY:
+                    info = ATM_read(PHASE_A_FORW_REACTIVE_ENERGY_ADR);
+                    break;
+                case PHASE_B_FORW_REACTIVE_ENERGY:
+                    info = ATM_read(PHASE_B_FORW_REACTIVE_ENERGY_ADR);
+                    break;
+                case PHASE_C_FORW_REACTIVE_ENERGY:
+                    info = ATM_read(PHASE_C_FORW_REACTIVE_ENERGY_ADR);
+                    break;
+                case TOTAL_REVERSE_REACTIVE_ENERGY:
+                    info = ATM_read(TOTAL_REVERSE_REACTIVE_ENERGY_ADR);
+                    break;
+                case PHASE_A_REV_REACTIVE_ENERGY:
+                    info = ATM_read(PHASE_A_REV_REACTIVE_ENERGY_ADR);
+                    break;
+                case PHASE_B_REV_REACTIVE_ENERGY:
+                    info = ATM_read(PHASE_B_REV_REACTIVE_ENERGY_ADR);
+                    break;
+                case PHASE_C_REV_REACTIVE_ENERGY:
+                    info = ATM_read(PHASE_C_REV_REACTIVE_ENERGY_ADR);
+                    break;
+                default:
+                    break;
+            }
             break;
         case APPARENT_ENERGY:
+            switch(reg)
+            {
+                case TOTAL_ARIT_APPARENT_ENERGY:
+                    info = ATM_read(TOTAL_ARIT_APPARENT_ENERGY_ADR);
+                    break;
+                case PHASE_A_APPARENT_ENERGY:
+                    info = ATM_read(PHASE_A_APPARENT_ENERGY_ADR);
+                    break;
+                case PHASE_B_APPARENT_ENERGY:
+                    info = ATM_read(PHASE_B_APPARENT_ENERGY_ADR);
+                    break;
+                case PHASE_C_APPARENT_ENERGY:
+                    info = ATM_read(PHASE_C_APPARENT_ENERGY_ADR);
+                    break;
+                case TOTAL_VECT_APPARENT_ENERGY:
+                    info = ATM_read(TOTAL_VECT_APPARENT_ENERGY_ADR);
+                    break;
+                default:
+                    break;
+            }
             break;
         case FUNDAMENTAL_ENERGY:
+            switch(reg)
+            {
+                case TOTAL_FORW_ACTIVE_FUND_ENERGY:
+                    info = ATM_read(TOTAL_FORW_ACTIVE_FUND_ENERGY_ADR);
+                    break;
+                case PHASE_A_FORW_ACTIVE_FUND_ENERGY:
+                    info = ATM_read(PHASE_A_FORW_ACTIVE_FUND_ENERGY_ADR);
+                    break;
+                case PHASE_B_FORW_ACTIVE_FUND_ENERGY:
+                    info = ATM_read(PHASE_B_FORW_ACTIVE_FUND_ENERGY_ADR);
+                    break;
+                case PHASE_C_FORW_ACTIVE_FUND_ENERGY:
+                    info = ATM_read(PHASE_C_FORW_ACTIVE_FUND_ENERGY_ADR);
+                    break;
+                case TOTAL_REV_ACTIVE_FUND_ENERGY:
+                    info = ATM_read(TOTAL_REV_ACTIVE_FUND_ENERGY_ADR);
+                    break;
+                case PHASE_A_REV_ACTIVE_FUND_ENERGY:
+                    info = ATM_read(PHASE_A_REV_ACTIVE_FUND_ENERGY_ADR);
+                    break;
+                case PHASE_B_REV_ACTIVE_FUND_ENERGY:
+                    info = ATM_read(PHASE_B_REV_ACTIVE_FUND_ENERGY_ADR);
+                    break;
+                case PHASE_C_REV_ACTIVE_FUND_ENERGY:
+                    info = ATM_read(PHASE_C_REV_ACTIVE_FUND_ENERGY_ADR);
+                    break;
+                default:
+                    break;
+            }
             break;
         case HARMONIC_ENERGY:
+            switch(reg)
+            {
+                case TOTAL_FORW_ACTIVE_HARM_ENERGY:
+                    info = ATM_read(TOTAL_FORW_ACTIVE_HARM_ENERGY_ADR);
+                    break;
+                case PHASE_A_FORW_ACTIVE_HARM_ENERGY:
+                    info = ATM_read(PHASE_A_FORW_ACTIVE_HARM_ENERGY_ADR);
+                    break;
+                case PHASE_B_FORW_ACTIVE_HARM_ENERGY:
+                    info = ATM_read(PHASE_B_FORW_ACTIVE_HARM_ENERGY_ADR);
+                    break;
+                case PHASE_C_FORW_ACTIVE_HARM_ENERGY:
+                    info = ATM_read(PHASE_C_FORW_ACTIVE_HARM_ENERGY_ADR);
+                    break;
+                case TOTAL_REV_ACTIVE_HARM_ENERGY:
+                    info = ATM_read(TOTAL_REV_ACTIVE_HARM_ENERGY_ADR);
+                    break;
+                case PHASE_A_REV_ACTIVE_HARM_ENERGY:
+                    info = ATM_read(PHASE_A_REV_ACTIVE_HARM_ENERGY_ADR);
+                    break;
+                case PHASE_B_REV_ACTIVE_HARM_ENERGY:
+                    info = ATM_read(PHASE_B_REV_ACTIVE_HARM_ENERGY_ADR);
+                    break;
+                case PHASE_C_REV_ACTIVE_HARM_ENERGY:
+                    info = ATM_read(PHASE_C_REV_ACTIVE_HARM_ENERGY_ADR);
+                    break;
+                default:
+                    break;
+            }
             break;
         case ACTIVE_POWER:
+            switch(reg)
+            {
+                case TOTAL_ACTIVE_POWER:
+                    info = ATM_read(TOTAL_ACTIVE_POWER_ADR);
+                    break;
+                case PHASE_A_ACTIVE_POWER:
+                    info = ATM_read(PHASE_A_ACTIVE_POWER_ADR);
+                    break;
+                case PHASE_B_ACTIVE_POWER:
+                    info = ATM_read(PHASE_B_ACTIVE_POWER_ADR);
+                    break;
+                case PHASE_C_ACTIVE_POWER:
+                    info = ATM_read(PHASE_C_ACTIVE_POWER_ADR);
+                    break;
+                default:
+                    break;
+            }
             break;
         case REACTIVE_POWER:
+            switch(reg)
+            {
+                case TOTAL_REACTIVE_POWER:
+                    info = ATM_read(TOTAL_REACTIVE_POWER_ADR);
+                    break;
+                case PHASE_A_REACTIVE_POWER:
+                    info = ATM_read(PHASE_A_REACTIVE_POWER_ADR);
+                    break;
+                case PHASE_B_REACTIVE_POWER:
+                    info = ATM_read(PHASE_B_REACTIVE_POWER_ADR);
+                    break;
+                case PHASE_C_REACTIVE_POWER:
+                    info = ATM_read(PHASE_C_REACTIVE_POWER_ADR);
+                    break;
+                default:
+                    break;
+            }
             break;
         case APPARENT_POWER:
+            switch(reg)
+            {
+                case TOTAL_APPARENT_POWER:
+                    info = ATM_read(TOTAL_APPARENT_POWER_ADR);
+                    break;
+                case PHASE_A_APPARENT_POWER:
+                    info = ATM_read(PHASE_A_APPARENT_POWER_ADR);
+                    break;
+                case PHASE_B_APPARENT_POWER:
+                    info = ATM_read(PHASE_B_APPARENT_POWER_ADR);
+                    break;
+                case PHASE_C_APPARENT_POWER:
+                    info = ATM_read(PHASE_C_APPARENT_POWER_ADR);
+                    break;
+                default:
+                    break;
+            }
             break;
         case POWER_FACTOR:
+            switch(reg)
+            {
+                case TOTAL_POWER_FACTOR:
+                    info = ATM_read(TOTAL_POWER_FACTOR_ADR);
+                    break;
+                case PHASE_A_POWER_FACTOR:
+                    info = ATM_read(PHASE_A_POWER_FACTOR_ADR);
+                    break;
+                case PHASE_B_POWER_FACTOR:
+                    info = ATM_read(PHASE_B_POWER_FACTOR_ADR);
+                    break;
+                case PHASE_C_POWER_FACTOR:
+                    info = ATM_read(PHASE_C_POWER_FACTOR_ADR);
+                    break;
+                default:
+                    break;
+            }
             break;
         case FUNDAMENTAL_POWER:
+            switch(reg)
+            {
+                case TOTAL_ACTIVE_FUND_POWER:
+                    info = ATM_read(TOTAL_ACTIVE_FUND_POWER_ADR);
+                    break;
+                case PHASE_A_ACTIVE_FUND_POWER:
+                    info = ATM_read(PHASE_A_ACTIVE_FUND_POWER_ADR);
+                    break;
+                case PHASE_B_ACTIVE_FUND_POWER:
+                    info = ATM_read(PHASE_B_ACTIVE_FUND_POWER_ADR);
+                    break;
+                case PHASE_C_ACTIVE_FUND_POWER:
+                    info = ATM_read(PHASE_C_ACTIVE_FUND_POWER_ADR);
+                    break;
+                default:
+                    break;
+            }
             break;
         case HARMONIC_POWER:
+            switch(reg)
+            {
+                case TOTAL_ACTIVE_HARM_POWER:
+                    info = ATM_read(TOTAL_ACTIVE_HARM_POWER_ADR);
+                    break;
+                case PHASE_A_ACTIVE_HARM_POWER:
+                    info = ATM_read(PHASE_A_ACTIVE_HARM_POWER_ADR);
+                    break;
+                case PHASE_B_ACTIVE_HARM_POWER:
+                    info = ATM_read(PHASE_B_ACTIVE_HARM_POWER_ADR);
+                    break;
+                case PHASE_C_ACTIVE_HARM_POWER:
+                    info = ATM_read(PHASE_C_ACTIVE_HARM_POWER_ADR);
+                    break;
+                default:
+                    break;
+            }
             break;
         case VOLTAGE_RMS:
+            switch(reg)
+            {
+                case PHASE_A_VOLTAGE_RMS:
+                    info = ATM_read(PHASE_A_VOLTAGE_RMS_ADR);
+                    break;
+                case PHASE_B_VOLTAGE_RMS:
+                    info = ATM_read(PHASE_B_VOLTAGE_RMS_ADR);
+                    break;
+                case PHASE_C_VOLTAGE_RMS:
+                    info = ATM_read(PHASE_C_VOLTAGE_RMS_ADR);
+                    break;
+                default:
+                    break;
+            }
             break;
         case CURRENT_RMS:
+            switch(reg)
+            {
+                case NLINE_SAMPLED_CURRENT_RMS:
+                    info = ATM_read(NLINE_SAMPLED_CURRENT_RMS_ADR);
+                    break;
+                case NLINE_CALCULATED_CURRENT_RMS:
+                    info = ATM_read(NLINE_CALCULATED_CURRENT_RMS_ADR);
+                    break;
+                case PHASE_A_CURRENT_RMS:
+                    info = ATM_read(PHASE_A_CURRENT_RMS_ADR);
+                    break;
+                case PHASE_B_CURRENT_RMS:
+                    info = ATM_read(PHASE_B_CURRENT_RMS_ADR);
+                    break;
+                case PHASE_C_CURRENT_RMS:
+                    info = ATM_read(PHASE_C_CURRENT_RMS_ADR);
+                    break;
+                default:
+                    break;
+            }
             break;
         case THDN_TYPE:
+            switch(reg)
+            {
+                case PHASE_A_VOLTAGE_THDN:
+                    info = ATM_read(PHASE_A_VOLTAGE_THDN_ADR);
+                    break;
+                case PHASE_B_VOLTAGE_THDN:
+                    info = ATM_read(PHASE_B_VOLTAGE_THDN_ADR);
+                    break;
+                case PHASE_C_VOLTAGE_THDN:
+                    info = ATM_read(PHASE_C_VOLTAGE_THDN_ADR);
+                    break;
+                case PHASE_A_CURRENT_THDN:
+                    info = ATM_read(PHASE_A_CURRENT_THDN_ADR);
+                    break;
+                case PHASE_B_CURRENT_THDN:
+                    info = ATM_read(PHASE_B_CURRENT_THDN_ADR);
+                    break;
+                case PHASE_C_CURRENT_THDN:
+                    info = ATM_read(PHASE_C_CURRENT_THDN_ADR);
+                    break;
+                default:
+                    break;
+            }
             break;
         case FREQUENCY_TYPE:
+            info = ATM_read(FREQUENCY_REG_ADR);
             break;
         case PHASE_ANGLE_TYPE:
+            switch(reg)
+            {
+                case PHASE_A_MEAN_ANGLE_PHASE:
+                    info = ATM_read(PHASE_A_MEAN_ANGLE_PHASE_ADR);
+                    break;
+                case PHASE_B_MEAN_ANGLE_PHASE:
+                    info = ATM_read(PHASE_B_MEAN_ANGLE_PHASE_ADR);
+                    break;
+                case PHASE_C_MEAN_ANGLE_PHASE:
+                    info = ATM_read(PHASE_C_MEAN_ANGLE_PHASE_ADR);
+                    break;
+                case PHASE_A_VOLTAGE_ANGLE_PHASE:
+                    info = ATM_read(PHASE_A_VOLTAGE_ANGLE_PHASE_ADR);
+                    break;
+                case PHASE_B_VOLTAGE_ANGLE_PHASE:
+                    info = ATM_read(PHASE_B_VOLTAGE_ANGLE_PHASE_ADR);
+                    break;
+                case PHASE_C_VOLTAGE_ANGLE_PHASE:
+                    info = ATM_read(PHASE_C_VOLTAGE_ANGLE_PHASE_ADR);
+                    break;
+                default:
+                    break;
+            }
             break;
         case TEMPERATURE_TYPE:
+            info = ATM_read(TEMPERATURE_REG_ADR);
             break;
         default:
             break;
     }
+    return (info);
 }
