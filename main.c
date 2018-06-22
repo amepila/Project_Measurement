@@ -68,7 +68,7 @@ const SPI_ConfigType SPI_Config =
 {
 	SPI_LOW_POLARITY,	/**Low Polarity to SPI**/
 	SPI_LOW_PHASE,		/**Low Phase to SPI**/
-	SPI_SERIAL_CLK64     /**FOsc divided by 4**/
+	SPI_SERIAL_CLK4     /**FOsc divided by 4**/
 };
 
 /**Simple machine state only change the tag**/

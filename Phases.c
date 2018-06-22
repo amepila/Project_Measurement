@@ -6,7 +6,7 @@ const SPI_ConfigType SPI_Config =
 {
 	SPI_LOW_POLARITY,	/**Low Polarity to SPI**/
 	SPI_LOW_PHASE,		/**Low Phase to SPI**/
-	SPI_SERIAL_CLK16     /**FOsc divided by 4**/
+	SPI_SERIAL_CLK4     /**FOsc divided by 4**/
 };
 
 PhaseMainMenu_Type initialLoad(PhaseMainMenu_Type data)
@@ -14,8 +14,10 @@ PhaseMainMenu_Type initialLoad(PhaseMainMenu_Type data)
     /**Create the variable with current data**/
 	static PhaseMainMenu_Type currentMainMenu1;
 
-    /**Load the value of register of IC*/
-    //Calibration Normal Mode
+    /**Calibration of the IC*/
+    ATM_init();
+    ATM_calibration();
+    delay(1500);
     
 	/**Set with the current state and phase**/
 	currentMainMenu1.phaseState = GENERAL_VIEW;
@@ -309,7 +311,6 @@ PhaseMainMenu_Type sendData(PhaseMainMenu_Type data)
     
     const uint8_t apparentAri_energyTotal[] = "Total Aritmetic Apparent Energy = \t";
     const uint8_t apparentVec_energyTotal[] = "Total Vector Apparent Energy = \t";
-    const uint8_t apparentVec_powerTotal[] = "Total Vector Apparent Energy = \t";
 
     const uint8_t subtitle_2[] = "Fundamental/Harmonic Energy\r\t";
     
@@ -414,53 +415,72 @@ PhaseMainMenu_Type sendData(PhaseMainMenu_Type data)
     UART_putString(subtitle_1);
     
     UART_putString(active_fp1);
+    UART_putString(ATM_registers(ACTIVE_ENERGY, PHASE_A_FORW_ACTIVE_ENERGY));
     UART_putString(joules);
     UART_putString(active_fp2);
+    UART_putString(ATM_registers(ACTIVE_ENERGY, PHASE_B_FORW_ACTIVE_ENERGY));
     UART_putString(joules);
     UART_putString(active_fp3);
+    UART_putString(ATM_registers(ACTIVE_ENERGY, PHASE_C_FORW_ACTIVE_ENERGY));
     UART_putString(joules);
     UART_putString(active_fTotal);
+    UART_putString(ATM_registers(ACTIVE_ENERGY, TOTAL_FORW_ACTIVE_ENERGY));
     UART_putString(joules);
 
     UART_putString(active_rp1);
+    UART_putString(ATM_registers(ACTIVE_ENERGY, PHASE_A_REV_ACTIVE_ENERGY));
     UART_putString(joules);
     UART_putString(active_rp2);
+    UART_putString(ATM_registers(ACTIVE_ENERGY, PHASE_B_REV_ACTIVE_ENERGY));
     UART_putString(joules);    
     UART_putString(active_rp3);
+    UART_putString(ATM_registers(ACTIVE_ENERGY, PHASE_C_REV_ACTIVE_ENERGY));
     UART_putString(joules);
     UART_putString(active_rTotal);
+    UART_putString(ATM_registers(ACTIVE_ENERGY, TOTAL_REV_ACTIVE_ENERGY));
     UART_putString(joules);
     
     UART_putString(reactive_fp1);
+    UART_putString(ATM_registers(REACTIVE_ENERGY, PHASE_A_FORW_REACTIVE_ENERGY));
     UART_putString(joules);
     UART_putString(reactive_fp2);
+    UART_putString(ATM_registers(REACTIVE_ENERGY, PHASE_B_FORW_REACTIVE_ENERGY));
     UART_putString(joules);
     UART_putString(reactive_fp3);
+    UART_putString(ATM_registers(REACTIVE_ENERGY, PHASE_C_FORW_REACTIVE_ENERGY));
     UART_putString(joules);
     UART_putString(reactive_fTotal);
+    UART_putString(ATM_registers(REACTIVE_ENERGY, TOTAL_FORW_REACTIVE_ENERGY));
     UART_putString(joules);
     
     UART_putString(reactive_rp1);
+    UART_putString(ATM_registers(REACTIVE_ENERGY, PHASE_A_REV_REACTIVE_ENERGY));
     UART_putString(joules);
     UART_putString(reactive_rp2);
+    UART_putString(ATM_registers(REACTIVE_ENERGY, PHASE_B_REV_REACTIVE_ENERGY));
     UART_putString(joules);
     UART_putString(reactive_rp3);
+    UART_putString(ATM_registers(REACTIVE_ENERGY, PHASE_C_REV_REACTIVE_ENERGY));
     UART_putString(joules);
     UART_putString(reactive_rTotal);
+    UART_putString(ATM_registers(REACTIVE_ENERGY, TOTAL_REVERSE_REACTIVE_ENERGY));
     UART_putString(joules);
     
     UART_putString(apparent_energyP1);
+    UART_putString(ATM_registers(APPARENT_ENERGY, PHASE_A_APPARENT_ENERGY));
     UART_putString(joules);
     UART_putString(apparent_energyP2);
+    UART_putString(ATM_registers(APPARENT_ENERGY, PHASE_B_APPARENT_ENERGY));
     UART_putString(joules);
     UART_putString(apparent_energyP3);
+    UART_putString(ATM_registers(APPARENT_ENERGY, PHASE_C_APPARENT_ENERGY));
     UART_putString(joules);
 
     UART_putString(apparentAri_energyTotal);
+    UART_putString(ATM_registers(APPARENT_ENERGY, TOTAL_ARIT_APPARENT_ENERGY));
     UART_putString(joules);
     UART_putString(apparentVec_energyTotal);
-    UART_putString(joules);
-    UART_putString(apparentVec_powerTotal);
+    UART_putString(ATM_registers(APPARENT_ENERGY, TOTAL_VECT_APPARENT_ENERGY));
     UART_putString(joules);
     
     UART_putString(subtitle_2);
@@ -1077,7 +1097,7 @@ PhasePower1_Type phPower1(PhasePower1_Type data)
     }
     if(getButton2() == 1)
     {
-        currentPower1_2.phaseState = VECTOR_POWER1;
+        currentPower1_2.phaseState = EXIT_POWER1;
         LCDNokia_clear();
     }
 
