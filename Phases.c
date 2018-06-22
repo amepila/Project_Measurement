@@ -486,154 +486,216 @@ PhaseMainMenu_Type sendData(PhaseMainMenu_Type data)
     UART_putString(subtitle_2);
 
     UART_putString(activeF_fp1);
+    UART_putString(ATM_registers(FUNDAMENTAL_ENERGY, PHASE_A_FORW_ACTIVE_FUND_ENERGY));
     UART_putString(joules);
     UART_putString(activeF_fp2);
+    UART_putString(ATM_registers(FUNDAMENTAL_ENERGY, PHASE_B_FORW_ACTIVE_FUND_ENERGY));
     UART_putString(joules);
-    UART_putString(activeF_fp3);    
+    UART_putString(activeF_fp3);
+    UART_putString(ATM_registers(FUNDAMENTAL_ENERGY, PHASE_C_FORW_ACTIVE_FUND_ENERGY));    
     UART_putString(joules);
     UART_putString(activeF_fTotal);
+    UART_putString(ATM_registers(FUNDAMENTAL_ENERGY, TOTAL_FORW_ACTIVE_FUND_ENERGY));
     UART_putString(joules);
 
     UART_putString(activeF_rp1);
+    UART_putString(ATM_registers(FUNDAMENTAL_ENERGY, PHASE_A_REV_ACTIVE_FUND_ENERGY));
     UART_putString(joules);
     UART_putString(activeF_rp2);
+    UART_putString(ATM_registers(FUNDAMENTAL_ENERGY, PHASE_B_REV_ACTIVE_FUND_ENERGY));
     UART_putString(joules);
-    UART_putString(activeF_rp3);   
+    UART_putString(activeF_rp3);
+    UART_putString(ATM_registers(FUNDAMENTAL_ENERGY, PHASE_C_REV_ACTIVE_FUND_ENERGY));
     UART_putString(joules);
     UART_putString(activeF_rTotal);
+    UART_putString(ATM_registers(FUNDAMENTAL_ENERGY, TOTAL_REV_ACTIVE_FUND_ENERGY));
     UART_putString(joules);
 
     UART_putString(activeH_fp1);
+    UART_putString(ATM_registers(HARMONIC_ENERGY, PHASE_A_FORW_ACTIVE_HARM_ENERGY));
     UART_putString(joules);
     UART_putString(activeH_fp2);
+    UART_putString(ATM_registers(HARMONIC_ENERGY, PHASE_B_FORW_ACTIVE_HARM_ENERGY));
     UART_putString(joules);
     UART_putString(activeH_fp3);
+    UART_putString(ATM_registers(HARMONIC_ENERGY, PHASE_C_FORW_ACTIVE_HARM_ENERGY));
     UART_putString(joules);
     UART_putString(activeH_fTotal);
+    UART_putString(ATM_registers(HARMONIC_ENERGY, TOTAL_FORW_ACTIVE_HARM_ENERGY));
     UART_putString(joules);
 
     UART_putString(activeH_rp1);
+    UART_putString(ATM_registers(HARMONIC_ENERGY, PHASE_A_REV_ACTIVE_HARM_ENERGY));
     UART_putString(joules);
     UART_putString(activeH_rp2);
+    UART_putString(ATM_registers(HARMONIC_ENERGY, PHASE_B_REV_ACTIVE_HARM_ENERGY));
     UART_putString(joules);
     UART_putString(activeH_rp3);
+    UART_putString(ATM_registers(HARMONIC_ENERGY, PHASE_C_REV_ACTIVE_HARM_ENERGY));    
     UART_putString(joules);
     UART_putString(activeH_rTotal);
+    UART_putString(ATM_registers(HARMONIC_ENERGY, TOTAL_REV_ACTIVE_HARM_ENERGY));
     UART_putString(joules);
 
     UART_putString(subtitle_3);
     
     UART_putString(active_powerP1);
+    UART_putString(ATM_registers(POWER_FACTOR_TYPE, PHASE_A_ACTIVE_POWER));
     UART_putString(watts);
     UART_putString(active_powerP2);
+    UART_putString(ATM_registers(POWER_FACTOR_TYPE, PHASE_B_ACTIVE_POWER));
     UART_putString(watts);
     UART_putString(active_powerP3);
+    UART_putString(ATM_registers(POWER_FACTOR_TYPE, PHASE_C_ACTIVE_POWER));
     UART_putString(watts);
     UART_putString(total_active_power);
+    UART_putString(ATM_registers(POWER_FACTOR_TYPE, TOTAL_ACTIVE_POWER));
     UART_putString(watts);
 
     UART_putString(reactive_powerP1);
+    UART_putString(ATM_registers(POWER_FACTOR_TYPE, PHASE_A_REACTIVE_POWER));
     UART_putString(watts);
     UART_putString(reactive_powerP2);
+    UART_putString(ATM_registers(POWER_FACTOR_TYPE, PHASE_B_REACTIVE_POWER));
     UART_putString(watts);
     UART_putString(reactive_powerP3);
+    UART_putString(ATM_registers(POWER_FACTOR_TYPE, PHASE_C_REACTIVE_POWER));
     UART_putString(watts);
     UART_putString(total_reactive_power);
+    UART_putString(ATM_registers(POWER_FACTOR_TYPE, TOTAL_REACTIVE_POWER));
     UART_putString(watts);
 
     UART_putString(apparent_powerP1);
+    UART_putString(ATM_registers(APPARENT_POWER, PHASE_A_APPARENT_POWER));
     UART_putString(watts);
     UART_putString(apparent_powerP2); 
+    UART_putString(ATM_registers(APPARENT_POWER, PHASE_B_APPARENT_POWER));
     UART_putString(watts);
     UART_putString(apparent_powerP3);
+    UART_putString(ATM_registers(APPARENT_POWER, PHASE_C_APPARENT_POWER));
     UART_putString(watts);
     UART_putString(total_apparent_power);
+    UART_putString(ATM_registers(APPARENT_POWER, TOTAL_APPARENT_POWER));
     UART_putString(watts);
 
     UART_putString(factor_powerP1);
+    UART_putString(ATM_registers(POWER_FACTOR_TYPE, PHASE_A_POWER_FACTOR));
     UART_putString(watts);
-    UART_putString(factor_powerP2);  
+    UART_putString(factor_powerP2); 
+    UART_putString(ATM_registers(POWER_FACTOR_TYPE, PHASE_B_POWER_FACTOR));
     UART_putString(watts);
     UART_putString(factor_powerP3);
+    UART_putString(ATM_registers(POWER_FACTOR_TYPE, PHASE_C_POWER_FACTOR));
     UART_putString(watts);
     UART_putString(total_factor_power);
+    UART_putString(ATM_registers(POWER_FACTOR_TYPE, TOTAL_POWER_FACTOR));
     UART_putString(watts);
     
     UART_putString(subtitle_4);
     
     UART_putString(activeF_powerP1);
+    UART_putString(ATM_registers(FUNDAMENTAL_POWER, PHASE_A_ACTIVE_FUND_POWER));
     UART_putString(watts);
-    UART_putString(activeF_powerP2);    
+    UART_putString(activeF_powerP2);   
+    UART_putString(ATM_registers(FUNDAMENTAL_POWER, PHASE_B_ACTIVE_FUND_POWER));
     UART_putString(watts);
     UART_putString(activeF_powerP3);
+    UART_putString(ATM_registers(FUNDAMENTAL_POWER, PHASE_C_ACTIVE_FUND_POWER));
     UART_putString(watts);
     UART_putString(activeF_Total_Power);
+    UART_putString(ATM_registers(FUNDAMENTAL_POWER, TOTAL_ACTIVE_FUND_POWER));
     UART_putString(watts);
 
     UART_putString(activeH_powerP1);
+    UART_putString(ATM_registers(HARMONIC_POWER, PHASE_A_ACTIVE_HARM_POWER));
     UART_putString(watts);
     UART_putString(activeH_powerP2); 
+    UART_putString(ATM_registers(HARMONIC_POWER, PHASE_B_ACTIVE_HARM_POWER));
     UART_putString(watts);
     UART_putString(activeH_powerP3);
+    UART_putString(ATM_registers(HARMONIC_POWER, PHASE_C_ACTIVE_HARM_POWER));
     UART_putString(watts);
     UART_putString(activeH_Total_Power);
+    UART_putString(ATM_registers(HARMONIC_POWER, TOTAL_ACTIVE_HARM_POWER));
     UART_putString(watts);
     
     UART_putString(subtitle_5);
 
     UART_putString(voltage1_RMS);
+    UART_putString(ATM_registers(VOLTAGE_RMS, PHASE_A_VOLTAGE_RMS));
     UART_putString(voltage);
     UART_putString(voltage2_RMS);
+    UART_putString(ATM_registers(VOLTAGE_RMS, PHASE_B_VOLTAGE_RMS));
     UART_putString(voltage);
     UART_putString(voltage3_RMS);
+    UART_putString(ATM_registers(VOLTAGE_RMS, PHASE_C_VOLTAGE_RMS));
     UART_putString(voltage);
 
     UART_putString(current1_RMS);
+    UART_putString(ATM_registers(CURRENT_RMS, PHASE_A_CURRENT_RMS));
     UART_putString(current);
     UART_putString(current2_RMS);
+    UART_putString(ATM_registers(CURRENT_RMS, PHASE_B_CURRENT_RMS));
     UART_putString(current);    
     UART_putString(current3_RMS);
+    UART_putString(ATM_registers(CURRENT_RMS, PHASE_C_CURRENT_RMS));
     UART_putString(current);
     
-    UART_putString(nline_calculated_RMS); 
+    UART_putString(nline_calculated_RMS);
+    UART_putString(ATM_registers(CURRENT_RMS, NLINE_CALCULATED_CURRENT_RMS));
     UART_putString(current);
     UART_putString(nline_sampled_RMS);
+    UART_putString(ATM_registers(CURRENT_RMS, NLINE_SAMPLED_CURRENT_RMS));
     UART_putString(current);
 
     UART_putString(subtitle_6);
     
     UART_putString(voltage1_THDN);
+    UART_putString(ATM_registers(THDN_TYPE, PHASE_A_VOLTAGE_THDN));
     UART_putString(voltage);
     UART_putString(voltage2_THDN);
+    UART_putString(ATM_registers(THDN_TYPE, PHASE_B_VOLTAGE_THDN));
     UART_putString(voltage);
     UART_putString(voltage3_THDN);
+    UART_putString(ATM_registers(THDN_TYPE, PHASE_C_VOLTAGE_THDN));
     UART_putString(voltage);
 
     UART_putString(current1_THDN);
+    UART_putString(ATM_registers(THDN_TYPE, PHASE_A_CURRENT_THDN));
     UART_putString(current);
     UART_putString(current2_THDN);  
+    UART_putString(ATM_registers(THDN_TYPE, PHASE_B_CURRENT_THDN));
     UART_putString(current);
     UART_putString(current3_THDN);
+    UART_putString(ATM_registers(THDN_TYPE, PHASE_C_CURRENT_THDN));
     UART_putString(current);
 
     UART_putString(frequency);
+    UART_putString(ATM_registers(FREQUENCY_TYPE, FREQUENCY_REG));
     UART_putString(hertz);
     
     UART_putString(anglePhase1);
+    UART_putString(ATM_registers(PHASE_ANGLE_TYPE, PHASE_A_MEAN_ANGLE_PHASE));
     UART_putString(grades);
     UART_putString(anglePhase2); 
+    UART_putString(ATM_registers(PHASE_ANGLE_TYPE, PHASE_B_MEAN_ANGLE_PHASE));
     UART_putString(grades);
     UART_putString(anglePhase3);
+    UART_putString(ATM_registers(PHASE_ANGLE_TYPE, PHASE_C_MEAN_ANGLE_PHASE));
     UART_putString(grades);
     
     UART_putString(temperature);
+    UART_putString(ATM_registers(TEMPERATURE_TYPE, TEMPERATURE_REG));
     UART_putString(centigrades);
     
     UART_putString(angle_VoltageP1);
+    UART_putString(ATM_registers(PHASE_ANGLE_TYPE, PHASE_A_VOLTAGE_ANGLE_PHASE));
     UART_putString(grades);
     UART_putString(angle_VoltageP2);
+    UART_putString(ATM_registers(PHASE_ANGLE_TYPE, PHASE_B_VOLTAGE_ANGLE_PHASE));
     UART_putString(grades);
     UART_putString(angle_VoltageP3);
+    UART_putString(ATM_registers(PHASE_ANGLE_TYPE, PHASE_C_VOLTAGE_ANGLE_PHASE));
     UART_putString(grades);
     
 	/**Set with the current state and phase**/
@@ -693,24 +755,32 @@ PhaseEnergy_Type activeEnergy(PhaseEnergy_Type data)
         case 0:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(active_Forward1);
+            LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY, PHASE_A_FORW_ACTIVE_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(active_Forward2);
+            LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY, PHASE_B_FORW_ACTIVE_ENERGY));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(active_Forward3);
+            LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY, PHASE_C_FORW_ACTIVE_ENERGY));
             break;
         case 1:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(active_Reverse1);
+            LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY, PHASE_A_REV_ACTIVE_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(active_Reverse2);
+            LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY, PHASE_B_REV_ACTIVE_ENERGY));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(active_Reverse3);
+            LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY, PHASE_C_REV_ACTIVE_ENERGY));
             break;
         case 2:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(active_Forward_Total);
+            LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY, TOTAL_FORW_ACTIVE_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(active_Reverse_Total);
+            LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY, TOTAL_REV_ACTIVE_ENERGY));
             break;
         default:
             break;
@@ -764,24 +834,32 @@ PhaseEnergy_Type reactiveEnergy(PhaseEnergy_Type data)
         case 0:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(reactive_Forward1);
+            LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY, PHASE_A_FORW_REACTIVE_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(reactive_Forward2);
+            LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY, PHASE_B_FORW_REACTIVE_ENERGY));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(reactive_Forward3);
+            LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY, PHASE_C_FORW_REACTIVE_ENERGY));
             break;
         case 1:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(reactive_Reverse1);
+            LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY, PHASE_A_REV_REACTIVE_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(reactive_Reverse2);
+            LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY, PHASE_B_REV_REACTIVE_ENERGY));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(reactive_Reverse3);
+            LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY, PHASE_C_REV_REACTIVE_ENERGY));
             break;
         case 2:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(reactive_Forward_Total);
+            LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY, TOTAL_FORW_REACTIVE_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(reactive_Reverse_Total);
+            LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY, TOTAL_REVERSE_REACTIVE_ENERGY));
             break;
         default:
             break;
@@ -800,7 +878,6 @@ PhaseEnergy_Type apparentEnergy(PhaseEnergy_Type data)
     
     const uint8_t apparentAri_energyTotal[] = "Total AriApp En: ";
     const uint8_t apparentVec_energyTotal[] = "Total VecApp En: ";
-    const uint8_t apparentVec_powerTotal[] = "Total VectApp Pow: ";
 
     /**Create the variable with current data**/
 	static PhasePower1_Type currentEnergy3;
@@ -832,18 +909,21 @@ PhaseEnergy_Type apparentEnergy(PhaseEnergy_Type data)
         case 0:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(apparent_energyP1);
+            LCDNokia_printValue(ATM_registers(APPARENT_ENERGY, PHASE_A_APPARENT_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(apparent_energyP2);
+            LCDNokia_printValue(ATM_registers(APPARENT_ENERGY, PHASE_B_APPARENT_ENERGY));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(apparent_energyP3);
+            LCDNokia_printValue(ATM_registers(APPARENT_ENERGY, PHASE_C_APPARENT_ENERGY));
             break;
         case 1:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(apparentAri_energyTotal);
+            LCDNokia_printValue(ATM_registers(APPARENT_ENERGY, TOTAL_ARIT_APPARENT_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(apparentVec_energyTotal);
-            LCDNokia_gotoXY(0,3);
-            LCDNokia_sendString(apparentVec_powerTotal);
+            LCDNokia_printValue(ATM_registers(APPARENT_ENERGY, TOTAL_VECT_APPARENT_ENERGY));
             break;
         default:
             break;
@@ -897,24 +977,32 @@ PhaseEnergy_Type fundamentalEnergy(PhaseEnergy_Type data)
         case 0:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(fund_ForwardP1);
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY, PHASE_A_FORW_ACTIVE_FUND_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(fund_ForwardP2);
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY, PHASE_B_FORW_ACTIVE_FUND_ENERGY));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(fund_ForwardP3);
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY, PHASE_C_FORW_ACTIVE_FUND_ENERGY));
             break;
         case 1:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(fund_ReverseP1);
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY, PHASE_A_REV_ACTIVE_FUND_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(fund_ReverseP2);
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY, PHASE_B_REV_ACTIVE_FUND_ENERGY));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(fund_ReverseP3);
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY, PHASE_C_REV_ACTIVE_FUND_ENERGY));
             break;
         case 2: 
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(fund_ForwardTotal);
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY, TOTAL_FORW_ACTIVE_FUND_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(fund_ReverseTotal);
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY, TOTAL_REV_ACTIVE_FUND_ENERGY));
             break;
         default:
             break;
@@ -967,24 +1055,32 @@ PhaseEnergy_Type harmonicEnergy(PhaseEnergy_Type data)
         case 0:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(harmonic_ForwardP1);
+            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY, PHASE_A_FORW_ACTIVE_HARM_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(harmonic_ForwardP2);
+            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY, PHASE_B_FORW_ACTIVE_HARM_ENERGY));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(harmonic_ForwardP3);
+            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY, PHASE_C_FORW_ACTIVE_HARM_ENERGY));
             break;
         case 1:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(harmonic_ReverseP1);
+            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY, PHASE_A_REV_ACTIVE_HARM_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(harmonic_ReverseP2);
+            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY, PHASE_B_REV_ACTIVE_HARM_ENERGY));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(harmonic_ReverseP3);
+            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY, PHASE_C_REV_ACTIVE_HARM_ENERGY));
             break;
         case 2: 
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(harmonic_ForwardTotal);
+            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY, TOTAL_FORW_ACTIVE_HARM_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(harmonic_ReverseTotal);
+            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY, TOTAL_REV_ACTIVE_HARM_ENERGY));
             break;
         default:
             break;
@@ -1051,26 +1147,35 @@ PhasePower1_Type typesPower1(PhasePower1_Type data)
         case 0:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(active_powerP1);
+            LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_A_ACTIVE_POWER));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(active_powerP2);
+            LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_B_ACTIVE_POWER));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(active_powerP3);
+            LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_C_ACTIVE_POWER));
             break;
         case 1:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(reactive_powerP1);
+            LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_A_REACTIVE_POWER));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(reactive_powerP2);
+            LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_B_REACTIVE_POWER));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(reactive_powerP3);
+            LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_C_REACTIVE_POWER));
             break;
         case 2: 
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(apparent_powerP1);
+            LCDNokia_printValue(ATM_registers(APPARENT_POWER, PHASE_A_APPARENT_POWER));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(apparent_powerP2);
+            LCDNokia_printValue(ATM_registers(APPARENT_POWER, PHASE_B_APPARENT_POWER));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(apparent_powerP3);
+            LCDNokia_printValue(ATM_registers(APPARENT_POWER, PHASE_C_APPARENT_POWER));
             break;
         default:
             break;
@@ -1103,10 +1208,13 @@ PhasePower1_Type phPower1(PhasePower1_Type data)
 
     LCDNokia_gotoXY(0,1);
     LCDNokia_sendString(total_active_power);
+    LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, TOTAL_ACTIVE_POWER));
     LCDNokia_gotoXY(0,2);
     LCDNokia_sendString(total_reactive_power);
+    LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, TOTAL_REACTIVE_POWER));
     LCDNokia_gotoXY(0,3);
     LCDNokia_sendString(total_apparent_power);
+    LCDNokia_printValue(ATM_registers(APPARENT_POWER, TOTAL_APPARENT_POWER));
 
 	return (currentPower1_2);
 }
@@ -1166,18 +1274,24 @@ PhasePower2_Type fhPower2(PhasePower2_Type data)
         case 0:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(fundamental_PowerP1);
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_POWER, PHASE_A_ACTIVE_FUND_POWER));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(fundamental_PowerP2);
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_POWER, PHASE_B_ACTIVE_FUND_POWER));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(fundamental_PowerP3);
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_POWER, PHASE_C_ACTIVE_FUND_POWER));
             break;
         case 1:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(harmonic_PowerP1);
+            LCDNokia_printValue(ATM_registers(HARMONIC_POWER, PHASE_A_ACTIVE_HARM_POWER));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(harmonic_PowerP2);
+            LCDNokia_printValue(ATM_registers(HARMONIC_POWER, PHASE_B_ACTIVE_HARM_POWER));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(harmonic_PowerP3);
+            LCDNokia_printValue(ATM_registers(HARMONIC_POWER, PHASE_C_ACTIVE_HARM_POWER));
             break;
         default:
             break;
@@ -1207,8 +1321,10 @@ PhasePower2_Type phPower2(PhasePower2_Type data)
     }
     LCDNokia_gotoXY(0,1);
     LCDNokia_sendString(fundamental_Total_Power);
+    LCDNokia_printValue(ATM_registers(FUNDAMENTAL_POWER, TOTAL_ACTIVE_FUND_POWER));
     LCDNokia_gotoXY(0,2);
     LCDNokia_sendString(harmonic_Total_Power);
+    LCDNokia_printValue(ATM_registers(HARMONIC_POWER, TOTAL_ACTIVE_HARM_POWER));
     
 	return (currentPower2_2);
 }
@@ -1268,18 +1384,24 @@ PhaseRmsVI_Type phRmsVI(PhaseRmsVI_Type data)
         case 0:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(voltage1_RMS);
+            LCDNokia_printValue(ATM_registers(VOLTAGE_RMS, PHASE_A_VOLTAGE_RMS));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(voltage2_RMS);
+            LCDNokia_printValue(ATM_registers(VOLTAGE_RMS, PHASE_B_VOLTAGE_RMS));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(voltage3_RMS);
+            LCDNokia_printValue(ATM_registers(VOLTAGE_RMS, PHASE_C_VOLTAGE_RMS));
             break;
         case 1:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(current1_RMS);
+            LCDNokia_printValue(ATM_registers(CURRENT_RMS, PHASE_A_CURRENT_RMS));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(current2_RMS);
+            LCDNokia_printValue(ATM_registers(CURRENT_RMS, PHASE_B_CURRENT_RMS));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(current3_RMS);
+            LCDNokia_printValue(ATM_registers(CURRENT_RMS, PHASE_C_CURRENT_RMS));
             break;
         default:
             break;
@@ -1310,8 +1432,10 @@ PhaseRmsVI_Type neutralRmsVI(PhaseRmsVI_Type data)
     }
     LCDNokia_gotoXY(0,1);
     LCDNokia_sendString(nline_calculated_RMS);
+    LCDNokia_printValue(ATM_registers(CURRENT_RMS, NLINE_CALCULATED_CURRENT_RMS));
     LCDNokia_gotoXY(0,2);
     LCDNokia_sendString(nline_sampled_RMS);
+    LCDNokia_printValue(ATM_registers(CURRENT_RMS, NLINE_SAMPLED_CURRENT_RMS));
     
 	return (currentRms2);
 }
@@ -1368,14 +1492,18 @@ PhasePowerFactor_Type phPowerFactor(PhasePowerFactor_Type data)
         case 0:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(factor_powerP1);
+            LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_A_POWER_FACTOR));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(factor_powerP2);
+            LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_B_POWER_FACTOR));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(factor_powerP3);
+            LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_C_POWER_FACTOR));
             break;
         case 1:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(total_factor_power);
+            LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, TOTAL_POWER_FACTOR));
             break;
         default:
             break;
@@ -1421,10 +1549,13 @@ PhasePhaseAngle_Type phPhaseAngle(PhasePhaseAngle_Type data)
 
     LCDNokia_gotoXY(0,1);
     LCDNokia_sendString(anglePhase1);
+    LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_A_MEAN_ANGLE_PHASE));
     LCDNokia_gotoXY(0,2);
     LCDNokia_sendString(anglePhase2);
+    LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_B_MEAN_ANGLE_PHASE));
     LCDNokia_gotoXY(0,3);
     LCDNokia_sendString(anglePhase3);
+    LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_C_MEAN_ANGLE_PHASE));
 
 	return (currentPhaseAngle1);
 }
@@ -1454,10 +1585,13 @@ PhasePhaseAngle_Type viPhaseAngle(PhasePhaseAngle_Type data)
     
     LCDNokia_gotoXY(0,1);
     LCDNokia_sendString(angle_VoltageP1);
+    LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_A_VOLTAGE_ANGLE_PHASE));
     LCDNokia_gotoXY(0,2);
     LCDNokia_sendString(angle_VoltageP2);
+    LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_B_VOLTAGE_ANGLE_PHASE));
     LCDNokia_gotoXY(0,3);
     LCDNokia_sendString(angle_VoltageP3);
+    LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_C_VOLTAGE_ANGLE_PHASE));
 
 	return (currentPhaseAngle2); 
 }
@@ -1504,18 +1638,24 @@ PhasePhaseAngle_Type THDNPhaseAngle(PhasePhaseAngle_Type data)
         case 0:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(voltage1_THDN);
+            LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_A_VOLTAGE_ANGLE_PHASE));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(voltage2_THDN);
+            LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_B_VOLTAGE_ANGLE_PHASE));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(voltage3_THDN);
+            LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_C_VOLTAGE_ANGLE_PHASE));
             break;
         case 1:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(current1_THDN);
+            LCDNokia_printValue(ATM_registers(THDN_TYPE, PHASE_A_CURRENT_THDN));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(current2_THDN);
+            LCDNokia_printValue(ATM_registers(THDN_TYPE, PHASE_B_CURRENT_THDN));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(current3_THDN);
+            LCDNokia_printValue(ATM_registers(THDN_TYPE, PHASE_C_CURRENT_THDN));
             break;
         default:
             break;
@@ -1556,6 +1696,7 @@ PhaseFrequency_Type showFrequency(PhaseFrequency_Type data)
     }
     LCDNokia_gotoXY(0,1);
     LCDNokia_sendString(frequency);
+    LCDNokia_printValue(ATM_registers(FREQUENCY_TYPE, FREQUENCY_REG));
 
 	return (currentFrequency1);
 }
@@ -1594,6 +1735,7 @@ PhaseTemperature_Type showTemperature(PhaseTemperature_Type data)
 
     LCDNokia_gotoXY(0,1);
     LCDNokia_sendString(temperature);
+    LCDNokia_printValue(ATM_registers(TEMPERATURE_TYPE, TEMPERATURE_REG));
     
 	return (currentTemperature1);
 }

@@ -1215,7 +1215,10 @@ uint16_t ATM_registers(ATM_type_t type, ATM_reg_t reg)
             }
             break;
         case FREQUENCY_TYPE:
-            info = ATM_read(FREQUENCY_REG_ADR);
+            if(FREQUENCY_REG == reg)
+            {
+                info = ATM_read(FREQUENCY_REG_ADR);
+            }
             break;
         case PHASE_ANGLE_TYPE:
             switch(reg)
@@ -1243,7 +1246,10 @@ uint16_t ATM_registers(ATM_type_t type, ATM_reg_t reg)
             }
             break;
         case TEMPERATURE_TYPE:
-            info = ATM_read(TEMPERATURE_REG_ADR);
+            if(TEMPERATURE_REG == reg)
+            {
+                info = ATM_read(TEMPERATURE_REG_ADR);
+            }
             break;
         default:
             break;
