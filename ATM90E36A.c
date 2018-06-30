@@ -9,7 +9,7 @@
 #define NOCONFIG_REG_CS0    10
 #define NOCONFIG_REG_CS3    14
 #define MOD_CS0             0x100
-#define MOD_CS3             0x00
+#define MOD_CS3             0x100
 #define AV_SAMPLES_RMS      10
 #define SPR_LOW7BITS        7
 #define SPR_LOW8BITS        8
@@ -242,177 +242,6 @@ typedef struct
     float dummy_Phi;
 } Data_Energy;
 
-static uint16_t calculate_CS0(void)
-{
-    uint8_t counter;
-    uint8_t lowCS0 = 0;
-    uint8_t highCS0 = 0;
-    uint16_t totalCS0 = 0;
-    uint16_t dummyLow[NOCONFIG_REG_CS0];
-    uint16_t dummyHigh[NOCONFIG_REG_CS0];
-    uint8_t lowPart[NOCONFIG_REG_CS0];
-    uint8_t highPart[NOCONFIG_REG_CS0];
-    
-    for(counter = 0; counter < NOCONFIG_REG_CS0; counter++)
-    {
-        switch(counter)
-        {
-            case 0:
-                dummyLow[counter] = MC_HIGH;
-                dummyHigh[counter] = MC_HIGH;
-                break;
-            case 1: 
-                dummyLow[counter] = MC_LOW;
-                dummyHigh[counter] = MC_LOW;
-                break;
-            case 2: 
-                dummyLow[counter] = MMODE0_DATA;
-                dummyHigh[counter] = MMODE0_DATA;
-                break;
-            case 3:
-                dummyLow[counter] = MMODE1_DATA;
-                dummyHigh[counter] = MMODE1_DATA;
-                break;
-            case 4:
-                dummyLow[counter] = PSTART_TH;
-                dummyHigh[counter] = PSTART_TH;
-                break;
-            case 5:
-                dummyLow[counter] = QSTART_TH;
-                dummyHigh[counter] = QSTART_TH;
-                break;
-            case 6:
-                dummyLow[counter] = SSTART_TH;
-                dummyHigh[counter] = SSTART_TH;
-                break;
-            case 7:
-                dummyLow[counter] = PPHASE_TH;
-                dummyHigh[counter] = PPHASE_TH;
-                break;
-            case 8:
-                dummyLow[counter] = QPHASE_TH;
-                dummyHigh[counter] = QPHASE_TH;
-                break;
-            case 9:
-                dummyLow[counter] = SPHASE_TH;
-                dummyHigh[counter] = SPHASE_TH;
-                break;
-            default:
-                break;
-        }
-        
-        dummyLow[counter] &= LOW_PART_16BITS;
-        dummyHigh[counter] &= HIGH_PART_16BITS;
-        
-        lowPart[counter] = (uint8_t)dummyLow[counter];
-        highPart[counter] = (uint8_t)dummyHigh[counter];
-    }
-
-    for(counter = 0; counter < (2*NOCONFIG_REG_CS0); counter++)
-    {
-        if(counter < 10)
-        {
-            lowCS0 += highPart[counter];
-            highCS0 ^= highPart[counter];
-        }
-        else
-        {
-            lowCS0 += lowPart[counter];
-            highCS0 ^= lowPart[counter];
-        }
-    }
-    lowCS0 = lowCS0 % MOD_CS0;
-    totalCS0 |= (highCS0 << NEXT_FRAME);
-    totalCS0 |= lowCS0;
-
-    return (totalCS0);    
-}
-
-static uint16_t calculate_CS3(void)
-{
-    uint8_t counter;
-    uint8_t lowCS3 = 0;
-    uint8_t highCS3 = 0;
-    uint16_t totalCS3 = 0;
-    uint16_t dummyLow[NOCONFIG_REG_CS3];
-    uint16_t dummyHigh[NOCONFIG_REG_CS3];
-    uint8_t lowPart[NOCONFIG_REG_CS3];
-    uint8_t highPart[NOCONFIG_REG_CS3];
-    
-    for(counter = 0; counter < NOCONFIG_REG_CS3; counter++)
-    {
-        switch(counter)
-        {
-            case 0:
-                dummyLow[counter] = MC_HIGH;
-                dummyHigh[counter] = MC_HIGH;
-                break;
-            case 1: 
-                dummyLow[counter] = MC_LOW;
-                dummyHigh[counter] = MC_LOW;
-                break;
-            case 2: 
-                dummyLow[counter] = MMODE0_DATA;
-                dummyHigh[counter] = MMODE0_DATA;
-                break;
-            case 3:
-                dummyLow[counter] = MMODE1_DATA;
-                dummyHigh[counter] = MMODE1_DATA;
-                break;
-            case 4:
-                dummyLow[counter] = PSTART_TH;
-                dummyHigh[counter] = PSTART_TH;
-                break;
-            case 5:
-                dummyLow[counter] = QSTART_TH;
-                dummyHigh[counter] = QSTART_TH;
-                break;
-            case 6:
-                dummyLow[counter] = SSTART_TH;
-                dummyHigh[counter] = SSTART_TH;
-                break;
-            case 7:
-                dummyLow[counter] = PPHASE_TH;
-                dummyHigh[counter] = PPHASE_TH;
-                break;
-            case 8:
-                dummyLow[counter] = QPHASE_TH;
-                dummyHigh[counter] = QPHASE_TH;
-                break;
-            case 9:
-                dummyLow[counter] = SPHASE_TH;
-                dummyHigh[counter] = SPHASE_TH;
-                break;
-            default:
-                break;
-        }
-        
-        dummyLow[counter] &= LOW_PART_16BITS;
-        dummyHigh[counter] &= HIGH_PART_16BITS;
-        
-        lowPart[counter] = (uint8_t)dummyLow[counter];
-        highPart[counter] = (uint8_t)dummyHigh[counter];
-    }
-
-    for(counter = 0; counter < (2*NOCONFIG_REG_CS3); counter++)
-    {
-        if(counter < 10)
-        {
-            lowCS3 += highPart[counter];
-            highCS3 ^= highPart[counter];
-        }
-        else
-        {
-            lowCS3 += lowPart[counter];
-            highCS3 ^= lowPart[counter];
-        }
-    }
-    lowCS3 = lowCS3 % MOD_CS3;
-    totalCS3 |= (highCS3 << NEXT_FRAME);
-    totalCS3 |= lowCS3;
-
-    return (totalCS3);    
-}
 static void ATM_write(uint16_t register_add, uint16_t data)
 {
     Data_TwoFrames register_To_IC;
@@ -434,11 +263,13 @@ static void ATM_write(uint16_t register_add, uint16_t data)
     data_To_IC.lowPart = (uint8_t)data_To_IC.dummyLow;
     data_To_IC.highPart = (uint8_t)data_To_IC.dummyHigh;
     
+    PORTBbits.RB3 = 0;
     SPI_write(register_To_IC.lowPart);
     SPI_write(register_To_IC.highPart);
     
     SPI_write(data_To_IC.lowPart);
     SPI_write(data_To_IC.highPart);
+    PORTBbits.RB3 = 1;
 }
 
 static uint16_t ATM_read(uint16_t register_add)
@@ -455,6 +286,7 @@ static uint16_t ATM_read(uint16_t register_add)
     register_To_IC.lowPart = (uint8_t)register_To_IC.dummyLow;
     register_To_IC.highPart = (uint8_t)register_To_IC.dummyHigh;
     
+    PORTBbits.RB3 = 0;
     SPI_write(register_To_IC.lowPart);
     SPI_write(register_To_IC.highPart);
     
@@ -464,8 +296,9 @@ static uint16_t ATM_read(uint16_t register_add)
     data_From_IC.lowPart = data_From_IC.dummyLow;
     data_From_IC.highPart = data_From_IC.dummyHigh<<NEXT_FRAME;
     
-    data = (data_From_IC.highPart|data_From_IC.lowPart);
-    
+    //data = (data_From_IC.highPart|data_From_IC.lowPart);
+    data = 0;
+    PORTBbits.RB3 = 1;
     return (data);
 }
 void ATM_init(void)
@@ -715,9 +548,9 @@ void ATM_calibration(void)
     phaseA_pow.pfoffsetAvg /= AV_SAMPLES_RMS;
     
     /**Calculate the calibration*/
-    phaseA_pow.poffsetAvg *= 100000;
-    phaseA_pow.qoffsetAvg *= 100000;
-    phaseA_pow.pfoffsetAvg *= 100000;
+    //phaseA_pow.poffsetAvg *= 100000;
+    //phaseA_pow.qoffsetAvg *= 100000;
+    //phaseA_pow.pfoffsetAvg *= 100000;
     
     phaseA_pow.poffsetAvg /= 65536;
     phaseA_pow.qoffsetAvg /= 65536;
@@ -759,9 +592,9 @@ void ATM_calibration(void)
     phaseB_pow.pfoffsetAvg /= AV_SAMPLES_RMS;
     
     /**Calculate the calibration*/
-    phaseB_pow.poffsetAvg *= 100000;
-    phaseB_pow.qoffsetAvg *= 100000;
-    phaseB_pow.pfoffsetAvg *= 100000;
+    //phaseB_pow.poffsetAvg *= 100000;
+    //phaseB_pow.qoffsetAvg *= 100000;
+    //phaseB_pow.pfoffsetAvg *= 100000;
     
     phaseB_pow.poffsetAvg /= 65536;
     phaseB_pow.qoffsetAvg /= 65536;
@@ -804,9 +637,9 @@ void ATM_calibration(void)
     phaseC_pow.pfoffsetAvg /= AV_SAMPLES_RMS;
     
     /**Calculate the calibration*/
-    phaseC_pow.poffsetAvg *= 100000;
-    phaseC_pow.qoffsetAvg *= 100000;
-    phaseC_pow.pfoffsetAvg *= 100000;
+    //phaseC_pow.poffsetAvg *= 100000;
+    //phaseC_pow.qoffsetAvg *= 100000;
+    //phaseC_pow.pfoffsetAvg *= 100000;
     
     phaseC_pow.poffsetAvg /= 65536;
     phaseC_pow.qoffsetAvg /= 65536;
@@ -891,7 +724,7 @@ uint16_t ATM_registers(ATM_type_t type, ATM_reg_t reg)
     
     switch(type)
     {
-        case ACTIVE_ENERGY:
+        case ACTIVE_ENERGY_TYPE:
             switch(reg)
             {
                 case TOTAL_FORW_ACTIVE_ENERGY:
@@ -922,7 +755,7 @@ uint16_t ATM_registers(ATM_type_t type, ATM_reg_t reg)
                     break;
             }
             break;
-        case REACTIVE_ENERGY:
+        case REACTIVE_ENERGY_TYPE:
             switch(reg)
             {
                 case TOTAL_FORW_REACTIVE_ENERGY:
@@ -953,7 +786,7 @@ uint16_t ATM_registers(ATM_type_t type, ATM_reg_t reg)
                     break;
             }
             break;
-        case APPARENT_ENERGY:
+        case APPARENT_ENERGY_TYPE:
             switch(reg)
             {
                 case TOTAL_ARIT_APPARENT_ENERGY:
@@ -975,7 +808,7 @@ uint16_t ATM_registers(ATM_type_t type, ATM_reg_t reg)
                     break;
             }
             break;
-        case FUNDAMENTAL_ENERGY:
+        case FUNDAMENTAL_ENERGY_TYPE:
             switch(reg)
             {
                 case TOTAL_FORW_ACTIVE_FUND_ENERGY:
@@ -1006,7 +839,7 @@ uint16_t ATM_registers(ATM_type_t type, ATM_reg_t reg)
                     break;
             }
             break;
-        case HARMONIC_ENERGY:
+        case HARMONIC_ENERGY_TYPE:
             switch(reg)
             {
                 case TOTAL_FORW_ACTIVE_HARM_ENERGY:
@@ -1037,7 +870,7 @@ uint16_t ATM_registers(ATM_type_t type, ATM_reg_t reg)
                     break;
             }
             break;
-        case ACTIVE_POWER:
+        case ACTIVE_POWER_TYPE:
             switch(reg)
             {
                 case TOTAL_ACTIVE_POWER:
@@ -1056,7 +889,7 @@ uint16_t ATM_registers(ATM_type_t type, ATM_reg_t reg)
                     break;
             }
             break;
-        case REACTIVE_POWER:
+        case REACTIVE_POWER_TYPE:
             switch(reg)
             {
                 case TOTAL_REACTIVE_POWER:
@@ -1075,7 +908,7 @@ uint16_t ATM_registers(ATM_type_t type, ATM_reg_t reg)
                     break;
             }
             break;
-        case APPARENT_POWER:
+        case APPARENT_POWER_TYPE:
             switch(reg)
             {
                 case TOTAL_APPARENT_POWER:
@@ -1094,7 +927,7 @@ uint16_t ATM_registers(ATM_type_t type, ATM_reg_t reg)
                     break;
             }
             break;
-        case POWER_FACTOR:
+        case POWER_FACTOR_TYPE:
             switch(reg)
             {
                 case TOTAL_POWER_FACTOR:

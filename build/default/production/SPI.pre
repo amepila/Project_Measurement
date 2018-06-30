@@ -4232,11 +4232,11 @@ SPI_enablePins(SPI_Config->SPI_Clk);
 
 void SPI_write(uint8_t data)
 {
-uint8_t flushData;
-SSPBUF = data;
 
+SSPBUF = data;
 while(!PIR1bits.SSPIF);
 PIR1bits.SSPIF = 0;
+
 
 }
 

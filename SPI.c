@@ -84,13 +84,13 @@ void SPI_init(const SPI_ConfigType* SPI_Config)
 }
 
 void SPI_write(uint8_t data)
-{
-    uint8_t flushData;
+{    
+    //const uint8_t dummy = 0;
     SSPBUF = data;
-    //while(!SSPSTATbits.BF);
     while(!PIR1bits.SSPIF);
     PIR1bits.SSPIF = 0;
-    //flushData = SSPBUF;
+    
+    //SSPBUF = dummy;
 }
 
 uint8_t SPI_read(void)

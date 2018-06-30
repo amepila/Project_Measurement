@@ -2,14 +2,12 @@
 #include <stdio.h>
 #include "States.h"
 
-#define DEBUG   0
-
 // PIC18F2331 Configuration Bit Settings
 
 // 'C' source line config statements
 
-// CONFIG1H
-#pragma config OSC = XT         // Oscillator Selection bits (XT oscillator)
+// CONFIG1H OPTIONAL(IRCIO = 8MHZ)
+#pragma config OSC = HS         // Oscillator Selection bits (XT oscillator)
 #pragma config FCMEN = ON       // Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor enabled)
 #pragma config IESO = ON        // Internal External Oscillator Switchover bit (Internal External Switchover mode enabled)
 // CONFIG2L
@@ -62,13 +60,12 @@
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
 
-
 /**Settings of SPI**/
 const SPI_ConfigType SPI_Config = 
 {
-	SPI_LOW_POLARITY,	/**Low Polarity to SPI**/
+	SPI_HIGH_POLARITY,	/**Low Polarity to SPI**/
 	SPI_LOW_PHASE,		/**Low Phase to SPI**/
-	SPI_SERIAL_CLK4     /**FOsc divided by 4**/
+	SPI_SERIAL_CLK64     /**FOsc divided by 4**/
 };
 
 /**Simple machine state only change the tag**/
@@ -100,19 +97,10 @@ void main(void)
 	LCDNokia_clear();
     ButtonInt_config();
     
-    uint8_t test = 'o';
-    uint8_t arrayTest[] = "Hola Mundo";
-    
     for(;;)
     {
-
-        LCDNokia_sendChar(test);
-        //LCDNokia_sendString(arrayTest);
-        delay(50000); 
-#if DEBUG
         /**Machine states based on tags**/
     	mainFunctions = StateProgram[currentState].stateFunction;
     	currentState = mainFunctions();
-#endif
     }
 }

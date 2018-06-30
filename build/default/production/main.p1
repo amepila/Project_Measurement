@@ -1,5 +1,5 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"68 main.c
+"64 main.c
 [c E3166 0 1 .. ]
 [n E3166 . SPI_LOW_POLARITY SPI_HIGH_POLARITY  ]
 [c E3170 0 1 .. ]
@@ -9,35 +9,32 @@ Version 3.2 HI-TECH Software Intermediate Code
 "30 SPI.h
 [s S286 `E3166 1 `E3170 1 `E3174 1 ]
 [n S286 . SPI_Polarity SPI_Phase SPI_Clk ]
-"77 main.c
-[c E3248 0 1 2 3 4 5 6 7 .. ]
-[n E3248 . MAIN_MENU POWER_1 POWER_2 RMS_VI POWER_FACTOR PHASE_ANGLE FREQUENCY TEMPERATURE  ]
-[v F3263 `(E3248 ~T0 @X0 0 tf ]
-"32 States.h
-[s S288 `*F3263 1 ]
+"73 main.c
+[c E3357 0 1 2 3 4 5 6 7 8 .. ]
+[n E3357 . MAIN_MENU ENERGY POWER_1 POWER_2 RMS_VI POWER_FACTOR PHASE_ANGLE FREQUENCY TEMPERATURE  ]
+[v F3373 `(E3357 ~T0 @X0 0 tf ]
+"33 States.h
+[s S288 `*F3373 1 ]
 [n S288 State stateFunction ]
-"46
-[v _stateMainMenu `(E3248 ~T0 @X0 0 ef ]
-"56
-[v _statePower1 `(E3248 ~T0 @X0 0 ef ]
-"66
-[v _statePower2 `(E3248 ~T0 @X0 0 ef ]
-"76
-[v _stateRmsVI `(E3248 ~T0 @X0 0 ef ]
-"86
-[v _statePowerFactor `(E3248 ~T0 @X0 0 ef ]
-"96
-[v _statePhaseAngle `(E3248 ~T0 @X0 0 ef ]
-"106
-[v _stateFrequency `(E3248 ~T0 @X0 0 ef ]
-"116
-[v _stateTemperature `(E3248 ~T0 @X0 0 ef ]
+"47
+[v _stateMainMenu `(E3357 ~T0 @X0 0 ef ]
+"57
+[v _stateEnergy `(E3357 ~T0 @X0 0 ef ]
+"67
+[v _statePower1 `(E3357 ~T0 @X0 0 ef ]
+"77
+[v _statePower2 `(E3357 ~T0 @X0 0 ef ]
+"87
+[v _stateRmsVI `(E3357 ~T0 @X0 0 ef ]
+"97
+[v _statePowerFactor `(E3357 ~T0 @X0 0 ef ]
+"107
+[v _statePhaseAngle `(E3357 ~T0 @X0 0 ef ]
+"117
+[v _stateFrequency `(E3357 ~T0 @X0 0 ef ]
+"127
+[v _stateTemperature `(E3357 ~T0 @X0 0 ef ]
 [p mainexit ]
-"96 main.c
-[c E3123 0 1 2 3 4 5 6 7 .. ]
-[n E3123 . CLK_8MHZ CLK_4MHZ CLK_2MHZ CLK_1MHZ CLK_500KHZ CLK_250KHZ CLK_125KHZ CLK_31KHZ  ]
-"42 GPIO.h
-[v _GPIO_sourceClock `(v ~T0 @X0 0 ef1`E3123 ]
 "36 SPI.h
 [v _SPI_init `(v ~T0 @X0 0 ef1`*CS286 ]
 "24 LCDNokia5110.h
@@ -46,10 +43,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _LCDNokia_clear `(v ~T0 @X0 0 ef ]
 "18 Buttons.h
 [v _ButtonInt_config `(v ~T0 @X0 0 ef ]
-"39 LCDNokia5110.h
-[v _LCDNokia_sendChar `(v ~T0 @X0 0 ef1`uc ]
-"59 GPIO.h
-[v _delay `(v ~T0 @X0 0 ef1`ul ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3099,11 +3092,119 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;LCDNokia5110.h: 35: void LCDNokia_gotoXY(uint8_t x, uint8_t y);
 [; ;LCDNokia5110.h: 37: void LCDNokia_bitmap(const uint8_t*);
 [; ;LCDNokia5110.h: 39: void LCDNokia_sendChar(uint8_t);
-[; ;LCDNokia5110.h: 41: void LCDNokia_sendString(uint8_t*);
+[; ;LCDNokia5110.h: 41: void LCDNokia_sendString(const uint8_t*);
 [; ;LCDNokia5110.h: 43: void LCD_delay(void);
 [; ;LCDNokia5110.h: 46: void LCDNokia_printValue(uint32_t value);
 [; ;LCDNokia5110.h: 48: void LCDNokia_printFloatValue(float value);
-[; ;ATM90E36A.h: 6: void ATM_IC(void);
+[; ;ATM90E36A.h: 6: typedef enum
+[; ;ATM90E36A.h: 7: {
+[; ;ATM90E36A.h: 8: ACTIVE_ENERGY_TYPE,
+[; ;ATM90E36A.h: 9: REACTIVE_ENERGY_TYPE,
+[; ;ATM90E36A.h: 10: APPARENT_ENERGY_TYPE,
+[; ;ATM90E36A.h: 11: FUNDAMENTAL_ENERGY_TYPE,
+[; ;ATM90E36A.h: 12: HARMONIC_ENERGY_TYPE,
+[; ;ATM90E36A.h: 13: ACTIVE_POWER_TYPE,
+[; ;ATM90E36A.h: 14: REACTIVE_POWER_TYPE,
+[; ;ATM90E36A.h: 15: APPARENT_POWER_TYPE,
+[; ;ATM90E36A.h: 16: POWER_FACTOR_TYPE,
+[; ;ATM90E36A.h: 17: FUNDAMENTAL_POWER,
+[; ;ATM90E36A.h: 18: HARMONIC_POWER,
+[; ;ATM90E36A.h: 19: VOLTAGE_RMS,
+[; ;ATM90E36A.h: 20: CURRENT_RMS,
+[; ;ATM90E36A.h: 21: THDN_TYPE,
+[; ;ATM90E36A.h: 22: FREQUENCY_TYPE,
+[; ;ATM90E36A.h: 23: PHASE_ANGLE_TYPE,
+[; ;ATM90E36A.h: 24: TEMPERATURE_TYPE
+[; ;ATM90E36A.h: 25: } ATM_type_t;
+[; ;ATM90E36A.h: 27: typedef enum
+[; ;ATM90E36A.h: 28: {
+[; ;ATM90E36A.h: 29: TOTAL_FORW_ACTIVE_ENERGY,
+[; ;ATM90E36A.h: 30: PHASE_A_FORW_ACTIVE_ENERGY,
+[; ;ATM90E36A.h: 31: PHASE_B_FORW_ACTIVE_ENERGY,
+[; ;ATM90E36A.h: 32: PHASE_C_FORW_ACTIVE_ENERGY,
+[; ;ATM90E36A.h: 33: TOTAL_REV_ACTIVE_ENERGY,
+[; ;ATM90E36A.h: 34: PHASE_A_REV_ACTIVE_ENERGY,
+[; ;ATM90E36A.h: 35: PHASE_B_REV_ACTIVE_ENERGY,
+[; ;ATM90E36A.h: 36: PHASE_C_REV_ACTIVE_ENERGY,
+[; ;ATM90E36A.h: 37: TOTAL_FORW_REACTIVE_ENERGY,
+[; ;ATM90E36A.h: 38: PHASE_A_FORW_REACTIVE_ENERGY,
+[; ;ATM90E36A.h: 39: PHASE_B_FORW_REACTIVE_ENERGY,
+[; ;ATM90E36A.h: 40: PHASE_C_FORW_REACTIVE_ENERGY,
+[; ;ATM90E36A.h: 41: TOTAL_REVERSE_REACTIVE_ENERGY,
+[; ;ATM90E36A.h: 42: PHASE_A_REV_REACTIVE_ENERGY,
+[; ;ATM90E36A.h: 43: PHASE_B_REV_REACTIVE_ENERGY,
+[; ;ATM90E36A.h: 44: PHASE_C_REV_REACTIVE_ENERGY,
+[; ;ATM90E36A.h: 45: TOTAL_ARIT_APPARENT_ENERGY,
+[; ;ATM90E36A.h: 46: PHASE_A_APPARENT_ENERGY,
+[; ;ATM90E36A.h: 47: PHASE_B_APPARENT_ENERGY,
+[; ;ATM90E36A.h: 48: PHASE_C_APPARENT_ENERGY,
+[; ;ATM90E36A.h: 49: TOTAL_VECT_APPARENT_ENERGY,
+[; ;ATM90E36A.h: 50: TOTAL_FORW_ACTIVE_FUND_ENERGY,
+[; ;ATM90E36A.h: 51: PHASE_A_FORW_ACTIVE_FUND_ENERGY,
+[; ;ATM90E36A.h: 52: PHASE_B_FORW_ACTIVE_FUND_ENERGY,
+[; ;ATM90E36A.h: 53: PHASE_C_FORW_ACTIVE_FUND_ENERGY,
+[; ;ATM90E36A.h: 54: TOTAL_REV_ACTIVE_FUND_ENERGY,
+[; ;ATM90E36A.h: 55: PHASE_A_REV_ACTIVE_FUND_ENERGY,
+[; ;ATM90E36A.h: 56: PHASE_B_REV_ACTIVE_FUND_ENERGY,
+[; ;ATM90E36A.h: 57: PHASE_C_REV_ACTIVE_FUND_ENERGY,
+[; ;ATM90E36A.h: 58: TOTAL_FORW_ACTIVE_HARM_ENERGY,
+[; ;ATM90E36A.h: 59: PHASE_A_FORW_ACTIVE_HARM_ENERGY,
+[; ;ATM90E36A.h: 60: PHASE_B_FORW_ACTIVE_HARM_ENERGY,
+[; ;ATM90E36A.h: 61: PHASE_C_FORW_ACTIVE_HARM_ENERGY,
+[; ;ATM90E36A.h: 62: TOTAL_REV_ACTIVE_HARM_ENERGY,
+[; ;ATM90E36A.h: 63: PHASE_A_REV_ACTIVE_HARM_ENERGY,
+[; ;ATM90E36A.h: 64: PHASE_B_REV_ACTIVE_HARM_ENERGY,
+[; ;ATM90E36A.h: 65: PHASE_C_REV_ACTIVE_HARM_ENERGY,
+[; ;ATM90E36A.h: 66: TOTAL_ACTIVE_POWER,
+[; ;ATM90E36A.h: 67: PHASE_A_ACTIVE_POWER,
+[; ;ATM90E36A.h: 68: PHASE_B_ACTIVE_POWER,
+[; ;ATM90E36A.h: 69: PHASE_C_ACTIVE_POWER,
+[; ;ATM90E36A.h: 70: TOTAL_REACTIVE_POWER,
+[; ;ATM90E36A.h: 71: PHASE_A_REACTIVE_POWER,
+[; ;ATM90E36A.h: 72: PHASE_B_REACTIVE_POWER,
+[; ;ATM90E36A.h: 73: PHASE_C_REACTIVE_POWER,
+[; ;ATM90E36A.h: 74: TOTAL_APPARENT_POWER,
+[; ;ATM90E36A.h: 75: PHASE_A_APPARENT_POWER,
+[; ;ATM90E36A.h: 76: PHASE_B_APPARENT_POWER,
+[; ;ATM90E36A.h: 77: PHASE_C_APPARENT_POWER,
+[; ;ATM90E36A.h: 78: TOTAL_POWER_FACTOR,
+[; ;ATM90E36A.h: 79: PHASE_A_POWER_FACTOR,
+[; ;ATM90E36A.h: 80: PHASE_B_POWER_FACTOR,
+[; ;ATM90E36A.h: 81: PHASE_C_POWER_FACTOR,
+[; ;ATM90E36A.h: 82: TOTAL_ACTIVE_FUND_POWER,
+[; ;ATM90E36A.h: 83: PHASE_A_ACTIVE_FUND_POWER,
+[; ;ATM90E36A.h: 84: PHASE_B_ACTIVE_FUND_POWER,
+[; ;ATM90E36A.h: 85: PHASE_C_ACTIVE_FUND_POWER,
+[; ;ATM90E36A.h: 86: TOTAL_ACTIVE_HARM_POWER,
+[; ;ATM90E36A.h: 87: PHASE_A_ACTIVE_HARM_POWER,
+[; ;ATM90E36A.h: 88: PHASE_B_ACTIVE_HARM_POWER,
+[; ;ATM90E36A.h: 89: PHASE_C_ACTIVE_HARM_POWER,
+[; ;ATM90E36A.h: 90: NLINE_SAMPLED_CURRENT_RMS,
+[; ;ATM90E36A.h: 91: PHASE_A_VOLTAGE_RMS,
+[; ;ATM90E36A.h: 92: PHASE_B_VOLTAGE_RMS,
+[; ;ATM90E36A.h: 93: PHASE_C_VOLTAGE_RMS,
+[; ;ATM90E36A.h: 94: NLINE_CALCULATED_CURRENT_RMS,
+[; ;ATM90E36A.h: 95: PHASE_A_CURRENT_RMS,
+[; ;ATM90E36A.h: 96: PHASE_B_CURRENT_RMS,
+[; ;ATM90E36A.h: 97: PHASE_C_CURRENT_RMS,
+[; ;ATM90E36A.h: 98: PHASE_A_VOLTAGE_THDN,
+[; ;ATM90E36A.h: 99: PHASE_B_VOLTAGE_THDN,
+[; ;ATM90E36A.h: 100: PHASE_C_VOLTAGE_THDN,
+[; ;ATM90E36A.h: 101: PHASE_A_CURRENT_THDN,
+[; ;ATM90E36A.h: 102: PHASE_B_CURRENT_THDN,
+[; ;ATM90E36A.h: 103: PHASE_C_CURRENT_THDN,
+[; ;ATM90E36A.h: 104: FREQUENCY_REG,
+[; ;ATM90E36A.h: 105: PHASE_A_MEAN_ANGLE_PHASE,
+[; ;ATM90E36A.h: 106: PHASE_B_MEAN_ANGLE_PHASE,
+[; ;ATM90E36A.h: 107: PHASE_C_MEAN_ANGLE_PHASE,
+[; ;ATM90E36A.h: 108: TEMPERATURE_REG,
+[; ;ATM90E36A.h: 109: PHASE_A_VOLTAGE_ANGLE_PHASE,
+[; ;ATM90E36A.h: 110: PHASE_B_VOLTAGE_ANGLE_PHASE,
+[; ;ATM90E36A.h: 111: PHASE_C_VOLTAGE_ANGLE_PHASE
+[; ;ATM90E36A.h: 112: } ATM_reg_t;
+[; ;ATM90E36A.h: 114: void ATM_init(void);
+[; ;ATM90E36A.h: 116: void ATM_calibration(void);
+[; ;ATM90E36A.h: 118: uint16_t ATM_registers(ATM_type_t type, ATM_reg_t reg);
 [; ;Buttons.h: 6: uint8_t getButton1(void);
 [; ;Buttons.h: 8: void clearButton1(void);
 [; ;Buttons.h: 10: uint8_t getButton2(void);
@@ -3114,226 +3215,206 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;States.h: 16: typedef enum
 [; ;States.h: 17: {
 [; ;States.h: 18: MAIN_MENU,
-[; ;States.h: 19: POWER_1,
-[; ;States.h: 20: POWER_2,
-[; ;States.h: 21: RMS_VI,
-[; ;States.h: 22: POWER_FACTOR,
-[; ;States.h: 23: PHASE_ANGLE,
-[; ;States.h: 24: FREQUENCY,
-[; ;States.h: 25: TEMPERATURE
-[; ;States.h: 26: }States_MenuType;
-[; ;States.h: 29: typedef States_MenuType(*fptrState)(void);
-[; ;States.h: 32: typedef const struct State
-[; ;States.h: 33: {
-[; ;States.h: 34: States_MenuType (*stateFunction)(void);
-[; ;States.h: 35: }StateType;
-[; ;States.h: 46: States_MenuType stateMainMenu(void);
-[; ;States.h: 56: States_MenuType statePower1(void);
-[; ;States.h: 66: States_MenuType statePower2(void);
-[; ;States.h: 76: States_MenuType stateRmsVI(void);
-[; ;States.h: 86: States_MenuType statePowerFactor(void);
-[; ;States.h: 96: States_MenuType statePhaseAngle(void);
-[; ;States.h: 106: States_MenuType stateFrequency(void);
-[; ;States.h: 116: States_MenuType stateTemperature(void);
-"12 main.c
-[p x OSC=IRCIO ]
-"13
+[; ;States.h: 19: ENERGY,
+[; ;States.h: 20: POWER_1,
+[; ;States.h: 21: POWER_2,
+[; ;States.h: 22: RMS_VI,
+[; ;States.h: 23: POWER_FACTOR,
+[; ;States.h: 24: PHASE_ANGLE,
+[; ;States.h: 25: FREQUENCY,
+[; ;States.h: 26: TEMPERATURE
+[; ;States.h: 27: }States_MenuType;
+[; ;States.h: 30: typedef States_MenuType(*fptrState)(void);
+[; ;States.h: 33: typedef const struct State
+[; ;States.h: 34: {
+[; ;States.h: 35: States_MenuType (*stateFunction)(void);
+[; ;States.h: 36: }StateType;
+[; ;States.h: 47: States_MenuType stateMainMenu(void);
+[; ;States.h: 57: States_MenuType stateEnergy(void);
+[; ;States.h: 67: States_MenuType statePower1(void);
+[; ;States.h: 77: States_MenuType statePower2(void);
+[; ;States.h: 87: States_MenuType stateRmsVI(void);
+[; ;States.h: 97: States_MenuType statePowerFactor(void);
+[; ;States.h: 107: States_MenuType statePhaseAngle(void);
+[; ;States.h: 117: States_MenuType stateFrequency(void);
+[; ;States.h: 127: States_MenuType stateTemperature(void);
+"10 main.c
+[p x OSC=HS ]
+"11
 [p x FCMEN=ON ]
-"14
+"12
 [p x IESO=ON ]
-"17
+"14
 [p x PWRTEN=OFF ]
-"18
+"15
 [p x BOREN=ON ]
-"22
+"19
 [p x WDTEN=OFF ]
-"23
+"20
 [p x WDPS=32768 ]
-"24
+"21
 [p x WINEN=OFF ]
-"27
+"24
 [p x PWMPIN=OFF ]
-"28
+"25
 [p x LPOL=HIGH ]
-"29
+"26
 [p x HPOL=HIGH ]
-"30
+"27
 [p x T1OSCMX=ON ]
-"33
+"30
 [p x MCLRE=OFF ]
-"36
+"33
 [p x STVREN=ON ]
-"37
+"34
 [p x LVP=OFF ]
-"40
+"37
 [p x CP0=OFF ]
-"41
+"38
 [p x CP1=OFF ]
-"44
+"41
 [p x CPB=OFF ]
-"45
+"42
 [p x CPD=OFF ]
-"48
+"45
 [p x WRT0=OFF ]
-"49
+"46
 [p x WRT1=OFF ]
-"52
+"49
 [p x WRTC=OFF ]
-"53
+"50
 [p x WRTB=OFF ]
-"54
+"51
 [p x WRTD=OFF ]
-"57
+"54
 [p x EBTR0=OFF ]
-"58
+"55
 [p x EBTR1=OFF ]
-"61
+"58
 [p x EBTRB=OFF ]
-"68
+"64
 [v _SPI_Config `CS286 ~T0 @X0 1 e ]
 [i _SPI_Config
 :U ..
 :U ..
-"70
-. `E3166 0
-"71
+"66
+. `E3166 1
+"67
 . `E3170 0
-"73
+"69
 . `E3174 2
 ..
 ..
 ]
-[; ;main.c: 68: const SPI_ConfigType SPI_Config =
-[; ;main.c: 69: {
-[; ;main.c: 70: SPI_LOW_POLARITY,
-[; ;main.c: 71: SPI_LOW_PHASE,
-[; ;main.c: 72: SPI_SERIAL_CLK64
-[; ;main.c: 73: };
-"77
-[v _StateProgram `CS288 ~T0 @X0 -> 8 `i e ]
+[; ;main.c: 64: const SPI_ConfigType SPI_Config =
+[; ;main.c: 65: {
+[; ;main.c: 66: SPI_HIGH_POLARITY,
+[; ;main.c: 67: SPI_LOW_PHASE,
+[; ;main.c: 68: SPI_SERIAL_CLK64
+[; ;main.c: 69: };
+"73
+[v _StateProgram `CS288 ~T0 @X0 -> 9 `i e ]
 [i _StateProgram
 :U ..
 :U ..
-"79
+"75
 &U _stateMainMenu
 ..
 :U ..
-"80
+"76
+&U _stateEnergy
+..
+:U ..
+"77
 &U _statePower1
 ..
 :U ..
-"81
+"78
 &U _statePower2
 ..
 :U ..
-"82
+"79
 &U _stateRmsVI
 ..
 :U ..
-"83
+"80
 &U _statePowerFactor
 ..
 :U ..
-"84
+"81
 &U _statePhaseAngle
 ..
 :U ..
-"85
+"82
 &U _stateFrequency
 ..
 :U ..
-"86
+"83
 &U _stateTemperature
 ..
 ..
 ]
-[; ;main.c: 77: const StateType StateProgram[8] =
-[; ;main.c: 78: {
-[; ;main.c: 79: {stateMainMenu},
-[; ;main.c: 80: {statePower1},
-[; ;main.c: 81: {statePower2},
-[; ;main.c: 82: {stateRmsVI},
-[; ;main.c: 83: {statePowerFactor},
-[; ;main.c: 84: {statePhaseAngle},
-[; ;main.c: 85: {stateFrequency},
-[; ;main.c: 86: {stateTemperature}
-[; ;main.c: 87: };
+[; ;main.c: 73: const StateType StateProgram[9] =
+[; ;main.c: 74: {
+[; ;main.c: 75: {stateMainMenu},
+[; ;main.c: 76: {stateEnergy},
+[; ;main.c: 77: {statePower1},
+[; ;main.c: 78: {statePower2},
+[; ;main.c: 79: {stateRmsVI},
+[; ;main.c: 80: {statePowerFactor},
+[; ;main.c: 81: {statePhaseAngle},
+[; ;main.c: 82: {stateFrequency},
+[; ;main.c: 83: {stateTemperature}
+[; ;main.c: 84: };
 [v $root$_main `(v ~T0 @X0 0 e ]
-"89
+"86
 [v _main `(v ~T0 @X0 1 ef ]
-"90
+"87
 {
-[; ;main.c: 89: void main(void)
-[; ;main.c: 90: {
+[; ;main.c: 86: void main(void)
+[; ;main.c: 87: {
 [e :U _main ]
 [f ]
-"92
-[v _currentState `E3248 ~T0 @X0 1 a ]
-[; ;main.c: 92: States_MenuType currentState = MAIN_MENU;
-[e = _currentState . `E3248 0 ]
-[v F3296 `(E3248 ~T0 @X0 0 tf ]
-"93
-[v _mainFunctions `*F3296 ~T0 @X0 1 a ]
-[; ;main.c: 93: States_MenuType(*mainFunctions)(void);
-[; ;main.c: 96: GPIO_sourceClock(CLK_8MHZ);
-"96
-[e ( _GPIO_sourceClock (1 . `E3123 0 ]
-[; ;main.c: 98: SPI_init(&SPI_Config);
-"98
+"89
+[v _currentState `E3357 ~T0 @X0 1 a ]
+[; ;main.c: 89: States_MenuType currentState = MAIN_MENU;
+[e = _currentState . `E3357 0 ]
+[v F3409 `(E3357 ~T0 @X0 0 tf ]
+"90
+[v _mainFunctions `*F3409 ~T0 @X0 1 a ]
+[; ;main.c: 90: States_MenuType(*mainFunctions)(void);
+[; ;main.c: 95: SPI_init(&SPI_Config);
+"95
 [e ( _SPI_init (1 &U _SPI_Config ]
-[; ;main.c: 99: LCDNokia_init();
-"99
+[; ;main.c: 96: LCDNokia_init();
+"96
 [e ( _LCDNokia_init ..  ]
-[; ;main.c: 100: LCDNokia_clear();
-"100
+[; ;main.c: 97: LCDNokia_clear();
+"97
 [e ( _LCDNokia_clear ..  ]
-[; ;main.c: 102: ButtonInt_config();
-"102
+[; ;main.c: 98: ButtonInt_config();
+"98
 [e ( _ButtonInt_config ..  ]
-"104
-[v _test `uc ~T0 @X0 1 a ]
-[; ;main.c: 104: uint8_t test = 'o';
-[e = _test -> -> 111 `ui `uc ]
-[v F3300 `uc ~T0 @X0 -> 0 `x s ]
-[i F3300
-:U ..
--> 72 `c
--> 111 `c
--> 108 `c
--> 97 `c
--> 32 `c
--> 77 `c
--> 117 `c
--> 110 `c
--> 100 `c
--> 111 `c
--> 0 `c
-..
-]
-"105
-[v _arrayTest `uc ~T0 @X0 11  a ]
-[; ;main.c: 105: uint8_t arrayTest[] = "Hola Mundo";
-[e = _arrayTest F3300 ]
-[; ;main.c: 107: for(;;)
-"107
+[; ;main.c: 100: for(;;)
+"100
 {
-"108
+"101
 [e :U 290 ]
-[; ;main.c: 108: {
+[; ;main.c: 101: {
 {
-[; ;main.c: 109: LCDNokia_sendChar(test);
-"109
-[e ( _LCDNokia_sendChar (1 _test ]
-[; ;main.c: 111: delay(50000);
-"111
-[e ( _delay (1 -> -> 50000 `l `ul ]
-"117
+[; ;main.c: 103: mainFunctions = StateProgram[currentState].stateFunction;
+"103
+[e = _mainFunctions -> . *U + &U _StateProgram * -> _currentState `ux -> -> # *U &U _StateProgram `ui `ux 0 `*F3409 ]
+[; ;main.c: 104: currentState = mainFunctions();
+"104
+[e = _currentState ( *U _mainFunctions ..  ]
+"105
 }
-[; ;main.c: 117: }
+[; ;main.c: 105: }
 [e $U 290  ]
 [e :U 291 ]
 }
-[; ;main.c: 118: }
-"118
+[; ;main.c: 106: }
+"106
 [e :UE 289 ]
 }

@@ -1,3 +1,5 @@
+#include <pic18f2331.h>
+
 #include "GPIO.h"
 #include "SPI.h"
 #include "LCDNokia5110.h"
@@ -110,13 +112,14 @@ void LCDNokia_init(void)
     //Configure control pins
     GPIO_dataDirectionPIN(GPIO_B, DATA_OR_CMD_PIN, GPIO_OUTPUT);
 	GPIO_dataDirectionPIN(GPIO_B, RESET_PIN, GPIO_OUTPUT);
-	
+    GPIO_dataDirectionPIN(GPIO_B, CHIP_SELECT, GPIO_OUTPUT);
+    
 	GPIO_clearPIN(GPIO_B, RESET_PIN);
 	LCD_delay();
 	GPIO_setPIN(GPIO_B, RESET_PIN);
     
 	LCDNokia_writeByte(LCD_CMD, 0x21); //Tell LCD that extended commands follow
-    LCDNokia_writeByte(LCD_CMD, 0xB1); //Set LCD Vop (Contrast): Try 0xB1(good @ 3.3V) or 0xBF if your display is too dark
+    LCDNokia_writeByte(LCD_CMD, 0xBF); //Set LCD Vop (Contrast): Try 0xB1(good @ 3.3V) or 0xBF if your display is too dark
     LCDNokia_writeByte(LCD_CMD, 0x04); //Set Temp coefficent 
     LCDNokia_writeByte(LCD_CMD, 0x14); //LCD bias mode 1:48: Try 0x13 or 0x14
 	LCDNokia_writeByte(LCD_CMD, 0x20); //We must send 0x20 before modifying the display control mode
@@ -137,16 +140,19 @@ void LCDNokia_writeByte(uint8_t DataOrCmd, uint8_t data)
 {
 	if(DataOrCmd)
     {
-        GPIO_setPIN(GPIO_B, DATA_OR_CMD_PIN);
+        PORTBbits.RB2 = 1;
+        //GPIO_setPIN(GPIO_B, DATA_OR_CMD_PIN);
     }
 	else
     {
-        GPIO_clearPIN(GPIO_B, DATA_OR_CMD_PIN);
+        PORTBbits.RB2 = 0;
+        //GPIO_clearPIN(GPIO_B, DATA_OR_CMD_PIN);
     }
-	
+    PORTBbits.RB0 = 0;
     SPI_write(data);
+    PORTBbits.RB0 = 1;
 }
-
+#if 1
 void LCDNokia_sendChar(uint8_t character) 
 {
   uint16_t index = 0; 
@@ -160,11 +166,27 @@ void LCDNokia_sendChar(uint8_t character)
      *  The font table starts with this character
      */
   }
-
   LCDNokia_writeByte(LCD_DATA, 0x00); //Blank vertical line padding
 }
+#endif
+#if 0
+void LCDNokia_sendChar(uint8_t character) 
+{
+    uint16_t index = 0; 
+	    
+    PORTBbits.RB2 = 1;
+    SPI_write(0x00);
 
-void LCDNokia_sendString(uint8_t *characters) 
+    for (index = 0; index < 5; index++)
+    {
+        PORTBbits.RB2 = 1;
+        SPI_write(ASCII[character - 0x20][index]);
+    }
+    PORTBbits.RB2 = 1;
+    SPI_write(0x00);
+}
+#endif
+void LCDNokia_sendString(const uint8_t *characters) 
 {
     while (*characters)
     {
@@ -194,7 +216,7 @@ void LCD_delay(void)
 {
 	uint32_t counter;
 	
-	for(counter =  0; counter < 50000; counter++)
+	for(counter =  0; counter < 2500; counter++)
 	{	   
 	}
 }

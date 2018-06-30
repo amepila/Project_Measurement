@@ -1,11 +1,55 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"9 ATM90E36A.c
-[c E3077 0 1 2 .. ]
-[n E3077 . GPIO_A GPIO_B GPIO_C  ]
-[c E3073 0 1 .. ]
-[n E3073 . GPIO_INPUT GPIO_OUTPUT  ]
+"209 ATM90E36A.c
+[s S286 `uc 1 `uc 1 `ui 1 `ui 1 ]
+[n S286 . lowPart highPart dummyLow dummyHigh ]
+"1171 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f2331.h
+[s S42 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S42 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
+"1181
+[s S43 :3 `uc 1 :1 `uc 1 ]
+[n S43 . . CCP2_PA2 ]
+"1170
+[u S41 `S42 1 `S43 1 ]
+[n S41 . . . ]
+"1186
+[v _PORTBbits `VS41 ~T0 @X0 0 e@3969 ]
+"38 SPI.h
+[v _SPI_write `(v ~T0 @X0 0 ef1`uc ]
+"40
+[v _SPI_read `(uc ~T0 @X0 0 ef ]
+"307 ATM90E36A.c
+[c E3186 0 1 2 .. ]
+[n E3186 . GPIO_A GPIO_B GPIO_C  ]
+[c E3182 0 1 .. ]
+[n E3182 . GPIO_INPUT GPIO_OUTPUT  ]
 "44 GPIO.h
-[v _GPIO_dataDirectionPIN `(v ~T0 @X0 0 ef3`E3077`uc`E3073 ]
+[v _GPIO_dataDirectionPIN `(v ~T0 @X0 0 ef3`E3186`uc`E3182 ]
+"6969 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f2331.h
+[v _ANS2 `Vb ~T0 @X0 0 e@32194 ]
+"6967
+[v _ANS1 `Vb ~T0 @X0 0 e@32193 ]
+"6965
+[v _ANS0 `Vb ~T0 @X0 0 e@32192 ]
+"53 GPIO.h
+[v _GPIO_setPIN `(v ~T0 @X0 0 ef2`E3186`uc ]
+"56
+[v _GPIO_clearPIN `(v ~T0 @X0 0 ef2`E3186`uc ]
+"217 ATM90E36A.c
+[s S287 `ui 1 `ui 1 `f 1 `f 1 `ui 1 `ui 1 `ui 1 `ui 1 `ui 1 `ui 1 ]
+[n S287 . ugainAvg igainAvg dummy_ugain dummy_igain urmsAvg irmsAvg urmsLSB irmsLSB uoffsetAvg ioffsetAvg ]
+"231
+[s S288 `ui 1 `ui 1 `ui 1 ]
+[n S288 . poffsetAvg qoffsetAvg pfoffsetAvg ]
+"238
+[s S289 `ui 1 `ui 1 `f 1 `f 1 ]
+[n S289 . gain phaseAngle dummy_Gain dummy_Phi ]
+"386
+[v _calculate_CS0 `(i ~T0 @X0 0 ef ]
+"722
+[c E3061 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 .. ]
+[n E3061 . ACTIVE_ENERGY_TYPE REACTIVE_ENERGY_TYPE APPARENT_ENERGY_TYPE FUNDAMENTAL_ENERGY_TYPE HARMONIC_ENERGY_TYPE ACTIVE_POWER_TYPE REACTIVE_POWER_TYPE APPARENT_POWER_TYPE POWER_FACTOR_TYPE FUNDAMENTAL_POWER HARMONIC_POWER VOLTAGE_RMS CURRENT_RMS THDN_TYPE FREQUENCY_TYPE PHASE_ANGLE_TYPE TEMPERATURE_TYPE  ]
+[c E3080 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 .. ]
+[n E3080 . TOTAL_FORW_ACTIVE_ENERGY PHASE_A_FORW_ACTIVE_ENERGY PHASE_B_FORW_ACTIVE_ENERGY PHASE_C_FORW_ACTIVE_ENERGY TOTAL_REV_ACTIVE_ENERGY PHASE_A_REV_ACTIVE_ENERGY PHASE_B_REV_ACTIVE_ENERGY PHASE_C_REV_ACTIVE_ENERGY TOTAL_FORW_REACTIVE_ENERGY PHASE_A_FORW_REACTIVE_ENERGY PHASE_B_FORW_REACTIVE_ENERGY PHASE_C_FORW_REACTIVE_ENERGY TOTAL_REVERSE_REACTIVE_ENERGY PHASE_A_REV_REACTIVE_ENERGY PHASE_B_REV_REACTIVE_ENERGY PHASE_C_REV_REACTIVE_ENERGY TOTAL_ARIT_APPARENT_ENERGY PHASE_A_APPARENT_ENERGY PHASE_B_APPARENT_ENERGY PHASE_C_APPARENT_ENERGY TOTAL_VECT_APPARENT_ENERGY TOTAL_FORW_ACTIVE_FUND_ENERGY PHASE_A_FORW_ACTIVE_FUND_ENERGY PHASE_B_FORW_ACTIVE_FUND_ENERGY PHASE_C_FORW_ACTIVE_FUND_ENERGY TOTAL_REV_ACTIVE_FUND_ENERGY PHASE_A_REV_ACTIVE_FUND_ENERGY PHASE_B_REV_ACTIVE_FUND_ENERGY PHASE_C_REV_ACTIVE_FUND_ENERGY TOTAL_FORW_ACTIVE_HARM_ENERGY PHASE_A_FORW_ACTIVE_HARM_ENERGY PHASE_B_FORW_ACTIVE_HARM_ENERGY PHASE_C_FORW_ACTIVE_HARM_ENERGY TOTAL_REV_ACTIVE_HARM_ENERGY PHASE_A_REV_ACTIVE_HARM_ENERGY PHASE_B_REV_ACTIVE_HARM_ENERGY PHASE_C_REV_ACTIVE_HARM_ENERGY TOTAL_ACTIVE_POWER PHASE_A_ACTIVE_POWER PHASE_B_ACTIVE_POWER PHASE_C_ACTIVE_POWER TOTAL_REACTIVE_POWER PHASE_A_REACTIVE_POWER PHASE_B_REACTIVE_POWER PHASE_C_REACTIVE_POWER TOTAL_APPARENT_POWER PHASE_A_APPARENT_POWER PHASE_B_APPARENT_POWER PHASE_C_APPARENT_POWER TOTAL_POWER_FACTOR PHASE_A_POWER_FACTOR PHASE_B_POWER_FACTOR PHASE_C_POWER_FACTOR TOTAL_ACTIVE_FUND_POWER PHASE_A_ACTIVE_FUND_POWER PHASE_B_ACTIVE_FUND_POWER PHASE_C_ACTIVE_FUND_POWER TOTAL_ACTIVE_HARM_POWER PHASE_A_ACTIVE_HARM_POWER PHASE_B_ACTIVE_HARM_POWER PHASE_C_ACTIVE_HARM_POWER NLINE_SAMPLED_CURRENT_RMS PHASE_A_VOLTAGE_RMS PHASE_B_VOLTAGE_RMS PHASE_C_VOLTAGE_RMS NLINE_CALCULATED_CURRENT_RMS PHASE_A_CURRENT_RMS PHASE_B_CURRENT_RMS PHASE_C_CURRENT_RMS PHASE_A_VOLTAGE_THDN PHASE_B_VOLTAGE_THDN PHASE_C_VOLTAGE_THDN PHASE_A_CURRENT_THDN PHASE_B_CURRENT_THDN PHASE_C_CURRENT_THDN FREQUENCY_REG PHASE_A_MEAN_ANGLE_PHASE PHASE_B_MEAN_ANGLE_PHASE PHASE_C_MEAN_ANGLE_PHASE TEMPERATURE_REG PHASE_A_VOLTAGE_ANGLE_PHASE PHASE_B_VOLTAGE_ANGLE_PHASE PHASE_C_VOLTAGE_ANGLE_PHASE  ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -2938,7 +2982,115 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 205: typedef uint32_t uintmax_t;
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
-[; ;ATM90E36A.h: 6: void ATM_IC(void);
+[; ;ATM90E36A.h: 6: typedef enum
+[; ;ATM90E36A.h: 7: {
+[; ;ATM90E36A.h: 8: ACTIVE_ENERGY_TYPE,
+[; ;ATM90E36A.h: 9: REACTIVE_ENERGY_TYPE,
+[; ;ATM90E36A.h: 10: APPARENT_ENERGY_TYPE,
+[; ;ATM90E36A.h: 11: FUNDAMENTAL_ENERGY_TYPE,
+[; ;ATM90E36A.h: 12: HARMONIC_ENERGY_TYPE,
+[; ;ATM90E36A.h: 13: ACTIVE_POWER_TYPE,
+[; ;ATM90E36A.h: 14: REACTIVE_POWER_TYPE,
+[; ;ATM90E36A.h: 15: APPARENT_POWER_TYPE,
+[; ;ATM90E36A.h: 16: POWER_FACTOR_TYPE,
+[; ;ATM90E36A.h: 17: FUNDAMENTAL_POWER,
+[; ;ATM90E36A.h: 18: HARMONIC_POWER,
+[; ;ATM90E36A.h: 19: VOLTAGE_RMS,
+[; ;ATM90E36A.h: 20: CURRENT_RMS,
+[; ;ATM90E36A.h: 21: THDN_TYPE,
+[; ;ATM90E36A.h: 22: FREQUENCY_TYPE,
+[; ;ATM90E36A.h: 23: PHASE_ANGLE_TYPE,
+[; ;ATM90E36A.h: 24: TEMPERATURE_TYPE
+[; ;ATM90E36A.h: 25: } ATM_type_t;
+[; ;ATM90E36A.h: 27: typedef enum
+[; ;ATM90E36A.h: 28: {
+[; ;ATM90E36A.h: 29: TOTAL_FORW_ACTIVE_ENERGY,
+[; ;ATM90E36A.h: 30: PHASE_A_FORW_ACTIVE_ENERGY,
+[; ;ATM90E36A.h: 31: PHASE_B_FORW_ACTIVE_ENERGY,
+[; ;ATM90E36A.h: 32: PHASE_C_FORW_ACTIVE_ENERGY,
+[; ;ATM90E36A.h: 33: TOTAL_REV_ACTIVE_ENERGY,
+[; ;ATM90E36A.h: 34: PHASE_A_REV_ACTIVE_ENERGY,
+[; ;ATM90E36A.h: 35: PHASE_B_REV_ACTIVE_ENERGY,
+[; ;ATM90E36A.h: 36: PHASE_C_REV_ACTIVE_ENERGY,
+[; ;ATM90E36A.h: 37: TOTAL_FORW_REACTIVE_ENERGY,
+[; ;ATM90E36A.h: 38: PHASE_A_FORW_REACTIVE_ENERGY,
+[; ;ATM90E36A.h: 39: PHASE_B_FORW_REACTIVE_ENERGY,
+[; ;ATM90E36A.h: 40: PHASE_C_FORW_REACTIVE_ENERGY,
+[; ;ATM90E36A.h: 41: TOTAL_REVERSE_REACTIVE_ENERGY,
+[; ;ATM90E36A.h: 42: PHASE_A_REV_REACTIVE_ENERGY,
+[; ;ATM90E36A.h: 43: PHASE_B_REV_REACTIVE_ENERGY,
+[; ;ATM90E36A.h: 44: PHASE_C_REV_REACTIVE_ENERGY,
+[; ;ATM90E36A.h: 45: TOTAL_ARIT_APPARENT_ENERGY,
+[; ;ATM90E36A.h: 46: PHASE_A_APPARENT_ENERGY,
+[; ;ATM90E36A.h: 47: PHASE_B_APPARENT_ENERGY,
+[; ;ATM90E36A.h: 48: PHASE_C_APPARENT_ENERGY,
+[; ;ATM90E36A.h: 49: TOTAL_VECT_APPARENT_ENERGY,
+[; ;ATM90E36A.h: 50: TOTAL_FORW_ACTIVE_FUND_ENERGY,
+[; ;ATM90E36A.h: 51: PHASE_A_FORW_ACTIVE_FUND_ENERGY,
+[; ;ATM90E36A.h: 52: PHASE_B_FORW_ACTIVE_FUND_ENERGY,
+[; ;ATM90E36A.h: 53: PHASE_C_FORW_ACTIVE_FUND_ENERGY,
+[; ;ATM90E36A.h: 54: TOTAL_REV_ACTIVE_FUND_ENERGY,
+[; ;ATM90E36A.h: 55: PHASE_A_REV_ACTIVE_FUND_ENERGY,
+[; ;ATM90E36A.h: 56: PHASE_B_REV_ACTIVE_FUND_ENERGY,
+[; ;ATM90E36A.h: 57: PHASE_C_REV_ACTIVE_FUND_ENERGY,
+[; ;ATM90E36A.h: 58: TOTAL_FORW_ACTIVE_HARM_ENERGY,
+[; ;ATM90E36A.h: 59: PHASE_A_FORW_ACTIVE_HARM_ENERGY,
+[; ;ATM90E36A.h: 60: PHASE_B_FORW_ACTIVE_HARM_ENERGY,
+[; ;ATM90E36A.h: 61: PHASE_C_FORW_ACTIVE_HARM_ENERGY,
+[; ;ATM90E36A.h: 62: TOTAL_REV_ACTIVE_HARM_ENERGY,
+[; ;ATM90E36A.h: 63: PHASE_A_REV_ACTIVE_HARM_ENERGY,
+[; ;ATM90E36A.h: 64: PHASE_B_REV_ACTIVE_HARM_ENERGY,
+[; ;ATM90E36A.h: 65: PHASE_C_REV_ACTIVE_HARM_ENERGY,
+[; ;ATM90E36A.h: 66: TOTAL_ACTIVE_POWER,
+[; ;ATM90E36A.h: 67: PHASE_A_ACTIVE_POWER,
+[; ;ATM90E36A.h: 68: PHASE_B_ACTIVE_POWER,
+[; ;ATM90E36A.h: 69: PHASE_C_ACTIVE_POWER,
+[; ;ATM90E36A.h: 70: TOTAL_REACTIVE_POWER,
+[; ;ATM90E36A.h: 71: PHASE_A_REACTIVE_POWER,
+[; ;ATM90E36A.h: 72: PHASE_B_REACTIVE_POWER,
+[; ;ATM90E36A.h: 73: PHASE_C_REACTIVE_POWER,
+[; ;ATM90E36A.h: 74: TOTAL_APPARENT_POWER,
+[; ;ATM90E36A.h: 75: PHASE_A_APPARENT_POWER,
+[; ;ATM90E36A.h: 76: PHASE_B_APPARENT_POWER,
+[; ;ATM90E36A.h: 77: PHASE_C_APPARENT_POWER,
+[; ;ATM90E36A.h: 78: TOTAL_POWER_FACTOR,
+[; ;ATM90E36A.h: 79: PHASE_A_POWER_FACTOR,
+[; ;ATM90E36A.h: 80: PHASE_B_POWER_FACTOR,
+[; ;ATM90E36A.h: 81: PHASE_C_POWER_FACTOR,
+[; ;ATM90E36A.h: 82: TOTAL_ACTIVE_FUND_POWER,
+[; ;ATM90E36A.h: 83: PHASE_A_ACTIVE_FUND_POWER,
+[; ;ATM90E36A.h: 84: PHASE_B_ACTIVE_FUND_POWER,
+[; ;ATM90E36A.h: 85: PHASE_C_ACTIVE_FUND_POWER,
+[; ;ATM90E36A.h: 86: TOTAL_ACTIVE_HARM_POWER,
+[; ;ATM90E36A.h: 87: PHASE_A_ACTIVE_HARM_POWER,
+[; ;ATM90E36A.h: 88: PHASE_B_ACTIVE_HARM_POWER,
+[; ;ATM90E36A.h: 89: PHASE_C_ACTIVE_HARM_POWER,
+[; ;ATM90E36A.h: 90: NLINE_SAMPLED_CURRENT_RMS,
+[; ;ATM90E36A.h: 91: PHASE_A_VOLTAGE_RMS,
+[; ;ATM90E36A.h: 92: PHASE_B_VOLTAGE_RMS,
+[; ;ATM90E36A.h: 93: PHASE_C_VOLTAGE_RMS,
+[; ;ATM90E36A.h: 94: NLINE_CALCULATED_CURRENT_RMS,
+[; ;ATM90E36A.h: 95: PHASE_A_CURRENT_RMS,
+[; ;ATM90E36A.h: 96: PHASE_B_CURRENT_RMS,
+[; ;ATM90E36A.h: 97: PHASE_C_CURRENT_RMS,
+[; ;ATM90E36A.h: 98: PHASE_A_VOLTAGE_THDN,
+[; ;ATM90E36A.h: 99: PHASE_B_VOLTAGE_THDN,
+[; ;ATM90E36A.h: 100: PHASE_C_VOLTAGE_THDN,
+[; ;ATM90E36A.h: 101: PHASE_A_CURRENT_THDN,
+[; ;ATM90E36A.h: 102: PHASE_B_CURRENT_THDN,
+[; ;ATM90E36A.h: 103: PHASE_C_CURRENT_THDN,
+[; ;ATM90E36A.h: 104: FREQUENCY_REG,
+[; ;ATM90E36A.h: 105: PHASE_A_MEAN_ANGLE_PHASE,
+[; ;ATM90E36A.h: 106: PHASE_B_MEAN_ANGLE_PHASE,
+[; ;ATM90E36A.h: 107: PHASE_C_MEAN_ANGLE_PHASE,
+[; ;ATM90E36A.h: 108: TEMPERATURE_REG,
+[; ;ATM90E36A.h: 109: PHASE_A_VOLTAGE_ANGLE_PHASE,
+[; ;ATM90E36A.h: 110: PHASE_B_VOLTAGE_ANGLE_PHASE,
+[; ;ATM90E36A.h: 111: PHASE_C_VOLTAGE_ANGLE_PHASE
+[; ;ATM90E36A.h: 112: } ATM_reg_t;
+[; ;ATM90E36A.h: 114: void ATM_init(void);
+[; ;ATM90E36A.h: 116: void ATM_calibration(void);
+[; ;ATM90E36A.h: 118: uint16_t ATM_registers(ATM_type_t type, ATM_reg_t reg);
 [; ;GPIO.h: 7: typedef enum
 [; ;GPIO.h: 8: {
 [; ;GPIO.h: 9: CLK_8MHZ,
@@ -3003,18 +3155,2405 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;SPI.h: 36: void SPI_init(const SPI_ConfigType* SPI_Config);
 [; ;SPI.h: 38: void SPI_write(uint8_t data);
 [; ;SPI.h: 40: uint8_t SPI_read(void);
-"6 ATM90E36A.c
-[v _ATM_IC `(v ~T0 @X0 1 ef ]
-"7
+[; ;ATM90E36A.c: 208: typedef struct
+[; ;ATM90E36A.c: 209: {
+[; ;ATM90E36A.c: 210: uint8_t lowPart;
+[; ;ATM90E36A.c: 211: uint8_t highPart;
+[; ;ATM90E36A.c: 212: uint16_t dummyLow;
+[; ;ATM90E36A.c: 213: uint16_t dummyHigh;
+[; ;ATM90E36A.c: 214: } Data_TwoFrames;
+[; ;ATM90E36A.c: 216: typedef struct
+[; ;ATM90E36A.c: 217: {
+[; ;ATM90E36A.c: 218: uint16_t ugainAvg;
+[; ;ATM90E36A.c: 219: uint16_t igainAvg;
+[; ;ATM90E36A.c: 220: float dummy_ugain;
+[; ;ATM90E36A.c: 221: float dummy_igain;
+[; ;ATM90E36A.c: 222: uint16_t urmsAvg;
+[; ;ATM90E36A.c: 223: uint16_t irmsAvg;
+[; ;ATM90E36A.c: 224: uint16_t urmsLSB;
+[; ;ATM90E36A.c: 225: uint16_t irmsLSB;
+[; ;ATM90E36A.c: 226: uint16_t uoffsetAvg;
+[; ;ATM90E36A.c: 227: uint16_t ioffsetAvg;
+[; ;ATM90E36A.c: 228: } Data_VI_Avg;
+[; ;ATM90E36A.c: 230: typedef struct
+[; ;ATM90E36A.c: 231: {
+[; ;ATM90E36A.c: 232: uint16_t poffsetAvg;
+[; ;ATM90E36A.c: 233: uint16_t qoffsetAvg;
+[; ;ATM90E36A.c: 234: uint16_t pfoffsetAvg;
+[; ;ATM90E36A.c: 235: } Data_Pow_Avg;
+[; ;ATM90E36A.c: 237: typedef struct
+[; ;ATM90E36A.c: 238: {
+[; ;ATM90E36A.c: 239: uint16_t gain;
+[; ;ATM90E36A.c: 240: uint16_t phaseAngle;
+[; ;ATM90E36A.c: 241: float dummy_Gain;
+[; ;ATM90E36A.c: 242: float dummy_Phi;
+[; ;ATM90E36A.c: 243: } Data_Energy;
+"245 ATM90E36A.c
+[v _ATM_write `(v ~T0 @X0 1 sf2`ui`ui ]
+"246
 {
-[; ;ATM90E36A.c: 6: void ATM_IC(void)
-[; ;ATM90E36A.c: 7: {
-[e :U _ATM_IC ]
+[; ;ATM90E36A.c: 245: static void ATM_write(uint16_t register_add, uint16_t data)
+[; ;ATM90E36A.c: 246: {
+[e :U _ATM_write ]
+"245
+[v _register_add `ui ~T0 @X0 1 r1 ]
+[v _data `ui ~T0 @X0 1 r2 ]
+"246
 [f ]
-[; ;ATM90E36A.c: 9: GPIO_dataDirectionPIN(GPIO_B, 3, GPIO_OUTPUT);
-"9
-[e ( _GPIO_dataDirectionPIN (3 , , . `E3077 1 -> -> 3 `i `uc . `E3073 1 ]
-[; ;ATM90E36A.c: 13: }
-"13
-[e :UE 286 ]
+"247
+[v _register_To_IC `S286 ~T0 @X0 1 a ]
+"248
+[v _data_To_IC `S286 ~T0 @X0 1 a ]
+[; ;ATM90E36A.c: 247: Data_TwoFrames register_To_IC;
+[; ;ATM90E36A.c: 248: Data_TwoFrames data_To_IC;
+[; ;ATM90E36A.c: 250: register_To_IC.dummyLow = register_add;
+"250
+[e = . _register_To_IC 2 _register_add ]
+[; ;ATM90E36A.c: 251: register_To_IC.dummyLow &= 0x0F;
+"251
+[e =& . _register_To_IC 2 -> -> 15 `i `ui ]
+[; ;ATM90E36A.c: 252: register_To_IC.dummyHigh = register_add;
+"252
+[e = . _register_To_IC 3 _register_add ]
+[; ;ATM90E36A.c: 253: register_To_IC.dummyHigh &= 0xF0;
+"253
+[e =& . _register_To_IC 3 -> -> 240 `i `ui ]
+[; ;ATM90E36A.c: 255: data_To_IC.dummyLow = data;
+"255
+[e = . _data_To_IC 2 _data ]
+[; ;ATM90E36A.c: 256: data_To_IC.dummyLow &= 0x0F;
+"256
+[e =& . _data_To_IC 2 -> -> 15 `i `ui ]
+[; ;ATM90E36A.c: 257: data_To_IC.dummyHigh = data;
+"257
+[e = . _data_To_IC 3 _data ]
+[; ;ATM90E36A.c: 258: data_To_IC.dummyHigh &= 0xF0;
+"258
+[e =& . _data_To_IC 3 -> -> 240 `i `ui ]
+[; ;ATM90E36A.c: 260: register_To_IC.lowPart = (uint8_t)register_To_IC.dummyLow;
+"260
+[e = . _register_To_IC 0 -> . _register_To_IC 2 `uc ]
+[; ;ATM90E36A.c: 261: register_To_IC.highPart = (uint8_t)register_To_IC.dummyHigh;
+"261
+[e = . _register_To_IC 1 -> . _register_To_IC 3 `uc ]
+[; ;ATM90E36A.c: 263: data_To_IC.lowPart = (uint8_t)data_To_IC.dummyLow;
+"263
+[e = . _data_To_IC 0 -> . _data_To_IC 2 `uc ]
+[; ;ATM90E36A.c: 264: data_To_IC.highPart = (uint8_t)data_To_IC.dummyHigh;
+"264
+[e = . _data_To_IC 1 -> . _data_To_IC 3 `uc ]
+[; ;ATM90E36A.c: 266: PORTBbits.RB3 = 0;
+"266
+[e = . . _PORTBbits 0 3 -> -> 0 `i `uc ]
+[; ;ATM90E36A.c: 267: SPI_write(register_To_IC.lowPart);
+"267
+[e ( _SPI_write (1 . _register_To_IC 0 ]
+[; ;ATM90E36A.c: 268: SPI_write(register_To_IC.highPart);
+"268
+[e ( _SPI_write (1 . _register_To_IC 1 ]
+[; ;ATM90E36A.c: 270: SPI_write(data_To_IC.lowPart);
+"270
+[e ( _SPI_write (1 . _data_To_IC 0 ]
+[; ;ATM90E36A.c: 271: SPI_write(data_To_IC.highPart);
+"271
+[e ( _SPI_write (1 . _data_To_IC 1 ]
+[; ;ATM90E36A.c: 272: PORTBbits.RB3 = 1;
+"272
+[e = . . _PORTBbits 0 3 -> -> 1 `i `uc ]
+[; ;ATM90E36A.c: 273: }
+"273
+[e :UE 290 ]
+}
+"275
+[v _ATM_read `(ui ~T0 @X0 1 sf1`ui ]
+"276
+{
+[; ;ATM90E36A.c: 275: static uint16_t ATM_read(uint16_t register_add)
+[; ;ATM90E36A.c: 276: {
+[e :U _ATM_read ]
+"275
+[v _register_add `ui ~T0 @X0 1 r1 ]
+"276
+[f ]
+"277
+[v _register_To_IC `S286 ~T0 @X0 1 a ]
+"278
+[v _data_From_IC `S286 ~T0 @X0 1 a ]
+"279
+[v _data `ui ~T0 @X0 1 a ]
+[; ;ATM90E36A.c: 277: Data_TwoFrames register_To_IC;
+[; ;ATM90E36A.c: 278: Data_TwoFrames data_From_IC;
+[; ;ATM90E36A.c: 279: uint16_t data;
+[; ;ATM90E36A.c: 281: register_To_IC.dummyLow = register_add;
+"281
+[e = . _register_To_IC 2 _register_add ]
+[; ;ATM90E36A.c: 282: register_To_IC.dummyLow &= 0x0F;
+"282
+[e =& . _register_To_IC 2 -> -> 15 `i `ui ]
+[; ;ATM90E36A.c: 283: register_To_IC.dummyHigh = register_add;
+"283
+[e = . _register_To_IC 3 _register_add ]
+[; ;ATM90E36A.c: 284: register_To_IC.dummyHigh &= 0xF0;
+"284
+[e =& . _register_To_IC 3 -> -> 240 `i `ui ]
+[; ;ATM90E36A.c: 286: register_To_IC.lowPart = (uint8_t)register_To_IC.dummyLow;
+"286
+[e = . _register_To_IC 0 -> . _register_To_IC 2 `uc ]
+[; ;ATM90E36A.c: 287: register_To_IC.highPart = (uint8_t)register_To_IC.dummyHigh;
+"287
+[e = . _register_To_IC 1 -> . _register_To_IC 3 `uc ]
+[; ;ATM90E36A.c: 289: PORTBbits.RB3 = 0;
+"289
+[e = . . _PORTBbits 0 3 -> -> 0 `i `uc ]
+[; ;ATM90E36A.c: 290: SPI_write(register_To_IC.lowPart);
+"290
+[e ( _SPI_write (1 . _register_To_IC 0 ]
+[; ;ATM90E36A.c: 291: SPI_write(register_To_IC.highPart);
+"291
+[e ( _SPI_write (1 . _register_To_IC 1 ]
+[; ;ATM90E36A.c: 293: data_From_IC.dummyLow = SPI_read();
+"293
+[e = . _data_From_IC 2 -> ( _SPI_read ..  `ui ]
+[; ;ATM90E36A.c: 294: data_From_IC.dummyHigh = SPI_read();
+"294
+[e = . _data_From_IC 3 -> ( _SPI_read ..  `ui ]
+[; ;ATM90E36A.c: 296: data_From_IC.lowPart = data_From_IC.dummyLow;
+"296
+[e = . _data_From_IC 0 -> . _data_From_IC 2 `uc ]
+[; ;ATM90E36A.c: 297: data_From_IC.highPart = data_From_IC.dummyHigh<<8;
+"297
+[e = . _data_From_IC 1 -> << . _data_From_IC 3 -> 8 `i `uc ]
+[; ;ATM90E36A.c: 300: data = 0;
+"300
+[e = _data -> -> 0 `i `ui ]
+[; ;ATM90E36A.c: 301: PORTBbits.RB3 = 1;
+"301
+[e = . . _PORTBbits 0 3 -> -> 1 `i `uc ]
+[; ;ATM90E36A.c: 302: return (data);
+"302
+[e ) _data ]
+[e $UE 291  ]
+[; ;ATM90E36A.c: 303: }
+"303
+[e :UE 291 ]
+}
+"304
+[v _ATM_init `(v ~T0 @X0 1 ef ]
+"305
+{
+[; ;ATM90E36A.c: 304: void ATM_init(void)
+[; ;ATM90E36A.c: 305: {
+[e :U _ATM_init ]
+[f ]
+[; ;ATM90E36A.c: 307: GPIO_dataDirectionPIN(GPIO_B, 3, GPIO_OUTPUT);
+"307
+[e ( _GPIO_dataDirectionPIN (3 , , . `E3186 1 -> -> 3 `i `uc . `E3182 1 ]
+[; ;ATM90E36A.c: 309: GPIO_dataDirectionPIN(GPIO_B, 4, GPIO_OUTPUT);
+"309
+[e ( _GPIO_dataDirectionPIN (3 , , . `E3186 1 -> -> 4 `i `uc . `E3182 1 ]
+[; ;ATM90E36A.c: 311: GPIO_dataDirectionPIN(GPIO_B, 5, GPIO_OUTPUT);
+"311
+[e ( _GPIO_dataDirectionPIN (3 , , . `E3186 1 -> -> 5 `i `uc . `E3182 1 ]
+[; ;ATM90E36A.c: 313: GPIO_dataDirectionPIN(GPIO_B, 6, GPIO_OUTPUT);
+"313
+[e ( _GPIO_dataDirectionPIN (3 , , . `E3186 1 -> -> 6 `i `uc . `E3182 1 ]
+[; ;ATM90E36A.c: 315: GPIO_dataDirectionPIN(GPIO_B, 7, GPIO_INPUT);
+"315
+[e ( _GPIO_dataDirectionPIN (3 , , . `E3186 1 -> -> 7 `i `uc . `E3182 0 ]
+[; ;ATM90E36A.c: 318: GPIO_dataDirectionPIN(GPIO_C, 2, GPIO_INPUT);
+"318
+[e ( _GPIO_dataDirectionPIN (3 , , . `E3186 2 -> -> 2 `i `uc . `E3182 0 ]
+[; ;ATM90E36A.c: 320: GPIO_dataDirectionPIN(GPIO_C, 1, GPIO_INPUT);
+"320
+[e ( _GPIO_dataDirectionPIN (3 , , . `E3186 2 -> -> 1 `i `uc . `E3182 0 ]
+[; ;ATM90E36A.c: 323: GPIO_dataDirectionPIN(GPIO_C, 0, GPIO_INPUT);
+"323
+[e ( _GPIO_dataDirectionPIN (3 , , . `E3186 2 -> -> 0 `i `uc . `E3182 0 ]
+[; ;ATM90E36A.c: 325: GPIO_dataDirectionPIN(GPIO_A, 2, GPIO_INPUT);
+"325
+[e ( _GPIO_dataDirectionPIN (3 , , . `E3186 0 -> -> 2 `i `uc . `E3182 0 ]
+[; ;ATM90E36A.c: 326: ANS2 = 0;
+"326
+[e = _ANS2 -> -> 0 `i `b ]
+[; ;ATM90E36A.c: 328: GPIO_dataDirectionPIN(GPIO_A, 1, GPIO_INPUT);
+"328
+[e ( _GPIO_dataDirectionPIN (3 , , . `E3186 0 -> -> 1 `i `uc . `E3182 0 ]
+[; ;ATM90E36A.c: 329: ANS1 = 0;
+"329
+[e = _ANS1 -> -> 0 `i `b ]
+[; ;ATM90E36A.c: 331: GPIO_dataDirectionPIN(GPIO_A, 0, GPIO_INPUT);
+"331
+[e ( _GPIO_dataDirectionPIN (3 , , . `E3186 0 -> -> 0 `i `uc . `E3182 0 ]
+[; ;ATM90E36A.c: 332: ANS0 = 0;
+"332
+[e = _ANS0 -> -> 0 `i `b ]
+[; ;ATM90E36A.c: 335: GPIO_setPIN(GPIO_B, 5);
+"335
+[e ( _GPIO_setPIN (2 , . `E3186 1 -> -> 5 `i `uc ]
+[; ;ATM90E36A.c: 336: GPIO_setPIN(GPIO_B, 6);
+"336
+[e ( _GPIO_setPIN (2 , . `E3186 1 -> -> 6 `i `uc ]
+[; ;ATM90E36A.c: 339: GPIO_clearPIN(GPIO_B, 3);
+"339
+[e ( _GPIO_clearPIN (2 , . `E3186 1 -> -> 3 `i `uc ]
+[; ;ATM90E36A.c: 340: }
+"340
+[e :UE 292 ]
+}
+"342
+[v _ATM_calibration `(v ~T0 @X0 1 ef ]
+"343
+{
+[; ;ATM90E36A.c: 342: void ATM_calibration(void)
+[; ;ATM90E36A.c: 343: {
+[e :U _ATM_calibration ]
+[f ]
+"344
+[v _checksum0 `ui ~T0 @X0 1 a ]
+"345
+[v _energy_error `f ~T0 @X0 1 a ]
+"346
+[v _energy_errorGain `f ~T0 @X0 1 a ]
+"347
+[v _phi_error `f ~T0 @X0 1 a ]
+"348
+[v _phi_errorPH `f ~T0 @X0 1 a ]
+"349
+[v _counter `uc ~T0 @X0 1 a ]
+"351
+[v _phaseA `S287 ~T0 @X0 1 a ]
+[v F3293 `S287 ~T0 @X0 1 s ]
+[i F3293
+:U ..
+:U ..
+-> -> 0 `i `ui
+..
+..
+]
+[; ;ATM90E36A.c: 344: uint16_t checksum0;
+[; ;ATM90E36A.c: 345: float energy_error;
+[; ;ATM90E36A.c: 346: float energy_errorGain;
+[; ;ATM90E36A.c: 347: float phi_error;
+[; ;ATM90E36A.c: 348: float phi_errorPH;
+[; ;ATM90E36A.c: 349: uint8_t counter;
+[; ;ATM90E36A.c: 351: Data_VI_Avg phaseA = {0};
+[e = _phaseA F3293 ]
+"352
+[v _phaseB `S287 ~T0 @X0 1 a ]
+[v F3295 `S287 ~T0 @X0 1 s ]
+[i F3295
+:U ..
+:U ..
+-> -> 0 `i `ui
+..
+..
+]
+[; ;ATM90E36A.c: 352: Data_VI_Avg phaseB = {0};
+[e = _phaseB F3295 ]
+"353
+[v _phaseC `S287 ~T0 @X0 1 a ]
+[v F3297 `S287 ~T0 @X0 1 s ]
+[i F3297
+:U ..
+:U ..
+-> -> 0 `i `ui
+..
+..
+]
+[; ;ATM90E36A.c: 353: Data_VI_Avg phaseC = {0};
+[e = _phaseC F3297 ]
+"354
+[v _phaseN `S287 ~T0 @X0 1 a ]
+[v F3299 `S287 ~T0 @X0 1 s ]
+[i F3299
+:U ..
+:U ..
+-> -> 0 `i `ui
+..
+..
+]
+[; ;ATM90E36A.c: 354: Data_VI_Avg phaseN = {0};
+[e = _phaseN F3299 ]
+"356
+[v _phaseA_pow `S288 ~T0 @X0 1 a ]
+[v F3301 `S288 ~T0 @X0 1 s ]
+[i F3301
+:U ..
+:U ..
+-> -> 0 `i `ui
+..
+..
+]
+[; ;ATM90E36A.c: 356: Data_Pow_Avg phaseA_pow = {0};
+[e = _phaseA_pow F3301 ]
+"357
+[v _phaseB_pow `S288 ~T0 @X0 1 a ]
+[v F3303 `S288 ~T0 @X0 1 s ]
+[i F3303
+:U ..
+:U ..
+-> -> 0 `i `ui
+..
+..
+]
+[; ;ATM90E36A.c: 357: Data_Pow_Avg phaseB_pow = {0};
+[e = _phaseB_pow F3303 ]
+"358
+[v _phaseC_pow `S288 ~T0 @X0 1 a ]
+[v F3305 `S288 ~T0 @X0 1 s ]
+[i F3305
+:U ..
+:U ..
+-> -> 0 `i `ui
+..
+..
+]
+[; ;ATM90E36A.c: 358: Data_Pow_Avg phaseC_pow = {0};
+[e = _phaseC_pow F3305 ]
+"360
+[v _phaseA_En `S289 ~T0 @X0 1 a ]
+[v F3307 `S289 ~T0 @X0 1 s ]
+[i F3307
+:U ..
+:U ..
+-> -> 0 `i `ui
+..
+..
+]
+[; ;ATM90E36A.c: 360: Data_Energy phaseA_En = {0};
+[e = _phaseA_En F3307 ]
+"361
+[v _phaseB_En `S289 ~T0 @X0 1 a ]
+[v F3309 `S289 ~T0 @X0 1 s ]
+[i F3309
+:U ..
+:U ..
+-> -> 0 `i `ui
+..
+..
+]
+[; ;ATM90E36A.c: 361: Data_Energy phaseB_En = {0};
+[e = _phaseB_En F3309 ]
+"362
+[v _phaseC_En `S289 ~T0 @X0 1 a ]
+[v F3311 `S289 ~T0 @X0 1 s ]
+[i F3311
+:U ..
+:U ..
+-> -> 0 `i `ui
+..
+..
+]
+[; ;ATM90E36A.c: 362: Data_Energy phaseC_En = {0};
+[e = _phaseC_En F3311 ]
+[; ;ATM90E36A.c: 364: do
+"364
+[e :U 296 ]
+[; ;ATM90E36A.c: 365: {
+"365
+{
+[; ;ATM90E36A.c: 367: ATM_write(0x30, 0x5678);
+"367
+[e ( _ATM_write (2 , -> -> 48 `i `ui -> -> 22136 `i `ui ]
+[; ;ATM90E36A.c: 370: ATM_write(0x31, 0x0861);
+"370
+[e ( _ATM_write (2 , -> -> 49 `i `ui -> -> 2145 `i `ui ]
+[; ;ATM90E36A.c: 371: ATM_write(0x32, 0x4C68);
+"371
+[e ( _ATM_write (2 , -> -> 50 `i `ui -> -> 19560 `i `ui ]
+[; ;ATM90E36A.c: 374: ATM_write(0x33, 0x0087);
+"374
+[e ( _ATM_write (2 , -> -> 51 `i `ui -> -> 135 `i `ui ]
+[; ;ATM90E36A.c: 375: ATM_write(0x34, 0x0000);
+"375
+[e ( _ATM_write (2 , -> -> 52 `i `ui -> -> 0 `i `ui ]
+[; ;ATM90E36A.c: 378: ATM_write(0x35, 0x0000);
+"378
+[e ( _ATM_write (2 , -> -> 53 `i `ui -> -> 0 `i `ui ]
+[; ;ATM90E36A.c: 379: ATM_write(0x36, 0x0000);
+"379
+[e ( _ATM_write (2 , -> -> 54 `i `ui -> -> 0 `i `ui ]
+[; ;ATM90E36A.c: 380: ATM_write(0x37, 0x0000);
+"380
+[e ( _ATM_write (2 , -> -> 55 `i `ui -> -> 0 `i `ui ]
+[; ;ATM90E36A.c: 381: ATM_write(0x38, 0x0000);
+"381
+[e ( _ATM_write (2 , -> -> 56 `i `ui -> -> 0 `i `ui ]
+[; ;ATM90E36A.c: 382: ATM_write(0x39, 0x0000);
+"382
+[e ( _ATM_write (2 , -> -> 57 `i `ui -> -> 0 `i `ui ]
+[; ;ATM90E36A.c: 383: ATM_write(0x3A, 0x0000);
+"383
+[e ( _ATM_write (2 , -> -> 58 `i `ui -> -> 0 `i `ui ]
+[; ;ATM90E36A.c: 386: checksum0 = calculate_CS0();
+"386
+[e = _checksum0 -> ( _calculate_CS0 ..  `ui ]
+[; ;ATM90E36A.c: 387: ATM_write(0x3B, checksum0);
+"387
+[e ( _ATM_write (2 , -> -> 59 `i `ui _checksum0 ]
+[; ;ATM90E36A.c: 390: ATM_write(0x30, 0x8765);
+"390
+[e ( _ATM_write (2 , -> -> 48 `i `ui -> 34661 `ui ]
+"393
+}
+[; ;ATM90E36A.c: 393: }while(0 == PORTBbits.RB7);
+[e $ == -> 0 `i -> . . _PORTBbits 0 7 `i 296  ]
+[e :U 295 ]
+[; ;ATM90E36A.c: 396: ATM_write(0x60, 0x5678);
+"396
+[e ( _ATM_write (2 , -> -> 96 `i `ui -> -> 22136 `i `ui ]
+[; ;ATM90E36A.c: 399: for(counter = 0; counter < 10; counter++)
+"399
+{
+[e = _counter -> -> 0 `i `uc ]
+[e $ < -> _counter `i -> 10 `i 297  ]
+[e $U 298  ]
+"400
+[e :U 297 ]
+[; ;ATM90E36A.c: 400: {
+{
+[; ;ATM90E36A.c: 401: phaseA.ioffsetAvg += phaseA.ioffsetAvg;
+"401
+[e =+ . _phaseA 9 . _phaseA 9 ]
+[; ;ATM90E36A.c: 402: phaseA.uoffsetAvg += phaseA.uoffsetAvg;
+"402
+[e =+ . _phaseA 8 . _phaseA 8 ]
+[; ;ATM90E36A.c: 404: phaseA.ioffsetAvg = ATM_read(0x64);
+"404
+[e = . _phaseA 9 ( _ATM_read (1 -> -> 100 `i `ui ]
+[; ;ATM90E36A.c: 405: phaseA.uoffsetAvg = ATM_read(0x63);
+"405
+[e = . _phaseA 8 ( _ATM_read (1 -> -> 99 `i `ui ]
+"406
+}
+"399
+[e ++ _counter -> -> 1 `i `uc ]
+[e $ < -> _counter `i -> 10 `i 297  ]
+[e :U 298 ]
+"406
+}
+[; ;ATM90E36A.c: 406: }
+[; ;ATM90E36A.c: 409: phaseA.ioffsetAvg /= 10;
+"409
+[e =/ . _phaseA 9 -> -> 10 `uc `ui ]
+[; ;ATM90E36A.c: 410: phaseA.uoffsetAvg /= 10;
+"410
+[e =/ . _phaseA 8 -> -> 10 `uc `ui ]
+[; ;ATM90E36A.c: 412: phaseA.ioffsetAvg = phaseA.ioffsetAvg >> 7;
+"412
+[e = . _phaseA 9 >> . _phaseA 9 -> 7 `i ]
+[; ;ATM90E36A.c: 413: phaseA.uoffsetAvg = phaseA.uoffsetAvg >> 7;
+"413
+[e = . _phaseA 8 >> . _phaseA 8 -> 7 `i ]
+[; ;ATM90E36A.c: 415: phaseA.ioffsetAvg = ~phaseA.ioffsetAvg;
+"415
+[e = . _phaseA 9 ~ . _phaseA 9 ]
+[; ;ATM90E36A.c: 416: phaseA.uoffsetAvg = ~phaseA.uoffsetAvg;
+"416
+[e = . _phaseA 8 ~ . _phaseA 8 ]
+[; ;ATM90E36A.c: 418: phaseA.ioffsetAvg += 1;
+"418
+[e =+ . _phaseA 9 -> -> 1 `i `ui ]
+[; ;ATM90E36A.c: 419: phaseA.uoffsetAvg += 1;
+"419
+[e =+ . _phaseA 8 -> -> 1 `i `ui ]
+[; ;ATM90E36A.c: 421: ATM_write(0x64, phaseA.ioffsetAvg);
+"421
+[e ( _ATM_write (2 , -> -> 100 `i `ui . _phaseA 9 ]
+[; ;ATM90E36A.c: 422: ATM_write(0x63, phaseA.uoffsetAvg);
+"422
+[e ( _ATM_write (2 , -> -> 99 `i `ui . _phaseA 8 ]
+[; ;ATM90E36A.c: 427: for(counter = 0; counter < 10; counter++)
+"427
+{
+[e = _counter -> -> 0 `i `uc ]
+[e $ < -> _counter `i -> 10 `i 300  ]
+[e $U 301  ]
+"428
+[e :U 300 ]
+[; ;ATM90E36A.c: 428: {
+{
+[; ;ATM90E36A.c: 429: phaseB.ioffsetAvg += phaseB.ioffsetAvg;
+"429
+[e =+ . _phaseB 9 . _phaseB 9 ]
+[; ;ATM90E36A.c: 430: phaseB.uoffsetAvg += phaseB.uoffsetAvg;
+"430
+[e =+ . _phaseB 8 . _phaseB 8 ]
+[; ;ATM90E36A.c: 432: phaseB.ioffsetAvg = ATM_read(0x68);
+"432
+[e = . _phaseB 9 ( _ATM_read (1 -> -> 104 `i `ui ]
+[; ;ATM90E36A.c: 433: phaseB.uoffsetAvg = ATM_read(0x67);
+"433
+[e = . _phaseB 8 ( _ATM_read (1 -> -> 103 `i `ui ]
+"434
+}
+"427
+[e ++ _counter -> -> 1 `i `uc ]
+[e $ < -> _counter `i -> 10 `i 300  ]
+[e :U 301 ]
+"434
+}
+[; ;ATM90E36A.c: 434: }
+[; ;ATM90E36A.c: 437: phaseB.ioffsetAvg /= 10;
+"437
+[e =/ . _phaseB 9 -> -> 10 `uc `ui ]
+[; ;ATM90E36A.c: 438: phaseB.uoffsetAvg /= 10;
+"438
+[e =/ . _phaseB 8 -> -> 10 `uc `ui ]
+[; ;ATM90E36A.c: 441: for(counter = 0; counter < 10; counter++)
+"441
+{
+[e = _counter -> -> 0 `i `uc ]
+[e $ < -> _counter `i -> 10 `i 303  ]
+[e $U 304  ]
+"442
+[e :U 303 ]
+[; ;ATM90E36A.c: 442: {
+{
+[; ;ATM90E36A.c: 443: phaseC.ioffsetAvg += phaseC.ioffsetAvg;
+"443
+[e =+ . _phaseC 9 . _phaseC 9 ]
+[; ;ATM90E36A.c: 444: phaseC.uoffsetAvg += phaseC.uoffsetAvg;
+"444
+[e =+ . _phaseC 8 . _phaseC 8 ]
+[; ;ATM90E36A.c: 446: phaseC.ioffsetAvg = ATM_read(0x6C);
+"446
+[e = . _phaseC 9 ( _ATM_read (1 -> -> 108 `i `ui ]
+[; ;ATM90E36A.c: 447: phaseC.uoffsetAvg = ATM_read(0x6B);
+"447
+[e = . _phaseC 8 ( _ATM_read (1 -> -> 107 `i `ui ]
+"448
+}
+"441
+[e ++ _counter -> -> 1 `i `uc ]
+[e $ < -> _counter `i -> 10 `i 303  ]
+[e :U 304 ]
+"448
+}
+[; ;ATM90E36A.c: 448: }
+[; ;ATM90E36A.c: 451: phaseC.ioffsetAvg /= 10;
+"451
+[e =/ . _phaseC 9 -> -> 10 `uc `ui ]
+[; ;ATM90E36A.c: 452: phaseC.uoffsetAvg /= 10;
+"452
+[e =/ . _phaseC 8 -> -> 10 `uc `ui ]
+[; ;ATM90E36A.c: 455: for(counter = 0; counter < 10; counter++)
+"455
+{
+[e = _counter -> -> 0 `i `uc ]
+[e $ < -> _counter `i -> 10 `i 306  ]
+[e $U 307  ]
+"456
+[e :U 306 ]
+[; ;ATM90E36A.c: 456: {
+{
+[; ;ATM90E36A.c: 457: phaseN.ioffsetAvg += phaseN.ioffsetAvg;
+"457
+[e =+ . _phaseN 9 . _phaseN 9 ]
+[; ;ATM90E36A.c: 459: phaseN.ioffsetAvg = ATM_read(0x6C);
+"459
+[e = . _phaseN 9 ( _ATM_read (1 -> -> 108 `i `ui ]
+"460
+}
+"455
+[e ++ _counter -> -> 1 `i `uc ]
+[e $ < -> _counter `i -> 10 `i 306  ]
+[e :U 307 ]
+"460
+}
+[; ;ATM90E36A.c: 460: }
+[; ;ATM90E36A.c: 463: phaseN.ioffsetAvg /= 10;
+"463
+[e =/ . _phaseN 9 -> -> 10 `uc `ui ]
+[; ;ATM90E36A.c: 468: phaseA.irmsAvg = ATM_read(0xDD);
+"468
+[e = . _phaseA 5 ( _ATM_read (1 -> -> 221 `i `ui ]
+[; ;ATM90E36A.c: 469: phaseB.irmsAvg = ATM_read(0xDE);
+"469
+[e = . _phaseB 5 ( _ATM_read (1 -> -> 222 `i `ui ]
+[; ;ATM90E36A.c: 470: phaseC.irmsAvg = ATM_read(0xDF);
+"470
+[e = . _phaseC 5 ( _ATM_read (1 -> -> 223 `i `ui ]
+[; ;ATM90E36A.c: 472: phaseA.irmsLSB = ATM_read(0xED);
+"472
+[e = . _phaseA 7 ( _ATM_read (1 -> -> 237 `i `ui ]
+[; ;ATM90E36A.c: 473: phaseB.irmsLSB = ATM_read(0xEE);
+"473
+[e = . _phaseB 7 ( _ATM_read (1 -> -> 238 `i `ui ]
+[; ;ATM90E36A.c: 474: phaseC.irmsLSB = ATM_read(0xEF);
+"474
+[e = . _phaseC 7 ( _ATM_read (1 -> -> 239 `i `ui ]
+[; ;ATM90E36A.c: 476: phaseA.irmsLSB = phaseA.irmsLSB >> 8;
+"476
+[e = . _phaseA 7 >> . _phaseA 7 -> 8 `i ]
+[; ;ATM90E36A.c: 477: phaseB.irmsLSB = phaseB.irmsLSB >> 8;
+"477
+[e = . _phaseB 7 >> . _phaseB 7 -> 8 `i ]
+[; ;ATM90E36A.c: 478: phaseC.irmsLSB = phaseC.irmsLSB >> 8;
+"478
+[e = . _phaseC 7 >> . _phaseC 7 -> 8 `i ]
+[; ;ATM90E36A.c: 481: phaseA.dummy_igain = ((float)phaseA.irmsAvg)*0.01;
+"481
+[e = . _phaseA 3 -> * -> -> . _phaseA 5 `f `d .0.01 `f ]
+[; ;ATM90E36A.c: 482: phaseA.dummy_igain += (((float)phaseA.irmsLSB)*0.01)/256;
+"482
+[e =+ . _phaseA 3 -> / * -> -> . _phaseA 7 `f `d .0.01 -> -> 256 `i `d `f ]
+[; ;ATM90E36A.c: 483: phaseA.dummy_igain = (2/phaseA.dummy_igain)*30000;
+"483
+[e = . _phaseA 3 * / -> -> 2 `i `f . _phaseA 3 -> -> 30000 `i `f ]
+[; ;ATM90E36A.c: 484: phaseA.igainAvg = (uint16_t)phaseA.dummy_igain;
+"484
+[e = . _phaseA 1 -> . _phaseA 3 `ui ]
+[; ;ATM90E36A.c: 485: ATM_write(0x62, phaseA.igainAvg);
+"485
+[e ( _ATM_write (2 , -> -> 98 `i `ui . _phaseA 1 ]
+[; ;ATM90E36A.c: 487: phaseB.dummy_igain = ((float)phaseB.irmsAvg)*0.01;
+"487
+[e = . _phaseB 3 -> * -> -> . _phaseB 5 `f `d .0.01 `f ]
+[; ;ATM90E36A.c: 488: phaseB.dummy_igain += (((float)phaseB.irmsLSB)*0.01)/256;
+"488
+[e =+ . _phaseB 3 -> / * -> -> . _phaseB 7 `f `d .0.01 -> -> 256 `i `d `f ]
+[; ;ATM90E36A.c: 489: phaseB.dummy_igain = (2/phaseB.dummy_igain)*30000;
+"489
+[e = . _phaseB 3 * / -> -> 2 `i `f . _phaseB 3 -> -> 30000 `i `f ]
+[; ;ATM90E36A.c: 490: phaseB.igainAvg = (uint16_t)phaseB.dummy_igain;
+"490
+[e = . _phaseB 1 -> . _phaseB 3 `ui ]
+[; ;ATM90E36A.c: 491: ATM_write(0x66, phaseB.igainAvg);
+"491
+[e ( _ATM_write (2 , -> -> 102 `i `ui . _phaseB 1 ]
+[; ;ATM90E36A.c: 493: phaseC.dummy_igain = ((float)phaseC.irmsAvg)*0.01;
+"493
+[e = . _phaseC 3 -> * -> -> . _phaseC 5 `f `d .0.01 `f ]
+[; ;ATM90E36A.c: 494: phaseC.dummy_igain += (((float)phaseC.irmsLSB)*0.01)/256;
+"494
+[e =+ . _phaseC 3 -> / * -> -> . _phaseC 7 `f `d .0.01 -> -> 256 `i `d `f ]
+[; ;ATM90E36A.c: 495: phaseC.dummy_igain = (2/phaseC.dummy_igain)*30000;
+"495
+[e = . _phaseC 3 * / -> -> 2 `i `f . _phaseC 3 -> -> 30000 `i `f ]
+[; ;ATM90E36A.c: 496: phaseC.igainAvg = (uint16_t)phaseC.dummy_igain;
+"496
+[e = . _phaseC 1 -> . _phaseC 3 `ui ]
+[; ;ATM90E36A.c: 497: ATM_write(0x6A, phaseC.igainAvg);
+"497
+[e ( _ATM_write (2 , -> -> 106 `i `ui . _phaseC 1 ]
+[; ;ATM90E36A.c: 500: phaseA.urmsAvg = ATM_read(0xD9);
+"500
+[e = . _phaseA 4 ( _ATM_read (1 -> -> 217 `i `ui ]
+[; ;ATM90E36A.c: 501: phaseB.urmsAvg = ATM_read(0xDA);
+"501
+[e = . _phaseB 4 ( _ATM_read (1 -> -> 218 `i `ui ]
+[; ;ATM90E36A.c: 502: phaseC.urmsAvg = ATM_read(0xDB);
+"502
+[e = . _phaseC 4 ( _ATM_read (1 -> -> 219 `i `ui ]
+[; ;ATM90E36A.c: 504: phaseA.urmsLSB = ATM_read(0xE9);
+"504
+[e = . _phaseA 6 ( _ATM_read (1 -> -> 233 `i `ui ]
+[; ;ATM90E36A.c: 505: phaseB.urmsLSB = ATM_read(0xEA);
+"505
+[e = . _phaseB 6 ( _ATM_read (1 -> -> 234 `i `ui ]
+[; ;ATM90E36A.c: 506: phaseC.urmsLSB = ATM_read(0xEB);
+"506
+[e = . _phaseC 6 ( _ATM_read (1 -> -> 235 `i `ui ]
+[; ;ATM90E36A.c: 508: phaseA.urmsLSB = phaseA.urmsLSB >> 8;
+"508
+[e = . _phaseA 6 >> . _phaseA 6 -> 8 `i ]
+[; ;ATM90E36A.c: 509: phaseB.urmsLSB = phaseB.urmsLSB >> 8;
+"509
+[e = . _phaseB 6 >> . _phaseB 6 -> 8 `i ]
+[; ;ATM90E36A.c: 510: phaseC.urmsLSB = phaseC.urmsLSB >> 8;
+"510
+[e = . _phaseC 6 >> . _phaseC 6 -> 8 `i ]
+[; ;ATM90E36A.c: 513: phaseA.dummy_ugain = ((float)phaseA.urmsAvg)*0.01;
+"513
+[e = . _phaseA 2 -> * -> -> . _phaseA 4 `f `d .0.01 `f ]
+[; ;ATM90E36A.c: 514: phaseA.dummy_ugain += (((float)phaseA.urmsLSB)*0.01)/256;
+"514
+[e =+ . _phaseA 2 -> / * -> -> . _phaseA 6 `f `d .0.01 -> -> 256 `i `d `f ]
+[; ;ATM90E36A.c: 515: phaseA.dummy_ugain = (2/phaseA.dummy_ugain)*52800;
+"515
+[e = . _phaseA 2 * / -> -> 2 `i `f . _phaseA 2 -> -> 52800 `l `f ]
+[; ;ATM90E36A.c: 516: phaseA.ugainAvg = (uint16_t)phaseA.dummy_ugain;
+"516
+[e = . _phaseA 0 -> . _phaseA 2 `ui ]
+[; ;ATM90E36A.c: 517: ATM_write(0x61, phaseA.ugainAvg);
+"517
+[e ( _ATM_write (2 , -> -> 97 `i `ui . _phaseA 0 ]
+[; ;ATM90E36A.c: 519: phaseB.dummy_ugain = ((float)phaseB.urmsAvg)*0.01;
+"519
+[e = . _phaseB 2 -> * -> -> . _phaseB 4 `f `d .0.01 `f ]
+[; ;ATM90E36A.c: 520: phaseB.dummy_ugain += (((float)phaseB.urmsLSB)*0.01)/256;
+"520
+[e =+ . _phaseB 2 -> / * -> -> . _phaseB 6 `f `d .0.01 -> -> 256 `i `d `f ]
+[; ;ATM90E36A.c: 521: phaseB.dummy_ugain = (2/phaseB.dummy_ugain)*52800;
+"521
+[e = . _phaseB 2 * / -> -> 2 `i `f . _phaseB 2 -> -> 52800 `l `f ]
+[; ;ATM90E36A.c: 522: phaseB.ugainAvg = (uint16_t)phaseB.dummy_ugain;
+"522
+[e = . _phaseB 0 -> . _phaseB 2 `ui ]
+[; ;ATM90E36A.c: 523: ATM_write(0x65, phaseB.ugainAvg);
+"523
+[e ( _ATM_write (2 , -> -> 101 `i `ui . _phaseB 0 ]
+[; ;ATM90E36A.c: 525: phaseC.dummy_ugain = ((float)phaseC.urmsAvg)*0.01;
+"525
+[e = . _phaseC 2 -> * -> -> . _phaseC 4 `f `d .0.01 `f ]
+[; ;ATM90E36A.c: 526: phaseC.dummy_ugain += (((float)phaseC.urmsLSB)*0.01)/256;
+"526
+[e =+ . _phaseC 2 -> / * -> -> . _phaseC 6 `f `d .0.01 -> -> 256 `i `d `f ]
+[; ;ATM90E36A.c: 527: phaseC.dummy_ugain = (2/phaseC.dummy_ugain)*52800;
+"527
+[e = . _phaseC 2 * / -> -> 2 `i `f . _phaseC 2 -> -> 52800 `l `f ]
+[; ;ATM90E36A.c: 528: phaseC.ugainAvg = (uint16_t)phaseC.dummy_ugain;
+"528
+[e = . _phaseC 0 -> . _phaseC 2 `ui ]
+[; ;ATM90E36A.c: 529: ATM_write(0x69, phaseC.ugainAvg);
+"529
+[e ( _ATM_write (2 , -> -> 105 `i `ui . _phaseC 0 ]
+[; ;ATM90E36A.c: 534: for(counter = 0; counter < 10; counter++)
+"534
+{
+[e = _counter -> -> 0 `i `uc ]
+[e $ < -> _counter `i -> 10 `i 309  ]
+[e $U 310  ]
+"535
+[e :U 309 ]
+[; ;ATM90E36A.c: 535: {
+{
+[; ;ATM90E36A.c: 536: phaseA_pow.poffsetAvg += phaseA_pow.poffsetAvg;
+"536
+[e =+ . _phaseA_pow 0 . _phaseA_pow 0 ]
+[; ;ATM90E36A.c: 537: phaseA_pow.qoffsetAvg += phaseA_pow.qoffsetAvg;
+"537
+[e =+ . _phaseA_pow 1 . _phaseA_pow 1 ]
+[; ;ATM90E36A.c: 538: phaseA_pow.pfoffsetAvg += phaseA_pow.pfoffsetAvg;
+"538
+[e =+ . _phaseA_pow 2 . _phaseA_pow 2 ]
+[; ;ATM90E36A.c: 540: phaseA_pow.poffsetAvg = ATM_read(0x41);
+"540
+[e = . _phaseA_pow 0 ( _ATM_read (1 -> -> 65 `i `ui ]
+[; ;ATM90E36A.c: 541: phaseA_pow.qoffsetAvg = ATM_read(0x42);
+"541
+[e = . _phaseA_pow 1 ( _ATM_read (1 -> -> 66 `i `ui ]
+[; ;ATM90E36A.c: 542: phaseA_pow.pfoffsetAvg = ATM_read(0x51);
+"542
+[e = . _phaseA_pow 2 ( _ATM_read (1 -> -> 81 `i `ui ]
+"543
+}
+"534
+[e ++ _counter -> -> 1 `i `uc ]
+[e $ < -> _counter `i -> 10 `i 309  ]
+[e :U 310 ]
+"543
+}
+[; ;ATM90E36A.c: 543: }
+[; ;ATM90E36A.c: 546: phaseA_pow.poffsetAvg /= 10;
+"546
+[e =/ . _phaseA_pow 0 -> -> 10 `uc `ui ]
+[; ;ATM90E36A.c: 547: phaseA_pow.qoffsetAvg /= 10;
+"547
+[e =/ . _phaseA_pow 1 -> -> 10 `uc `ui ]
+[; ;ATM90E36A.c: 548: phaseA_pow.pfoffsetAvg /= 10;
+"548
+[e =/ . _phaseA_pow 2 -> -> 10 `uc `ui ]
+[; ;ATM90E36A.c: 555: phaseA_pow.poffsetAvg /= 65536;
+"555
+[e =/ . _phaseA_pow 0 -> 65536 `um ]
+[; ;ATM90E36A.c: 556: phaseA_pow.qoffsetAvg /= 65536;
+"556
+[e =/ . _phaseA_pow 1 -> 65536 `um ]
+[; ;ATM90E36A.c: 557: phaseA_pow.pfoffsetAvg /= 65536;
+"557
+[e =/ . _phaseA_pow 2 -> 65536 `um ]
+[; ;ATM90E36A.c: 560: phaseA_pow.poffsetAvg = phaseA_pow.poffsetAvg >> 8;
+"560
+[e = . _phaseA_pow 0 >> . _phaseA_pow 0 -> 8 `i ]
+[; ;ATM90E36A.c: 561: phaseA_pow.qoffsetAvg = phaseA_pow.qoffsetAvg >> 8;
+"561
+[e = . _phaseA_pow 1 >> . _phaseA_pow 1 -> 8 `i ]
+[; ;ATM90E36A.c: 562: phaseA_pow.pfoffsetAvg = phaseA_pow.pfoffsetAvg >> 8;
+"562
+[e = . _phaseA_pow 2 >> . _phaseA_pow 2 -> 8 `i ]
+[; ;ATM90E36A.c: 564: phaseA_pow.poffsetAvg = ~phaseA_pow.poffsetAvg;
+"564
+[e = . _phaseA_pow 0 ~ . _phaseA_pow 0 ]
+[; ;ATM90E36A.c: 565: phaseA_pow.qoffsetAvg = ~phaseA_pow.qoffsetAvg;
+"565
+[e = . _phaseA_pow 1 ~ . _phaseA_pow 1 ]
+[; ;ATM90E36A.c: 566: phaseA_pow.pfoffsetAvg = ~phaseA_pow.pfoffsetAvg;
+"566
+[e = . _phaseA_pow 2 ~ . _phaseA_pow 2 ]
+[; ;ATM90E36A.c: 568: phaseA_pow.poffsetAvg += 1;
+"568
+[e =+ . _phaseA_pow 0 -> -> 1 `i `ui ]
+[; ;ATM90E36A.c: 569: phaseA_pow.qoffsetAvg += 1;
+"569
+[e =+ . _phaseA_pow 1 -> -> 1 `i `ui ]
+[; ;ATM90E36A.c: 570: phaseA_pow.pfoffsetAvg += 1;
+"570
+[e =+ . _phaseA_pow 2 -> -> 1 `i `ui ]
+[; ;ATM90E36A.c: 573: ATM_write(0x41, phaseA_pow.poffsetAvg);
+"573
+[e ( _ATM_write (2 , -> -> 65 `i `ui . _phaseA_pow 0 ]
+[; ;ATM90E36A.c: 574: ATM_write(0x42, phaseA_pow.qoffsetAvg);
+"574
+[e ( _ATM_write (2 , -> -> 66 `i `ui . _phaseA_pow 1 ]
+[; ;ATM90E36A.c: 575: ATM_write(0x51, phaseA_pow.pfoffsetAvg);
+"575
+[e ( _ATM_write (2 , -> -> 81 `i `ui . _phaseA_pow 2 ]
+[; ;ATM90E36A.c: 578: for(counter = 0; counter < 10; counter++)
+"578
+{
+[e = _counter -> -> 0 `i `uc ]
+[e $ < -> _counter `i -> 10 `i 312  ]
+[e $U 313  ]
+"579
+[e :U 312 ]
+[; ;ATM90E36A.c: 579: {
+{
+[; ;ATM90E36A.c: 580: phaseB_pow.poffsetAvg += phaseB_pow.poffsetAvg;
+"580
+[e =+ . _phaseB_pow 0 . _phaseB_pow 0 ]
+[; ;ATM90E36A.c: 581: phaseB_pow.qoffsetAvg += phaseB_pow.qoffsetAvg;
+"581
+[e =+ . _phaseB_pow 1 . _phaseB_pow 1 ]
+[; ;ATM90E36A.c: 582: phaseB_pow.pfoffsetAvg += phaseB_pow.pfoffsetAvg;
+"582
+[e =+ . _phaseB_pow 2 . _phaseB_pow 2 ]
+[; ;ATM90E36A.c: 584: phaseB_pow.poffsetAvg = ATM_read(0x43);
+"584
+[e = . _phaseB_pow 0 ( _ATM_read (1 -> -> 67 `i `ui ]
+[; ;ATM90E36A.c: 585: phaseB_pow.qoffsetAvg = ATM_read(0x44);
+"585
+[e = . _phaseB_pow 1 ( _ATM_read (1 -> -> 68 `i `ui ]
+[; ;ATM90E36A.c: 586: phaseB_pow.pfoffsetAvg = ATM_read(0x52);
+"586
+[e = . _phaseB_pow 2 ( _ATM_read (1 -> -> 82 `i `ui ]
+"587
+}
+"578
+[e ++ _counter -> -> 1 `i `uc ]
+[e $ < -> _counter `i -> 10 `i 312  ]
+[e :U 313 ]
+"587
+}
+[; ;ATM90E36A.c: 587: }
+[; ;ATM90E36A.c: 590: phaseB_pow.poffsetAvg /= 10;
+"590
+[e =/ . _phaseB_pow 0 -> -> 10 `uc `ui ]
+[; ;ATM90E36A.c: 591: phaseB_pow.qoffsetAvg /= 10;
+"591
+[e =/ . _phaseB_pow 1 -> -> 10 `uc `ui ]
+[; ;ATM90E36A.c: 592: phaseB_pow.pfoffsetAvg /= 10;
+"592
+[e =/ . _phaseB_pow 2 -> -> 10 `uc `ui ]
+[; ;ATM90E36A.c: 599: phaseB_pow.poffsetAvg /= 65536;
+"599
+[e =/ . _phaseB_pow 0 -> 65536 `um ]
+[; ;ATM90E36A.c: 600: phaseB_pow.qoffsetAvg /= 65536;
+"600
+[e =/ . _phaseB_pow 1 -> 65536 `um ]
+[; ;ATM90E36A.c: 601: phaseB_pow.pfoffsetAvg /= 65536;
+"601
+[e =/ . _phaseB_pow 2 -> 65536 `um ]
+[; ;ATM90E36A.c: 604: phaseB_pow.poffsetAvg = phaseB_pow.poffsetAvg >> 8;
+"604
+[e = . _phaseB_pow 0 >> . _phaseB_pow 0 -> 8 `i ]
+[; ;ATM90E36A.c: 605: phaseB_pow.qoffsetAvg = phaseB_pow.qoffsetAvg >> 8;
+"605
+[e = . _phaseB_pow 1 >> . _phaseB_pow 1 -> 8 `i ]
+[; ;ATM90E36A.c: 606: phaseB_pow.pfoffsetAvg = phaseB_pow.pfoffsetAvg >> 8;
+"606
+[e = . _phaseB_pow 2 >> . _phaseB_pow 2 -> 8 `i ]
+[; ;ATM90E36A.c: 608: phaseB_pow.poffsetAvg = ~phaseB_pow.poffsetAvg;
+"608
+[e = . _phaseB_pow 0 ~ . _phaseB_pow 0 ]
+[; ;ATM90E36A.c: 609: phaseB_pow.qoffsetAvg = ~phaseB_pow.qoffsetAvg;
+"609
+[e = . _phaseB_pow 1 ~ . _phaseB_pow 1 ]
+[; ;ATM90E36A.c: 610: phaseB_pow.pfoffsetAvg = ~phaseB_pow.pfoffsetAvg;
+"610
+[e = . _phaseB_pow 2 ~ . _phaseB_pow 2 ]
+[; ;ATM90E36A.c: 612: phaseB_pow.poffsetAvg += 1;
+"612
+[e =+ . _phaseB_pow 0 -> -> 1 `i `ui ]
+[; ;ATM90E36A.c: 613: phaseB_pow.qoffsetAvg += 1;
+"613
+[e =+ . _phaseB_pow 1 -> -> 1 `i `ui ]
+[; ;ATM90E36A.c: 614: phaseB_pow.pfoffsetAvg += 1;
+"614
+[e =+ . _phaseB_pow 2 -> -> 1 `i `ui ]
+[; ;ATM90E36A.c: 617: ATM_write(0x43, phaseB_pow.poffsetAvg);
+"617
+[e ( _ATM_write (2 , -> -> 67 `i `ui . _phaseB_pow 0 ]
+[; ;ATM90E36A.c: 618: ATM_write(0x44, phaseB_pow.qoffsetAvg);
+"618
+[e ( _ATM_write (2 , -> -> 68 `i `ui . _phaseB_pow 1 ]
+[; ;ATM90E36A.c: 619: ATM_write(0x52, phaseB_pow.pfoffsetAvg);
+"619
+[e ( _ATM_write (2 , -> -> 82 `i `ui . _phaseB_pow 2 ]
+[; ;ATM90E36A.c: 623: for(counter = 0; counter < 10; counter++)
+"623
+{
+[e = _counter -> -> 0 `i `uc ]
+[e $ < -> _counter `i -> 10 `i 315  ]
+[e $U 316  ]
+"624
+[e :U 315 ]
+[; ;ATM90E36A.c: 624: {
+{
+[; ;ATM90E36A.c: 625: phaseC_pow.poffsetAvg += phaseC_pow.poffsetAvg;
+"625
+[e =+ . _phaseC_pow 0 . _phaseC_pow 0 ]
+[; ;ATM90E36A.c: 626: phaseC_pow.qoffsetAvg += phaseC_pow.qoffsetAvg;
+"626
+[e =+ . _phaseC_pow 1 . _phaseC_pow 1 ]
+[; ;ATM90E36A.c: 627: phaseC_pow.pfoffsetAvg += phaseC_pow.pfoffsetAvg;
+"627
+[e =+ . _phaseC_pow 2 . _phaseC_pow 2 ]
+[; ;ATM90E36A.c: 629: phaseC_pow.poffsetAvg = ATM_read(0x45);
+"629
+[e = . _phaseC_pow 0 ( _ATM_read (1 -> -> 69 `i `ui ]
+[; ;ATM90E36A.c: 630: phaseC_pow.qoffsetAvg = ATM_read(0x46);
+"630
+[e = . _phaseC_pow 1 ( _ATM_read (1 -> -> 70 `i `ui ]
+[; ;ATM90E36A.c: 631: phaseC_pow.pfoffsetAvg = ATM_read(0x53);
+"631
+[e = . _phaseC_pow 2 ( _ATM_read (1 -> -> 83 `i `ui ]
+"632
+}
+"623
+[e ++ _counter -> -> 1 `i `uc ]
+[e $ < -> _counter `i -> 10 `i 315  ]
+[e :U 316 ]
+"632
+}
+[; ;ATM90E36A.c: 632: }
+[; ;ATM90E36A.c: 635: phaseC_pow.poffsetAvg /= 10;
+"635
+[e =/ . _phaseC_pow 0 -> -> 10 `uc `ui ]
+[; ;ATM90E36A.c: 636: phaseC_pow.qoffsetAvg /= 10;
+"636
+[e =/ . _phaseC_pow 1 -> -> 10 `uc `ui ]
+[; ;ATM90E36A.c: 637: phaseC_pow.pfoffsetAvg /= 10;
+"637
+[e =/ . _phaseC_pow 2 -> -> 10 `uc `ui ]
+[; ;ATM90E36A.c: 644: phaseC_pow.poffsetAvg /= 65536;
+"644
+[e =/ . _phaseC_pow 0 -> 65536 `um ]
+[; ;ATM90E36A.c: 645: phaseC_pow.qoffsetAvg /= 65536;
+"645
+[e =/ . _phaseC_pow 1 -> 65536 `um ]
+[; ;ATM90E36A.c: 646: phaseC_pow.pfoffsetAvg /= 65536;
+"646
+[e =/ . _phaseC_pow 2 -> 65536 `um ]
+[; ;ATM90E36A.c: 649: phaseC_pow.poffsetAvg = phaseC_pow.poffsetAvg >> 8;
+"649
+[e = . _phaseC_pow 0 >> . _phaseC_pow 0 -> 8 `i ]
+[; ;ATM90E36A.c: 650: phaseC_pow.qoffsetAvg = phaseC_pow.qoffsetAvg >> 8;
+"650
+[e = . _phaseC_pow 1 >> . _phaseC_pow 1 -> 8 `i ]
+[; ;ATM90E36A.c: 651: phaseC_pow.pfoffsetAvg = phaseC_pow.pfoffsetAvg >> 8;
+"651
+[e = . _phaseC_pow 2 >> . _phaseC_pow 2 -> 8 `i ]
+[; ;ATM90E36A.c: 653: phaseC_pow.poffsetAvg = ~phaseC_pow.poffsetAvg;
+"653
+[e = . _phaseC_pow 0 ~ . _phaseC_pow 0 ]
+[; ;ATM90E36A.c: 654: phaseC_pow.qoffsetAvg = ~phaseC_pow.qoffsetAvg;
+"654
+[e = . _phaseC_pow 1 ~ . _phaseC_pow 1 ]
+[; ;ATM90E36A.c: 655: phaseC_pow.pfoffsetAvg = ~phaseC_pow.pfoffsetAvg;
+"655
+[e = . _phaseC_pow 2 ~ . _phaseC_pow 2 ]
+[; ;ATM90E36A.c: 657: phaseC_pow.poffsetAvg += 1;
+"657
+[e =+ . _phaseC_pow 0 -> -> 1 `i `ui ]
+[; ;ATM90E36A.c: 658: phaseC_pow.qoffsetAvg += 1;
+"658
+[e =+ . _phaseC_pow 1 -> -> 1 `i `ui ]
+[; ;ATM90E36A.c: 659: phaseC_pow.pfoffsetAvg += 1;
+"659
+[e =+ . _phaseC_pow 2 -> -> 1 `i `ui ]
+[; ;ATM90E36A.c: 662: ATM_write(0x45, phaseC_pow.poffsetAvg);
+"662
+[e ( _ATM_write (2 , -> -> 69 `i `ui . _phaseC_pow 0 ]
+[; ;ATM90E36A.c: 663: ATM_write(0x46, phaseC_pow.qoffsetAvg);
+"663
+[e ( _ATM_write (2 , -> -> 70 `i `ui . _phaseC_pow 1 ]
+[; ;ATM90E36A.c: 664: ATM_write(0x53, phaseC_pow.pfoffsetAvg);
+"664
+[e ( _ATM_write (2 , -> -> 83 `i `ui . _phaseC_pow 2 ]
+[; ;ATM90E36A.c: 669: energy_error = 0.1378;
+"669
+[e = _energy_error -> .0.1378 `f ]
+[; ;ATM90E36A.c: 670: energy_errorGain = energy_error/(1-energy_error);
+"670
+[e = _energy_errorGain / _energy_error - -> -> 1 `i `f _energy_error ]
+[; ;ATM90E36A.c: 674: phaseA_En.dummy_Gain = energy_errorGain * 32768;
+"674
+[e = . _phaseA_En 2 * _energy_errorGain -> -> 32768 `l `f ]
+[; ;ATM90E36A.c: 675: phaseA_En.gain = (uint16_t)phaseA_En.dummy_Gain;
+"675
+[e = . _phaseA_En 0 -> . _phaseA_En 2 `ui ]
+[; ;ATM90E36A.c: 678: ATM_write(0x47, phaseA_En.gain);
+"678
+[e ( _ATM_write (2 , -> -> 71 `i `ui . _phaseA_En 0 ]
+[; ;ATM90E36A.c: 683: phaseB_En.dummy_Gain = energy_errorGain * 32768;
+"683
+[e = . _phaseB_En 2 * _energy_errorGain -> -> 32768 `l `f ]
+[; ;ATM90E36A.c: 684: phaseB_En.gain = (uint16_t)phaseB_En.dummy_Gain;
+"684
+[e = . _phaseB_En 0 -> . _phaseB_En 2 `ui ]
+[; ;ATM90E36A.c: 687: ATM_write(0x49, phaseB_En.gain);
+"687
+[e ( _ATM_write (2 , -> -> 73 `i `ui . _phaseB_En 0 ]
+[; ;ATM90E36A.c: 692: phaseC_En.dummy_Gain = energy_errorGain * 32768;
+"692
+[e = . _phaseC_En 2 * _energy_errorGain -> -> 32768 `l `f ]
+[; ;ATM90E36A.c: 693: phaseC_En.gain = (uint16_t)phaseC_En.dummy_Gain;
+"693
+[e = . _phaseC_En 0 -> . _phaseC_En 2 `ui ]
+[; ;ATM90E36A.c: 696: ATM_write(0x4B, phaseC_En.gain);
+"696
+[e ( _ATM_write (2 , -> -> 75 `i `ui . _phaseC_En 0 ]
+[; ;ATM90E36A.c: 702: phi_error = 0.0095;
+"702
+[e = _phi_error -> .0.0095 `f ]
+[; ;ATM90E36A.c: 703: phi_errorPH = phi_error * 3763.739F;
+"703
+[e = _phi_errorPH * _phi_error -> .3763.739 `f ]
+[; ;ATM90E36A.c: 706: phaseA_En.phaseAngle = (uint16_t)phi_errorPH;
+"706
+[e = . _phaseA_En 1 -> _phi_errorPH `ui ]
+[; ;ATM90E36A.c: 708: ATM_write(0x48, phaseA_En.phaseAngle);
+"708
+[e ( _ATM_write (2 , -> -> 72 `i `ui . _phaseA_En 1 ]
+[; ;ATM90E36A.c: 711: phaseB_En.phaseAngle = (uint16_t)phi_errorPH;
+"711
+[e = . _phaseB_En 1 -> _phi_errorPH `ui ]
+[; ;ATM90E36A.c: 713: ATM_write(0x4A, phaseB_En.phaseAngle);
+"713
+[e ( _ATM_write (2 , -> -> 74 `i `ui . _phaseB_En 1 ]
+[; ;ATM90E36A.c: 716: phaseC_En.phaseAngle = (uint16_t)phi_errorPH;
+"716
+[e = . _phaseC_En 1 -> _phi_errorPH `ui ]
+[; ;ATM90E36A.c: 718: ATM_write(0x4C, phaseC_En.phaseAngle);
+"718
+[e ( _ATM_write (2 , -> -> 76 `i `ui . _phaseC_En 1 ]
+[; ;ATM90E36A.c: 719: }
+"719
+[e :UE 293 ]
+}
+"721
+[v _ATM_registers `(ui ~T0 @X0 1 ef2`E3061`E3080 ]
+"722
+{
+[; ;ATM90E36A.c: 721: uint16_t ATM_registers(ATM_type_t type, ATM_reg_t reg)
+[; ;ATM90E36A.c: 722: {
+[e :U _ATM_registers ]
+"721
+[v _type `E3061 ~T0 @X0 1 r1 ]
+[v _reg `E3080 ~T0 @X0 1 r2 ]
+"722
+[f ]
+"723
+[v _info `ui ~T0 @X0 1 a ]
+[; ;ATM90E36A.c: 723: uint16_t info;
+[; ;ATM90E36A.c: 725: switch(type)
+"725
+[e $U 320  ]
+[; ;ATM90E36A.c: 726: {
+"726
+{
+[; ;ATM90E36A.c: 727: case ACTIVE_ENERGY_TYPE:
+"727
+[e :U 321 ]
+[; ;ATM90E36A.c: 728: switch(reg)
+"728
+[e $U 323  ]
+[; ;ATM90E36A.c: 729: {
+"729
+{
+[; ;ATM90E36A.c: 730: case TOTAL_FORW_ACTIVE_ENERGY:
+"730
+[e :U 324 ]
+[; ;ATM90E36A.c: 731: info = ATM_read(0x80);
+"731
+[e = _info ( _ATM_read (1 -> -> 128 `i `ui ]
+[; ;ATM90E36A.c: 732: break;
+"732
+[e $U 322  ]
+[; ;ATM90E36A.c: 733: case PHASE_A_FORW_ACTIVE_ENERGY:
+"733
+[e :U 325 ]
+[; ;ATM90E36A.c: 734: info = ATM_read(0x81);
+"734
+[e = _info ( _ATM_read (1 -> -> 129 `i `ui ]
+[; ;ATM90E36A.c: 735: break;
+"735
+[e $U 322  ]
+[; ;ATM90E36A.c: 736: case PHASE_B_FORW_ACTIVE_ENERGY:
+"736
+[e :U 326 ]
+[; ;ATM90E36A.c: 737: info = ATM_read(0x82);
+"737
+[e = _info ( _ATM_read (1 -> -> 130 `i `ui ]
+[; ;ATM90E36A.c: 738: break;
+"738
+[e $U 322  ]
+[; ;ATM90E36A.c: 739: case PHASE_C_FORW_ACTIVE_ENERGY:
+"739
+[e :U 327 ]
+[; ;ATM90E36A.c: 740: info = ATM_read(0x83);
+"740
+[e = _info ( _ATM_read (1 -> -> 131 `i `ui ]
+[; ;ATM90E36A.c: 741: break;
+"741
+[e $U 322  ]
+[; ;ATM90E36A.c: 742: case TOTAL_REV_ACTIVE_ENERGY:
+"742
+[e :U 328 ]
+[; ;ATM90E36A.c: 743: info = ATM_read(0x84);
+"743
+[e = _info ( _ATM_read (1 -> -> 132 `i `ui ]
+[; ;ATM90E36A.c: 744: break;
+"744
+[e $U 322  ]
+[; ;ATM90E36A.c: 745: case PHASE_A_REV_ACTIVE_ENERGY:
+"745
+[e :U 329 ]
+[; ;ATM90E36A.c: 746: info = ATM_read(0x85);
+"746
+[e = _info ( _ATM_read (1 -> -> 133 `i `ui ]
+[; ;ATM90E36A.c: 747: break;
+"747
+[e $U 322  ]
+[; ;ATM90E36A.c: 748: case PHASE_B_REV_ACTIVE_ENERGY:
+"748
+[e :U 330 ]
+[; ;ATM90E36A.c: 749: info = ATM_read(0x86);
+"749
+[e = _info ( _ATM_read (1 -> -> 134 `i `ui ]
+[; ;ATM90E36A.c: 750: break;
+"750
+[e $U 322  ]
+[; ;ATM90E36A.c: 751: case PHASE_C_REV_ACTIVE_ENERGY:
+"751
+[e :U 331 ]
+[; ;ATM90E36A.c: 752: info = ATM_read(0x87);
+"752
+[e = _info ( _ATM_read (1 -> -> 135 `i `ui ]
+[; ;ATM90E36A.c: 753: break;
+"753
+[e $U 322  ]
+[; ;ATM90E36A.c: 754: default:
+"754
+[e :U 332 ]
+[; ;ATM90E36A.c: 755: break;
+"755
+[e $U 322  ]
+"756
+}
+[; ;ATM90E36A.c: 756: }
+[e $U 322  ]
+"728
+[e :U 323 ]
+[e [\ _reg , $ . `E3080 0 324
+ , $ . `E3080 1 325
+ , $ . `E3080 2 326
+ , $ . `E3080 3 327
+ , $ . `E3080 4 328
+ , $ . `E3080 5 329
+ , $ . `E3080 6 330
+ , $ . `E3080 7 331
+ 332 ]
+"756
+[e :U 322 ]
+[; ;ATM90E36A.c: 757: break;
+"757
+[e $U 319  ]
+[; ;ATM90E36A.c: 758: case REACTIVE_ENERGY_TYPE:
+"758
+[e :U 333 ]
+[; ;ATM90E36A.c: 759: switch(reg)
+"759
+[e $U 335  ]
+[; ;ATM90E36A.c: 760: {
+"760
+{
+[; ;ATM90E36A.c: 761: case TOTAL_FORW_REACTIVE_ENERGY:
+"761
+[e :U 336 ]
+[; ;ATM90E36A.c: 762: info = ATM_read(0x88);
+"762
+[e = _info ( _ATM_read (1 -> -> 136 `i `ui ]
+[; ;ATM90E36A.c: 763: break;
+"763
+[e $U 334  ]
+[; ;ATM90E36A.c: 764: case PHASE_A_FORW_REACTIVE_ENERGY:
+"764
+[e :U 337 ]
+[; ;ATM90E36A.c: 765: info = ATM_read(0x89);
+"765
+[e = _info ( _ATM_read (1 -> -> 137 `i `ui ]
+[; ;ATM90E36A.c: 766: break;
+"766
+[e $U 334  ]
+[; ;ATM90E36A.c: 767: case PHASE_B_FORW_REACTIVE_ENERGY:
+"767
+[e :U 338 ]
+[; ;ATM90E36A.c: 768: info = ATM_read(0x8A);
+"768
+[e = _info ( _ATM_read (1 -> -> 138 `i `ui ]
+[; ;ATM90E36A.c: 769: break;
+"769
+[e $U 334  ]
+[; ;ATM90E36A.c: 770: case PHASE_C_FORW_REACTIVE_ENERGY:
+"770
+[e :U 339 ]
+[; ;ATM90E36A.c: 771: info = ATM_read(0x8B);
+"771
+[e = _info ( _ATM_read (1 -> -> 139 `i `ui ]
+[; ;ATM90E36A.c: 772: break;
+"772
+[e $U 334  ]
+[; ;ATM90E36A.c: 773: case TOTAL_REVERSE_REACTIVE_ENERGY:
+"773
+[e :U 340 ]
+[; ;ATM90E36A.c: 774: info = ATM_read(0x8C);
+"774
+[e = _info ( _ATM_read (1 -> -> 140 `i `ui ]
+[; ;ATM90E36A.c: 775: break;
+"775
+[e $U 334  ]
+[; ;ATM90E36A.c: 776: case PHASE_A_REV_REACTIVE_ENERGY:
+"776
+[e :U 341 ]
+[; ;ATM90E36A.c: 777: info = ATM_read(0x8D);
+"777
+[e = _info ( _ATM_read (1 -> -> 141 `i `ui ]
+[; ;ATM90E36A.c: 778: break;
+"778
+[e $U 334  ]
+[; ;ATM90E36A.c: 779: case PHASE_B_REV_REACTIVE_ENERGY:
+"779
+[e :U 342 ]
+[; ;ATM90E36A.c: 780: info = ATM_read(0x8E);
+"780
+[e = _info ( _ATM_read (1 -> -> 142 `i `ui ]
+[; ;ATM90E36A.c: 781: break;
+"781
+[e $U 334  ]
+[; ;ATM90E36A.c: 782: case PHASE_C_REV_REACTIVE_ENERGY:
+"782
+[e :U 343 ]
+[; ;ATM90E36A.c: 783: info = ATM_read(0x8F);
+"783
+[e = _info ( _ATM_read (1 -> -> 143 `i `ui ]
+[; ;ATM90E36A.c: 784: break;
+"784
+[e $U 334  ]
+[; ;ATM90E36A.c: 785: default:
+"785
+[e :U 344 ]
+[; ;ATM90E36A.c: 786: break;
+"786
+[e $U 334  ]
+"787
+}
+[; ;ATM90E36A.c: 787: }
+[e $U 334  ]
+"759
+[e :U 335 ]
+[e [\ _reg , $ . `E3080 8 336
+ , $ . `E3080 9 337
+ , $ . `E3080 10 338
+ , $ . `E3080 11 339
+ , $ . `E3080 12 340
+ , $ . `E3080 13 341
+ , $ . `E3080 14 342
+ , $ . `E3080 15 343
+ 344 ]
+"787
+[e :U 334 ]
+[; ;ATM90E36A.c: 788: break;
+"788
+[e $U 319  ]
+[; ;ATM90E36A.c: 789: case APPARENT_ENERGY_TYPE:
+"789
+[e :U 345 ]
+[; ;ATM90E36A.c: 790: switch(reg)
+"790
+[e $U 347  ]
+[; ;ATM90E36A.c: 791: {
+"791
+{
+[; ;ATM90E36A.c: 792: case TOTAL_ARIT_APPARENT_ENERGY:
+"792
+[e :U 348 ]
+[; ;ATM90E36A.c: 793: info = ATM_read(0x90);
+"793
+[e = _info ( _ATM_read (1 -> -> 144 `i `ui ]
+[; ;ATM90E36A.c: 794: break;
+"794
+[e $U 346  ]
+[; ;ATM90E36A.c: 795: case PHASE_A_APPARENT_ENERGY:
+"795
+[e :U 349 ]
+[; ;ATM90E36A.c: 796: info = ATM_read(0x91);
+"796
+[e = _info ( _ATM_read (1 -> -> 145 `i `ui ]
+[; ;ATM90E36A.c: 797: break;
+"797
+[e $U 346  ]
+[; ;ATM90E36A.c: 798: case PHASE_B_APPARENT_ENERGY:
+"798
+[e :U 350 ]
+[; ;ATM90E36A.c: 799: info = ATM_read(0x92);
+"799
+[e = _info ( _ATM_read (1 -> -> 146 `i `ui ]
+[; ;ATM90E36A.c: 800: break;
+"800
+[e $U 346  ]
+[; ;ATM90E36A.c: 801: case PHASE_C_APPARENT_ENERGY:
+"801
+[e :U 351 ]
+[; ;ATM90E36A.c: 802: info = ATM_read(0x93);
+"802
+[e = _info ( _ATM_read (1 -> -> 147 `i `ui ]
+[; ;ATM90E36A.c: 803: break;
+"803
+[e $U 346  ]
+[; ;ATM90E36A.c: 804: case TOTAL_VECT_APPARENT_ENERGY:
+"804
+[e :U 352 ]
+[; ;ATM90E36A.c: 805: info = ATM_read(0x94);
+"805
+[e = _info ( _ATM_read (1 -> -> 148 `i `ui ]
+[; ;ATM90E36A.c: 806: break;
+"806
+[e $U 346  ]
+[; ;ATM90E36A.c: 807: default:
+"807
+[e :U 353 ]
+[; ;ATM90E36A.c: 808: break;
+"808
+[e $U 346  ]
+"809
+}
+[; ;ATM90E36A.c: 809: }
+[e $U 346  ]
+"790
+[e :U 347 ]
+[e [\ _reg , $ . `E3080 16 348
+ , $ . `E3080 17 349
+ , $ . `E3080 18 350
+ , $ . `E3080 19 351
+ , $ . `E3080 20 352
+ 353 ]
+"809
+[e :U 346 ]
+[; ;ATM90E36A.c: 810: break;
+"810
+[e $U 319  ]
+[; ;ATM90E36A.c: 811: case FUNDAMENTAL_ENERGY_TYPE:
+"811
+[e :U 354 ]
+[; ;ATM90E36A.c: 812: switch(reg)
+"812
+[e $U 356  ]
+[; ;ATM90E36A.c: 813: {
+"813
+{
+[; ;ATM90E36A.c: 814: case TOTAL_FORW_ACTIVE_FUND_ENERGY:
+"814
+[e :U 357 ]
+[; ;ATM90E36A.c: 815: info = ATM_read(0xA0);
+"815
+[e = _info ( _ATM_read (1 -> -> 160 `i `ui ]
+[; ;ATM90E36A.c: 816: break;
+"816
+[e $U 355  ]
+[; ;ATM90E36A.c: 817: case PHASE_A_FORW_ACTIVE_FUND_ENERGY:
+"817
+[e :U 358 ]
+[; ;ATM90E36A.c: 818: info = ATM_read(0xA1);
+"818
+[e = _info ( _ATM_read (1 -> -> 161 `i `ui ]
+[; ;ATM90E36A.c: 819: break;
+"819
+[e $U 355  ]
+[; ;ATM90E36A.c: 820: case PHASE_B_FORW_ACTIVE_FUND_ENERGY:
+"820
+[e :U 359 ]
+[; ;ATM90E36A.c: 821: info = ATM_read(0xA2);
+"821
+[e = _info ( _ATM_read (1 -> -> 162 `i `ui ]
+[; ;ATM90E36A.c: 822: break;
+"822
+[e $U 355  ]
+[; ;ATM90E36A.c: 823: case PHASE_C_FORW_ACTIVE_FUND_ENERGY:
+"823
+[e :U 360 ]
+[; ;ATM90E36A.c: 824: info = ATM_read(0xA3);
+"824
+[e = _info ( _ATM_read (1 -> -> 163 `i `ui ]
+[; ;ATM90E36A.c: 825: break;
+"825
+[e $U 355  ]
+[; ;ATM90E36A.c: 826: case TOTAL_REV_ACTIVE_FUND_ENERGY:
+"826
+[e :U 361 ]
+[; ;ATM90E36A.c: 827: info = ATM_read(0xA4);
+"827
+[e = _info ( _ATM_read (1 -> -> 164 `i `ui ]
+[; ;ATM90E36A.c: 828: break;
+"828
+[e $U 355  ]
+[; ;ATM90E36A.c: 829: case PHASE_A_REV_ACTIVE_FUND_ENERGY:
+"829
+[e :U 362 ]
+[; ;ATM90E36A.c: 830: info = ATM_read(0xA5);
+"830
+[e = _info ( _ATM_read (1 -> -> 165 `i `ui ]
+[; ;ATM90E36A.c: 831: break;
+"831
+[e $U 355  ]
+[; ;ATM90E36A.c: 832: case PHASE_B_REV_ACTIVE_FUND_ENERGY:
+"832
+[e :U 363 ]
+[; ;ATM90E36A.c: 833: info = ATM_read(0xA6);
+"833
+[e = _info ( _ATM_read (1 -> -> 166 `i `ui ]
+[; ;ATM90E36A.c: 834: break;
+"834
+[e $U 355  ]
+[; ;ATM90E36A.c: 835: case PHASE_C_REV_ACTIVE_FUND_ENERGY:
+"835
+[e :U 364 ]
+[; ;ATM90E36A.c: 836: info = ATM_read(0xA7);
+"836
+[e = _info ( _ATM_read (1 -> -> 167 `i `ui ]
+[; ;ATM90E36A.c: 837: break;
+"837
+[e $U 355  ]
+[; ;ATM90E36A.c: 838: default:
+"838
+[e :U 365 ]
+[; ;ATM90E36A.c: 839: break;
+"839
+[e $U 355  ]
+"840
+}
+[; ;ATM90E36A.c: 840: }
+[e $U 355  ]
+"812
+[e :U 356 ]
+[e [\ _reg , $ . `E3080 21 357
+ , $ . `E3080 22 358
+ , $ . `E3080 23 359
+ , $ . `E3080 24 360
+ , $ . `E3080 25 361
+ , $ . `E3080 26 362
+ , $ . `E3080 27 363
+ , $ . `E3080 28 364
+ 365 ]
+"840
+[e :U 355 ]
+[; ;ATM90E36A.c: 841: break;
+"841
+[e $U 319  ]
+[; ;ATM90E36A.c: 842: case HARMONIC_ENERGY_TYPE:
+"842
+[e :U 366 ]
+[; ;ATM90E36A.c: 843: switch(reg)
+"843
+[e $U 368  ]
+[; ;ATM90E36A.c: 844: {
+"844
+{
+[; ;ATM90E36A.c: 845: case TOTAL_FORW_ACTIVE_HARM_ENERGY:
+"845
+[e :U 369 ]
+[; ;ATM90E36A.c: 846: info = ATM_read(0xA8);
+"846
+[e = _info ( _ATM_read (1 -> -> 168 `i `ui ]
+[; ;ATM90E36A.c: 847: break;
+"847
+[e $U 367  ]
+[; ;ATM90E36A.c: 848: case PHASE_A_FORW_ACTIVE_HARM_ENERGY:
+"848
+[e :U 370 ]
+[; ;ATM90E36A.c: 849: info = ATM_read(0xA9);
+"849
+[e = _info ( _ATM_read (1 -> -> 169 `i `ui ]
+[; ;ATM90E36A.c: 850: break;
+"850
+[e $U 367  ]
+[; ;ATM90E36A.c: 851: case PHASE_B_FORW_ACTIVE_HARM_ENERGY:
+"851
+[e :U 371 ]
+[; ;ATM90E36A.c: 852: info = ATM_read(0xAA);
+"852
+[e = _info ( _ATM_read (1 -> -> 170 `i `ui ]
+[; ;ATM90E36A.c: 853: break;
+"853
+[e $U 367  ]
+[; ;ATM90E36A.c: 854: case PHASE_C_FORW_ACTIVE_HARM_ENERGY:
+"854
+[e :U 372 ]
+[; ;ATM90E36A.c: 855: info = ATM_read(0xAB);
+"855
+[e = _info ( _ATM_read (1 -> -> 171 `i `ui ]
+[; ;ATM90E36A.c: 856: break;
+"856
+[e $U 367  ]
+[; ;ATM90E36A.c: 857: case TOTAL_REV_ACTIVE_HARM_ENERGY:
+"857
+[e :U 373 ]
+[; ;ATM90E36A.c: 858: info = ATM_read(0xAC);
+"858
+[e = _info ( _ATM_read (1 -> -> 172 `i `ui ]
+[; ;ATM90E36A.c: 859: break;
+"859
+[e $U 367  ]
+[; ;ATM90E36A.c: 860: case PHASE_A_REV_ACTIVE_HARM_ENERGY:
+"860
+[e :U 374 ]
+[; ;ATM90E36A.c: 861: info = ATM_read(0xAD);
+"861
+[e = _info ( _ATM_read (1 -> -> 173 `i `ui ]
+[; ;ATM90E36A.c: 862: break;
+"862
+[e $U 367  ]
+[; ;ATM90E36A.c: 863: case PHASE_B_REV_ACTIVE_HARM_ENERGY:
+"863
+[e :U 375 ]
+[; ;ATM90E36A.c: 864: info = ATM_read(0xAE);
+"864
+[e = _info ( _ATM_read (1 -> -> 174 `i `ui ]
+[; ;ATM90E36A.c: 865: break;
+"865
+[e $U 367  ]
+[; ;ATM90E36A.c: 866: case PHASE_C_REV_ACTIVE_HARM_ENERGY:
+"866
+[e :U 376 ]
+[; ;ATM90E36A.c: 867: info = ATM_read(0xAF);
+"867
+[e = _info ( _ATM_read (1 -> -> 175 `i `ui ]
+[; ;ATM90E36A.c: 868: break;
+"868
+[e $U 367  ]
+[; ;ATM90E36A.c: 869: default:
+"869
+[e :U 377 ]
+[; ;ATM90E36A.c: 870: break;
+"870
+[e $U 367  ]
+"871
+}
+[; ;ATM90E36A.c: 871: }
+[e $U 367  ]
+"843
+[e :U 368 ]
+[e [\ _reg , $ . `E3080 29 369
+ , $ . `E3080 30 370
+ , $ . `E3080 31 371
+ , $ . `E3080 32 372
+ , $ . `E3080 33 373
+ , $ . `E3080 34 374
+ , $ . `E3080 35 375
+ , $ . `E3080 36 376
+ 377 ]
+"871
+[e :U 367 ]
+[; ;ATM90E36A.c: 872: break;
+"872
+[e $U 319  ]
+[; ;ATM90E36A.c: 873: case ACTIVE_POWER_TYPE:
+"873
+[e :U 378 ]
+[; ;ATM90E36A.c: 874: switch(reg)
+"874
+[e $U 380  ]
+[; ;ATM90E36A.c: 875: {
+"875
+{
+[; ;ATM90E36A.c: 876: case TOTAL_ACTIVE_POWER:
+"876
+[e :U 381 ]
+[; ;ATM90E36A.c: 877: info = ATM_read(0xB0);
+"877
+[e = _info ( _ATM_read (1 -> -> 176 `i `ui ]
+[; ;ATM90E36A.c: 878: break;
+"878
+[e $U 379  ]
+[; ;ATM90E36A.c: 879: case PHASE_A_ACTIVE_POWER:
+"879
+[e :U 382 ]
+[; ;ATM90E36A.c: 880: info = ATM_read(0xB1);
+"880
+[e = _info ( _ATM_read (1 -> -> 177 `i `ui ]
+[; ;ATM90E36A.c: 881: break;
+"881
+[e $U 379  ]
+[; ;ATM90E36A.c: 882: case PHASE_B_ACTIVE_POWER:
+"882
+[e :U 383 ]
+[; ;ATM90E36A.c: 883: info = ATM_read(0xB2);
+"883
+[e = _info ( _ATM_read (1 -> -> 178 `i `ui ]
+[; ;ATM90E36A.c: 884: break;
+"884
+[e $U 379  ]
+[; ;ATM90E36A.c: 885: case PHASE_C_ACTIVE_POWER:
+"885
+[e :U 384 ]
+[; ;ATM90E36A.c: 886: info = ATM_read(0xB3);
+"886
+[e = _info ( _ATM_read (1 -> -> 179 `i `ui ]
+[; ;ATM90E36A.c: 887: break;
+"887
+[e $U 379  ]
+[; ;ATM90E36A.c: 888: default:
+"888
+[e :U 385 ]
+[; ;ATM90E36A.c: 889: break;
+"889
+[e $U 379  ]
+"890
+}
+[; ;ATM90E36A.c: 890: }
+[e $U 379  ]
+"874
+[e :U 380 ]
+[e [\ _reg , $ . `E3080 37 381
+ , $ . `E3080 38 382
+ , $ . `E3080 39 383
+ , $ . `E3080 40 384
+ 385 ]
+"890
+[e :U 379 ]
+[; ;ATM90E36A.c: 891: break;
+"891
+[e $U 319  ]
+[; ;ATM90E36A.c: 892: case REACTIVE_POWER_TYPE:
+"892
+[e :U 386 ]
+[; ;ATM90E36A.c: 893: switch(reg)
+"893
+[e $U 388  ]
+[; ;ATM90E36A.c: 894: {
+"894
+{
+[; ;ATM90E36A.c: 895: case TOTAL_REACTIVE_POWER:
+"895
+[e :U 389 ]
+[; ;ATM90E36A.c: 896: info = ATM_read(0xB4);
+"896
+[e = _info ( _ATM_read (1 -> -> 180 `i `ui ]
+[; ;ATM90E36A.c: 897: break;
+"897
+[e $U 387  ]
+[; ;ATM90E36A.c: 898: case PHASE_A_REACTIVE_POWER:
+"898
+[e :U 390 ]
+[; ;ATM90E36A.c: 899: info = ATM_read(0xB5);
+"899
+[e = _info ( _ATM_read (1 -> -> 181 `i `ui ]
+[; ;ATM90E36A.c: 900: break;
+"900
+[e $U 387  ]
+[; ;ATM90E36A.c: 901: case PHASE_B_REACTIVE_POWER:
+"901
+[e :U 391 ]
+[; ;ATM90E36A.c: 902: info = ATM_read(0xB6);
+"902
+[e = _info ( _ATM_read (1 -> -> 182 `i `ui ]
+[; ;ATM90E36A.c: 903: break;
+"903
+[e $U 387  ]
+[; ;ATM90E36A.c: 904: case PHASE_C_REACTIVE_POWER:
+"904
+[e :U 392 ]
+[; ;ATM90E36A.c: 905: info = ATM_read(0xB7);
+"905
+[e = _info ( _ATM_read (1 -> -> 183 `i `ui ]
+[; ;ATM90E36A.c: 906: break;
+"906
+[e $U 387  ]
+[; ;ATM90E36A.c: 907: default:
+"907
+[e :U 393 ]
+[; ;ATM90E36A.c: 908: break;
+"908
+[e $U 387  ]
+"909
+}
+[; ;ATM90E36A.c: 909: }
+[e $U 387  ]
+"893
+[e :U 388 ]
+[e [\ _reg , $ . `E3080 41 389
+ , $ . `E3080 42 390
+ , $ . `E3080 43 391
+ , $ . `E3080 44 392
+ 393 ]
+"909
+[e :U 387 ]
+[; ;ATM90E36A.c: 910: break;
+"910
+[e $U 319  ]
+[; ;ATM90E36A.c: 911: case APPARENT_POWER_TYPE:
+"911
+[e :U 394 ]
+[; ;ATM90E36A.c: 912: switch(reg)
+"912
+[e $U 396  ]
+[; ;ATM90E36A.c: 913: {
+"913
+{
+[; ;ATM90E36A.c: 914: case TOTAL_APPARENT_POWER:
+"914
+[e :U 397 ]
+[; ;ATM90E36A.c: 915: info = ATM_read(0xB8);
+"915
+[e = _info ( _ATM_read (1 -> -> 184 `i `ui ]
+[; ;ATM90E36A.c: 916: break;
+"916
+[e $U 395  ]
+[; ;ATM90E36A.c: 917: case PHASE_A_APPARENT_POWER:
+"917
+[e :U 398 ]
+[; ;ATM90E36A.c: 918: info = ATM_read(0xB9);
+"918
+[e = _info ( _ATM_read (1 -> -> 185 `i `ui ]
+[; ;ATM90E36A.c: 919: break;
+"919
+[e $U 395  ]
+[; ;ATM90E36A.c: 920: case PHASE_B_APPARENT_POWER:
+"920
+[e :U 399 ]
+[; ;ATM90E36A.c: 921: info = ATM_read(0xBA);
+"921
+[e = _info ( _ATM_read (1 -> -> 186 `i `ui ]
+[; ;ATM90E36A.c: 922: break;
+"922
+[e $U 395  ]
+[; ;ATM90E36A.c: 923: case PHASE_C_APPARENT_POWER:
+"923
+[e :U 400 ]
+[; ;ATM90E36A.c: 924: info = ATM_read(0xBB);
+"924
+[e = _info ( _ATM_read (1 -> -> 187 `i `ui ]
+[; ;ATM90E36A.c: 925: break;
+"925
+[e $U 395  ]
+[; ;ATM90E36A.c: 926: default:
+"926
+[e :U 401 ]
+[; ;ATM90E36A.c: 927: break;
+"927
+[e $U 395  ]
+"928
+}
+[; ;ATM90E36A.c: 928: }
+[e $U 395  ]
+"912
+[e :U 396 ]
+[e [\ _reg , $ . `E3080 45 397
+ , $ . `E3080 46 398
+ , $ . `E3080 47 399
+ , $ . `E3080 48 400
+ 401 ]
+"928
+[e :U 395 ]
+[; ;ATM90E36A.c: 929: break;
+"929
+[e $U 319  ]
+[; ;ATM90E36A.c: 930: case POWER_FACTOR_TYPE:
+"930
+[e :U 402 ]
+[; ;ATM90E36A.c: 931: switch(reg)
+"931
+[e $U 404  ]
+[; ;ATM90E36A.c: 932: {
+"932
+{
+[; ;ATM90E36A.c: 933: case TOTAL_POWER_FACTOR:
+"933
+[e :U 405 ]
+[; ;ATM90E36A.c: 934: info = ATM_read(0xBC);
+"934
+[e = _info ( _ATM_read (1 -> -> 188 `i `ui ]
+[; ;ATM90E36A.c: 935: break;
+"935
+[e $U 403  ]
+[; ;ATM90E36A.c: 936: case PHASE_A_POWER_FACTOR:
+"936
+[e :U 406 ]
+[; ;ATM90E36A.c: 937: info = ATM_read(0xBD);
+"937
+[e = _info ( _ATM_read (1 -> -> 189 `i `ui ]
+[; ;ATM90E36A.c: 938: break;
+"938
+[e $U 403  ]
+[; ;ATM90E36A.c: 939: case PHASE_B_POWER_FACTOR:
+"939
+[e :U 407 ]
+[; ;ATM90E36A.c: 940: info = ATM_read(0xBE);
+"940
+[e = _info ( _ATM_read (1 -> -> 190 `i `ui ]
+[; ;ATM90E36A.c: 941: break;
+"941
+[e $U 403  ]
+[; ;ATM90E36A.c: 942: case PHASE_C_POWER_FACTOR:
+"942
+[e :U 408 ]
+[; ;ATM90E36A.c: 943: info = ATM_read(0xBF);
+"943
+[e = _info ( _ATM_read (1 -> -> 191 `i `ui ]
+[; ;ATM90E36A.c: 944: break;
+"944
+[e $U 403  ]
+[; ;ATM90E36A.c: 945: default:
+"945
+[e :U 409 ]
+[; ;ATM90E36A.c: 946: break;
+"946
+[e $U 403  ]
+"947
+}
+[; ;ATM90E36A.c: 947: }
+[e $U 403  ]
+"931
+[e :U 404 ]
+[e [\ _reg , $ . `E3080 49 405
+ , $ . `E3080 50 406
+ , $ . `E3080 51 407
+ , $ . `E3080 52 408
+ 409 ]
+"947
+[e :U 403 ]
+[; ;ATM90E36A.c: 948: break;
+"948
+[e $U 319  ]
+[; ;ATM90E36A.c: 949: case FUNDAMENTAL_POWER:
+"949
+[e :U 410 ]
+[; ;ATM90E36A.c: 950: switch(reg)
+"950
+[e $U 412  ]
+[; ;ATM90E36A.c: 951: {
+"951
+{
+[; ;ATM90E36A.c: 952: case TOTAL_ACTIVE_FUND_POWER:
+"952
+[e :U 413 ]
+[; ;ATM90E36A.c: 953: info = ATM_read(0xD0);
+"953
+[e = _info ( _ATM_read (1 -> -> 208 `i `ui ]
+[; ;ATM90E36A.c: 954: break;
+"954
+[e $U 411  ]
+[; ;ATM90E36A.c: 955: case PHASE_A_ACTIVE_FUND_POWER:
+"955
+[e :U 414 ]
+[; ;ATM90E36A.c: 956: info = ATM_read(0xD1);
+"956
+[e = _info ( _ATM_read (1 -> -> 209 `i `ui ]
+[; ;ATM90E36A.c: 957: break;
+"957
+[e $U 411  ]
+[; ;ATM90E36A.c: 958: case PHASE_B_ACTIVE_FUND_POWER:
+"958
+[e :U 415 ]
+[; ;ATM90E36A.c: 959: info = ATM_read(0xD2);
+"959
+[e = _info ( _ATM_read (1 -> -> 210 `i `ui ]
+[; ;ATM90E36A.c: 960: break;
+"960
+[e $U 411  ]
+[; ;ATM90E36A.c: 961: case PHASE_C_ACTIVE_FUND_POWER:
+"961
+[e :U 416 ]
+[; ;ATM90E36A.c: 962: info = ATM_read(0xD3);
+"962
+[e = _info ( _ATM_read (1 -> -> 211 `i `ui ]
+[; ;ATM90E36A.c: 963: break;
+"963
+[e $U 411  ]
+[; ;ATM90E36A.c: 964: default:
+"964
+[e :U 417 ]
+[; ;ATM90E36A.c: 965: break;
+"965
+[e $U 411  ]
+"966
+}
+[; ;ATM90E36A.c: 966: }
+[e $U 411  ]
+"950
+[e :U 412 ]
+[e [\ _reg , $ . `E3080 53 413
+ , $ . `E3080 54 414
+ , $ . `E3080 55 415
+ , $ . `E3080 56 416
+ 417 ]
+"966
+[e :U 411 ]
+[; ;ATM90E36A.c: 967: break;
+"967
+[e $U 319  ]
+[; ;ATM90E36A.c: 968: case HARMONIC_POWER:
+"968
+[e :U 418 ]
+[; ;ATM90E36A.c: 969: switch(reg)
+"969
+[e $U 420  ]
+[; ;ATM90E36A.c: 970: {
+"970
+{
+[; ;ATM90E36A.c: 971: case TOTAL_ACTIVE_HARM_POWER:
+"971
+[e :U 421 ]
+[; ;ATM90E36A.c: 972: info = ATM_read(0xD4);
+"972
+[e = _info ( _ATM_read (1 -> -> 212 `i `ui ]
+[; ;ATM90E36A.c: 973: break;
+"973
+[e $U 419  ]
+[; ;ATM90E36A.c: 974: case PHASE_A_ACTIVE_HARM_POWER:
+"974
+[e :U 422 ]
+[; ;ATM90E36A.c: 975: info = ATM_read(0xD5);
+"975
+[e = _info ( _ATM_read (1 -> -> 213 `i `ui ]
+[; ;ATM90E36A.c: 976: break;
+"976
+[e $U 419  ]
+[; ;ATM90E36A.c: 977: case PHASE_B_ACTIVE_HARM_POWER:
+"977
+[e :U 423 ]
+[; ;ATM90E36A.c: 978: info = ATM_read(0xD6);
+"978
+[e = _info ( _ATM_read (1 -> -> 214 `i `ui ]
+[; ;ATM90E36A.c: 979: break;
+"979
+[e $U 419  ]
+[; ;ATM90E36A.c: 980: case PHASE_C_ACTIVE_HARM_POWER:
+"980
+[e :U 424 ]
+[; ;ATM90E36A.c: 981: info = ATM_read(0xD7);
+"981
+[e = _info ( _ATM_read (1 -> -> 215 `i `ui ]
+[; ;ATM90E36A.c: 982: break;
+"982
+[e $U 419  ]
+[; ;ATM90E36A.c: 983: default:
+"983
+[e :U 425 ]
+[; ;ATM90E36A.c: 984: break;
+"984
+[e $U 419  ]
+"985
+}
+[; ;ATM90E36A.c: 985: }
+[e $U 419  ]
+"969
+[e :U 420 ]
+[e [\ _reg , $ . `E3080 57 421
+ , $ . `E3080 58 422
+ , $ . `E3080 59 423
+ , $ . `E3080 60 424
+ 425 ]
+"985
+[e :U 419 ]
+[; ;ATM90E36A.c: 986: break;
+"986
+[e $U 319  ]
+[; ;ATM90E36A.c: 987: case VOLTAGE_RMS:
+"987
+[e :U 426 ]
+[; ;ATM90E36A.c: 988: switch(reg)
+"988
+[e $U 428  ]
+[; ;ATM90E36A.c: 989: {
+"989
+{
+[; ;ATM90E36A.c: 990: case PHASE_A_VOLTAGE_RMS:
+"990
+[e :U 429 ]
+[; ;ATM90E36A.c: 991: info = ATM_read(0xD9);
+"991
+[e = _info ( _ATM_read (1 -> -> 217 `i `ui ]
+[; ;ATM90E36A.c: 992: break;
+"992
+[e $U 427  ]
+[; ;ATM90E36A.c: 993: case PHASE_B_VOLTAGE_RMS:
+"993
+[e :U 430 ]
+[; ;ATM90E36A.c: 994: info = ATM_read(0xDA);
+"994
+[e = _info ( _ATM_read (1 -> -> 218 `i `ui ]
+[; ;ATM90E36A.c: 995: break;
+"995
+[e $U 427  ]
+[; ;ATM90E36A.c: 996: case PHASE_C_VOLTAGE_RMS:
+"996
+[e :U 431 ]
+[; ;ATM90E36A.c: 997: info = ATM_read(0xDB);
+"997
+[e = _info ( _ATM_read (1 -> -> 219 `i `ui ]
+[; ;ATM90E36A.c: 998: break;
+"998
+[e $U 427  ]
+[; ;ATM90E36A.c: 999: default:
+"999
+[e :U 432 ]
+[; ;ATM90E36A.c: 1000: break;
+"1000
+[e $U 427  ]
+"1001
+}
+[; ;ATM90E36A.c: 1001: }
+[e $U 427  ]
+"988
+[e :U 428 ]
+[e [\ _reg , $ . `E3080 62 429
+ , $ . `E3080 63 430
+ , $ . `E3080 64 431
+ 432 ]
+"1001
+[e :U 427 ]
+[; ;ATM90E36A.c: 1002: break;
+"1002
+[e $U 319  ]
+[; ;ATM90E36A.c: 1003: case CURRENT_RMS:
+"1003
+[e :U 433 ]
+[; ;ATM90E36A.c: 1004: switch(reg)
+"1004
+[e $U 435  ]
+[; ;ATM90E36A.c: 1005: {
+"1005
+{
+[; ;ATM90E36A.c: 1006: case NLINE_SAMPLED_CURRENT_RMS:
+"1006
+[e :U 436 ]
+[; ;ATM90E36A.c: 1007: info = ATM_read(0xD8);
+"1007
+[e = _info ( _ATM_read (1 -> -> 216 `i `ui ]
+[; ;ATM90E36A.c: 1008: break;
+"1008
+[e $U 434  ]
+[; ;ATM90E36A.c: 1009: case NLINE_CALCULATED_CURRENT_RMS:
+"1009
+[e :U 437 ]
+[; ;ATM90E36A.c: 1010: info = ATM_read(0xDC);
+"1010
+[e = _info ( _ATM_read (1 -> -> 220 `i `ui ]
+[; ;ATM90E36A.c: 1011: break;
+"1011
+[e $U 434  ]
+[; ;ATM90E36A.c: 1012: case PHASE_A_CURRENT_RMS:
+"1012
+[e :U 438 ]
+[; ;ATM90E36A.c: 1013: info = ATM_read(0xDD);
+"1013
+[e = _info ( _ATM_read (1 -> -> 221 `i `ui ]
+[; ;ATM90E36A.c: 1014: break;
+"1014
+[e $U 434  ]
+[; ;ATM90E36A.c: 1015: case PHASE_B_CURRENT_RMS:
+"1015
+[e :U 439 ]
+[; ;ATM90E36A.c: 1016: info = ATM_read(0xDE);
+"1016
+[e = _info ( _ATM_read (1 -> -> 222 `i `ui ]
+[; ;ATM90E36A.c: 1017: break;
+"1017
+[e $U 434  ]
+[; ;ATM90E36A.c: 1018: case PHASE_C_CURRENT_RMS:
+"1018
+[e :U 440 ]
+[; ;ATM90E36A.c: 1019: info = ATM_read(0xDF);
+"1019
+[e = _info ( _ATM_read (1 -> -> 223 `i `ui ]
+[; ;ATM90E36A.c: 1020: break;
+"1020
+[e $U 434  ]
+[; ;ATM90E36A.c: 1021: default:
+"1021
+[e :U 441 ]
+[; ;ATM90E36A.c: 1022: break;
+"1022
+[e $U 434  ]
+"1023
+}
+[; ;ATM90E36A.c: 1023: }
+[e $U 434  ]
+"1004
+[e :U 435 ]
+[e [\ _reg , $ . `E3080 61 436
+ , $ . `E3080 65 437
+ , $ . `E3080 66 438
+ , $ . `E3080 67 439
+ , $ . `E3080 68 440
+ 441 ]
+"1023
+[e :U 434 ]
+[; ;ATM90E36A.c: 1024: break;
+"1024
+[e $U 319  ]
+[; ;ATM90E36A.c: 1025: case THDN_TYPE:
+"1025
+[e :U 442 ]
+[; ;ATM90E36A.c: 1026: switch(reg)
+"1026
+[e $U 444  ]
+[; ;ATM90E36A.c: 1027: {
+"1027
+{
+[; ;ATM90E36A.c: 1028: case PHASE_A_VOLTAGE_THDN:
+"1028
+[e :U 445 ]
+[; ;ATM90E36A.c: 1029: info = ATM_read(0xF1);
+"1029
+[e = _info ( _ATM_read (1 -> -> 241 `i `ui ]
+[; ;ATM90E36A.c: 1030: break;
+"1030
+[e $U 443  ]
+[; ;ATM90E36A.c: 1031: case PHASE_B_VOLTAGE_THDN:
+"1031
+[e :U 446 ]
+[; ;ATM90E36A.c: 1032: info = ATM_read(0xF2);
+"1032
+[e = _info ( _ATM_read (1 -> -> 242 `i `ui ]
+[; ;ATM90E36A.c: 1033: break;
+"1033
+[e $U 443  ]
+[; ;ATM90E36A.c: 1034: case PHASE_C_VOLTAGE_THDN:
+"1034
+[e :U 447 ]
+[; ;ATM90E36A.c: 1035: info = ATM_read(0xF3);
+"1035
+[e = _info ( _ATM_read (1 -> -> 243 `i `ui ]
+[; ;ATM90E36A.c: 1036: break;
+"1036
+[e $U 443  ]
+[; ;ATM90E36A.c: 1037: case PHASE_A_CURRENT_THDN:
+"1037
+[e :U 448 ]
+[; ;ATM90E36A.c: 1038: info = ATM_read(0xF5);
+"1038
+[e = _info ( _ATM_read (1 -> -> 245 `i `ui ]
+[; ;ATM90E36A.c: 1039: break;
+"1039
+[e $U 443  ]
+[; ;ATM90E36A.c: 1040: case PHASE_B_CURRENT_THDN:
+"1040
+[e :U 449 ]
+[; ;ATM90E36A.c: 1041: info = ATM_read(0xF6);
+"1041
+[e = _info ( _ATM_read (1 -> -> 246 `i `ui ]
+[; ;ATM90E36A.c: 1042: break;
+"1042
+[e $U 443  ]
+[; ;ATM90E36A.c: 1043: case PHASE_C_CURRENT_THDN:
+"1043
+[e :U 450 ]
+[; ;ATM90E36A.c: 1044: info = ATM_read(0xF7);
+"1044
+[e = _info ( _ATM_read (1 -> -> 247 `i `ui ]
+[; ;ATM90E36A.c: 1045: break;
+"1045
+[e $U 443  ]
+[; ;ATM90E36A.c: 1046: default:
+"1046
+[e :U 451 ]
+[; ;ATM90E36A.c: 1047: break;
+"1047
+[e $U 443  ]
+"1048
+}
+[; ;ATM90E36A.c: 1048: }
+[e $U 443  ]
+"1026
+[e :U 444 ]
+[e [\ _reg , $ . `E3080 69 445
+ , $ . `E3080 70 446
+ , $ . `E3080 71 447
+ , $ . `E3080 72 448
+ , $ . `E3080 73 449
+ , $ . `E3080 74 450
+ 451 ]
+"1048
+[e :U 443 ]
+[; ;ATM90E36A.c: 1049: break;
+"1049
+[e $U 319  ]
+[; ;ATM90E36A.c: 1050: case FREQUENCY_TYPE:
+"1050
+[e :U 452 ]
+[; ;ATM90E36A.c: 1051: if(FREQUENCY_REG == reg)
+"1051
+[e $ ! == -> . `E3080 75 `i -> _reg `i 453  ]
+[; ;ATM90E36A.c: 1052: {
+"1052
+{
+[; ;ATM90E36A.c: 1053: info = ATM_read(0xF8);
+"1053
+[e = _info ( _ATM_read (1 -> -> 248 `i `ui ]
+"1054
+}
+[e :U 453 ]
+[; ;ATM90E36A.c: 1054: }
+[; ;ATM90E36A.c: 1055: break;
+"1055
+[e $U 319  ]
+[; ;ATM90E36A.c: 1056: case PHASE_ANGLE_TYPE:
+"1056
+[e :U 454 ]
+[; ;ATM90E36A.c: 1057: switch(reg)
+"1057
+[e $U 456  ]
+[; ;ATM90E36A.c: 1058: {
+"1058
+{
+[; ;ATM90E36A.c: 1059: case PHASE_A_MEAN_ANGLE_PHASE:
+"1059
+[e :U 457 ]
+[; ;ATM90E36A.c: 1060: info = ATM_read(0xF9);
+"1060
+[e = _info ( _ATM_read (1 -> -> 249 `i `ui ]
+[; ;ATM90E36A.c: 1061: break;
+"1061
+[e $U 455  ]
+[; ;ATM90E36A.c: 1062: case PHASE_B_MEAN_ANGLE_PHASE:
+"1062
+[e :U 458 ]
+[; ;ATM90E36A.c: 1063: info = ATM_read(0xFA);
+"1063
+[e = _info ( _ATM_read (1 -> -> 250 `i `ui ]
+[; ;ATM90E36A.c: 1064: break;
+"1064
+[e $U 455  ]
+[; ;ATM90E36A.c: 1065: case PHASE_C_MEAN_ANGLE_PHASE:
+"1065
+[e :U 459 ]
+[; ;ATM90E36A.c: 1066: info = ATM_read(0xFB);
+"1066
+[e = _info ( _ATM_read (1 -> -> 251 `i `ui ]
+[; ;ATM90E36A.c: 1067: break;
+"1067
+[e $U 455  ]
+[; ;ATM90E36A.c: 1068: case PHASE_A_VOLTAGE_ANGLE_PHASE:
+"1068
+[e :U 460 ]
+[; ;ATM90E36A.c: 1069: info = ATM_read(0xFD);
+"1069
+[e = _info ( _ATM_read (1 -> -> 253 `i `ui ]
+[; ;ATM90E36A.c: 1070: break;
+"1070
+[e $U 455  ]
+[; ;ATM90E36A.c: 1071: case PHASE_B_VOLTAGE_ANGLE_PHASE:
+"1071
+[e :U 461 ]
+[; ;ATM90E36A.c: 1072: info = ATM_read(0xFE);
+"1072
+[e = _info ( _ATM_read (1 -> -> 254 `i `ui ]
+[; ;ATM90E36A.c: 1073: break;
+"1073
+[e $U 455  ]
+[; ;ATM90E36A.c: 1074: case PHASE_C_VOLTAGE_ANGLE_PHASE:
+"1074
+[e :U 462 ]
+[; ;ATM90E36A.c: 1075: info = ATM_read(0xFF);
+"1075
+[e = _info ( _ATM_read (1 -> -> 255 `i `ui ]
+[; ;ATM90E36A.c: 1076: break;
+"1076
+[e $U 455  ]
+[; ;ATM90E36A.c: 1077: default:
+"1077
+[e :U 463 ]
+[; ;ATM90E36A.c: 1078: break;
+"1078
+[e $U 455  ]
+"1079
+}
+[; ;ATM90E36A.c: 1079: }
+[e $U 455  ]
+"1057
+[e :U 456 ]
+[e [\ _reg , $ . `E3080 76 457
+ , $ . `E3080 77 458
+ , $ . `E3080 78 459
+ , $ . `E3080 80 460
+ , $ . `E3080 81 461
+ , $ . `E3080 82 462
+ 463 ]
+"1079
+[e :U 455 ]
+[; ;ATM90E36A.c: 1080: break;
+"1080
+[e $U 319  ]
+[; ;ATM90E36A.c: 1081: case TEMPERATURE_TYPE:
+"1081
+[e :U 464 ]
+[; ;ATM90E36A.c: 1082: if(TEMPERATURE_REG == reg)
+"1082
+[e $ ! == -> . `E3080 79 `i -> _reg `i 465  ]
+[; ;ATM90E36A.c: 1083: {
+"1083
+{
+[; ;ATM90E36A.c: 1084: info = ATM_read(0xFC);
+"1084
+[e = _info ( _ATM_read (1 -> -> 252 `i `ui ]
+"1085
+}
+[e :U 465 ]
+[; ;ATM90E36A.c: 1085: }
+[; ;ATM90E36A.c: 1086: break;
+"1086
+[e $U 319  ]
+[; ;ATM90E36A.c: 1087: default:
+"1087
+[e :U 466 ]
+[; ;ATM90E36A.c: 1088: break;
+"1088
+[e $U 319  ]
+"1089
+}
+[; ;ATM90E36A.c: 1089: }
+[e $U 319  ]
+"725
+[e :U 320 ]
+[e [\ _type , $ . `E3061 0 321
+ , $ . `E3061 1 333
+ , $ . `E3061 2 345
+ , $ . `E3061 3 354
+ , $ . `E3061 4 366
+ , $ . `E3061 5 378
+ , $ . `E3061 6 386
+ , $ . `E3061 7 394
+ , $ . `E3061 8 402
+ , $ . `E3061 9 410
+ , $ . `E3061 10 418
+ , $ . `E3061 11 426
+ , $ . `E3061 12 433
+ , $ . `E3061 13 442
+ , $ . `E3061 14 452
+ , $ . `E3061 15 454
+ , $ . `E3061 16 464
+ 466 ]
+"1089
+[e :U 319 ]
+[; ;ATM90E36A.c: 1090: return (info);
+"1090
+[e ) _info ]
+[e $UE 318  ]
+[; ;ATM90E36A.c: 1091: }
+"1091
+[e :UE 318 ]
 }

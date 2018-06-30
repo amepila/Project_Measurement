@@ -3078,27 +3078,27 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;UART.c: 19: case BD_1200:
 "19
 [e :U 288 ]
-[; ;UART.c: 20: SPBRG = (103);
+[; ;UART.c: 20: SPBRG = (255);
 "20
-[e = _SPBRG -> -> 103 `i `uc ]
+[e = _SPBRG -> -> 255 `i `uc ]
 [; ;UART.c: 21: break;
 "21
 [e $U 286  ]
 [; ;UART.c: 22: case BD_2400:
 "22
 [e :U 289 ]
-[; ;UART.c: 23: SPBRG = (51);
+[; ;UART.c: 23: SPBRG = (129);
 "23
-[e = _SPBRG -> -> 51 `i `uc ]
+[e = _SPBRG -> -> 129 `i `uc ]
 [; ;UART.c: 24: break;
 "24
 [e $U 286  ]
 [; ;UART.c: 25: case BD_9600:
 "25
 [e :U 290 ]
-[; ;UART.c: 26: SPBRG = (12);
+[; ;UART.c: 26: SPBRG = (31);
 "26
-[e = _SPBRG -> -> 12 `i `uc ]
+[e = _SPBRG -> -> 31 `i `uc ]
 [; ;UART.c: 27: break;
 "27
 [e $U 286  ]

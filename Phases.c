@@ -2,11 +2,11 @@
 #include "Phases.h"
 
 /**Settings of SPI**/
-const SPI_ConfigType SPI_Config = 
+const SPI_ConfigType SPI_Config2 = 
 {
-	SPI_LOW_POLARITY,	/**Low Polarity to SPI**/
+	SPI_HIGH_POLARITY,	/**Low Polarity to SPI**/
 	SPI_LOW_PHASE,		/**Low Phase to SPI**/
-	SPI_SERIAL_CLK4     /**FOsc divided by 4**/
+	SPI_SERIAL_CLK64     /**FOsc divided by 4**/
 };
 
 PhaseMainMenu_Type initialLoad(PhaseMainMenu_Type data)
@@ -16,7 +16,7 @@ PhaseMainMenu_Type initialLoad(PhaseMainMenu_Type data)
 
     /**Calibration of the IC*/
     ATM_init();
-    ATM_calibration();
+    //ATM_calibration();
     delay(1500);
     
 	/**Set with the current state and phase**/
@@ -272,6 +272,7 @@ PhaseMainMenu_Type viewMenu(PhaseMainMenu_Type data)
 
 PhaseMainMenu_Type sendData(PhaseMainMenu_Type data)
 {
+    /**
     const uint8_t title1[] = "THREE PHASE\r\n";
     const uint8_t title2[] = "MEASUREMENT\r\n";
     
@@ -402,139 +403,139 @@ PhaseMainMenu_Type sendData(PhaseMainMenu_Type data)
     const uint8_t angle_VoltageP1[] = "Phase A Voltage Phase Angle = \t";
     const uint8_t angle_VoltageP2[] = "Phase B Voltage Phase Angle = \t";
     const uint8_t angle_VoltageP3[] = "Phase C Voltage Phase Angle = \t";
-    
+    */
 	/**Create the variable with current data**/
 	static PhaseMainMenu_Type currentMainMenu4;
 
     /**Confiuration of Bluetooth*/
     UART_init(BD_9600);
-    
+    /**
     UART_putString(title1);
     UART_putString(title2);
     
     UART_putString(subtitle_1);
     
     UART_putString(active_fp1);
-    UART_putString(ATM_registers(ACTIVE_ENERGY, PHASE_A_FORW_ACTIVE_ENERGY));
+    UART_putString(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_A_FORW_ACTIVE_ENERGY));
     UART_putString(joules);
     UART_putString(active_fp2);
-    UART_putString(ATM_registers(ACTIVE_ENERGY, PHASE_B_FORW_ACTIVE_ENERGY));
+    UART_putString(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_B_FORW_ACTIVE_ENERGY));
     UART_putString(joules);
     UART_putString(active_fp3);
-    UART_putString(ATM_registers(ACTIVE_ENERGY, PHASE_C_FORW_ACTIVE_ENERGY));
+    UART_putString(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_C_FORW_ACTIVE_ENERGY));
     UART_putString(joules);
     UART_putString(active_fTotal);
-    UART_putString(ATM_registers(ACTIVE_ENERGY, TOTAL_FORW_ACTIVE_ENERGY));
+    UART_putString(ATM_registers(ACTIVE_ENERGY_TYPE, TOTAL_FORW_ACTIVE_ENERGY));
     UART_putString(joules);
 
     UART_putString(active_rp1);
-    UART_putString(ATM_registers(ACTIVE_ENERGY, PHASE_A_REV_ACTIVE_ENERGY));
+    UART_putString(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_A_REV_ACTIVE_ENERGY));
     UART_putString(joules);
     UART_putString(active_rp2);
-    UART_putString(ATM_registers(ACTIVE_ENERGY, PHASE_B_REV_ACTIVE_ENERGY));
+    UART_putString(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_B_REV_ACTIVE_ENERGY));
     UART_putString(joules);    
     UART_putString(active_rp3);
-    UART_putString(ATM_registers(ACTIVE_ENERGY, PHASE_C_REV_ACTIVE_ENERGY));
+    UART_putString(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_C_REV_ACTIVE_ENERGY));
     UART_putString(joules);
     UART_putString(active_rTotal);
-    UART_putString(ATM_registers(ACTIVE_ENERGY, TOTAL_REV_ACTIVE_ENERGY));
+    UART_putString(ATM_registers(ACTIVE_ENERGY_TYPE, TOTAL_REV_ACTIVE_ENERGY));
     UART_putString(joules);
     
     UART_putString(reactive_fp1);
-    UART_putString(ATM_registers(REACTIVE_ENERGY, PHASE_A_FORW_REACTIVE_ENERGY));
+    UART_putString(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_A_FORW_REACTIVE_ENERGY));
     UART_putString(joules);
     UART_putString(reactive_fp2);
-    UART_putString(ATM_registers(REACTIVE_ENERGY, PHASE_B_FORW_REACTIVE_ENERGY));
+    UART_putString(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_B_FORW_REACTIVE_ENERGY));
     UART_putString(joules);
     UART_putString(reactive_fp3);
-    UART_putString(ATM_registers(REACTIVE_ENERGY, PHASE_C_FORW_REACTIVE_ENERGY));
+    UART_putString(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_C_FORW_REACTIVE_ENERGY));
     UART_putString(joules);
     UART_putString(reactive_fTotal);
-    UART_putString(ATM_registers(REACTIVE_ENERGY, TOTAL_FORW_REACTIVE_ENERGY));
+    UART_putString(ATM_registers(REACTIVE_ENERGY_TYPE, TOTAL_FORW_REACTIVE_ENERGY));
     UART_putString(joules);
     
     UART_putString(reactive_rp1);
-    UART_putString(ATM_registers(REACTIVE_ENERGY, PHASE_A_REV_REACTIVE_ENERGY));
+    UART_putString(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_A_REV_REACTIVE_ENERGY));
     UART_putString(joules);
     UART_putString(reactive_rp2);
-    UART_putString(ATM_registers(REACTIVE_ENERGY, PHASE_B_REV_REACTIVE_ENERGY));
+    UART_putString(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_B_REV_REACTIVE_ENERGY));
     UART_putString(joules);
     UART_putString(reactive_rp3);
-    UART_putString(ATM_registers(REACTIVE_ENERGY, PHASE_C_REV_REACTIVE_ENERGY));
+    UART_putString(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_C_REV_REACTIVE_ENERGY));
     UART_putString(joules);
     UART_putString(reactive_rTotal);
-    UART_putString(ATM_registers(REACTIVE_ENERGY, TOTAL_REVERSE_REACTIVE_ENERGY));
+    UART_putString(ATM_registers(REACTIVE_ENERGY_TYPE, TOTAL_REVERSE_REACTIVE_ENERGY));
     UART_putString(joules);
     
     UART_putString(apparent_energyP1);
-    UART_putString(ATM_registers(APPARENT_ENERGY, PHASE_A_APPARENT_ENERGY));
+    UART_putString(ATM_registers(APPARENT_ENERGY_TYPE, PHASE_A_APPARENT_ENERGY));
     UART_putString(joules);
     UART_putString(apparent_energyP2);
-    UART_putString(ATM_registers(APPARENT_ENERGY, PHASE_B_APPARENT_ENERGY));
+    UART_putString(ATM_registers(APPARENT_ENERGY_TYPE, PHASE_B_APPARENT_ENERGY));
     UART_putString(joules);
     UART_putString(apparent_energyP3);
-    UART_putString(ATM_registers(APPARENT_ENERGY, PHASE_C_APPARENT_ENERGY));
+    UART_putString(ATM_registers(APPARENT_ENERGY_TYPE, PHASE_C_APPARENT_ENERGY));
     UART_putString(joules);
 
     UART_putString(apparentAri_energyTotal);
-    UART_putString(ATM_registers(APPARENT_ENERGY, TOTAL_ARIT_APPARENT_ENERGY));
+    UART_putString(ATM_registers(APPARENT_ENERGY_TYPE, TOTAL_ARIT_APPARENT_ENERGY));
     UART_putString(joules);
     UART_putString(apparentVec_energyTotal);
-    UART_putString(ATM_registers(APPARENT_ENERGY, TOTAL_VECT_APPARENT_ENERGY));
+    UART_putString(ATM_registers(APPARENT_ENERGY_TYPE, TOTAL_VECT_APPARENT_ENERGY));
     UART_putString(joules);
     
     UART_putString(subtitle_2);
 
     UART_putString(activeF_fp1);
-    UART_putString(ATM_registers(FUNDAMENTAL_ENERGY, PHASE_A_FORW_ACTIVE_FUND_ENERGY));
+    UART_putString(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_A_FORW_ACTIVE_FUND_ENERGY));
     UART_putString(joules);
     UART_putString(activeF_fp2);
-    UART_putString(ATM_registers(FUNDAMENTAL_ENERGY, PHASE_B_FORW_ACTIVE_FUND_ENERGY));
+    UART_putString(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_B_FORW_ACTIVE_FUND_ENERGY));
     UART_putString(joules);
     UART_putString(activeF_fp3);
-    UART_putString(ATM_registers(FUNDAMENTAL_ENERGY, PHASE_C_FORW_ACTIVE_FUND_ENERGY));    
+    UART_putString(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_C_FORW_ACTIVE_FUND_ENERGY));    
     UART_putString(joules);
     UART_putString(activeF_fTotal);
-    UART_putString(ATM_registers(FUNDAMENTAL_ENERGY, TOTAL_FORW_ACTIVE_FUND_ENERGY));
+    UART_putString(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, TOTAL_FORW_ACTIVE_FUND_ENERGY));
     UART_putString(joules);
 
     UART_putString(activeF_rp1);
-    UART_putString(ATM_registers(FUNDAMENTAL_ENERGY, PHASE_A_REV_ACTIVE_FUND_ENERGY));
+    UART_putString(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_A_REV_ACTIVE_FUND_ENERGY));
     UART_putString(joules);
     UART_putString(activeF_rp2);
-    UART_putString(ATM_registers(FUNDAMENTAL_ENERGY, PHASE_B_REV_ACTIVE_FUND_ENERGY));
+    UART_putString(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_B_REV_ACTIVE_FUND_ENERGY));
     UART_putString(joules);
     UART_putString(activeF_rp3);
-    UART_putString(ATM_registers(FUNDAMENTAL_ENERGY, PHASE_C_REV_ACTIVE_FUND_ENERGY));
+    UART_putString(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_C_REV_ACTIVE_FUND_ENERGY));
     UART_putString(joules);
     UART_putString(activeF_rTotal);
-    UART_putString(ATM_registers(FUNDAMENTAL_ENERGY, TOTAL_REV_ACTIVE_FUND_ENERGY));
+    UART_putString(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, TOTAL_REV_ACTIVE_FUND_ENERGY));
     UART_putString(joules);
 
     UART_putString(activeH_fp1);
-    UART_putString(ATM_registers(HARMONIC_ENERGY, PHASE_A_FORW_ACTIVE_HARM_ENERGY));
+    UART_putString(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_A_FORW_ACTIVE_HARM_ENERGY));
     UART_putString(joules);
     UART_putString(activeH_fp2);
-    UART_putString(ATM_registers(HARMONIC_ENERGY, PHASE_B_FORW_ACTIVE_HARM_ENERGY));
+    UART_putString(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_B_FORW_ACTIVE_HARM_ENERGY));
     UART_putString(joules);
     UART_putString(activeH_fp3);
-    UART_putString(ATM_registers(HARMONIC_ENERGY, PHASE_C_FORW_ACTIVE_HARM_ENERGY));
+    UART_putString(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_C_FORW_ACTIVE_HARM_ENERGY));
     UART_putString(joules);
     UART_putString(activeH_fTotal);
-    UART_putString(ATM_registers(HARMONIC_ENERGY, TOTAL_FORW_ACTIVE_HARM_ENERGY));
+    UART_putString(ATM_registers(HARMONIC_ENERGY_TYPE, TOTAL_FORW_ACTIVE_HARM_ENERGY));
     UART_putString(joules);
 
     UART_putString(activeH_rp1);
-    UART_putString(ATM_registers(HARMONIC_ENERGY, PHASE_A_REV_ACTIVE_HARM_ENERGY));
+    UART_putString(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_A_REV_ACTIVE_HARM_ENERGY));
     UART_putString(joules);
     UART_putString(activeH_rp2);
-    UART_putString(ATM_registers(HARMONIC_ENERGY, PHASE_B_REV_ACTIVE_HARM_ENERGY));
+    UART_putString(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_B_REV_ACTIVE_HARM_ENERGY));
     UART_putString(joules);
     UART_putString(activeH_rp3);
-    UART_putString(ATM_registers(HARMONIC_ENERGY, PHASE_C_REV_ACTIVE_HARM_ENERGY));    
+    UART_putString(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_C_REV_ACTIVE_HARM_ENERGY));    
     UART_putString(joules);
     UART_putString(activeH_rTotal);
-    UART_putString(ATM_registers(HARMONIC_ENERGY, TOTAL_REV_ACTIVE_HARM_ENERGY));
+    UART_putString(ATM_registers(HARMONIC_ENERGY_TYPE, TOTAL_REV_ACTIVE_HARM_ENERGY));
     UART_putString(joules);
 
     UART_putString(subtitle_3);
@@ -566,16 +567,16 @@ PhaseMainMenu_Type sendData(PhaseMainMenu_Type data)
     UART_putString(watts);
 
     UART_putString(apparent_powerP1);
-    UART_putString(ATM_registers(APPARENT_POWER, PHASE_A_APPARENT_POWER));
+    UART_putString(ATM_registers(APPARENT_POWER_TYPE, PHASE_A_APPARENT_POWER));
     UART_putString(watts);
     UART_putString(apparent_powerP2); 
-    UART_putString(ATM_registers(APPARENT_POWER, PHASE_B_APPARENT_POWER));
+    UART_putString(ATM_registers(APPARENT_POWER_TYPE, PHASE_B_APPARENT_POWER));
     UART_putString(watts);
     UART_putString(apparent_powerP3);
-    UART_putString(ATM_registers(APPARENT_POWER, PHASE_C_APPARENT_POWER));
+    UART_putString(ATM_registers(APPARENT_POWER_TYPE, PHASE_C_APPARENT_POWER));
     UART_putString(watts);
     UART_putString(total_apparent_power);
-    UART_putString(ATM_registers(APPARENT_POWER, TOTAL_APPARENT_POWER));
+    UART_putString(ATM_registers(APPARENT_POWER_TYPE, TOTAL_APPARENT_POWER));
     UART_putString(watts);
 
     UART_putString(factor_powerP1);
@@ -697,13 +698,13 @@ PhaseMainMenu_Type sendData(PhaseMainMenu_Type data)
     UART_putString(angle_VoltageP3);
     UART_putString(ATM_registers(PHASE_ANGLE_TYPE, PHASE_C_VOLTAGE_ANGLE_PHASE));
     UART_putString(grades);
-    
+    */
 	/**Set with the current state and phase**/
 	currentMainMenu4.phaseState = GENERAL_VIEW;
     currentMainMenu4.stateMain = MAIN_MENU;
 
     /**Configurations of SPI**/
-	SPI_init(&SPI_Config);
+	SPI_init(&SPI_Config2);
     LCDNokia_init();
 	LCDNokia_clear();
     
@@ -726,7 +727,7 @@ PhaseEnergy_Type activeEnergy(PhaseEnergy_Type data)
     const uint8_t active_Reverse_Total[] = "Total Rev Act: ";
     
     /**Create the variable with current data**/
-	static PhasePower1_Type currentEnergy1;
+	static PhaseEnergy_Type currentEnergy1;
     
     /**Set with the current state and phase**/
 	currentEnergy1.phaseState = ACTIVE_ENERGY;
@@ -755,32 +756,32 @@ PhaseEnergy_Type activeEnergy(PhaseEnergy_Type data)
         case 0:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(active_Forward1);
-            LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY, PHASE_A_FORW_ACTIVE_ENERGY));
+            LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_A_FORW_ACTIVE_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(active_Forward2);
-            LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY, PHASE_B_FORW_ACTIVE_ENERGY));
+            LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_B_FORW_ACTIVE_ENERGY));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(active_Forward3);
-            LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY, PHASE_C_FORW_ACTIVE_ENERGY));
+            LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_C_FORW_ACTIVE_ENERGY));
             break;
         case 1:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(active_Reverse1);
-            LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY, PHASE_A_REV_ACTIVE_ENERGY));
+            LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_A_REV_ACTIVE_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(active_Reverse2);
-            LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY, PHASE_B_REV_ACTIVE_ENERGY));
+            LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_B_REV_ACTIVE_ENERGY));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(active_Reverse3);
-            LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY, PHASE_C_REV_ACTIVE_ENERGY));
+            LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_C_REV_ACTIVE_ENERGY));
             break;
         case 2:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(active_Forward_Total);
-            LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY, TOTAL_FORW_ACTIVE_ENERGY));
+            LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, TOTAL_FORW_ACTIVE_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(active_Reverse_Total);
-            LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY, TOTAL_REV_ACTIVE_ENERGY));
+            LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, TOTAL_REV_ACTIVE_ENERGY));
             break;
         default:
             break;
@@ -805,7 +806,7 @@ PhaseEnergy_Type reactiveEnergy(PhaseEnergy_Type data)
     const uint8_t reactive_Reverse_Total[] = "Total Rev React: ";
     
     /**Create the variable with current data**/
-	static PhasePower1_Type currentEnergy2;
+	static PhaseEnergy_Type currentEnergy2;
     
     /**Set with the current state and phase**/
 	currentEnergy2.phaseState = REACTIVE_ENERGY;
@@ -834,32 +835,32 @@ PhaseEnergy_Type reactiveEnergy(PhaseEnergy_Type data)
         case 0:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(reactive_Forward1);
-            LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY, PHASE_A_FORW_REACTIVE_ENERGY));
+            LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_A_FORW_REACTIVE_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(reactive_Forward2);
-            LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY, PHASE_B_FORW_REACTIVE_ENERGY));
+            LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_B_FORW_REACTIVE_ENERGY));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(reactive_Forward3);
-            LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY, PHASE_C_FORW_REACTIVE_ENERGY));
+            LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_C_FORW_REACTIVE_ENERGY));
             break;
         case 1:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(reactive_Reverse1);
-            LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY, PHASE_A_REV_REACTIVE_ENERGY));
+            LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_A_REV_REACTIVE_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(reactive_Reverse2);
-            LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY, PHASE_B_REV_REACTIVE_ENERGY));
+            LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_B_REV_REACTIVE_ENERGY));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(reactive_Reverse3);
-            LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY, PHASE_C_REV_REACTIVE_ENERGY));
+            LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_C_REV_REACTIVE_ENERGY));
             break;
         case 2:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(reactive_Forward_Total);
-            LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY, TOTAL_FORW_REACTIVE_ENERGY));
+            LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, TOTAL_FORW_REACTIVE_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(reactive_Reverse_Total);
-            LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY, TOTAL_REVERSE_REACTIVE_ENERGY));
+            LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, TOTAL_REVERSE_REACTIVE_ENERGY));
             break;
         default:
             break;
@@ -880,7 +881,7 @@ PhaseEnergy_Type apparentEnergy(PhaseEnergy_Type data)
     const uint8_t apparentVec_energyTotal[] = "Total VecApp En: ";
 
     /**Create the variable with current data**/
-	static PhasePower1_Type currentEnergy3;
+	static PhaseEnergy_Type currentEnergy3;
     
     /**Set with the current state and phase**/
 	currentEnergy3.phaseState = APPARENT_ENERGY;
@@ -909,21 +910,21 @@ PhaseEnergy_Type apparentEnergy(PhaseEnergy_Type data)
         case 0:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(apparent_energyP1);
-            LCDNokia_printValue(ATM_registers(APPARENT_ENERGY, PHASE_A_APPARENT_ENERGY));
+            LCDNokia_printValue(ATM_registers(APPARENT_ENERGY_TYPE, PHASE_A_APPARENT_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(apparent_energyP2);
-            LCDNokia_printValue(ATM_registers(APPARENT_ENERGY, PHASE_B_APPARENT_ENERGY));
+            LCDNokia_printValue(ATM_registers(APPARENT_ENERGY_TYPE, PHASE_B_APPARENT_ENERGY));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(apparent_energyP3);
-            LCDNokia_printValue(ATM_registers(APPARENT_ENERGY, PHASE_C_APPARENT_ENERGY));
+            LCDNokia_printValue(ATM_registers(APPARENT_ENERGY_TYPE, PHASE_C_APPARENT_ENERGY));
             break;
         case 1:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(apparentAri_energyTotal);
-            LCDNokia_printValue(ATM_registers(APPARENT_ENERGY, TOTAL_ARIT_APPARENT_ENERGY));
+            LCDNokia_printValue(ATM_registers(APPARENT_ENERGY_TYPE, TOTAL_ARIT_APPARENT_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(apparentVec_energyTotal);
-            LCDNokia_printValue(ATM_registers(APPARENT_ENERGY, TOTAL_VECT_APPARENT_ENERGY));
+            LCDNokia_printValue(ATM_registers(APPARENT_ENERGY_TYPE, TOTAL_VECT_APPARENT_ENERGY));
             break;
         default:
             break;
@@ -948,7 +949,7 @@ PhaseEnergy_Type fundamentalEnergy(PhaseEnergy_Type data)
     const uint8_t fund_ReverseTotal[] = "Total RevFund E: ";
    
     /**Create the variable with current data**/
-	static PhasePower1_Type currentEnergy4;
+	static PhaseEnergy_Type currentEnergy4;
     
     /**Set with the current state and phase**/
 	currentEnergy4.phaseState = FUNDAMENTAL_ENERGY;
@@ -977,32 +978,32 @@ PhaseEnergy_Type fundamentalEnergy(PhaseEnergy_Type data)
         case 0:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(fund_ForwardP1);
-            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY, PHASE_A_FORW_ACTIVE_FUND_ENERGY));
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_A_FORW_ACTIVE_FUND_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(fund_ForwardP2);
-            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY, PHASE_B_FORW_ACTIVE_FUND_ENERGY));
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_B_FORW_ACTIVE_FUND_ENERGY));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(fund_ForwardP3);
-            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY, PHASE_C_FORW_ACTIVE_FUND_ENERGY));
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_C_FORW_ACTIVE_FUND_ENERGY));
             break;
         case 1:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(fund_ReverseP1);
-            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY, PHASE_A_REV_ACTIVE_FUND_ENERGY));
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_A_REV_ACTIVE_FUND_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(fund_ReverseP2);
-            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY, PHASE_B_REV_ACTIVE_FUND_ENERGY));
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_B_REV_ACTIVE_FUND_ENERGY));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(fund_ReverseP3);
-            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY, PHASE_C_REV_ACTIVE_FUND_ENERGY));
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_C_REV_ACTIVE_FUND_ENERGY));
             break;
         case 2: 
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(fund_ForwardTotal);
-            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY, TOTAL_FORW_ACTIVE_FUND_ENERGY));
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, TOTAL_FORW_ACTIVE_FUND_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(fund_ReverseTotal);
-            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY, TOTAL_REV_ACTIVE_FUND_ENERGY));
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, TOTAL_REV_ACTIVE_FUND_ENERGY));
             break;
         default:
             break;
@@ -1027,7 +1028,7 @@ PhaseEnergy_Type harmonicEnergy(PhaseEnergy_Type data)
     const uint8_t harmonic_ReverseTotal[] = "Total RevHE: ";
 
     /**Create the variable with current data**/
-	static PhasePower1_Type currentEnergy5;
+	static PhaseEnergy_Type currentEnergy5;
 
     /**Set with the current state and phase**/
 	currentEnergy5.phaseState = HARMONIC_ENERGY;
@@ -1055,32 +1056,32 @@ PhaseEnergy_Type harmonicEnergy(PhaseEnergy_Type data)
         case 0:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(harmonic_ForwardP1);
-            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY, PHASE_A_FORW_ACTIVE_HARM_ENERGY));
+            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_A_FORW_ACTIVE_HARM_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(harmonic_ForwardP2);
-            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY, PHASE_B_FORW_ACTIVE_HARM_ENERGY));
+            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_B_FORW_ACTIVE_HARM_ENERGY));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(harmonic_ForwardP3);
-            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY, PHASE_C_FORW_ACTIVE_HARM_ENERGY));
+            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_C_FORW_ACTIVE_HARM_ENERGY));
             break;
         case 1:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(harmonic_ReverseP1);
-            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY, PHASE_A_REV_ACTIVE_HARM_ENERGY));
+            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_A_REV_ACTIVE_HARM_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(harmonic_ReverseP2);
-            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY, PHASE_B_REV_ACTIVE_HARM_ENERGY));
+            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_B_REV_ACTIVE_HARM_ENERGY));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(harmonic_ReverseP3);
-            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY, PHASE_C_REV_ACTIVE_HARM_ENERGY));
+            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_C_REV_ACTIVE_HARM_ENERGY));
             break;
         case 2: 
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(harmonic_ForwardTotal);
-            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY, TOTAL_FORW_ACTIVE_HARM_ENERGY));
+            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, TOTAL_FORW_ACTIVE_HARM_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(harmonic_ReverseTotal);
-            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY, TOTAL_REV_ACTIVE_HARM_ENERGY));
+            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, TOTAL_REV_ACTIVE_HARM_ENERGY));
             break;
         default:
             break;
@@ -1091,7 +1092,7 @@ PhaseEnergy_Type harmonicEnergy(PhaseEnergy_Type data)
 PhaseEnergy_Type exitEnergy(PhaseEnergy_Type data)
 {
     /**Create the variable with current data**/
-	static PhasePower1_Type currentEnergy6;
+	static PhaseEnergy_Type currentEnergy6;
 
     LCDNokia_clear();
 	/**Set with the current state and phase**/
@@ -1169,13 +1170,13 @@ PhasePower1_Type typesPower1(PhasePower1_Type data)
         case 2: 
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(apparent_powerP1);
-            LCDNokia_printValue(ATM_registers(APPARENT_POWER, PHASE_A_APPARENT_POWER));
+            LCDNokia_printValue(ATM_registers(APPARENT_POWER_TYPE, PHASE_A_APPARENT_POWER));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(apparent_powerP2);
-            LCDNokia_printValue(ATM_registers(APPARENT_POWER, PHASE_B_APPARENT_POWER));
+            LCDNokia_printValue(ATM_registers(APPARENT_POWER_TYPE, PHASE_B_APPARENT_POWER));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(apparent_powerP3);
-            LCDNokia_printValue(ATM_registers(APPARENT_POWER, PHASE_C_APPARENT_POWER));
+            LCDNokia_printValue(ATM_registers(APPARENT_POWER_TYPE, PHASE_C_APPARENT_POWER));
             break;
         default:
             break;
@@ -1214,7 +1215,7 @@ PhasePower1_Type phPower1(PhasePower1_Type data)
     LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, TOTAL_REACTIVE_POWER));
     LCDNokia_gotoXY(0,3);
     LCDNokia_sendString(total_apparent_power);
-    LCDNokia_printValue(ATM_registers(APPARENT_POWER, TOTAL_APPARENT_POWER));
+    LCDNokia_printValue(ATM_registers(APPARENT_POWER_TYPE, TOTAL_APPARENT_POWER));
 
 	return (currentPower1_2);
 }
@@ -1245,7 +1246,7 @@ PhasePower2_Type fhPower2(PhasePower2_Type data)
     const uint8_t harmonic_PowerP3[] = "PC HPow: ";
 
     /**Create the variable with current data**/
-	static PhasePower1_Type currentPower2_1;
+	static PhasePower2_Type currentPower2_1;
 
     /**Set with the current state and phase**/
 	currentPower2_1.phaseState = FH_POWER2;
@@ -1305,7 +1306,7 @@ PhasePower2_Type phPower2(PhasePower2_Type data)
     const uint8_t harmonic_Total_Power[] = "Total HPow: ";
   
     /**Create the variable with current data**/
-	static PhasePower1_Type currentPower2_2;
+	static PhasePower2_Type currentPower2_2;
 
 	/**Set with the current state and phase**/
 	currentPower2_2.phaseState = PHASES_POWER2;
@@ -1355,7 +1356,7 @@ PhaseRmsVI_Type phRmsVI(PhaseRmsVI_Type data)
     const uint8_t current3_RMS[] = "PC CRMS: ";
     
     /**Create the variable with current data**/
-	static PhasePower1_Type currentRms1;
+	static PhaseRmsVI_Type currentRms1;
 
     /**Set with the current state and phase**/
 	currentRms1.phaseState = PHASES_RMSVI;
@@ -1415,7 +1416,7 @@ PhaseRmsVI_Type neutralRmsVI(PhaseRmsVI_Type data)
     const uint8_t nline_sampled_RMS[] = "N SamCRMS: ";
 
     /**Create the variable with current data**/
-	static PhasePower1_Type currentRms2;
+	static PhaseRmsVI_Type currentRms2;
 
     /**Set with the current state and phase**/
 	currentRms2.phaseState = NEUTRAL_RMSVI;
@@ -1464,7 +1465,7 @@ PhasePowerFactor_Type phPowerFactor(PhasePowerFactor_Type data)
     const uint8_t total_factor_power[] = "Total PF: ";
    
     /**Create the variable with current data**/
-	static PhasePower1_Type currentPowerFactor1;
+	static PhasePowerFactor_Type currentPowerFactor1;
 
 	/**Set with the current state and phase**/
 	currentPowerFactor1.phaseState = PHASES_PF;
@@ -1531,7 +1532,7 @@ PhasePhaseAngle_Type phPhaseAngle(PhasePhaseAngle_Type data)
     const uint8_t anglePhase3[] = "PC phA: ";
 
     /**Create the variable with current data**/
-	static PhasePower1_Type currentPhaseAngle1;
+	static PhasePhaseAngle_Type currentPhaseAngle1;
 
     /**Set with the current state and phase**/
 	currentPhaseAngle1.phaseState = PHASES_PA;
@@ -1567,7 +1568,7 @@ PhasePhaseAngle_Type viPhaseAngle(PhasePhaseAngle_Type data)
     const uint8_t angle_VoltageP3[] = "PC VphA: ";
     
     /**Create the variable with current data**/
-	static PhasePower1_Type currentPhaseAngle2;
+	static PhasePhaseAngle_Type currentPhaseAngle2;
 
     /**Set with the current state and phase**/
 	currentPhaseAngle2.phaseState = VI_PA;
@@ -1609,7 +1610,7 @@ PhasePhaseAngle_Type THDNPhaseAngle(PhasePhaseAngle_Type data)
     const uint8_t current3_THDN[] = "PC cTHDN: ";
     
     /**Create the variable with current data**/
-	static PhasePower1_Type currentPhaseAngle3;
+	static PhasePhaseAngle_Type currentPhaseAngle3;
     
     /**Set with the current state and phase**/
 	currentPhaseAngle3.phaseState = THDN_PA;
@@ -1680,7 +1681,7 @@ PhaseFrequency_Type showFrequency(PhaseFrequency_Type data)
 {
     const uint8_t frequency[] = "Freq: ";
     /**Create the variable with current data**/
-	static PhasePower1_Type currentFrequency1;
+	static PhaseFrequency_Type currentFrequency1;
     
 	/**Set with the current state and phase**/
 	currentFrequency1.phaseState = SHOW_FREQUENCY;
@@ -1718,7 +1719,7 @@ PhaseTemperature_Type showTemperature(PhaseTemperature_Type data)
 {
     const uint8_t temperature[] = "Temp: ";
     /**Create the variable with current data**/
-	static PhasePower1_Type currentTemperature1;
+	static PhaseTemperature_Type currentTemperature1;
     
     /**Set with the current state and phase**/
 	currentTemperature1.phaseState = SHOW_TEMPERATURE;

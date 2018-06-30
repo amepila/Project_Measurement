@@ -4209,13 +4209,13 @@ GPIO_dataDirectionPIN(GPIO_C, 6, GPIO_OUTPUT);
 switch(baudRate)
 {
 case BD_1200:
-SPBRG = (103);
+SPBRG = (255);
 break;
 case BD_2400:
-SPBRG = (51);
+SPBRG = (129);
 break;
 case BD_9600:
-SPBRG = (12);
+SPBRG = (31);
 break;
 default:
 break;

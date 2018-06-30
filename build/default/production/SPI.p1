@@ -3267,21 +3267,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _data `uc ~T0 @X0 1 r1 ]
 "87
 [f ]
-"88
-[v _flushData `uc ~T0 @X0 1 a ]
-[; ;SPI.c: 88: uint8_t flushData;
 [; ;SPI.c: 89: SSPBUF = data;
 "89
 [e = _SSPBUF _data ]
-[; ;SPI.c: 91: while(!PIR1bits.SSPIF);
-"91
+[; ;SPI.c: 90: while(!PIR1bits.SSPIF);
+"90
 [e $U 306  ]
 [e :U 307 ]
 [e :U 306 ]
 [e $ ! != -> . . _PIR1bits 0 3 `i -> -> -> 0 `i `Vuc `i 307  ]
 [e :U 308 ]
-[; ;SPI.c: 92: PIR1bits.SSPIF = 0;
-"92
+[; ;SPI.c: 91: PIR1bits.SSPIF = 0;
+"91
 [e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
 [; ;SPI.c: 94: }
 "94

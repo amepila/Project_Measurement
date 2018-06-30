@@ -4256,7 +4256,7 @@ void LCDNokia_bitmap(const uint8_t*);
 
 void LCDNokia_sendChar(uint8_t);
 
-void LCDNokia_sendString(uint8_t*);
+void LCDNokia_sendString(const uint8_t*);
 
 void LCD_delay(void);
 
@@ -4266,7 +4266,119 @@ void LCDNokia_printValue(uint32_t value);
 void LCDNokia_printFloatValue(float value);
 
 # 6 "ATM90E36A.h"
-void ATM_IC(void);
+typedef enum
+{
+ACTIVE_ENERGY_TYPE,
+REACTIVE_ENERGY_TYPE,
+APPARENT_ENERGY_TYPE,
+FUNDAMENTAL_ENERGY_TYPE,
+HARMONIC_ENERGY_TYPE,
+ACTIVE_POWER_TYPE,
+REACTIVE_POWER_TYPE,
+APPARENT_POWER_TYPE,
+POWER_FACTOR_TYPE,
+FUNDAMENTAL_POWER,
+HARMONIC_POWER,
+VOLTAGE_RMS,
+CURRENT_RMS,
+THDN_TYPE,
+FREQUENCY_TYPE,
+PHASE_ANGLE_TYPE,
+TEMPERATURE_TYPE
+} ATM_type_t;
+
+typedef enum
+{
+TOTAL_FORW_ACTIVE_ENERGY,
+PHASE_A_FORW_ACTIVE_ENERGY,
+PHASE_B_FORW_ACTIVE_ENERGY,
+PHASE_C_FORW_ACTIVE_ENERGY,
+TOTAL_REV_ACTIVE_ENERGY,
+PHASE_A_REV_ACTIVE_ENERGY,
+PHASE_B_REV_ACTIVE_ENERGY,
+PHASE_C_REV_ACTIVE_ENERGY,
+TOTAL_FORW_REACTIVE_ENERGY,
+PHASE_A_FORW_REACTIVE_ENERGY,
+PHASE_B_FORW_REACTIVE_ENERGY,
+PHASE_C_FORW_REACTIVE_ENERGY,
+TOTAL_REVERSE_REACTIVE_ENERGY,
+PHASE_A_REV_REACTIVE_ENERGY,
+PHASE_B_REV_REACTIVE_ENERGY,
+PHASE_C_REV_REACTIVE_ENERGY,
+TOTAL_ARIT_APPARENT_ENERGY,
+PHASE_A_APPARENT_ENERGY,
+PHASE_B_APPARENT_ENERGY,
+PHASE_C_APPARENT_ENERGY,
+TOTAL_VECT_APPARENT_ENERGY,
+TOTAL_FORW_ACTIVE_FUND_ENERGY,
+PHASE_A_FORW_ACTIVE_FUND_ENERGY,
+PHASE_B_FORW_ACTIVE_FUND_ENERGY,
+PHASE_C_FORW_ACTIVE_FUND_ENERGY,
+TOTAL_REV_ACTIVE_FUND_ENERGY,
+PHASE_A_REV_ACTIVE_FUND_ENERGY,
+PHASE_B_REV_ACTIVE_FUND_ENERGY,
+PHASE_C_REV_ACTIVE_FUND_ENERGY,
+TOTAL_FORW_ACTIVE_HARM_ENERGY,
+PHASE_A_FORW_ACTIVE_HARM_ENERGY,
+PHASE_B_FORW_ACTIVE_HARM_ENERGY,
+PHASE_C_FORW_ACTIVE_HARM_ENERGY,
+TOTAL_REV_ACTIVE_HARM_ENERGY,
+PHASE_A_REV_ACTIVE_HARM_ENERGY,
+PHASE_B_REV_ACTIVE_HARM_ENERGY,
+PHASE_C_REV_ACTIVE_HARM_ENERGY,
+TOTAL_ACTIVE_POWER,
+PHASE_A_ACTIVE_POWER,
+PHASE_B_ACTIVE_POWER,
+PHASE_C_ACTIVE_POWER,
+TOTAL_REACTIVE_POWER,
+PHASE_A_REACTIVE_POWER,
+PHASE_B_REACTIVE_POWER,
+PHASE_C_REACTIVE_POWER,
+TOTAL_APPARENT_POWER,
+PHASE_A_APPARENT_POWER,
+PHASE_B_APPARENT_POWER,
+PHASE_C_APPARENT_POWER,
+TOTAL_POWER_FACTOR,
+PHASE_A_POWER_FACTOR,
+PHASE_B_POWER_FACTOR,
+PHASE_C_POWER_FACTOR,
+TOTAL_ACTIVE_FUND_POWER,
+PHASE_A_ACTIVE_FUND_POWER,
+PHASE_B_ACTIVE_FUND_POWER,
+PHASE_C_ACTIVE_FUND_POWER,
+TOTAL_ACTIVE_HARM_POWER,
+PHASE_A_ACTIVE_HARM_POWER,
+PHASE_B_ACTIVE_HARM_POWER,
+PHASE_C_ACTIVE_HARM_POWER,
+NLINE_SAMPLED_CURRENT_RMS,
+PHASE_A_VOLTAGE_RMS,
+PHASE_B_VOLTAGE_RMS,
+PHASE_C_VOLTAGE_RMS,
+NLINE_CALCULATED_CURRENT_RMS,
+PHASE_A_CURRENT_RMS,
+PHASE_B_CURRENT_RMS,
+PHASE_C_CURRENT_RMS,
+PHASE_A_VOLTAGE_THDN,
+PHASE_B_VOLTAGE_THDN,
+PHASE_C_VOLTAGE_THDN,
+PHASE_A_CURRENT_THDN,
+PHASE_B_CURRENT_THDN,
+PHASE_C_CURRENT_THDN,
+FREQUENCY_REG,
+PHASE_A_MEAN_ANGLE_PHASE,
+PHASE_B_MEAN_ANGLE_PHASE,
+PHASE_C_MEAN_ANGLE_PHASE,
+TEMPERATURE_REG,
+PHASE_A_VOLTAGE_ANGLE_PHASE,
+PHASE_B_VOLTAGE_ANGLE_PHASE,
+PHASE_C_VOLTAGE_ANGLE_PHASE
+} ATM_reg_t;
+
+void ATM_init(void);
+
+void ATM_calibration(void);
+
+uint16_t ATM_registers(ATM_type_t type, ATM_reg_t reg);
 
 # 6 "Buttons.h"
 uint8_t getButton1(void);
@@ -4287,6 +4399,7 @@ void ButtonInt_config();
 typedef enum
 {
 MAIN_MENU,
+ENERGY,
 POWER_1,
 POWER_2,
 RMS_VI,
@@ -4305,28 +4418,31 @@ typedef const struct State
 States_MenuType (*stateFunction)(void);
 }StateType;
 
-# 46
+# 47
 States_MenuType stateMainMenu(void);
 
-# 56
+# 57
+States_MenuType stateEnergy(void);
+
+# 67
 States_MenuType statePower1(void);
 
-# 66
+# 77
 States_MenuType statePower2(void);
 
-# 76
+# 87
 States_MenuType stateRmsVI(void);
 
-# 86
+# 97
 States_MenuType statePowerFactor(void);
 
-# 96
+# 107
 States_MenuType statePhaseAngle(void);
 
-# 106
+# 117
 States_MenuType stateFrequency(void);
 
-# 116
+# 127
 States_MenuType stateTemperature(void);
 
 # 10 "Phases.h"
@@ -4354,9 +4470,33 @@ PhaseMainMenu_Type(*PhaseMainMenu)(PhaseMainMenu_Type);
 # 37
 typedef enum
 {
+ACTIVE_ENERGY,
+REACTIVE_ENERGY,
+APPARENT_ENERGY,
+FUNDAMENTAL_ENERGY,
+HARMONIC_ENERGY,
+EXIT_ENERGY
+}PhaseStateEnergy_Type;
+
+typedef struct
+{
+uint8_t dummy;
+PhaseStateEnergy_Type phaseState;
+States_MenuType stateMain;
+}PhaseEnergy_Type;
+
+typedef PhaseEnergy_Type(*fptrPhaseEnergy)(PhaseEnergy_Type);
+
+typedef const struct PhaseEnergy
+{
+PhaseEnergy_Type(*PhaseEnergy)(PhaseEnergy_Type);
+}PhasePtrEnergy_Type;
+
+# 67
+typedef enum
+{
 TYPES_POWER1,
 PHASES_POWER1,
-VECTOR_POWER1,
 EXIT_POWER1
 }PhaseStatePower1_Type;
 
@@ -4374,7 +4514,7 @@ typedef const struct PhasePower1
 PhasePower1_Type(*PhasePower1)(PhasePower1_Type);
 }PhasePtrPower1_Type;
 
-# 65
+# 94
 typedef enum
 {
 FH_POWER2,
@@ -4396,7 +4536,7 @@ typedef const struct PhasePower2
 PhasePower2_Type(*PhasePower2)(PhasePower2_Type);
 }PhasePtrPower2_Type;
 
-# 92
+# 121
 typedef enum
 {
 PHASES_RMSVI,
@@ -4418,7 +4558,7 @@ typedef const struct PhaseRmsVI
 PhaseRmsVI_Type(*PhaseRmsVI)(PhaseRmsVI_Type);
 }PhasePtrRmsVI_Type;
 
-# 118
+# 147
 typedef enum
 {
 PHASES_PF,
@@ -4438,11 +4578,12 @@ typedef const struct PhasePowerFactor
 PhasePowerFactor_Type(*PhasePowerFactor)(PhasePowerFactor_Type);
 }PhasePtrPowerFactor_Type;
 
-# 142
+# 171
 typedef enum
 {
 PHASES_PA,
 VI_PA,
+THDN_PA,
 EXIT_PA
 }PhaseStatePhaseAngle_Type;
 
@@ -4460,7 +4601,7 @@ typedef const struct PhasePhaseAngle
 PhasePhaseAngle_Type(*PhasePhaseAngle)(PhasePhaseAngle_Type);
 }PhasePtrPhaseAngle_Type;
 
-# 166
+# 196
 typedef enum
 {
 SHOW_FREQUENCY,
@@ -4481,7 +4622,7 @@ typedef const struct PhaseFrequency
 PhaseFrequency_Type(*PhaseFrequency)(PhaseFrequency_Type);
 }PhasePtrFrequency_Type;
 
-# 190
+# 220
 typedef enum
 {
 SHOW_TEMPERATURE,
@@ -4502,73 +4643,94 @@ typedef const struct PhaseTemperature
 PhaseTemperature_Type(*PhaseTemperature)(PhaseTemperature_Type);
 }PhasePtrTemperature_Type;
 
-# 218
+# 248
 PhaseMainMenu_Type initialLoad(PhaseMainMenu_Type data);
 
-# 228
+# 258
 PhaseMainMenu_Type generalView(PhaseMainMenu_Type data);
 
-# 239
+# 269
 PhaseMainMenu_Type viewMenu(PhaseMainMenu_Type data);
 
-# 249
+# 279
 PhaseMainMenu_Type sendData(PhaseMainMenu_Type data);
 
-# 259
+# 289
+PhaseEnergy_Type activeEnergy(PhaseEnergy_Type data);
+
+# 299
+PhaseEnergy_Type reactiveEnergy(PhaseEnergy_Type data);
+
+# 309
+PhaseEnergy_Type apparentEnergy(PhaseEnergy_Type data);
+
+# 319
+PhaseEnergy_Type fundamentalEnergy(PhaseEnergy_Type data);
+
+# 329
+PhaseEnergy_Type harmonicEnergy(PhaseEnergy_Type data);
+
+# 339
+PhaseEnergy_Type exitEnergy(PhaseEnergy_Type data);
+
+# 349
 PhasePower1_Type typesPower1(PhasePower1_Type data);
 
-# 269
+# 359
 PhasePower1_Type phPower1(PhasePower1_Type data);
 
-# 280
+# 370
 PhasePower1_Type vectorPower1(PhasePower1_Type data);
 
-# 292
+# 382
 PhasePower1_Type exitPower1(PhasePower1_Type data);
 
-# 303
+# 393
 PhasePower2_Type fhPower2(PhasePower2_Type data);
 
-# 314
+# 404
 PhasePower2_Type phPower2(PhasePower2_Type data);
 
-# 325
+# 415
 PhasePower2_Type exitPower2(PhasePower2_Type data);
 
-# 336
+# 426
 PhaseRmsVI_Type phRmsVI(PhaseRmsVI_Type data);
 
-# 347
+# 437
 PhaseRmsVI_Type neutralRmsVI(PhaseRmsVI_Type data);
 
-# 358
+# 448
 PhaseRmsVI_Type exitRmsVI(PhaseRmsVI_Type data);
 
-# 369
+# 459
 PhasePowerFactor_Type phPowerFactor(PhasePowerFactor_Type data);
 
-# 380
+# 470
 PhasePowerFactor_Type exitPowerFactor(PhasePowerFactor_Type data);
 
-# 391
+# 481
 PhasePhaseAngle_Type phPhaseAngle(PhasePhaseAngle_Type data);
 
-# 402
+# 492
 PhasePhaseAngle_Type viPhaseAngle(PhasePhaseAngle_Type data);
 
-# 413
+# 502
+PhasePhaseAngle_Type THDNPhaseAngle(PhasePhaseAngle_Type data);
+
+# 513
 PhasePhaseAngle_Type exitPhaseAngle(PhasePhaseAngle_Type data);
 
-# 424
+# 524
 PhaseFrequency_Type showFrequency(PhaseFrequency_Type data);
 
-# 435
+# 535
 PhaseFrequency_Type exitFrequency(PhaseFrequency_Type data);
 
-# 446
+# 546
 PhaseTemperature_Type showTemperature(PhaseTemperature_Type data);
 
-# 457
+# 557
 PhaseTemperature_Type exitTemperature(PhaseTemperature_Type data);
 
 # 6 "States.c"
@@ -4581,11 +4743,21 @@ const PhasePtrMainMenu_Type phasesMainMenu[4] =
 };
 
 
-const PhasePtrPower1_Type phasesPower1[4] =
+const PhasePtrEnergy_Type phasesEnergy[6] =
+{
+{activeEnergy},
+{reactiveEnergy},
+{apparentEnergy},
+{fundamentalEnergy},
+{harmonicEnergy},
+{exitEnergy}
+};
+
+
+const PhasePtrPower1_Type phasesPower1[3] =
 {
 {typesPower1},
 {phPower1},
-{vectorPower1},
 {exitPower1}
 };
 
@@ -4613,10 +4785,11 @@ const PhasePtrPowerFactor_Type phasesPowerFactor[2] =
 };
 
 
-const PhasePtrPhaseAngle_Type phasesPhaseAngle[3] =
+const PhasePtrPhaseAngle_Type phasesPhaseAngle[4] =
 {
 {phPhaseAngle},
 {viPhaseAngle},
+{THDNPhaseAngle},
 {exitPhaseAngle}
 };
 
@@ -4649,6 +4822,23 @@ phaseMain = mainMenuFunctions(phaseMain);
 
 phase = phaseMain.phaseState;
 return (phaseMain.stateMain);
+}
+
+States_MenuType stateEnergy(void)
+{
+
+static PhaseStateEnergy_Type phase = ACTIVE_ENERGY;
+static PhaseEnergy_Type phaseEnergy;
+PhaseEnergy_Type(*energyFunctions)(PhaseEnergy_Type);
+phaseEnergy.stateMain = ENERGY;
+
+
+energyFunctions = phasesEnergy[phase].PhaseEnergy;
+phaseEnergy = energyFunctions(phaseEnergy);
+
+
+phase = phaseEnergy.phaseState;
+return (phaseEnergy.stateMain);
 }
 
 States_MenuType statePower1(void)
