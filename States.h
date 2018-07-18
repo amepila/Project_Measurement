@@ -2,13 +2,8 @@
 #ifndef STATES_H_
 #define	STATES_H_
 
-#include "GPIO.h"
-#include "SPI.h"
-#include "UART.h"
-#include "LCDNokia5110.h"
-#include "Bluetooth.h"
-#include "ATM90E36A.h"
-#include "Buttons.h"
+#include <xc.h>
+#include <stdint.h>
 
 /**
  * \brief This data type define the states of program
@@ -22,8 +17,7 @@ typedef enum
 	RMS_VI,
 	POWER_FACTOR,
     PHASE_ANGLE,
-	FREQUENCY,
-    TEMPERATURE
+	FREQTEMP
 }States_MenuType;
 
 /*Data type to main functions*/
@@ -114,17 +108,8 @@ States_MenuType statePhaseAngle(void);
  	 \param[in]  void
  	 \return The next state
  */
-States_MenuType stateFrequency(void);
+States_MenuType stateFreqTemp(void);
 
-/********************************************************************************************/
-/********************************************************************************************/
-/********************************************************************************************/
-/*!
- 	 \brief	 Main state of set the wallpaper
- 	 \param[in]  void
- 	 \return The next state
- */
-States_MenuType stateTemperature(void);
 
 #endif	
 

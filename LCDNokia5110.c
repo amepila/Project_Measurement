@@ -1,10 +1,7 @@
 #include <pic18f2331.h>
-
+//#include <xc.h>
 #include "GPIO.h"
-#include "SPI.h"
 #include "LCDNokia5110.h"
-
-#define T   1000
 
 static const uint8_t ASCII[][5] =
 {
@@ -123,7 +120,7 @@ void LCDNokia_init(void)
     LCDNokia_writeByte(LCD_CMD, 0x04); //Set Temp coefficent 
     LCDNokia_writeByte(LCD_CMD, 0x14); //LCD bias mode 1:48: Try 0x13 or 0x14
 	LCDNokia_writeByte(LCD_CMD, 0x20); //We must send 0x20 before modifying the display control mode
-    LCDNokia_writeByte(LCD_CMD, 0x0C); //Set display control, normal mode. 0x0D for inverse
+    LCDNokia_writeByte(LCD_CMD, 0x0D); //Set display control, normal mode. 0x0D for inverse
 }
 
 void LCDNokia_bitmap(const uint8_t* my_array)
@@ -141,18 +138,16 @@ void LCDNokia_writeByte(uint8_t DataOrCmd, uint8_t data)
 	if(DataOrCmd)
     {
         PORTBbits.RB2 = 1;
-        //GPIO_setPIN(GPIO_B, DATA_OR_CMD_PIN);
     }
 	else
     {
         PORTBbits.RB2 = 0;
-        //GPIO_clearPIN(GPIO_B, DATA_OR_CMD_PIN);
     }
     PORTBbits.RB0 = 0;
     SPI_write(data);
     PORTBbits.RB0 = 1;
 }
-#if 1
+
 void LCDNokia_sendChar(uint8_t character) 
 {
   uint16_t index = 0; 
@@ -168,24 +163,7 @@ void LCDNokia_sendChar(uint8_t character)
   }
   LCDNokia_writeByte(LCD_DATA, 0x00); //Blank vertical line padding
 }
-#endif
-#if 0
-void LCDNokia_sendChar(uint8_t character) 
-{
-    uint16_t index = 0; 
-	    
-    PORTBbits.RB2 = 1;
-    SPI_write(0x00);
 
-    for (index = 0; index < 5; index++)
-    {
-        PORTBbits.RB2 = 1;
-        SPI_write(ASCII[character - 0x20][index]);
-    }
-    PORTBbits.RB2 = 1;
-    SPI_write(0x00);
-}
-#endif
 void LCDNokia_sendString(const uint8_t *characters) 
 {
     while (*characters)
@@ -300,4 +278,3 @@ void LCDNokia_printFloatValue(float value)
 		LCDNokia_printValue(part_Float);
 	}
 }
-

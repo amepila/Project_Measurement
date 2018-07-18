@@ -1,5 +1,3 @@
-#include <xc.h>
-#include "States.h"
 #include "Phases.h"
 
 /**Pointer to functions of Main Menu*/
@@ -12,11 +10,9 @@ const PhasePtrMainMenu_Type phasesMainMenu[4] =
 };
 
 /**Pointer to functions of Power1*/
-const PhasePtrEnergy_Type phasesEnergy[6] =
+const PhasePtrEnergy_Type phasesEnergy[4] =
 {
 		{activeEnergy},
-		{reactiveEnergy},
-		{apparentEnergy},
 		{fundamentalEnergy},
         {harmonicEnergy},
         {exitEnergy}
@@ -63,17 +59,10 @@ const PhasePtrPhaseAngle_Type phasesPhaseAngle[4] =
 };
 
 /**Pointer to functions of Frequency*/
-const PhasePtrFrequency_Type phasesFrequency[2] =
+const PhasePtrFreqTemp_Type phasesFreqTemp[2] =
 {
-		{showFrequency},
-		{exitFrequency}
-};
-
-/**Pointer to functions of Temperature*/
-const PhasePtrTemperature_Type phasesTemperature[2] =
-{
-		{showTemperature},
-		{exitTemperature}
+		{showFreqTemp},
+		{exitFreqTemp}
 };
 
 States_MenuType stateMainMenu(void)
@@ -195,36 +184,19 @@ States_MenuType statePhaseAngle(void)
 	return (phasePhaseAngle.stateMain);
 }
 
-States_MenuType stateFrequency(void)
+States_MenuType stateFreqTemp(void)
 {
 	/**Initialization of state machine of Frequency**/
-	static PhaseStateFrequency_Type phase = SHOW_FREQUENCY;
-	static PhaseFrequency_Type phaseFrequency;
-	PhaseFrequency_Type(*frequencyFunctions)(PhaseFrequency_Type);
-	phaseFrequency.stateMain = FREQUENCY;
+	static PhaseStateFreqTemp_Type phase = SHOW_FREQTEMP;
+	static PhaseFreqTemp_Type phaseFreqTemp;
+	PhaseFreqTemp_Type(*freqTempFunctions)(PhaseFreqTemp_Type);
+	phaseFreqTemp.stateMain = FREQTEMP;
 
 	/**Run the state machine and update the state**/
-	frequencyFunctions = phasesFrequency[phase].PhaseFrequency;
-	phaseFrequency = frequencyFunctions(phaseFrequency);
+	freqTempFunctions = phasesFreqTemp[phase].PhaseFreqTemp;
+	phaseFreqTemp = freqTempFunctions(phaseFreqTemp);
 
 	/**Verified if there a change flow of program**/
-	phase = phaseFrequency.phaseState;
-	return (phaseFrequency.stateMain);
-}
-
-States_MenuType stateTemperature(void)
-{
-	/**Initialization of state machine of Temperature**/
-	static PhaseStateTemperature_Type phase = SHOW_TEMPERATURE;
-	static PhaseTemperature_Type phaseTemperature;
-	PhaseTemperature_Type(*temperatureFunctions)(PhaseTemperature_Type);
-	phaseTemperature.stateMain = TEMPERATURE;
-
-	/**Run the state machine and update the state**/
-	temperatureFunctions = phasesTemperature[phase].PhaseTemperature;
-	phaseTemperature = temperatureFunctions(phaseTemperature);
-
-	/**Verified if there a change flow of program**/
-	phase = phaseTemperature.phaseState;
-	return (phaseTemperature.stateMain);
+	phase = phaseFreqTemp.phaseState;
+	return (phaseFreqTemp.stateMain);
 }

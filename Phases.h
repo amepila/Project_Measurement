@@ -1,6 +1,10 @@
 #ifndef PHASES_H_
 #define	PHASES_H_
 
+#include <xc.h>
+#include <stdint.h>
+#include "GPIO.h"
+#include "LCDNokia5110.h"
 #include "States.h"
 
 /************************************************************/
@@ -37,8 +41,6 @@ typedef const struct PhaseMainMenu
 typedef enum
 {
     ACTIVE_ENERGY,
-	REACTIVE_ENERGY,
-	APPARENT_ENERGY,
     FUNDAMENTAL_ENERGY,
     HARMONIC_ENERGY,
     EXIT_ENERGY        
@@ -46,7 +48,6 @@ typedef enum
 
 typedef struct
 {
-    uint8_t dummy;
 	PhaseStateEnergy_Type phaseState;
 	States_MenuType stateMain;
 }PhaseEnergy_Type;
@@ -73,7 +74,6 @@ typedef enum
 
 typedef struct
 {
-    uint8_t dummy;
 	PhaseStatePower1_Type phaseState;
 	States_MenuType stateMain;
 }PhasePower1_Type;
@@ -100,7 +100,6 @@ typedef enum
 
 typedef struct
 {
-	uint8_t dummy;
 	PhaseStatePower2_Type phaseState;
 	States_MenuType stateMain;
 }PhasePower2_Type;
@@ -127,7 +126,6 @@ typedef enum
 
 typedef struct
 {
-	uint8_t dummy;
 	PhaseStateRmsVI_Type phaseState;
 	States_MenuType stateMain;
 }PhaseRmsVI_Type;
@@ -178,7 +176,6 @@ typedef enum
 
 typedef struct
 {
-    uint8_t dummy;
 	PhaseStatePhaseAngle_Type phaseState;
 	States_MenuType stateMain;
 }PhasePhaseAngle_Type;
@@ -195,47 +192,23 @@ typedef const struct PhasePhaseAngle
  */
 typedef enum
 {
-    SHOW_FREQUENCY,
-    EXIT_FREQUENCY
-}PhaseStateFrequency_Type;
+    SHOW_FREQTEMP,
+    EXIT_FREQTEMP
+}PhaseStateFreqTemp_Type;
 
 typedef struct
 {
-    uint8_t dummy;
-	PhaseStateFrequency_Type phaseState;
+	PhaseStateFreqTemp_Type phaseState;
 	States_MenuType stateMain;
-}PhaseFrequency_Type;
+}PhaseFreqTemp_Type;
 
-typedef PhaseFrequency_Type(*fptrPhaseFrequency)(PhaseFrequency_Type);
+typedef PhaseFreqTemp_Type(*fptrPhaseFreqTemp)(PhaseFreqTemp_Type);
 
-typedef const struct PhaseFrequency
+typedef const struct PhaseFreqTemp
 {
-	PhaseFrequency_Type(*PhaseFrequency)(PhaseFrequency_Type);
-}PhasePtrFrequency_Type;
+	PhaseFreqTemp_Type(*PhaseFreqTemp)(PhaseFreqTemp_Type);
+}PhasePtrFreqTemp_Type;
 
-/**********************************************************/
-/**
- * \brief This data type define the data type to Show Contacts
- */
-typedef enum
-{
-    SHOW_TEMPERATURE,
-    EXIT_TEMPERATURE
-}PhaseStateTemperature_Type;
-
-typedef struct
-{
-    uint8_t dummy;
-	PhaseStateTemperature_Type phaseState;
-	States_MenuType stateMain;
-}PhaseTemperature_Type;
-
-typedef PhaseTemperature_Type(*fptrPhaseTemperature)(PhaseTemperature_Type);
-
-typedef const struct PhaseTemperature
-{
-	PhaseTemperature_Type(*PhaseTemperature)(PhaseTemperature_Type);
-}PhasePtrTemperature_Type;
 
 /********************************************************************************************/
 /********************************************************************************************/
@@ -287,26 +260,6 @@ PhaseMainMenu_Type sendData(PhaseMainMenu_Type data);
  	 \return Updated information
  */
 PhaseEnergy_Type activeEnergy(PhaseEnergy_Type data);
-
-/********************************************************************************************/
-/********************************************************************************************/
-/********************************************************************************************/
-/*!
- 	 \brief	 State to write the number
- 	 \param[in]  data The current information
- 	 \return Updated information
- */
-PhaseEnergy_Type reactiveEnergy(PhaseEnergy_Type data);
-
-/********************************************************************************************/
-/********************************************************************************************/
-/********************************************************************************************/
-/*!
- 	 \brief	 State to write the number
- 	 \param[in]  data The current information
- 	 \return Updated information
- */
-PhaseEnergy_Type apparentEnergy(PhaseEnergy_Type data);
 
 /********************************************************************************************/
 /********************************************************************************************/
@@ -521,19 +474,7 @@ PhasePhaseAngle_Type exitPhaseAngle(PhasePhaseAngle_Type data);
  	 \param[in]  data The current information
  	 \return Updated information
  */
-PhaseFrequency_Type showFrequency(PhaseFrequency_Type data);
-
-
-/********************************************************************************************/
-/********************************************************************************************/
-/********************************************************************************************/
-/*!
- 	 \brief	 State to view the different wallpapers in the phone
- 	 \param[in]  data The current information
- 	 \return Updated information
- */
-PhaseFrequency_Type exitFrequency(PhaseFrequency_Type data);
-
+PhaseFreqTemp_Type showFreqTemp(PhaseFreqTemp_Type data);
 
 /********************************************************************************************/
 /********************************************************************************************/
@@ -543,18 +484,7 @@ PhaseFrequency_Type exitFrequency(PhaseFrequency_Type data);
  	 \param[in]  data The current information
  	 \return Updated information
  */
-PhaseTemperature_Type showTemperature(PhaseTemperature_Type data);
-
-
-/********************************************************************************************/
-/********************************************************************************************/
-/********************************************************************************************/
-/*!
- 	 \brief	 State to exit and come back to the menu
- 	 \param[in]  data The current information
- 	 \return Updated information
- */
-PhaseTemperature_Type exitTemperature(PhaseTemperature_Type data);
+PhaseFreqTemp_Type exitFreqTemp(PhaseFreqTemp_Type data);
 
 #endif
 

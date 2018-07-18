@@ -1,7 +1,9 @@
 #include <xc.h>
 #include "ATM90E36A.h"
 #include "GPIO.h"
-#include "SPI.h"
+
+
+#if 0
 
 #define LOW_PART_16BITS     0x0F
 #define HIGH_PART_16BITS    0xF0
@@ -112,98 +114,186 @@
 #define PHI_C               0x4C
 
 /**************************************************/
+const uint8_t tForwActE = 0x80;
+const uint8_t pAForwActE = 0x81;
+const uint8_t pBForwActE = 0x82;
+const uint8_t pCForwActE = 0x83;
+const uint8_t tRevActE = 0x84;
+const uint8_t pARevActE = 0x85;
+const uint8_t PBRevActE = 0x86;
+const uint8_t pCRevActE = 0x87;
+const uint8_t tForwReaE = 0x88;
+const uint8_t pAForwReaE = 0x89;
+const uint8_t pBForwReaE = 0x8A;
+const uint8_t pCForwReaE = 0x8B;
+const uint8_t tRevReaE = 0x8C;
+const uint8_t pARevReaE = 0x8D;
+const uint8_t pBRevReaE = 0x8E;
+const uint8_t pCRevReaE = 0x8F;
+const uint8_t tAriAppE = 0x90;
+const uint8_t pAAppE = 0x91;
+const uint8_t pBAppE = 0x92;
+const uint8_t pCAppE = 0x93;
+const uint8_t tVecAppE = 0x94;
+
 /**Regular Energy Registers*/
-#define TOTAL_FORW_ACTIVE_ENERGY_ADR        0x80
-#define PHASE_A_FORW_ACTIVE_ENERGY_ADR      0x81
-#define PHASE_B_FORW_ACTIVE_ENERGY_ADR      0x82
-#define PHASE_C_FORW_ACTIVE_ENERGY_ADR      0x83
-#define TOTAL_REV_ACTIVE_ENERGY_ADR         0x84
-#define PHASE_A_REV_ACTIVE_ENERGY_ADR       0x85
-#define PHASE_B_REV_ACTIVE_ENERGY_ADR       0x86
-#define PHASE_C_REV_ACTIVE_ENERGY_ADR       0x87
-#define TOTAL_FORW_REACTIVE_ENERGY_ADR      0x88
-#define PHASE_A_FORW_REACTIVE_ENERGY_ADR    0x89
-#define PHASE_B_FORW_REACTIVE_ENERGY_ADR    0x8A
-#define PHASE_C_FORW_REACTIVE_ENERGY_ADR    0x8B
-#define TOTAL_REVERSE_REACTIVE_ENERGY_ADR   0x8C
-#define PHASE_A_REV_REACTIVE_ENERGY_ADR     0x8D
-#define PHASE_B_REV_REACTIVE_ENERGY_ADR     0x8E
-#define PHASE_C_REV_REACTIVE_ENERGY_ADR     0x8F
-#define TOTAL_ARIT_APPARENT_ENERGY_ADR      0x90
-#define PHASE_A_APPARENT_ENERGY_ADR         0x91
-#define PHASE_B_APPARENT_ENERGY_ADR         0x92
-#define PHASE_C_APPARENT_ENERGY_ADR         0x93
-#define TOTAL_VECT_APPARENT_ENERGY_ADR      0x94
+//#define TOTAL_FORW_ACTIVE_ENERGY_ADR        0x80
+//#define PHASE_A_FORW_ACTIVE_ENERGY_ADR      0x81
+//#define PHASE_B_FORW_ACTIVE_ENERGY_ADR      0x82
+//#define PHASE_C_FORW_ACTIVE_ENERGY_ADR      0x83
+//#define TOTAL_REV_ACTIVE_ENERGY_ADR         0x84
+//#define PHASE_A_REV_ACTIVE_ENERGY_ADR       0x85
+//#define PHASE_B_REV_ACTIVE_ENERGY_ADR       0x86
+//#define PHASE_C_REV_ACTIVE_ENERGY_ADR       0x87
+//#define TOTAL_FORW_REACTIVE_ENERGY_ADR      0x88
+//#define PHASE_A_FORW_REACTIVE_ENERGY_ADR    0x89
+//#define PHASE_B_FORW_REACTIVE_ENERGY_ADR    0x8A
+//#define PHASE_C_FORW_REACTIVE_ENERGY_ADR    0x8B
+//#define TOTAL_REVERSE_REACTIVE_ENERGY_ADR   0x8C
+//#define PHASE_A_REV_REACTIVE_ENERGY_ADR     0x8D
+//#define PHASE_B_REV_REACTIVE_ENERGY_ADR     0x8E
+//#define PHASE_C_REV_REACTIVE_ENERGY_ADR     0x8F
+//#define TOTAL_ARIT_APPARENT_ENERGY_ADR      0x90
+//#define PHASE_A_APPARENT_ENERGY_ADR         0x91
+//#define PHASE_B_APPARENT_ENERGY_ADR         0x92
+//#define PHASE_C_APPARENT_ENERGY_ADR         0x93
+//#define TOTAL_VECT_APPARENT_ENERGY_ADR      0x94
+
+const uint8_t tForwActFE = 0xA0;
+const uint8_t pAForwActFE = 0xA1;
+const uint8_t pBForwActFE = 0xA2;
+const uint8_t pCForwActFE = 0xA3;
+const uint8_t tRevActFE = 0xA4;
+const uint8_t pARevActFE = 0xA5;
+const uint8_t pBRevActFE = 0xA6;
+const uint8_t pCRevActFE = 0xA7;
+const uint8_t tForwActHE = 0xA8;
+const uint8_t pAForwActHE = 0xA9;
+const uint8_t pBForwActHE = 0xAA;
+const uint8_t pCForwActHE = 0xAB;
+const uint8_t tRevActHE = 0xAC;
+const uint8_t pARevActHE = 0xAD;
+const uint8_t pBRevActHE = 0xAE;
+const uint8_t pCRevActHE = 0xAF;
 
 /**Fundamental/Harmonic Energy Register*/
-#define TOTAL_FORW_ACTIVE_FUND_ENERGY_ADR       0xA0
-#define PHASE_A_FORW_ACTIVE_FUND_ENERGY_ADR     0xA1   
-#define PHASE_B_FORW_ACTIVE_FUND_ENERGY_ADR     0xA2
-#define PHASE_C_FORW_ACTIVE_FUND_ENERGY_ADR     0xA3
-#define TOTAL_REV_ACTIVE_FUND_ENERGY_ADR        0xA4
-#define PHASE_A_REV_ACTIVE_FUND_ENERGY_ADR      0xA5
-#define PHASE_B_REV_ACTIVE_FUND_ENERGY_ADR      0xA6
-#define PHASE_C_REV_ACTIVE_FUND_ENERGY_ADR      0xA7
-#define TOTAL_FORW_ACTIVE_HARM_ENERGY_ADR       0xA8
-#define PHASE_A_FORW_ACTIVE_HARM_ENERGY_ADR     0xA9
-#define PHASE_B_FORW_ACTIVE_HARM_ENERGY_ADR     0xAA
-#define PHASE_C_FORW_ACTIVE_HARM_ENERGY_ADR     0xAB
-#define TOTAL_REV_ACTIVE_HARM_ENERGY_ADR        0xAC
-#define PHASE_A_REV_ACTIVE_HARM_ENERGY_ADR      0xAD
-#define PHASE_B_REV_ACTIVE_HARM_ENERGY_ADR      0xAE
-#define PHASE_C_REV_ACTIVE_HARM_ENERGY_ADR      0xAF
+//#define TOTAL_FORW_ACTIVE_FUND_ENERGY_ADR       0xA0
+//#define PHASE_A_FORW_ACTIVE_FUND_ENERGY_ADR     0xA1   
+//#define PHASE_B_FORW_ACTIVE_FUND_ENERGY_ADR     0xA2
+//#define PHASE_C_FORW_ACTIVE_FUND_ENERGY_ADR     0xA3
+//#define TOTAL_REV_ACTIVE_FUND_ENERGY_ADR        0xA4
+//#define PHASE_A_REV_ACTIVE_FUND_ENERGY_ADR      0xA5
+//#define PHASE_B_REV_ACTIVE_FUND_ENERGY_ADR      0xA6
+//#define PHASE_C_REV_ACTIVE_FUND_ENERGY_ADR      0xA7
+//#define TOTAL_FORW_ACTIVE_HARM_ENERGY_ADR       0xA8
+//#define PHASE_A_FORW_ACTIVE_HARM_ENERGY_ADR     0xA9
+//#define PHASE_B_FORW_ACTIVE_HARM_ENERGY_ADR     0xAA
+//#define PHASE_C_FORW_ACTIVE_HARM_ENERGY_ADR     0xAB
+//#define TOTAL_REV_ACTIVE_HARM_ENERGY_ADR        0xAC
+//#define PHASE_A_REV_ACTIVE_HARM_ENERGY_ADR      0xAD
+//#define PHASE_B_REV_ACTIVE_HARM_ENERGY_ADR      0xAE
+//#define PHASE_C_REV_ACTIVE_HARM_ENERGY_ADR      0xAF
+
+const uint8_t tActPow = 0xB0;
+const uint8_t pAActPow = 0xB1;
+const uint8_t pBActPow = 0xB2;
+const uint8_t pCActPow = 0xB3;
+const uint8_t tReaPow = 0xB4;
+const uint8_t pAReaPow = 0xB5;
+const uint8_t pBReaPow = 0xB6;
+const uint8_t pCReaPow = 0xB7;
+const uint8_t tAppPow = 0xB8;
+const uint8_t pAAppPow = 0xB9;
+const uint8_t pBAppPow = 0xBA;
+const uint8_t pCAppPow = 0xBB;
+const uint8_t tPowFact = 0xBC;
+const uint8_t pAPowFact = 0xBD;
+const uint8_t pBPowFact = 0xBE;
+const uint8_t pCPowFact = 0xBF;
 
 /**Power and power factor registers*/
-#define TOTAL_ACTIVE_POWER_ADR      0xB0
-#define PHASE_A_ACTIVE_POWER_ADR    0xB1
-#define PHASE_B_ACTIVE_POWER_ADR    0xB2
-#define PHASE_C_ACTIVE_POWER_ADR    0xB3
-#define TOTAL_REACTIVE_POWER_ADR    0xB4
-#define PHASE_A_REACTIVE_POWER_ADR  0xB5
-#define PHASE_B_REACTIVE_POWER_ADR  0xB6
-#define PHASE_C_REACTIVE_POWER_ADR  0xB7
-#define TOTAL_APPARENT_POWER_ADR    0xB8
-#define PHASE_A_APPARENT_POWER_ADR  0xB9
-#define PHASE_B_APPARENT_POWER_ADR  0xBA
-#define PHASE_C_APPARENT_POWER_ADR  0xBB
-#define TOTAL_POWER_FACTOR_ADR      0xBC
-#define PHASE_A_POWER_FACTOR_ADR    0xBD
-#define PHASE_B_POWER_FACTOR_ADR    0xBE
-#define PHASE_C_POWER_FACTOR_ADR    0xBF
+//#define TOTAL_ACTIVE_POWER_ADR      0xB0
+//#define PHASE_A_ACTIVE_POWER_ADR    0xB1
+//#define PHASE_B_ACTIVE_POWER_ADR    0xB2
+//#define PHASE_C_ACTIVE_POWER_ADR    0xB3
+//#define TOTAL_REACTIVE_POWER_ADR    0xB4
+//#define PHASE_A_REACTIVE_POWER_ADR  0xB5
+//#define PHASE_B_REACTIVE_POWER_ADR  0xB6
+//#define PHASE_C_REACTIVE_POWER_ADR  0xB7
+//#define TOTAL_APPARENT_POWER_ADR    0xB8
+//#define PHASE_A_APPARENT_POWER_ADR  0xB9
+//#define PHASE_B_APPARENT_POWER_ADR  0xBA
+//#define PHASE_C_APPARENT_POWER_ADR  0xBB
+//#define TOTAL_POWER_FACTOR_ADR      0xBC
+//#define PHASE_A_POWER_FACTOR_ADR    0xBD
+//#define PHASE_B_POWER_FACTOR_ADR    0xBE
+//#define PHASE_C_POWER_FACTOR_ADR    0xBF
+
+const uint8_t tActFundPow = 0xD0;
+const uint8_t pAActFundPow = 0xD1;
+const uint8_t pBActFundPow = 0xD2;
+const uint8_t pCActFundPow = 0xD3;
+const uint8_t tActHPow = 0xD4;
+const uint8_t pAActHPow = 0xD5;
+const uint8_t pBActHPow = 0xD6;
+const uint8_t pCActHPow = 0xD7;
+const uint8_t nLineSamCurr = 0xD8;
+const uint8_t pAVoltageRMS = 0xD9;
+const uint8_t pBVoltageRMS = 0xDA;
+const uint8_t pCVoltageRMS = 0xDB;
+const uint8_t nLineCalCurr = 0xDC;
+const uint8_t pACurrRMS = 0xDD;
+const uint8_t pBCurrRMS = 0xDE;
+const uint8_t pCCurrRMS = 0xDF;
 
 /**Fundamental/Harmonic Power and Voltage/Current RMS registers*/
-#define TOTAL_ACTIVE_FUND_POWER_ADR         0xD0
-#define PHASE_A_ACTIVE_FUND_POWER_ADR       0xD1
-#define PHASE_B_ACTIVE_FUND_POWER_ADR       0xD2
-#define PHASE_C_ACTIVE_FUND_POWER_ADR       0xD3
-#define TOTAL_ACTIVE_HARM_POWER_ADR         0xD4
-#define PHASE_A_ACTIVE_HARM_POWER_ADR       0xD5
-#define PHASE_B_ACTIVE_HARM_POWER_ADR       0xD6
-#define PHASE_C_ACTIVE_HARM_POWER_ADR       0xD7
-#define NLINE_SAMPLED_CURRENT_RMS_ADR       0xD8
-#define PHASE_A_VOLTAGE_RMS_ADR             0xD9
-#define PHASE_B_VOLTAGE_RMS_ADR             0xDA
-#define PHASE_C_VOLTAGE_RMS_ADR             0xDB
-#define NLINE_CALCULATED_CURRENT_RMS_ADR    0xDC
-#define PHASE_A_CURRENT_RMS_ADR             0xDD
-#define PHASE_B_CURRENT_RMS_ADR             0xDE
-#define PHASE_C_CURRENT_RMS_ADR             0xDF
+//#define TOTAL_ACTIVE_FUND_POWER_ADR         0xD0
+//#define PHASE_A_ACTIVE_FUND_POWER_ADR       0xD1
+//#define PHASE_B_ACTIVE_FUND_POWER_ADR       0xD2
+//#define PHASE_C_ACTIVE_FUND_POWER_ADR       0xD3
+//#define TOTAL_ACTIVE_HARM_POWER_ADR         0xD4
+//#define PHASE_A_ACTIVE_HARM_POWER_ADR       0xD5
+//#define PHASE_B_ACTIVE_HARM_POWER_ADR       0xD6
+//#define PHASE_C_ACTIVE_HARM_POWER_ADR       0xD7
+//#define NLINE_SAMPLED_CURRENT_RMS_ADR       0xD8
+//#define PHASE_A_VOLTAGE_RMS_ADR             0xD9
+//#define PHASE_B_VOLTAGE_RMS_ADR             0xDA
+//#define PHASE_C_VOLTAGE_RMS_ADR             0xDB
+//#define NLINE_CALCULATED_CURRENT_RMS_ADR    0xDC
+//#define PHASE_A_CURRENT_RMS_ADR             0xDD
+//#define PHASE_B_CURRENT_RMS_ADR             0xDE
+//#define PHASE_C_CURRENT_RMS_ADR             0xDF
+
+const uint8_t pAVoltTHDN = 0xF1;
+const uint8_t pBVoltTHDN = 0xF2;
+const uint8_t pCVoltTHDN = 0xF3;
+const uint8_t pACurrTHDN = 0xF5;
+const uint8_t pBCurrTHDN = 0xF6;
+const uint8_t pCCurrTHDN = 0xF7;
+const uint8_t frequencyReg = 0xF8;
+const uint8_t pAMeanAngleP = 0xF9;
+const uint8_t pBMeanAngleP = 0xFA;
+const uint8_t pCMeanAngleP = 0xFB;
+const uint8_t temperatureReg = 0xFC;
+const uint8_t pAVoltAngleP = 0xFD;
+const uint8_t pBVoltAngleP = 0xFE;
+const uint8_t pCVoltAngleP = 0xFF;
 
 /**THD+N, FREQUENCY, ANGLE AND TEMPERATURE REGISTERS*/
-#define PHASE_A_VOLTAGE_THDN_ADR        0xF1
-#define PHASE_B_VOLTAGE_THDN_ADR        0xF2
-#define PHASE_C_VOLTAGE_THDN_ADR        0xF3
-#define PHASE_A_CURRENT_THDN_ADR        0xF5
-#define PHASE_B_CURRENT_THDN_ADR        0xF6
-#define PHASE_C_CURRENT_THDN_ADR        0xF7    
-#define FREQUENCY_REG_ADR               0xF8
-#define PHASE_A_MEAN_ANGLE_PHASE_ADR    0xF9
-#define PHASE_B_MEAN_ANGLE_PHASE_ADR    0xFA
-#define PHASE_C_MEAN_ANGLE_PHASE_ADR    0xFB
-#define TEMPERATURE_REG_ADR             0xFC
-#define PHASE_A_VOLTAGE_ANGLE_PHASE_ADR 0xFD
-#define PHASE_B_VOLTAGE_ANGLE_PHASE_ADR 0xFE
-#define PHASE_C_VOLTAGE_ANGLE_PHASE_ADR 0xFF
+//#define PHASE_A_VOLTAGE_THDN_ADR        0xF1
+//#define PHASE_B_VOLTAGE_THDN_ADR        0xF2
+//#define PHASE_C_VOLTAGE_THDN_ADR        0xF3
+//#define PHASE_A_CURRENT_THDN_ADR        0xF5
+//#define PHASE_B_CURRENT_THDN_ADR        0xF6
+//#define PHASE_C_CURRENT_THDN_ADR        0xF7    
+//#define FREQUENCY_REG_ADR               0xF8
+//#define PHASE_A_MEAN_ANGLE_PHASE_ADR    0xF9
+//#define PHASE_B_MEAN_ANGLE_PHASE_ADR    0xFA
+//#define PHASE_C_MEAN_ANGLE_PHASE_ADR    0xFB
+//#define TEMPERATURE_REG_ADR             0xFC
+//#define PHASE_A_VOLTAGE_ANGLE_PHASE_ADR 0xFD
+//#define PHASE_B_VOLTAGE_ANGLE_PHASE_ADR 0xFE
+//#define PHASE_C_VOLTAGE_ANGLE_PHASE_ADR 0xFF
 
 typedef struct
 {
@@ -310,30 +400,29 @@ void ATM_init(void)
     /**PM0 pin*/
     GPIO_dataDirectionPIN(GPIO_B, 5, GPIO_OUTPUT);
     /**PM1 pin*/
-    GPIO_dataDirectionPIN(GPIO_B, 6, GPIO_OUTPUT);
+    GPIO_dataDirectionPIN(GPIO_C, 2, GPIO_OUTPUT);
     /**WarnOut pin*/
-    GPIO_dataDirectionPIN(GPIO_B, 7, GPIO_INPUT);
+    //GPIO_dataDirectionPIN(GPIO_B, 7, GPIO_INPUT);
     
     /**ZX0 pin*/
-    GPIO_dataDirectionPIN(GPIO_C, 2, GPIO_INPUT);
+    //GPIO_dataDirectionPIN(GPIO_C, 2, GPIO_INPUT);
     /**ZX1 pin*/
-    GPIO_dataDirectionPIN(GPIO_C, 1, GPIO_INPUT);
+    //GPIO_dataDirectionPIN(GPIO_C, 1, GPIO_INPUT);
     
     /**CF1 pin*/
-    GPIO_dataDirectionPIN(GPIO_C, 0, GPIO_INPUT);
+    GPIO_dataDirectionPIN(GPIO_C, 1, GPIO_INPUT);
     /**CF2 pin*/
+    GPIO_dataDirectionPIN(GPIO_C, 0, GPIO_INPUT);
+    /**CF3 pin*/
     GPIO_dataDirectionPIN(GPIO_A, 2, GPIO_INPUT);
     ANS2 = 0;
-    /**CF3 pin*/
+    /**CF4 pin*/
     GPIO_dataDirectionPIN(GPIO_A, 1, GPIO_INPUT);
     ANS1 = 0;
-    /**CF4 pin*/
-    GPIO_dataDirectionPIN(GPIO_A, 0, GPIO_INPUT);
-    ANS0 = 0;
     
     /**Power Mode: Normal*/
     GPIO_setPIN(GPIO_B, 5);
-    GPIO_setPIN(GPIO_B, 6);
+    GPIO_setPIN(GPIO_C, 2);
     
     /**Slave Mode*/
     GPIO_clearPIN(GPIO_B, 3);
@@ -383,7 +472,7 @@ void ATM_calibration(void)
         ATM_write(S_PHASE_TH, SPHASE_TH);
 
         /**Calculate the checksum 0*/
-        checksum0 = calculate_CS0();
+        //checksum0 = calculate_CS0();
         ATM_write(CHECKSUM_0, checksum0);
 
         /**Enable checksum checking*/
@@ -716,6 +805,7 @@ void ATM_calibration(void)
     phaseC_En.phaseAngle = (uint16_t)phi_errorPH;
     /**Write phase angle into register*/
     ATM_write(PHI_C, phaseC_En.phaseAngle);
+
 }
 
 uint16_t ATM_registers(ATM_type_t type, ATM_reg_t reg)
@@ -1088,4 +1178,6 @@ uint16_t ATM_registers(ATM_type_t type, ATM_reg_t reg)
             break;
     }
     return (info);
+
 }
+#endif

@@ -4089,27 +4089,14 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 7 "GPIO.h"
-typedef enum
-{
-CLK_8MHZ,
-CLK_4MHZ,
-CLK_2MHZ,
-CLK_1MHZ,
-CLK_500KHZ,
-CLK_250KHZ,
-CLK_125KHZ,
-CLK_31KHZ
-} GPIO_SourceClk;
-
-# 21
+# 9 "GPIO.h"
 typedef enum
 {
 GPIO_INPUT,
 GPIO_OUTPUT
 } GPIO_state;
 
-# 29
+# 17
 typedef enum
 {
 GPIO_A,
@@ -4117,32 +4104,7 @@ GPIO_B,
 GPIO_C
 } GPIO_portNameType;
 
-typedef enum
-{
-GPIO_DIGITAL,
-GPIO_ANALOG
-} GPIO_analogType;
 
-void GPIO_sourceClock(GPIO_SourceClk clk);
-
-void GPIO_dataDirectionPIN
-(GPIO_portNameType portName, uint8_t pin, GPIO_state state);
-
-void GPIO_dataDirectionPORT
-(GPIO_portNameType portName, GPIO_state state);
-
-void GPIO_analogSelector
-(GPIO_analogType type, uint8_t pin);
-
-void GPIO_setPIN
-(GPIO_portNameType portName, uint8_t pin);
-
-void GPIO_clearPIN
-(GPIO_portNameType portName, uint8_t pin);
-
-void delay(uint32_t delay);
-
-# 7 "SPI.h"
 typedef enum
 {
 SPI_LOW_POLARITY,
@@ -4163,13 +4125,41 @@ SPI_SERIAL_CLK16,
 SPI_SERIAL_CLK64
 } SPI_SerialClk;
 
-# 29
+# 47
 typedef struct
 {
 SPI_PolarityType SPI_Polarity;
 SPI_PhaseType SPI_Phase;
 SPI_SerialClk SPI_Clk;
 } SPI_ConfigType;
+
+void GPIO_dataDirectionPIN
+(GPIO_portNameType portName, uint8_t pin, GPIO_state state);
+
+void GPIO_setPIN
+(GPIO_portNameType portName, uint8_t pin);
+
+void GPIO_clearPIN
+(GPIO_portNameType portName, uint8_t pin);
+
+void delay(uint32_t delay);
+
+void ButtonInt_config();
+
+
+
+void UART_init(void);
+
+void UART_putChar(uint8_t character);
+
+void UART_putString(int8_t* string);
+
+uint32_t expBASE10(uint8_t limit);
+
+uint32_t Convert_numberASCIItoDATA(uint8_t *string);
+
+uint8_t Convert_wordASCIItoDATA(uint8_t word);
+
 
 void SPI_init(const SPI_ConfigType* SPI_Config);
 
@@ -4208,7 +4198,7 @@ void LCDNokia_printValue(uint32_t value);
 
 void LCDNokia_printFloatValue(float value);
 
-# 9 "LCDNokia5110.c"
+# 6 "LCDNokia5110.c"
 static const uint8_t ASCII[][5] =
 {
 {0x00, 0x00, 0x00, 0x00, 0x00}
@@ -4326,7 +4316,7 @@ LCDNokia_writeByte(0, 0xBF);
 LCDNokia_writeByte(0, 0x04);
 LCDNokia_writeByte(0, 0x14);
 LCDNokia_writeByte(0, 0x20);
-LCDNokia_writeByte(0, 0x0C);
+LCDNokia_writeByte(0, 0x0D);
 }
 
 void LCDNokia_bitmap(const uint8_t* my_array)
@@ -4344,12 +4334,10 @@ void LCDNokia_writeByte(uint8_t DataOrCmd, uint8_t data)
 if(DataOrCmd)
 {
 PORTBbits.RB2 = 1;
-
 }
 else
 {
 PORTBbits.RB2 = 0;
-
 }
 PORTBbits.RB0 = 0;
 SPI_write(data);
@@ -4366,12 +4354,11 @@ for (index = 0; index < 5; index++)
 {
 LCDNokia_writeByte(1, ASCII[character - 0x20][index]);
 
-# 168
+# 163
 }
 LCDNokia_writeByte(1, 0x00);
 }
 
-# 189
 void LCDNokia_sendString(const uint8_t *characters)
 {
 while (*characters)
@@ -4486,4 +4473,3 @@ LCDNokia_sendChar(wordPoint);
 LCDNokia_printValue(part_Float);
 }
 }
-
