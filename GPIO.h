@@ -18,7 +18,9 @@ typedef enum
 {
     GPIO_A, /*!< Definition to select GPIO A */
 	GPIO_B, /*!< Definition to select GPIO B */
-	GPIO_C /*!< Definition to select GPIO C */
+	GPIO_C, /*!< Definition to select GPIO C */
+    GPIO_D, /*!< Definition to select GPIO C */    
+    GPIO_E /*!< Definition to select GPIO C */
 } GPIO_portNameType;
 
 /*Type for polarity configuration*/

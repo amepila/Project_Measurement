@@ -1,136 +1,199 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"4 States.c
-[c E4049 0 1 2 3 .. ]
-[n E4049 . INITIAL_LOAD GENERAL_VIEW VIEW_MENU SEND_DATA  ]
-[c E3904 0 1 2 3 4 5 6 7 .. ]
-[n E3904 . MAIN_MENU ENERGY POWER_1 POWER_2 RMS_VI POWER_FACTOR PHASE_ANGLE FREQTEMP  ]
-"24 Phases.h
-[s S365 `E4049 1 `E3904 1 ]
-[n S365 . phaseState stateMain ]
-[v F4064 `(S365 ~T0 @X0 0 tf1`S365 ]
-"31
-[s S366 `*F4064 1 ]
-[n S366 PhaseMainMenu PhaseMainMenu ]
-"222
-[v _initialLoad `(S365 ~T0 @X0 0 ef1`S365 ]
-"232
-[v _generalView `(S365 ~T0 @X0 0 ef1`S365 ]
-"243
-[v _viewMenu `(S365 ~T0 @X0 0 ef1`S365 ]
-"253
-[v _sendData `(S365 ~T0 @X0 0 ef1`S365 ]
-"13 States.c
-[c E4067 0 1 2 3 .. ]
-[n E4067 . ACTIVE_ENERGY FUNDAMENTAL_ENERGY HARMONIC_ENERGY EXIT_ENERGY  ]
-"51 Phases.h
-[s S367 `E4067 1 `E3904 1 ]
-[n S367 . phaseState stateMain ]
-[v F4082 `(S367 ~T0 @X0 0 tf1`S367 ]
-"58
-[s S368 `*F4082 1 ]
-[n S368 PhaseEnergy PhaseEnergy ]
-"263
-[v _activeEnergy `(S367 ~T0 @X0 0 ef1`S367 ]
-"273
-[v _fundamentalEnergy `(S367 ~T0 @X0 0 ef1`S367 ]
-"283
-[v _harmonicEnergy `(S367 ~T0 @X0 0 ef1`S367 ]
-"293
-[v _exitEnergy `(S367 ~T0 @X0 0 ef1`S367 ]
-"22 States.c
-[c E4085 0 1 2 .. ]
-[n E4085 . TYPES_POWER1 PHASES_POWER1 EXIT_POWER1  ]
-"77 Phases.h
-[s S369 `E4085 1 `E3904 1 ]
-[n S369 . phaseState stateMain ]
-[v F4099 `(S369 ~T0 @X0 0 tf1`S369 ]
-"84
-[s S370 `*F4099 1 ]
-[n S370 PhasePower1 PhasePower1 ]
-"303
-[v _typesPower1 `(S369 ~T0 @X0 0 ef1`S369 ]
-"313
-[v _phPower1 `(S369 ~T0 @X0 0 ef1`S369 ]
-"336
-[v _exitPower1 `(S369 ~T0 @X0 0 ef1`S369 ]
-"30 States.c
-[c E4102 0 1 2 .. ]
-[n E4102 . FH_POWER2 PHASES_POWER2 EXIT_POWER2  ]
-"103 Phases.h
-[s S371 `E4102 1 `E3904 1 ]
-[n S371 . phaseState stateMain ]
-[v F4116 `(S371 ~T0 @X0 0 tf1`S371 ]
-"110
-[s S372 `*F4116 1 ]
-[n S372 PhasePower2 PhasePower2 ]
-"347
-[v _fhPower2 `(S371 ~T0 @X0 0 ef1`S371 ]
-"358
-[v _phPower2 `(S371 ~T0 @X0 0 ef1`S371 ]
-"369
-[v _exitPower2 `(S371 ~T0 @X0 0 ef1`S371 ]
-"38 States.c
-[c E4119 0 1 2 .. ]
-[n E4119 . PHASES_RMSVI NEUTRAL_RMSVI EXIT_RMSVI  ]
-"129 Phases.h
-[s S373 `E4119 1 `E3904 1 ]
-[n S373 . phaseState stateMain ]
-[v F4133 `(S373 ~T0 @X0 0 tf1`S373 ]
-"136
-[s S374 `*F4133 1 ]
-[n S374 PhaseRmsVI PhaseRmsVI ]
-"380
-[v _phRmsVI `(S373 ~T0 @X0 0 ef1`S373 ]
-"391
-[v _neutralRmsVI `(S373 ~T0 @X0 0 ef1`S373 ]
-"402
-[v _exitRmsVI `(S373 ~T0 @X0 0 ef1`S373 ]
-"46 States.c
-[c E4136 0 1 .. ]
-[n E4136 . PHASES_PF EXIT_PF  ]
-"153 Phases.h
-[s S375 `E4136 1 `E3904 1 ]
-[n S375 . phaseState stateMain ]
-[v F4149 `(S375 ~T0 @X0 0 tf1`S375 ]
-"160
-[s S376 `*F4149 1 ]
-[n S376 PhasePowerFactor PhasePowerFactor ]
-"413
-[v _phPowerFactor `(S375 ~T0 @X0 0 ef1`S375 ]
-"424
-[v _exitPowerFactor `(S375 ~T0 @X0 0 ef1`S375 ]
-"53 States.c
-[c E4152 0 1 2 3 .. ]
-[n E4152 . PHASES_PA VI_PA THDN_PA EXIT_PA  ]
-"179 Phases.h
-[s S377 `E4152 1 `E3904 1 ]
-[n S377 . phaseState stateMain ]
-[v F4167 `(S377 ~T0 @X0 0 tf1`S377 ]
-"186
-[s S378 `*F4167 1 ]
-[n S378 PhasePhaseAngle PhasePhaseAngle ]
-"435
-[v _phPhaseAngle `(S377 ~T0 @X0 0 ef1`S377 ]
-"446
-[v _viPhaseAngle `(S377 ~T0 @X0 0 ef1`S377 ]
-"456
-[v _THDNPhaseAngle `(S377 ~T0 @X0 0 ef1`S377 ]
-"467
-[v _exitPhaseAngle `(S377 ~T0 @X0 0 ef1`S377 ]
-"62 States.c
-[c E4170 0 1 .. ]
-[n E4170 . SHOW_FREQTEMP EXIT_FREQTEMP  ]
-"201 Phases.h
-[s S379 `E4170 1 `E3904 1 ]
-[n S379 . phaseState stateMain ]
-[v F4183 `(S379 ~T0 @X0 0 tf1`S379 ]
-"208
-[s S380 `*F4183 1 ]
-[n S380 PhaseFreqTemp PhaseFreqTemp ]
-"478
-[v _showFreqTemp `(S379 ~T0 @X0 0 ef1`S379 ]
-"488
-[v _exitFreqTemp `(S379 ~T0 @X0 0 ef1`S379 ]
+"28 GPIO.c
+[c E3822 0 1 2 3 4 .. ]
+[n E3822 . GPIO_A GPIO_B GPIO_C GPIO_D GPIO_E  ]
+[c E3818 0 1 .. ]
+[n E3818 . GPIO_INPUT GPIO_OUTPUT  ]
+"3425 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f4550.h
+[v _TRISA `Vuc ~T0 @X0 0 e@3986 ]
+"3623
+[v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
+"3845
+[v _TRISC `Vuc ~T0 @X0 0 e@3988 ]
+"3999
+[v _TRISD `Vuc ~T0 @X0 0 e@3989 ]
+"4221
+[v _TRISE `Vuc ~T0 @X0 0 e@3990 ]
+"2312
+[v _PORTA `Vuc ~T0 @X0 0 e@3968 ]
+"2451
+[v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
+"2561
+[v _PORTC `Vuc ~T0 @X0 0 e@3970 ]
+"2703
+[v _PORTD `Vuc ~T0 @X0 0 e@3971 ]
+"2824
+[v _PORTE `Vuc ~T0 @X0 0 e@3972 ]
+"5424
+[v _SPBRG `Vuc ~T0 @X0 0 e@4015 ]
+"5155
+[s S205 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S205 . TX9D TRMT BRGH SENDB SYNC TXEN TX9 CSRC ]
+"5165
+[s S206 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S206 . TX9D1 TRMT1 BRGH1 SENDB1 SYNC1 TXEN1 TX91 CSRC1 ]
+"5175
+[s S207 :6 `uc 1 :1 `uc 1 ]
+[n S207 . . TX8_9 ]
+"5179
+[s S208 :1 `uc 1 ]
+[n S208 . TXD8 ]
+"5154
+[u S204 `S205 1 `S206 1 `S207 1 `S208 1 ]
+[n S204 . . . . . ]
+"5183
+[v _TXSTAbits `VS204 ~T0 @X0 0 e@4012 ]
+"4945
+[s S191 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S191 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
+"4955
+[s S192 :3 `uc 1 :1 `uc 1 ]
+[n S192 . . ADEN ]
+"4959
+[s S193 :5 `uc 1 :1 `uc 1 ]
+[n S193 . . SRENA ]
+"4963
+[s S194 :6 `uc 1 :1 `uc 1 ]
+[n S194 . . RC8_9 ]
+"4967
+[s S195 :6 `uc 1 :1 `uc 1 ]
+[n S195 . . RC9 ]
+"4971
+[s S196 :1 `uc 1 ]
+[n S196 . RCD8 ]
+"4944
+[u S190 `S191 1 `S192 1 `S193 1 `S194 1 `S195 1 `S196 1 ]
+[n S190 . . . . . . . ]
+"4975
+[v _RCSTAbits `VS190 ~T0 @X0 0 e@4011 ]
+"6071
+[s S242 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S242 . ABDEN WUE . BRG16 TXCKP RXDTP RCIDL ABDOVF ]
+"6081
+[s S243 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S243 . . SCKP . RCMT ]
+"6087
+[s S244 :5 `uc 1 :1 `uc 1 ]
+[n S244 . . RXCKP ]
+"6091
+[s S245 :1 `uc 1 :1 `uc 1 ]
+[n S245 . . W4E ]
+"6070
+[u S241 `S242 1 `S243 1 `S244 1 `S245 1 ]
+[n S241 . . . . . ]
+"6096
+[v _BAUDCONbits `VS241 ~T0 @X0 0 e@4024 ]
+"5400
+[v _TXREG `Vuc ~T0 @X0 0 e@4013 ]
+"271 GPIO.c
+[c E3833 0 1 .. ]
+[n E3833 . SPI_LOW_PHASE SPI_HIGH_PHASE  ]
+[c E3829 0 1 .. ]
+[n E3829 . SPI_LOW_POLARITY SPI_HIGH_POLARITY  ]
+"3634 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f4550.h
+[s S143 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S143 . TRISB0 TRISB1 TRISB2 TRISB3 TRISB4 TRISB5 TRISB6 TRISB7 ]
+"3644
+[s S144 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S144 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
+"3633
+[u S142 `S143 1 `S144 1 ]
+[n S142 . . . ]
+"3655
+[v _TRISBbits `VS142 ~T0 @X0 0 e@3987 ]
+"3856
+[s S149 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S149 . TRISC0 TRISC1 TRISC2 . TRISC6 TRISC7 ]
+"3864
+[s S150 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S150 . RC0 RC1 RC2 . RC6 RC7 ]
+"3855
+[u S148 `S149 1 `S150 1 ]
+[n S148 . . . ]
+"3873
+[v _TRISCbits `VS148 ~T0 @X0 0 e@3988 ]
+"6936
+[v _SSPSTAT `Vuc ~T0 @X0 0 e@4039 ]
+"6942
+[s S282 :2 `uc 1 :1 `uc 1 ]
+[n S282 . . R_NOT_W ]
+"6946
+[s S283 :5 `uc 1 :1 `uc 1 ]
+[n S283 . . D_NOT_A ]
+"6950
+[s S284 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S284 . BF UA R_nW S P D_nA CKE SMP ]
+"6960
+[s S285 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S285 . . R_W . D_A ]
+"6966
+[s S286 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S286 . . I2C_READ I2C_START I2C_STOP I2C_DAT ]
+"6973
+[s S287 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S287 . . nW . nA ]
+"6979
+[s S288 :2 `uc 1 :1 `uc 1 ]
+[n S288 . . NOT_WRITE ]
+"6983
+[s S289 :5 `uc 1 :1 `uc 1 ]
+[n S289 . . NOT_ADDRESS ]
+"6987
+[s S290 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S290 . . nWRITE . nADDRESS ]
+"6993
+[s S291 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S291 . . READ_WRITE . DATA_ADDRESS ]
+"6999
+[s S292 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S292 . . R . D ]
+"7005
+[s S293 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S293 . . RW START STOP DA ]
+"7012
+[s S294 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S294 . . NOT_W . NOT_A ]
+"6941
+[u S281 `S282 1 `S283 1 `S284 1 `S285 1 `S286 1 `S287 1 `S288 1 `S289 1 `S290 1 `S291 1 `S292 1 `S293 1 `S294 1 ]
+[n S281 . . . . . . . . . . . . . . ]
+"7019
+[v _SSPSTATbits `VS281 ~T0 @X0 0 e@4039 ]
+"6872
+[s S279 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S279 . SSPM CKP SSPEN SSPOV WCOL ]
+"6879
+[s S280 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S280 . SSPM0 SSPM1 SSPM2 SSPM3 ]
+"6871
+[u S278 `S279 1 `S280 1 ]
+[n S278 . . . ]
+"6886
+[v _SSPCON1bits `VS278 ~T0 @X0 0 e@4038 ]
+"313 GPIO.c
+[c E3837 0 1 2 .. ]
+[n E3837 . SPI_SERIAL_CLK4 SPI_SERIAL_CLK16 SPI_SERIAL_CLK64  ]
+"6866 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f4550.h
+[v _SSPCON1 `Vuc ~T0 @X0 0 e@4038 ]
+"4472
+[s S173 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S173 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF SPPIF ]
+"4482
+[s S174 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S174 . . TX1IF RC1IF . PSPIF ]
+"4471
+[u S172 `S173 1 `S174 1 ]
+[n S172 . . . ]
+"4490
+[v _PIR1bits `VS172 ~T0 @X0 0 e@3998 ]
+"6664
+[v _ADCON0 `Vuc ~T0 @X0 0 e@4034 ]
+"6579
+[v _ADCON1 `Vuc ~T0 @X0 0 e@4033 ]
+"50 GPIO.h
+[s S362 `E3829 1 `E3833 1 `E3837 1 ]
+[n S362 . SPI_Polarity SPI_Phase SPI_Clk ]
+"7191 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f4550.h
+[v _SSPBUF `Vuc ~T0 @X0 0 e@4041 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3721,831 +3784,1026 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;GPIO.h: 84: void SPI_init(const SPI_ConfigType* SPI_Config);
 [; ;GPIO.h: 86: void SPI_write(uint8_t data);
 [; ;GPIO.h: 88: uint8_t SPI_read(void);
-[; ;LCDNokia5110.h: 17: typedef struct
-[; ;LCDNokia5110.h: 18: {
-[; ;LCDNokia5110.h: 19: uint8_t numberDigits;
-[; ;LCDNokia5110.h: 20: uint8_t realDigit[7];
-[; ;LCDNokia5110.h: 21: }formatASCII;
-[; ;LCDNokia5110.h: 24: void LCDNokia_init(void);
-[; ;LCDNokia5110.h: 29: void LCDNokia_writeByte(uint8_t, uint8_t);
-[; ;LCDNokia5110.h: 31: void LCDNokia_clear(void);
-[; ;LCDNokia5110.h: 35: void LCDNokia_gotoXY(uint8_t x, uint8_t y);
-[; ;LCDNokia5110.h: 37: void LCDNokia_bitmap(const uint8_t*);
-[; ;LCDNokia5110.h: 39: void LCDNokia_sendChar(uint8_t);
-[; ;LCDNokia5110.h: 41: void LCDNokia_sendString(const uint8_t*);
-[; ;LCDNokia5110.h: 43: void LCD_delay(void);
-[; ;LCDNokia5110.h: 46: void LCDNokia_printValue(uint32_t value);
-[; ;LCDNokia5110.h: 48: void LCDNokia_printFloatValue(float value);
-[; ;States.h: 11: typedef enum
-[; ;States.h: 12: {
-[; ;States.h: 13: MAIN_MENU,
-[; ;States.h: 14: ENERGY,
-[; ;States.h: 15: POWER_1,
-[; ;States.h: 16: POWER_2,
-[; ;States.h: 17: RMS_VI,
-[; ;States.h: 18: POWER_FACTOR,
-[; ;States.h: 19: PHASE_ANGLE,
-[; ;States.h: 20: FREQTEMP
-[; ;States.h: 21: }States_MenuType;
-[; ;States.h: 24: typedef States_MenuType(*fptrState)(void);
-[; ;States.h: 27: typedef const struct State
-[; ;States.h: 28: {
-[; ;States.h: 29: States_MenuType (*stateFunction)(void);
-[; ;States.h: 30: }StateType;
-[; ;States.h: 41: States_MenuType stateMainMenu(void);
-[; ;States.h: 51: States_MenuType stateEnergy(void);
-[; ;States.h: 61: States_MenuType statePower1(void);
-[; ;States.h: 71: States_MenuType statePower2(void);
-[; ;States.h: 81: States_MenuType stateRmsVI(void);
-[; ;States.h: 91: States_MenuType statePowerFactor(void);
-[; ;States.h: 101: States_MenuType statePhaseAngle(void);
-[; ;States.h: 111: States_MenuType stateFreqTemp(void);
-[; ;ATM90E36A.h: 6: typedef enum
-[; ;ATM90E36A.h: 7: {
-[; ;ATM90E36A.h: 8: ACTIVE_ENERGY_TYPE,
-[; ;ATM90E36A.h: 9: REACTIVE_ENERGY_TYPE,
-[; ;ATM90E36A.h: 10: APPARENT_ENERGY_TYPE,
-[; ;ATM90E36A.h: 11: FUNDAMENTAL_ENERGY_TYPE,
-[; ;ATM90E36A.h: 12: HARMONIC_ENERGY_TYPE,
-[; ;ATM90E36A.h: 13: ACTIVE_POWER_TYPE,
-[; ;ATM90E36A.h: 14: REACTIVE_POWER_TYPE,
-[; ;ATM90E36A.h: 15: APPARENT_POWER_TYPE,
-[; ;ATM90E36A.h: 16: POWER_FACTOR_TYPE,
-[; ;ATM90E36A.h: 17: FUNDAMENTAL_POWER,
-[; ;ATM90E36A.h: 18: HARMONIC_POWER,
-[; ;ATM90E36A.h: 19: VOLTAGE_RMS,
-[; ;ATM90E36A.h: 20: CURRENT_RMS,
-[; ;ATM90E36A.h: 21: THDN_TYPE,
-[; ;ATM90E36A.h: 22: FREQUENCY_TYPE,
-[; ;ATM90E36A.h: 23: PHASE_ANGLE_TYPE,
-[; ;ATM90E36A.h: 24: TEMPERATURE_TYPE
-[; ;ATM90E36A.h: 25: } ATM_type_t;
-[; ;ATM90E36A.h: 27: typedef enum
-[; ;ATM90E36A.h: 28: {
-[; ;ATM90E36A.h: 29: TOTAL_FORW_ACTIVE_ENERGY,
-[; ;ATM90E36A.h: 30: PHASE_A_FORW_ACTIVE_ENERGY,
-[; ;ATM90E36A.h: 31: PHASE_B_FORW_ACTIVE_ENERGY,
-[; ;ATM90E36A.h: 32: PHASE_C_FORW_ACTIVE_ENERGY,
-[; ;ATM90E36A.h: 33: TOTAL_REV_ACTIVE_ENERGY,
-[; ;ATM90E36A.h: 34: PHASE_A_REV_ACTIVE_ENERGY,
-[; ;ATM90E36A.h: 35: PHASE_B_REV_ACTIVE_ENERGY,
-[; ;ATM90E36A.h: 36: PHASE_C_REV_ACTIVE_ENERGY,
-[; ;ATM90E36A.h: 37: TOTAL_FORW_REACTIVE_ENERGY,
-[; ;ATM90E36A.h: 38: PHASE_A_FORW_REACTIVE_ENERGY,
-[; ;ATM90E36A.h: 39: PHASE_B_FORW_REACTIVE_ENERGY,
-[; ;ATM90E36A.h: 40: PHASE_C_FORW_REACTIVE_ENERGY,
-[; ;ATM90E36A.h: 41: TOTAL_REVERSE_REACTIVE_ENERGY,
-[; ;ATM90E36A.h: 42: PHASE_A_REV_REACTIVE_ENERGY,
-[; ;ATM90E36A.h: 43: PHASE_B_REV_REACTIVE_ENERGY,
-[; ;ATM90E36A.h: 44: PHASE_C_REV_REACTIVE_ENERGY,
-[; ;ATM90E36A.h: 45: TOTAL_ARIT_APPARENT_ENERGY,
-[; ;ATM90E36A.h: 46: PHASE_A_APPARENT_ENERGY,
-[; ;ATM90E36A.h: 47: PHASE_B_APPARENT_ENERGY,
-[; ;ATM90E36A.h: 48: PHASE_C_APPARENT_ENERGY,
-[; ;ATM90E36A.h: 49: TOTAL_VECT_APPARENT_ENERGY,
-[; ;ATM90E36A.h: 50: TOTAL_FORW_ACTIVE_FUND_ENERGY,
-[; ;ATM90E36A.h: 51: PHASE_A_FORW_ACTIVE_FUND_ENERGY,
-[; ;ATM90E36A.h: 52: PHASE_B_FORW_ACTIVE_FUND_ENERGY,
-[; ;ATM90E36A.h: 53: PHASE_C_FORW_ACTIVE_FUND_ENERGY,
-[; ;ATM90E36A.h: 54: TOTAL_REV_ACTIVE_FUND_ENERGY,
-[; ;ATM90E36A.h: 55: PHASE_A_REV_ACTIVE_FUND_ENERGY,
-[; ;ATM90E36A.h: 56: PHASE_B_REV_ACTIVE_FUND_ENERGY,
-[; ;ATM90E36A.h: 57: PHASE_C_REV_ACTIVE_FUND_ENERGY,
-[; ;ATM90E36A.h: 58: TOTAL_FORW_ACTIVE_HARM_ENERGY,
-[; ;ATM90E36A.h: 59: PHASE_A_FORW_ACTIVE_HARM_ENERGY,
-[; ;ATM90E36A.h: 60: PHASE_B_FORW_ACTIVE_HARM_ENERGY,
-[; ;ATM90E36A.h: 61: PHASE_C_FORW_ACTIVE_HARM_ENERGY,
-[; ;ATM90E36A.h: 62: TOTAL_REV_ACTIVE_HARM_ENERGY,
-[; ;ATM90E36A.h: 63: PHASE_A_REV_ACTIVE_HARM_ENERGY,
-[; ;ATM90E36A.h: 64: PHASE_B_REV_ACTIVE_HARM_ENERGY,
-[; ;ATM90E36A.h: 65: PHASE_C_REV_ACTIVE_HARM_ENERGY,
-[; ;ATM90E36A.h: 66: TOTAL_ACTIVE_POWER,
-[; ;ATM90E36A.h: 67: PHASE_A_ACTIVE_POWER,
-[; ;ATM90E36A.h: 68: PHASE_B_ACTIVE_POWER,
-[; ;ATM90E36A.h: 69: PHASE_C_ACTIVE_POWER,
-[; ;ATM90E36A.h: 70: TOTAL_REACTIVE_POWER,
-[; ;ATM90E36A.h: 71: PHASE_A_REACTIVE_POWER,
-[; ;ATM90E36A.h: 72: PHASE_B_REACTIVE_POWER,
-[; ;ATM90E36A.h: 73: PHASE_C_REACTIVE_POWER,
-[; ;ATM90E36A.h: 74: TOTAL_APPARENT_POWER,
-[; ;ATM90E36A.h: 75: PHASE_A_APPARENT_POWER,
-[; ;ATM90E36A.h: 76: PHASE_B_APPARENT_POWER,
-[; ;ATM90E36A.h: 77: PHASE_C_APPARENT_POWER,
-[; ;ATM90E36A.h: 78: TOTAL_POWER_FACTOR,
-[; ;ATM90E36A.h: 79: PHASE_A_POWER_FACTOR,
-[; ;ATM90E36A.h: 80: PHASE_B_POWER_FACTOR,
-[; ;ATM90E36A.h: 81: PHASE_C_POWER_FACTOR,
-[; ;ATM90E36A.h: 82: TOTAL_ACTIVE_FUND_POWER,
-[; ;ATM90E36A.h: 83: PHASE_A_ACTIVE_FUND_POWER,
-[; ;ATM90E36A.h: 84: PHASE_B_ACTIVE_FUND_POWER,
-[; ;ATM90E36A.h: 85: PHASE_C_ACTIVE_FUND_POWER,
-[; ;ATM90E36A.h: 86: TOTAL_ACTIVE_HARM_POWER,
-[; ;ATM90E36A.h: 87: PHASE_A_ACTIVE_HARM_POWER,
-[; ;ATM90E36A.h: 88: PHASE_B_ACTIVE_HARM_POWER,
-[; ;ATM90E36A.h: 89: PHASE_C_ACTIVE_HARM_POWER,
-[; ;ATM90E36A.h: 90: NLINE_SAMPLED_CURRENT_RMS,
-[; ;ATM90E36A.h: 91: PHASE_A_VOLTAGE_RMS,
-[; ;ATM90E36A.h: 92: PHASE_B_VOLTAGE_RMS,
-[; ;ATM90E36A.h: 93: PHASE_C_VOLTAGE_RMS,
-[; ;ATM90E36A.h: 94: NLINE_CALCULATED_CURRENT_RMS,
-[; ;ATM90E36A.h: 95: PHASE_A_CURRENT_RMS,
-[; ;ATM90E36A.h: 96: PHASE_B_CURRENT_RMS,
-[; ;ATM90E36A.h: 97: PHASE_C_CURRENT_RMS,
-[; ;ATM90E36A.h: 98: PHASE_A_VOLTAGE_THDN,
-[; ;ATM90E36A.h: 99: PHASE_B_VOLTAGE_THDN,
-[; ;ATM90E36A.h: 100: PHASE_C_VOLTAGE_THDN,
-[; ;ATM90E36A.h: 101: PHASE_A_CURRENT_THDN,
-[; ;ATM90E36A.h: 102: PHASE_B_CURRENT_THDN,
-[; ;ATM90E36A.h: 103: PHASE_C_CURRENT_THDN,
-[; ;ATM90E36A.h: 104: FREQUENCY_REG,
-[; ;ATM90E36A.h: 105: PHASE_A_MEAN_ANGLE_PHASE,
-[; ;ATM90E36A.h: 106: PHASE_B_MEAN_ANGLE_PHASE,
-[; ;ATM90E36A.h: 107: PHASE_C_MEAN_ANGLE_PHASE,
-[; ;ATM90E36A.h: 108: TEMPERATURE_REG,
-[; ;ATM90E36A.h: 109: PHASE_A_VOLTAGE_ANGLE_PHASE,
-[; ;ATM90E36A.h: 110: PHASE_B_VOLTAGE_ANGLE_PHASE,
-[; ;ATM90E36A.h: 111: PHASE_C_VOLTAGE_ANGLE_PHASE
-[; ;ATM90E36A.h: 112: } ATM_reg_t;
-[; ;ATM90E36A.h: 114: void ATM_init(void);
-[; ;ATM90E36A.h: 116: void ATM_calibration(void);
-[; ;ATM90E36A.h: 118: uint16_t ATM_registers(ATM_type_t type, ATM_reg_t reg);
-[; ;Phases.h: 15: typedef enum
-[; ;Phases.h: 16: {
-[; ;Phases.h: 17: INITIAL_LOAD,
-[; ;Phases.h: 18: GENERAL_VIEW,
-[; ;Phases.h: 19: VIEW_MENU,
-[; ;Phases.h: 20: SEND_DATA
-[; ;Phases.h: 21: }PhaseStateMenu_Type;
-[; ;Phases.h: 23: typedef struct
-[; ;Phases.h: 24: {
-[; ;Phases.h: 25: PhaseStateMenu_Type phaseState;
-[; ;Phases.h: 26: States_MenuType stateMain;
-[; ;Phases.h: 27: }PhaseMainMenu_Type;
-[; ;Phases.h: 29: typedef PhaseMainMenu_Type(*fptrPhaseMainMenu)(PhaseMainMenu_Type);
-[; ;Phases.h: 31: typedef const struct PhaseMainMenu
-[; ;Phases.h: 32: {
-[; ;Phases.h: 33: PhaseMainMenu_Type(*PhaseMainMenu)(PhaseMainMenu_Type);
-[; ;Phases.h: 34: }PhasePtrMainMenu_Type;
-[; ;Phases.h: 42: typedef enum
-[; ;Phases.h: 43: {
-[; ;Phases.h: 44: ACTIVE_ENERGY,
-[; ;Phases.h: 45: FUNDAMENTAL_ENERGY,
-[; ;Phases.h: 46: HARMONIC_ENERGY,
-[; ;Phases.h: 47: EXIT_ENERGY
-[; ;Phases.h: 48: }PhaseStateEnergy_Type;
-[; ;Phases.h: 50: typedef struct
-[; ;Phases.h: 51: {
-[; ;Phases.h: 52: PhaseStateEnergy_Type phaseState;
-[; ;Phases.h: 53: States_MenuType stateMain;
-[; ;Phases.h: 54: }PhaseEnergy_Type;
-[; ;Phases.h: 56: typedef PhaseEnergy_Type(*fptrPhaseEnergy)(PhaseEnergy_Type);
-[; ;Phases.h: 58: typedef const struct PhaseEnergy
-[; ;Phases.h: 59: {
-[; ;Phases.h: 60: PhaseEnergy_Type(*PhaseEnergy)(PhaseEnergy_Type);
-[; ;Phases.h: 61: }PhasePtrEnergy_Type;
-[; ;Phases.h: 69: typedef enum
-[; ;Phases.h: 70: {
-[; ;Phases.h: 71: TYPES_POWER1,
-[; ;Phases.h: 72: PHASES_POWER1,
-[; ;Phases.h: 73: EXIT_POWER1
-[; ;Phases.h: 74: }PhaseStatePower1_Type;
-[; ;Phases.h: 76: typedef struct
-[; ;Phases.h: 77: {
-[; ;Phases.h: 78: PhaseStatePower1_Type phaseState;
-[; ;Phases.h: 79: States_MenuType stateMain;
-[; ;Phases.h: 80: }PhasePower1_Type;
-[; ;Phases.h: 82: typedef PhasePower1_Type(*fptrPhasePower1)(PhasePower1_Type);
-[; ;Phases.h: 84: typedef const struct PhasePower1
-[; ;Phases.h: 85: {
-[; ;Phases.h: 86: PhasePower1_Type(*PhasePower1)(PhasePower1_Type);
-[; ;Phases.h: 87: }PhasePtrPower1_Type;
-[; ;Phases.h: 95: typedef enum
-[; ;Phases.h: 96: {
-[; ;Phases.h: 97: FH_POWER2,
-[; ;Phases.h: 98: PHASES_POWER2,
-[; ;Phases.h: 99: EXIT_POWER2
-[; ;Phases.h: 100: }PhaseStatePower2_Type;
-[; ;Phases.h: 102: typedef struct
-[; ;Phases.h: 103: {
-[; ;Phases.h: 104: PhaseStatePower2_Type phaseState;
-[; ;Phases.h: 105: States_MenuType stateMain;
-[; ;Phases.h: 106: }PhasePower2_Type;
-[; ;Phases.h: 108: typedef PhasePower2_Type(*fptrPhasePower2)(PhasePower2_Type);
-[; ;Phases.h: 110: typedef const struct PhasePower2
-[; ;Phases.h: 111: {
-[; ;Phases.h: 112: PhasePower2_Type(*PhasePower2)(PhasePower2_Type);
-[; ;Phases.h: 113: }PhasePtrPower2_Type;
-[; ;Phases.h: 121: typedef enum
-[; ;Phases.h: 122: {
-[; ;Phases.h: 123: PHASES_RMSVI,
-[; ;Phases.h: 124: NEUTRAL_RMSVI,
-[; ;Phases.h: 125: EXIT_RMSVI
-[; ;Phases.h: 126: }PhaseStateRmsVI_Type;
-[; ;Phases.h: 128: typedef struct
-[; ;Phases.h: 129: {
-[; ;Phases.h: 130: PhaseStateRmsVI_Type phaseState;
-[; ;Phases.h: 131: States_MenuType stateMain;
-[; ;Phases.h: 132: }PhaseRmsVI_Type;
-[; ;Phases.h: 134: typedef PhaseRmsVI_Type(*fptrPhaseRmsVI)(PhaseRmsVI_Type);
-[; ;Phases.h: 136: typedef const struct PhaseRmsVI
-[; ;Phases.h: 137: {
-[; ;Phases.h: 138: PhaseRmsVI_Type(*PhaseRmsVI)(PhaseRmsVI_Type);
-[; ;Phases.h: 139: }PhasePtrRmsVI_Type;
-[; ;Phases.h: 146: typedef enum
-[; ;Phases.h: 147: {
-[; ;Phases.h: 148: PHASES_PF,
-[; ;Phases.h: 149: EXIT_PF
-[; ;Phases.h: 150: }PhaseStatePowerFactor_Type;
-[; ;Phases.h: 152: typedef struct
-[; ;Phases.h: 153: {
-[; ;Phases.h: 154: PhaseStatePowerFactor_Type phaseState;
-[; ;Phases.h: 155: States_MenuType stateMain;
-[; ;Phases.h: 156: }PhasePowerFactor_Type;
-[; ;Phases.h: 158: typedef PhasePowerFactor_Type(*fptrPhasePowerFactor)(PhasePowerFactor_Type);
-[; ;Phases.h: 160: typedef const struct PhasePowerFactor
-[; ;Phases.h: 161: {
-[; ;Phases.h: 162: PhasePowerFactor_Type(*PhasePowerFactor)(PhasePowerFactor_Type);
-[; ;Phases.h: 163: }PhasePtrPowerFactor_Type;
-[; ;Phases.h: 170: typedef enum
-[; ;Phases.h: 171: {
-[; ;Phases.h: 172: PHASES_PA,
-[; ;Phases.h: 173: VI_PA,
-[; ;Phases.h: 174: THDN_PA,
-[; ;Phases.h: 175: EXIT_PA
-[; ;Phases.h: 176: }PhaseStatePhaseAngle_Type;
-[; ;Phases.h: 178: typedef struct
-[; ;Phases.h: 179: {
-[; ;Phases.h: 180: PhaseStatePhaseAngle_Type phaseState;
-[; ;Phases.h: 181: States_MenuType stateMain;
-[; ;Phases.h: 182: }PhasePhaseAngle_Type;
-[; ;Phases.h: 184: typedef PhasePhaseAngle_Type(*fptrPhasePhaseAngle)(PhasePhaseAngle_Type);
-[; ;Phases.h: 186: typedef const struct PhasePhaseAngle
-[; ;Phases.h: 187: {
-[; ;Phases.h: 188: PhasePhaseAngle_Type(*PhasePhaseAngle)(PhasePhaseAngle_Type);
-[; ;Phases.h: 189: }PhasePtrPhaseAngle_Type;
-[; ;Phases.h: 194: typedef enum
-[; ;Phases.h: 195: {
-[; ;Phases.h: 196: SHOW_FREQTEMP,
-[; ;Phases.h: 197: EXIT_FREQTEMP
-[; ;Phases.h: 198: }PhaseStateFreqTemp_Type;
-[; ;Phases.h: 200: typedef struct
-[; ;Phases.h: 201: {
-[; ;Phases.h: 202: PhaseStateFreqTemp_Type phaseState;
-[; ;Phases.h: 203: States_MenuType stateMain;
-[; ;Phases.h: 204: }PhaseFreqTemp_Type;
-[; ;Phases.h: 206: typedef PhaseFreqTemp_Type(*fptrPhaseFreqTemp)(PhaseFreqTemp_Type);
-[; ;Phases.h: 208: typedef const struct PhaseFreqTemp
-[; ;Phases.h: 209: {
-[; ;Phases.h: 210: PhaseFreqTemp_Type(*PhaseFreqTemp)(PhaseFreqTemp_Type);
-[; ;Phases.h: 211: }PhasePtrFreqTemp_Type;
-[; ;Phases.h: 222: PhaseMainMenu_Type initialLoad(PhaseMainMenu_Type data);
-[; ;Phases.h: 232: PhaseMainMenu_Type generalView(PhaseMainMenu_Type data);
-[; ;Phases.h: 243: PhaseMainMenu_Type viewMenu(PhaseMainMenu_Type data);
-[; ;Phases.h: 253: PhaseMainMenu_Type sendData(PhaseMainMenu_Type data);
-[; ;Phases.h: 263: PhaseEnergy_Type activeEnergy(PhaseEnergy_Type data);
-[; ;Phases.h: 273: PhaseEnergy_Type fundamentalEnergy(PhaseEnergy_Type data);
-[; ;Phases.h: 283: PhaseEnergy_Type harmonicEnergy(PhaseEnergy_Type data);
-[; ;Phases.h: 293: PhaseEnergy_Type exitEnergy(PhaseEnergy_Type data);
-[; ;Phases.h: 303: PhasePower1_Type typesPower1(PhasePower1_Type data);
-[; ;Phases.h: 313: PhasePower1_Type phPower1(PhasePower1_Type data);
-[; ;Phases.h: 324: PhasePower1_Type vectorPower1(PhasePower1_Type data);
-[; ;Phases.h: 336: PhasePower1_Type exitPower1(PhasePower1_Type data);
-[; ;Phases.h: 347: PhasePower2_Type fhPower2(PhasePower2_Type data);
-[; ;Phases.h: 358: PhasePower2_Type phPower2(PhasePower2_Type data);
-[; ;Phases.h: 369: PhasePower2_Type exitPower2(PhasePower2_Type data);
-[; ;Phases.h: 380: PhaseRmsVI_Type phRmsVI(PhaseRmsVI_Type data);
-[; ;Phases.h: 391: PhaseRmsVI_Type neutralRmsVI(PhaseRmsVI_Type data);
-[; ;Phases.h: 402: PhaseRmsVI_Type exitRmsVI(PhaseRmsVI_Type data);
-[; ;Phases.h: 413: PhasePowerFactor_Type phPowerFactor(PhasePowerFactor_Type data);
-[; ;Phases.h: 424: PhasePowerFactor_Type exitPowerFactor(PhasePowerFactor_Type data);
-[; ;Phases.h: 435: PhasePhaseAngle_Type phPhaseAngle(PhasePhaseAngle_Type data);
-[; ;Phases.h: 446: PhasePhaseAngle_Type viPhaseAngle(PhasePhaseAngle_Type data);
-[; ;Phases.h: 456: PhasePhaseAngle_Type THDNPhaseAngle(PhasePhaseAngle_Type data);
-[; ;Phases.h: 467: PhasePhaseAngle_Type exitPhaseAngle(PhasePhaseAngle_Type data);
-[; ;Phases.h: 478: PhaseFreqTemp_Type showFreqTemp(PhaseFreqTemp_Type data);
-[; ;Phases.h: 488: PhaseFreqTemp_Type exitFreqTemp(PhaseFreqTemp_Type data);
-"4 States.c
-[v _phasesMainMenu `CS366 ~T0 @X0 -> 4 `i e ]
-[i _phasesMainMenu
-:U ..
-:U ..
-"6
-&U _initialLoad
-..
-:U ..
-"7
-&U _generalView
-..
-:U ..
-"8
-&U _viewMenu
-..
-:U ..
-"9
-&U _sendData
-..
-..
-]
-[; ;States.c: 4: const PhasePtrMainMenu_Type phasesMainMenu[4] =
-[; ;States.c: 5: {
-[; ;States.c: 6: {initialLoad},
-[; ;States.c: 7: {generalView},
-[; ;States.c: 8: {viewMenu},
-[; ;States.c: 9: {sendData}
-[; ;States.c: 10: };
-"13
-[v _phasesEnergy `CS368 ~T0 @X0 -> 4 `i e ]
-[i _phasesEnergy
-:U ..
-:U ..
-"15
-&U _activeEnergy
-..
-:U ..
-"16
-&U _fundamentalEnergy
-..
-:U ..
-"17
-&U _harmonicEnergy
-..
-:U ..
-"18
-&U _exitEnergy
-..
-..
-]
-[; ;States.c: 13: const PhasePtrEnergy_Type phasesEnergy[4] =
-[; ;States.c: 14: {
-[; ;States.c: 15: {activeEnergy},
-[; ;States.c: 16: {fundamentalEnergy},
-[; ;States.c: 17: {harmonicEnergy},
-[; ;States.c: 18: {exitEnergy}
-[; ;States.c: 19: };
-"22
-[v _phasesPower1 `CS370 ~T0 @X0 -> 3 `i e ]
-[i _phasesPower1
-:U ..
-:U ..
-"24
-&U _typesPower1
-..
-:U ..
-"25
-&U _phPower1
-..
-:U ..
-"26
-&U _exitPower1
-..
-..
-]
-[; ;States.c: 22: const PhasePtrPower1_Type phasesPower1[3] =
-[; ;States.c: 23: {
-[; ;States.c: 24: {typesPower1},
-[; ;States.c: 25: {phPower1},
-[; ;States.c: 26: {exitPower1}
-[; ;States.c: 27: };
+"26 GPIO.c
+[v _GPIO_dataDirectionPIN `(v ~T0 @X0 1 ef3`E3822`uc`E3818 ]
+"28
+{
+[; ;GPIO.c: 26: void GPIO_dataDirectionPIN
+[; ;GPIO.c: 27: (GPIO_portNameType portName, uint8_t pin, GPIO_state state)
+[; ;GPIO.c: 28: {
+[e :U _GPIO_dataDirectionPIN ]
+"27
+[v _portName `E3822 ~T0 @X0 1 r1 ]
+[v _pin `uc ~T0 @X0 1 r2 ]
+[v _state `E3818 ~T0 @X0 1 r3 ]
+"28
+[f ]
+[; ;GPIO.c: 29: switch(state)
+"29
+[e $U 365  ]
+[; ;GPIO.c: 30: {
 "30
-[v _phasesPower2 `CS372 ~T0 @X0 -> 3 `i e ]
-[i _phasesPower2
-:U ..
-:U ..
+{
+[; ;GPIO.c: 31: case GPIO_INPUT:
+"31
+[e :U 366 ]
+[; ;GPIO.c: 32: switch(portName)
 "32
-&U _fhPower2
-..
-:U ..
+[e $U 368  ]
+[; ;GPIO.c: 33: {
 "33
-&U _phPower2
-..
-:U ..
+{
+[; ;GPIO.c: 34: case GPIO_A:
 "34
-&U _exitPower2
-..
-..
-]
-[; ;States.c: 30: const PhasePtrPower2_Type phasesPower2[3] =
-[; ;States.c: 31: {
-[; ;States.c: 32: {fhPower2},
-[; ;States.c: 33: {phPower2},
-[; ;States.c: 34: {exitPower2}
-[; ;States.c: 35: };
+[e :U 369 ]
+[; ;GPIO.c: 35: TRISA |= 1<<pin;
+"35
+[e =| _TRISA -> << -> 1 `i _pin `uc ]
+[; ;GPIO.c: 36: break;
+"36
+[e $U 367  ]
+[; ;GPIO.c: 37: case GPIO_B:
+"37
+[e :U 370 ]
+[; ;GPIO.c: 38: TRISB |= 1<<pin;
 "38
-[v _phasesRmsVI `CS374 ~T0 @X0 -> 3 `i e ]
-[i _phasesRmsVI
-:U ..
-:U ..
+[e =| _TRISB -> << -> 1 `i _pin `uc ]
+[; ;GPIO.c: 39: break;
+"39
+[e $U 367  ]
+[; ;GPIO.c: 40: case GPIO_C:
 "40
-&U _phRmsVI
-..
-:U ..
+[e :U 371 ]
+[; ;GPIO.c: 41: TRISC |= 1<<pin;
 "41
-&U _neutralRmsVI
-..
-:U ..
+[e =| _TRISC -> << -> 1 `i _pin `uc ]
+[; ;GPIO.c: 42: break;
 "42
-&U _exitRmsVI
-..
-..
-]
-[; ;States.c: 38: const PhasePtrRmsVI_Type phasesRmsVI[3] =
-[; ;States.c: 39: {
-[; ;States.c: 40: {phRmsVI},
-[; ;States.c: 41: {neutralRmsVI},
-[; ;States.c: 42: {exitRmsVI}
-[; ;States.c: 43: };
+[e $U 367  ]
+[; ;GPIO.c: 43: case GPIO_D:
+"43
+[e :U 372 ]
+[; ;GPIO.c: 44: TRISD |= 1<<pin;
+"44
+[e =| _TRISD -> << -> 1 `i _pin `uc ]
+[; ;GPIO.c: 45: break;
+"45
+[e $U 367  ]
+[; ;GPIO.c: 46: case GPIO_E:
 "46
-[v _phasesPowerFactor `CS376 ~T0 @X0 -> 2 `i e ]
-[i _phasesPowerFactor
-:U ..
-:U ..
+[e :U 373 ]
+[; ;GPIO.c: 47: TRISE |= 1<<pin;
+"47
+[e =| _TRISE -> << -> 1 `i _pin `uc ]
+[; ;GPIO.c: 48: break;
 "48
-&U _phPowerFactor
-..
-:U ..
+[e $U 367  ]
+[; ;GPIO.c: 49: default:
 "49
-&U _exitPowerFactor
-..
-..
-]
-[; ;States.c: 46: const PhasePtrPowerFactor_Type phasesPowerFactor[2] =
-[; ;States.c: 47: {
-[; ;States.c: 48: {phPowerFactor},
-[; ;States.c: 49: {exitPowerFactor}
-[; ;States.c: 50: };
+[e :U 374 ]
+[; ;GPIO.c: 50: break;
+"50
+[e $U 367  ]
+"51
+}
+[; ;GPIO.c: 51: }
+[e $U 367  ]
+"32
+[e :U 368 ]
+[e [\ _portName , $ . `E3822 0 369
+ , $ . `E3822 1 370
+ , $ . `E3822 2 371
+ , $ . `E3822 3 372
+ , $ . `E3822 4 373
+ 374 ]
+"51
+[e :U 367 ]
+[; ;GPIO.c: 52: break;
+"52
+[e $U 364  ]
+[; ;GPIO.c: 53: case GPIO_OUTPUT:
 "53
-[v _phasesPhaseAngle `CS378 ~T0 @X0 -> 4 `i e ]
-[i _phasesPhaseAngle
-:U ..
-:U ..
+[e :U 375 ]
+[; ;GPIO.c: 54: switch(portName)
+"54
+[e $U 377  ]
+[; ;GPIO.c: 55: {
 "55
-&U _phPhaseAngle
-..
-:U ..
+{
+[; ;GPIO.c: 56: case GPIO_A:
 "56
-&U _viPhaseAngle
-..
-:U ..
+[e :U 378 ]
+[; ;GPIO.c: 57: TRISA &= (0<<pin);
 "57
-&U _THDNPhaseAngle
-..
-:U ..
+[e =& _TRISA -> << -> 0 `i _pin `uc ]
+[; ;GPIO.c: 58: break;
 "58
-&U _exitPhaseAngle
-..
-..
-]
-[; ;States.c: 53: const PhasePtrPhaseAngle_Type phasesPhaseAngle[4] =
-[; ;States.c: 54: {
-[; ;States.c: 55: {phPhaseAngle},
-[; ;States.c: 56: {viPhaseAngle},
-[; ;States.c: 57: {THDNPhaseAngle},
-[; ;States.c: 58: {exitPhaseAngle}
-[; ;States.c: 59: };
+[e $U 376  ]
+[; ;GPIO.c: 59: case GPIO_B:
+"59
+[e :U 379 ]
+[; ;GPIO.c: 60: TRISB &= (0<<pin);
+"60
+[e =& _TRISB -> << -> 0 `i _pin `uc ]
+[; ;GPIO.c: 61: break;
+"61
+[e $U 376  ]
+[; ;GPIO.c: 62: case GPIO_C:
 "62
-[v _phasesFreqTemp `CS380 ~T0 @X0 -> 2 `i e ]
-[i _phasesFreqTemp
-:U ..
-:U ..
+[e :U 380 ]
+[; ;GPIO.c: 63: TRISC &= (0<<pin);
+"63
+[e =& _TRISC -> << -> 0 `i _pin `uc ]
+[; ;GPIO.c: 64: break;
 "64
-&U _showFreqTemp
-..
-:U ..
+[e $U 376  ]
+[; ;GPIO.c: 65: case GPIO_D:
 "65
-&U _exitFreqTemp
-..
-..
-]
-[; ;States.c: 62: const PhasePtrFreqTemp_Type phasesFreqTemp[2] =
-[; ;States.c: 63: {
-[; ;States.c: 64: {showFreqTemp},
-[; ;States.c: 65: {exitFreqTemp}
-[; ;States.c: 66: };
+[e :U 381 ]
+[; ;GPIO.c: 66: TRISD &= (0<<pin);
+"66
+[e =& _TRISD -> << -> 0 `i _pin `uc ]
+[; ;GPIO.c: 67: break;
+"67
+[e $U 376  ]
+[; ;GPIO.c: 68: case GPIO_E:
 "68
-[v _stateMainMenu `(E3904 ~T0 @X0 1 ef ]
+[e :U 382 ]
+[; ;GPIO.c: 69: TRISE &= (0<<pin);
 "69
-{
-[; ;States.c: 68: States_MenuType stateMainMenu(void)
-[; ;States.c: 69: {
-[e :U _stateMainMenu ]
-[f ]
+[e =& _TRISE -> << -> 0 `i _pin `uc ]
+[; ;GPIO.c: 70: break;
+"70
+[e $U 376  ]
+[; ;GPIO.c: 71: default:
 "71
-[v F4272 `E4049 ~T0 @X0 1 s phase ]
-[i F4272
-. `E4049 0
-]
+[e :U 383 ]
+[; ;GPIO.c: 72: break;
 "72
-[v F4273 `S365 ~T0 @X0 1 s phaseMain ]
-[v F4275 `(S365 ~T0 @X0 0 tf1`S365 ]
+[e $U 376  ]
 "73
-[v _mainMenuFunctions `*F4275 ~T0 @X0 1 a ]
-[; ;States.c: 71: static PhaseStateMenu_Type phase = INITIAL_LOAD;
-[; ;States.c: 72: static PhaseMainMenu_Type phaseMain;
-[; ;States.c: 73: PhaseMainMenu_Type(*mainMenuFunctions)(PhaseMainMenu_Type);
-[; ;States.c: 74: phaseMain.stateMain = MAIN_MENU;
+}
+[; ;GPIO.c: 73: }
+[e $U 376  ]
+"54
+[e :U 377 ]
+[e [\ _portName , $ . `E3822 0 378
+ , $ . `E3822 1 379
+ , $ . `E3822 2 380
+ , $ . `E3822 3 381
+ , $ . `E3822 4 382
+ 383 ]
+"73
+[e :U 376 ]
+[; ;GPIO.c: 74: break;
 "74
-[e = . F4273 1 . `E3904 0 ]
-[; ;States.c: 77: mainMenuFunctions = phasesMainMenu[phase].PhaseMainMenu;
+[e $U 364  ]
+[; ;GPIO.c: 75: default:
+"75
+[e :U 384 ]
+[; ;GPIO.c: 76: break;
+"76
+[e $U 364  ]
 "77
-[e = _mainMenuFunctions -> . *U + &U _phasesMainMenu * -> F4272 `ux -> -> # *U &U _phasesMainMenu `ui `ux 0 `*F4275 ]
-[; ;States.c: 78: phaseMain = mainMenuFunctions(phaseMain);
+}
+[; ;GPIO.c: 77: }
+[e $U 364  ]
+"29
+[e :U 365 ]
+[e [\ _state , $ . `E3818 0 366
+ , $ . `E3818 1 375
+ 384 ]
+"77
+[e :U 364 ]
+[; ;GPIO.c: 78: }
 "78
-[e = F4273 ( *U _mainMenuFunctions (1 F4273 ]
-[; ;States.c: 81: phase = phaseMain.phaseState;
-"81
-[e = F4272 . F4273 0 ]
-[; ;States.c: 82: return (phaseMain.stateMain);
+[e :UE 363 ]
+}
+"80
+[v _GPIO_setPIN `(v ~T0 @X0 1 ef2`E3822`uc ]
 "82
-[e ) . F4273 1 ]
-[e $UE 381  ]
-[; ;States.c: 83: }
+{
+[; ;GPIO.c: 80: void GPIO_setPIN
+[; ;GPIO.c: 81: (GPIO_portNameType portName, uint8_t pin)
+[; ;GPIO.c: 82: {
+[e :U _GPIO_setPIN ]
+"81
+[v _portName `E3822 ~T0 @X0 1 r1 ]
+[v _pin `uc ~T0 @X0 1 r2 ]
+"82
+[f ]
+[; ;GPIO.c: 83: switch(portName)
 "83
-[e :UE 381 ]
-}
+[e $U 387  ]
+[; ;GPIO.c: 84: {
+"84
+{
+[; ;GPIO.c: 85: case GPIO_A:
 "85
-[v _stateEnergy `(E3904 ~T0 @X0 1 ef ]
+[e :U 388 ]
+[; ;GPIO.c: 86: PORTA |= (1<<pin);
 "86
-{
-[; ;States.c: 85: States_MenuType stateEnergy(void)
-[; ;States.c: 86: {
-[e :U _stateEnergy ]
-[f ]
+[e =| _PORTA -> << -> 1 `i _pin `uc ]
+[; ;GPIO.c: 87: break;
+"87
+[e $U 386  ]
+[; ;GPIO.c: 88: case GPIO_B:
 "88
-[v F4279 `E4067 ~T0 @X0 1 s phase ]
-[i F4279
-. `E4067 0
-]
+[e :U 389 ]
+[; ;GPIO.c: 89: PORTB |= (1<<pin);
 "89
-[v F4280 `S367 ~T0 @X0 1 s phaseEnergy ]
-[v F4282 `(S367 ~T0 @X0 0 tf1`S367 ]
+[e =| _PORTB -> << -> 1 `i _pin `uc ]
+[; ;GPIO.c: 90: break;
 "90
-[v _energyFunctions `*F4282 ~T0 @X0 1 a ]
-[; ;States.c: 88: static PhaseStateEnergy_Type phase = ACTIVE_ENERGY;
-[; ;States.c: 89: static PhaseEnergy_Type phaseEnergy;
-[; ;States.c: 90: PhaseEnergy_Type(*energyFunctions)(PhaseEnergy_Type);
-[; ;States.c: 91: phaseEnergy.stateMain = ENERGY;
+[e $U 386  ]
+[; ;GPIO.c: 91: case GPIO_C:
 "91
-[e = . F4280 1 . `E3904 1 ]
-[; ;States.c: 94: energyFunctions = phasesEnergy[phase].PhaseEnergy;
+[e :U 390 ]
+[; ;GPIO.c: 92: PORTC |= (1<<pin);
+"92
+[e =| _PORTC -> << -> 1 `i _pin `uc ]
+[; ;GPIO.c: 93: break;
+"93
+[e $U 386  ]
+[; ;GPIO.c: 94: case GPIO_D:
 "94
-[e = _energyFunctions -> . *U + &U _phasesEnergy * -> F4279 `ux -> -> # *U &U _phasesEnergy `ui `ux 0 `*F4282 ]
-[; ;States.c: 95: phaseEnergy = energyFunctions(phaseEnergy);
+[e :U 391 ]
+[; ;GPIO.c: 95: PORTD |= (1<<pin);
 "95
-[e = F4280 ( *U _energyFunctions (1 F4280 ]
-[; ;States.c: 98: phase = phaseEnergy.phaseState;
+[e =| _PORTD -> << -> 1 `i _pin `uc ]
+[; ;GPIO.c: 96: break;
+"96
+[e $U 386  ]
+[; ;GPIO.c: 97: case GPIO_E:
+"97
+[e :U 392 ]
+[; ;GPIO.c: 98: PORTE |= (1<<pin);
 "98
-[e = F4279 . F4280 0 ]
-[; ;States.c: 99: return (phaseEnergy.stateMain);
+[e =| _PORTE -> << -> 1 `i _pin `uc ]
+[; ;GPIO.c: 99: break;
 "99
-[e ) . F4280 1 ]
-[e $UE 382  ]
-[; ;States.c: 100: }
+[e $U 386  ]
+[; ;GPIO.c: 100: default:
 "100
-[e :UE 382 ]
-}
+[e :U 393 ]
+[; ;GPIO.c: 101: break;
+"101
+[e $U 386  ]
 "102
-[v _statePower1 `(E3904 ~T0 @X0 1 ef ]
+}
+[; ;GPIO.c: 102: }
+[e $U 386  ]
+"83
+[e :U 387 ]
+[e [\ _portName , $ . `E3822 0 388
+ , $ . `E3822 1 389
+ , $ . `E3822 2 390
+ , $ . `E3822 3 391
+ , $ . `E3822 4 392
+ 393 ]
+"102
+[e :U 386 ]
+[; ;GPIO.c: 103: }
 "103
-{
-[; ;States.c: 102: States_MenuType statePower1(void)
-[; ;States.c: 103: {
-[e :U _statePower1 ]
-[f ]
-"105
-[v F4286 `E4085 ~T0 @X0 1 s phase ]
-[i F4286
-. `E4085 0
-]
-"106
-[v F4287 `S369 ~T0 @X0 1 s phasePower1 ]
-[v F4289 `(S369 ~T0 @X0 0 tf1`S369 ]
-"107
-[v _power1Functions `*F4289 ~T0 @X0 1 a ]
-[; ;States.c: 105: static PhaseStatePower1_Type phase = TYPES_POWER1;
-[; ;States.c: 106: static PhasePower1_Type phasePower1;
-[; ;States.c: 107: PhasePower1_Type(*power1Functions)(PhasePower1_Type);
-[; ;States.c: 108: phasePower1.stateMain = POWER_1;
-"108
-[e = . F4287 1 . `E3904 2 ]
-[; ;States.c: 111: power1Functions = phasesPower1[phase].PhasePower1;
-"111
-[e = _power1Functions -> . *U + &U _phasesPower1 * -> F4286 `ux -> -> # *U &U _phasesPower1 `ui `ux 0 `*F4289 ]
-[; ;States.c: 112: phasePower1 = power1Functions(phasePower1);
-"112
-[e = F4287 ( *U _power1Functions (1 F4287 ]
-[; ;States.c: 115: phase = phasePower1.phaseState;
-"115
-[e = F4286 . F4287 0 ]
-[; ;States.c: 116: return (phasePower1.stateMain);
-"116
-[e ) . F4287 1 ]
-[e $UE 383  ]
-[; ;States.c: 117: }
-"117
-[e :UE 383 ]
-}
-"119
-[v _statePower2 `(E3904 ~T0 @X0 1 ef ]
-"120
-{
-[; ;States.c: 119: States_MenuType statePower2(void)
-[; ;States.c: 120: {
-[e :U _statePower2 ]
-[f ]
-"122
-[v F4293 `E4102 ~T0 @X0 1 s phase ]
-[i F4293
-. `E4102 0
-]
-"123
-[v F4294 `S371 ~T0 @X0 1 s phasePower2 ]
-[v F4296 `(S371 ~T0 @X0 0 tf1`S371 ]
-"124
-[v _power2Functions `*F4296 ~T0 @X0 1 a ]
-[; ;States.c: 122: static PhaseStatePower2_Type phase = FH_POWER2;
-[; ;States.c: 123: static PhasePower2_Type phasePower2;
-[; ;States.c: 124: PhasePower2_Type(*power2Functions)(PhasePower2_Type);
-[; ;States.c: 125: phasePower2.stateMain = POWER_2;
-"125
-[e = . F4294 1 . `E3904 3 ]
-[; ;States.c: 128: power2Functions = phasesPower2[phase].PhasePower2;
-"128
-[e = _power2Functions -> . *U + &U _phasesPower2 * -> F4293 `ux -> -> # *U &U _phasesPower2 `ui `ux 0 `*F4296 ]
-[; ;States.c: 129: phasePower2 = power2Functions(phasePower2);
-"129
-[e = F4294 ( *U _power2Functions (1 F4294 ]
-[; ;States.c: 132: phase = phasePower2.phaseState;
-"132
-[e = F4293 . F4294 0 ]
-[; ;States.c: 133: return (phasePower2.stateMain);
-"133
-[e ) . F4294 1 ]
-[e $UE 384  ]
-[; ;States.c: 134: }
-"134
-[e :UE 384 ]
-}
-"136
-[v _stateRmsVI `(E3904 ~T0 @X0 1 ef ]
-"137
-{
-[; ;States.c: 136: States_MenuType stateRmsVI(void)
-[; ;States.c: 137: {
-[e :U _stateRmsVI ]
-[f ]
-"139
-[v F4300 `E4119 ~T0 @X0 1 s phase ]
-[i F4300
-. `E4119 0
-]
-"140
-[v F4301 `S373 ~T0 @X0 1 s phaseRmsVI ]
-[v F4303 `(S373 ~T0 @X0 0 tf1`S373 ]
-"141
-[v _rmsVIFunctions `*F4303 ~T0 @X0 1 a ]
-[; ;States.c: 139: static PhaseStateRmsVI_Type phase = PHASES_RMSVI;
-[; ;States.c: 140: static PhaseRmsVI_Type phaseRmsVI;
-[; ;States.c: 141: PhaseRmsVI_Type(*rmsVIFunctions)(PhaseRmsVI_Type);
-[; ;States.c: 142: phaseRmsVI.stateMain = RMS_VI;
-"142
-[e = . F4301 1 . `E3904 4 ]
-[; ;States.c: 145: rmsVIFunctions = phasesRmsVI[phase].PhaseRmsVI;
-"145
-[e = _rmsVIFunctions -> . *U + &U _phasesRmsVI * -> F4300 `ux -> -> # *U &U _phasesRmsVI `ui `ux 0 `*F4303 ]
-[; ;States.c: 146: phaseRmsVI = rmsVIFunctions(phaseRmsVI);
-"146
-[e = F4301 ( *U _rmsVIFunctions (1 F4301 ]
-[; ;States.c: 149: phase = phaseRmsVI.phaseState;
-"149
-[e = F4300 . F4301 0 ]
-[; ;States.c: 150: return (phaseRmsVI.stateMain);
-"150
-[e ) . F4301 1 ]
-[e $UE 385  ]
-[; ;States.c: 151: }
-"151
 [e :UE 385 ]
 }
-"153
-[v _statePowerFactor `(E3904 ~T0 @X0 1 ef ]
-"154
+"105
+[v _GPIO_clearPIN `(v ~T0 @X0 1 ef2`E3822`uc ]
+"107
 {
-[; ;States.c: 153: States_MenuType statePowerFactor(void)
-[; ;States.c: 154: {
-[e :U _statePowerFactor ]
+[; ;GPIO.c: 105: void GPIO_clearPIN
+[; ;GPIO.c: 106: (GPIO_portNameType portName, uint8_t pin)
+[; ;GPIO.c: 107: {
+[e :U _GPIO_clearPIN ]
+"106
+[v _portName `E3822 ~T0 @X0 1 r1 ]
+[v _pin `uc ~T0 @X0 1 r2 ]
+"107
 [f ]
-"156
-[v F4307 `E4136 ~T0 @X0 1 s phase ]
-[i F4307
-. `E4136 0
-]
-"157
-[v F4308 `S375 ~T0 @X0 1 s phasePowerFactor ]
-[v F4310 `(S375 ~T0 @X0 0 tf1`S375 ]
+[; ;GPIO.c: 108: switch(portName)
+"108
+[e $U 396  ]
+[; ;GPIO.c: 109: {
+"109
+{
+[; ;GPIO.c: 110: case GPIO_A:
+"110
+[e :U 397 ]
+[; ;GPIO.c: 111: PORTA &= ~(1<<pin);
+"111
+[e =& _PORTA -> ~ << -> 1 `i _pin `uc ]
+[; ;GPIO.c: 112: break;
+"112
+[e $U 395  ]
+[; ;GPIO.c: 113: case GPIO_B:
+"113
+[e :U 398 ]
+[; ;GPIO.c: 114: PORTB &= ~(1<<pin);
+"114
+[e =& _PORTB -> ~ << -> 1 `i _pin `uc ]
+[; ;GPIO.c: 115: break;
+"115
+[e $U 395  ]
+[; ;GPIO.c: 116: case GPIO_C:
+"116
+[e :U 399 ]
+[; ;GPIO.c: 117: PORTC &= ~(1<<pin);
+"117
+[e =& _PORTC -> ~ << -> 1 `i _pin `uc ]
+[; ;GPIO.c: 118: break;
+"118
+[e $U 395  ]
+[; ;GPIO.c: 119: case GPIO_D:
+"119
+[e :U 400 ]
+[; ;GPIO.c: 120: PORTD &= ~(1<<pin);
+"120
+[e =& _PORTD -> ~ << -> 1 `i _pin `uc ]
+[; ;GPIO.c: 121: break;
+"121
+[e $U 395  ]
+[; ;GPIO.c: 122: case GPIO_E:
+"122
+[e :U 401 ]
+[; ;GPIO.c: 123: PORTE &= ~(1<<pin);
+"123
+[e =& _PORTE -> ~ << -> 1 `i _pin `uc ]
+[; ;GPIO.c: 124: break;
+"124
+[e $U 395  ]
+[; ;GPIO.c: 125: default:
+"125
+[e :U 402 ]
+[; ;GPIO.c: 126: break;
+"126
+[e $U 395  ]
+"127
+}
+[; ;GPIO.c: 127: }
+[e $U 395  ]
+"108
+[e :U 396 ]
+[e [\ _portName , $ . `E3822 0 397
+ , $ . `E3822 1 398
+ , $ . `E3822 2 399
+ , $ . `E3822 3 400
+ , $ . `E3822 4 401
+ 402 ]
+"127
+[e :U 395 ]
+[; ;GPIO.c: 128: }
+"128
+[e :UE 394 ]
+}
+"130
+[v _delay `(v ~T0 @X0 1 ef1`ul ]
+"131
+{
+[; ;GPIO.c: 130: void delay(uint32_t delay)
+[; ;GPIO.c: 131: {
+[e :U _delay ]
+[v _delay `ul ~T0 @X0 1 r1 ]
+[f ]
+"132
+[v _counter `Vul ~T0 @X0 1 a ]
+[; ;GPIO.c: 132: volatile uint32_t counter;
+[; ;GPIO.c: 134: for(counter = delay; counter > 0; counter--)
+"134
+{
+[e = _counter _delay ]
+[e $ > _counter -> -> -> 0 `i `l `ul 404  ]
+[e $U 405  ]
+"135
+[e :U 404 ]
+[; ;GPIO.c: 135: {}
+{
+}
+"134
+[e -- _counter -> -> -> 1 `i `l `ul ]
+[e $ > _counter -> -> -> 0 `i `l `ul 404  ]
+[e :U 405 ]
+"135
+}
+[; ;GPIO.c: 136: }
+"136
+[e :UE 403 ]
+}
+"138
+[v _ButtonInt_config `(v ~T0 @X0 1 ef ]
+"139
+{
+[; ;GPIO.c: 138: void ButtonInt_config()
+[; ;GPIO.c: 139: {
+[e :U _ButtonInt_config ]
+[f ]
+[; ;GPIO.c: 141: GPIO_dataDirectionPIN(GPIO_C, 0, GPIO_INPUT);
+"141
+[e ( _GPIO_dataDirectionPIN (3 , , . `E3822 2 -> -> 0 `i `uc . `E3818 0 ]
+[; ;GPIO.c: 143: GPIO_dataDirectionPIN(GPIO_C, 1, GPIO_INPUT);
+"143
+[e ( _GPIO_dataDirectionPIN (3 , , . `E3822 2 -> -> 1 `i `uc . `E3818 0 ]
+[; ;GPIO.c: 145: GPIO_dataDirectionPIN(GPIO_C, 2, GPIO_INPUT);
+"145
+[e ( _GPIO_dataDirectionPIN (3 , , . `E3822 2 -> -> 2 `i `uc . `E3818 0 ]
+[; ;GPIO.c: 146: }
+"146
+[e :UE 407 ]
+}
+"150
+[v _UART_init `(v ~T0 @X0 1 ef ]
+"151
+{
+[; ;GPIO.c: 150: void UART_init(void)
+[; ;GPIO.c: 151: {
+[e :U _UART_init ]
+[f ]
+[; ;GPIO.c: 152: GPIO_dataDirectionPIN(GPIO_C, 6, GPIO_OUTPUT);
+"152
+[e ( _GPIO_dataDirectionPIN (3 , , . `E3822 2 -> -> 6 `i `uc . `E3818 1 ]
+[; ;GPIO.c: 155: SPBRG = (31);
+"155
+[e = _SPBRG -> -> 31 `i `uc ]
+[; ;GPIO.c: 158: TXSTAbits.SYNC = 0;
 "158
-[v _powerFactorFunctions `*F4310 ~T0 @X0 1 a ]
-[; ;States.c: 156: static PhaseStatePowerFactor_Type phase = PHASES_PF;
-[; ;States.c: 157: static PhasePowerFactor_Type phasePowerFactor;
-[; ;States.c: 158: PhasePowerFactor_Type(*powerFactorFunctions)(PhasePowerFactor_Type);
-[; ;States.c: 159: phasePowerFactor.stateMain = POWER_FACTOR;
-"159
-[e = . F4308 1 . `E3904 5 ]
-[; ;States.c: 162: powerFactorFunctions = phasesPowerFactor[phase].PhasePowerFactor;
+[e = . . _TXSTAbits 0 4 -> -> 0 `i `uc ]
+[; ;GPIO.c: 160: TXSTAbits.TX9 = 0;
+"160
+[e = . . _TXSTAbits 0 6 -> -> 0 `i `uc ]
+[; ;GPIO.c: 162: TXSTAbits.TXEN = 1;
 "162
-[e = _powerFactorFunctions -> . *U + &U _phasesPowerFactor * -> F4307 `ux -> -> # *U &U _phasesPowerFactor `ui `ux 0 `*F4310 ]
-[; ;States.c: 163: phasePowerFactor = powerFactorFunctions(phasePowerFactor);
-"163
-[e = F4308 ( *U _powerFactorFunctions (1 F4308 ]
-[; ;States.c: 166: phase = phasePowerFactor.phaseState;
-"166
-[e = F4307 . F4308 0 ]
-[; ;States.c: 167: return (phasePowerFactor.stateMain);
-"167
-[e ) . F4308 1 ]
-[e $UE 386  ]
-[; ;States.c: 168: }
-"168
-[e :UE 386 ]
-}
-"170
-[v _statePhaseAngle `(E3904 ~T0 @X0 1 ef ]
-"171
-{
-[; ;States.c: 170: States_MenuType statePhaseAngle(void)
-[; ;States.c: 171: {
-[e :U _statePhaseAngle ]
-[f ]
+[e = . . _TXSTAbits 0 5 -> -> 1 `i `uc ]
+[; ;GPIO.c: 169: RCSTAbits.SPEN = 1;
+"169
+[e = . . _RCSTAbits 0 7 -> -> 1 `i `uc ]
+[; ;GPIO.c: 173: BAUDCONbits.BRG16 = 0;
 "173
-[v F4314 `E4152 ~T0 @X0 1 s phase ]
-[i F4314
-. `E4152 0
-]
-"174
-[v F4315 `S377 ~T0 @X0 1 s phasePhaseAngle ]
-[v F4317 `(S377 ~T0 @X0 0 tf1`S377 ]
+[e = . . _BAUDCONbits 0 3 -> -> 0 `i `uc ]
+[; ;GPIO.c: 175: TXSTAbits.BRGH = 0;
 "175
-[v _phaseAngleFunctions `*F4317 ~T0 @X0 1 a ]
-[; ;States.c: 173: static PhaseStatePhaseAngle_Type phase = PHASES_PA;
-[; ;States.c: 174: static PhasePhaseAngle_Type phasePhaseAngle;
-[; ;States.c: 175: PhasePhaseAngle_Type(*phaseAngleFunctions)(PhasePhaseAngle_Type);
-[; ;States.c: 176: phasePhaseAngle.stateMain = PHASE_ANGLE;
+[e = . . _TXSTAbits 0 2 -> -> 0 `i `uc ]
+[; ;GPIO.c: 176: }
 "176
-[e = . F4315 1 . `E3904 6 ]
-[; ;States.c: 179: phaseAngleFunctions = phasesPhaseAngle[phase].PhasePhaseAngle;
-"179
-[e = _phaseAngleFunctions -> . *U + &U _phasesPhaseAngle * -> F4314 `ux -> -> # *U &U _phasesPhaseAngle `ui `ux 0 `*F4317 ]
-[; ;States.c: 180: phasePhaseAngle = phaseAngleFunctions(phasePhaseAngle);
-"180
-[e = F4315 ( *U _phaseAngleFunctions (1 F4315 ]
-[; ;States.c: 183: phase = phasePhaseAngle.phaseState;
-"183
-[e = F4314 . F4315 0 ]
-[; ;States.c: 184: return (phasePhaseAngle.stateMain);
-"184
-[e ) . F4315 1 ]
-[e $UE 387  ]
-[; ;States.c: 185: }
-"185
-[e :UE 387 ]
+[e :UE 408 ]
 }
-"187
-[v _stateFreqTemp `(E3904 ~T0 @X0 1 ef ]
+"178
+[v _UART_putChar `(v ~T0 @X0 1 ef1`uc ]
+"179
+{
+[; ;GPIO.c: 178: void UART_putChar(uint8_t character)
+[; ;GPIO.c: 179: {
+[e :U _UART_putChar ]
+"178
+[v _character `uc ~T0 @X0 1 r1 ]
+"179
+[f ]
+[; ;GPIO.c: 180: while(!TXSTAbits.TRMT);
+"180
+[e $U 410  ]
+[e :U 411 ]
+[e :U 410 ]
+[e $ ! != -> . . _TXSTAbits 0 1 `i -> -> -> 0 `i `Vuc `i 411  ]
+[e :U 412 ]
+[; ;GPIO.c: 181: TXREG = character;
+"181
+[e = _TXREG _character ]
+[; ;GPIO.c: 182: }
+"182
+[e :UE 409 ]
+}
+"184
+[v _UART_putString `(v ~T0 @X0 1 ef1`*c ]
+"185
+{
+[; ;GPIO.c: 184: void UART_putString(int8_t* string)
+[; ;GPIO.c: 185: {
+[e :U _UART_putString ]
+"184
+[v _string `*c ~T0 @X0 1 r1 ]
+"185
+[f ]
+"186
+[v _counter `uc ~T0 @X0 1 a ]
+[; ;GPIO.c: 186: uint8_t counter;
+[; ;GPIO.c: 188: for(counter = 0; string[counter] != '\0'; counter++)
 "188
 {
-[; ;States.c: 187: States_MenuType stateFreqTemp(void)
-[; ;States.c: 188: {
-[e :U _stateFreqTemp ]
-[f ]
+[e = _counter -> -> 0 `i `uc ]
+[e $U 417  ]
+"189
+[e :U 414 ]
+[; ;GPIO.c: 189: {
+{
+[; ;GPIO.c: 190: UART_putChar(string[counter]);
 "190
-[v F4321 `E4170 ~T0 @X0 1 s phase ]
-[i F4321
-. `E4170 0
-]
+[e ( _UART_putChar (1 -> *U + _string * -> _counter `ux -> -> # *U _string `ui `ux `uc ]
+[; ;GPIO.c: 191: delay((1500));
 "191
-[v F4322 `S379 ~T0 @X0 1 s phaseFreqTemp ]
-[v F4324 `(S379 ~T0 @X0 0 tf1`S379 ]
+[e ( _delay (1 -> -> -> 1500 `i `l `ul ]
 "192
-[v _freqTempFunctions `*F4324 ~T0 @X0 1 a ]
-[; ;States.c: 190: static PhaseStateFreqTemp_Type phase = SHOW_FREQTEMP;
-[; ;States.c: 191: static PhaseFreqTemp_Type phaseFreqTemp;
-[; ;States.c: 192: PhaseFreqTemp_Type(*freqTempFunctions)(PhaseFreqTemp_Type);
-[; ;States.c: 193: phaseFreqTemp.stateMain = FREQTEMP;
+}
+"188
+[e ++ _counter -> -> 1 `i `uc ]
+[e :U 417 ]
+[e $ != -> -> *U + _string * -> _counter `ux -> -> # *U _string `ui `ux `i `ui -> 0 `ui 414  ]
+[e :U 415 ]
+"192
+}
+[; ;GPIO.c: 192: }
+[; ;GPIO.c: 193: }
 "193
-[e = . F4322 1 . `E3904 7 ]
-[; ;States.c: 196: freqTempFunctions = phasesFreqTemp[phase].PhaseFreqTemp;
+[e :UE 413 ]
+}
+"195
+[v _expBASE10 `(ul ~T0 @X0 1 ef1`uc ]
 "196
-[e = _freqTempFunctions -> . *U + &U _phasesFreqTemp * -> F4321 `ux -> -> # *U &U _phasesFreqTemp `ui `ux 0 `*F4324 ]
-[; ;States.c: 197: phaseFreqTemp = freqTempFunctions(phaseFreqTemp);
-"197
-[e = F4322 ( *U _freqTempFunctions (1 F4322 ]
-[; ;States.c: 200: phase = phaseFreqTemp.phaseState;
+{
+[; ;GPIO.c: 195: uint32_t expBASE10(uint8_t limit)
+[; ;GPIO.c: 196: {
+[e :U _expBASE10 ]
+"195
+[v _limit `uc ~T0 @X0 1 r1 ]
+"196
+[f ]
+"198
+[v F3892 `ul ~T0 @X0 1 s value ]
+[; ;GPIO.c: 198: static uint32_t value;
+[; ;GPIO.c: 200: if(0 == limit)
 "200
-[e = F4321 . F4322 0 ]
-[; ;States.c: 201: return (phaseFreqTemp.stateMain);
+[e $ ! == -> 0 `i -> _limit `i 419  ]
+[; ;GPIO.c: 201: {
 "201
-[e ) . F4322 1 ]
-[e $UE 388  ]
-[; ;States.c: 202: }
+{
+[; ;GPIO.c: 202: value = 1;
 "202
-[e :UE 388 ]
+[e = F3892 -> -> -> 1 `i `l `ul ]
+"203
+}
+[e :U 419 ]
+[; ;GPIO.c: 203: }
+[; ;GPIO.c: 204: if(1 == limit)
+"204
+[e $ ! == -> 1 `i -> _limit `i 420  ]
+[; ;GPIO.c: 205: {
+"205
+{
+[; ;GPIO.c: 206: value = 10;
+"206
+[e = F3892 -> -> -> 10 `i `l `ul ]
+"207
+}
+[e :U 420 ]
+[; ;GPIO.c: 207: }
+[; ;GPIO.c: 208: if(limit > 1)
+"208
+[e $ ! > -> _limit `i -> 1 `i 421  ]
+[; ;GPIO.c: 209: {
+"209
+{
+[; ;GPIO.c: 210: value *= 10;
+"210
+[e =* F3892 -> -> -> 10 `i `l `ul ]
+"211
+}
+[e :U 421 ]
+[; ;GPIO.c: 211: }
+[; ;GPIO.c: 213: return value;
+"213
+[e ) F3892 ]
+[e $UE 418  ]
+[; ;GPIO.c: 214: }
+"214
+[e :UE 418 ]
+}
+"215
+[v _Convert_numberASCIItoDATA `(ul ~T0 @X0 1 ef1`*uc ]
+"216
+{
+[; ;GPIO.c: 215: uint32_t Convert_numberASCIItoDATA(uint8_t *string)
+[; ;GPIO.c: 216: {
+[e :U _Convert_numberASCIItoDATA ]
+"215
+[v _string `*uc ~T0 @X0 1 r1 ]
+"216
+[f ]
+"217
+[v _adjustASCII `Cul ~T0 @X0 1 a ]
+[; ;GPIO.c: 217: const uint32_t adjustASCII = 48;
+[e = _adjustASCII -> -> -> 48 `i `l `ul ]
+"218
+[v _CR `Cul ~T0 @X0 1 a ]
+[; ;GPIO.c: 218: const uint32_t CR = 13;
+[e = _CR -> -> -> 13 `i `l `ul ]
+"219
+[v _counter1 `ul ~T0 @X0 1 a ]
+[; ;GPIO.c: 219: uint32_t counter1 = 0;
+[e = _counter1 -> -> -> 0 `i `l `ul ]
+"220
+[v _counter2 `ul ~T0 @X0 1 a ]
+[; ;GPIO.c: 220: uint32_t counter2 = 0;
+[e = _counter2 -> -> -> 0 `i `l `ul ]
+"221
+[v _counter3 `ul ~T0 @X0 1 a ]
+[; ;GPIO.c: 221: uint32_t counter3 = 0;
+[e = _counter3 -> -> -> 0 `i `l `ul ]
+"222
+[v _data `ul ~T0 @X0 1 a ]
+"223
+[v _tmpData1 `ul ~T0 @X0 1 a ]
+[; ;GPIO.c: 222: uint32_t data;
+[; ;GPIO.c: 223: uint32_t tmpData1 = 0;
+[e = _tmpData1 -> -> -> 0 `i `l `ul ]
+"224
+[v _tmpData2 `ul ~T0 @X0 1 a ]
+[; ;GPIO.c: 224: uint32_t tmpData2 = 0;
+[e = _tmpData2 -> -> -> 0 `i `l `ul ]
+"225
+[v _expValue `ul ~T0 @X0 1 a ]
+[; ;GPIO.c: 225: uint32_t expValue;
+[; ;GPIO.c: 228: while(string[counter1] != CR){
+"228
+[e $U 423  ]
+[e :U 424 ]
+{
+[; ;GPIO.c: 229: counter1++;
+"229
+[e ++ _counter1 -> -> -> 1 `i `l `ul ]
+"230
+}
+[e :U 423 ]
+"228
+[e $ != -> *U + _string * -> _counter1 `ux -> -> # *U _string `ui `ux `ul _CR 424  ]
+[e :U 425 ]
+[; ;GPIO.c: 230: }
+[; ;GPIO.c: 233: for(counter2 = counter1; counter2 != 0; counter2--)
+"233
+{
+[e = _counter2 _counter1 ]
+[e $ != _counter2 -> -> -> 0 `i `l `ul 426  ]
+[e $U 427  ]
+"234
+[e :U 426 ]
+[; ;GPIO.c: 234: {
+{
+[; ;GPIO.c: 236: expValue = expBASE10(counter3);
+"236
+[e = _expValue ( _expBASE10 (1 -> _counter3 `uc ]
+[; ;GPIO.c: 239: if(counter3 == 0)
+"239
+[e $ ! == _counter3 -> -> -> 0 `i `l `ul 429  ]
+[; ;GPIO.c: 240: {
+"240
+{
+[; ;GPIO.c: 241: tmpData2 = string[counter2 - 1];
+"241
+[e = _tmpData2 -> *U + _string * -> - _counter2 -> -> -> 1 `i `l `ul `ux -> -> # *U _string `ui `ux `ul ]
+[; ;GPIO.c: 242: tmpData2 -= adjustASCII;
+"242
+[e =- _tmpData2 _adjustASCII ]
+[; ;GPIO.c: 243: tmpData1 += tmpData2;
+"243
+[e =+ _tmpData1 _tmpData2 ]
+"244
+}
+[e :U 429 ]
+[; ;GPIO.c: 244: }
+[; ;GPIO.c: 246: if(counter3 > 0)
+"246
+[e $ ! > _counter3 -> -> -> 0 `i `l `ul 430  ]
+[; ;GPIO.c: 247: {
+"247
+{
+[; ;GPIO.c: 248: tmpData2 = string[counter2 - 1];
+"248
+[e = _tmpData2 -> *U + _string * -> - _counter2 -> -> -> 1 `i `l `ul `ux -> -> # *U _string `ui `ux `ul ]
+[; ;GPIO.c: 249: tmpData2 -= adjustASCII;
+"249
+[e =- _tmpData2 _adjustASCII ]
+[; ;GPIO.c: 250: tmpData2 *= expValue;
+"250
+[e =* _tmpData2 _expValue ]
+[; ;GPIO.c: 251: tmpData1 += tmpData2;
+"251
+[e =+ _tmpData1 _tmpData2 ]
+"252
+}
+[e :U 430 ]
+[; ;GPIO.c: 252: }
+[; ;GPIO.c: 253: counter3++;
+"253
+[e ++ _counter3 -> -> -> 1 `i `l `ul ]
+"254
+}
+"233
+[e -- _counter2 -> -> -> 1 `i `l `ul ]
+[e $ != _counter2 -> -> -> 0 `i `l `ul 426  ]
+[e :U 427 ]
+"254
+}
+[; ;GPIO.c: 254: }
+[; ;GPIO.c: 256: data = tmpData1;
+"256
+[e = _data _tmpData1 ]
+[; ;GPIO.c: 257: return (data);
+"257
+[e ) _data ]
+[e $UE 422  ]
+[; ;GPIO.c: 258: }
+"258
+[e :UE 422 ]
+}
+"260
+[v _Convert_wordASCIItoDATA `(uc ~T0 @X0 1 ef1`uc ]
+"261
+{
+[; ;GPIO.c: 260: uint8_t Convert_wordASCIItoDATA(uint8_t word)
+[; ;GPIO.c: 261: {
+[e :U _Convert_wordASCIItoDATA ]
+"260
+[v _word `uc ~T0 @X0 1 r1 ]
+"261
+[f ]
+"263
+[v _valueWord `uc ~T0 @X0 1 a ]
+[; ;GPIO.c: 263: uint8_t valueWord = (uint8_t)word;
+[e = _valueWord _word ]
+[; ;GPIO.c: 264: return (valueWord);
+"264
+[e ) _valueWord ]
+[e $UE 431  ]
+[; ;GPIO.c: 265: }
+"265
+[e :UE 431 ]
+}
+"270
+[v _SPI_enableClock `(v ~T0 @X0 1 sf2`E3833`E3829 ]
+"271
+{
+[; ;GPIO.c: 270: static void SPI_enableClock(SPI_PhaseType phase, SPI_PolarityType cpol)
+[; ;GPIO.c: 271: {
+[e :U _SPI_enableClock ]
+"270
+[v _phase `E3833 ~T0 @X0 1 r1 ]
+[v _cpol `E3829 ~T0 @X0 1 r2 ]
+"271
+[f ]
+[; ;GPIO.c: 273: TRISBbits.TRISB1 = 0;
+"273
+[e = . . _TRISBbits 0 1 -> -> 0 `i `uc ]
+[; ;GPIO.c: 275: TRISBbits.TRISB0 = 1;
+"275
+[e = . . _TRISBbits 0 0 -> -> 1 `i `uc ]
+[; ;GPIO.c: 277: TRISCbits.TRISC7 = 0;
+"277
+[e = . . _TRISCbits 0 5 -> -> 0 `i `uc ]
+[; ;GPIO.c: 284: SSPSTAT |= (0x40);
+"284
+[e =| _SSPSTAT -> -> 64 `i `uc ]
+[; ;GPIO.c: 285: SSPSTATbits.BF = 0;
+"285
+[e = . . _SSPSTATbits 2 0 -> -> 0 `i `uc ]
+[; ;GPIO.c: 287: switch(phase)
+"287
+[e $U 434  ]
+[; ;GPIO.c: 288: {
+"288
+{
+[; ;GPIO.c: 289: case SPI_LOW_PHASE:
+"289
+[e :U 435 ]
+[; ;GPIO.c: 290: SSPCON1bits.CKP = 0;
+"290
+[e = . . _SSPCON1bits 0 1 -> -> 0 `i `uc ]
+[; ;GPIO.c: 291: break;
+"291
+[e $U 433  ]
+[; ;GPIO.c: 292: case SPI_HIGH_PHASE:
+"292
+[e :U 436 ]
+[; ;GPIO.c: 293: SSPCON1bits.CKP = 1;
+"293
+[e = . . _SSPCON1bits 0 1 -> -> 1 `i `uc ]
+[; ;GPIO.c: 294: break;
+"294
+[e $U 433  ]
+[; ;GPIO.c: 295: default:
+"295
+[e :U 437 ]
+[; ;GPIO.c: 296: break;
+"296
+[e $U 433  ]
+"297
+}
+[; ;GPIO.c: 297: }
+[e $U 433  ]
+"287
+[e :U 434 ]
+[e [\ _phase , $ . `E3833 0 435
+ , $ . `E3833 1 436
+ 437 ]
+"297
+[e :U 433 ]
+[; ;GPIO.c: 299: switch(cpol)
+"299
+[e $U 439  ]
+[; ;GPIO.c: 300: {
+"300
+{
+[; ;GPIO.c: 301: case SPI_LOW_POLARITY:
+"301
+[e :U 440 ]
+[; ;GPIO.c: 302: SSPSTATbits.CKE = 0;
+"302
+[e = . . _SSPSTATbits 2 6 -> -> 0 `i `uc ]
+[; ;GPIO.c: 303: break;
+"303
+[e $U 438  ]
+[; ;GPIO.c: 304: case SPI_HIGH_POLARITY:
+"304
+[e :U 441 ]
+[; ;GPIO.c: 305: SSPSTATbits.CKE = 1;
+"305
+[e = . . _SSPSTATbits 2 6 -> -> 1 `i `uc ]
+[; ;GPIO.c: 306: break;
+"306
+[e $U 438  ]
+[; ;GPIO.c: 307: default:
+"307
+[e :U 442 ]
+[; ;GPIO.c: 308: break;
+"308
+[e $U 438  ]
+"309
+}
+[; ;GPIO.c: 309: }
+[e $U 438  ]
+"299
+[e :U 439 ]
+[e [\ _cpol , $ . `E3829 0 440
+ , $ . `E3829 1 441
+ 442 ]
+"309
+[e :U 438 ]
+[; ;GPIO.c: 310: }
+"310
+[e :UE 432 ]
+}
+"312
+[v _SPI_enablePins `(v ~T0 @X0 1 sf1`E3837 ]
+"313
+{
+[; ;GPIO.c: 312: static void SPI_enablePins(SPI_SerialClk serial)
+[; ;GPIO.c: 313: {
+[e :U _SPI_enablePins ]
+"312
+[v _serial `E3837 ~T0 @X0 1 r1 ]
+"313
+[f ]
+[; ;GPIO.c: 314: switch(serial)
+"314
+[e $U 445  ]
+[; ;GPIO.c: 315: {
+"315
+{
+[; ;GPIO.c: 316: case SPI_SERIAL_CLK4:
+"316
+[e :U 446 ]
+[; ;GPIO.c: 317: SSPCON1 &= (0x00);
+"317
+[e =& _SSPCON1 -> -> 0 `i `uc ]
+[; ;GPIO.c: 318: break;
+"318
+[e $U 444  ]
+[; ;GPIO.c: 319: case SPI_SERIAL_CLK16:
+"319
+[e :U 447 ]
+[; ;GPIO.c: 320: SSPCON1 |= (0x01);
+"320
+[e =| _SSPCON1 -> -> 1 `i `uc ]
+[; ;GPIO.c: 321: break;
+"321
+[e $U 444  ]
+[; ;GPIO.c: 322: case SPI_SERIAL_CLK64:
+"322
+[e :U 448 ]
+[; ;GPIO.c: 323: SSPCON1 |= (0x02);
+"323
+[e =| _SSPCON1 -> -> 2 `i `uc ]
+[; ;GPIO.c: 324: break;
+"324
+[e $U 444  ]
+[; ;GPIO.c: 325: default:
+"325
+[e :U 449 ]
+[; ;GPIO.c: 326: break;
+"326
+[e $U 444  ]
+"327
+}
+[; ;GPIO.c: 327: }
+[e $U 444  ]
+"314
+[e :U 445 ]
+[e [\ _serial , $ . `E3837 0 446
+ , $ . `E3837 1 447
+ , $ . `E3837 2 448
+ 449 ]
+"327
+[e :U 444 ]
+[; ;GPIO.c: 330: SSPCON1 |= (0x20);
+"330
+[e =| _SSPCON1 -> -> 32 `i `uc ]
+[; ;GPIO.c: 333: PIR1bits.SSPIF = 0;
+"333
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+[; ;GPIO.c: 334: ADCON0 = 0;
+"334
+[e = _ADCON0 -> -> 0 `i `uc ]
+[; ;GPIO.c: 335: ADCON1 = 0x0F;
+"335
+[e = _ADCON1 -> -> 15 `i `uc ]
+[; ;GPIO.c: 336: }
+"336
+[e :UE 443 ]
+}
+"338
+[v _SPI_init `(v ~T0 @X0 1 ef1`*CS362 ]
+"339
+{
+[; ;GPIO.c: 338: void SPI_init(const SPI_ConfigType* SPI_Config)
+[; ;GPIO.c: 339: {
+[e :U _SPI_init ]
+"338
+[v _SPI_Config `*CS362 ~T0 @X0 1 r1 ]
+"339
+[f ]
+[; ;GPIO.c: 340: SPI_enableClock(SPI_Config->SPI_Polarity, SPI_Config->SPI_Phase);
+"340
+[e ( _SPI_enableClock (2 , . *U _SPI_Config 0 . *U _SPI_Config 1 ]
+[; ;GPIO.c: 341: SPI_enablePins(SPI_Config->SPI_Clk);
+"341
+[e ( _SPI_enablePins (1 . *U _SPI_Config 2 ]
+[; ;GPIO.c: 342: }
+"342
+[e :UE 450 ]
+}
+"344
+[v _SPI_write `(v ~T0 @X0 1 ef1`uc ]
+"345
+{
+[; ;GPIO.c: 344: void SPI_write(uint8_t data)
+[; ;GPIO.c: 345: {
+[e :U _SPI_write ]
+"344
+[v _data `uc ~T0 @X0 1 r1 ]
+"345
+[f ]
+[; ;GPIO.c: 347: SSPBUF = data;
+"347
+[e = _SSPBUF _data ]
+[; ;GPIO.c: 348: while(!PIR1bits.SSPIF);
+"348
+[e $U 452  ]
+[e :U 453 ]
+[e :U 452 ]
+[e $ ! != -> . . _PIR1bits 0 3 `i -> -> -> 0 `i `Vuc `i 453  ]
+[e :U 454 ]
+[; ;GPIO.c: 349: PIR1bits.SSPIF = 0;
+"349
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+[; ;GPIO.c: 352: }
+"352
+[e :UE 451 ]
+}
+"354
+[v _SPI_read `(uc ~T0 @X0 1 ef ]
+"355
+{
+[; ;GPIO.c: 354: uint8_t SPI_read(void)
+[; ;GPIO.c: 355: {
+[e :U _SPI_read ]
+[f ]
+"356
+[v _dummy `Cuc ~T0 @X0 1 a ]
+[; ;GPIO.c: 356: const uint8_t dummy = 0;
+[e = _dummy -> -> 0 `i `uc ]
+[; ;GPIO.c: 359: SSPBUF = dummy;
+"359
+[e = _SSPBUF _dummy ]
+[; ;GPIO.c: 364: while(!PIR1bits.SSPIF);
+"364
+[e $U 456  ]
+[e :U 457 ]
+[e :U 456 ]
+[e $ ! != -> . . _PIR1bits 0 3 `i -> -> -> 0 `i `Vuc `i 457  ]
+[e :U 458 ]
+[; ;GPIO.c: 365: PIR1bits.SSPIF = 0;
+"365
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+[; ;GPIO.c: 366: return (SSPBUF);
+"366
+[e ) _SSPBUF ]
+[e $UE 455  ]
+[; ;GPIO.c: 367: }
+"367
+[e :UE 455 ]
 }

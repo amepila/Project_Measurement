@@ -1,6 +1,7 @@
 
 #include <xc.h>
 #include <stdint.h>
+//#include <pic18f2331.h>
 #include "GPIO.h"
 
 /**Gpio defines*/
@@ -39,6 +40,12 @@ void GPIO_dataDirectionPIN
                 case GPIO_C:
                     TRISC |= 1<<pin;
                     break;
+                case GPIO_D:
+                    TRISD |= 1<<pin;
+                    break;
+                case GPIO_E:
+                    TRISE |= 1<<pin;
+                    break;
                 default:
                     break;
             }
@@ -54,6 +61,12 @@ void GPIO_dataDirectionPIN
                     break;
                 case GPIO_C:
                     TRISC &= (0<<pin);
+                    break;
+                case GPIO_D:
+                    TRISD &= (0<<pin);
+                    break;
+                case GPIO_E:
+                    TRISE &= (0<<pin);
                     break;
                 default:
                     break;
@@ -78,6 +91,12 @@ void GPIO_setPIN
         case GPIO_C:
             PORTC |= (1<<pin);
             break;
+        case GPIO_D:
+            PORTD |= (1<<pin);
+            break;
+        case GPIO_E:
+            PORTE |= (1<<pin);
+            break;
         default:
             break;
     }
@@ -97,6 +116,12 @@ void GPIO_clearPIN
         case GPIO_C:
             PORTC &= ~(1<<pin);
             break;
+        case GPIO_D:
+            PORTD &= ~(1<<pin);
+            break;
+        case GPIO_E:
+            PORTE &= ~(1<<pin);
+            break;
         default:
             break;
     }
@@ -113,13 +138,11 @@ void delay(uint32_t delay)
 void ButtonInt_config()
 {
     /**Enable the button 1*/
-    GPIO_dataDirectionPIN(GPIO_A, 3, GPIO_INPUT);
-    ANSEL0bits.ANS3 = 0;
+    GPIO_dataDirectionPIN(GPIO_C, 0, GPIO_INPUT);
     /**Enable the button 2*/
-    GPIO_dataDirectionPIN(GPIO_A, 4, GPIO_INPUT);
-    ANSEL0bits.ANS4 = 0;
+    GPIO_dataDirectionPIN(GPIO_C, 1, GPIO_INPUT);
     /**Enable the button 3*/
-    GPIO_dataDirectionPIN(GPIO_C, 3, GPIO_INPUT);
+    GPIO_dataDirectionPIN(GPIO_C, 2, GPIO_INPUT);
 }
 
 
@@ -141,12 +164,13 @@ void UART_init(void)
     /**Select 8 bits-transmission*/
     //RCSTAbits.RX9 = 0;
     /**Enable receiver*/
-    //RCSTAbits.CREN = 0;
+    //RCSTAbits.CREN = 1;
     /**Serial port enabled*/
     RCSTAbits.SPEN = 1;
     
     /**Only 8 bit baud rate generator*/
-    BAUDCTLbits.BRG16 = 0;
+    //BAUDCTLbits.BRG16 = 0;
+    BAUDCONbits.BRG16 = 0;
     /**Low speed*/
     TXSTAbits.BRGH = 0;
 }
@@ -246,9 +270,9 @@ uint8_t Convert_wordASCIItoDATA(uint8_t word)
 static void SPI_enableClock(SPI_PhaseType phase, SPI_PolarityType cpol)
 {
     /**Clock pin as output*/
-    TRISCbits.TRISC5 = 0;
+    TRISBbits.TRISB1 = 0;
     /**SDI pin as input*/
-    TRISCbits.TRISC4 = 1;
+    TRISBbits.TRISB0 = 1;
     /**SDO pin as output*/
     TRISCbits.TRISC7 = 0;
     
@@ -263,10 +287,10 @@ static void SPI_enableClock(SPI_PhaseType phase, SPI_PolarityType cpol)
     switch(phase)
     {
         case SPI_LOW_PHASE:
-            SSPCONbits.CKP = 0;
+            SSPCON1bits.CKP = 0;
             break;
         case SPI_HIGH_PHASE:
-            SSPCONbits.CKP = 1;
+            SSPCON1bits.CKP = 1;
             break;
         default:
             break;
@@ -290,23 +314,25 @@ static void SPI_enablePins(SPI_SerialClk serial)
     switch(serial)
     {
         case SPI_SERIAL_CLK4:
-            SSPCON &= SPI_SCLOCK_4;
+            SSPCON1 &= SPI_SCLOCK_4;
             break;
         case SPI_SERIAL_CLK16:
-            SSPCON |= SPI_SCLOCK_16;
+            SSPCON1 |= SPI_SCLOCK_16;
             break;
         case SPI_SERIAL_CLK64:
-            SSPCON |= SPI_SCLOCK_64;
+            SSPCON1 |= SPI_SCLOCK_64;
             break;
         default:
             break;
     }
     
     /**Enable pins of SPI*/
-    SSPCON |= SPI_ENABLE_PINS;
+    SSPCON1 |= SPI_ENABLE_PINS;
 
     /**Clean the interrupt flag*/
     PIR1bits.SSPIF = 0;
+    ADCON0 = 0;
+    ADCON1 = 0x0F;
 }
 
 void SPI_init(const SPI_ConfigType* SPI_Config)

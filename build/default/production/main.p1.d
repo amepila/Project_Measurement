@@ -4,4 +4,5 @@
 States.h  \
 Phases.h  \
 GPIO.h  \
+ATM90E36A.h  \
 LCDNokia5110.h 

@@ -1,5 +1,5 @@
-#include <pic18f2331.h>
-//#include <xc.h>
+#include <pic18f4550.h>
+#include <xc.h>
 #include "GPIO.h"
 #include "LCDNokia5110.h"
 
@@ -114,7 +114,7 @@ void LCDNokia_init(void)
 	GPIO_clearPIN(GPIO_B, RESET_PIN);
 	LCD_delay();
 	GPIO_setPIN(GPIO_B, RESET_PIN);
-    
+        
 	LCDNokia_writeByte(LCD_CMD, 0x21); //Tell LCD that extended commands follow
     LCDNokia_writeByte(LCD_CMD, 0xBF); //Set LCD Vop (Contrast): Try 0xB1(good @ 3.3V) or 0xBF if your display is too dark
     LCDNokia_writeByte(LCD_CMD, 0x04); //Set Temp coefficent 
@@ -137,15 +137,15 @@ void LCDNokia_writeByte(uint8_t DataOrCmd, uint8_t data)
 {
 	if(DataOrCmd)
     {
-        PORTBbits.RB2 = 1;
+        PORTBbits.RB4 = 1;
     }
 	else
     {
-        PORTBbits.RB2 = 0;
+        PORTBbits.RB4 = 0;
     }
-    PORTBbits.RB0 = 0;
+    PORTBbits.RB2 = 0;
     SPI_write(data);
-    PORTBbits.RB0 = 1;
+    PORTBbits.RB2 = 1;
 }
 
 void LCDNokia_sendChar(uint8_t character) 
@@ -194,7 +194,7 @@ void LCD_delay(void)
 {
 	uint32_t counter;
 	
-	for(counter =  0; counter < 2500; counter++)
+	for(counter =  0; counter < 3000; counter++)
 	{	   
 	}
 }

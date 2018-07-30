@@ -6,6 +6,7 @@
 #include "GPIO.h"
 #include "LCDNokia5110.h"
 #include "States.h"
+#include "ATM90E36A.h"
 
 /************************************************************/
 /**

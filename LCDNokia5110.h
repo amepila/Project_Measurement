@@ -10,9 +10,9 @@
 #define LCD_Y           48
 #define LCD_DATA        1
 #define LCD_CMD         0
-#define DATA_OR_CMD_PIN 2
-#define RESET_PIN       1
-#define CHIP_SELECT     0
+#define DATA_OR_CMD_PIN 4
+#define RESET_PIN       3
+#define CHIP_SELECT     2
 
 typedef struct
 {

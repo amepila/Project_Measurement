@@ -1,9 +1,9 @@
 #include "Phases.h"
 
 /*
- * Button 1 RA3
- * Button 2 RA4
- * Button 3 RC3
+ * Button 1 RA3 C0
+ * Button 2 RA4 C1
+ * Button 3 RC3 C2
  */
 
     const uint8_t msgInitial1_gv[13] = "Three Phase\0";
@@ -159,25 +159,22 @@ const SPI_ConfigType SPI_Config2 =
 
 PhaseMainMenu_Type initialLoad(PhaseMainMenu_Type data)
 {
-#if 1
     /**Create the variable with current data**/
 	static PhaseMainMenu_Type currentMainMenu1;
 
     /**Calibration of the IC*/
-    //ATM_init();
-    //ATM_calibration();
+    ATM_init();
+    ATM_calibration();
     delay(1500);
     
 	/**Set with the current state and phase**/
 	currentMainMenu1.phaseState = GENERAL_VIEW;
 	currentMainMenu1.stateMain = data.stateMain;
 	return (currentMainMenu1);
-#endif
 }
 
 PhaseMainMenu_Type generalView(PhaseMainMenu_Type data)
 {
-#if 1
     /**Create the variable with current data**/
 	static PhaseMainMenu_Type currentMainMenu2;
     static uint8_t lockClear = 0;
@@ -210,13 +207,13 @@ PhaseMainMenu_Type generalView(PhaseMainMenu_Type data)
         lockWrite = 1;
     }
 
-    if(1 == PORTAbits.RA3)
+    if(1 == PORTCbits.RC0)
     {
         currentMainMenu2.phaseState = VIEW_MENU;
         lockClear = 0;
         lockWrite = 0;
     }
-    if(1 == PORTCbits.RC3)
+    if(1 == PORTCbits.RC2)
     {
         currentMainMenu2.phaseState = SEND_DATA;
         lockClear = 0;
@@ -226,12 +223,10 @@ PhaseMainMenu_Type generalView(PhaseMainMenu_Type data)
 	/**Set with the current state and phase**/
 	currentMainMenu2.stateMain = data.stateMain;
 	return (currentMainMenu2);
-#endif
 }
 
 PhaseMainMenu_Type viewMenu(PhaseMainMenu_Type data)
 {
-#if 1
     /**Create the variable with current data**/
 	static PhaseMainMenu_Type currentMainMenu3;
     static uint8_t lockClear = 0;
@@ -309,7 +304,7 @@ PhaseMainMenu_Type viewMenu(PhaseMainMenu_Type data)
         lockWrite = 1;
     }
     
-    if(1 == PORTAbits.RA3)
+    if(1 == PORTCbits.RC0)
     {
         if(0 == counterMenu)
         {
@@ -323,7 +318,7 @@ PhaseMainMenu_Type viewMenu(PhaseMainMenu_Type data)
         lockClear = 0;
         lockWrite = 0;
     }
-    if(1 == PORTAbits.RA4)
+    if(1 == PORTCbits.RC1)
     {
         switch(counterMenu)
         {
@@ -361,7 +356,7 @@ PhaseMainMenu_Type viewMenu(PhaseMainMenu_Type data)
         lockClear = 0;
         lockWrite = 0;
     }
-    if(1 == PORTCbits.RC3)
+    if(1 == PORTCbits.RC2)
     {
         counterMenu++;
         if(counterMenu > 6)
@@ -372,16 +367,14 @@ PhaseMainMenu_Type viewMenu(PhaseMainMenu_Type data)
         lockWrite = 0;
     }
 	return (currentMainMenu3);
-#endif
 }
 
 PhaseMainMenu_Type sendData(PhaseMainMenu_Type data)
 {
-#if 0
 	/**Create the variable with current data**/
 	static PhaseMainMenu_Type currentMainMenu4;
     /**Confiuration of Bluetooth*/
-    UART_init(void);
+    UART_init();
  
 	/**Set with the current state and phase**/
 	currentMainMenu4.phaseState = GENERAL_VIEW;
@@ -392,12 +385,10 @@ PhaseMainMenu_Type sendData(PhaseMainMenu_Type data)
     LCDNokia_init();
 	LCDNokia_clear();
 	return (currentMainMenu4);
-#endif
 }
 
 PhaseEnergy_Type activeEnergy(PhaseEnergy_Type data)
 {
-#if 1
     /**Create the variable with current data**/
 	static PhaseEnergy_Type currentEnergy1;
     static uint8_t counter = 0;
@@ -407,11 +398,11 @@ PhaseEnergy_Type activeEnergy(PhaseEnergy_Type data)
 	currentEnergy1.phaseState = ACTIVE_ENERGY;
 	currentEnergy1.stateMain = data.stateMain;
 
-    if(1 == PORTAbits.RA3)
+    if(1 == PORTCbits.RC0)
     {
         currentEnergy1.phaseState = FUNDAMENTAL_ENERGY;
     }
-    if(1 == PORTAbits.RA4)
+    if(1 == PORTCbits.RC1)
     {        
         counterPhase++;
         if(3 == counterPhase)
@@ -421,7 +412,7 @@ PhaseEnergy_Type activeEnergy(PhaseEnergy_Type data)
         counter = 0;
         LCDNokia_clear();
     }
-    if(1 == PORTCbits.RC3)
+    if(1 == PORTCbits.RC2)
     {
         counter++;
         LCDNokia_clear();
@@ -437,35 +428,35 @@ PhaseEnergy_Type activeEnergy(PhaseEnergy_Type data)
             if(0 == counterPhase)
             {
                 LCDNokia_sendString(active_Forward1);
-                //LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_A_FORW_ACTIVE_ENERGY));
+                LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_A_FORW_ACTIVE_ENERGY));
                 LCDNokia_gotoXY(0,2);
                 LCDNokia_sendString(active_Forward2);
-                //LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_B_FORW_ACTIVE_ENERGY));
+                LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_B_FORW_ACTIVE_ENERGY));
                 LCDNokia_gotoXY(0,3);
                 LCDNokia_sendString(active_Forward3);
-                //LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_C_FORW_ACTIVE_ENERGY));
+                LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_C_FORW_ACTIVE_ENERGY));
             }
             if(1 == counterPhase)
             {
                 LCDNokia_sendString(reactive_Forward1);
-                //LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_A_FORW_REACTIVE_ENERGY));
+                LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_A_FORW_REACTIVE_ENERGY));
                 LCDNokia_gotoXY(0,2);
                 LCDNokia_sendString(reactive_Forward2);
-                //LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_B_FORW_REACTIVE_ENERGY));
+                LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_B_FORW_REACTIVE_ENERGY));
                 LCDNokia_gotoXY(0,3);
                 LCDNokia_sendString(reactive_Forward3);
-                //LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_C_FORW_REACTIVE_ENERGY));                
+                LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_C_FORW_REACTIVE_ENERGY));                
             }
             if(2 == counterPhase)
             {
                 LCDNokia_sendString(apparent_energyP1);
-                //LCDNokia_printValue(ATM_registers(APPARENT_ENERGY_TYPE, PHASE_A_APPARENT_ENERGY));
+                LCDNokia_printValue(ATM_registers(APPARENT_ENERGY_TYPE, PHASE_A_APPARENT_ENERGY));
                 LCDNokia_gotoXY(0,2);
                 LCDNokia_sendString(apparent_energyP2);
-                //LCDNokia_printValue(ATM_registers(APPARENT_ENERGY_TYPE, PHASE_B_APPARENT_ENERGY));
+                LCDNokia_printValue(ATM_registers(APPARENT_ENERGY_TYPE, PHASE_B_APPARENT_ENERGY));
                 LCDNokia_gotoXY(0,3);
                 LCDNokia_sendString(apparent_energyP3);
-                //LCDNokia_printValue(ATM_registers(APPARENT_ENERGY_TYPE, PHASE_C_APPARENT_ENERGY));                
+                LCDNokia_printValue(ATM_registers(APPARENT_ENERGY_TYPE, PHASE_C_APPARENT_ENERGY));                
             }
 
             break;
@@ -473,32 +464,32 @@ PhaseEnergy_Type activeEnergy(PhaseEnergy_Type data)
             if(0 == counterPhase)
             {
                 LCDNokia_sendString(active_Reverse1);
-                //LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_A_REV_ACTIVE_ENERGY));
+                LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_A_REV_ACTIVE_ENERGY));
                 LCDNokia_gotoXY(0,2);
                 LCDNokia_sendString(active_Reverse2);
-                //LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_B_REV_ACTIVE_ENERGY));
+                LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_B_REV_ACTIVE_ENERGY));
                 LCDNokia_gotoXY(0,3);
                 LCDNokia_sendString(active_Reverse3);
-                //LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_C_REV_ACTIVE_ENERGY));
+                LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_C_REV_ACTIVE_ENERGY));
             }
             if(1 == counterPhase)
             {
                 LCDNokia_sendString(reactive_Reverse1);
-                //LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_A_REV_REACTIVE_ENERGY));
+                LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_A_REV_REACTIVE_ENERGY));
                 LCDNokia_gotoXY(0,2);
                 LCDNokia_sendString(reactive_Reverse2);
-                //LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_B_REV_REACTIVE_ENERGY));
+                LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_B_REV_REACTIVE_ENERGY));
                 LCDNokia_gotoXY(0,3);
                 LCDNokia_sendString(reactive_Reverse3);
-                //LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_C_REV_REACTIVE_ENERGY));
+                LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_C_REV_REACTIVE_ENERGY));
             }
             if(2 == counterPhase)
             {
                 LCDNokia_sendString(apparentAri_energyTotal);
-                //LCDNokia_printValue(ATM_registers(APPARENT_ENERGY_TYPE, TOTAL_ARIT_APPARENT_ENERGY));
+                LCDNokia_printValue(ATM_registers(APPARENT_ENERGY_TYPE, TOTAL_ARIT_APPARENT_ENERGY));
                 LCDNokia_gotoXY(0,2);
                 LCDNokia_sendString(apparentVec_energyTotal);
-                //LCDNokia_printValue(ATM_registers(APPARENT_ENERGY_TYPE, TOTAL_VECT_APPARENT_ENERGY));
+                LCDNokia_printValue(ATM_registers(APPARENT_ENERGY_TYPE, TOTAL_VECT_APPARENT_ENERGY));
             }
 
             break;
@@ -506,30 +497,28 @@ PhaseEnergy_Type activeEnergy(PhaseEnergy_Type data)
             if(0 == counterPhase)
             {
                 LCDNokia_sendString(active_Forward_Total);
-                //LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, TOTAL_FORW_ACTIVE_ENERGY));
+                LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, TOTAL_FORW_ACTIVE_ENERGY));
                 LCDNokia_gotoXY(0,2);
                 LCDNokia_sendString(active_Reverse_Total);
-                //LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, TOTAL_REV_ACTIVE_ENERGY));
+                LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, TOTAL_REV_ACTIVE_ENERGY));
             }
             if(1 == counterPhase)
             {
                 LCDNokia_sendString(reactive_Forward_Total);
-                //LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, TOTAL_FORW_REACTIVE_ENERGY));
+                LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, TOTAL_FORW_REACTIVE_ENERGY));
                 LCDNokia_gotoXY(0,2);
                 LCDNokia_sendString(reactive_Reverse_Total);
-                //LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, TOTAL_REVERSE_REACTIVE_ENERGY));                
+                LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, TOTAL_REVERSE_REACTIVE_ENERGY));                
             }
             break;
         default:
             break;
     }
 	return (currentEnergy1);
-#endif
 }
 
 PhaseEnergy_Type fundamentalEnergy(PhaseEnergy_Type data)
 {
-#if 0
     /**Create the variable with current data**/
 	static PhaseEnergy_Type currentEnergy4;
     static uint8_t counter = 0;
@@ -537,16 +526,16 @@ PhaseEnergy_Type fundamentalEnergy(PhaseEnergy_Type data)
 	currentEnergy4.phaseState = FUNDAMENTAL_ENERGY;
 	currentEnergy4.stateMain = data.stateMain;
 
-    if(1 == PORTAbits.RA3)
+    if(1 == PORTCbits.RC0)
     {
         currentEnergy4.phaseState = EXIT_ENERGY;
     }
-    if(1 == PORTAbits.RA4)
+    if(1 == PORTCbits.RC1)
     {
         currentEnergy4.phaseState = HARMONIC_ENERGY;
         LCDNokia_clear();
     }
-    if(1 == PORTCbits.RC3)
+    if(1 == PORTCbits.RC2)
     {
         counter++;
         LCDNokia_clear();
@@ -560,44 +549,41 @@ PhaseEnergy_Type fundamentalEnergy(PhaseEnergy_Type data)
         case 0:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(fund_ForwardP1);
-            //LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_A_FORW_ACTIVE_FUND_ENERGY));
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_A_FORW_ACTIVE_FUND_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(fund_ForwardP2);
-            //LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_B_FORW_ACTIVE_FUND_ENERGY));
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_B_FORW_ACTIVE_FUND_ENERGY));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(fund_ForwardP3);
-            //LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_C_FORW_ACTIVE_FUND_ENERGY));
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_C_FORW_ACTIVE_FUND_ENERGY));
             break;
         case 1:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(fund_ReverseP1);
-            //LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_A_REV_ACTIVE_FUND_ENERGY));
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_A_REV_ACTIVE_FUND_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(fund_ReverseP2);
-            //LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_B_REV_ACTIVE_FUND_ENERGY));
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_B_REV_ACTIVE_FUND_ENERGY));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(fund_ReverseP3);
-            //LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_C_REV_ACTIVE_FUND_ENERGY));
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_C_REV_ACTIVE_FUND_ENERGY));
             break;
         case 2: 
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(fund_ForwardTotal);
-            //LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, TOTAL_FORW_ACTIVE_FUND_ENERGY));
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, TOTAL_FORW_ACTIVE_FUND_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(fund_ReverseTotal);
-            //LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, TOTAL_REV_ACTIVE_FUND_ENERGY));
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, TOTAL_REV_ACTIVE_FUND_ENERGY));
             break;
         default:
             break;
     }
 	return (currentEnergy4);
-#endif
-    
 }
  
 PhaseEnergy_Type harmonicEnergy(PhaseEnergy_Type data)
 {
-#if 0
     /**Create the variable with current data**/
 	static PhaseEnergy_Type currentEnergy5;
     static uint8_t counter = 0;
@@ -605,15 +591,15 @@ PhaseEnergy_Type harmonicEnergy(PhaseEnergy_Type data)
 	currentEnergy5.phaseState = HARMONIC_ENERGY;
 	currentEnergy5.stateMain = data.stateMain;
     
-    if(1 == PORTAbits.RA3)
+    if(1 == PORTCbits.RC0)
     {
         currentEnergy5.phaseState = EXIT_ENERGY;
     }
-    if(1 == PORTAbits.RA4)
+    if(1 == PORTCbits.RC1)
     {
         currentEnergy5.phaseState = EXIT_ENERGY;
     }
-    if(1 == PORTCbits.RC3)
+    if(1 == PORTCbits.RC2)
     {
         counter++;
         LCDNokia_clear();
@@ -627,43 +613,41 @@ PhaseEnergy_Type harmonicEnergy(PhaseEnergy_Type data)
         case 0:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(harmonic_ForwardP1);
-            //LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_A_FORW_ACTIVE_HARM_ENERGY));
+            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_A_FORW_ACTIVE_HARM_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(harmonic_ForwardP2);
-            //LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_B_FORW_ACTIVE_HARM_ENERGY));
+            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_B_FORW_ACTIVE_HARM_ENERGY));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(harmonic_ForwardP3);
-            //LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_C_FORW_ACTIVE_HARM_ENERGY));
+            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_C_FORW_ACTIVE_HARM_ENERGY));
             break;
         case 1:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(harmonic_ReverseP1);
-            //LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_A_REV_ACTIVE_HARM_ENERGY));
+            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_A_REV_ACTIVE_HARM_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(harmonic_ReverseP2);
-            //LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_B_REV_ACTIVE_HARM_ENERGY));
+            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_B_REV_ACTIVE_HARM_ENERGY));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(harmonic_ReverseP3);
-            //LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_C_REV_ACTIVE_HARM_ENERGY));
+            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_C_REV_ACTIVE_HARM_ENERGY));
             break;
         case 2: 
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(harmonic_ForwardTotal);
-            //LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, TOTAL_FORW_ACTIVE_HARM_ENERGY));
+            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, TOTAL_FORW_ACTIVE_HARM_ENERGY));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(harmonic_ReverseTotal);
-            //LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, TOTAL_REV_ACTIVE_HARM_ENERGY));
+            LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, TOTAL_REV_ACTIVE_HARM_ENERGY));
             break;
         default:
             break;
     }
 	return (currentEnergy5);
-#endif
 }
 
 PhaseEnergy_Type exitEnergy(PhaseEnergy_Type data)
 {
-#if 0
     /**Create the variable with current data**/
 	static PhaseEnergy_Type currentEnergy6;
     LCDNokia_clear();
@@ -671,12 +655,10 @@ PhaseEnergy_Type exitEnergy(PhaseEnergy_Type data)
 	currentEnergy6.phaseState = VIEW_MENU;
 	currentEnergy6.stateMain = MAIN_MENU;
 	return (currentEnergy6);
-#endif
 }
 
 PhasePower1_Type typesPower1(PhasePower1_Type data)
 {
-#if 0
     /**Create the variable with current data**/
 	static PhasePower1_Type currentPower1_1;
     static uint8_t counter = 0;
@@ -684,16 +666,16 @@ PhasePower1_Type typesPower1(PhasePower1_Type data)
 	currentPower1_1.phaseState = TYPES_POWER1;
 	currentPower1_1.stateMain = data.stateMain;
     
-    if(1 == PORTAbits.RA3)
+    if(1 == PORTCbits.RC0)
     {
         currentPower1_1.phaseState = EXIT_POWER1;
     }
-    if(1 == PORTAbits.RA4)
+    if(1 == PORTCbits.RC1)
     {
         currentPower1_1.phaseState = PHASES_POWER1;
         LCDNokia_clear();
     }
-    if(1 == PORTCbits.RC3)
+    if(1 == PORTCbits.RC2)
     {
         counter++;
         LCDNokia_clear();
@@ -707,57 +689,55 @@ PhasePower1_Type typesPower1(PhasePower1_Type data)
         case 0:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(active_powerP1);
-            //LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_A_ACTIVE_POWER));
+            LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_A_ACTIVE_POWER));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(active_powerP2);
-            //LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_B_ACTIVE_POWER));
+            LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_B_ACTIVE_POWER));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(active_powerP3);
-            //LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_C_ACTIVE_POWER));
+            LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_C_ACTIVE_POWER));
             break;
         case 1:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(reactive_powerP1);
-            //LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_A_REACTIVE_POWER));
+            LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_A_REACTIVE_POWER));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(reactive_powerP2);
-            //LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_B_REACTIVE_POWER));
+            LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_B_REACTIVE_POWER));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(reactive_powerP3);
-            //LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_C_REACTIVE_POWER));
+            LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_C_REACTIVE_POWER));
             break;
         case 2: 
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(apparent_powerP1);
-            //LCDNokia_printValue(ATM_registers(APPARENT_POWER_TYPE, PHASE_A_APPARENT_POWER));
+            LCDNokia_printValue(ATM_registers(APPARENT_POWER_TYPE, PHASE_A_APPARENT_POWER));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(apparent_powerP2);
-            //LCDNokia_printValue(ATM_registers(APPARENT_POWER_TYPE, PHASE_B_APPARENT_POWER));
+            LCDNokia_printValue(ATM_registers(APPARENT_POWER_TYPE, PHASE_B_APPARENT_POWER));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(apparent_powerP3);
-            //LCDNokia_printValue(ATM_registers(APPARENT_POWER_TYPE, PHASE_C_APPARENT_POWER));
+            LCDNokia_printValue(ATM_registers(APPARENT_POWER_TYPE, PHASE_C_APPARENT_POWER));
             break;
         default:
             break;
     }
 	return (currentPower1_1);
-#endif
 }
 
 PhasePower1_Type phPower1(PhasePower1_Type data)
 {
-#if 0
     /**Create the variable with current data**/
 	static PhasePower1_Type currentPower1_2;
     /**Set with the current state and phase**/
 	currentPower1_2.phaseState = PHASES_POWER1;
 	currentPower1_2.stateMain = data.stateMain;
     
-    if(1 == PORTAbits.RA3)
+    if(1 == PORTCbits.RC0)
     {
         currentPower1_2.phaseState = EXIT_POWER1;
     }
-    if(1 == PORTAbits.RA4)
+    if(1 == PORTCbits.RC1)
     {
         currentPower1_2.phaseState = EXIT_POWER1;
         LCDNokia_clear();
@@ -765,20 +745,18 @@ PhasePower1_Type phPower1(PhasePower1_Type data)
 
     LCDNokia_gotoXY(0,1);
     LCDNokia_sendString(total_active_power);
-    //LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, TOTAL_ACTIVE_POWER));
+    LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, TOTAL_ACTIVE_POWER));
     LCDNokia_gotoXY(0,2);
     LCDNokia_sendString(total_reactive_power);
-    //LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, TOTAL_REACTIVE_POWER));
+    LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, TOTAL_REACTIVE_POWER));
     LCDNokia_gotoXY(0,3);
     LCDNokia_sendString(total_apparent_power);
-    //LCDNokia_printValue(ATM_registers(APPARENT_POWER_TYPE, TOTAL_APPARENT_POWER));
+    LCDNokia_printValue(ATM_registers(APPARENT_POWER_TYPE, TOTAL_APPARENT_POWER));
 	return (currentPower1_2);
-#endif
 }
 
 PhasePower1_Type exitPower1(PhasePower1_Type data)
 {
-#if 0
     /**Create the variable with current data**/
 	static PhasePower1_Type currentPower1_4;
     LCDNokia_clear();
@@ -786,12 +764,10 @@ PhasePower1_Type exitPower1(PhasePower1_Type data)
 	currentPower1_4.phaseState = data.phaseState;
 	currentPower1_4.stateMain = data.stateMain;
 	return (currentPower1_4);
-#endif
 }
 
 PhasePower2_Type fhPower2(PhasePower2_Type data)
 {
-#if 0
     /**Create the variable with current data**/
 	static PhasePower2_Type currentPower2_1;
     static uint8_t counter = 0;
@@ -799,16 +775,16 @@ PhasePower2_Type fhPower2(PhasePower2_Type data)
 	currentPower2_1.phaseState = FH_POWER2;
 	currentPower2_1.stateMain = data.stateMain;
     
-    if(1 == PORTAbits.RA3)
+    if(1 == PORTCbits.RC0)
     {
         currentPower2_1.phaseState = EXIT_POWER2;
     }
-    if(1 == PORTAbits.RA4)
+    if(1 == PORTCbits.RC1)
     {
         currentPower2_1.phaseState = PHASES_POWER2;
         LCDNokia_clear();
     }
-    if(1 == PORTCbits.RC3)
+    if(1 == PORTCbits.RC2)
     {
         counter++;
         LCDNokia_clear();
@@ -822,63 +798,58 @@ PhasePower2_Type fhPower2(PhasePower2_Type data)
         case 0:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(fundamental_PowerP1);
-            //LCDNokia_printValue(ATM_registers(FUNDAMENTAL_POWER, PHASE_A_ACTIVE_FUND_POWER));
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_POWER, PHASE_A_ACTIVE_FUND_POWER));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(fundamental_PowerP2);
-            //LCDNokia_printValue(ATM_registers(FUNDAMENTAL_POWER, PHASE_B_ACTIVE_FUND_POWER));
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_POWER, PHASE_B_ACTIVE_FUND_POWER));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(fundamental_PowerP3);
-            //LCDNokia_printValue(ATM_registers(FUNDAMENTAL_POWER, PHASE_C_ACTIVE_FUND_POWER));
+            LCDNokia_printValue(ATM_registers(FUNDAMENTAL_POWER, PHASE_C_ACTIVE_FUND_POWER));
             break;
         case 1:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(harmonic_PowerP1);
-            //LCDNokia_printValue(ATM_registers(HARMONIC_POWER, PHASE_A_ACTIVE_HARM_POWER));
+            LCDNokia_printValue(ATM_registers(HARMONIC_POWER, PHASE_A_ACTIVE_HARM_POWER));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(harmonic_PowerP2);
-            //LCDNokia_printValue(ATM_registers(HARMONIC_POWER, PHASE_B_ACTIVE_HARM_POWER));
+            LCDNokia_printValue(ATM_registers(HARMONIC_POWER, PHASE_B_ACTIVE_HARM_POWER));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(harmonic_PowerP3);
-            //LCDNokia_printValue(ATM_registers(HARMONIC_POWER, PHASE_C_ACTIVE_HARM_POWER));
+            LCDNokia_printValue(ATM_registers(HARMONIC_POWER, PHASE_C_ACTIVE_HARM_POWER));
             break;
         default:
             break;
     }
 	return (currentPower2_1);
-#endif
 }
 
 PhasePower2_Type phPower2(PhasePower2_Type data)
 {    
-#if 0
     /**Create the variable with current data**/
 	static PhasePower2_Type currentPower2_2;
-
 	/**Set with the current state and phase**/
 	currentPower2_2.phaseState = PHASES_POWER2;
 	currentPower2_2.stateMain = data.stateMain;
     
-    if(1 == PORTAbits.RA3)
+    if(1 == PORTCbits.RC0)
     {
         currentPower2_2.phaseState = EXIT_POWER2;
     }
-    if(1 == PORTAbits.RA4)
+    if(1 == PORTCbits.RC1)
     {
         currentPower2_2.phaseState = EXIT_POWER2;
     }
     LCDNokia_gotoXY(0,1);
     LCDNokia_sendString(fundamental_Total_Power);
-    //LCDNokia_printValue(ATM_registers(FUNDAMENTAL_POWER, TOTAL_ACTIVE_FUND_POWER));
+    LCDNokia_printValue(ATM_registers(FUNDAMENTAL_POWER, TOTAL_ACTIVE_FUND_POWER));
     LCDNokia_gotoXY(0,2);
     LCDNokia_sendString(harmonic_Total_Power);
-    //LCDNokia_printValue(ATM_registers(HARMONIC_POWER, TOTAL_ACTIVE_HARM_POWER));
+    LCDNokia_printValue(ATM_registers(HARMONIC_POWER, TOTAL_ACTIVE_HARM_POWER));
 	return (currentPower2_2);
-#endif
 }
 
 PhasePower2_Type exitPower2(PhasePower2_Type data)
 {
-#if 0
     /**Create the variable with current data**/
 	static PhasePower2_Type currentPower2_3;
     LCDNokia_clear();
@@ -886,12 +857,10 @@ PhasePower2_Type exitPower2(PhasePower2_Type data)
 	currentPower2_3.phaseState = data.phaseState;
 	currentPower2_3.stateMain = data.stateMain;
 	return (currentPower2_3);
-#endif
 }
 
 PhaseRmsVI_Type phRmsVI(PhaseRmsVI_Type data)
 {
-#if 0
     /**Create the variable with current data**/
 	static PhaseRmsVI_Type currentRms1;
     static uint8_t counter = 0;
@@ -899,16 +868,16 @@ PhaseRmsVI_Type phRmsVI(PhaseRmsVI_Type data)
 	currentRms1.phaseState = PHASES_RMSVI;
 	currentRms1.stateMain = data.stateMain;
     
-    if(1 == PORTAbits.RA3)
+    if(1 == PORTCbits.RC0)
     {
         currentRms1.phaseState = EXIT_RMSVI;
     }
-    if(1 == PORTAbits.RA4)
+    if(1 == PORTCbits.RC1)
     {
         currentRms1.phaseState = NEUTRAL_RMSVI;
         LCDNokia_clear();
     }
-    if(1 == PORTCbits.RC3)
+    if(1 == PORTCbits.RC2)
     {
         counter++;
         LCDNokia_clear();
@@ -922,63 +891,60 @@ PhaseRmsVI_Type phRmsVI(PhaseRmsVI_Type data)
         case 0:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(voltage1_RMS);
-            //LCDNokia_printValue(ATM_registers(VOLTAGE_RMS, PHASE_A_VOLTAGE_RMS));
+            LCDNokia_printValue(ATM_registers(VOLTAGE_RMS, PHASE_A_VOLTAGE_RMS));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(voltage2_RMS);
-            //LCDNokia_printValue(ATM_registers(VOLTAGE_RMS, PHASE_B_VOLTAGE_RMS));
+            LCDNokia_printValue(ATM_registers(VOLTAGE_RMS, PHASE_B_VOLTAGE_RMS));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(voltage3_RMS);
-            //LCDNokia_printValue(ATM_registers(VOLTAGE_RMS, PHASE_C_VOLTAGE_RMS));
+            LCDNokia_printValue(ATM_registers(VOLTAGE_RMS, PHASE_C_VOLTAGE_RMS));
             break;
         case 1:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(current1_RMS);
-            //LCDNokia_printValue(ATM_registers(CURRENT_RMS, PHASE_A_CURRENT_RMS));
+            LCDNokia_printValue(ATM_registers(CURRENT_RMS, PHASE_A_CURRENT_RMS));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(current2_RMS);
-            //LCDNokia_printValue(ATM_registers(CURRENT_RMS, PHASE_B_CURRENT_RMS));
+            LCDNokia_printValue(ATM_registers(CURRENT_RMS, PHASE_B_CURRENT_RMS));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(current3_RMS);
-            //LCDNokia_printValue(ATM_registers(CURRENT_RMS, PHASE_C_CURRENT_RMS));
+            LCDNokia_printValue(ATM_registers(CURRENT_RMS, PHASE_C_CURRENT_RMS));
             break;
         default:
             break;
     }
 	return (currentRms1);
-#endif
 }
 
 PhaseRmsVI_Type neutralRmsVI(PhaseRmsVI_Type data)
 {
     /**Create the variable with current data**/
 	static PhaseRmsVI_Type currentRms2;
-#if 0
     /**Set with the current state and phase**/
 	currentRms2.phaseState = NEUTRAL_RMSVI;
 	currentRms2.stateMain = data.stateMain;
     
-    if(1 == PORTAbits.RA3)
+    if(1 == PORTCbits.RC0)
     {
        currentRms2.phaseState = EXIT_RMSVI;
        
     }
-    if(1 == PORTAbits.RA4)
+    if(1 == PORTCbits.RC1)
     {
        currentRms2.phaseState = EXIT_RMSVI;
     }
     LCDNokia_gotoXY(0,1);
     LCDNokia_sendString(nline_calculated_RMS);
-    //LCDNokia_printValue(ATM_registers(CURRENT_RMS, NLINE_CALCULATED_CURRENT_RMS));
+    LCDNokia_printValue(ATM_registers(CURRENT_RMS, NLINE_CALCULATED_CURRENT_RMS));
     LCDNokia_gotoXY(0,2);
     LCDNokia_sendString(nline_sampled_RMS);
-    //LCDNokia_printValue(ATM_registers(CURRENT_RMS, NLINE_SAMPLED_CURRENT_RMS));
-#endif
+    LCDNokia_printValue(ATM_registers(CURRENT_RMS, NLINE_SAMPLED_CURRENT_RMS));
+
 	return (currentRms2);
 }
 
 PhaseRmsVI_Type exitRmsVI(PhaseRmsVI_Type data)
 {
-#if 0
     /**Create the variable with current data**/
 	static PhaseRmsVI_Type currentRms3;
     LCDNokia_clear();
@@ -986,29 +952,27 @@ PhaseRmsVI_Type exitRmsVI(PhaseRmsVI_Type data)
 	currentRms3.phaseState = data.phaseState;
 	currentRms3.stateMain = data.stateMain;
 	return (currentRms3);
-#endif
 }
 
 PhasePowerFactor_Type phPowerFactor(PhasePowerFactor_Type data)
 {
     /**Create the variable with current data**/
 	static PhasePowerFactor_Type currentPowerFactor1;
-#if 0
     static uint8_t counter = 0;
 
 	/**Set with the current state and phase**/
 	currentPowerFactor1.phaseState = PHASES_PF;
 	currentPowerFactor1.stateMain = data.stateMain;
     
-    if(1 == PORTAbits.RA3)
+    if(1 == PORTCbits.RC0)
     {
         currentPowerFactor1.phaseState = EXIT_PF;
     }
-    if(1 == PORTAbits.RA4)
+    if(1 == PORTCbits.RC1)
     {
         currentPowerFactor1.phaseState = EXIT_PF;
     }
-    if(1 == PORTCbits.RC3)
+    if(1 == PORTCbits.RC2)
     {
         counter++;
         LCDNokia_clear();
@@ -1022,29 +986,27 @@ PhasePowerFactor_Type phPowerFactor(PhasePowerFactor_Type data)
         case 0:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(factor_powerP1);
-            //LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_A_POWER_FACTOR));
+            LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_A_POWER_FACTOR));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(factor_powerP2);
-            //LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_B_POWER_FACTOR));
+            LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_B_POWER_FACTOR));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(factor_powerP3);
-            //LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_C_POWER_FACTOR));
+            LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_C_POWER_FACTOR));
             break;
         case 1:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(total_factor_power);
-            //LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, TOTAL_POWER_FACTOR));
+            LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, TOTAL_POWER_FACTOR));
             break;
         default:
             break;
     }
-#endif
 	return (currentPowerFactor1);
 }
 
 PhasePowerFactor_Type exitPowerFactor(PhasePowerFactor_Type data)
 {
-#if 0
     /**Create the variable with current data**/
 	static PhasePowerFactor_Type currentPowerFactor2;
     LCDNokia_clear();
@@ -1052,23 +1014,21 @@ PhasePowerFactor_Type exitPowerFactor(PhasePowerFactor_Type data)
 	currentPowerFactor2.phaseState = data.phaseState;
 	currentPowerFactor2.stateMain = data.stateMain;
 	return (currentPowerFactor2);
-#endif
 }
 
 PhasePhaseAngle_Type phPhaseAngle(PhasePhaseAngle_Type data)
 {
     /**Create the variable with current data**/
 	static PhasePhaseAngle_Type currentPhaseAngle1;
-#if 0
     /**Set with the current state and phase**/
 	currentPhaseAngle1.phaseState = PHASES_PA;
 	currentPhaseAngle1.stateMain = data.stateMain;
     
-    if(1 == PORTAbits.RA3)
+    if(1 == PORTCbits.RC0)
     {
         currentPhaseAngle1.phaseState = EXIT_PA;
     }
-    if(1 == PORTAbits.RA4)
+    if(1 == PORTCbits.RC1)
     {
         currentPhaseAngle1.phaseState = VI_PA;
         LCDNokia_clear();
@@ -1076,14 +1036,14 @@ PhasePhaseAngle_Type phPhaseAngle(PhasePhaseAngle_Type data)
 
     LCDNokia_gotoXY(0,1);
     LCDNokia_sendString(anglePhase1);
-    //LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_A_MEAN_ANGLE_PHASE));
+    LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_A_MEAN_ANGLE_PHASE));
     LCDNokia_gotoXY(0,2);
     LCDNokia_sendString(anglePhase2);
-    //LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_B_MEAN_ANGLE_PHASE));
+    LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_B_MEAN_ANGLE_PHASE));
     LCDNokia_gotoXY(0,3);
     LCDNokia_sendString(anglePhase3);
-    //LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_C_MEAN_ANGLE_PHASE));
-#endif
+    LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_C_MEAN_ANGLE_PHASE));
+
 	return (currentPhaseAngle1);
 }
 
@@ -1091,17 +1051,15 @@ PhasePhaseAngle_Type viPhaseAngle(PhasePhaseAngle_Type data)
 {
     /**Create the variable with current data**/
 	static PhasePhaseAngle_Type currentPhaseAngle2;
-#if 0
-    
     /**Set with the current state and phase**/
 	currentPhaseAngle2.phaseState = VI_PA;
 	currentPhaseAngle2.stateMain = data.stateMain;
     
-    if(1 == PORTAbits.RA3)
+    if(1 == PORTCbits.RC0)
     {
         currentPhaseAngle2.phaseState = EXIT_PA;
     }
-    if(1 == PORTAbits.RA4)
+    if(1 == PORTCbits.RC1)
     {
        	currentPhaseAngle2.phaseState = THDN_PA;
         LCDNokia_clear();
@@ -1109,14 +1067,14 @@ PhasePhaseAngle_Type viPhaseAngle(PhasePhaseAngle_Type data)
     
     LCDNokia_gotoXY(0,1);
     LCDNokia_sendString(angle_VoltageP1);
-    //LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_A_VOLTAGE_ANGLE_PHASE));
+    LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_A_VOLTAGE_ANGLE_PHASE));
     LCDNokia_gotoXY(0,2);
     LCDNokia_sendString(angle_VoltageP2);
-    //LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_B_VOLTAGE_ANGLE_PHASE));
+    LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_B_VOLTAGE_ANGLE_PHASE));
     LCDNokia_gotoXY(0,3);
     LCDNokia_sendString(angle_VoltageP3);
-    //LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_C_VOLTAGE_ANGLE_PHASE));
-#endif
+    LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_C_VOLTAGE_ANGLE_PHASE));
+
 	return (currentPhaseAngle2); 
 }
 
@@ -1124,23 +1082,22 @@ PhasePhaseAngle_Type THDNPhaseAngle(PhasePhaseAngle_Type data)
 {
     /**Create the variable with current data**/
 	static PhasePhaseAngle_Type currentPhaseAngle3;
-#if 0
     static uint8_t counter = 0;
     
     /**Set with the current state and phase**/
 	currentPhaseAngle3.phaseState = THDN_PA;
 	currentPhaseAngle3.stateMain = data.stateMain;
     
-    if(1 == PORTAbits.RA3)
+    if(1 == PORTCbits.RC0)
     {
         currentPhaseAngle3.phaseState = EXIT_PA;
 
     }
-    if(1 == PORTAbits.RA4)
+    if(1 == PORTCbits.RC1)
     {
        	currentPhaseAngle3.phaseState = EXIT_PA;  
     }
-    if(1 == PORTCbits.RC3)
+    if(1 == PORTCbits.RC2)
     {
         counter++;
         LCDNokia_clear();
@@ -1154,35 +1111,33 @@ PhasePhaseAngle_Type THDNPhaseAngle(PhasePhaseAngle_Type data)
         case 0:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(voltage1_THDN);
-            //LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_A_VOLTAGE_ANGLE_PHASE));
+            LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_A_VOLTAGE_ANGLE_PHASE));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(voltage2_THDN);
-            //LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_B_VOLTAGE_ANGLE_PHASE));
+            LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_B_VOLTAGE_ANGLE_PHASE));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(voltage3_THDN);
-            //LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_C_VOLTAGE_ANGLE_PHASE));
+            LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_C_VOLTAGE_ANGLE_PHASE));
             break;
         case 1:
             LCDNokia_gotoXY(0,1);
             LCDNokia_sendString(current1_THDN);
-            //LCDNokia_printValue(ATM_registers(THDN_TYPE, PHASE_A_CURRENT_THDN));
+            LCDNokia_printValue(ATM_registers(THDN_TYPE, PHASE_A_CURRENT_THDN));
             LCDNokia_gotoXY(0,2);
             LCDNokia_sendString(current2_THDN);
-            //LCDNokia_printValue(ATM_registers(THDN_TYPE, PHASE_B_CURRENT_THDN));
+            LCDNokia_printValue(ATM_registers(THDN_TYPE, PHASE_B_CURRENT_THDN));
             LCDNokia_gotoXY(0,3);
             LCDNokia_sendString(current3_THDN);
-            //LCDNokia_printValue(ATM_registers(THDN_TYPE, PHASE_C_CURRENT_THDN));
+            LCDNokia_printValue(ATM_registers(THDN_TYPE, PHASE_C_CURRENT_THDN));
             break;
         default:
             break;
     }
-#endif
     return (currentPhaseAngle3);
 }
 
 PhasePhaseAngle_Type exitPhaseAngle(PhasePhaseAngle_Type data)
 {
-#if 0
     /**Create the variable with current data**/
 	static PhasePhaseAngle_Type currentPhaseAngle3;
 
@@ -1192,39 +1147,37 @@ PhasePhaseAngle_Type exitPhaseAngle(PhasePhaseAngle_Type data)
 	currentPhaseAngle3.stateMain = data.stateMain;
 
 	return (currentPhaseAngle3);   
-#endif
 }
 
 PhaseFreqTemp_Type showFreqTemp(PhaseFreqTemp_Type data)
 {
     /**Create the variable with current data**/
 	static PhaseFreqTemp_Type currentFreqTemp1;
-#if 0
+
 	/**Set with the current state and phase**/
-	currentFrequency1.phaseState = SHOW_FREQTEMP;
-	currentFrequency1.stateMain = data.stateMain;
+	currentFreqTemp1.phaseState = SHOW_FREQTEMP;
+	currentFreqTemp1.stateMain = data.stateMain;
     
-    if(1 == PORTAbits.RA3)
+    if(1 == PORTCbits.RC0)
     {
         currentFreqTemp1.phaseState = EXIT_FREQTEMP;
     }
-    if(1 == PORTAbits.RA4)
+    if(1 == PORTCbits.RC1)
     {
         currentFreqTemp1.phaseState = EXIT_FREQTEMP;
     }
     LCDNokia_gotoXY(0,1);
     LCDNokia_sendString(frequency);
-    //LCDNokia_printValue(ATM_registers(FREQUENCY_TYPE, FREQUENCY_REG));
+    LCDNokia_printValue(ATM_registers(FREQUENCY_TYPE, FREQUENCY_REG));
     LCDNokia_gotoXY(1,1);
     LCDNokia_sendString(temperature);
-    //LCDNokia_printValue(ATM_registers(TEMPERATURE_TYPE, TEMPERATURE_REG));
-#endif
+    LCDNokia_printValue(ATM_registers(TEMPERATURE_TYPE, TEMPERATURE_REG));
+
 	return (currentFreqTemp1);
 }
 
 PhaseFreqTemp_Type exitFreqTemp(PhaseFreqTemp_Type data)
 {
-#if 0
     /**Create the variable with current data**/
 	static PhaseFreqTemp_Type currentFreqTemp2;
 
@@ -1234,5 +1187,4 @@ PhaseFreqTemp_Type exitFreqTemp(PhaseFreqTemp_Type data)
 	currentFreqTemp2.stateMain = data.stateMain;
 
 	return (currentFreqTemp2);
-#endif
 }

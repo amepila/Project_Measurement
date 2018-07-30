@@ -1,0 +1,1337 @@
+[p LITE_MODE AUTOSTATIC LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F4550 ]
+[d frameptr 4065 ]
+"73 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\main.c
+[e E3891 . `uc
+SPI_LOW_POLARITY 0
+SPI_HIGH_POLARITY 1
+]
+[e E3895 . `uc
+SPI_LOW_PHASE 0
+SPI_HIGH_PHASE 1
+]
+[e E3899 . `uc
+SPI_SERIAL_CLK4 0
+SPI_SERIAL_CLK16 1
+SPI_SERIAL_CLK64 2
+]
+"81
+[e E3966 . `uc
+MAIN_MENU 0
+ENERGY 1
+POWER_1 2
+POWER_2 3
+RMS_VI 4
+POWER_FACTOR 5
+PHASE_ANGLE 6
+FREQTEMP 7
+]
+"28 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+[e E3822 . `uc
+GPIO_A 0
+GPIO_B 1
+GPIO_C 2
+GPIO_D 3
+GPIO_E 4
+]
+[e E3818 . `uc
+GPIO_INPUT 0
+GPIO_OUTPUT 1
+]
+"271
+[e E3833 . `uc
+SPI_LOW_PHASE 0
+SPI_HIGH_PHASE 1
+]
+[e E3829 . `uc
+SPI_LOW_POLARITY 0
+SPI_HIGH_POLARITY 1
+]
+"313
+[e E3837 . `uc
+SPI_SERIAL_CLK4 0
+SPI_SERIAL_CLK16 1
+SPI_SERIAL_CLK64 2
+]
+"4 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\States.c
+[e E4049 . `uc
+INITIAL_LOAD 0
+GENERAL_VIEW 1
+VIEW_MENU 2
+SEND_DATA 3
+]
+[e E3904 . `uc
+MAIN_MENU 0
+ENERGY 1
+POWER_1 2
+POWER_2 3
+RMS_VI 4
+POWER_FACTOR 5
+PHASE_ANGLE 6
+FREQTEMP 7
+]
+"13
+[e E4067 . `uc
+ACTIVE_ENERGY 0
+FUNDAMENTAL_ENERGY 1
+HARMONIC_ENERGY 2
+EXIT_ENERGY 3
+]
+"22
+[e E4085 . `uc
+TYPES_POWER1 0
+PHASES_POWER1 1
+EXIT_POWER1 2
+]
+"30
+[e E4102 . `uc
+FH_POWER2 0
+PHASES_POWER2 1
+EXIT_POWER2 2
+]
+"38
+[e E4119 . `uc
+PHASES_RMSVI 0
+NEUTRAL_RMSVI 1
+EXIT_RMSVI 2
+]
+"46
+[e E4136 . `uc
+PHASES_PF 0
+EXIT_PF 1
+]
+"53
+[e E4152 . `uc
+PHASES_PA 0
+VI_PA 1
+THDN_PA 2
+EXIT_PA 3
+]
+"62
+[e E4170 . `uc
+SHOW_FREQTEMP 0
+EXIT_FREQTEMP 1
+]
+"153 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[e E3829 . `uc
+SPI_LOW_POLARITY 0
+SPI_HIGH_POLARITY 1
+]
+[e E3833 . `uc
+SPI_LOW_PHASE 0
+SPI_HIGH_PHASE 1
+]
+[e E3837 . `uc
+SPI_SERIAL_CLK4 0
+SPI_SERIAL_CLK16 1
+SPI_SERIAL_CLK64 2
+]
+"161
+[e E4049 . `uc
+INITIAL_LOAD 0
+GENERAL_VIEW 1
+VIEW_MENU 2
+SEND_DATA 3
+]
+[e E3904 . `uc
+MAIN_MENU 0
+ENERGY 1
+POWER_1 2
+POWER_2 3
+RMS_VI 4
+POWER_FACTOR 5
+PHASE_ANGLE 6
+FREQTEMP 7
+]
+"326
+[e E4067 . `uc
+ACTIVE_ENERGY 0
+FUNDAMENTAL_ENERGY 1
+HARMONIC_ENERGY 2
+EXIT_ENERGY 3
+]
+"330
+[e E4085 . `uc
+TYPES_POWER1 0
+PHASES_POWER1 1
+EXIT_POWER1 2
+]
+"334
+[e E4102 . `uc
+FH_POWER2 0
+PHASES_POWER2 1
+EXIT_POWER2 2
+]
+"338
+[e E4119 . `uc
+PHASES_RMSVI 0
+NEUTRAL_RMSVI 1
+EXIT_RMSVI 2
+]
+"342
+[e E4136 . `uc
+PHASES_PF 0
+EXIT_PF 1
+]
+"346
+[e E4152 . `uc
+PHASES_PA 0
+VI_PA 1
+THDN_PA 2
+EXIT_PA 3
+]
+"350
+[e E4170 . `uc
+SHOW_FREQTEMP 0
+EXIT_FREQTEMP 1
+]
+"431
+[e E3938 . `uc
+ACTIVE_ENERGY_TYPE 0
+REACTIVE_ENERGY_TYPE 1
+APPARENT_ENERGY_TYPE 2
+FUNDAMENTAL_ENERGY_TYPE 3
+HARMONIC_ENERGY_TYPE 4
+ACTIVE_POWER_TYPE 5
+REACTIVE_POWER_TYPE 6
+APPARENT_POWER_TYPE 7
+POWER_FACTOR_TYPE 8
+FUNDAMENTAL_POWER 9
+HARMONIC_POWER 10
+VOLTAGE_RMS 11
+CURRENT_RMS 12
+THDN_TYPE 13
+FREQUENCY_TYPE 14
+PHASE_ANGLE_TYPE 15
+TEMPERATURE_TYPE 16
+]
+[e E3957 . `uc
+TOTAL_FORW_ACTIVE_ENERGY 0
+PHASE_A_FORW_ACTIVE_ENERGY 1
+PHASE_B_FORW_ACTIVE_ENERGY 2
+PHASE_C_FORW_ACTIVE_ENERGY 3
+TOTAL_REV_ACTIVE_ENERGY 4
+PHASE_A_REV_ACTIVE_ENERGY 5
+PHASE_B_REV_ACTIVE_ENERGY 6
+PHASE_C_REV_ACTIVE_ENERGY 7
+TOTAL_FORW_REACTIVE_ENERGY 8
+PHASE_A_FORW_REACTIVE_ENERGY 9
+PHASE_B_FORW_REACTIVE_ENERGY 10
+PHASE_C_FORW_REACTIVE_ENERGY 11
+TOTAL_REVERSE_REACTIVE_ENERGY 12
+PHASE_A_REV_REACTIVE_ENERGY 13
+PHASE_B_REV_REACTIVE_ENERGY 14
+PHASE_C_REV_REACTIVE_ENERGY 15
+TOTAL_ARIT_APPARENT_ENERGY 16
+PHASE_A_APPARENT_ENERGY 17
+PHASE_B_APPARENT_ENERGY 18
+PHASE_C_APPARENT_ENERGY 19
+TOTAL_VECT_APPARENT_ENERGY 20
+TOTAL_FORW_ACTIVE_FUND_ENERGY 21
+PHASE_A_FORW_ACTIVE_FUND_ENERGY 22
+PHASE_B_FORW_ACTIVE_FUND_ENERGY 23
+PHASE_C_FORW_ACTIVE_FUND_ENERGY 24
+TOTAL_REV_ACTIVE_FUND_ENERGY 25
+PHASE_A_REV_ACTIVE_FUND_ENERGY 26
+PHASE_B_REV_ACTIVE_FUND_ENERGY 27
+PHASE_C_REV_ACTIVE_FUND_ENERGY 28
+TOTAL_FORW_ACTIVE_HARM_ENERGY 29
+PHASE_A_FORW_ACTIVE_HARM_ENERGY 30
+PHASE_B_FORW_ACTIVE_HARM_ENERGY 31
+PHASE_C_FORW_ACTIVE_HARM_ENERGY 32
+TOTAL_REV_ACTIVE_HARM_ENERGY 33
+PHASE_A_REV_ACTIVE_HARM_ENERGY 34
+PHASE_B_REV_ACTIVE_HARM_ENERGY 35
+PHASE_C_REV_ACTIVE_HARM_ENERGY 36
+TOTAL_ACTIVE_POWER 37
+PHASE_A_ACTIVE_POWER 38
+PHASE_B_ACTIVE_POWER 39
+PHASE_C_ACTIVE_POWER 40
+TOTAL_REACTIVE_POWER 41
+PHASE_A_REACTIVE_POWER 42
+PHASE_B_REACTIVE_POWER 43
+PHASE_C_REACTIVE_POWER 44
+TOTAL_APPARENT_POWER 45
+PHASE_A_APPARENT_POWER 46
+PHASE_B_APPARENT_POWER 47
+PHASE_C_APPARENT_POWER 48
+TOTAL_POWER_FACTOR 49
+PHASE_A_POWER_FACTOR 50
+PHASE_B_POWER_FACTOR 51
+PHASE_C_POWER_FACTOR 52
+TOTAL_ACTIVE_FUND_POWER 53
+PHASE_A_ACTIVE_FUND_POWER 54
+PHASE_B_ACTIVE_FUND_POWER 55
+PHASE_C_ACTIVE_FUND_POWER 56
+TOTAL_ACTIVE_HARM_POWER 57
+PHASE_A_ACTIVE_HARM_POWER 58
+PHASE_B_ACTIVE_HARM_POWER 59
+PHASE_C_ACTIVE_HARM_POWER 60
+NLINE_SAMPLED_CURRENT_RMS 61
+PHASE_A_VOLTAGE_RMS 62
+PHASE_B_VOLTAGE_RMS 63
+PHASE_C_VOLTAGE_RMS 64
+NLINE_CALCULATED_CURRENT_RMS 65
+PHASE_A_CURRENT_RMS 66
+PHASE_B_CURRENT_RMS 67
+PHASE_C_CURRENT_RMS 68
+PHASE_A_VOLTAGE_THDN 69
+PHASE_B_VOLTAGE_THDN 70
+PHASE_C_VOLTAGE_THDN 71
+PHASE_A_CURRENT_THDN 72
+PHASE_B_CURRENT_THDN 73
+PHASE_C_CURRENT_THDN 74
+FREQUENCY_REG 75
+PHASE_A_MEAN_ANGLE_PHASE 76
+PHASE_B_MEAN_ANGLE_PHASE 77
+PHASE_C_MEAN_ANGLE_PHASE 78
+TEMPERATURE_REG 79
+PHASE_A_VOLTAGE_ANGLE_PHASE 80
+PHASE_B_VOLTAGE_ANGLE_PHASE 81
+PHASE_C_VOLTAGE_ANGLE_PHASE 82
+]
+"110 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+[e E3822 . `uc
+GPIO_A 0
+GPIO_B 1
+GPIO_C 2
+GPIO_D 3
+GPIO_E 4
+]
+[e E3818 . `uc
+GPIO_INPUT 0
+GPIO_OUTPUT 1
+]
+"307 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\ATM90E36A.c
+[e E3933 . `uc
+GPIO_A 0
+GPIO_B 1
+GPIO_C 2
+GPIO_D 3
+GPIO_E 4
+]
+[e E3929 . `uc
+GPIO_INPUT 0
+GPIO_OUTPUT 1
+]
+"716
+[e E3818 . `uc
+ACTIVE_ENERGY_TYPE 0
+REACTIVE_ENERGY_TYPE 1
+APPARENT_ENERGY_TYPE 2
+FUNDAMENTAL_ENERGY_TYPE 3
+HARMONIC_ENERGY_TYPE 4
+ACTIVE_POWER_TYPE 5
+REACTIVE_POWER_TYPE 6
+APPARENT_POWER_TYPE 7
+POWER_FACTOR_TYPE 8
+FUNDAMENTAL_POWER 9
+HARMONIC_POWER 10
+VOLTAGE_RMS 11
+CURRENT_RMS 12
+THDN_TYPE 13
+FREQUENCY_TYPE 14
+PHASE_ANGLE_TYPE 15
+TEMPERATURE_TYPE 16
+]
+[e E3837 . `uc
+TOTAL_FORW_ACTIVE_ENERGY 0
+PHASE_A_FORW_ACTIVE_ENERGY 1
+PHASE_B_FORW_ACTIVE_ENERGY 2
+PHASE_C_FORW_ACTIVE_ENERGY 3
+TOTAL_REV_ACTIVE_ENERGY 4
+PHASE_A_REV_ACTIVE_ENERGY 5
+PHASE_B_REV_ACTIVE_ENERGY 6
+PHASE_C_REV_ACTIVE_ENERGY 7
+TOTAL_FORW_REACTIVE_ENERGY 8
+PHASE_A_FORW_REACTIVE_ENERGY 9
+PHASE_B_FORW_REACTIVE_ENERGY 10
+PHASE_C_FORW_REACTIVE_ENERGY 11
+TOTAL_REVERSE_REACTIVE_ENERGY 12
+PHASE_A_REV_REACTIVE_ENERGY 13
+PHASE_B_REV_REACTIVE_ENERGY 14
+PHASE_C_REV_REACTIVE_ENERGY 15
+TOTAL_ARIT_APPARENT_ENERGY 16
+PHASE_A_APPARENT_ENERGY 17
+PHASE_B_APPARENT_ENERGY 18
+PHASE_C_APPARENT_ENERGY 19
+TOTAL_VECT_APPARENT_ENERGY 20
+TOTAL_FORW_ACTIVE_FUND_ENERGY 21
+PHASE_A_FORW_ACTIVE_FUND_ENERGY 22
+PHASE_B_FORW_ACTIVE_FUND_ENERGY 23
+PHASE_C_FORW_ACTIVE_FUND_ENERGY 24
+TOTAL_REV_ACTIVE_FUND_ENERGY 25
+PHASE_A_REV_ACTIVE_FUND_ENERGY 26
+PHASE_B_REV_ACTIVE_FUND_ENERGY 27
+PHASE_C_REV_ACTIVE_FUND_ENERGY 28
+TOTAL_FORW_ACTIVE_HARM_ENERGY 29
+PHASE_A_FORW_ACTIVE_HARM_ENERGY 30
+PHASE_B_FORW_ACTIVE_HARM_ENERGY 31
+PHASE_C_FORW_ACTIVE_HARM_ENERGY 32
+TOTAL_REV_ACTIVE_HARM_ENERGY 33
+PHASE_A_REV_ACTIVE_HARM_ENERGY 34
+PHASE_B_REV_ACTIVE_HARM_ENERGY 35
+PHASE_C_REV_ACTIVE_HARM_ENERGY 36
+TOTAL_ACTIVE_POWER 37
+PHASE_A_ACTIVE_POWER 38
+PHASE_B_ACTIVE_POWER 39
+PHASE_C_ACTIVE_POWER 40
+TOTAL_REACTIVE_POWER 41
+PHASE_A_REACTIVE_POWER 42
+PHASE_B_REACTIVE_POWER 43
+PHASE_C_REACTIVE_POWER 44
+TOTAL_APPARENT_POWER 45
+PHASE_A_APPARENT_POWER 46
+PHASE_B_APPARENT_POWER 47
+PHASE_C_APPARENT_POWER 48
+TOTAL_POWER_FACTOR 49
+PHASE_A_POWER_FACTOR 50
+PHASE_B_POWER_FACTOR 51
+PHASE_C_POWER_FACTOR 52
+TOTAL_ACTIVE_FUND_POWER 53
+PHASE_A_ACTIVE_FUND_POWER 54
+PHASE_B_ACTIVE_FUND_POWER 55
+PHASE_C_ACTIVE_FUND_POWER 56
+TOTAL_ACTIVE_HARM_POWER 57
+PHASE_A_ACTIVE_HARM_POWER 58
+PHASE_B_ACTIVE_HARM_POWER 59
+PHASE_C_ACTIVE_HARM_POWER 60
+NLINE_SAMPLED_CURRENT_RMS 61
+PHASE_A_VOLTAGE_RMS 62
+PHASE_B_VOLTAGE_RMS 63
+PHASE_C_VOLTAGE_RMS 64
+NLINE_CALCULATED_CURRENT_RMS 65
+PHASE_A_CURRENT_RMS 66
+PHASE_B_CURRENT_RMS 67
+PHASE_C_CURRENT_RMS 68
+PHASE_A_VOLTAGE_THDN 69
+PHASE_B_VOLTAGE_THDN 70
+PHASE_C_VOLTAGE_THDN 71
+PHASE_A_CURRENT_THDN 72
+PHASE_B_CURRENT_THDN 73
+PHASE_C_CURRENT_THDN 74
+FREQUENCY_REG 75
+PHASE_A_MEAN_ANGLE_PHASE 76
+PHASE_B_MEAN_ANGLE_PHASE 77
+PHASE_C_MEAN_ANGLE_PHASE 78
+TEMPERATURE_REG 79
+PHASE_A_VOLTAGE_ANGLE_PHASE 80
+PHASE_B_VOLTAGE_ANGLE_PHASE 81
+PHASE_C_VOLTAGE_ANGLE_PHASE 82
+]
+"245
+[v _ATM_write ATM_write `(v  1 s 1 ATM_write ]
+"275
+[v _ATM_read ATM_read `(ui  1 s 2 ATM_read ]
+"304
+[v _ATM_init ATM_init `(v  1 e 1 0 ]
+"340
+[v _ATM_calibration ATM_calibration `(v  1 e 1 0 ]
+"715
+[v _ATM_registers ATM_registers `(ui  1 e 2 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"54 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\ftneg.c
+[v ___ftneg __ftneg `(f  1 e 3 0 ]
+"20 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+"44 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\fttol.c
+[v ___fttol __fttol `(l  1 e 4 0 ]
+"27 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\lbtoft.c
+[v ___lbtoft __lbtoft `(f  1 e 3 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\llmod.c
+[v ___llmod __llmod `(ul  1 e 4 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"28 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\lwtoft.c
+[v ___lwtoft __lwtoft `(f  1 e 3 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 3 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 3 0 ]
+"11 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 3 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 3 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"26 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+[v _GPIO_dataDirectionPIN GPIO_dataDirectionPIN `(v  1 e 1 0 ]
+"80
+[v _GPIO_setPIN GPIO_setPIN `(v  1 e 1 0 ]
+"105
+[v _GPIO_clearPIN GPIO_clearPIN `(v  1 e 1 0 ]
+"130
+[v _delay delay `(v  1 e 1 0 ]
+"138
+[v _ButtonInt_config ButtonInt_config `(v  1 e 1 0 ]
+"150
+[v _UART_init UART_init `(v  1 e 1 0 ]
+"178
+[v _UART_putChar UART_putChar `(v  1 e 1 0 ]
+"195
+[v _expBASE10 expBASE10 `(ul  1 e 4 0 ]
+"270
+[v _SPI_enableClock SPI_enableClock `(v  1 s 1 SPI_enableClock ]
+"312
+[v _SPI_enablePins SPI_enablePins `(v  1 s 1 SPI_enablePins ]
+"338
+[v _SPI_init SPI_init `(v  1 e 1 0 ]
+"344
+[v _SPI_write SPI_write `(v  1 e 1 0 ]
+"354
+[v _SPI_read SPI_read `(uc  1 e 1 0 ]
+"107 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+[v _LCDNokia_init LCDNokia_init `(v  1 e 1 0 ]
+"136
+[v _LCDNokia_writeByte LCDNokia_writeByte `(v  1 e 1 0 ]
+"151
+[v _LCDNokia_sendChar LCDNokia_sendChar `(v  1 e 1 0 ]
+"167
+[v _LCDNokia_sendString LCDNokia_sendString `(v  1 e 1 0 ]
+"175
+[v _LCDNokia_clear LCDNokia_clear `(v  1 e 1 0 ]
+"187
+[v _LCDNokia_gotoXY LCDNokia_gotoXY `(v  1 e 1 0 ]
+"193
+[v _LCD_delay LCD_delay `(v  1 e 1 0 ]
+"202
+[v _LCDNokia_printValue LCDNokia_printValue `(v  1 e 1 0 ]
+"93 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\main.c
+[v _main main `(v  1 e 1 0 ]
+"24 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S715 . 2 `E4049 1 phaseState 1 0 `E3904 1 stateMain 1 1 ]
+"160 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _initialLoad initialLoad `(S715  1 e 2 0 ]
+"24 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S715 . 2 `E4049 1 phaseState 1 0 `E3904 1 stateMain 1 1 ]
+"176 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _generalView generalView `(S715  1 e 2 0 ]
+"24 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S715 . 2 `E4049 1 phaseState 1 0 `E3904 1 stateMain 1 1 ]
+"228 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _viewMenu viewMenu `(S715  1 e 2 0 ]
+"24 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S715 . 2 `E4049 1 phaseState 1 0 `E3904 1 stateMain 1 1 ]
+"372 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _sendData sendData `(S715  1 e 2 0 ]
+"24 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S715 . 2 `E4049 1 phaseState 1 0 `E3904 1 stateMain 1 1 ]
+"390 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _activeEnergy activeEnergy `(S715  1 e 2 0 ]
+"24 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S715 . 2 `E4049 1 phaseState 1 0 `E3904 1 stateMain 1 1 ]
+"520 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _fundamentalEnergy fundamentalEnergy `(S715  1 e 2 0 ]
+"24 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S715 . 2 `E4049 1 phaseState 1 0 `E3904 1 stateMain 1 1 ]
+"585 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _harmonicEnergy harmonicEnergy `(S715  1 e 2 0 ]
+"24 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S715 . 2 `E4049 1 phaseState 1 0 `E3904 1 stateMain 1 1 ]
+"649 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _exitEnergy exitEnergy `(S715  1 e 2 0 ]
+"77 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S784 . 2 `E4085 1 phaseState 1 0 `E3904 1 stateMain 1 1 ]
+"660 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _typesPower1 typesPower1 `(S784  1 e 2 0 ]
+"77 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S784 . 2 `E4085 1 phaseState 1 0 `E3904 1 stateMain 1 1 ]
+"728 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _phPower1 phPower1 `(S784  1 e 2 0 ]
+"77 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S784 . 2 `E4085 1 phaseState 1 0 `E3904 1 stateMain 1 1 ]
+"758 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _exitPower1 exitPower1 `(S784  1 e 2 0 ]
+"77 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S784 . 2 `E4085 1 phaseState 1 0 `E3904 1 stateMain 1 1 ]
+"769 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _fhPower2 fhPower2 `(S784  1 e 2 0 ]
+"77 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S784 . 2 `E4085 1 phaseState 1 0 `E3904 1 stateMain 1 1 ]
+"826 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _phPower2 phPower2 `(S784  1 e 2 0 ]
+"77 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S784 . 2 `E4085 1 phaseState 1 0 `E3904 1 stateMain 1 1 ]
+"851 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _exitPower2 exitPower2 `(S784  1 e 2 0 ]
+"77 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S784 . 2 `E4085 1 phaseState 1 0 `E3904 1 stateMain 1 1 ]
+"862 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _phRmsVI phRmsVI `(S784  1 e 2 0 ]
+"77 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S784 . 2 `E4085 1 phaseState 1 0 `E3904 1 stateMain 1 1 ]
+"919 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _neutralRmsVI neutralRmsVI `(S784  1 e 2 0 ]
+"77 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S784 . 2 `E4085 1 phaseState 1 0 `E3904 1 stateMain 1 1 ]
+"946 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _exitRmsVI exitRmsVI `(S784  1 e 2 0 ]
+"153 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S870 . 2 `E4136 1 phaseState 1 0 `E3904 1 stateMain 1 1 ]
+"957 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _phPowerFactor phPowerFactor `(S870  1 e 2 0 ]
+"153 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S870 . 2 `E4136 1 phaseState 1 0 `E3904 1 stateMain 1 1 ]
+"1008 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _exitPowerFactor exitPowerFactor `(S870  1 e 2 0 ]
+"24 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S715 . 2 `E4049 1 phaseState 1 0 `E3904 1 stateMain 1 1 ]
+"1019 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _phPhaseAngle phPhaseAngle `(S715  1 e 2 0 ]
+"24 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S715 . 2 `E4049 1 phaseState 1 0 `E3904 1 stateMain 1 1 ]
+"1050 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _viPhaseAngle viPhaseAngle `(S715  1 e 2 0 ]
+"24 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S715 . 2 `E4049 1 phaseState 1 0 `E3904 1 stateMain 1 1 ]
+"1081 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _THDNPhaseAngle THDNPhaseAngle `(S715  1 e 2 0 ]
+"24 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S715 . 2 `E4049 1 phaseState 1 0 `E3904 1 stateMain 1 1 ]
+"1139 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _exitPhaseAngle exitPhaseAngle `(S715  1 e 2 0 ]
+"153 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S870 . 2 `E4136 1 phaseState 1 0 `E3904 1 stateMain 1 1 ]
+"1152 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _showFreqTemp showFreqTemp `(S870  1 e 2 0 ]
+"153 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.h
+[s S870 . 2 `E4136 1 phaseState 1 0 `E3904 1 stateMain 1 1 ]
+"1179 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _exitFreqTemp exitFreqTemp `(S870  1 e 2 0 ]
+"68 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\States.c
+[v _stateMainMenu stateMainMenu `(E3966  1 e 1 0 ]
+"85
+[v _stateEnergy stateEnergy `(E3966  1 e 1 0 ]
+"102
+[v _statePower1 statePower1 `(E3966  1 e 1 0 ]
+"119
+[v _statePower2 statePower2 `(E3966  1 e 1 0 ]
+"136
+[v _stateRmsVI stateRmsVI `(E3966  1 e 1 0 ]
+"153
+[v _statePowerFactor statePowerFactor `(E3966  1 e 1 0 ]
+"170
+[v _statePhaseAngle statePhaseAngle `(E3966  1 e 1 0 ]
+"187
+[v _stateFreqTemp stateFreqTemp `(E3966  1 e 1 0 ]
+"2312 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f4550.h
+[v _PORTA PORTA `VEuc  1 e 1 @3968 ]
+"2451
+[v _PORTB PORTB `VEuc  1 e 1 @3969 ]
+[s S309 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"2481
+[s S1672 . 1 `uc 1 INT0 1 0 :1:0 
+`uc 1 INT1 1 0 :1:1 
+`uc 1 INT2 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 PGM 1 0 :1:5 
+`uc 1 PGC 1 0 :1:6 
+`uc 1 PGD 1 0 :1:7 
+]
+[s S1680 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 CCP2_PA2 1 0 :1:3 
+]
+[u S1683 . 1 `S309 1 . 1 0 `S1672 1 . 1 0 `S1680 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES1683  1 e 1 @3969 ]
+"2561
+[v _PORTC PORTC `VEuc  1 e 1 @3970 ]
+[s S1104 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+"2603
+[s S1113 . 1 `uc 1 T1OSO 1 0 :1:0 
+`uc 1 T1OSI 1 0 :1:1 
+`uc 1 CCP1 1 0 :1:2 
+`uc 1 . 1 0 :3:3 
+`uc 1 TX 1 0 :1:6 
+`uc 1 RX 1 0 :1:7 
+]
+[s S1120 . 1 `uc 1 T13CKI 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 P1A 1 0 :1:2 
+`uc 1 . 1 0 :3:3 
+`uc 1 CK 1 0 :1:6 
+`uc 1 DT 1 0 :1:7 
+]
+[s S1127 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 CCP2 1 0 :1:1 
+`uc 1 PA1 1 0 :1:2 
+]
+[s S1131 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 PA2 1 0 :1:1 
+]
+[u S1134 . 1 `S1104 1 . 1 0 `S1113 1 . 1 0 `S1120 1 . 1 0 `S1127 1 . 1 0 `S1131 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES1134  1 e 1 @3970 ]
+"2703
+[v _PORTD PORTD `VEuc  1 e 1 @3971 ]
+[s S1765 . 1 `uc 1 RD0 1 0 :1:0 
+`uc 1 RD1 1 0 :1:1 
+`uc 1 RD2 1 0 :1:2 
+`uc 1 RD3 1 0 :1:3 
+`uc 1 RD4 1 0 :1:4 
+`uc 1 RD5 1 0 :1:5 
+`uc 1 RD6 1 0 :1:6 
+`uc 1 RD7 1 0 :1:7 
+]
+"2734
+[s S1774 . 1 `uc 1 SPP0 1 0 :1:0 
+`uc 1 SPP1 1 0 :1:1 
+`uc 1 SPP2 1 0 :1:2 
+`uc 1 SPP3 1 0 :1:3 
+`uc 1 SPP4 1 0 :1:4 
+`uc 1 SPP5 1 0 :1:5 
+`uc 1 SPP6 1 0 :1:6 
+`uc 1 SPP7 1 0 :1:7 
+]
+[s S1783 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 SS2 1 0 :1:7 
+]
+[u S1786 . 1 `S1765 1 . 1 0 `S1774 1 . 1 0 `S1783 1 . 1 0 ]
+[v _PORTDbits PORTDbits `VES1786  1 e 1 @3971 ]
+"2824
+[v _PORTE PORTE `VEuc  1 e 1 @3972 ]
+"3425
+[v _TRISA TRISA `VEuc  1 e 1 @3986 ]
+"3623
+[v _TRISB TRISB `VEuc  1 e 1 @3987 ]
+[s S300 . 1 `uc 1 TRISB0 1 0 :1:0 
+`uc 1 TRISB1 1 0 :1:1 
+`uc 1 TRISB2 1 0 :1:2 
+`uc 1 TRISB3 1 0 :1:3 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+"3655
+[u S318 . 1 `S300 1 . 1 0 `S309 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES318  1 e 1 @3987 ]
+"3845
+[v _TRISC TRISC `VEuc  1 e 1 @3988 ]
+[s S340 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 . 1 0 :3:3 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+"3873
+[s S347 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 . 1 0 :3:3 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+[u S354 . 1 `S340 1 . 1 0 `S347 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES354  1 e 1 @3988 ]
+"3999
+[v _TRISD TRISD `VEuc  1 e 1 @3989 ]
+"4221
+[v _TRISE TRISE `VEuc  1 e 1 @3990 ]
+[s S545 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSPIF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 SPPIF 1 0 :1:7 
+]
+"4490
+[s S554 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 TX1IF 1 0 :1:4 
+`uc 1 RC1IF 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 PSPIF 1 0 :1:7 
+]
+[u S560 . 1 `S545 1 . 1 0 `S554 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES560  1 e 1 @3998 ]
+[s S193 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+"4975
+[s S202 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 ADEN 1 0 :1:3 
+]
+[s S205 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 SRENA 1 0 :1:5 
+]
+[s S208 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC8_9 1 0 :1:6 
+]
+[s S211 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC9 1 0 :1:6 
+]
+[s S214 . 1 `uc 1 RCD8 1 0 :1:0 
+]
+[u S216 . 1 `S193 1 . 1 0 `S202 1 . 1 0 `S205 1 . 1 0 `S208 1 . 1 0 `S211 1 . 1 0 `S214 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES216  1 e 1 @4011 ]
+[s S141 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 SENDB 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+"5183
+[s S150 . 1 `uc 1 TX9D1 1 0 :1:0 
+`uc 1 TRMT1 1 0 :1:1 
+`uc 1 BRGH1 1 0 :1:2 
+`uc 1 SENDB1 1 0 :1:3 
+`uc 1 SYNC1 1 0 :1:4 
+`uc 1 TXEN1 1 0 :1:5 
+`uc 1 TX91 1 0 :1:6 
+`uc 1 CSRC1 1 0 :1:7 
+]
+[s S159 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 TX8_9 1 0 :1:6 
+]
+[s S162 . 1 `uc 1 TXD8 1 0 :1:0 
+]
+[u S164 . 1 `S141 1 . 1 0 `S150 1 . 1 0 `S159 1 . 1 0 `S162 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES164  1 e 1 @4012 ]
+"5400
+[v _TXREG TXREG `VEuc  1 e 1 @4013 ]
+"5424
+[v _SPBRG SPBRG `VEuc  1 e 1 @4015 ]
+[s S247 . 1 `uc 1 ABDEN 1 0 :1:0 
+`uc 1 WUE 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 BRG16 1 0 :1:3 
+`uc 1 TXCKP 1 0 :1:4 
+`uc 1 RXDTP 1 0 :1:5 
+`uc 1 RCIDL 1 0 :1:6 
+`uc 1 ABDOVF 1 0 :1:7 
+]
+"6096
+[s S256 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 SCKP 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 RCMT 1 0 :1:6 
+]
+[s S261 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 RXCKP 1 0 :1:5 
+]
+[s S264 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 W4E 1 0 :1:1 
+]
+[u S267 . 1 `S247 1 . 1 0 `S256 1 . 1 0 `S261 1 . 1 0 `S264 1 . 1 0 ]
+[v _BAUDCONbits BAUDCONbits `VES267  1 e 1 @4024 ]
+"6579
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
+"6664
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @4034 ]
+"6866
+[v _SSPCON1 SSPCON1 `VEuc  1 e 1 @4038 ]
+[s S514 . 1 `uc 1 SSPM 1 0 :4:0 
+`uc 1 CKP 1 0 :1:4 
+`uc 1 SSPEN 1 0 :1:5 
+`uc 1 SSPOV 1 0 :1:6 
+`uc 1 WCOL 1 0 :1:7 
+]
+"6886
+[s S520 . 1 `uc 1 SSPM0 1 0 :1:0 
+`uc 1 SSPM1 1 0 :1:1 
+`uc 1 SSPM2 1 0 :1:2 
+`uc 1 SSPM3 1 0 :1:3 
+]
+[u S525 . 1 `S514 1 . 1 0 `S520 1 . 1 0 ]
+[v _SSPCON1bits SSPCON1bits `VES525  1 e 1 @4038 ]
+"6936
+[v _SSPSTAT SSPSTAT `VEuc  1 e 1 @4039 ]
+[s S373 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_NOT_W 1 0 :1:2 
+]
+"7019
+[s S376 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 D_NOT_A 1 0 :1:5 
+]
+[s S379 . 1 `uc 1 BF 1 0 :1:0 
+`uc 1 UA 1 0 :1:1 
+`uc 1 R_nW 1 0 :1:2 
+`uc 1 S 1 0 :1:3 
+`uc 1 P 1 0 :1:4 
+`uc 1 D_nA 1 0 :1:5 
+`uc 1 CKE 1 0 :1:6 
+`uc 1 SMP 1 0 :1:7 
+]
+[s S388 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_W 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D_A 1 0 :1:5 
+]
+[s S393 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 I2C_READ 1 0 :1:2 
+`uc 1 I2C_START 1 0 :1:3 
+`uc 1 I2C_STOP 1 0 :1:4 
+`uc 1 I2C_DAT 1 0 :1:5 
+]
+[s S399 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nW 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nA 1 0 :1:5 
+]
+[s S404 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_WRITE 1 0 :1:2 
+]
+[s S407 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 NOT_ADDRESS 1 0 :1:5 
+]
+[s S410 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nWRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nADDRESS 1 0 :1:5 
+]
+[s S415 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 READ_WRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 DATA_ADDRESS 1 0 :1:5 
+]
+[s S420 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D 1 0 :1:5 
+]
+[s S425 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 RW 1 0 :1:2 
+`uc 1 START 1 0 :1:3 
+`uc 1 STOP 1 0 :1:4 
+`uc 1 DA 1 0 :1:5 
+]
+[s S431 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_W 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 NOT_A 1 0 :1:5 
+]
+[u S436 . 1 `S373 1 . 1 0 `S376 1 . 1 0 `S379 1 . 1 0 `S388 1 . 1 0 `S393 1 . 1 0 `S399 1 . 1 0 `S404 1 . 1 0 `S407 1 . 1 0 `S410 1 . 1 0 `S415 1 . 1 0 `S420 1 . 1 0 `S425 1 . 1 0 `S431 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES436  1 e 1 @4039 ]
+"7191
+[v _SSPBUF SSPBUF `VEuc  1 e 1 @4041 ]
+"6 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+[v _ASCII ASCII `C[96][5]uc  1 s 480 ASCII ]
+[s S31 . 3 `E3891 1 SPI_Polarity 1 0 `E3895 1 SPI_Phase 1 1 `E3899 1 SPI_Clk 1 2 ]
+"73 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\main.c
+[v _SPI_Config SPI_Config `CS31  1 e 3 0 ]
+"9 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\Phases.c
+[v _msgInitial1_gv msgInitial1_gv `C[13]uc  1 e 13 0 ]
+"10
+[v _msgInitial2_gv msgInitial2_gv `C[13]uc  1 e 13 0 ]
+"11
+[v _buttonRight_gv buttonRight_gv `C[6]uc  1 e 6 0 ]
+"12
+[v _buttonLeft_gv buttonLeft_gv `C[6]uc  1 e 6 0 ]
+"14
+[v _string_Energy string_Energy `C[7]uc  1 e 7 0 ]
+"16
+[v _string1_Power1 string1_Power1 `C[17]uc  1 e 17 0 ]
+"17
+[v _string2_Power1 string2_Power1 `C[17]uc  1 e 17 0 ]
+"19
+[v _string1_Power2 string1_Power2 `C[12]uc  1 e 12 0 ]
+"20
+[v _string2_Power2 string2_Power2 `C[10]uc  1 e 10 0 ]
+"21
+[v _string3_Power2 string3_Power2 `C[7]uc  1 e 7 0 ]
+"23
+[v _string1_RMS string1_RMS `C[17]uc  1 e 17 0 ]
+"24
+[v _string2_RMS string2_RMS `C[5]uc  1 e 5 0 ]
+"26
+[v _string1_PowerFactor string1_PowerFactor `C[7]uc  1 e 7 0 ]
+"27
+[v _string2_PowerFactor string2_PowerFactor `C[8]uc  1 e 8 0 ]
+"29
+[v _string1_PhaseAngle string1_PhaseAngle `C[7]uc  1 e 7 0 ]
+"30
+[v _string2_PhaseAngle string2_PhaseAngle `C[7]uc  1 e 7 0 ]
+"32
+[v _string1_FreqTemp string1_FreqTemp `C[10]uc  1 e 10 0 ]
+"34
+[v _buttonRight buttonRight `C[3]uc  1 e 3 0 ]
+"35
+[v _buttonCenter buttonCenter `C[3]uc  1 e 3 0 ]
+"36
+[v _buttonLeft buttonLeft `C[3]uc  1 e 3 0 ]
+"38
+[v _active_Forward1 active_Forward1 `C[15]uc  1 e 15 0 ]
+"39
+[v _active_Forward2 active_Forward2 `C[15]uc  1 e 15 0 ]
+"40
+[v _active_Forward3 active_Forward3 `C[15]uc  1 e 15 0 ]
+"42
+[v _active_Reverse1 active_Reverse1 `C[14]uc  1 e 14 0 ]
+"43
+[v _active_Reverse2 active_Reverse2 `C[14]uc  1 e 14 0 ]
+"44
+[v _active_Reverse3 active_Reverse3 `C[14]uc  1 e 14 0 ]
+"46
+[v _active_Forward_Total active_Forward_Total `C[18]uc  1 e 18 0 ]
+"47
+[v _active_Reverse_Total active_Reverse_Total `C[17]uc  1 e 17 0 ]
+"49
+[v _reactive_Forward1 reactive_Forward1 `C[17]uc  1 e 17 0 ]
+"50
+[v _reactive_Forward2 reactive_Forward2 `C[17]uc  1 e 17 0 ]
+"51
+[v _reactive_Forward3 reactive_Forward3 `C[17]uc  1 e 17 0 ]
+"53
+[v _reactive_Reverse1 reactive_Reverse1 `C[16]uc  1 e 16 0 ]
+"54
+[v _reactive_Reverse2 reactive_Reverse2 `C[16]uc  1 e 16 0 ]
+"55
+[v _reactive_Reverse3 reactive_Reverse3 `C[16]uc  1 e 16 0 ]
+"57
+[v _reactive_Forward_Total reactive_Forward_Total `C[20]uc  1 e 20 0 ]
+"58
+[v _reactive_Reverse_Total reactive_Reverse_Total `C[19]uc  1 e 19 0 ]
+"60
+[v _apparent_energyP1 apparent_energyP1 `C[10]uc  1 e 10 0 ]
+"61
+[v _apparent_energyP2 apparent_energyP2 `C[10]uc  1 e 10 0 ]
+"62
+[v _apparent_energyP3 apparent_energyP3 `C[10]uc  1 e 10 0 ]
+"64
+[v _apparentAri_energyTotal apparentAri_energyTotal `C[19]uc  1 e 19 0 ]
+"65
+[v _apparentVec_energyTotal apparentVec_energyTotal `C[19]uc  1 e 19 0 ]
+"67
+[v _fund_ForwardP1 fund_ForwardP1 `C[17]uc  1 e 17 0 ]
+"68
+[v _fund_ForwardP2 fund_ForwardP2 `C[17]uc  1 e 17 0 ]
+"69
+[v _fund_ForwardP3 fund_ForwardP3 `C[17]uc  1 e 17 0 ]
+"71
+[v _fund_ReverseP1 fund_ReverseP1 `C[16]uc  1 e 16 0 ]
+"72
+[v _fund_ReverseP2 fund_ReverseP2 `C[16]uc  1 e 16 0 ]
+"73
+[v _fund_ReverseP3 fund_ReverseP3 `C[16]uc  1 e 16 0 ]
+"75
+[v _fund_ForwardTotal fund_ForwardTotal `C[20]uc  1 e 20 0 ]
+"76
+[v _fund_ReverseTotal fund_ReverseTotal `C[19]uc  1 e 19 0 ]
+"78
+[v _harmonic_ForwardP1 harmonic_ForwardP1 `C[13]uc  1 e 13 0 ]
+"79
+[v _harmonic_ForwardP2 harmonic_ForwardP2 `C[13]uc  1 e 13 0 ]
+"80
+[v _harmonic_ForwardP3 harmonic_ForwardP3 `C[13]uc  1 e 13 0 ]
+"82
+[v _harmonic_ReverseP1 harmonic_ReverseP1 `C[12]uc  1 e 12 0 ]
+"83
+[v _harmonic_ReverseP2 harmonic_ReverseP2 `C[12]uc  1 e 12 0 ]
+"84
+[v _harmonic_ReverseP3 harmonic_ReverseP3 `C[12]uc  1 e 12 0 ]
+"86
+[v _harmonic_ForwardTotal harmonic_ForwardTotal `C[16]uc  1 e 16 0 ]
+"87
+[v _harmonic_ReverseTotal harmonic_ReverseTotal `C[15]uc  1 e 15 0 ]
+"89
+[v _active_powerP1 active_powerP1 `C[11]uc  1 e 11 0 ]
+"90
+[v _active_powerP2 active_powerP2 `C[11]uc  1 e 11 0 ]
+"91
+[v _active_powerP3 active_powerP3 `C[11]uc  1 e 11 0 ]
+"93
+[v _reactive_powerP1 reactive_powerP1 `C[11]uc  1 e 11 0 ]
+"94
+[v _reactive_powerP2 reactive_powerP2 `C[11]uc  1 e 11 0 ]
+"95
+[v _reactive_powerP3 reactive_powerP3 `C[11]uc  1 e 11 0 ]
+"97
+[v _apparent_powerP1 apparent_powerP1 `C[12]uc  1 e 12 0 ]
+"98
+[v _apparent_powerP2 apparent_powerP2 `C[12]uc  1 e 12 0 ]
+"99
+[v _apparent_powerP3 apparent_powerP3 `C[12]uc  1 e 12 0 ]
+"101
+[v _total_active_power total_active_power `C[14]uc  1 e 14 0 ]
+"102
+[v _total_reactive_power total_reactive_power `C[14]uc  1 e 14 0 ]
+"103
+[v _total_apparent_power total_apparent_power `C[15]uc  1 e 15 0 ]
+"105
+[v _fundamental_PowerP1 fundamental_PowerP1 `C[11]uc  1 e 11 0 ]
+"106
+[v _fundamental_PowerP2 fundamental_PowerP2 `C[11]uc  1 e 11 0 ]
+"107
+[v _fundamental_PowerP3 fundamental_PowerP3 `C[11]uc  1 e 11 0 ]
+"109
+[v _harmonic_PowerP1 harmonic_PowerP1 `C[11]uc  1 e 11 0 ]
+"110
+[v _harmonic_PowerP2 harmonic_PowerP2 `C[11]uc  1 e 11 0 ]
+"111
+[v _harmonic_PowerP3 harmonic_PowerP3 `C[11]uc  1 e 11 0 ]
+"113
+[v _fundamental_Total_Power fundamental_Total_Power `C[14]uc  1 e 14 0 ]
+"114
+[v _harmonic_Total_Power harmonic_Total_Power `C[14]uc  1 e 14 0 ]
+"116
+[v _voltage1_RMS voltage1_RMS `C[11]uc  1 e 11 0 ]
+"117
+[v _voltage2_RMS voltage2_RMS `C[11]uc  1 e 11 0 ]
+"118
+[v _voltage3_RMS voltage3_RMS `C[11]uc  1 e 11 0 ]
+"120
+[v _current1_RMS current1_RMS `C[11]uc  1 e 11 0 ]
+"121
+[v _current2_RMS current2_RMS `C[11]uc  1 e 11 0 ]
+"122
+[v _current3_RMS current3_RMS `C[11]uc  1 e 11 0 ]
+"124
+[v _nline_calculated_RMS nline_calculated_RMS `C[13]uc  1 e 13 0 ]
+"125
+[v _nline_sampled_RMS nline_sampled_RMS `C[13]uc  1 e 13 0 ]
+"127
+[v _factor_powerP1 factor_powerP1 `C[9]uc  1 e 9 0 ]
+"128
+[v _factor_powerP2 factor_powerP2 `C[9]uc  1 e 9 0 ]
+"129
+[v _factor_powerP3 factor_powerP3 `C[9]uc  1 e 9 0 ]
+"131
+[v _total_factor_power total_factor_power `C[12]uc  1 e 12 0 ]
+"133
+[v _anglePhase1 anglePhase1 `C[11]uc  1 e 11 0 ]
+"134
+[v _anglePhase2 anglePhase2 `C[11]uc  1 e 11 0 ]
+"135
+[v _anglePhase3 anglePhase3 `C[11]uc  1 e 11 0 ]
+"137
+[v _angle_VoltageP1 angle_VoltageP1 `C[11]uc  1 e 11 0 ]
+"138
+[v _angle_VoltageP2 angle_VoltageP2 `C[11]uc  1 e 11 0 ]
+"139
+[v _angle_VoltageP3 angle_VoltageP3 `C[11]uc  1 e 11 0 ]
+"141
+[v _voltage1_THDN voltage1_THDN `C[12]uc  1 e 12 0 ]
+"142
+[v _voltage2_THDN voltage2_THDN `C[12]uc  1 e 12 0 ]
+"143
+[v _voltage3_THDN voltage3_THDN `C[12]uc  1 e 12 0 ]
+"145
+[v _current1_THDN current1_THDN `C[12]uc  1 e 12 0 ]
+"146
+[v _current2_THDN current2_THDN `C[12]uc  1 e 12 0 ]
+"147
+[v _current3_THDN current3_THDN `C[12]uc  1 e 12 0 ]
+"149
+[v _frequency frequency `C[8]uc  1 e 8 0 ]
+"150
+[v _temperature temperature `C[8]uc  1 e 8 0 ]
+"153
+[v _SPI_Config2 SPI_Config2 `CS31  1 e 3 0 ]
+[s S715 . 2 `E4049 1 phaseState 1 0 `E3904 1 stateMain 1 1 ]
+"4 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\States.c
+[s S719 PhaseMainMenu 2 `*.37(S715 1 PhaseMainMenu 2 0 ]
+[v _phasesMainMenu phasesMainMenu `C[4]S719  1 e 8 0 ]
+"13
+[s S754 PhaseEnergy 2 `*.37(S715 1 PhaseEnergy 2 0 ]
+[v _phasesEnergy phasesEnergy `C[4]S754  1 e 8 0 ]
+[s S784 . 2 `E4085 1 phaseState 1 0 `E3904 1 stateMain 1 1 ]
+"22
+[s S788 PhasePower1 2 `*.37(S784 1 PhasePower1 2 0 ]
+[v _phasesPower1 phasesPower1 `C[3]S788  1 e 6 0 ]
+"30
+[s S817 PhasePower2 2 `*.37(S784 1 PhasePower2 2 0 ]
+[v _phasesPower2 phasesPower2 `C[3]S817  1 e 6 0 ]
+"38
+[s S846 PhaseRmsVI 2 `*.37(S784 1 PhaseRmsVI 2 0 ]
+[v _phasesRmsVI phasesRmsVI `C[3]S846  1 e 6 0 ]
+[s S870 . 2 `E4136 1 phaseState 1 0 `E3904 1 stateMain 1 1 ]
+"46
+[s S874 PhasePowerFactor 2 `*.37(S870 1 PhasePowerFactor 2 0 ]
+[v _phasesPowerFactor phasesPowerFactor `C[2]S874  1 e 4 0 ]
+"53
+[s S899 PhasePhaseAngle 2 `*.37(S715 1 PhasePhaseAngle 2 0 ]
+[v _phasesPhaseAngle phasesPhaseAngle `C[4]S899  1 e 8 0 ]
+"62
+[s S932 PhaseFreqTemp 2 `*.37(S870 1 PhaseFreqTemp 2 0 ]
+[v _phasesFreqTemp phasesFreqTemp `C[2]S932  1 e 4 0 ]
+"93 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"105
+[v main@test test `uc  1 a 1 14 ]
+"96
+[v main@currentState currentState `E3966  1 a 1 13 ]
+"121
+} 0
+"130 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+[v _delay delay `(v  1 e 1 0 ]
+{
+"132
+[v delay@counter counter `VEul  1 a 4 4 ]
+"131
+[v delay@delay delay `ul  1 p 4 0 ]
+"136
+} 0
+"338
+[v _SPI_init SPI_init `(v  1 e 1 0 ]
+{
+[s S31 . 3 `E3891 1 SPI_Polarity 1 0 `E3895 1 SPI_Phase 1 1 `E3899 1 SPI_Clk 1 2 ]
+[v SPI_init@SPI_Config SPI_Config `*.25CS31  1 p 2 2 ]
+"342
+} 0
+"312
+[v _SPI_enablePins SPI_enablePins `(v  1 s 1 SPI_enablePins ]
+{
+[v SPI_enablePins@serial serial `E3837  1 a 1 wreg ]
+[v SPI_enablePins@serial serial `E3837  1 a 1 wreg ]
+[v SPI_enablePins@serial serial `E3837  1 a 1 0 ]
+"336
+} 0
+"270
+[v _SPI_enableClock SPI_enableClock `(v  1 s 1 SPI_enableClock ]
+{
+[v SPI_enableClock@phase phase `E3833  1 a 1 wreg ]
+[v SPI_enableClock@phase phase `E3833  1 a 1 wreg ]
+[v SPI_enableClock@cpol cpol `E3829  1 p 1 0 ]
+"273
+[v SPI_enableClock@phase phase `E3833  1 a 1 1 ]
+"310
+} 0
+"151 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+[v _LCDNokia_sendChar LCDNokia_sendChar `(v  1 e 1 0 ]
+{
+[v LCDNokia_sendChar@character character `uc  1 a 1 wreg ]
+"153
+[v LCDNokia_sendChar@index index `ui  1 a 2 11 ]
+"151
+[v LCDNokia_sendChar@character character `uc  1 a 1 wreg ]
+"153
+[v LCDNokia_sendChar@character character `uc  1 a 1 10 ]
+"165
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 4 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
+} 0
+"107 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+[v _LCDNokia_init LCDNokia_init `(v  1 e 1 0 ]
+{
+"124
+} 0
+"193
+[v _LCD_delay LCD_delay `(v  1 e 1 0 ]
+{
+"195
+[v LCD_delay@counter counter `ul  1 a 4 0 ]
+"200
+} 0
+"80 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+[v _GPIO_setPIN GPIO_setPIN `(v  1 e 1 0 ]
+{
+"81
+[v GPIO_setPIN@portName portName `E3822  1 a 1 wreg ]
+[v GPIO_setPIN@portName portName `E3822  1 a 1 wreg ]
+[v GPIO_setPIN@pin pin `uc  1 p 1 0 ]
+"80
+[v GPIO_setPIN@portName portName `E3822  1 a 1 3 ]
+"103
+} 0
+"105
+[v _GPIO_clearPIN GPIO_clearPIN `(v  1 e 1 0 ]
+{
+"106
+[v GPIO_clearPIN@portName portName `E3822  1 a 1 wreg ]
+[v GPIO_clearPIN@portName portName `E3822  1 a 1 wreg ]
+[v GPIO_clearPIN@pin pin `uc  1 p 1 0 ]
+"105
+[v GPIO_clearPIN@portName portName `E3822  1 a 1 3 ]
+"128
+} 0
+"175 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+[v _LCDNokia_clear LCDNokia_clear `(v  1 e 1 0 ]
+{
+"177
+[v LCDNokia_clear@index index `ui  1 a 2 10 ]
+"185
+} 0
+"187
+[v _LCDNokia_gotoXY LCDNokia_gotoXY `(v  1 e 1 0 ]
+{
+[v LCDNokia_gotoXY@x x `uc  1 a 1 wreg ]
+[v LCDNokia_gotoXY@x x `uc  1 a 1 wreg ]
+[v LCDNokia_gotoXY@y y `uc  1 p 1 8 ]
+"189
+[v LCDNokia_gotoXY@x x `uc  1 a 1 9 ]
+"191
+} 0
+"136
+[v _LCDNokia_writeByte LCDNokia_writeByte `(v  1 e 1 0 ]
+{
+[v LCDNokia_writeByte@DataOrCmd DataOrCmd `uc  1 a 1 wreg ]
+[v LCDNokia_writeByte@DataOrCmd DataOrCmd `uc  1 a 1 wreg ]
+[v LCDNokia_writeByte@data data `uc  1 p 1 6 ]
+"138
+[v LCDNokia_writeByte@DataOrCmd DataOrCmd `uc  1 a 1 7 ]
+"149
+} 0
+"344 C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+[v _SPI_write SPI_write `(v  1 e 1 0 ]
+{
+[v SPI_write@data data `uc  1 a 1 wreg ]
+[v SPI_write@data data `uc  1 a 1 wreg ]
+"347
+[v SPI_write@data data `uc  1 a 1 0 ]
+"352
+} 0
+"138
+[v _ButtonInt_config ButtonInt_config `(v  1 e 1 0 ]
+{
+"146
+} 0
+"26
+[v _GPIO_dataDirectionPIN GPIO_dataDirectionPIN `(v  1 e 1 0 ]
+{
+"27
+[v GPIO_dataDirectionPIN@portName portName `E3822  1 a 1 wreg ]
+[v GPIO_dataDirectionPIN@portName portName `E3822  1 a 1 wreg ]
+[v GPIO_dataDirectionPIN@pin pin `uc  1 p 1 0 ]
+[v GPIO_dataDirectionPIN@state state `E3818  1 p 1 1 ]
+"26
+[v GPIO_dataDirectionPIN@portName portName `E3822  1 a 1 4 ]
+"78
+} 0

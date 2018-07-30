@@ -2,7 +2,7 @@
 #define	ATM90E36A_H_
 
 #include <stdint.h>
-#if 0
+
 typedef enum
 {
     ACTIVE_ENERGY_TYPE,
@@ -110,13 +110,12 @@ typedef enum
     PHASE_B_VOLTAGE_ANGLE_PHASE,
     PHASE_C_VOLTAGE_ANGLE_PHASE
 } ATM_reg_t;
-#endif
 
 void ATM_init(void);
 
 void ATM_calibration(void);
 
-//uint16_t ATM_registers(ATM_type_t type, ATM_reg_t reg);
+uint16_t ATM_registers(ATM_type_t type, ATM_reg_t reg);
 
 #endif	
 

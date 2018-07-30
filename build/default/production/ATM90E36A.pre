@@ -4895,10 +4895,120 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 115 "ATM90E36A.h"
+# 6 "ATM90E36A.h"
+typedef enum
+{
+ACTIVE_ENERGY_TYPE,
+REACTIVE_ENERGY_TYPE,
+APPARENT_ENERGY_TYPE,
+FUNDAMENTAL_ENERGY_TYPE,
+HARMONIC_ENERGY_TYPE,
+ACTIVE_POWER_TYPE,
+REACTIVE_POWER_TYPE,
+APPARENT_POWER_TYPE,
+POWER_FACTOR_TYPE,
+FUNDAMENTAL_POWER,
+HARMONIC_POWER,
+VOLTAGE_RMS,
+CURRENT_RMS,
+THDN_TYPE,
+FREQUENCY_TYPE,
+PHASE_ANGLE_TYPE,
+TEMPERATURE_TYPE
+} ATM_type_t;
+
+typedef enum
+{
+TOTAL_FORW_ACTIVE_ENERGY,
+PHASE_A_FORW_ACTIVE_ENERGY,
+PHASE_B_FORW_ACTIVE_ENERGY,
+PHASE_C_FORW_ACTIVE_ENERGY,
+TOTAL_REV_ACTIVE_ENERGY,
+PHASE_A_REV_ACTIVE_ENERGY,
+PHASE_B_REV_ACTIVE_ENERGY,
+PHASE_C_REV_ACTIVE_ENERGY,
+TOTAL_FORW_REACTIVE_ENERGY,
+PHASE_A_FORW_REACTIVE_ENERGY,
+PHASE_B_FORW_REACTIVE_ENERGY,
+PHASE_C_FORW_REACTIVE_ENERGY,
+TOTAL_REVERSE_REACTIVE_ENERGY,
+PHASE_A_REV_REACTIVE_ENERGY,
+PHASE_B_REV_REACTIVE_ENERGY,
+PHASE_C_REV_REACTIVE_ENERGY,
+TOTAL_ARIT_APPARENT_ENERGY,
+PHASE_A_APPARENT_ENERGY,
+PHASE_B_APPARENT_ENERGY,
+PHASE_C_APPARENT_ENERGY,
+TOTAL_VECT_APPARENT_ENERGY,
+TOTAL_FORW_ACTIVE_FUND_ENERGY,
+PHASE_A_FORW_ACTIVE_FUND_ENERGY,
+PHASE_B_FORW_ACTIVE_FUND_ENERGY,
+PHASE_C_FORW_ACTIVE_FUND_ENERGY,
+TOTAL_REV_ACTIVE_FUND_ENERGY,
+PHASE_A_REV_ACTIVE_FUND_ENERGY,
+PHASE_B_REV_ACTIVE_FUND_ENERGY,
+PHASE_C_REV_ACTIVE_FUND_ENERGY,
+TOTAL_FORW_ACTIVE_HARM_ENERGY,
+PHASE_A_FORW_ACTIVE_HARM_ENERGY,
+PHASE_B_FORW_ACTIVE_HARM_ENERGY,
+PHASE_C_FORW_ACTIVE_HARM_ENERGY,
+TOTAL_REV_ACTIVE_HARM_ENERGY,
+PHASE_A_REV_ACTIVE_HARM_ENERGY,
+PHASE_B_REV_ACTIVE_HARM_ENERGY,
+PHASE_C_REV_ACTIVE_HARM_ENERGY,
+TOTAL_ACTIVE_POWER,
+PHASE_A_ACTIVE_POWER,
+PHASE_B_ACTIVE_POWER,
+PHASE_C_ACTIVE_POWER,
+TOTAL_REACTIVE_POWER,
+PHASE_A_REACTIVE_POWER,
+PHASE_B_REACTIVE_POWER,
+PHASE_C_REACTIVE_POWER,
+TOTAL_APPARENT_POWER,
+PHASE_A_APPARENT_POWER,
+PHASE_B_APPARENT_POWER,
+PHASE_C_APPARENT_POWER,
+TOTAL_POWER_FACTOR,
+PHASE_A_POWER_FACTOR,
+PHASE_B_POWER_FACTOR,
+PHASE_C_POWER_FACTOR,
+TOTAL_ACTIVE_FUND_POWER,
+PHASE_A_ACTIVE_FUND_POWER,
+PHASE_B_ACTIVE_FUND_POWER,
+PHASE_C_ACTIVE_FUND_POWER,
+TOTAL_ACTIVE_HARM_POWER,
+PHASE_A_ACTIVE_HARM_POWER,
+PHASE_B_ACTIVE_HARM_POWER,
+PHASE_C_ACTIVE_HARM_POWER,
+NLINE_SAMPLED_CURRENT_RMS,
+PHASE_A_VOLTAGE_RMS,
+PHASE_B_VOLTAGE_RMS,
+PHASE_C_VOLTAGE_RMS,
+NLINE_CALCULATED_CURRENT_RMS,
+PHASE_A_CURRENT_RMS,
+PHASE_B_CURRENT_RMS,
+PHASE_C_CURRENT_RMS,
+PHASE_A_VOLTAGE_THDN,
+PHASE_B_VOLTAGE_THDN,
+PHASE_C_VOLTAGE_THDN,
+PHASE_A_CURRENT_THDN,
+PHASE_B_CURRENT_THDN,
+PHASE_C_CURRENT_THDN,
+FREQUENCY_REG,
+PHASE_A_MEAN_ANGLE_PHASE,
+PHASE_B_MEAN_ANGLE_PHASE,
+PHASE_C_MEAN_ANGLE_PHASE,
+TEMPERATURE_REG,
+PHASE_A_VOLTAGE_ANGLE_PHASE,
+PHASE_B_VOLTAGE_ANGLE_PHASE,
+PHASE_C_VOLTAGE_ANGLE_PHASE
+} ATM_reg_t;
+
 void ATM_init(void);
 
 void ATM_calibration(void);
+
+uint16_t ATM_registers(ATM_type_t type, ATM_reg_t reg);
 
 # 9 "GPIO.h"
 typedef enum
@@ -4912,7 +5022,9 @@ typedef enum
 {
 GPIO_A,
 GPIO_B,
-GPIO_C
+GPIO_C,
+GPIO_D,
+GPIO_E
 } GPIO_portNameType;
 
 
@@ -4936,7 +5048,7 @@ SPI_SERIAL_CLK16,
 SPI_SERIAL_CLK64
 } SPI_SerialClk;
 
-# 47
+# 49
 typedef struct
 {
 SPI_PolarityType SPI_Polarity;
@@ -4978,3 +5090,861 @@ void SPI_write(uint8_t data);
 
 uint8_t SPI_read(void);
 
+# 208 "ATM90E36A.c"
+typedef struct
+{
+uint8_t lowPart;
+uint8_t highPart;
+uint16_t dummyLow;
+uint16_t dummyHigh;
+} Data_TwoFrames;
+
+typedef struct
+{
+uint16_t ugainAvg;
+uint16_t igainAvg;
+float dummy_ugain;
+float dummy_igain;
+uint16_t urmsAvg;
+uint16_t irmsAvg;
+uint16_t urmsLSB;
+uint16_t irmsLSB;
+uint16_t uoffsetAvg;
+uint16_t ioffsetAvg;
+} Data_VI_Avg;
+
+typedef struct
+{
+uint16_t poffsetAvg;
+uint16_t qoffsetAvg;
+uint16_t pfoffsetAvg;
+} Data_Pow_Avg;
+
+typedef struct
+{
+uint16_t gain;
+uint16_t phaseAngle;
+float dummy_Gain;
+float dummy_Phi;
+} Data_Energy;
+
+static void ATM_write(uint16_t register_add, uint16_t data)
+{
+Data_TwoFrames register_To_IC;
+Data_TwoFrames data_To_IC;
+
+register_To_IC.dummyLow = register_add;
+register_To_IC.dummyLow &= 0x0F;
+register_To_IC.dummyHigh = register_add;
+register_To_IC.dummyHigh &= 0xF0;
+
+data_To_IC.dummyLow = data;
+data_To_IC.dummyLow &= 0x0F;
+data_To_IC.dummyHigh = data;
+data_To_IC.dummyHigh &= 0xF0;
+
+register_To_IC.lowPart = (uint8_t)register_To_IC.dummyLow;
+register_To_IC.highPart = (uint8_t)register_To_IC.dummyHigh;
+
+data_To_IC.lowPart = (uint8_t)data_To_IC.dummyLow;
+data_To_IC.highPart = (uint8_t)data_To_IC.dummyHigh;
+
+PORTDbits.RD7 = 0;
+SPI_write(register_To_IC.lowPart);
+SPI_write(register_To_IC.highPart);
+
+SPI_write(data_To_IC.lowPart);
+SPI_write(data_To_IC.highPart);
+PORTDbits.RD7 = 1;
+}
+
+static uint16_t ATM_read(uint16_t register_add)
+{
+Data_TwoFrames register_To_IC;
+Data_TwoFrames data_From_IC;
+uint16_t data;
+
+register_To_IC.dummyLow = register_add;
+register_To_IC.dummyLow &= 0x0F;
+register_To_IC.dummyHigh = register_add;
+register_To_IC.dummyHigh &= 0xF0;
+
+register_To_IC.lowPart = (uint8_t)register_To_IC.dummyLow;
+register_To_IC.highPart = (uint8_t)register_To_IC.dummyHigh;
+
+PORTDbits.RD7 = 0;
+SPI_write(register_To_IC.lowPart);
+SPI_write(register_To_IC.highPart);
+
+data_From_IC.dummyLow = SPI_read();
+data_From_IC.dummyHigh = SPI_read();
+
+data_From_IC.lowPart = data_From_IC.dummyLow;
+data_From_IC.highPart = data_From_IC.dummyHigh<<8;
+
+
+data = 0;
+PORTDbits.RD7 = 1;
+return (data);
+}
+void ATM_init(void)
+{
+
+GPIO_dataDirectionPIN(GPIO_D, 7, GPIO_OUTPUT);
+
+GPIO_dataDirectionPIN(GPIO_D, 6, GPIO_OUTPUT);
+
+GPIO_dataDirectionPIN(GPIO_D, 5, GPIO_OUTPUT);
+
+GPIO_dataDirectionPIN(GPIO_D, 4, GPIO_OUTPUT);
+
+# 323
+GPIO_dataDirectionPIN(GPIO_C, 5, GPIO_INPUT);
+
+GPIO_dataDirectionPIN(GPIO_C, 4, GPIO_INPUT);
+
+GPIO_dataDirectionPIN(GPIO_D, 3, GPIO_INPUT);
+
+GPIO_dataDirectionPIN(GPIO_D, 2, GPIO_INPUT);
+
+
+
+GPIO_setPIN(GPIO_D, 5);
+GPIO_setPIN(GPIO_D, 4);
+
+
+GPIO_clearPIN(GPIO_D, 7);
+}
+
+void ATM_calibration(void)
+{
+uint16_t checksum0;
+float energy_error;
+float energy_errorGain;
+float phi_error;
+float phi_errorPH;
+uint8_t counter;
+
+Data_VI_Avg phaseA = {0};
+Data_VI_Avg phaseB = {0};
+Data_VI_Avg phaseC = {0};
+Data_VI_Avg phaseN = {0};
+
+Data_Pow_Avg phaseA_pow = {0};
+Data_Pow_Avg phaseB_pow = {0};
+Data_Pow_Avg phaseC_pow = {0};
+
+Data_Energy phaseA_En = {0};
+Data_Energy phaseB_En = {0};
+Data_Energy phaseC_En = {0};
+
+
+ATM_write(0x30, 0x5678);
+
+
+ATM_write(0x31, 0x0861);
+ATM_write(0x32, 0x4C68);
+
+
+ATM_write(0x33, 0x0087);
+ATM_write(0x34, 0x0000);
+
+
+ATM_write(0x35, 0x0000);
+ATM_write(0x36, 0x0000);
+ATM_write(0x37, 0x0000);
+ATM_write(0x38, 0x0000);
+ATM_write(0x39, 0x0000);
+ATM_write(0x3A, 0x0000);
+
+
+
+ATM_write(0x3B, checksum0);
+
+
+ATM_write(0x30, 0x8765);
+
+
+ATM_write(0x60, 0x5678);
+
+
+for(counter = 0; counter < 10; counter++)
+{
+phaseA.ioffsetAvg += phaseA.ioffsetAvg;
+phaseA.uoffsetAvg += phaseA.uoffsetAvg;
+
+phaseA.ioffsetAvg = ATM_read(0x64);
+phaseA.uoffsetAvg = ATM_read(0x63);
+}
+
+
+phaseA.ioffsetAvg /= 10;
+phaseA.uoffsetAvg /= 10;
+
+phaseA.ioffsetAvg = phaseA.ioffsetAvg >> 7;
+phaseA.uoffsetAvg = phaseA.uoffsetAvg >> 7;
+
+phaseA.ioffsetAvg = ~phaseA.ioffsetAvg;
+phaseA.uoffsetAvg = ~phaseA.uoffsetAvg;
+
+phaseA.ioffsetAvg += 1;
+phaseA.uoffsetAvg += 1;
+
+ATM_write(0x64, phaseA.ioffsetAvg);
+ATM_write(0x63, phaseA.uoffsetAvg);
+
+
+
+
+for(counter = 0; counter < 10; counter++)
+{
+phaseB.ioffsetAvg += phaseB.ioffsetAvg;
+phaseB.uoffsetAvg += phaseB.uoffsetAvg;
+
+phaseB.ioffsetAvg = ATM_read(0x68);
+phaseB.uoffsetAvg = ATM_read(0x67);
+}
+
+
+phaseB.ioffsetAvg /= 10;
+phaseB.uoffsetAvg /= 10;
+
+
+for(counter = 0; counter < 10; counter++)
+{
+phaseC.ioffsetAvg += phaseC.ioffsetAvg;
+phaseC.uoffsetAvg += phaseC.uoffsetAvg;
+
+phaseC.ioffsetAvg = ATM_read(0x6C);
+phaseC.uoffsetAvg = ATM_read(0x6B);
+}
+
+
+phaseC.ioffsetAvg /= 10;
+phaseC.uoffsetAvg /= 10;
+
+
+for(counter = 0; counter < 10; counter++)
+{
+phaseN.ioffsetAvg += phaseN.ioffsetAvg;
+
+phaseN.ioffsetAvg = ATM_read(0x6C);
+}
+
+
+phaseN.ioffsetAvg /= 10;
+
+
+
+
+phaseA.irmsAvg = ATM_read(0xDD);
+phaseB.irmsAvg = ATM_read(0xDE);
+phaseC.irmsAvg = ATM_read(0xDF);
+
+phaseA.irmsLSB = ATM_read(0xED);
+phaseB.irmsLSB = ATM_read(0xEE);
+phaseC.irmsLSB = ATM_read(0xEF);
+
+phaseA.irmsLSB = phaseA.irmsLSB >> 8;
+phaseB.irmsLSB = phaseB.irmsLSB >> 8;
+phaseC.irmsLSB = phaseC.irmsLSB >> 8;
+
+
+phaseA.dummy_igain = ((float)phaseA.irmsAvg)*0.01;
+phaseA.dummy_igain += (((float)phaseA.irmsLSB)*0.01)/256;
+phaseA.dummy_igain = (2/phaseA.dummy_igain)*30000;
+phaseA.igainAvg = (uint16_t)phaseA.dummy_igain;
+ATM_write(0x62, phaseA.igainAvg);
+
+phaseB.dummy_igain = ((float)phaseB.irmsAvg)*0.01;
+phaseB.dummy_igain += (((float)phaseB.irmsLSB)*0.01)/256;
+phaseB.dummy_igain = (2/phaseB.dummy_igain)*30000;
+phaseB.igainAvg = (uint16_t)phaseB.dummy_igain;
+ATM_write(0x66, phaseB.igainAvg);
+
+phaseC.dummy_igain = ((float)phaseC.irmsAvg)*0.01;
+phaseC.dummy_igain += (((float)phaseC.irmsLSB)*0.01)/256;
+phaseC.dummy_igain = (2/phaseC.dummy_igain)*30000;
+phaseC.igainAvg = (uint16_t)phaseC.dummy_igain;
+ATM_write(0x6A, phaseC.igainAvg);
+
+
+phaseA.urmsAvg = ATM_read(0xD9);
+phaseB.urmsAvg = ATM_read(0xDA);
+phaseC.urmsAvg = ATM_read(0xDB);
+
+phaseA.urmsLSB = ATM_read(0xE9);
+phaseB.urmsLSB = ATM_read(0xEA);
+phaseC.urmsLSB = ATM_read(0xEB);
+
+phaseA.urmsLSB = phaseA.urmsLSB >> 8;
+phaseB.urmsLSB = phaseB.urmsLSB >> 8;
+phaseC.urmsLSB = phaseC.urmsLSB >> 8;
+
+
+phaseA.dummy_ugain = ((float)phaseA.urmsAvg)*0.01;
+phaseA.dummy_ugain += (((float)phaseA.urmsLSB)*0.01)/256;
+phaseA.dummy_ugain = (2/phaseA.dummy_ugain)*52800;
+phaseA.ugainAvg = (uint16_t)phaseA.dummy_ugain;
+ATM_write(0x61, phaseA.ugainAvg);
+
+phaseB.dummy_ugain = ((float)phaseB.urmsAvg)*0.01;
+phaseB.dummy_ugain += (((float)phaseB.urmsLSB)*0.01)/256;
+phaseB.dummy_ugain = (2/phaseB.dummy_ugain)*52800;
+phaseB.ugainAvg = (uint16_t)phaseB.dummy_ugain;
+ATM_write(0x65, phaseB.ugainAvg);
+
+phaseC.dummy_ugain = ((float)phaseC.urmsAvg)*0.01;
+phaseC.dummy_ugain += (((float)phaseC.urmsLSB)*0.01)/256;
+phaseC.dummy_ugain = (2/phaseC.dummy_ugain)*52800;
+phaseC.ugainAvg = (uint16_t)phaseC.dummy_ugain;
+ATM_write(0x69, phaseC.ugainAvg);
+
+
+
+
+for(counter = 0; counter < 10; counter++)
+{
+phaseA_pow.poffsetAvg += phaseA_pow.poffsetAvg;
+phaseA_pow.qoffsetAvg += phaseA_pow.qoffsetAvg;
+phaseA_pow.pfoffsetAvg += phaseA_pow.pfoffsetAvg;
+
+phaseA_pow.poffsetAvg = ATM_read(0x41);
+phaseA_pow.qoffsetAvg = ATM_read(0x42);
+phaseA_pow.pfoffsetAvg = ATM_read(0x51);
+}
+
+
+phaseA_pow.poffsetAvg /= 10;
+phaseA_pow.qoffsetAvg /= 10;
+phaseA_pow.pfoffsetAvg /= 10;
+
+# 548
+phaseA_pow.poffsetAvg /= 65536;
+phaseA_pow.qoffsetAvg /= 65536;
+phaseA_pow.pfoffsetAvg /= 65536;
+
+
+phaseA_pow.poffsetAvg = phaseA_pow.poffsetAvg >> 8;
+phaseA_pow.qoffsetAvg = phaseA_pow.qoffsetAvg >> 8;
+phaseA_pow.pfoffsetAvg = phaseA_pow.pfoffsetAvg >> 8;
+
+phaseA_pow.poffsetAvg = ~phaseA_pow.poffsetAvg;
+phaseA_pow.qoffsetAvg = ~phaseA_pow.qoffsetAvg;
+phaseA_pow.pfoffsetAvg = ~phaseA_pow.pfoffsetAvg;
+
+phaseA_pow.poffsetAvg += 1;
+phaseA_pow.qoffsetAvg += 1;
+phaseA_pow.pfoffsetAvg += 1;
+
+
+ATM_write(0x41, phaseA_pow.poffsetAvg);
+ATM_write(0x42, phaseA_pow.qoffsetAvg);
+ATM_write(0x51, phaseA_pow.pfoffsetAvg);
+
+
+for(counter = 0; counter < 10; counter++)
+{
+phaseB_pow.poffsetAvg += phaseB_pow.poffsetAvg;
+phaseB_pow.qoffsetAvg += phaseB_pow.qoffsetAvg;
+phaseB_pow.pfoffsetAvg += phaseB_pow.pfoffsetAvg;
+
+phaseB_pow.poffsetAvg = ATM_read(0x43);
+phaseB_pow.qoffsetAvg = ATM_read(0x44);
+phaseB_pow.pfoffsetAvg = ATM_read(0x52);
+}
+
+
+phaseB_pow.poffsetAvg /= 10;
+phaseB_pow.qoffsetAvg /= 10;
+phaseB_pow.pfoffsetAvg /= 10;
+
+# 592
+phaseB_pow.poffsetAvg /= 65536;
+phaseB_pow.qoffsetAvg /= 65536;
+phaseB_pow.pfoffsetAvg /= 65536;
+
+
+phaseB_pow.poffsetAvg = phaseB_pow.poffsetAvg >> 8;
+phaseB_pow.qoffsetAvg = phaseB_pow.qoffsetAvg >> 8;
+phaseB_pow.pfoffsetAvg = phaseB_pow.pfoffsetAvg >> 8;
+
+phaseB_pow.poffsetAvg = ~phaseB_pow.poffsetAvg;
+phaseB_pow.qoffsetAvg = ~phaseB_pow.qoffsetAvg;
+phaseB_pow.pfoffsetAvg = ~phaseB_pow.pfoffsetAvg;
+
+phaseB_pow.poffsetAvg += 1;
+phaseB_pow.qoffsetAvg += 1;
+phaseB_pow.pfoffsetAvg += 1;
+
+
+ATM_write(0x43, phaseB_pow.poffsetAvg);
+ATM_write(0x44, phaseB_pow.qoffsetAvg);
+ATM_write(0x52, phaseB_pow.pfoffsetAvg);
+
+
+
+for(counter = 0; counter < 10; counter++)
+{
+phaseC_pow.poffsetAvg += phaseC_pow.poffsetAvg;
+phaseC_pow.qoffsetAvg += phaseC_pow.qoffsetAvg;
+phaseC_pow.pfoffsetAvg += phaseC_pow.pfoffsetAvg;
+
+phaseC_pow.poffsetAvg = ATM_read(0x45);
+phaseC_pow.qoffsetAvg = ATM_read(0x46);
+phaseC_pow.pfoffsetAvg = ATM_read(0x53);
+}
+
+
+phaseC_pow.poffsetAvg /= 10;
+phaseC_pow.qoffsetAvg /= 10;
+phaseC_pow.pfoffsetAvg /= 10;
+
+# 637
+phaseC_pow.poffsetAvg /= 65536;
+phaseC_pow.qoffsetAvg /= 65536;
+phaseC_pow.pfoffsetAvg /= 65536;
+
+
+phaseC_pow.poffsetAvg = phaseC_pow.poffsetAvg >> 8;
+phaseC_pow.qoffsetAvg = phaseC_pow.qoffsetAvg >> 8;
+phaseC_pow.pfoffsetAvg = phaseC_pow.pfoffsetAvg >> 8;
+
+phaseC_pow.poffsetAvg = ~phaseC_pow.poffsetAvg;
+phaseC_pow.qoffsetAvg = ~phaseC_pow.qoffsetAvg;
+phaseC_pow.pfoffsetAvg = ~phaseC_pow.pfoffsetAvg;
+
+phaseC_pow.poffsetAvg += 1;
+phaseC_pow.qoffsetAvg += 1;
+phaseC_pow.pfoffsetAvg += 1;
+
+
+ATM_write(0x45, phaseC_pow.poffsetAvg);
+ATM_write(0x46, phaseC_pow.qoffsetAvg);
+ATM_write(0x53, phaseC_pow.pfoffsetAvg);
+
+
+
+
+energy_error = 0.1378;
+energy_errorGain = energy_error/(1-energy_error);
+
+
+
+phaseA_En.dummy_Gain = energy_errorGain * 32768;
+phaseA_En.gain = (uint16_t)phaseA_En.dummy_Gain;
+
+
+ATM_write(0x47, phaseA_En.gain);
+
+
+
+
+phaseB_En.dummy_Gain = energy_errorGain * 32768;
+phaseB_En.gain = (uint16_t)phaseB_En.dummy_Gain;
+
+
+ATM_write(0x49, phaseB_En.gain);
+
+
+
+
+phaseC_En.dummy_Gain = energy_errorGain * 32768;
+phaseC_En.gain = (uint16_t)phaseC_En.dummy_Gain;
+
+
+ATM_write(0x4B, phaseC_En.gain);
+
+# 695
+phi_error = 0.0095;
+phi_errorPH = phi_error * 3763.739F;
+
+
+phaseA_En.phaseAngle = (uint16_t)phi_errorPH;
+
+ATM_write(0x48, phaseA_En.phaseAngle);
+
+
+phaseB_En.phaseAngle = (uint16_t)phi_errorPH;
+
+ATM_write(0x4A, phaseB_En.phaseAngle);
+
+
+phaseC_En.phaseAngle = (uint16_t)phi_errorPH;
+
+ATM_write(0x4C, phaseC_En.phaseAngle);
+
+}
+
+uint16_t ATM_registers(ATM_type_t type, ATM_reg_t reg)
+{
+uint16_t info;
+
+switch(type)
+{
+case ACTIVE_ENERGY_TYPE:
+switch(reg)
+{
+case TOTAL_FORW_ACTIVE_ENERGY:
+info = ATM_read(0x80);
+break;
+case PHASE_A_FORW_ACTIVE_ENERGY:
+info = ATM_read(0x81);
+break;
+case PHASE_B_FORW_ACTIVE_ENERGY:
+info = ATM_read(0x82);
+break;
+case PHASE_C_FORW_ACTIVE_ENERGY:
+info = ATM_read(0x83);
+break;
+case TOTAL_REV_ACTIVE_ENERGY:
+info = ATM_read(0x84);
+break;
+case PHASE_A_REV_ACTIVE_ENERGY:
+info = ATM_read(0x85);
+break;
+case PHASE_B_REV_ACTIVE_ENERGY:
+info = ATM_read(0x86);
+break;
+case PHASE_C_REV_ACTIVE_ENERGY:
+info = ATM_read(0x87);
+break;
+default:
+break;
+}
+break;
+case REACTIVE_ENERGY_TYPE:
+switch(reg)
+{
+case TOTAL_FORW_REACTIVE_ENERGY:
+info = ATM_read(0x88);
+break;
+case PHASE_A_FORW_REACTIVE_ENERGY:
+info = ATM_read(0x89);
+break;
+case PHASE_B_FORW_REACTIVE_ENERGY:
+info = ATM_read(0x8A);
+break;
+case PHASE_C_FORW_REACTIVE_ENERGY:
+info = ATM_read(0x8B);
+break;
+case TOTAL_REVERSE_REACTIVE_ENERGY:
+info = ATM_read(0x8C);
+break;
+case PHASE_A_REV_REACTIVE_ENERGY:
+info = ATM_read(0x8D);
+break;
+case PHASE_B_REV_REACTIVE_ENERGY:
+info = ATM_read(0x8E);
+break;
+case PHASE_C_REV_REACTIVE_ENERGY:
+info = ATM_read(0x8F);
+break;
+default:
+break;
+}
+break;
+case APPARENT_ENERGY_TYPE:
+switch(reg)
+{
+case TOTAL_ARIT_APPARENT_ENERGY:
+info = ATM_read(0x90);
+break;
+case PHASE_A_APPARENT_ENERGY:
+info = ATM_read(0x91);
+break;
+case PHASE_B_APPARENT_ENERGY:
+info = ATM_read(0x92);
+break;
+case PHASE_C_APPARENT_ENERGY:
+info = ATM_read(0x93);
+break;
+case TOTAL_VECT_APPARENT_ENERGY:
+info = ATM_read(0x94);
+break;
+default:
+break;
+}
+break;
+case FUNDAMENTAL_ENERGY_TYPE:
+switch(reg)
+{
+case TOTAL_FORW_ACTIVE_FUND_ENERGY:
+info = ATM_read(0xA0);
+break;
+case PHASE_A_FORW_ACTIVE_FUND_ENERGY:
+info = ATM_read(0xA1);
+break;
+case PHASE_B_FORW_ACTIVE_FUND_ENERGY:
+info = ATM_read(0xA2);
+break;
+case PHASE_C_FORW_ACTIVE_FUND_ENERGY:
+info = ATM_read(0xA3);
+break;
+case TOTAL_REV_ACTIVE_FUND_ENERGY:
+info = ATM_read(0xA4);
+break;
+case PHASE_A_REV_ACTIVE_FUND_ENERGY:
+info = ATM_read(0xA5);
+break;
+case PHASE_B_REV_ACTIVE_FUND_ENERGY:
+info = ATM_read(0xA6);
+break;
+case PHASE_C_REV_ACTIVE_FUND_ENERGY:
+info = ATM_read(0xA7);
+break;
+default:
+break;
+}
+break;
+case HARMONIC_ENERGY_TYPE:
+switch(reg)
+{
+case TOTAL_FORW_ACTIVE_HARM_ENERGY:
+info = ATM_read(0xA8);
+break;
+case PHASE_A_FORW_ACTIVE_HARM_ENERGY:
+info = ATM_read(0xA9);
+break;
+case PHASE_B_FORW_ACTIVE_HARM_ENERGY:
+info = ATM_read(0xAA);
+break;
+case PHASE_C_FORW_ACTIVE_HARM_ENERGY:
+info = ATM_read(0xAB);
+break;
+case TOTAL_REV_ACTIVE_HARM_ENERGY:
+info = ATM_read(0xAC);
+break;
+case PHASE_A_REV_ACTIVE_HARM_ENERGY:
+info = ATM_read(0xAD);
+break;
+case PHASE_B_REV_ACTIVE_HARM_ENERGY:
+info = ATM_read(0xAE);
+break;
+case PHASE_C_REV_ACTIVE_HARM_ENERGY:
+info = ATM_read(0xAF);
+break;
+default:
+break;
+}
+break;
+case ACTIVE_POWER_TYPE:
+switch(reg)
+{
+case TOTAL_ACTIVE_POWER:
+info = ATM_read(0xB0);
+break;
+case PHASE_A_ACTIVE_POWER:
+info = ATM_read(0xB1);
+break;
+case PHASE_B_ACTIVE_POWER:
+info = ATM_read(0xB2);
+break;
+case PHASE_C_ACTIVE_POWER:
+info = ATM_read(0xB3);
+break;
+default:
+break;
+}
+break;
+case REACTIVE_POWER_TYPE:
+switch(reg)
+{
+case TOTAL_REACTIVE_POWER:
+info = ATM_read(0xB4);
+break;
+case PHASE_A_REACTIVE_POWER:
+info = ATM_read(0xB5);
+break;
+case PHASE_B_REACTIVE_POWER:
+info = ATM_read(0xB6);
+break;
+case PHASE_C_REACTIVE_POWER:
+info = ATM_read(0xB7);
+break;
+default:
+break;
+}
+break;
+case APPARENT_POWER_TYPE:
+switch(reg)
+{
+case TOTAL_APPARENT_POWER:
+info = ATM_read(0xB8);
+break;
+case PHASE_A_APPARENT_POWER:
+info = ATM_read(0xB9);
+break;
+case PHASE_B_APPARENT_POWER:
+info = ATM_read(0xBA);
+break;
+case PHASE_C_APPARENT_POWER:
+info = ATM_read(0xBB);
+break;
+default:
+break;
+}
+break;
+case POWER_FACTOR_TYPE:
+switch(reg)
+{
+case TOTAL_POWER_FACTOR:
+info = ATM_read(0xBC);
+break;
+case PHASE_A_POWER_FACTOR:
+info = ATM_read(0xBD);
+break;
+case PHASE_B_POWER_FACTOR:
+info = ATM_read(0xBE);
+break;
+case PHASE_C_POWER_FACTOR:
+info = ATM_read(0xBF);
+break;
+default:
+break;
+}
+break;
+case FUNDAMENTAL_POWER:
+switch(reg)
+{
+case TOTAL_ACTIVE_FUND_POWER:
+info = ATM_read(0xD0);
+break;
+case PHASE_A_ACTIVE_FUND_POWER:
+info = ATM_read(0xD1);
+break;
+case PHASE_B_ACTIVE_FUND_POWER:
+info = ATM_read(0xD2);
+break;
+case PHASE_C_ACTIVE_FUND_POWER:
+info = ATM_read(0xD3);
+break;
+default:
+break;
+}
+break;
+case HARMONIC_POWER:
+switch(reg)
+{
+case TOTAL_ACTIVE_HARM_POWER:
+info = ATM_read(0xD4);
+break;
+case PHASE_A_ACTIVE_HARM_POWER:
+info = ATM_read(0xD5);
+break;
+case PHASE_B_ACTIVE_HARM_POWER:
+info = ATM_read(0xD6);
+break;
+case PHASE_C_ACTIVE_HARM_POWER:
+info = ATM_read(0xD7);
+break;
+default:
+break;
+}
+break;
+case VOLTAGE_RMS:
+switch(reg)
+{
+case PHASE_A_VOLTAGE_RMS:
+info = ATM_read(0xD9);
+break;
+case PHASE_B_VOLTAGE_RMS:
+info = ATM_read(0xDA);
+break;
+case PHASE_C_VOLTAGE_RMS:
+info = ATM_read(0xDB);
+break;
+default:
+break;
+}
+break;
+case CURRENT_RMS:
+switch(reg)
+{
+case NLINE_SAMPLED_CURRENT_RMS:
+info = ATM_read(0xD8);
+break;
+case NLINE_CALCULATED_CURRENT_RMS:
+info = ATM_read(0xDC);
+break;
+case PHASE_A_CURRENT_RMS:
+info = ATM_read(0xDD);
+break;
+case PHASE_B_CURRENT_RMS:
+info = ATM_read(0xDE);
+break;
+case PHASE_C_CURRENT_RMS:
+info = ATM_read(0xDF);
+break;
+default:
+break;
+}
+break;
+case THDN_TYPE:
+switch(reg)
+{
+case PHASE_A_VOLTAGE_THDN:
+info = ATM_read(0xF1);
+break;
+case PHASE_B_VOLTAGE_THDN:
+info = ATM_read(0xF2);
+break;
+case PHASE_C_VOLTAGE_THDN:
+info = ATM_read(0xF3);
+break;
+case PHASE_A_CURRENT_THDN:
+info = ATM_read(0xF5);
+break;
+case PHASE_B_CURRENT_THDN:
+info = ATM_read(0xF6);
+break;
+case PHASE_C_CURRENT_THDN:
+info = ATM_read(0xF7);
+break;
+default:
+break;
+}
+break;
+case FREQUENCY_TYPE:
+if(FREQUENCY_REG == reg)
+{
+info = ATM_read(0xF8);
+}
+break;
+case PHASE_ANGLE_TYPE:
+switch(reg)
+{
+case PHASE_A_MEAN_ANGLE_PHASE:
+info = ATM_read(0xF9);
+break;
+case PHASE_B_MEAN_ANGLE_PHASE:
+info = ATM_read(0xFA);
+break;
+case PHASE_C_MEAN_ANGLE_PHASE:
+info = ATM_read(0xFB);
+break;
+case PHASE_A_VOLTAGE_ANGLE_PHASE:
+info = ATM_read(0xFD);
+break;
+case PHASE_B_VOLTAGE_ANGLE_PHASE:
+info = ATM_read(0xFE);
+break;
+case PHASE_C_VOLTAGE_ANGLE_PHASE:
+info = ATM_read(0xFF);
+break;
+default:
+break;
+}
+break;
+case TEMPERATURE_TYPE:
+if(TEMPERATURE_REG == reg)
+{
+info = ATM_read(0xFC);
+}
+break;
+default:
+break;
+}
+return (info);
+
+}

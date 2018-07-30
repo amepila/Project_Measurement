@@ -4907,7 +4907,9 @@ typedef enum
 {
 GPIO_A,
 GPIO_B,
-GPIO_C
+GPIO_C,
+GPIO_D,
+GPIO_E
 } GPIO_portNameType;
 
 
@@ -4931,7 +4933,7 @@ SPI_SERIAL_CLK16,
 SPI_SERIAL_CLK64
 } SPI_SerialClk;
 
-# 47
+# 49
 typedef struct
 {
 SPI_PolarityType SPI_Polarity;
@@ -4973,7 +4975,7 @@ void SPI_write(uint8_t data);
 
 uint8_t SPI_read(void);
 
-# 25 "GPIO.c"
+# 26 "GPIO.c"
 void GPIO_dataDirectionPIN
 (GPIO_portNameType portName, uint8_t pin, GPIO_state state)
 {
@@ -4991,6 +4993,12 @@ break;
 case GPIO_C:
 TRISC |= 1<<pin;
 break;
+case GPIO_D:
+TRISD |= 1<<pin;
+break;
+case GPIO_E:
+TRISE |= 1<<pin;
+break;
 default:
 break;
 }
@@ -5006,6 +5014,12 @@ TRISB &= (0<<pin);
 break;
 case GPIO_C:
 TRISC &= (0<<pin);
+break;
+case GPIO_D:
+TRISD &= (0<<pin);
+break;
+case GPIO_E:
+TRISE &= (0<<pin);
 break;
 default:
 break;
@@ -5030,6 +5044,12 @@ break;
 case GPIO_C:
 PORTC |= (1<<pin);
 break;
+case GPIO_D:
+PORTD |= (1<<pin);
+break;
+case GPIO_E:
+PORTE |= (1<<pin);
+break;
 default:
 break;
 }
@@ -5049,6 +5069,12 @@ break;
 case GPIO_C:
 PORTC &= ~(1<<pin);
 break;
+case GPIO_D:
+PORTD &= ~(1<<pin);
+break;
+case GPIO_E:
+PORTE &= ~(1<<pin);
+break;
 default:
 break;
 }
@@ -5065,13 +5091,11 @@ for(counter = delay; counter > 0; counter--)
 void ButtonInt_config()
 {
 
-GPIO_dataDirectionPIN(GPIO_A, 3, GPIO_INPUT);
-ANSEL0bits.ANS3 = 0;
+GPIO_dataDirectionPIN(GPIO_C, 0, GPIO_INPUT);
 
-GPIO_dataDirectionPIN(GPIO_A, 4, GPIO_INPUT);
-ANSEL0bits.ANS4 = 0;
+GPIO_dataDirectionPIN(GPIO_C, 1, GPIO_INPUT);
 
-GPIO_dataDirectionPIN(GPIO_C, 3, GPIO_INPUT);
+GPIO_dataDirectionPIN(GPIO_C, 2, GPIO_INPUT);
 }
 
 
@@ -5090,11 +5114,12 @@ TXSTAbits.TX9 = 0;
 
 TXSTAbits.TXEN = 1;
 
-# 146
+# 169
 RCSTAbits.SPEN = 1;
 
 
-BAUDCTLbits.BRG16 = 0;
+
+BAUDCONbits.BRG16 = 0;
 
 TXSTAbits.BRGH = 0;
 }
@@ -5194,23 +5219,23 @@ return (valueWord);
 static void SPI_enableClock(SPI_PhaseType phase, SPI_PolarityType cpol)
 {
 
-TRISCbits.TRISC5 = 0;
+TRISBbits.TRISB1 = 0;
 
-TRISCbits.TRISC4 = 1;
+TRISBbits.TRISB0 = 1;
 
 TRISCbits.TRISC7 = 0;
 
-# 260
+# 284
 SSPSTAT |= (0x40);
 SSPSTATbits.BF = 0;
 
 switch(phase)
 {
 case SPI_LOW_PHASE:
-SSPCONbits.CKP = 0;
+SSPCON1bits.CKP = 0;
 break;
 case SPI_HIGH_PHASE:
-SSPCONbits.CKP = 1;
+SSPCON1bits.CKP = 1;
 break;
 default:
 break;
@@ -5234,23 +5259,25 @@ static void SPI_enablePins(SPI_SerialClk serial)
 switch(serial)
 {
 case SPI_SERIAL_CLK4:
-SSPCON &= (0x00);
+SSPCON1 &= (0x00);
 break;
 case SPI_SERIAL_CLK16:
-SSPCON |= (0x01);
+SSPCON1 |= (0x01);
 break;
 case SPI_SERIAL_CLK64:
-SSPCON |= (0x02);
+SSPCON1 |= (0x02);
 break;
 default:
 break;
 }
 
 
-SSPCON |= (0x20);
+SSPCON1 |= (0x20);
 
 
 PIR1bits.SSPIF = 0;
+ADCON0 = 0;
+ADCON1 = 0x0F;
 }
 
 void SPI_init(const SPI_ConfigType* SPI_Config)
@@ -5276,7 +5303,7 @@ const uint8_t dummy = 0;
 
 SSPBUF = dummy;
 
-# 338
+# 364
 while(!PIR1bits.SSPIF);
 PIR1bits.SSPIF = 0;
 return (SSPBUF);

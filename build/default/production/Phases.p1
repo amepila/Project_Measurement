@@ -1,5 +1,15 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"4 States.c
+"153 Phases.c
+[c E3829 0 1 .. ]
+[n E3829 . SPI_LOW_POLARITY SPI_HIGH_POLARITY  ]
+[c E3833 0 1 .. ]
+[n E3833 . SPI_LOW_PHASE SPI_HIGH_PHASE  ]
+[c E3837 0 1 2 .. ]
+[n E3837 . SPI_SERIAL_CLK4 SPI_SERIAL_CLK16 SPI_SERIAL_CLK64  ]
+"50 GPIO.h
+[s S362 `E3829 1 `E3833 1 `E3837 1 ]
+[n S362 . SPI_Polarity SPI_Phase SPI_Clk ]
+"161 Phases.c
 [c E4049 0 1 2 3 .. ]
 [n E4049 . INITIAL_LOAD GENERAL_VIEW VIEW_MENU SEND_DATA  ]
 [c E3904 0 1 2 3 4 5 6 7 .. ]
@@ -7,130 +17,95 @@ Version 3.2 HI-TECH Software Intermediate Code
 "24 Phases.h
 [s S365 `E4049 1 `E3904 1 ]
 [n S365 . phaseState stateMain ]
-[v F4064 `(S365 ~T0 @X0 0 tf1`S365 ]
-"31
-[s S366 `*F4064 1 ]
-[n S366 PhaseMainMenu PhaseMainMenu ]
-"222
-[v _initialLoad `(S365 ~T0 @X0 0 ef1`S365 ]
-"232
-[v _generalView `(S365 ~T0 @X0 0 ef1`S365 ]
-"243
-[v _viewMenu `(S365 ~T0 @X0 0 ef1`S365 ]
-"253
-[v _sendData `(S365 ~T0 @X0 0 ef1`S365 ]
-"13 States.c
+"114 ATM90E36A.h
+[v _ATM_init `(v ~T0 @X0 0 ef ]
+"116
+[v _ATM_calibration `(v ~T0 @X0 0 ef ]
+"65 GPIO.h
+[v _delay `(v ~T0 @X0 0 ef1`ul ]
+"31 LCDNokia5110.h
+[v _LCDNokia_clear `(v ~T0 @X0 0 ef ]
+"35
+[v _LCDNokia_gotoXY `(v ~T0 @X0 0 ef2`uc`uc ]
+"41
+[v _LCDNokia_sendString `(v ~T0 @X0 0 ef1`*Cuc ]
+"2567 C:\Program Files (x86)\Microchip\xc8\v1.44\include\pic18f4550.h
+[s S106 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S106 . RC0 RC1 RC2 . RC4 RC5 RC6 RC7 ]
+"2577
+[s S107 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S107 . T1OSO T1OSI CCP1 . TX RX ]
+"2585
+[s S108 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S108 . T13CKI . P1A . CK DT ]
+"2593
+[s S109 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S109 . . CCP2 PA1 ]
+"2598
+[s S110 :1 `uc 1 :1 `uc 1 ]
+[n S110 . . PA2 ]
+"2566
+[u S105 `S106 1 `S107 1 `S108 1 `S109 1 `S110 1 ]
+[n S105 . . . . . . ]
+"2603
+[v _PORTCbits `VS105 ~T0 @X0 0 e@3970 ]
+"326 Phases.c
 [c E4067 0 1 2 3 .. ]
 [n E4067 . ACTIVE_ENERGY FUNDAMENTAL_ENERGY HARMONIC_ENERGY EXIT_ENERGY  ]
+"330
+[c E4085 0 1 2 .. ]
+[n E4085 . TYPES_POWER1 PHASES_POWER1 EXIT_POWER1  ]
+"334
+[c E4102 0 1 2 .. ]
+[n E4102 . FH_POWER2 PHASES_POWER2 EXIT_POWER2  ]
+"338
+[c E4119 0 1 2 .. ]
+[n E4119 . PHASES_RMSVI NEUTRAL_RMSVI EXIT_RMSVI  ]
+"342
+[c E4136 0 1 .. ]
+[n E4136 . PHASES_PF EXIT_PF  ]
+"346
+[c E4152 0 1 2 3 .. ]
+[n E4152 . PHASES_PA VI_PA THDN_PA EXIT_PA  ]
+"350
+[c E4170 0 1 .. ]
+[n E4170 . SHOW_FREQTEMP EXIT_FREQTEMP  ]
+"71 GPIO.h
+[v _UART_init `(v ~T0 @X0 0 ef ]
+"84
+[v _SPI_init `(v ~T0 @X0 0 ef1`*CS362 ]
+"24 LCDNokia5110.h
+[v _LCDNokia_init `(v ~T0 @X0 0 ef ]
 "51 Phases.h
 [s S367 `E4067 1 `E3904 1 ]
 [n S367 . phaseState stateMain ]
-[v F4082 `(S367 ~T0 @X0 0 tf1`S367 ]
-"58
-[s S368 `*F4082 1 ]
-[n S368 PhaseEnergy PhaseEnergy ]
-"263
-[v _activeEnergy `(S367 ~T0 @X0 0 ef1`S367 ]
-"273
-[v _fundamentalEnergy `(S367 ~T0 @X0 0 ef1`S367 ]
-"283
-[v _harmonicEnergy `(S367 ~T0 @X0 0 ef1`S367 ]
-"293
-[v _exitEnergy `(S367 ~T0 @X0 0 ef1`S367 ]
-"22 States.c
-[c E4085 0 1 2 .. ]
-[n E4085 . TYPES_POWER1 PHASES_POWER1 EXIT_POWER1  ]
+"46 LCDNokia5110.h
+[v _LCDNokia_printValue `(v ~T0 @X0 0 ef1`ul ]
+"431 Phases.c
+[c E3938 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 .. ]
+[n E3938 . ACTIVE_ENERGY_TYPE REACTIVE_ENERGY_TYPE APPARENT_ENERGY_TYPE FUNDAMENTAL_ENERGY_TYPE HARMONIC_ENERGY_TYPE ACTIVE_POWER_TYPE REACTIVE_POWER_TYPE APPARENT_POWER_TYPE POWER_FACTOR_TYPE FUNDAMENTAL_POWER HARMONIC_POWER VOLTAGE_RMS CURRENT_RMS THDN_TYPE FREQUENCY_TYPE PHASE_ANGLE_TYPE TEMPERATURE_TYPE  ]
+[c E3957 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 .. ]
+[n E3957 . TOTAL_FORW_ACTIVE_ENERGY PHASE_A_FORW_ACTIVE_ENERGY PHASE_B_FORW_ACTIVE_ENERGY PHASE_C_FORW_ACTIVE_ENERGY TOTAL_REV_ACTIVE_ENERGY PHASE_A_REV_ACTIVE_ENERGY PHASE_B_REV_ACTIVE_ENERGY PHASE_C_REV_ACTIVE_ENERGY TOTAL_FORW_REACTIVE_ENERGY PHASE_A_FORW_REACTIVE_ENERGY PHASE_B_FORW_REACTIVE_ENERGY PHASE_C_FORW_REACTIVE_ENERGY TOTAL_REVERSE_REACTIVE_ENERGY PHASE_A_REV_REACTIVE_ENERGY PHASE_B_REV_REACTIVE_ENERGY PHASE_C_REV_REACTIVE_ENERGY TOTAL_ARIT_APPARENT_ENERGY PHASE_A_APPARENT_ENERGY PHASE_B_APPARENT_ENERGY PHASE_C_APPARENT_ENERGY TOTAL_VECT_APPARENT_ENERGY TOTAL_FORW_ACTIVE_FUND_ENERGY PHASE_A_FORW_ACTIVE_FUND_ENERGY PHASE_B_FORW_ACTIVE_FUND_ENERGY PHASE_C_FORW_ACTIVE_FUND_ENERGY TOTAL_REV_ACTIVE_FUND_ENERGY PHASE_A_REV_ACTIVE_FUND_ENERGY PHASE_B_REV_ACTIVE_FUND_ENERGY PHASE_C_REV_ACTIVE_FUND_ENERGY TOTAL_FORW_ACTIVE_HARM_ENERGY PHASE_A_FORW_ACTIVE_HARM_ENERGY PHASE_B_FORW_ACTIVE_HARM_ENERGY PHASE_C_FORW_ACTIVE_HARM_ENERGY TOTAL_REV_ACTIVE_HARM_ENERGY PHASE_A_REV_ACTIVE_HARM_ENERGY PHASE_B_REV_ACTIVE_HARM_ENERGY PHASE_C_REV_ACTIVE_HARM_ENERGY TOTAL_ACTIVE_POWER PHASE_A_ACTIVE_POWER PHASE_B_ACTIVE_POWER PHASE_C_ACTIVE_POWER TOTAL_REACTIVE_POWER PHASE_A_REACTIVE_POWER PHASE_B_REACTIVE_POWER PHASE_C_REACTIVE_POWER TOTAL_APPARENT_POWER PHASE_A_APPARENT_POWER PHASE_B_APPARENT_POWER PHASE_C_APPARENT_POWER TOTAL_POWER_FACTOR PHASE_A_POWER_FACTOR PHASE_B_POWER_FACTOR PHASE_C_POWER_FACTOR TOTAL_ACTIVE_FUND_POWER PHASE_A_ACTIVE_FUND_POWER PHASE_B_ACTIVE_FUND_POWER PHASE_C_ACTIVE_FUND_POWER TOTAL_ACTIVE_HARM_POWER PHASE_A_ACTIVE_HARM_POWER PHASE_B_ACTIVE_HARM_POWER PHASE_C_ACTIVE_HARM_POWER NLINE_SAMPLED_CURRENT_RMS PHASE_A_VOLTAGE_RMS PHASE_B_VOLTAGE_RMS PHASE_C_VOLTAGE_RMS NLINE_CALCULATED_CURRENT_RMS PHASE_A_CURRENT_RMS PHASE_B_CURRENT_RMS PHASE_C_CURRENT_RMS PHASE_A_VOLTAGE_THDN PHASE_B_VOLTAGE_THDN PHASE_C_VOLTAGE_THDN PHASE_A_CURRENT_THDN PHASE_B_CURRENT_THDN PHASE_C_CURRENT_THDN FREQUENCY_REG PHASE_A_MEAN_ANGLE_PHASE PHASE_B_MEAN_ANGLE_PHASE PHASE_C_MEAN_ANGLE_PHASE TEMPERATURE_REG PHASE_A_VOLTAGE_ANGLE_PHASE PHASE_B_VOLTAGE_ANGLE_PHASE PHASE_C_VOLTAGE_ANGLE_PHASE  ]
+"118 ATM90E36A.h
+[v _ATM_registers `(ui ~T0 @X0 0 ef2`E3938`E3957 ]
 "77 Phases.h
 [s S369 `E4085 1 `E3904 1 ]
 [n S369 . phaseState stateMain ]
-[v F4099 `(S369 ~T0 @X0 0 tf1`S369 ]
-"84
-[s S370 `*F4099 1 ]
-[n S370 PhasePower1 PhasePower1 ]
-"303
-[v _typesPower1 `(S369 ~T0 @X0 0 ef1`S369 ]
-"313
-[v _phPower1 `(S369 ~T0 @X0 0 ef1`S369 ]
-"336
-[v _exitPower1 `(S369 ~T0 @X0 0 ef1`S369 ]
-"30 States.c
-[c E4102 0 1 2 .. ]
-[n E4102 . FH_POWER2 PHASES_POWER2 EXIT_POWER2  ]
-"103 Phases.h
+"103
 [s S371 `E4102 1 `E3904 1 ]
 [n S371 . phaseState stateMain ]
-[v F4116 `(S371 ~T0 @X0 0 tf1`S371 ]
-"110
-[s S372 `*F4116 1 ]
-[n S372 PhasePower2 PhasePower2 ]
-"347
-[v _fhPower2 `(S371 ~T0 @X0 0 ef1`S371 ]
-"358
-[v _phPower2 `(S371 ~T0 @X0 0 ef1`S371 ]
-"369
-[v _exitPower2 `(S371 ~T0 @X0 0 ef1`S371 ]
-"38 States.c
-[c E4119 0 1 2 .. ]
-[n E4119 . PHASES_RMSVI NEUTRAL_RMSVI EXIT_RMSVI  ]
-"129 Phases.h
+"129
 [s S373 `E4119 1 `E3904 1 ]
 [n S373 . phaseState stateMain ]
-[v F4133 `(S373 ~T0 @X0 0 tf1`S373 ]
-"136
-[s S374 `*F4133 1 ]
-[n S374 PhaseRmsVI PhaseRmsVI ]
-"380
-[v _phRmsVI `(S373 ~T0 @X0 0 ef1`S373 ]
-"391
-[v _neutralRmsVI `(S373 ~T0 @X0 0 ef1`S373 ]
-"402
-[v _exitRmsVI `(S373 ~T0 @X0 0 ef1`S373 ]
-"46 States.c
-[c E4136 0 1 .. ]
-[n E4136 . PHASES_PF EXIT_PF  ]
-"153 Phases.h
+"153
 [s S375 `E4136 1 `E3904 1 ]
 [n S375 . phaseState stateMain ]
-[v F4149 `(S375 ~T0 @X0 0 tf1`S375 ]
-"160
-[s S376 `*F4149 1 ]
-[n S376 PhasePowerFactor PhasePowerFactor ]
-"413
-[v _phPowerFactor `(S375 ~T0 @X0 0 ef1`S375 ]
-"424
-[v _exitPowerFactor `(S375 ~T0 @X0 0 ef1`S375 ]
-"53 States.c
-[c E4152 0 1 2 3 .. ]
-[n E4152 . PHASES_PA VI_PA THDN_PA EXIT_PA  ]
-"179 Phases.h
+"179
 [s S377 `E4152 1 `E3904 1 ]
 [n S377 . phaseState stateMain ]
-[v F4167 `(S377 ~T0 @X0 0 tf1`S377 ]
-"186
-[s S378 `*F4167 1 ]
-[n S378 PhasePhaseAngle PhasePhaseAngle ]
-"435
-[v _phPhaseAngle `(S377 ~T0 @X0 0 ef1`S377 ]
-"446
-[v _viPhaseAngle `(S377 ~T0 @X0 0 ef1`S377 ]
-"456
-[v _THDNPhaseAngle `(S377 ~T0 @X0 0 ef1`S377 ]
-"467
-[v _exitPhaseAngle `(S377 ~T0 @X0 0 ef1`S377 ]
-"62 States.c
-[c E4170 0 1 .. ]
-[n E4170 . SHOW_FREQTEMP EXIT_FREQTEMP  ]
-"201 Phases.h
+"201
 [s S379 `E4170 1 `E3904 1 ]
 [n S379 . phaseState stateMain ]
-[v F4183 `(S379 ~T0 @X0 0 tf1`S379 ]
-"208
-[s S380 `*F4183 1 ]
-[n S380 PhaseFreqTemp PhaseFreqTemp ]
-"478
-[v _showFreqTemp `(S379 ~T0 @X0 0 ef1`S379 ]
-"488
-[v _exitFreqTemp `(S379 ~T0 @X0 0 ef1`S379 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -4024,528 +3999,5060 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;Phases.h: 467: PhasePhaseAngle_Type exitPhaseAngle(PhasePhaseAngle_Type data);
 [; ;Phases.h: 478: PhaseFreqTemp_Type showFreqTemp(PhaseFreqTemp_Type data);
 [; ;Phases.h: 488: PhaseFreqTemp_Type exitFreqTemp(PhaseFreqTemp_Type data);
-"4 States.c
-[v _phasesMainMenu `CS366 ~T0 @X0 -> 4 `i e ]
-[i _phasesMainMenu
+"9 Phases.c
+[v _msgInitial1_gv `Cuc ~T0 @X0 -> 13 `i e ]
+[i _msgInitial1_gv
 :U ..
-:U ..
-"6
-&U _initialLoad
-..
-:U ..
-"7
-&U _generalView
-..
-:U ..
-"8
-&U _viewMenu
-..
-:U ..
-"9
-&U _sendData
-..
+-> 84 `c
+-> 104 `c
+-> 114 `c
+-> 101 `c
+-> 101 `c
+-> 32 `c
+-> 80 `c
+-> 104 `c
+-> 97 `c
+-> 115 `c
+-> 101 `c
+-> 0 `c
+-> 0 `c
 ..
 ]
-[; ;States.c: 4: const PhasePtrMainMenu_Type phasesMainMenu[4] =
-[; ;States.c: 5: {
-[; ;States.c: 6: {initialLoad},
-[; ;States.c: 7: {generalView},
-[; ;States.c: 8: {viewMenu},
-[; ;States.c: 9: {sendData}
-[; ;States.c: 10: };
-"13
-[v _phasesEnergy `CS368 ~T0 @X0 -> 4 `i e ]
-[i _phasesEnergy
+[; ;Phases.c: 9: const uint8_t msgInitial1_gv[13] = "Three Phase\0";
+"10
+[v _msgInitial2_gv `Cuc ~T0 @X0 -> 13 `i e ]
+[i _msgInitial2_gv
 :U ..
-:U ..
-"15
-&U _activeEnergy
+-> 77 `c
+-> 101 `c
+-> 97 `c
+-> 115 `c
+-> 117 `c
+-> 114 `c
+-> 101 `c
+-> 109 `c
+-> 101 `c
+-> 110 `c
+-> 116 `c
+-> 0 `c
+-> 0 `c
 ..
+]
+[; ;Phases.c: 10: const uint8_t msgInitial2_gv[13] = "Measurement\0";
+"11
+[v _buttonRight_gv `Cuc ~T0 @X0 -> 6 `i e ]
+[i _buttonRight_gv
 :U ..
+-> 83 `c
+-> 101 `c
+-> 110 `c
+-> 100 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 11: const uint8_t buttonRight_gv[6] = "Send\0";
+"12
+[v _buttonLeft_gv `Cuc ~T0 @X0 -> 6 `i e ]
+[i _buttonLeft_gv
+:U ..
+-> 77 `c
+-> 101 `c
+-> 110 `c
+-> 117 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 12: const uint8_t buttonLeft_gv[6] = "Menu\0";
+"14
+[v _string_Energy `Cuc ~T0 @X0 -> 7 `i e ]
+[i _string_Energy
+:U ..
+-> 69 `c
+-> 110 `c
+-> 101 `c
+-> 114 `c
+-> 103 `c
+-> 121 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 14: const uint8_t string_Energy[7] = "Energy";
 "16
-&U _fundamentalEnergy
-..
+[v _string1_Power1 `Cuc ~T0 @X0 -> 17 `i e ]
+[i _string1_Power1
 :U ..
+-> 65 `c
+-> 99 `c
+-> 116 `c
+-> 105 `c
+-> 118 `c
+-> 101 `c
+-> 32 `c
+-> 82 `c
+-> 101 `c
+-> 97 `c
+-> 99 `c
+-> 116 `c
+-> 105 `c
+-> 118 `c
+-> 101 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 16: const uint8_t string1_Power1[17] = "Active Reactive\0";
 "17
-&U _harmonicEnergy
-..
+[v _string2_Power1 `Cuc ~T0 @X0 -> 17 `i e ]
+[i _string2_Power1
 :U ..
-"18
-&U _exitEnergy
-..
+-> 65 `c
+-> 112 `c
+-> 112 `c
+-> 97 `c
+-> 114 `c
+-> 101 `c
+-> 110 `c
+-> 116 `c
+-> 32 `c
+-> 80 `c
+-> 111 `c
+-> 119 `c
+-> 101 `c
+-> 114 `c
+-> 0 `c
+-> 0 `c
 ..
 ]
-[; ;States.c: 13: const PhasePtrEnergy_Type phasesEnergy[4] =
-[; ;States.c: 14: {
-[; ;States.c: 15: {activeEnergy},
-[; ;States.c: 16: {fundamentalEnergy},
-[; ;States.c: 17: {harmonicEnergy},
-[; ;States.c: 18: {exitEnergy}
-[; ;States.c: 19: };
-"22
-[v _phasesPower1 `CS370 ~T0 @X0 -> 3 `i e ]
-[i _phasesPower1
+[; ;Phases.c: 17: const uint8_t string2_Power1[17] = "Apparent Power\0";
+"19
+[v _string1_Power2 `Cuc ~T0 @X0 -> 12 `i e ]
+[i _string1_Power2
 :U ..
+-> 70 `c
+-> 117 `c
+-> 110 `c
+-> 100 `c
+-> 97 `c
+-> 109 `c
+-> 101 `c
+-> 110 `c
+-> 116 `c
+-> 97 `c
+-> 108 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 19: const uint8_t string1_Power2[12] = "Fundamental\0";
+"20
+[v _string2_Power2 `Cuc ~T0 @X0 -> 10 `i e ]
+[i _string2_Power2
 :U ..
+-> 72 `c
+-> 97 `c
+-> 114 `c
+-> 109 `c
+-> 111 `c
+-> 110 `c
+-> 105 `c
+-> 99 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 20: const uint8_t string2_Power2[10] = "Harmonic\0";
+"21
+[v _string3_Power2 `Cuc ~T0 @X0 -> 7 `i e ]
+[i _string3_Power2
+:U ..
+-> 80 `c
+-> 111 `c
+-> 119 `c
+-> 101 `c
+-> 114 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 21: const uint8_t string3_Power2[7] = "Power\0";
+"23
+[v _string1_RMS `Cuc ~T0 @X0 -> 17 `i e ]
+[i _string1_RMS
+:U ..
+-> 86 `c
+-> 111 `c
+-> 108 `c
+-> 116 `c
+-> 97 `c
+-> 103 `c
+-> 101 `c
+-> 32 `c
+-> 67 `c
+-> 117 `c
+-> 114 `c
+-> 114 `c
+-> 101 `c
+-> 110 `c
+-> 116 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 23: const uint8_t string1_RMS[17] = "Voltage Current\0";
 "24
-&U _typesPower1
-..
+[v _string2_RMS `Cuc ~T0 @X0 -> 5 `i e ]
+[i _string2_RMS
 :U ..
-"25
-&U _phPower1
+-> 82 `c
+-> 77 `c
+-> 83 `c
+-> 0 `c
+-> 0 `c
 ..
-:U ..
+]
+[; ;Phases.c: 24: const uint8_t string2_RMS[5] = "RMS\0";
 "26
-&U _exitPower1
-..
+[v _string1_PowerFactor `Cuc ~T0 @X0 -> 7 `i e ]
+[i _string1_PowerFactor
+:U ..
+-> 80 `c
+-> 111 `c
+-> 119 `c
+-> 101 `c
+-> 114 `c
+-> 0 `c
+-> 0 `c
 ..
 ]
-[; ;States.c: 22: const PhasePtrPower1_Type phasesPower1[3] =
-[; ;States.c: 23: {
-[; ;States.c: 24: {typesPower1},
-[; ;States.c: 25: {phPower1},
-[; ;States.c: 26: {exitPower1}
-[; ;States.c: 27: };
+[; ;Phases.c: 26: const uint8_t string1_PowerFactor[7] = "Power\0";
+"27
+[v _string2_PowerFactor `Cuc ~T0 @X0 -> 8 `i e ]
+[i _string2_PowerFactor
+:U ..
+-> 70 `c
+-> 97 `c
+-> 99 `c
+-> 116 `c
+-> 111 `c
+-> 114 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 27: const uint8_t string2_PowerFactor[8] = "Factor\0";
+"29
+[v _string1_PhaseAngle `Cuc ~T0 @X0 -> 7 `i e ]
+[i _string1_PhaseAngle
+:U ..
+-> 80 `c
+-> 104 `c
+-> 97 `c
+-> 115 `c
+-> 101 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 29: const uint8_t string1_PhaseAngle[7] = "Phase\0";
 "30
-[v _phasesPower2 `CS372 ~T0 @X0 -> 3 `i e ]
-[i _phasesPower2
+[v _string2_PhaseAngle `Cuc ~T0 @X0 -> 7 `i e ]
+[i _string2_PhaseAngle
 :U ..
-:U ..
+-> 65 `c
+-> 110 `c
+-> 103 `c
+-> 108 `c
+-> 101 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 30: const uint8_t string2_PhaseAngle[7] = "Angle\0";
 "32
-&U _fhPower2
-..
+[v _string1_FreqTemp `Cuc ~T0 @X0 -> 10 `i e ]
+[i _string1_FreqTemp
 :U ..
-"33
-&U _phPower2
+-> 70 `c
+-> 114 `c
+-> 101 `c
+-> 113 `c
+-> 84 `c
+-> 101 `c
+-> 109 `c
+-> 112 `c
+-> 0 `c
+-> 0 `c
 ..
-:U ..
+]
+[; ;Phases.c: 32: const uint8_t string1_FreqTemp[10] = "FreqTemp\0";
 "34
-&U _exitPower2
-..
+[v _buttonRight `Cuc ~T0 @X0 -> 3 `i e ]
+[i _buttonRight
+:U ..
+-> 82 `c
+-> 0 `c
+-> 0 `c
 ..
 ]
-[; ;States.c: 30: const PhasePtrPower2_Type phasesPower2[3] =
-[; ;States.c: 31: {
-[; ;States.c: 32: {fhPower2},
-[; ;States.c: 33: {phPower2},
-[; ;States.c: 34: {exitPower2}
-[; ;States.c: 35: };
+[; ;Phases.c: 34: const uint8_t buttonRight[3] = "R\0";
+"35
+[v _buttonCenter `Cuc ~T0 @X0 -> 3 `i e ]
+[i _buttonCenter
+:U ..
+-> 69 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 35: const uint8_t buttonCenter[3] = "E\0";
+"36
+[v _buttonLeft `Cuc ~T0 @X0 -> 3 `i e ]
+[i _buttonLeft
+:U ..
+-> 76 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 36: const uint8_t buttonLeft[3] = "L\0";
 "38
-[v _phasesRmsVI `CS374 ~T0 @X0 -> 3 `i e ]
-[i _phasesRmsVI
+[v _active_Forward1 `Cuc ~T0 @X0 -> 15 `i e ]
+[i _active_Forward1
 :U ..
+-> 80 `c
+-> 65 `c
+-> 32 `c
+-> 70 `c
+-> 111 `c
+-> 114 `c
+-> 119 `c
+-> 32 `c
+-> 65 `c
+-> 99 `c
+-> 116 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 38: const uint8_t active_Forward1[15] = "PA Forw Act: \0";
+"39
+[v _active_Forward2 `Cuc ~T0 @X0 -> 15 `i e ]
+[i _active_Forward2
 :U ..
+-> 80 `c
+-> 66 `c
+-> 32 `c
+-> 70 `c
+-> 111 `c
+-> 114 `c
+-> 119 `c
+-> 32 `c
+-> 65 `c
+-> 99 `c
+-> 116 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 39: const uint8_t active_Forward2[15] = "PB Forw Act: \0";
 "40
-&U _phRmsVI
-..
+[v _active_Forward3 `Cuc ~T0 @X0 -> 15 `i e ]
+[i _active_Forward3
 :U ..
-"41
-&U _neutralRmsVI
+-> 80 `c
+-> 67 `c
+-> 32 `c
+-> 70 `c
+-> 111 `c
+-> 114 `c
+-> 119 `c
+-> 32 `c
+-> 65 `c
+-> 99 `c
+-> 116 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
 ..
-:U ..
+]
+[; ;Phases.c: 40: const uint8_t active_Forward3[15] = "PC Forw Act: \0";
 "42
-&U _exitRmsVI
-..
+[v _active_Reverse1 `Cuc ~T0 @X0 -> 14 `i e ]
+[i _active_Reverse1
+:U ..
+-> 80 `c
+-> 65 `c
+-> 32 `c
+-> 82 `c
+-> 101 `c
+-> 118 `c
+-> 32 `c
+-> 65 `c
+-> 99 `c
+-> 116 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
 ..
 ]
-[; ;States.c: 38: const PhasePtrRmsVI_Type phasesRmsVI[3] =
-[; ;States.c: 39: {
-[; ;States.c: 40: {phRmsVI},
-[; ;States.c: 41: {neutralRmsVI},
-[; ;States.c: 42: {exitRmsVI}
-[; ;States.c: 43: };
+[; ;Phases.c: 42: const uint8_t active_Reverse1[14] = "PA Rev Act: \0";
+"43
+[v _active_Reverse2 `Cuc ~T0 @X0 -> 14 `i e ]
+[i _active_Reverse2
+:U ..
+-> 80 `c
+-> 66 `c
+-> 32 `c
+-> 82 `c
+-> 101 `c
+-> 118 `c
+-> 32 `c
+-> 65 `c
+-> 99 `c
+-> 116 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 43: const uint8_t active_Reverse2[14] = "PB Rev Act: \0";
+"44
+[v _active_Reverse3 `Cuc ~T0 @X0 -> 14 `i e ]
+[i _active_Reverse3
+:U ..
+-> 80 `c
+-> 67 `c
+-> 32 `c
+-> 82 `c
+-> 101 `c
+-> 118 `c
+-> 32 `c
+-> 65 `c
+-> 99 `c
+-> 116 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 44: const uint8_t active_Reverse3[14] = "PC Rev Act: \0";
 "46
-[v _phasesPowerFactor `CS376 ~T0 @X0 -> 2 `i e ]
-[i _phasesPowerFactor
+[v _active_Forward_Total `Cuc ~T0 @X0 -> 18 `i e ]
+[i _active_Forward_Total
 :U ..
-:U ..
-"48
-&U _phPowerFactor
+-> 84 `c
+-> 111 `c
+-> 116 `c
+-> 97 `c
+-> 108 `c
+-> 32 `c
+-> 70 `c
+-> 111 `c
+-> 114 `c
+-> 119 `c
+-> 32 `c
+-> 65 `c
+-> 99 `c
+-> 116 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
 ..
+]
+[; ;Phases.c: 46: const uint8_t active_Forward_Total[18] = "Total Forw Act: \0";
+"47
+[v _active_Reverse_Total `Cuc ~T0 @X0 -> 17 `i e ]
+[i _active_Reverse_Total
 :U ..
+-> 84 `c
+-> 111 `c
+-> 116 `c
+-> 97 `c
+-> 108 `c
+-> 32 `c
+-> 82 `c
+-> 101 `c
+-> 118 `c
+-> 32 `c
+-> 65 `c
+-> 99 `c
+-> 116 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 47: const uint8_t active_Reverse_Total[17] = "Total Rev Act: \0";
 "49
-&U _exitPowerFactor
-..
+[v _reactive_Forward1 `Cuc ~T0 @X0 -> 17 `i e ]
+[i _reactive_Forward1
+:U ..
+-> 80 `c
+-> 65 `c
+-> 32 `c
+-> 70 `c
+-> 111 `c
+-> 114 `c
+-> 119 `c
+-> 32 `c
+-> 82 `c
+-> 101 `c
+-> 97 `c
+-> 99 `c
+-> 116 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
 ..
 ]
-[; ;States.c: 46: const PhasePtrPowerFactor_Type phasesPowerFactor[2] =
-[; ;States.c: 47: {
-[; ;States.c: 48: {phPowerFactor},
-[; ;States.c: 49: {exitPowerFactor}
-[; ;States.c: 50: };
+[; ;Phases.c: 49: const uint8_t reactive_Forward1[17] = "PA Forw React: \0";
+"50
+[v _reactive_Forward2 `Cuc ~T0 @X0 -> 17 `i e ]
+[i _reactive_Forward2
+:U ..
+-> 80 `c
+-> 66 `c
+-> 32 `c
+-> 70 `c
+-> 111 `c
+-> 114 `c
+-> 119 `c
+-> 32 `c
+-> 82 `c
+-> 101 `c
+-> 97 `c
+-> 99 `c
+-> 116 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 50: const uint8_t reactive_Forward2[17] = "PB Forw React: \0";
+"51
+[v _reactive_Forward3 `Cuc ~T0 @X0 -> 17 `i e ]
+[i _reactive_Forward3
+:U ..
+-> 80 `c
+-> 67 `c
+-> 32 `c
+-> 70 `c
+-> 111 `c
+-> 114 `c
+-> 119 `c
+-> 32 `c
+-> 82 `c
+-> 101 `c
+-> 97 `c
+-> 99 `c
+-> 116 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 51: const uint8_t reactive_Forward3[17] = "PC Forw React: \0";
 "53
-[v _phasesPhaseAngle `CS378 ~T0 @X0 -> 4 `i e ]
-[i _phasesPhaseAngle
+[v _reactive_Reverse1 `Cuc ~T0 @X0 -> 16 `i e ]
+[i _reactive_Reverse1
 :U ..
+-> 80 `c
+-> 65 `c
+-> 32 `c
+-> 82 `c
+-> 101 `c
+-> 118 `c
+-> 32 `c
+-> 82 `c
+-> 101 `c
+-> 97 `c
+-> 99 `c
+-> 116 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 53: const uint8_t reactive_Reverse1[16] = "PA Rev React: \0";
+"54
+[v _reactive_Reverse2 `Cuc ~T0 @X0 -> 16 `i e ]
+[i _reactive_Reverse2
 :U ..
+-> 80 `c
+-> 66 `c
+-> 32 `c
+-> 82 `c
+-> 101 `c
+-> 118 `c
+-> 32 `c
+-> 82 `c
+-> 101 `c
+-> 97 `c
+-> 99 `c
+-> 116 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 54: const uint8_t reactive_Reverse2[16] = "PB Rev React: \0";
 "55
-&U _phPhaseAngle
-..
+[v _reactive_Reverse3 `Cuc ~T0 @X0 -> 16 `i e ]
+[i _reactive_Reverse3
 :U ..
-"56
-&U _viPhaseAngle
+-> 80 `c
+-> 67 `c
+-> 32 `c
+-> 82 `c
+-> 101 `c
+-> 118 `c
+-> 32 `c
+-> 82 `c
+-> 101 `c
+-> 97 `c
+-> 99 `c
+-> 116 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
 ..
-:U ..
+]
+[; ;Phases.c: 55: const uint8_t reactive_Reverse3[16] = "PC Rev React: \0";
 "57
-&U _THDNPhaseAngle
-..
+[v _reactive_Forward_Total `Cuc ~T0 @X0 -> 20 `i e ]
+[i _reactive_Forward_Total
 :U ..
+-> 84 `c
+-> 111 `c
+-> 116 `c
+-> 97 `c
+-> 108 `c
+-> 32 `c
+-> 70 `c
+-> 111 `c
+-> 114 `c
+-> 119 `c
+-> 32 `c
+-> 82 `c
+-> 101 `c
+-> 97 `c
+-> 99 `c
+-> 116 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 57: const uint8_t reactive_Forward_Total[20] = "Total Forw React: \0";
 "58
-&U _exitPhaseAngle
-..
+[v _reactive_Reverse_Total `Cuc ~T0 @X0 -> 19 `i e ]
+[i _reactive_Reverse_Total
+:U ..
+-> 84 `c
+-> 111 `c
+-> 116 `c
+-> 97 `c
+-> 108 `c
+-> 32 `c
+-> 82 `c
+-> 101 `c
+-> 118 `c
+-> 32 `c
+-> 82 `c
+-> 101 `c
+-> 97 `c
+-> 99 `c
+-> 116 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
 ..
 ]
-[; ;States.c: 53: const PhasePtrPhaseAngle_Type phasesPhaseAngle[4] =
-[; ;States.c: 54: {
-[; ;States.c: 55: {phPhaseAngle},
-[; ;States.c: 56: {viPhaseAngle},
-[; ;States.c: 57: {THDNPhaseAngle},
-[; ;States.c: 58: {exitPhaseAngle}
-[; ;States.c: 59: };
+[; ;Phases.c: 58: const uint8_t reactive_Reverse_Total[19] = "Total Rev React: \0";
+"60
+[v _apparent_energyP1 `Cuc ~T0 @X0 -> 10 `i e ]
+[i _apparent_energyP1
+:U ..
+-> 80 `c
+-> 65 `c
+-> 32 `c
+-> 65 `c
+-> 112 `c
+-> 112 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 60: const uint8_t apparent_energyP1[10] = "PA App: \0";
+"61
+[v _apparent_energyP2 `Cuc ~T0 @X0 -> 10 `i e ]
+[i _apparent_energyP2
+:U ..
+-> 80 `c
+-> 66 `c
+-> 32 `c
+-> 65 `c
+-> 112 `c
+-> 112 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 61: const uint8_t apparent_energyP2[10] = "PB App: \0";
 "62
-[v _phasesFreqTemp `CS380 ~T0 @X0 -> 2 `i e ]
-[i _phasesFreqTemp
+[v _apparent_energyP3 `Cuc ~T0 @X0 -> 10 `i e ]
+[i _apparent_energyP3
 :U ..
-:U ..
+-> 80 `c
+-> 67 `c
+-> 32 `c
+-> 65 `c
+-> 112 `c
+-> 112 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 62: const uint8_t apparent_energyP3[10] = "PC App: \0";
 "64
-&U _showFreqTemp
-..
+[v _apparentAri_energyTotal `Cuc ~T0 @X0 -> 19 `i e ]
+[i _apparentAri_energyTotal
 :U ..
+-> 84 `c
+-> 111 `c
+-> 116 `c
+-> 97 `c
+-> 108 `c
+-> 32 `c
+-> 65 `c
+-> 114 `c
+-> 105 `c
+-> 65 `c
+-> 112 `c
+-> 112 `c
+-> 32 `c
+-> 69 `c
+-> 110 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 64: const uint8_t apparentAri_energyTotal[19] = "Total AriApp En: \0";
 "65
-&U _exitFreqTemp
-..
+[v _apparentVec_energyTotal `Cuc ~T0 @X0 -> 19 `i e ]
+[i _apparentVec_energyTotal
+:U ..
+-> 84 `c
+-> 111 `c
+-> 116 `c
+-> 97 `c
+-> 108 `c
+-> 32 `c
+-> 86 `c
+-> 101 `c
+-> 99 `c
+-> 65 `c
+-> 112 `c
+-> 112 `c
+-> 32 `c
+-> 69 `c
+-> 110 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
 ..
 ]
-[; ;States.c: 62: const PhasePtrFreqTemp_Type phasesFreqTemp[2] =
-[; ;States.c: 63: {
-[; ;States.c: 64: {showFreqTemp},
-[; ;States.c: 65: {exitFreqTemp}
-[; ;States.c: 66: };
+[; ;Phases.c: 65: const uint8_t apparentVec_energyTotal[19] = "Total VecApp En: \0";
+"67
+[v _fund_ForwardP1 `Cuc ~T0 @X0 -> 17 `i e ]
+[i _fund_ForwardP1
+:U ..
+-> 80 `c
+-> 65 `c
+-> 32 `c
+-> 70 `c
+-> 111 `c
+-> 114 `c
+-> 119 `c
+-> 70 `c
+-> 117 `c
+-> 110 `c
+-> 100 `c
+-> 32 `c
+-> 69 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 67: const uint8_t fund_ForwardP1[17] = "PA ForwFund E: \0";
 "68
-[v _stateMainMenu `(E3904 ~T0 @X0 1 ef ]
-"69
-{
-[; ;States.c: 68: States_MenuType stateMainMenu(void)
-[; ;States.c: 69: {
-[e :U _stateMainMenu ]
-[f ]
-"71
-[v F4272 `E4049 ~T0 @X0 1 s phase ]
-[i F4272
-. `E4049 0
+[v _fund_ForwardP2 `Cuc ~T0 @X0 -> 17 `i e ]
+[i _fund_ForwardP2
+:U ..
+-> 80 `c
+-> 66 `c
+-> 32 `c
+-> 70 `c
+-> 111 `c
+-> 114 `c
+-> 119 `c
+-> 70 `c
+-> 117 `c
+-> 110 `c
+-> 100 `c
+-> 32 `c
+-> 69 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
 ]
+[; ;Phases.c: 68: const uint8_t fund_ForwardP2[17] = "PB ForwFund E: \0";
+"69
+[v _fund_ForwardP3 `Cuc ~T0 @X0 -> 17 `i e ]
+[i _fund_ForwardP3
+:U ..
+-> 80 `c
+-> 67 `c
+-> 32 `c
+-> 70 `c
+-> 111 `c
+-> 114 `c
+-> 119 `c
+-> 70 `c
+-> 117 `c
+-> 110 `c
+-> 100 `c
+-> 32 `c
+-> 69 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 69: const uint8_t fund_ForwardP3[17] = "PC ForwFund E: \0";
+"71
+[v _fund_ReverseP1 `Cuc ~T0 @X0 -> 16 `i e ]
+[i _fund_ReverseP1
+:U ..
+-> 80 `c
+-> 65 `c
+-> 32 `c
+-> 82 `c
+-> 101 `c
+-> 118 `c
+-> 70 `c
+-> 117 `c
+-> 110 `c
+-> 100 `c
+-> 32 `c
+-> 69 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 71: const uint8_t fund_ReverseP1[16] = "PA RevFund E: \0";
 "72
-[v F4273 `S365 ~T0 @X0 1 s phaseMain ]
-[v F4275 `(S365 ~T0 @X0 0 tf1`S365 ]
+[v _fund_ReverseP2 `Cuc ~T0 @X0 -> 16 `i e ]
+[i _fund_ReverseP2
+:U ..
+-> 80 `c
+-> 66 `c
+-> 32 `c
+-> 82 `c
+-> 101 `c
+-> 118 `c
+-> 70 `c
+-> 117 `c
+-> 110 `c
+-> 100 `c
+-> 32 `c
+-> 69 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 72: const uint8_t fund_ReverseP2[16] = "PB RevFund E: \0";
 "73
-[v _mainMenuFunctions `*F4275 ~T0 @X0 1 a ]
-[; ;States.c: 71: static PhaseStateMenu_Type phase = INITIAL_LOAD;
-[; ;States.c: 72: static PhaseMainMenu_Type phaseMain;
-[; ;States.c: 73: PhaseMainMenu_Type(*mainMenuFunctions)(PhaseMainMenu_Type);
-[; ;States.c: 74: phaseMain.stateMain = MAIN_MENU;
-"74
-[e = . F4273 1 . `E3904 0 ]
-[; ;States.c: 77: mainMenuFunctions = phasesMainMenu[phase].PhaseMainMenu;
-"77
-[e = _mainMenuFunctions -> . *U + &U _phasesMainMenu * -> F4272 `ux -> -> # *U &U _phasesMainMenu `ui `ux 0 `*F4275 ]
-[; ;States.c: 78: phaseMain = mainMenuFunctions(phaseMain);
+[v _fund_ReverseP3 `Cuc ~T0 @X0 -> 16 `i e ]
+[i _fund_ReverseP3
+:U ..
+-> 80 `c
+-> 67 `c
+-> 32 `c
+-> 82 `c
+-> 101 `c
+-> 118 `c
+-> 70 `c
+-> 117 `c
+-> 110 `c
+-> 100 `c
+-> 32 `c
+-> 69 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 73: const uint8_t fund_ReverseP3[16] = "PC RevFund E: \0";
+"75
+[v _fund_ForwardTotal `Cuc ~T0 @X0 -> 20 `i e ]
+[i _fund_ForwardTotal
+:U ..
+-> 84 `c
+-> 111 `c
+-> 116 `c
+-> 97 `c
+-> 108 `c
+-> 32 `c
+-> 70 `c
+-> 111 `c
+-> 114 `c
+-> 119 `c
+-> 70 `c
+-> 117 `c
+-> 110 `c
+-> 100 `c
+-> 32 `c
+-> 69 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 75: const uint8_t fund_ForwardTotal[20] = "Total ForwFund E: \0";
+"76
+[v _fund_ReverseTotal `Cuc ~T0 @X0 -> 19 `i e ]
+[i _fund_ReverseTotal
+:U ..
+-> 84 `c
+-> 111 `c
+-> 116 `c
+-> 97 `c
+-> 108 `c
+-> 32 `c
+-> 82 `c
+-> 101 `c
+-> 118 `c
+-> 70 `c
+-> 117 `c
+-> 110 `c
+-> 100 `c
+-> 32 `c
+-> 69 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 76: const uint8_t fund_ReverseTotal[19] = "Total RevFund E: \0";
 "78
-[e = F4273 ( *U _mainMenuFunctions (1 F4273 ]
-[; ;States.c: 81: phase = phaseMain.phaseState;
-"81
-[e = F4272 . F4273 0 ]
-[; ;States.c: 82: return (phaseMain.stateMain);
+[v _harmonic_ForwardP1 `Cuc ~T0 @X0 -> 13 `i e ]
+[i _harmonic_ForwardP1
+:U ..
+-> 80 `c
+-> 65 `c
+-> 32 `c
+-> 70 `c
+-> 111 `c
+-> 114 `c
+-> 119 `c
+-> 72 `c
+-> 69 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 78: const uint8_t harmonic_ForwardP1[13] = "PA ForwHE: \0";
+"79
+[v _harmonic_ForwardP2 `Cuc ~T0 @X0 -> 13 `i e ]
+[i _harmonic_ForwardP2
+:U ..
+-> 80 `c
+-> 66 `c
+-> 32 `c
+-> 70 `c
+-> 111 `c
+-> 114 `c
+-> 119 `c
+-> 72 `c
+-> 69 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 79: const uint8_t harmonic_ForwardP2[13] = "PB ForwHE: \0";
+"80
+[v _harmonic_ForwardP3 `Cuc ~T0 @X0 -> 13 `i e ]
+[i _harmonic_ForwardP3
+:U ..
+-> 80 `c
+-> 67 `c
+-> 32 `c
+-> 70 `c
+-> 111 `c
+-> 114 `c
+-> 119 `c
+-> 72 `c
+-> 69 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 80: const uint8_t harmonic_ForwardP3[13] = "PC ForwHE: \0";
 "82
-[e ) . F4273 1 ]
-[e $UE 381  ]
-[; ;States.c: 83: }
+[v _harmonic_ReverseP1 `Cuc ~T0 @X0 -> 12 `i e ]
+[i _harmonic_ReverseP1
+:U ..
+-> 80 `c
+-> 65 `c
+-> 32 `c
+-> 82 `c
+-> 101 `c
+-> 118 `c
+-> 72 `c
+-> 69 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 82: const uint8_t harmonic_ReverseP1[12] = "PA RevHE: \0";
 "83
+[v _harmonic_ReverseP2 `Cuc ~T0 @X0 -> 12 `i e ]
+[i _harmonic_ReverseP2
+:U ..
+-> 80 `c
+-> 66 `c
+-> 32 `c
+-> 82 `c
+-> 101 `c
+-> 118 `c
+-> 72 `c
+-> 69 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 83: const uint8_t harmonic_ReverseP2[12] = "PB RevHE: \0";
+"84
+[v _harmonic_ReverseP3 `Cuc ~T0 @X0 -> 12 `i e ]
+[i _harmonic_ReverseP3
+:U ..
+-> 80 `c
+-> 67 `c
+-> 32 `c
+-> 82 `c
+-> 101 `c
+-> 118 `c
+-> 72 `c
+-> 69 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 84: const uint8_t harmonic_ReverseP3[12] = "PC RevHE: \0";
+"86
+[v _harmonic_ForwardTotal `Cuc ~T0 @X0 -> 16 `i e ]
+[i _harmonic_ForwardTotal
+:U ..
+-> 84 `c
+-> 111 `c
+-> 116 `c
+-> 97 `c
+-> 108 `c
+-> 32 `c
+-> 70 `c
+-> 111 `c
+-> 114 `c
+-> 119 `c
+-> 72 `c
+-> 69 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 86: const uint8_t harmonic_ForwardTotal[16] = "Total ForwHE: \0";
+"87
+[v _harmonic_ReverseTotal `Cuc ~T0 @X0 -> 15 `i e ]
+[i _harmonic_ReverseTotal
+:U ..
+-> 84 `c
+-> 111 `c
+-> 116 `c
+-> 97 `c
+-> 108 `c
+-> 32 `c
+-> 82 `c
+-> 101 `c
+-> 118 `c
+-> 72 `c
+-> 69 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 87: const uint8_t harmonic_ReverseTotal[15] = "Total RevHE: \0";
+"89
+[v _active_powerP1 `Cuc ~T0 @X0 -> 11 `i e ]
+[i _active_powerP1
+:U ..
+-> 80 `c
+-> 65 `c
+-> 32 `c
+-> 65 `c
+-> 80 `c
+-> 111 `c
+-> 119 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 89: const uint8_t active_powerP1[11] = "PA APow: \0";
+"90
+[v _active_powerP2 `Cuc ~T0 @X0 -> 11 `i e ]
+[i _active_powerP2
+:U ..
+-> 80 `c
+-> 66 `c
+-> 32 `c
+-> 65 `c
+-> 80 `c
+-> 111 `c
+-> 119 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 90: const uint8_t active_powerP2[11] = "PB APow: \0";
+"91
+[v _active_powerP3 `Cuc ~T0 @X0 -> 11 `i e ]
+[i _active_powerP3
+:U ..
+-> 80 `c
+-> 67 `c
+-> 32 `c
+-> 65 `c
+-> 80 `c
+-> 111 `c
+-> 119 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 91: const uint8_t active_powerP3[11] = "PC APow: \0";
+"93
+[v _reactive_powerP1 `Cuc ~T0 @X0 -> 11 `i e ]
+[i _reactive_powerP1
+:U ..
+-> 80 `c
+-> 65 `c
+-> 32 `c
+-> 82 `c
+-> 80 `c
+-> 111 `c
+-> 119 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 93: const uint8_t reactive_powerP1[11] = "PA RPow: \0";
+"94
+[v _reactive_powerP2 `Cuc ~T0 @X0 -> 11 `i e ]
+[i _reactive_powerP2
+:U ..
+-> 80 `c
+-> 66 `c
+-> 32 `c
+-> 82 `c
+-> 80 `c
+-> 111 `c
+-> 119 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 94: const uint8_t reactive_powerP2[11] = "PB RPow: \0";
+"95
+[v _reactive_powerP3 `Cuc ~T0 @X0 -> 11 `i e ]
+[i _reactive_powerP3
+:U ..
+-> 80 `c
+-> 67 `c
+-> 32 `c
+-> 82 `c
+-> 80 `c
+-> 111 `c
+-> 119 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 95: const uint8_t reactive_powerP3[11] = "PC RPow: \0";
+"97
+[v _apparent_powerP1 `Cuc ~T0 @X0 -> 12 `i e ]
+[i _apparent_powerP1
+:U ..
+-> 80 `c
+-> 65 `c
+-> 32 `c
+-> 65 `c
+-> 80 `c
+-> 80 `c
+-> 111 `c
+-> 119 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 97: const uint8_t apparent_powerP1[12] = "PA APPow: \0";
+"98
+[v _apparent_powerP2 `Cuc ~T0 @X0 -> 12 `i e ]
+[i _apparent_powerP2
+:U ..
+-> 80 `c
+-> 66 `c
+-> 32 `c
+-> 65 `c
+-> 80 `c
+-> 80 `c
+-> 111 `c
+-> 119 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 98: const uint8_t apparent_powerP2[12] = "PB APPow: \0";
+"99
+[v _apparent_powerP3 `Cuc ~T0 @X0 -> 12 `i e ]
+[i _apparent_powerP3
+:U ..
+-> 80 `c
+-> 67 `c
+-> 32 `c
+-> 65 `c
+-> 80 `c
+-> 80 `c
+-> 111 `c
+-> 119 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 99: const uint8_t apparent_powerP3[12] = "PC APPow: \0";
+"101
+[v _total_active_power `Cuc ~T0 @X0 -> 14 `i e ]
+[i _total_active_power
+:U ..
+-> 84 `c
+-> 111 `c
+-> 116 `c
+-> 97 `c
+-> 108 `c
+-> 32 `c
+-> 65 `c
+-> 80 `c
+-> 111 `c
+-> 119 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 101: const uint8_t total_active_power[14] = "Total APow: \0";
+"102
+[v _total_reactive_power `Cuc ~T0 @X0 -> 14 `i e ]
+[i _total_reactive_power
+:U ..
+-> 84 `c
+-> 111 `c
+-> 116 `c
+-> 97 `c
+-> 108 `c
+-> 32 `c
+-> 82 `c
+-> 80 `c
+-> 111 `c
+-> 119 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 102: const uint8_t total_reactive_power[14] = "Total RPow: \0";
+"103
+[v _total_apparent_power `Cuc ~T0 @X0 -> 15 `i e ]
+[i _total_apparent_power
+:U ..
+-> 84 `c
+-> 111 `c
+-> 116 `c
+-> 97 `c
+-> 108 `c
+-> 32 `c
+-> 65 `c
+-> 80 `c
+-> 80 `c
+-> 111 `c
+-> 119 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 103: const uint8_t total_apparent_power[15] = "Total APPow: \0";
+"105
+[v _fundamental_PowerP1 `Cuc ~T0 @X0 -> 11 `i e ]
+[i _fundamental_PowerP1
+:U ..
+-> 80 `c
+-> 65 `c
+-> 32 `c
+-> 70 `c
+-> 80 `c
+-> 111 `c
+-> 119 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 105: const uint8_t fundamental_PowerP1[11] = "PA FPow: \0";
+"106
+[v _fundamental_PowerP2 `Cuc ~T0 @X0 -> 11 `i e ]
+[i _fundamental_PowerP2
+:U ..
+-> 80 `c
+-> 66 `c
+-> 32 `c
+-> 70 `c
+-> 80 `c
+-> 111 `c
+-> 119 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 106: const uint8_t fundamental_PowerP2[11] = "PB FPow: \0";
+"107
+[v _fundamental_PowerP3 `Cuc ~T0 @X0 -> 11 `i e ]
+[i _fundamental_PowerP3
+:U ..
+-> 80 `c
+-> 67 `c
+-> 32 `c
+-> 70 `c
+-> 80 `c
+-> 111 `c
+-> 119 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 107: const uint8_t fundamental_PowerP3[11] = "PC FPow: \0";
+"109
+[v _harmonic_PowerP1 `Cuc ~T0 @X0 -> 11 `i e ]
+[i _harmonic_PowerP1
+:U ..
+-> 80 `c
+-> 65 `c
+-> 32 `c
+-> 72 `c
+-> 80 `c
+-> 111 `c
+-> 119 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 109: const uint8_t harmonic_PowerP1[11] = "PA HPow: \0";
+"110
+[v _harmonic_PowerP2 `Cuc ~T0 @X0 -> 11 `i e ]
+[i _harmonic_PowerP2
+:U ..
+-> 80 `c
+-> 66 `c
+-> 32 `c
+-> 72 `c
+-> 80 `c
+-> 111 `c
+-> 119 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 110: const uint8_t harmonic_PowerP2[11] = "PB HPow: \0";
+"111
+[v _harmonic_PowerP3 `Cuc ~T0 @X0 -> 11 `i e ]
+[i _harmonic_PowerP3
+:U ..
+-> 80 `c
+-> 67 `c
+-> 32 `c
+-> 72 `c
+-> 80 `c
+-> 111 `c
+-> 119 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 111: const uint8_t harmonic_PowerP3[11] = "PC HPow: \0";
+"113
+[v _fundamental_Total_Power `Cuc ~T0 @X0 -> 14 `i e ]
+[i _fundamental_Total_Power
+:U ..
+-> 84 `c
+-> 111 `c
+-> 116 `c
+-> 97 `c
+-> 108 `c
+-> 32 `c
+-> 70 `c
+-> 80 `c
+-> 111 `c
+-> 119 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 113: const uint8_t fundamental_Total_Power[14] = "Total FPow: \0";
+"114
+[v _harmonic_Total_Power `Cuc ~T0 @X0 -> 14 `i e ]
+[i _harmonic_Total_Power
+:U ..
+-> 84 `c
+-> 111 `c
+-> 116 `c
+-> 97 `c
+-> 108 `c
+-> 32 `c
+-> 72 `c
+-> 80 `c
+-> 111 `c
+-> 119 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 114: const uint8_t harmonic_Total_Power[14] = "Total HPow: \0";
+"116
+[v _voltage1_RMS `Cuc ~T0 @X0 -> 11 `i e ]
+[i _voltage1_RMS
+:U ..
+-> 80 `c
+-> 65 `c
+-> 32 `c
+-> 86 `c
+-> 82 `c
+-> 77 `c
+-> 83 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 116: const uint8_t voltage1_RMS[11] = "PA VRMS: \0";
+"117
+[v _voltage2_RMS `Cuc ~T0 @X0 -> 11 `i e ]
+[i _voltage2_RMS
+:U ..
+-> 80 `c
+-> 66 `c
+-> 32 `c
+-> 86 `c
+-> 82 `c
+-> 77 `c
+-> 83 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 117: const uint8_t voltage2_RMS[11] = "PB VRMS: \0";
+"118
+[v _voltage3_RMS `Cuc ~T0 @X0 -> 11 `i e ]
+[i _voltage3_RMS
+:U ..
+-> 80 `c
+-> 67 `c
+-> 32 `c
+-> 86 `c
+-> 82 `c
+-> 77 `c
+-> 83 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 118: const uint8_t voltage3_RMS[11] = "PC VRMS: \0";
+"120
+[v _current1_RMS `Cuc ~T0 @X0 -> 11 `i e ]
+[i _current1_RMS
+:U ..
+-> 80 `c
+-> 65 `c
+-> 32 `c
+-> 67 `c
+-> 82 `c
+-> 77 `c
+-> 83 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 120: const uint8_t current1_RMS[11] = "PA CRMS: \0";
+"121
+[v _current2_RMS `Cuc ~T0 @X0 -> 11 `i e ]
+[i _current2_RMS
+:U ..
+-> 80 `c
+-> 66 `c
+-> 32 `c
+-> 67 `c
+-> 82 `c
+-> 77 `c
+-> 83 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 121: const uint8_t current2_RMS[11] = "PB CRMS: \0";
+"122
+[v _current3_RMS `Cuc ~T0 @X0 -> 11 `i e ]
+[i _current3_RMS
+:U ..
+-> 80 `c
+-> 67 `c
+-> 32 `c
+-> 67 `c
+-> 82 `c
+-> 77 `c
+-> 83 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 122: const uint8_t current3_RMS[11] = "PC CRMS: \0";
+"124
+[v _nline_calculated_RMS `Cuc ~T0 @X0 -> 13 `i e ]
+[i _nline_calculated_RMS
+:U ..
+-> 78 `c
+-> 32 `c
+-> 67 `c
+-> 97 `c
+-> 108 `c
+-> 67 `c
+-> 82 `c
+-> 77 `c
+-> 83 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 124: const uint8_t nline_calculated_RMS[13] = "N CalCRMS: \0";
+"125
+[v _nline_sampled_RMS `Cuc ~T0 @X0 -> 13 `i e ]
+[i _nline_sampled_RMS
+:U ..
+-> 78 `c
+-> 32 `c
+-> 83 `c
+-> 97 `c
+-> 109 `c
+-> 67 `c
+-> 82 `c
+-> 77 `c
+-> 83 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 125: const uint8_t nline_sampled_RMS[13] = "N SamCRMS: \0";
+"127
+[v _factor_powerP1 `Cuc ~T0 @X0 -> 9 `i e ]
+[i _factor_powerP1
+:U ..
+-> 80 `c
+-> 65 `c
+-> 32 `c
+-> 80 `c
+-> 70 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 127: const uint8_t factor_powerP1[9] = "PA PF: \0";
+"128
+[v _factor_powerP2 `Cuc ~T0 @X0 -> 9 `i e ]
+[i _factor_powerP2
+:U ..
+-> 80 `c
+-> 66 `c
+-> 32 `c
+-> 80 `c
+-> 70 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 128: const uint8_t factor_powerP2[9] = "PB PF: \0";
+"129
+[v _factor_powerP3 `Cuc ~T0 @X0 -> 9 `i e ]
+[i _factor_powerP3
+:U ..
+-> 80 `c
+-> 67 `c
+-> 32 `c
+-> 80 `c
+-> 70 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 129: const uint8_t factor_powerP3[9] = "PC PF: \0";
+"131
+[v _total_factor_power `Cuc ~T0 @X0 -> 12 `i e ]
+[i _total_factor_power
+:U ..
+-> 84 `c
+-> 111 `c
+-> 116 `c
+-> 97 `c
+-> 108 `c
+-> 32 `c
+-> 80 `c
+-> 70 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 131: const uint8_t total_factor_power[12] = "Total PF: \0";
+"133
+[v _anglePhase1 `Cuc ~T0 @X0 -> 11 `i e ]
+[i _anglePhase1
+:U ..
+-> 80 `c
+-> 65 `c
+-> 32 `c
+-> 112 `c
+-> 104 `c
+-> 65 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 133: const uint8_t anglePhase1[11] = "PA phA: \0";
+"134
+[v _anglePhase2 `Cuc ~T0 @X0 -> 11 `i e ]
+[i _anglePhase2
+:U ..
+-> 80 `c
+-> 66 `c
+-> 32 `c
+-> 112 `c
+-> 104 `c
+-> 65 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 134: const uint8_t anglePhase2[11] = "PB phA: \0";
+"135
+[v _anglePhase3 `Cuc ~T0 @X0 -> 11 `i e ]
+[i _anglePhase3
+:U ..
+-> 80 `c
+-> 67 `c
+-> 32 `c
+-> 112 `c
+-> 104 `c
+-> 65 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 135: const uint8_t anglePhase3[11] = "PC phA: \0";
+"137
+[v _angle_VoltageP1 `Cuc ~T0 @X0 -> 11 `i e ]
+[i _angle_VoltageP1
+:U ..
+-> 80 `c
+-> 65 `c
+-> 32 `c
+-> 86 `c
+-> 112 `c
+-> 104 `c
+-> 65 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 137: const uint8_t angle_VoltageP1[11] = "PA VphA: \0";
+"138
+[v _angle_VoltageP2 `Cuc ~T0 @X0 -> 11 `i e ]
+[i _angle_VoltageP2
+:U ..
+-> 80 `c
+-> 66 `c
+-> 32 `c
+-> 86 `c
+-> 112 `c
+-> 104 `c
+-> 65 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 138: const uint8_t angle_VoltageP2[11] = "PB VphA: \0";
+"139
+[v _angle_VoltageP3 `Cuc ~T0 @X0 -> 11 `i e ]
+[i _angle_VoltageP3
+:U ..
+-> 80 `c
+-> 67 `c
+-> 32 `c
+-> 86 `c
+-> 112 `c
+-> 104 `c
+-> 65 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 139: const uint8_t angle_VoltageP3[11] = "PC VphA: \0";
+"141
+[v _voltage1_THDN `Cuc ~T0 @X0 -> 12 `i e ]
+[i _voltage1_THDN
+:U ..
+-> 80 `c
+-> 65 `c
+-> 32 `c
+-> 118 `c
+-> 84 `c
+-> 72 `c
+-> 68 `c
+-> 78 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 141: const uint8_t voltage1_THDN[12] = "PA vTHDN: \0";
+"142
+[v _voltage2_THDN `Cuc ~T0 @X0 -> 12 `i e ]
+[i _voltage2_THDN
+:U ..
+-> 80 `c
+-> 66 `c
+-> 32 `c
+-> 118 `c
+-> 84 `c
+-> 72 `c
+-> 68 `c
+-> 78 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 142: const uint8_t voltage2_THDN[12] = "PB vTHDN: \0";
+"143
+[v _voltage3_THDN `Cuc ~T0 @X0 -> 12 `i e ]
+[i _voltage3_THDN
+:U ..
+-> 80 `c
+-> 67 `c
+-> 32 `c
+-> 118 `c
+-> 84 `c
+-> 72 `c
+-> 68 `c
+-> 78 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 143: const uint8_t voltage3_THDN[12] = "PC vTHDN: \0";
+"145
+[v _current1_THDN `Cuc ~T0 @X0 -> 12 `i e ]
+[i _current1_THDN
+:U ..
+-> 80 `c
+-> 65 `c
+-> 32 `c
+-> 99 `c
+-> 84 `c
+-> 72 `c
+-> 68 `c
+-> 78 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 145: const uint8_t current1_THDN[12] = "PA cTHDN: \0";
+"146
+[v _current2_THDN `Cuc ~T0 @X0 -> 12 `i e ]
+[i _current2_THDN
+:U ..
+-> 80 `c
+-> 66 `c
+-> 32 `c
+-> 99 `c
+-> 84 `c
+-> 72 `c
+-> 68 `c
+-> 78 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 146: const uint8_t current2_THDN[12] = "PB cTHDN: \0";
+"147
+[v _current3_THDN `Cuc ~T0 @X0 -> 12 `i e ]
+[i _current3_THDN
+:U ..
+-> 80 `c
+-> 67 `c
+-> 32 `c
+-> 99 `c
+-> 84 `c
+-> 72 `c
+-> 68 `c
+-> 78 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 147: const uint8_t current3_THDN[12] = "PC cTHDN: \0";
+"149
+[v _frequency `Cuc ~T0 @X0 -> 8 `i e ]
+[i _frequency
+:U ..
+-> 70 `c
+-> 114 `c
+-> 101 `c
+-> 113 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 149: const uint8_t frequency[8] = "Freq: \0";
+"150
+[v _temperature `Cuc ~T0 @X0 -> 8 `i e ]
+[i _temperature
+:U ..
+-> 84 `c
+-> 101 `c
+-> 109 `c
+-> 112 `c
+-> 58 `c
+-> 32 `c
+-> 0 `c
+-> 0 `c
+..
+]
+[; ;Phases.c: 150: const uint8_t temperature[8] = "Temp: \0";
+"153
+[v _SPI_Config2 `CS362 ~T0 @X0 1 e ]
+[i _SPI_Config2
+:U ..
+:U ..
+"155
+. `E3829 1
+"156
+. `E3833 0
+"158
+. `E3837 2
+..
+..
+]
+[; ;Phases.c: 153: const SPI_ConfigType SPI_Config2 =
+[; ;Phases.c: 154: {
+[; ;Phases.c: 155: SPI_HIGH_POLARITY,
+[; ;Phases.c: 156: SPI_LOW_PHASE,
+[; ;Phases.c: 157: SPI_SERIAL_CLK64
+[; ;Phases.c: 158: };
+"160
+[v _initialLoad `(S365 ~T0 @X0 1 ef1`S365 ]
+"161
+{
+[; ;Phases.c: 160: PhaseMainMenu_Type initialLoad(PhaseMainMenu_Type data)
+[; ;Phases.c: 161: {
+[e :U _initialLoad ]
+"160
+[v _data `S365 ~T0 @X0 1 r1 ]
+"161
+[f ]
+"163
+[v F4343 `S365 ~T0 @X0 1 s currentMainMenu1 ]
+[; ;Phases.c: 163: static PhaseMainMenu_Type currentMainMenu1;
+[; ;Phases.c: 166: ATM_init();
+"166
+[e ( _ATM_init ..  ]
+[; ;Phases.c: 167: ATM_calibration();
+"167
+[e ( _ATM_calibration ..  ]
+[; ;Phases.c: 168: delay(1500);
+"168
+[e ( _delay (1 -> -> -> 1500 `i `l `ul ]
+[; ;Phases.c: 171: currentMainMenu1.phaseState = GENERAL_VIEW;
+"171
+[e = . F4343 0 . `E4049 1 ]
+[; ;Phases.c: 172: currentMainMenu1.stateMain = data.stateMain;
+"172
+[e = . F4343 1 . _data 1 ]
+[; ;Phases.c: 173: return (currentMainMenu1);
+"173
+[e ) F4343 ]
+[e $UE 381  ]
+[; ;Phases.c: 174: }
+"174
 [e :UE 381 ]
 }
-"85
-[v _stateEnergy `(E3904 ~T0 @X0 1 ef ]
-"86
+"176
+[v _generalView `(S365 ~T0 @X0 1 ef1`S365 ]
+"177
 {
-[; ;States.c: 85: States_MenuType stateEnergy(void)
-[; ;States.c: 86: {
-[e :U _stateEnergy ]
+[; ;Phases.c: 176: PhaseMainMenu_Type generalView(PhaseMainMenu_Type data)
+[; ;Phases.c: 177: {
+[e :U _generalView ]
+"176
+[v _data `S365 ~T0 @X0 1 r1 ]
+"177
 [f ]
-"88
-[v F4279 `E4067 ~T0 @X0 1 s phase ]
-[i F4279
-. `E4067 0
+"179
+[v F4345 `S365 ~T0 @X0 1 s currentMainMenu2 ]
+"180
+[v F4346 `uc ~T0 @X0 1 s lockClear ]
+[i F4346
+-> -> 0 `i `uc
 ]
-"89
-[v F4280 `S367 ~T0 @X0 1 s phaseEnergy ]
-[v F4282 `(S367 ~T0 @X0 0 tf1`S367 ]
-"90
-[v _energyFunctions `*F4282 ~T0 @X0 1 a ]
-[; ;States.c: 88: static PhaseStateEnergy_Type phase = ACTIVE_ENERGY;
-[; ;States.c: 89: static PhaseEnergy_Type phaseEnergy;
-[; ;States.c: 90: PhaseEnergy_Type(*energyFunctions)(PhaseEnergy_Type);
-[; ;States.c: 91: phaseEnergy.stateMain = ENERGY;
-"91
-[e = . F4280 1 . `E3904 1 ]
-[; ;States.c: 94: energyFunctions = phasesEnergy[phase].PhaseEnergy;
-"94
-[e = _energyFunctions -> . *U + &U _phasesEnergy * -> F4279 `ux -> -> # *U &U _phasesEnergy `ui `ux 0 `*F4282 ]
-[; ;States.c: 95: phaseEnergy = energyFunctions(phaseEnergy);
-"95
-[e = F4280 ( *U _energyFunctions (1 F4280 ]
-[; ;States.c: 98: phase = phaseEnergy.phaseState;
-"98
-[e = F4279 . F4280 0 ]
-[; ;States.c: 99: return (phaseEnergy.stateMain);
-"99
-[e ) . F4280 1 ]
+"181
+[v F4347 `uc ~T0 @X0 1 s lockWrite ]
+[i F4347
+-> -> 0 `i `uc
+]
+[; ;Phases.c: 179: static PhaseMainMenu_Type currentMainMenu2;
+[; ;Phases.c: 180: static uint8_t lockClear = 0;
+[; ;Phases.c: 181: static uint8_t lockWrite = 0;
+[; ;Phases.c: 183: currentMainMenu2.phaseState = GENERAL_VIEW;
+"183
+[e = . F4345 0 . `E4049 1 ]
+[; ;Phases.c: 185: if(0 == lockClear)
+"185
+[e $ ! == -> 0 `i -> F4346 `i 383  ]
+[; ;Phases.c: 186: {
+"186
+{
+[; ;Phases.c: 188: LCDNokia_clear();
+"188
+[e ( _LCDNokia_clear ..  ]
+[; ;Phases.c: 190: lockClear = 1;
+"190
+[e = F4346 -> -> 1 `i `uc ]
+"191
+}
+[e :U 383 ]
+[; ;Phases.c: 191: }
+[; ;Phases.c: 193: if(0 == lockWrite)
+"193
+[e $ ! == -> 0 `i -> F4347 `i 384  ]
+[; ;Phases.c: 194: {
+"194
+{
+[; ;Phases.c: 195: LCDNokia_gotoXY(20,1);
+"195
+[e ( _LCDNokia_gotoXY (2 , -> -> 20 `i `uc -> -> 1 `i `uc ]
+[; ;Phases.c: 196: LCDNokia_sendString(msgInitial1_gv);
+"196
+[e ( _LCDNokia_sendString (1 &U _msgInitial1_gv ]
+[; ;Phases.c: 198: LCDNokia_gotoXY(27,1);
+"198
+[e ( _LCDNokia_gotoXY (2 , -> -> 27 `i `uc -> -> 1 `i `uc ]
+[; ;Phases.c: 199: LCDNokia_sendString(msgInitial2_gv);
+"199
+[e ( _LCDNokia_sendString (1 &U _msgInitial2_gv ]
+[; ;Phases.c: 201: LCDNokia_gotoXY(0,4);
+"201
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 4 `i `uc ]
+[; ;Phases.c: 202: LCDNokia_sendString(buttonLeft_gv);
+"202
+[e ( _LCDNokia_sendString (1 &U _buttonLeft_gv ]
+[; ;Phases.c: 204: LCDNokia_gotoXY(65,4);
+"204
+[e ( _LCDNokia_gotoXY (2 , -> -> 65 `i `uc -> -> 4 `i `uc ]
+[; ;Phases.c: 205: LCDNokia_sendString(buttonRight_gv);
+"205
+[e ( _LCDNokia_sendString (1 &U _buttonRight_gv ]
+[; ;Phases.c: 207: lockWrite = 1;
+"207
+[e = F4347 -> -> 1 `i `uc ]
+"208
+}
+[e :U 384 ]
+[; ;Phases.c: 208: }
+[; ;Phases.c: 210: if(1 == PORTCbits.RC0)
+"210
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 0 `i 385  ]
+[; ;Phases.c: 211: {
+"211
+{
+[; ;Phases.c: 212: currentMainMenu2.phaseState = VIEW_MENU;
+"212
+[e = . F4345 0 . `E4049 2 ]
+[; ;Phases.c: 213: lockClear = 0;
+"213
+[e = F4346 -> -> 0 `i `uc ]
+[; ;Phases.c: 214: lockWrite = 0;
+"214
+[e = F4347 -> -> 0 `i `uc ]
+"215
+}
+[e :U 385 ]
+[; ;Phases.c: 215: }
+[; ;Phases.c: 216: if(1 == PORTCbits.RC2)
+"216
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 2 `i 386  ]
+[; ;Phases.c: 217: {
+"217
+{
+[; ;Phases.c: 218: currentMainMenu2.phaseState = SEND_DATA;
+"218
+[e = . F4345 0 . `E4049 3 ]
+[; ;Phases.c: 219: lockClear = 0;
+"219
+[e = F4346 -> -> 0 `i `uc ]
+[; ;Phases.c: 220: lockWrite = 0;
+"220
+[e = F4347 -> -> 0 `i `uc ]
+"221
+}
+[e :U 386 ]
+[; ;Phases.c: 221: }
+[; ;Phases.c: 224: currentMainMenu2.stateMain = data.stateMain;
+"224
+[e = . F4345 1 . _data 1 ]
+[; ;Phases.c: 225: return (currentMainMenu2);
+"225
+[e ) F4345 ]
 [e $UE 382  ]
-[; ;States.c: 100: }
-"100
+[; ;Phases.c: 226: }
+"226
 [e :UE 382 ]
 }
-"102
-[v _statePower1 `(E3904 ~T0 @X0 1 ef ]
-"103
+"228
+[v _viewMenu `(S365 ~T0 @X0 1 ef1`S365 ]
+"229
 {
-[; ;States.c: 102: States_MenuType statePower1(void)
-[; ;States.c: 103: {
-[e :U _statePower1 ]
+[; ;Phases.c: 228: PhaseMainMenu_Type viewMenu(PhaseMainMenu_Type data)
+[; ;Phases.c: 229: {
+[e :U _viewMenu ]
+"228
+[v _data `S365 ~T0 @X0 1 r1 ]
+"229
 [f ]
-"105
-[v F4286 `E4085 ~T0 @X0 1 s phase ]
-[i F4286
-. `E4085 0
+"231
+[v F4349 `S365 ~T0 @X0 1 s currentMainMenu3 ]
+"232
+[v F4350 `uc ~T0 @X0 1 s lockClear ]
+[i F4350
+-> -> 0 `i `uc
 ]
-"106
-[v F4287 `S369 ~T0 @X0 1 s phasePower1 ]
-[v F4289 `(S369 ~T0 @X0 0 tf1`S369 ]
-"107
-[v _power1Functions `*F4289 ~T0 @X0 1 a ]
-[; ;States.c: 105: static PhaseStatePower1_Type phase = TYPES_POWER1;
-[; ;States.c: 106: static PhasePower1_Type phasePower1;
-[; ;States.c: 107: PhasePower1_Type(*power1Functions)(PhasePower1_Type);
-[; ;States.c: 108: phasePower1.stateMain = POWER_1;
-"108
-[e = . F4287 1 . `E3904 2 ]
-[; ;States.c: 111: power1Functions = phasesPower1[phase].PhasePower1;
-"111
-[e = _power1Functions -> . *U + &U _phasesPower1 * -> F4286 `ux -> -> # *U &U _phasesPower1 `ui `ux 0 `*F4289 ]
-[; ;States.c: 112: phasePower1 = power1Functions(phasePower1);
-"112
-[e = F4287 ( *U _power1Functions (1 F4287 ]
-[; ;States.c: 115: phase = phasePower1.phaseState;
-"115
-[e = F4286 . F4287 0 ]
-[; ;States.c: 116: return (phasePower1.stateMain);
-"116
-[e ) . F4287 1 ]
-[e $UE 383  ]
-[; ;States.c: 117: }
-"117
-[e :UE 383 ]
+"233
+[v F4351 `uc ~T0 @X0 1 s lockWrite ]
+[i F4351
+-> -> 0 `i `uc
+]
+"234
+[v F4352 `uc ~T0 @X0 1 s counterMenu ]
+[i F4352
+-> -> 0 `i `uc
+]
+[; ;Phases.c: 231: static PhaseMainMenu_Type currentMainMenu3;
+[; ;Phases.c: 232: static uint8_t lockClear = 0;
+[; ;Phases.c: 233: static uint8_t lockWrite = 0;
+[; ;Phases.c: 234: static uint8_t counterMenu = 0;
+[; ;Phases.c: 236: currentMainMenu3.phaseState = VIEW_MENU;
+"236
+[e = . F4349 0 . `E4049 2 ]
+[; ;Phases.c: 237: currentMainMenu3.stateMain = data.stateMain;
+"237
+[e = . F4349 1 . _data 1 ]
+[; ;Phases.c: 239: if(0 == lockClear)
+"239
+[e $ ! == -> 0 `i -> F4350 `i 388  ]
+[; ;Phases.c: 240: {
+"240
+{
+[; ;Phases.c: 242: LCDNokia_clear();
+"242
+[e ( _LCDNokia_clear ..  ]
+[; ;Phases.c: 244: lockClear = 1;
+"244
+[e = F4350 -> -> 1 `i `uc ]
+"245
 }
-"119
-[v _statePower2 `(E3904 ~T0 @X0 1 ef ]
-"120
+[e :U 388 ]
+[; ;Phases.c: 245: }
+[; ;Phases.c: 247: if(0 == lockWrite)
+"247
+[e $ ! == -> 0 `i -> F4351 `i 389  ]
+[; ;Phases.c: 248: {
+"248
 {
-[; ;States.c: 119: States_MenuType statePower2(void)
-[; ;States.c: 120: {
-[e :U _statePower2 ]
-[f ]
-"122
-[v F4293 `E4102 ~T0 @X0 1 s phase ]
-[i F4293
-. `E4102 0
-]
-"123
-[v F4294 `S371 ~T0 @X0 1 s phasePower2 ]
-[v F4296 `(S371 ~T0 @X0 0 tf1`S371 ]
-"124
-[v _power2Functions `*F4296 ~T0 @X0 1 a ]
-[; ;States.c: 122: static PhaseStatePower2_Type phase = FH_POWER2;
-[; ;States.c: 123: static PhasePower2_Type phasePower2;
-[; ;States.c: 124: PhasePower2_Type(*power2Functions)(PhasePower2_Type);
-[; ;States.c: 125: phasePower2.stateMain = POWER_2;
-"125
-[e = . F4294 1 . `E3904 3 ]
-[; ;States.c: 128: power2Functions = phasesPower2[phase].PhasePower2;
-"128
-[e = _power2Functions -> . *U + &U _phasesPower2 * -> F4293 `ux -> -> # *U &U _phasesPower2 `ui `ux 0 `*F4296 ]
-[; ;States.c: 129: phasePower2 = power2Functions(phasePower2);
-"129
-[e = F4294 ( *U _power2Functions (1 F4294 ]
-[; ;States.c: 132: phase = phasePower2.phaseState;
-"132
-[e = F4293 . F4294 0 ]
-[; ;States.c: 133: return (phasePower2.stateMain);
-"133
-[e ) . F4294 1 ]
-[e $UE 384  ]
-[; ;States.c: 134: }
-"134
-[e :UE 384 ]
+[; ;Phases.c: 249: LCDNokia_gotoXY(15,1);
+"249
+[e ( _LCDNokia_gotoXY (2 , -> -> 15 `i `uc -> -> 1 `i `uc ]
+[; ;Phases.c: 250: switch(counterMenu)
+"250
+[e $U 391  ]
+[; ;Phases.c: 251: {
+"251
+{
+[; ;Phases.c: 252: case 0:
+"252
+[e :U 392 ]
+[; ;Phases.c: 253: LCDNokia_sendString(string_Energy);
+"253
+[e ( _LCDNokia_sendString (1 &U _string_Energy ]
+[; ;Phases.c: 254: break;
+"254
+[e $U 390  ]
+[; ;Phases.c: 255: case 1:
+"255
+[e :U 393 ]
+[; ;Phases.c: 256: LCDNokia_sendString(string1_Power1);
+"256
+[e ( _LCDNokia_sendString (1 &U _string1_Power1 ]
+[; ;Phases.c: 258: LCDNokia_gotoXY(0,2);
+"258
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 259: LCDNokia_sendString(string2_Power1);
+"259
+[e ( _LCDNokia_sendString (1 &U _string2_Power1 ]
+[; ;Phases.c: 260: break;
+"260
+[e $U 390  ]
+[; ;Phases.c: 261: case 2:
+"261
+[e :U 394 ]
+[; ;Phases.c: 262: LCDNokia_sendString(string1_Power2);
+"262
+[e ( _LCDNokia_sendString (1 &U _string1_Power2 ]
+[; ;Phases.c: 264: LCDNokia_gotoXY(15,2);
+"264
+[e ( _LCDNokia_gotoXY (2 , -> -> 15 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 265: LCDNokia_sendString(string2_Power2);
+"265
+[e ( _LCDNokia_sendString (1 &U _string2_Power2 ]
+[; ;Phases.c: 267: LCDNokia_gotoXY(15,3);
+"267
+[e ( _LCDNokia_gotoXY (2 , -> -> 15 `i `uc -> -> 3 `i `uc ]
+[; ;Phases.c: 268: LCDNokia_sendString(string3_Power2);
+"268
+[e ( _LCDNokia_sendString (1 &U _string3_Power2 ]
+[; ;Phases.c: 269: break;
+"269
+[e $U 390  ]
+[; ;Phases.c: 270: case 3:
+"270
+[e :U 395 ]
+[; ;Phases.c: 271: LCDNokia_sendString(string1_RMS);
+"271
+[e ( _LCDNokia_sendString (1 &U _string1_RMS ]
+[; ;Phases.c: 273: LCDNokia_gotoXY(15,2);
+"273
+[e ( _LCDNokia_gotoXY (2 , -> -> 15 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 274: LCDNokia_sendString(string2_RMS);
+"274
+[e ( _LCDNokia_sendString (1 &U _string2_RMS ]
+[; ;Phases.c: 275: break;
+"275
+[e $U 390  ]
+[; ;Phases.c: 276: case 4:
+"276
+[e :U 396 ]
+[; ;Phases.c: 277: LCDNokia_sendString(string1_PowerFactor);
+"277
+[e ( _LCDNokia_sendString (1 &U _string1_PowerFactor ]
+[; ;Phases.c: 279: LCDNokia_gotoXY(15,2);
+"279
+[e ( _LCDNokia_gotoXY (2 , -> -> 15 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 280: LCDNokia_sendString(string2_PowerFactor);
+"280
+[e ( _LCDNokia_sendString (1 &U _string2_PowerFactor ]
+[; ;Phases.c: 281: break;
+"281
+[e $U 390  ]
+[; ;Phases.c: 282: case 5:
+"282
+[e :U 397 ]
+[; ;Phases.c: 283: LCDNokia_sendString(string1_PhaseAngle);
+"283
+[e ( _LCDNokia_sendString (1 &U _string1_PhaseAngle ]
+[; ;Phases.c: 285: LCDNokia_gotoXY(15,2);
+"285
+[e ( _LCDNokia_gotoXY (2 , -> -> 15 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 286: LCDNokia_sendString(string2_PhaseAngle);
+"286
+[e ( _LCDNokia_sendString (1 &U _string2_PhaseAngle ]
+[; ;Phases.c: 287: break;
+"287
+[e $U 390  ]
+[; ;Phases.c: 288: case 6:
+"288
+[e :U 398 ]
+[; ;Phases.c: 289: LCDNokia_sendString(string1_FreqTemp);
+"289
+[e ( _LCDNokia_sendString (1 &U _string1_FreqTemp ]
+[; ;Phases.c: 290: break;
+"290
+[e $U 390  ]
+[; ;Phases.c: 291: default:
+"291
+[e :U 399 ]
+[; ;Phases.c: 292: break;
+"292
+[e $U 390  ]
+"293
 }
-"136
-[v _stateRmsVI `(E3904 ~T0 @X0 1 ef ]
-"137
-{
-[; ;States.c: 136: States_MenuType stateRmsVI(void)
-[; ;States.c: 137: {
-[e :U _stateRmsVI ]
-[f ]
-"139
-[v F4300 `E4119 ~T0 @X0 1 s phase ]
-[i F4300
-. `E4119 0
-]
-"140
-[v F4301 `S373 ~T0 @X0 1 s phaseRmsVI ]
-[v F4303 `(S373 ~T0 @X0 0 tf1`S373 ]
-"141
-[v _rmsVIFunctions `*F4303 ~T0 @X0 1 a ]
-[; ;States.c: 139: static PhaseStateRmsVI_Type phase = PHASES_RMSVI;
-[; ;States.c: 140: static PhaseRmsVI_Type phaseRmsVI;
-[; ;States.c: 141: PhaseRmsVI_Type(*rmsVIFunctions)(PhaseRmsVI_Type);
-[; ;States.c: 142: phaseRmsVI.stateMain = RMS_VI;
-"142
-[e = . F4301 1 . `E3904 4 ]
-[; ;States.c: 145: rmsVIFunctions = phasesRmsVI[phase].PhaseRmsVI;
-"145
-[e = _rmsVIFunctions -> . *U + &U _phasesRmsVI * -> F4300 `ux -> -> # *U &U _phasesRmsVI `ui `ux 0 `*F4303 ]
-[; ;States.c: 146: phaseRmsVI = rmsVIFunctions(phaseRmsVI);
-"146
-[e = F4301 ( *U _rmsVIFunctions (1 F4301 ]
-[; ;States.c: 149: phase = phaseRmsVI.phaseState;
-"149
-[e = F4300 . F4301 0 ]
-[; ;States.c: 150: return (phaseRmsVI.stateMain);
-"150
-[e ) . F4301 1 ]
-[e $UE 385  ]
-[; ;States.c: 151: }
-"151
-[e :UE 385 ]
+[; ;Phases.c: 293: }
+[e $U 390  ]
+"250
+[e :U 391 ]
+[e [\ F4352 , $ -> -> 0 `i `uc 392
+ , $ -> -> 1 `i `uc 393
+ , $ -> -> 2 `i `uc 394
+ , $ -> -> 3 `i `uc 395
+ , $ -> -> 4 `i `uc 396
+ , $ -> -> 5 `i `uc 397
+ , $ -> -> 6 `i `uc 398
+ 399 ]
+"293
+[e :U 390 ]
+[; ;Phases.c: 295: LCDNokia_gotoXY(0,4);
+"295
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 4 `i `uc ]
+[; ;Phases.c: 296: LCDNokia_sendString(buttonLeft);
+"296
+[e ( _LCDNokia_sendString (1 &U _buttonLeft ]
+[; ;Phases.c: 298: LCDNokia_gotoXY(40,4);
+"298
+[e ( _LCDNokia_gotoXY (2 , -> -> 40 `i `uc -> -> 4 `i `uc ]
+[; ;Phases.c: 299: LCDNokia_sendString(buttonCenter);
+"299
+[e ( _LCDNokia_sendString (1 &U _buttonCenter ]
+[; ;Phases.c: 301: LCDNokia_gotoXY(80,4);
+"301
+[e ( _LCDNokia_gotoXY (2 , -> -> 80 `i `uc -> -> 4 `i `uc ]
+[; ;Phases.c: 302: LCDNokia_sendString(buttonRight);
+"302
+[e ( _LCDNokia_sendString (1 &U _buttonRight ]
+[; ;Phases.c: 304: lockWrite = 1;
+"304
+[e = F4351 -> -> 1 `i `uc ]
+"305
 }
-"153
-[v _statePowerFactor `(E3904 ~T0 @X0 1 ef ]
-"154
+[e :U 389 ]
+[; ;Phases.c: 305: }
+[; ;Phases.c: 307: if(1 == PORTCbits.RC0)
+"307
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 0 `i 400  ]
+[; ;Phases.c: 308: {
+"308
 {
-[; ;States.c: 153: States_MenuType statePowerFactor(void)
-[; ;States.c: 154: {
-[e :U _statePowerFactor ]
-[f ]
-"156
-[v F4307 `E4136 ~T0 @X0 1 s phase ]
-[i F4307
-. `E4136 0
-]
-"157
-[v F4308 `S375 ~T0 @X0 1 s phasePowerFactor ]
-[v F4310 `(S375 ~T0 @X0 0 tf1`S375 ]
-"158
-[v _powerFactorFunctions `*F4310 ~T0 @X0 1 a ]
-[; ;States.c: 156: static PhaseStatePowerFactor_Type phase = PHASES_PF;
-[; ;States.c: 157: static PhasePowerFactor_Type phasePowerFactor;
-[; ;States.c: 158: PhasePowerFactor_Type(*powerFactorFunctions)(PhasePowerFactor_Type);
-[; ;States.c: 159: phasePowerFactor.stateMain = POWER_FACTOR;
-"159
-[e = . F4308 1 . `E3904 5 ]
-[; ;States.c: 162: powerFactorFunctions = phasesPowerFactor[phase].PhasePowerFactor;
-"162
-[e = _powerFactorFunctions -> . *U + &U _phasesPowerFactor * -> F4307 `ux -> -> # *U &U _phasesPowerFactor `ui `ux 0 `*F4310 ]
-[; ;States.c: 163: phasePowerFactor = powerFactorFunctions(phasePowerFactor);
-"163
-[e = F4308 ( *U _powerFactorFunctions (1 F4308 ]
-[; ;States.c: 166: phase = phasePowerFactor.phaseState;
-"166
-[e = F4307 . F4308 0 ]
-[; ;States.c: 167: return (phasePowerFactor.stateMain);
-"167
-[e ) . F4308 1 ]
-[e $UE 386  ]
-[; ;States.c: 168: }
-"168
-[e :UE 386 ]
+[; ;Phases.c: 309: if(0 == counterMenu)
+"309
+[e $ ! == -> 0 `i -> F4352 `i 401  ]
+[; ;Phases.c: 310: {
+"310
+{
+[; ;Phases.c: 311: counterMenu = 6;
+"311
+[e = F4352 -> -> 6 `i `uc ]
+"312
 }
-"170
-[v _statePhaseAngle `(E3904 ~T0 @X0 1 ef ]
-"171
+[; ;Phases.c: 312: }
+[e $U 402  ]
+"313
+[e :U 401 ]
+[; ;Phases.c: 313: else
+[; ;Phases.c: 314: {
+"314
 {
-[; ;States.c: 170: States_MenuType statePhaseAngle(void)
-[; ;States.c: 171: {
-[e :U _statePhaseAngle ]
-[f ]
-"173
-[v F4314 `E4152 ~T0 @X0 1 s phase ]
-[i F4314
-. `E4152 0
-]
-"174
-[v F4315 `S377 ~T0 @X0 1 s phasePhaseAngle ]
-[v F4317 `(S377 ~T0 @X0 0 tf1`S377 ]
-"175
-[v _phaseAngleFunctions `*F4317 ~T0 @X0 1 a ]
-[; ;States.c: 173: static PhaseStatePhaseAngle_Type phase = PHASES_PA;
-[; ;States.c: 174: static PhasePhaseAngle_Type phasePhaseAngle;
-[; ;States.c: 175: PhasePhaseAngle_Type(*phaseAngleFunctions)(PhasePhaseAngle_Type);
-[; ;States.c: 176: phasePhaseAngle.stateMain = PHASE_ANGLE;
-"176
-[e = . F4315 1 . `E3904 6 ]
-[; ;States.c: 179: phaseAngleFunctions = phasesPhaseAngle[phase].PhasePhaseAngle;
-"179
-[e = _phaseAngleFunctions -> . *U + &U _phasesPhaseAngle * -> F4314 `ux -> -> # *U &U _phasesPhaseAngle `ui `ux 0 `*F4317 ]
-[; ;States.c: 180: phasePhaseAngle = phaseAngleFunctions(phasePhaseAngle);
-"180
-[e = F4315 ( *U _phaseAngleFunctions (1 F4315 ]
-[; ;States.c: 183: phase = phasePhaseAngle.phaseState;
-"183
-[e = F4314 . F4315 0 ]
-[; ;States.c: 184: return (phasePhaseAngle.stateMain);
-"184
-[e ) . F4315 1 ]
+[; ;Phases.c: 315: counterMenu--;
+"315
+[e -- F4352 -> -> 1 `i `uc ]
+"316
+}
+[e :U 402 ]
+[; ;Phases.c: 316: }
+[; ;Phases.c: 318: lockClear = 0;
+"318
+[e = F4350 -> -> 0 `i `uc ]
+[; ;Phases.c: 319: lockWrite = 0;
+"319
+[e = F4351 -> -> 0 `i `uc ]
+"320
+}
+[e :U 400 ]
+[; ;Phases.c: 320: }
+[; ;Phases.c: 321: if(1 == PORTCbits.RC1)
+"321
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 1 `i 403  ]
+[; ;Phases.c: 322: {
+"322
+{
+[; ;Phases.c: 323: switch(counterMenu)
+"323
+[e $U 405  ]
+[; ;Phases.c: 324: {
+"324
+{
+[; ;Phases.c: 325: case 0:
+"325
+[e :U 406 ]
+[; ;Phases.c: 326: currentMainMenu3.phaseState = ACTIVE_ENERGY;
+"326
+[e = . F4349 0 . `E4067 0 ]
+[; ;Phases.c: 327: currentMainMenu3.stateMain = ENERGY;
+"327
+[e = . F4349 1 . `E3904 1 ]
+[; ;Phases.c: 328: break;
+"328
+[e $U 404  ]
+[; ;Phases.c: 329: case 1:
+"329
+[e :U 407 ]
+[; ;Phases.c: 330: currentMainMenu3.phaseState = TYPES_POWER1;
+"330
+[e = . F4349 0 . `E4085 0 ]
+[; ;Phases.c: 331: currentMainMenu3.stateMain = POWER_1;
+"331
+[e = . F4349 1 . `E3904 2 ]
+[; ;Phases.c: 332: break;
+"332
+[e $U 404  ]
+[; ;Phases.c: 333: case 2:
+"333
+[e :U 408 ]
+[; ;Phases.c: 334: currentMainMenu3.phaseState = FH_POWER2;
+"334
+[e = . F4349 0 . `E4102 0 ]
+[; ;Phases.c: 335: currentMainMenu3.stateMain = POWER_2;
+"335
+[e = . F4349 1 . `E3904 3 ]
+[; ;Phases.c: 336: break;
+"336
+[e $U 404  ]
+[; ;Phases.c: 337: case 3:
+"337
+[e :U 409 ]
+[; ;Phases.c: 338: currentMainMenu3.phaseState = PHASES_RMSVI;
+"338
+[e = . F4349 0 . `E4119 0 ]
+[; ;Phases.c: 339: currentMainMenu3.stateMain = RMS_VI;
+"339
+[e = . F4349 1 . `E3904 4 ]
+[; ;Phases.c: 340: break;
+"340
+[e $U 404  ]
+[; ;Phases.c: 341: case 4:
+"341
+[e :U 410 ]
+[; ;Phases.c: 342: currentMainMenu3.phaseState = PHASES_PF;
+"342
+[e = . F4349 0 . `E4136 0 ]
+[; ;Phases.c: 343: currentMainMenu3.stateMain = POWER_FACTOR;
+"343
+[e = . F4349 1 . `E3904 5 ]
+[; ;Phases.c: 344: break;
+"344
+[e $U 404  ]
+[; ;Phases.c: 345: case 5:
+"345
+[e :U 411 ]
+[; ;Phases.c: 346: currentMainMenu3.phaseState = PHASES_PA;
+"346
+[e = . F4349 0 . `E4152 0 ]
+[; ;Phases.c: 347: currentMainMenu3.stateMain = PHASE_ANGLE;
+"347
+[e = . F4349 1 . `E3904 6 ]
+[; ;Phases.c: 348: break;
+"348
+[e $U 404  ]
+[; ;Phases.c: 349: case 7:
+"349
+[e :U 412 ]
+[; ;Phases.c: 350: currentMainMenu3.phaseState = SHOW_FREQTEMP;
+"350
+[e = . F4349 0 . `E4170 0 ]
+[; ;Phases.c: 351: currentMainMenu3.stateMain = FREQTEMP;
+"351
+[e = . F4349 1 . `E3904 7 ]
+[; ;Phases.c: 352: break;
+"352
+[e $U 404  ]
+[; ;Phases.c: 353: default:
+"353
+[e :U 413 ]
+[; ;Phases.c: 354: break;
+"354
+[e $U 404  ]
+"355
+}
+[; ;Phases.c: 355: }
+[e $U 404  ]
+"323
+[e :U 405 ]
+[e [\ F4352 , $ -> -> 0 `i `uc 406
+ , $ -> -> 1 `i `uc 407
+ , $ -> -> 2 `i `uc 408
+ , $ -> -> 3 `i `uc 409
+ , $ -> -> 4 `i `uc 410
+ , $ -> -> 5 `i `uc 411
+ , $ -> -> 7 `i `uc 412
+ 413 ]
+"355
+[e :U 404 ]
+[; ;Phases.c: 356: lockClear = 0;
+"356
+[e = F4350 -> -> 0 `i `uc ]
+[; ;Phases.c: 357: lockWrite = 0;
+"357
+[e = F4351 -> -> 0 `i `uc ]
+"358
+}
+[e :U 403 ]
+[; ;Phases.c: 358: }
+[; ;Phases.c: 359: if(1 == PORTCbits.RC2)
+"359
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 2 `i 414  ]
+[; ;Phases.c: 360: {
+"360
+{
+[; ;Phases.c: 361: counterMenu++;
+"361
+[e ++ F4352 -> -> 1 `i `uc ]
+[; ;Phases.c: 362: if(counterMenu > 6)
+"362
+[e $ ! > -> F4352 `i -> 6 `i 415  ]
+[; ;Phases.c: 363: {
+"363
+{
+[; ;Phases.c: 364: counterMenu = 0;
+"364
+[e = F4352 -> -> 0 `i `uc ]
+"365
+}
+[e :U 415 ]
+[; ;Phases.c: 365: }
+[; ;Phases.c: 366: lockClear = 0;
+"366
+[e = F4350 -> -> 0 `i `uc ]
+[; ;Phases.c: 367: lockWrite = 0;
+"367
+[e = F4351 -> -> 0 `i `uc ]
+"368
+}
+[e :U 414 ]
+[; ;Phases.c: 368: }
+[; ;Phases.c: 369: return (currentMainMenu3);
+"369
+[e ) F4349 ]
 [e $UE 387  ]
-[; ;States.c: 185: }
-"185
+[; ;Phases.c: 370: }
+"370
 [e :UE 387 ]
 }
-"187
-[v _stateFreqTemp `(E3904 ~T0 @X0 1 ef ]
-"188
+"372
+[v _sendData `(S365 ~T0 @X0 1 ef1`S365 ]
+"373
 {
-[; ;States.c: 187: States_MenuType stateFreqTemp(void)
-[; ;States.c: 188: {
-[e :U _stateFreqTemp ]
+[; ;Phases.c: 372: PhaseMainMenu_Type sendData(PhaseMainMenu_Type data)
+[; ;Phases.c: 373: {
+[e :U _sendData ]
+"372
+[v _data `S365 ~T0 @X0 1 r1 ]
+"373
 [f ]
-"190
-[v F4321 `E4170 ~T0 @X0 1 s phase ]
-[i F4321
-. `E4170 0
+"375
+[v F4354 `S365 ~T0 @X0 1 s currentMainMenu4 ]
+[; ;Phases.c: 375: static PhaseMainMenu_Type currentMainMenu4;
+[; ;Phases.c: 377: UART_init();
+"377
+[e ( _UART_init ..  ]
+[; ;Phases.c: 380: currentMainMenu4.phaseState = GENERAL_VIEW;
+"380
+[e = . F4354 0 . `E4049 1 ]
+[; ;Phases.c: 381: currentMainMenu4.stateMain = MAIN_MENU;
+"381
+[e = . F4354 1 . `E3904 0 ]
+[; ;Phases.c: 384: SPI_init(&SPI_Config2);
+"384
+[e ( _SPI_init (1 &U _SPI_Config2 ]
+[; ;Phases.c: 385: LCDNokia_init();
+"385
+[e ( _LCDNokia_init ..  ]
+[; ;Phases.c: 386: LCDNokia_clear();
+"386
+[e ( _LCDNokia_clear ..  ]
+[; ;Phases.c: 387: return (currentMainMenu4);
+"387
+[e ) F4354 ]
+[e $UE 416  ]
+[; ;Phases.c: 388: }
+"388
+[e :UE 416 ]
+}
+"390
+[v _activeEnergy `(S367 ~T0 @X0 1 ef1`S367 ]
+"391
+{
+[; ;Phases.c: 390: PhaseEnergy_Type activeEnergy(PhaseEnergy_Type data)
+[; ;Phases.c: 391: {
+[e :U _activeEnergy ]
+"390
+[v _data `S367 ~T0 @X0 1 r1 ]
+"391
+[f ]
+"393
+[v F4356 `S367 ~T0 @X0 1 s currentEnergy1 ]
+"394
+[v F4357 `uc ~T0 @X0 1 s counter ]
+[i F4357
+-> -> 0 `i `uc
 ]
-"191
-[v F4322 `S379 ~T0 @X0 1 s phaseFreqTemp ]
-[v F4324 `(S379 ~T0 @X0 0 tf1`S379 ]
-"192
-[v _freqTempFunctions `*F4324 ~T0 @X0 1 a ]
-[; ;States.c: 190: static PhaseStateFreqTemp_Type phase = SHOW_FREQTEMP;
-[; ;States.c: 191: static PhaseFreqTemp_Type phaseFreqTemp;
-[; ;States.c: 192: PhaseFreqTemp_Type(*freqTempFunctions)(PhaseFreqTemp_Type);
-[; ;States.c: 193: phaseFreqTemp.stateMain = FREQTEMP;
-"193
-[e = . F4322 1 . `E3904 7 ]
-[; ;States.c: 196: freqTempFunctions = phasesFreqTemp[phase].PhaseFreqTemp;
-"196
-[e = _freqTempFunctions -> . *U + &U _phasesFreqTemp * -> F4321 `ux -> -> # *U &U _phasesFreqTemp `ui `ux 0 `*F4324 ]
-[; ;States.c: 197: phaseFreqTemp = freqTempFunctions(phaseFreqTemp);
-"197
-[e = F4322 ( *U _freqTempFunctions (1 F4322 ]
-[; ;States.c: 200: phase = phaseFreqTemp.phaseState;
-"200
-[e = F4321 . F4322 0 ]
-[; ;States.c: 201: return (phaseFreqTemp.stateMain);
-"201
-[e ) . F4322 1 ]
-[e $UE 388  ]
-[; ;States.c: 202: }
-"202
-[e :UE 388 ]
+"395
+[v F4358 `uc ~T0 @X0 1 s counterPhase ]
+[i F4358
+-> -> 0 `i `uc
+]
+[; ;Phases.c: 393: static PhaseEnergy_Type currentEnergy1;
+[; ;Phases.c: 394: static uint8_t counter = 0;
+[; ;Phases.c: 395: static uint8_t counterPhase = 0;
+[; ;Phases.c: 398: currentEnergy1.phaseState = ACTIVE_ENERGY;
+"398
+[e = . F4356 0 . `E4067 0 ]
+[; ;Phases.c: 399: currentEnergy1.stateMain = data.stateMain;
+"399
+[e = . F4356 1 . _data 1 ]
+[; ;Phases.c: 401: if(1 == PORTCbits.RC0)
+"401
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 0 `i 418  ]
+[; ;Phases.c: 402: {
+"402
+{
+[; ;Phases.c: 403: currentEnergy1.phaseState = FUNDAMENTAL_ENERGY;
+"403
+[e = . F4356 0 . `E4067 1 ]
+"404
+}
+[e :U 418 ]
+[; ;Phases.c: 404: }
+[; ;Phases.c: 405: if(1 == PORTCbits.RC1)
+"405
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 1 `i 419  ]
+[; ;Phases.c: 406: {
+"406
+{
+[; ;Phases.c: 407: counterPhase++;
+"407
+[e ++ F4358 -> -> 1 `i `uc ]
+[; ;Phases.c: 408: if(3 == counterPhase)
+"408
+[e $ ! == -> 3 `i -> F4358 `i 420  ]
+[; ;Phases.c: 409: {
+"409
+{
+[; ;Phases.c: 410: counterPhase = 0;
+"410
+[e = F4358 -> -> 0 `i `uc ]
+"411
+}
+[e :U 420 ]
+[; ;Phases.c: 411: }
+[; ;Phases.c: 412: counter = 0;
+"412
+[e = F4357 -> -> 0 `i `uc ]
+[; ;Phases.c: 413: LCDNokia_clear();
+"413
+[e ( _LCDNokia_clear ..  ]
+"414
+}
+[e :U 419 ]
+[; ;Phases.c: 414: }
+[; ;Phases.c: 415: if(1 == PORTCbits.RC2)
+"415
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 2 `i 421  ]
+[; ;Phases.c: 416: {
+"416
+{
+[; ;Phases.c: 417: counter++;
+"417
+[e ++ F4357 -> -> 1 `i `uc ]
+[; ;Phases.c: 418: LCDNokia_clear();
+"418
+[e ( _LCDNokia_clear ..  ]
+[; ;Phases.c: 419: if(counter > 3)
+"419
+[e $ ! > -> F4357 `i -> 3 `i 422  ]
+[; ;Phases.c: 420: {
+"420
+{
+[; ;Phases.c: 421: counter = 0;
+"421
+[e = F4357 -> -> 0 `i `uc ]
+"422
+}
+[e :U 422 ]
+"423
+}
+[e :U 421 ]
+[; ;Phases.c: 422: }
+[; ;Phases.c: 423: }
+[; ;Phases.c: 424: switch(counter)
+"424
+[e $U 424  ]
+[; ;Phases.c: 425: {
+"425
+{
+[; ;Phases.c: 426: LCDNokia_gotoXY(0,1);
+"426
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;Phases.c: 427: case 0:
+"427
+[e :U 425 ]
+[; ;Phases.c: 428: if(0 == counterPhase)
+"428
+[e $ ! == -> 0 `i -> F4358 `i 426  ]
+[; ;Phases.c: 429: {
+"429
+{
+[; ;Phases.c: 430: LCDNokia_sendString(active_Forward1);
+"430
+[e ( _LCDNokia_sendString (1 &U _active_Forward1 ]
+[; ;Phases.c: 431: LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_A_FORW_ACTIVE_ENERGY));
+"431
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 0 . `E3957 1 `ul ]
+[; ;Phases.c: 432: LCDNokia_gotoXY(0,2);
+"432
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 433: LCDNokia_sendString(active_Forward2);
+"433
+[e ( _LCDNokia_sendString (1 &U _active_Forward2 ]
+[; ;Phases.c: 434: LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_B_FORW_ACTIVE_ENERGY));
+"434
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 0 . `E3957 2 `ul ]
+[; ;Phases.c: 435: LCDNokia_gotoXY(0,3);
+"435
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
+[; ;Phases.c: 436: LCDNokia_sendString(active_Forward3);
+"436
+[e ( _LCDNokia_sendString (1 &U _active_Forward3 ]
+[; ;Phases.c: 437: LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_C_FORW_ACTIVE_ENERGY));
+"437
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 0 . `E3957 3 `ul ]
+"438
+}
+[e :U 426 ]
+[; ;Phases.c: 438: }
+[; ;Phases.c: 439: if(1 == counterPhase)
+"439
+[e $ ! == -> 1 `i -> F4358 `i 427  ]
+[; ;Phases.c: 440: {
+"440
+{
+[; ;Phases.c: 441: LCDNokia_sendString(reactive_Forward1);
+"441
+[e ( _LCDNokia_sendString (1 &U _reactive_Forward1 ]
+[; ;Phases.c: 442: LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_A_FORW_REACTIVE_ENERGY));
+"442
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 1 . `E3957 9 `ul ]
+[; ;Phases.c: 443: LCDNokia_gotoXY(0,2);
+"443
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 444: LCDNokia_sendString(reactive_Forward2);
+"444
+[e ( _LCDNokia_sendString (1 &U _reactive_Forward2 ]
+[; ;Phases.c: 445: LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_B_FORW_REACTIVE_ENERGY));
+"445
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 1 . `E3957 10 `ul ]
+[; ;Phases.c: 446: LCDNokia_gotoXY(0,3);
+"446
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
+[; ;Phases.c: 447: LCDNokia_sendString(reactive_Forward3);
+"447
+[e ( _LCDNokia_sendString (1 &U _reactive_Forward3 ]
+[; ;Phases.c: 448: LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_C_FORW_REACTIVE_ENERGY));
+"448
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 1 . `E3957 11 `ul ]
+"449
+}
+[e :U 427 ]
+[; ;Phases.c: 449: }
+[; ;Phases.c: 450: if(2 == counterPhase)
+"450
+[e $ ! == -> 2 `i -> F4358 `i 428  ]
+[; ;Phases.c: 451: {
+"451
+{
+[; ;Phases.c: 452: LCDNokia_sendString(apparent_energyP1);
+"452
+[e ( _LCDNokia_sendString (1 &U _apparent_energyP1 ]
+[; ;Phases.c: 453: LCDNokia_printValue(ATM_registers(APPARENT_ENERGY_TYPE, PHASE_A_APPARENT_ENERGY));
+"453
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 2 . `E3957 17 `ul ]
+[; ;Phases.c: 454: LCDNokia_gotoXY(0,2);
+"454
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 455: LCDNokia_sendString(apparent_energyP2);
+"455
+[e ( _LCDNokia_sendString (1 &U _apparent_energyP2 ]
+[; ;Phases.c: 456: LCDNokia_printValue(ATM_registers(APPARENT_ENERGY_TYPE, PHASE_B_APPARENT_ENERGY));
+"456
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 2 . `E3957 18 `ul ]
+[; ;Phases.c: 457: LCDNokia_gotoXY(0,3);
+"457
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
+[; ;Phases.c: 458: LCDNokia_sendString(apparent_energyP3);
+"458
+[e ( _LCDNokia_sendString (1 &U _apparent_energyP3 ]
+[; ;Phases.c: 459: LCDNokia_printValue(ATM_registers(APPARENT_ENERGY_TYPE, PHASE_C_APPARENT_ENERGY));
+"459
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 2 . `E3957 19 `ul ]
+"460
+}
+[e :U 428 ]
+[; ;Phases.c: 460: }
+[; ;Phases.c: 462: break;
+"462
+[e $U 423  ]
+[; ;Phases.c: 463: case 1:
+"463
+[e :U 429 ]
+[; ;Phases.c: 464: if(0 == counterPhase)
+"464
+[e $ ! == -> 0 `i -> F4358 `i 430  ]
+[; ;Phases.c: 465: {
+"465
+{
+[; ;Phases.c: 466: LCDNokia_sendString(active_Reverse1);
+"466
+[e ( _LCDNokia_sendString (1 &U _active_Reverse1 ]
+[; ;Phases.c: 467: LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_A_REV_ACTIVE_ENERGY));
+"467
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 0 . `E3957 5 `ul ]
+[; ;Phases.c: 468: LCDNokia_gotoXY(0,2);
+"468
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 469: LCDNokia_sendString(active_Reverse2);
+"469
+[e ( _LCDNokia_sendString (1 &U _active_Reverse2 ]
+[; ;Phases.c: 470: LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_B_REV_ACTIVE_ENERGY));
+"470
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 0 . `E3957 6 `ul ]
+[; ;Phases.c: 471: LCDNokia_gotoXY(0,3);
+"471
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
+[; ;Phases.c: 472: LCDNokia_sendString(active_Reverse3);
+"472
+[e ( _LCDNokia_sendString (1 &U _active_Reverse3 ]
+[; ;Phases.c: 473: LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, PHASE_C_REV_ACTIVE_ENERGY));
+"473
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 0 . `E3957 7 `ul ]
+"474
+}
+[e :U 430 ]
+[; ;Phases.c: 474: }
+[; ;Phases.c: 475: if(1 == counterPhase)
+"475
+[e $ ! == -> 1 `i -> F4358 `i 431  ]
+[; ;Phases.c: 476: {
+"476
+{
+[; ;Phases.c: 477: LCDNokia_sendString(reactive_Reverse1);
+"477
+[e ( _LCDNokia_sendString (1 &U _reactive_Reverse1 ]
+[; ;Phases.c: 478: LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_A_REV_REACTIVE_ENERGY));
+"478
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 1 . `E3957 13 `ul ]
+[; ;Phases.c: 479: LCDNokia_gotoXY(0,2);
+"479
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 480: LCDNokia_sendString(reactive_Reverse2);
+"480
+[e ( _LCDNokia_sendString (1 &U _reactive_Reverse2 ]
+[; ;Phases.c: 481: LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_B_REV_REACTIVE_ENERGY));
+"481
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 1 . `E3957 14 `ul ]
+[; ;Phases.c: 482: LCDNokia_gotoXY(0,3);
+"482
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
+[; ;Phases.c: 483: LCDNokia_sendString(reactive_Reverse3);
+"483
+[e ( _LCDNokia_sendString (1 &U _reactive_Reverse3 ]
+[; ;Phases.c: 484: LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, PHASE_C_REV_REACTIVE_ENERGY));
+"484
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 1 . `E3957 15 `ul ]
+"485
+}
+[e :U 431 ]
+[; ;Phases.c: 485: }
+[; ;Phases.c: 486: if(2 == counterPhase)
+"486
+[e $ ! == -> 2 `i -> F4358 `i 432  ]
+[; ;Phases.c: 487: {
+"487
+{
+[; ;Phases.c: 488: LCDNokia_sendString(apparentAri_energyTotal);
+"488
+[e ( _LCDNokia_sendString (1 &U _apparentAri_energyTotal ]
+[; ;Phases.c: 489: LCDNokia_printValue(ATM_registers(APPARENT_ENERGY_TYPE, TOTAL_ARIT_APPARENT_ENERGY));
+"489
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 2 . `E3957 16 `ul ]
+[; ;Phases.c: 490: LCDNokia_gotoXY(0,2);
+"490
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 491: LCDNokia_sendString(apparentVec_energyTotal);
+"491
+[e ( _LCDNokia_sendString (1 &U _apparentVec_energyTotal ]
+[; ;Phases.c: 492: LCDNokia_printValue(ATM_registers(APPARENT_ENERGY_TYPE, TOTAL_VECT_APPARENT_ENERGY));
+"492
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 2 . `E3957 20 `ul ]
+"493
+}
+[e :U 432 ]
+[; ;Phases.c: 493: }
+[; ;Phases.c: 495: break;
+"495
+[e $U 423  ]
+[; ;Phases.c: 496: case 2:
+"496
+[e :U 433 ]
+[; ;Phases.c: 497: if(0 == counterPhase)
+"497
+[e $ ! == -> 0 `i -> F4358 `i 434  ]
+[; ;Phases.c: 498: {
+"498
+{
+[; ;Phases.c: 499: LCDNokia_sendString(active_Forward_Total);
+"499
+[e ( _LCDNokia_sendString (1 &U _active_Forward_Total ]
+[; ;Phases.c: 500: LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, TOTAL_FORW_ACTIVE_ENERGY));
+"500
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 0 . `E3957 0 `ul ]
+[; ;Phases.c: 501: LCDNokia_gotoXY(0,2);
+"501
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 502: LCDNokia_sendString(active_Reverse_Total);
+"502
+[e ( _LCDNokia_sendString (1 &U _active_Reverse_Total ]
+[; ;Phases.c: 503: LCDNokia_printValue(ATM_registers(ACTIVE_ENERGY_TYPE, TOTAL_REV_ACTIVE_ENERGY));
+"503
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 0 . `E3957 4 `ul ]
+"504
+}
+[e :U 434 ]
+[; ;Phases.c: 504: }
+[; ;Phases.c: 505: if(1 == counterPhase)
+"505
+[e $ ! == -> 1 `i -> F4358 `i 435  ]
+[; ;Phases.c: 506: {
+"506
+{
+[; ;Phases.c: 507: LCDNokia_sendString(reactive_Forward_Total);
+"507
+[e ( _LCDNokia_sendString (1 &U _reactive_Forward_Total ]
+[; ;Phases.c: 508: LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, TOTAL_FORW_REACTIVE_ENERGY));
+"508
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 1 . `E3957 8 `ul ]
+[; ;Phases.c: 509: LCDNokia_gotoXY(0,2);
+"509
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 510: LCDNokia_sendString(reactive_Reverse_Total);
+"510
+[e ( _LCDNokia_sendString (1 &U _reactive_Reverse_Total ]
+[; ;Phases.c: 511: LCDNokia_printValue(ATM_registers(REACTIVE_ENERGY_TYPE, TOTAL_REVERSE_REACTIVE_ENERGY));
+"511
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 1 . `E3957 12 `ul ]
+"512
+}
+[e :U 435 ]
+[; ;Phases.c: 512: }
+[; ;Phases.c: 513: break;
+"513
+[e $U 423  ]
+[; ;Phases.c: 514: default:
+"514
+[e :U 436 ]
+[; ;Phases.c: 515: break;
+"515
+[e $U 423  ]
+"516
+}
+[; ;Phases.c: 516: }
+[e $U 423  ]
+"424
+[e :U 424 ]
+[e [\ F4357 , $ -> -> 0 `i `uc 425
+ , $ -> -> 1 `i `uc 429
+ , $ -> -> 2 `i `uc 433
+ 436 ]
+"516
+[e :U 423 ]
+[; ;Phases.c: 517: return (currentEnergy1);
+"517
+[e ) F4356 ]
+[e $UE 417  ]
+[; ;Phases.c: 518: }
+"518
+[e :UE 417 ]
+}
+"520
+[v _fundamentalEnergy `(S367 ~T0 @X0 1 ef1`S367 ]
+"521
+{
+[; ;Phases.c: 520: PhaseEnergy_Type fundamentalEnergy(PhaseEnergy_Type data)
+[; ;Phases.c: 521: {
+[e :U _fundamentalEnergy ]
+"520
+[v _data `S367 ~T0 @X0 1 r1 ]
+"521
+[f ]
+"523
+[v F4360 `S367 ~T0 @X0 1 s currentEnergy4 ]
+"524
+[v F4361 `uc ~T0 @X0 1 s counter ]
+[i F4361
+-> -> 0 `i `uc
+]
+[; ;Phases.c: 523: static PhaseEnergy_Type currentEnergy4;
+[; ;Phases.c: 524: static uint8_t counter = 0;
+[; ;Phases.c: 526: currentEnergy4.phaseState = FUNDAMENTAL_ENERGY;
+"526
+[e = . F4360 0 . `E4067 1 ]
+[; ;Phases.c: 527: currentEnergy4.stateMain = data.stateMain;
+"527
+[e = . F4360 1 . _data 1 ]
+[; ;Phases.c: 529: if(1 == PORTCbits.RC0)
+"529
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 0 `i 438  ]
+[; ;Phases.c: 530: {
+"530
+{
+[; ;Phases.c: 531: currentEnergy4.phaseState = EXIT_ENERGY;
+"531
+[e = . F4360 0 . `E4067 3 ]
+"532
+}
+[e :U 438 ]
+[; ;Phases.c: 532: }
+[; ;Phases.c: 533: if(1 == PORTCbits.RC1)
+"533
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 1 `i 439  ]
+[; ;Phases.c: 534: {
+"534
+{
+[; ;Phases.c: 535: currentEnergy4.phaseState = HARMONIC_ENERGY;
+"535
+[e = . F4360 0 . `E4067 2 ]
+[; ;Phases.c: 536: LCDNokia_clear();
+"536
+[e ( _LCDNokia_clear ..  ]
+"537
+}
+[e :U 439 ]
+[; ;Phases.c: 537: }
+[; ;Phases.c: 538: if(1 == PORTCbits.RC2)
+"538
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 2 `i 440  ]
+[; ;Phases.c: 539: {
+"539
+{
+[; ;Phases.c: 540: counter++;
+"540
+[e ++ F4361 -> -> 1 `i `uc ]
+[; ;Phases.c: 541: LCDNokia_clear();
+"541
+[e ( _LCDNokia_clear ..  ]
+[; ;Phases.c: 542: if(counter > 2)
+"542
+[e $ ! > -> F4361 `i -> 2 `i 441  ]
+[; ;Phases.c: 543: {
+"543
+{
+[; ;Phases.c: 544: counter = 0;
+"544
+[e = F4361 -> -> 0 `i `uc ]
+"545
+}
+[e :U 441 ]
+"546
+}
+[e :U 440 ]
+[; ;Phases.c: 545: }
+[; ;Phases.c: 546: }
+[; ;Phases.c: 547: switch(counter)
+"547
+[e $U 443  ]
+[; ;Phases.c: 548: {
+"548
+{
+[; ;Phases.c: 549: case 0:
+"549
+[e :U 444 ]
+[; ;Phases.c: 550: LCDNokia_gotoXY(0,1);
+"550
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;Phases.c: 551: LCDNokia_sendString(fund_ForwardP1);
+"551
+[e ( _LCDNokia_sendString (1 &U _fund_ForwardP1 ]
+[; ;Phases.c: 552: LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_A_FORW_ACTIVE_FUND_ENERGY));
+"552
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 3 . `E3957 22 `ul ]
+[; ;Phases.c: 553: LCDNokia_gotoXY(0,2);
+"553
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 554: LCDNokia_sendString(fund_ForwardP2);
+"554
+[e ( _LCDNokia_sendString (1 &U _fund_ForwardP2 ]
+[; ;Phases.c: 555: LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_B_FORW_ACTIVE_FUND_ENERGY));
+"555
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 3 . `E3957 23 `ul ]
+[; ;Phases.c: 556: LCDNokia_gotoXY(0,3);
+"556
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
+[; ;Phases.c: 557: LCDNokia_sendString(fund_ForwardP3);
+"557
+[e ( _LCDNokia_sendString (1 &U _fund_ForwardP3 ]
+[; ;Phases.c: 558: LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_C_FORW_ACTIVE_FUND_ENERGY));
+"558
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 3 . `E3957 24 `ul ]
+[; ;Phases.c: 559: break;
+"559
+[e $U 442  ]
+[; ;Phases.c: 560: case 1:
+"560
+[e :U 445 ]
+[; ;Phases.c: 561: LCDNokia_gotoXY(0,1);
+"561
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;Phases.c: 562: LCDNokia_sendString(fund_ReverseP1);
+"562
+[e ( _LCDNokia_sendString (1 &U _fund_ReverseP1 ]
+[; ;Phases.c: 563: LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_A_REV_ACTIVE_FUND_ENERGY));
+"563
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 3 . `E3957 26 `ul ]
+[; ;Phases.c: 564: LCDNokia_gotoXY(0,2);
+"564
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 565: LCDNokia_sendString(fund_ReverseP2);
+"565
+[e ( _LCDNokia_sendString (1 &U _fund_ReverseP2 ]
+[; ;Phases.c: 566: LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_B_REV_ACTIVE_FUND_ENERGY));
+"566
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 3 . `E3957 27 `ul ]
+[; ;Phases.c: 567: LCDNokia_gotoXY(0,3);
+"567
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
+[; ;Phases.c: 568: LCDNokia_sendString(fund_ReverseP3);
+"568
+[e ( _LCDNokia_sendString (1 &U _fund_ReverseP3 ]
+[; ;Phases.c: 569: LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, PHASE_C_REV_ACTIVE_FUND_ENERGY));
+"569
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 3 . `E3957 28 `ul ]
+[; ;Phases.c: 570: break;
+"570
+[e $U 442  ]
+[; ;Phases.c: 571: case 2:
+"571
+[e :U 446 ]
+[; ;Phases.c: 572: LCDNokia_gotoXY(0,1);
+"572
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;Phases.c: 573: LCDNokia_sendString(fund_ForwardTotal);
+"573
+[e ( _LCDNokia_sendString (1 &U _fund_ForwardTotal ]
+[; ;Phases.c: 574: LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, TOTAL_FORW_ACTIVE_FUND_ENERGY));
+"574
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 3 . `E3957 21 `ul ]
+[; ;Phases.c: 575: LCDNokia_gotoXY(0,2);
+"575
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 576: LCDNokia_sendString(fund_ReverseTotal);
+"576
+[e ( _LCDNokia_sendString (1 &U _fund_ReverseTotal ]
+[; ;Phases.c: 577: LCDNokia_printValue(ATM_registers(FUNDAMENTAL_ENERGY_TYPE, TOTAL_REV_ACTIVE_FUND_ENERGY));
+"577
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 3 . `E3957 25 `ul ]
+[; ;Phases.c: 578: break;
+"578
+[e $U 442  ]
+[; ;Phases.c: 579: default:
+"579
+[e :U 447 ]
+[; ;Phases.c: 580: break;
+"580
+[e $U 442  ]
+"581
+}
+[; ;Phases.c: 581: }
+[e $U 442  ]
+"547
+[e :U 443 ]
+[e [\ F4361 , $ -> -> 0 `i `uc 444
+ , $ -> -> 1 `i `uc 445
+ , $ -> -> 2 `i `uc 446
+ 447 ]
+"581
+[e :U 442 ]
+[; ;Phases.c: 582: return (currentEnergy4);
+"582
+[e ) F4360 ]
+[e $UE 437  ]
+[; ;Phases.c: 583: }
+"583
+[e :UE 437 ]
+}
+"585
+[v _harmonicEnergy `(S367 ~T0 @X0 1 ef1`S367 ]
+"586
+{
+[; ;Phases.c: 585: PhaseEnergy_Type harmonicEnergy(PhaseEnergy_Type data)
+[; ;Phases.c: 586: {
+[e :U _harmonicEnergy ]
+"585
+[v _data `S367 ~T0 @X0 1 r1 ]
+"586
+[f ]
+"588
+[v F4363 `S367 ~T0 @X0 1 s currentEnergy5 ]
+"589
+[v F4364 `uc ~T0 @X0 1 s counter ]
+[i F4364
+-> -> 0 `i `uc
+]
+[; ;Phases.c: 588: static PhaseEnergy_Type currentEnergy5;
+[; ;Phases.c: 589: static uint8_t counter = 0;
+[; ;Phases.c: 591: currentEnergy5.phaseState = HARMONIC_ENERGY;
+"591
+[e = . F4363 0 . `E4067 2 ]
+[; ;Phases.c: 592: currentEnergy5.stateMain = data.stateMain;
+"592
+[e = . F4363 1 . _data 1 ]
+[; ;Phases.c: 594: if(1 == PORTCbits.RC0)
+"594
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 0 `i 449  ]
+[; ;Phases.c: 595: {
+"595
+{
+[; ;Phases.c: 596: currentEnergy5.phaseState = EXIT_ENERGY;
+"596
+[e = . F4363 0 . `E4067 3 ]
+"597
+}
+[e :U 449 ]
+[; ;Phases.c: 597: }
+[; ;Phases.c: 598: if(1 == PORTCbits.RC1)
+"598
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 1 `i 450  ]
+[; ;Phases.c: 599: {
+"599
+{
+[; ;Phases.c: 600: currentEnergy5.phaseState = EXIT_ENERGY;
+"600
+[e = . F4363 0 . `E4067 3 ]
+"601
+}
+[e :U 450 ]
+[; ;Phases.c: 601: }
+[; ;Phases.c: 602: if(1 == PORTCbits.RC2)
+"602
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 2 `i 451  ]
+[; ;Phases.c: 603: {
+"603
+{
+[; ;Phases.c: 604: counter++;
+"604
+[e ++ F4364 -> -> 1 `i `uc ]
+[; ;Phases.c: 605: LCDNokia_clear();
+"605
+[e ( _LCDNokia_clear ..  ]
+[; ;Phases.c: 606: if(counter > 2)
+"606
+[e $ ! > -> F4364 `i -> 2 `i 452  ]
+[; ;Phases.c: 607: {
+"607
+{
+[; ;Phases.c: 608: counter = 0;
+"608
+[e = F4364 -> -> 0 `i `uc ]
+"609
+}
+[e :U 452 ]
+"610
+}
+[e :U 451 ]
+[; ;Phases.c: 609: }
+[; ;Phases.c: 610: }
+[; ;Phases.c: 611: switch(counter)
+"611
+[e $U 454  ]
+[; ;Phases.c: 612: {
+"612
+{
+[; ;Phases.c: 613: case 0:
+"613
+[e :U 455 ]
+[; ;Phases.c: 614: LCDNokia_gotoXY(0,1);
+"614
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;Phases.c: 615: LCDNokia_sendString(harmonic_ForwardP1);
+"615
+[e ( _LCDNokia_sendString (1 &U _harmonic_ForwardP1 ]
+[; ;Phases.c: 616: LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_A_FORW_ACTIVE_HARM_ENERGY));
+"616
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 4 . `E3957 30 `ul ]
+[; ;Phases.c: 617: LCDNokia_gotoXY(0,2);
+"617
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 618: LCDNokia_sendString(harmonic_ForwardP2);
+"618
+[e ( _LCDNokia_sendString (1 &U _harmonic_ForwardP2 ]
+[; ;Phases.c: 619: LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_B_FORW_ACTIVE_HARM_ENERGY));
+"619
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 4 . `E3957 31 `ul ]
+[; ;Phases.c: 620: LCDNokia_gotoXY(0,3);
+"620
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
+[; ;Phases.c: 621: LCDNokia_sendString(harmonic_ForwardP3);
+"621
+[e ( _LCDNokia_sendString (1 &U _harmonic_ForwardP3 ]
+[; ;Phases.c: 622: LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_C_FORW_ACTIVE_HARM_ENERGY));
+"622
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 4 . `E3957 32 `ul ]
+[; ;Phases.c: 623: break;
+"623
+[e $U 453  ]
+[; ;Phases.c: 624: case 1:
+"624
+[e :U 456 ]
+[; ;Phases.c: 625: LCDNokia_gotoXY(0,1);
+"625
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;Phases.c: 626: LCDNokia_sendString(harmonic_ReverseP1);
+"626
+[e ( _LCDNokia_sendString (1 &U _harmonic_ReverseP1 ]
+[; ;Phases.c: 627: LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_A_REV_ACTIVE_HARM_ENERGY));
+"627
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 4 . `E3957 34 `ul ]
+[; ;Phases.c: 628: LCDNokia_gotoXY(0,2);
+"628
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 629: LCDNokia_sendString(harmonic_ReverseP2);
+"629
+[e ( _LCDNokia_sendString (1 &U _harmonic_ReverseP2 ]
+[; ;Phases.c: 630: LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_B_REV_ACTIVE_HARM_ENERGY));
+"630
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 4 . `E3957 35 `ul ]
+[; ;Phases.c: 631: LCDNokia_gotoXY(0,3);
+"631
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
+[; ;Phases.c: 632: LCDNokia_sendString(harmonic_ReverseP3);
+"632
+[e ( _LCDNokia_sendString (1 &U _harmonic_ReverseP3 ]
+[; ;Phases.c: 633: LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, PHASE_C_REV_ACTIVE_HARM_ENERGY));
+"633
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 4 . `E3957 36 `ul ]
+[; ;Phases.c: 634: break;
+"634
+[e $U 453  ]
+[; ;Phases.c: 635: case 2:
+"635
+[e :U 457 ]
+[; ;Phases.c: 636: LCDNokia_gotoXY(0,1);
+"636
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;Phases.c: 637: LCDNokia_sendString(harmonic_ForwardTotal);
+"637
+[e ( _LCDNokia_sendString (1 &U _harmonic_ForwardTotal ]
+[; ;Phases.c: 638: LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, TOTAL_FORW_ACTIVE_HARM_ENERGY));
+"638
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 4 . `E3957 29 `ul ]
+[; ;Phases.c: 639: LCDNokia_gotoXY(0,2);
+"639
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 640: LCDNokia_sendString(harmonic_ReverseTotal);
+"640
+[e ( _LCDNokia_sendString (1 &U _harmonic_ReverseTotal ]
+[; ;Phases.c: 641: LCDNokia_printValue(ATM_registers(HARMONIC_ENERGY_TYPE, TOTAL_REV_ACTIVE_HARM_ENERGY));
+"641
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 4 . `E3957 33 `ul ]
+[; ;Phases.c: 642: break;
+"642
+[e $U 453  ]
+[; ;Phases.c: 643: default:
+"643
+[e :U 458 ]
+[; ;Phases.c: 644: break;
+"644
+[e $U 453  ]
+"645
+}
+[; ;Phases.c: 645: }
+[e $U 453  ]
+"611
+[e :U 454 ]
+[e [\ F4364 , $ -> -> 0 `i `uc 455
+ , $ -> -> 1 `i `uc 456
+ , $ -> -> 2 `i `uc 457
+ 458 ]
+"645
+[e :U 453 ]
+[; ;Phases.c: 646: return (currentEnergy5);
+"646
+[e ) F4363 ]
+[e $UE 448  ]
+[; ;Phases.c: 647: }
+"647
+[e :UE 448 ]
+}
+"649
+[v _exitEnergy `(S367 ~T0 @X0 1 ef1`S367 ]
+"650
+{
+[; ;Phases.c: 649: PhaseEnergy_Type exitEnergy(PhaseEnergy_Type data)
+[; ;Phases.c: 650: {
+[e :U _exitEnergy ]
+"649
+[v _data `S367 ~T0 @X0 1 r1 ]
+"650
+[f ]
+"652
+[v F4366 `S367 ~T0 @X0 1 s currentEnergy6 ]
+[; ;Phases.c: 652: static PhaseEnergy_Type currentEnergy6;
+[; ;Phases.c: 653: LCDNokia_clear();
+"653
+[e ( _LCDNokia_clear ..  ]
+[; ;Phases.c: 655: currentEnergy6.phaseState = VIEW_MENU;
+"655
+[e = . F4366 0 . `E4049 2 ]
+[; ;Phases.c: 656: currentEnergy6.stateMain = MAIN_MENU;
+"656
+[e = . F4366 1 . `E3904 0 ]
+[; ;Phases.c: 657: return (currentEnergy6);
+"657
+[e ) F4366 ]
+[e $UE 459  ]
+[; ;Phases.c: 658: }
+"658
+[e :UE 459 ]
+}
+"660
+[v _typesPower1 `(S369 ~T0 @X0 1 ef1`S369 ]
+"661
+{
+[; ;Phases.c: 660: PhasePower1_Type typesPower1(PhasePower1_Type data)
+[; ;Phases.c: 661: {
+[e :U _typesPower1 ]
+"660
+[v _data `S369 ~T0 @X0 1 r1 ]
+"661
+[f ]
+"663
+[v F4368 `S369 ~T0 @X0 1 s currentPower1_1 ]
+"664
+[v F4369 `uc ~T0 @X0 1 s counter ]
+[i F4369
+-> -> 0 `i `uc
+]
+[; ;Phases.c: 663: static PhasePower1_Type currentPower1_1;
+[; ;Phases.c: 664: static uint8_t counter = 0;
+[; ;Phases.c: 666: currentPower1_1.phaseState = TYPES_POWER1;
+"666
+[e = . F4368 0 . `E4085 0 ]
+[; ;Phases.c: 667: currentPower1_1.stateMain = data.stateMain;
+"667
+[e = . F4368 1 . _data 1 ]
+[; ;Phases.c: 669: if(1 == PORTCbits.RC0)
+"669
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 0 `i 461  ]
+[; ;Phases.c: 670: {
+"670
+{
+[; ;Phases.c: 671: currentPower1_1.phaseState = EXIT_POWER1;
+"671
+[e = . F4368 0 . `E4085 2 ]
+"672
+}
+[e :U 461 ]
+[; ;Phases.c: 672: }
+[; ;Phases.c: 673: if(1 == PORTCbits.RC1)
+"673
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 1 `i 462  ]
+[; ;Phases.c: 674: {
+"674
+{
+[; ;Phases.c: 675: currentPower1_1.phaseState = PHASES_POWER1;
+"675
+[e = . F4368 0 . `E4085 1 ]
+[; ;Phases.c: 676: LCDNokia_clear();
+"676
+[e ( _LCDNokia_clear ..  ]
+"677
+}
+[e :U 462 ]
+[; ;Phases.c: 677: }
+[; ;Phases.c: 678: if(1 == PORTCbits.RC2)
+"678
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 2 `i 463  ]
+[; ;Phases.c: 679: {
+"679
+{
+[; ;Phases.c: 680: counter++;
+"680
+[e ++ F4369 -> -> 1 `i `uc ]
+[; ;Phases.c: 681: LCDNokia_clear();
+"681
+[e ( _LCDNokia_clear ..  ]
+[; ;Phases.c: 682: if(counter > 2)
+"682
+[e $ ! > -> F4369 `i -> 2 `i 464  ]
+[; ;Phases.c: 683: {
+"683
+{
+[; ;Phases.c: 684: counter = 0;
+"684
+[e = F4369 -> -> 0 `i `uc ]
+"685
+}
+[e :U 464 ]
+"686
+}
+[e :U 463 ]
+[; ;Phases.c: 685: }
+[; ;Phases.c: 686: }
+[; ;Phases.c: 687: switch(counter)
+"687
+[e $U 466  ]
+[; ;Phases.c: 688: {
+"688
+{
+[; ;Phases.c: 689: case 0:
+"689
+[e :U 467 ]
+[; ;Phases.c: 690: LCDNokia_gotoXY(0,1);
+"690
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;Phases.c: 691: LCDNokia_sendString(active_powerP1);
+"691
+[e ( _LCDNokia_sendString (1 &U _active_powerP1 ]
+[; ;Phases.c: 692: LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_A_ACTIVE_POWER));
+"692
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 8 . `E3957 38 `ul ]
+[; ;Phases.c: 693: LCDNokia_gotoXY(0,2);
+"693
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 694: LCDNokia_sendString(active_powerP2);
+"694
+[e ( _LCDNokia_sendString (1 &U _active_powerP2 ]
+[; ;Phases.c: 695: LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_B_ACTIVE_POWER));
+"695
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 8 . `E3957 39 `ul ]
+[; ;Phases.c: 696: LCDNokia_gotoXY(0,3);
+"696
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
+[; ;Phases.c: 697: LCDNokia_sendString(active_powerP3);
+"697
+[e ( _LCDNokia_sendString (1 &U _active_powerP3 ]
+[; ;Phases.c: 698: LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_C_ACTIVE_POWER));
+"698
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 8 . `E3957 40 `ul ]
+[; ;Phases.c: 699: break;
+"699
+[e $U 465  ]
+[; ;Phases.c: 700: case 1:
+"700
+[e :U 468 ]
+[; ;Phases.c: 701: LCDNokia_gotoXY(0,1);
+"701
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;Phases.c: 702: LCDNokia_sendString(reactive_powerP1);
+"702
+[e ( _LCDNokia_sendString (1 &U _reactive_powerP1 ]
+[; ;Phases.c: 703: LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_A_REACTIVE_POWER));
+"703
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 8 . `E3957 42 `ul ]
+[; ;Phases.c: 704: LCDNokia_gotoXY(0,2);
+"704
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 705: LCDNokia_sendString(reactive_powerP2);
+"705
+[e ( _LCDNokia_sendString (1 &U _reactive_powerP2 ]
+[; ;Phases.c: 706: LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_B_REACTIVE_POWER));
+"706
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 8 . `E3957 43 `ul ]
+[; ;Phases.c: 707: LCDNokia_gotoXY(0,3);
+"707
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
+[; ;Phases.c: 708: LCDNokia_sendString(reactive_powerP3);
+"708
+[e ( _LCDNokia_sendString (1 &U _reactive_powerP3 ]
+[; ;Phases.c: 709: LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_C_REACTIVE_POWER));
+"709
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 8 . `E3957 44 `ul ]
+[; ;Phases.c: 710: break;
+"710
+[e $U 465  ]
+[; ;Phases.c: 711: case 2:
+"711
+[e :U 469 ]
+[; ;Phases.c: 712: LCDNokia_gotoXY(0,1);
+"712
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;Phases.c: 713: LCDNokia_sendString(apparent_powerP1);
+"713
+[e ( _LCDNokia_sendString (1 &U _apparent_powerP1 ]
+[; ;Phases.c: 714: LCDNokia_printValue(ATM_registers(APPARENT_POWER_TYPE, PHASE_A_APPARENT_POWER));
+"714
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 7 . `E3957 46 `ul ]
+[; ;Phases.c: 715: LCDNokia_gotoXY(0,2);
+"715
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 716: LCDNokia_sendString(apparent_powerP2);
+"716
+[e ( _LCDNokia_sendString (1 &U _apparent_powerP2 ]
+[; ;Phases.c: 717: LCDNokia_printValue(ATM_registers(APPARENT_POWER_TYPE, PHASE_B_APPARENT_POWER));
+"717
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 7 . `E3957 47 `ul ]
+[; ;Phases.c: 718: LCDNokia_gotoXY(0,3);
+"718
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
+[; ;Phases.c: 719: LCDNokia_sendString(apparent_powerP3);
+"719
+[e ( _LCDNokia_sendString (1 &U _apparent_powerP3 ]
+[; ;Phases.c: 720: LCDNokia_printValue(ATM_registers(APPARENT_POWER_TYPE, PHASE_C_APPARENT_POWER));
+"720
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 7 . `E3957 48 `ul ]
+[; ;Phases.c: 721: break;
+"721
+[e $U 465  ]
+[; ;Phases.c: 722: default:
+"722
+[e :U 470 ]
+[; ;Phases.c: 723: break;
+"723
+[e $U 465  ]
+"724
+}
+[; ;Phases.c: 724: }
+[e $U 465  ]
+"687
+[e :U 466 ]
+[e [\ F4369 , $ -> -> 0 `i `uc 467
+ , $ -> -> 1 `i `uc 468
+ , $ -> -> 2 `i `uc 469
+ 470 ]
+"724
+[e :U 465 ]
+[; ;Phases.c: 725: return (currentPower1_1);
+"725
+[e ) F4368 ]
+[e $UE 460  ]
+[; ;Phases.c: 726: }
+"726
+[e :UE 460 ]
+}
+"728
+[v _phPower1 `(S369 ~T0 @X0 1 ef1`S369 ]
+"729
+{
+[; ;Phases.c: 728: PhasePower1_Type phPower1(PhasePower1_Type data)
+[; ;Phases.c: 729: {
+[e :U _phPower1 ]
+"728
+[v _data `S369 ~T0 @X0 1 r1 ]
+"729
+[f ]
+"731
+[v F4371 `S369 ~T0 @X0 1 s currentPower1_2 ]
+[; ;Phases.c: 731: static PhasePower1_Type currentPower1_2;
+[; ;Phases.c: 733: currentPower1_2.phaseState = PHASES_POWER1;
+"733
+[e = . F4371 0 . `E4085 1 ]
+[; ;Phases.c: 734: currentPower1_2.stateMain = data.stateMain;
+"734
+[e = . F4371 1 . _data 1 ]
+[; ;Phases.c: 736: if(1 == PORTCbits.RC0)
+"736
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 0 `i 472  ]
+[; ;Phases.c: 737: {
+"737
+{
+[; ;Phases.c: 738: currentPower1_2.phaseState = EXIT_POWER1;
+"738
+[e = . F4371 0 . `E4085 2 ]
+"739
+}
+[e :U 472 ]
+[; ;Phases.c: 739: }
+[; ;Phases.c: 740: if(1 == PORTCbits.RC1)
+"740
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 1 `i 473  ]
+[; ;Phases.c: 741: {
+"741
+{
+[; ;Phases.c: 742: currentPower1_2.phaseState = EXIT_POWER1;
+"742
+[e = . F4371 0 . `E4085 2 ]
+[; ;Phases.c: 743: LCDNokia_clear();
+"743
+[e ( _LCDNokia_clear ..  ]
+"744
+}
+[e :U 473 ]
+[; ;Phases.c: 744: }
+[; ;Phases.c: 746: LCDNokia_gotoXY(0,1);
+"746
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;Phases.c: 747: LCDNokia_sendString(total_active_power);
+"747
+[e ( _LCDNokia_sendString (1 &U _total_active_power ]
+[; ;Phases.c: 748: LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, TOTAL_ACTIVE_POWER));
+"748
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 8 . `E3957 37 `ul ]
+[; ;Phases.c: 749: LCDNokia_gotoXY(0,2);
+"749
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 750: LCDNokia_sendString(total_reactive_power);
+"750
+[e ( _LCDNokia_sendString (1 &U _total_reactive_power ]
+[; ;Phases.c: 751: LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, TOTAL_REACTIVE_POWER));
+"751
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 8 . `E3957 41 `ul ]
+[; ;Phases.c: 752: LCDNokia_gotoXY(0,3);
+"752
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
+[; ;Phases.c: 753: LCDNokia_sendString(total_apparent_power);
+"753
+[e ( _LCDNokia_sendString (1 &U _total_apparent_power ]
+[; ;Phases.c: 754: LCDNokia_printValue(ATM_registers(APPARENT_POWER_TYPE, TOTAL_APPARENT_POWER));
+"754
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 7 . `E3957 45 `ul ]
+[; ;Phases.c: 755: return (currentPower1_2);
+"755
+[e ) F4371 ]
+[e $UE 471  ]
+[; ;Phases.c: 756: }
+"756
+[e :UE 471 ]
+}
+"758
+[v _exitPower1 `(S369 ~T0 @X0 1 ef1`S369 ]
+"759
+{
+[; ;Phases.c: 758: PhasePower1_Type exitPower1(PhasePower1_Type data)
+[; ;Phases.c: 759: {
+[e :U _exitPower1 ]
+"758
+[v _data `S369 ~T0 @X0 1 r1 ]
+"759
+[f ]
+"761
+[v F4373 `S369 ~T0 @X0 1 s currentPower1_4 ]
+[; ;Phases.c: 761: static PhasePower1_Type currentPower1_4;
+[; ;Phases.c: 762: LCDNokia_clear();
+"762
+[e ( _LCDNokia_clear ..  ]
+[; ;Phases.c: 764: currentPower1_4.phaseState = data.phaseState;
+"764
+[e = . F4373 0 . _data 0 ]
+[; ;Phases.c: 765: currentPower1_4.stateMain = data.stateMain;
+"765
+[e = . F4373 1 . _data 1 ]
+[; ;Phases.c: 766: return (currentPower1_4);
+"766
+[e ) F4373 ]
+[e $UE 474  ]
+[; ;Phases.c: 767: }
+"767
+[e :UE 474 ]
+}
+"769
+[v _fhPower2 `(S371 ~T0 @X0 1 ef1`S371 ]
+"770
+{
+[; ;Phases.c: 769: PhasePower2_Type fhPower2(PhasePower2_Type data)
+[; ;Phases.c: 770: {
+[e :U _fhPower2 ]
+"769
+[v _data `S371 ~T0 @X0 1 r1 ]
+"770
+[f ]
+"772
+[v F4375 `S371 ~T0 @X0 1 s currentPower2_1 ]
+"773
+[v F4376 `uc ~T0 @X0 1 s counter ]
+[i F4376
+-> -> 0 `i `uc
+]
+[; ;Phases.c: 772: static PhasePower2_Type currentPower2_1;
+[; ;Phases.c: 773: static uint8_t counter = 0;
+[; ;Phases.c: 775: currentPower2_1.phaseState = FH_POWER2;
+"775
+[e = . F4375 0 . `E4102 0 ]
+[; ;Phases.c: 776: currentPower2_1.stateMain = data.stateMain;
+"776
+[e = . F4375 1 . _data 1 ]
+[; ;Phases.c: 778: if(1 == PORTCbits.RC0)
+"778
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 0 `i 476  ]
+[; ;Phases.c: 779: {
+"779
+{
+[; ;Phases.c: 780: currentPower2_1.phaseState = EXIT_POWER2;
+"780
+[e = . F4375 0 . `E4102 2 ]
+"781
+}
+[e :U 476 ]
+[; ;Phases.c: 781: }
+[; ;Phases.c: 782: if(1 == PORTCbits.RC1)
+"782
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 1 `i 477  ]
+[; ;Phases.c: 783: {
+"783
+{
+[; ;Phases.c: 784: currentPower2_1.phaseState = PHASES_POWER2;
+"784
+[e = . F4375 0 . `E4102 1 ]
+[; ;Phases.c: 785: LCDNokia_clear();
+"785
+[e ( _LCDNokia_clear ..  ]
+"786
+}
+[e :U 477 ]
+[; ;Phases.c: 786: }
+[; ;Phases.c: 787: if(1 == PORTCbits.RC2)
+"787
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 2 `i 478  ]
+[; ;Phases.c: 788: {
+"788
+{
+[; ;Phases.c: 789: counter++;
+"789
+[e ++ F4376 -> -> 1 `i `uc ]
+[; ;Phases.c: 790: LCDNokia_clear();
+"790
+[e ( _LCDNokia_clear ..  ]
+[; ;Phases.c: 791: if(counter > 1)
+"791
+[e $ ! > -> F4376 `i -> 1 `i 479  ]
+[; ;Phases.c: 792: {
+"792
+{
+[; ;Phases.c: 793: counter = 0;
+"793
+[e = F4376 -> -> 0 `i `uc ]
+"794
+}
+[e :U 479 ]
+"795
+}
+[e :U 478 ]
+[; ;Phases.c: 794: }
+[; ;Phases.c: 795: }
+[; ;Phases.c: 796: switch(counter)
+"796
+[e $U 481  ]
+[; ;Phases.c: 797: {
+"797
+{
+[; ;Phases.c: 798: case 0:
+"798
+[e :U 482 ]
+[; ;Phases.c: 799: LCDNokia_gotoXY(0,1);
+"799
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;Phases.c: 800: LCDNokia_sendString(fundamental_PowerP1);
+"800
+[e ( _LCDNokia_sendString (1 &U _fundamental_PowerP1 ]
+[; ;Phases.c: 801: LCDNokia_printValue(ATM_registers(FUNDAMENTAL_POWER, PHASE_A_ACTIVE_FUND_POWER));
+"801
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 9 . `E3957 54 `ul ]
+[; ;Phases.c: 802: LCDNokia_gotoXY(0,2);
+"802
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 803: LCDNokia_sendString(fundamental_PowerP2);
+"803
+[e ( _LCDNokia_sendString (1 &U _fundamental_PowerP2 ]
+[; ;Phases.c: 804: LCDNokia_printValue(ATM_registers(FUNDAMENTAL_POWER, PHASE_B_ACTIVE_FUND_POWER));
+"804
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 9 . `E3957 55 `ul ]
+[; ;Phases.c: 805: LCDNokia_gotoXY(0,3);
+"805
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
+[; ;Phases.c: 806: LCDNokia_sendString(fundamental_PowerP3);
+"806
+[e ( _LCDNokia_sendString (1 &U _fundamental_PowerP3 ]
+[; ;Phases.c: 807: LCDNokia_printValue(ATM_registers(FUNDAMENTAL_POWER, PHASE_C_ACTIVE_FUND_POWER));
+"807
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 9 . `E3957 56 `ul ]
+[; ;Phases.c: 808: break;
+"808
+[e $U 480  ]
+[; ;Phases.c: 809: case 1:
+"809
+[e :U 483 ]
+[; ;Phases.c: 810: LCDNokia_gotoXY(0,1);
+"810
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;Phases.c: 811: LCDNokia_sendString(harmonic_PowerP1);
+"811
+[e ( _LCDNokia_sendString (1 &U _harmonic_PowerP1 ]
+[; ;Phases.c: 812: LCDNokia_printValue(ATM_registers(HARMONIC_POWER, PHASE_A_ACTIVE_HARM_POWER));
+"812
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 10 . `E3957 58 `ul ]
+[; ;Phases.c: 813: LCDNokia_gotoXY(0,2);
+"813
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 814: LCDNokia_sendString(harmonic_PowerP2);
+"814
+[e ( _LCDNokia_sendString (1 &U _harmonic_PowerP2 ]
+[; ;Phases.c: 815: LCDNokia_printValue(ATM_registers(HARMONIC_POWER, PHASE_B_ACTIVE_HARM_POWER));
+"815
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 10 . `E3957 59 `ul ]
+[; ;Phases.c: 816: LCDNokia_gotoXY(0,3);
+"816
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
+[; ;Phases.c: 817: LCDNokia_sendString(harmonic_PowerP3);
+"817
+[e ( _LCDNokia_sendString (1 &U _harmonic_PowerP3 ]
+[; ;Phases.c: 818: LCDNokia_printValue(ATM_registers(HARMONIC_POWER, PHASE_C_ACTIVE_HARM_POWER));
+"818
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 10 . `E3957 60 `ul ]
+[; ;Phases.c: 819: break;
+"819
+[e $U 480  ]
+[; ;Phases.c: 820: default:
+"820
+[e :U 484 ]
+[; ;Phases.c: 821: break;
+"821
+[e $U 480  ]
+"822
+}
+[; ;Phases.c: 822: }
+[e $U 480  ]
+"796
+[e :U 481 ]
+[e [\ F4376 , $ -> -> 0 `i `uc 482
+ , $ -> -> 1 `i `uc 483
+ 484 ]
+"822
+[e :U 480 ]
+[; ;Phases.c: 823: return (currentPower2_1);
+"823
+[e ) F4375 ]
+[e $UE 475  ]
+[; ;Phases.c: 824: }
+"824
+[e :UE 475 ]
+}
+"826
+[v _phPower2 `(S371 ~T0 @X0 1 ef1`S371 ]
+"827
+{
+[; ;Phases.c: 826: PhasePower2_Type phPower2(PhasePower2_Type data)
+[; ;Phases.c: 827: {
+[e :U _phPower2 ]
+"826
+[v _data `S371 ~T0 @X0 1 r1 ]
+"827
+[f ]
+"829
+[v F4378 `S371 ~T0 @X0 1 s currentPower2_2 ]
+[; ;Phases.c: 829: static PhasePower2_Type currentPower2_2;
+[; ;Phases.c: 831: currentPower2_2.phaseState = PHASES_POWER2;
+"831
+[e = . F4378 0 . `E4102 1 ]
+[; ;Phases.c: 832: currentPower2_2.stateMain = data.stateMain;
+"832
+[e = . F4378 1 . _data 1 ]
+[; ;Phases.c: 834: if(1 == PORTCbits.RC0)
+"834
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 0 `i 486  ]
+[; ;Phases.c: 835: {
+"835
+{
+[; ;Phases.c: 836: currentPower2_2.phaseState = EXIT_POWER2;
+"836
+[e = . F4378 0 . `E4102 2 ]
+"837
+}
+[e :U 486 ]
+[; ;Phases.c: 837: }
+[; ;Phases.c: 838: if(1 == PORTCbits.RC1)
+"838
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 1 `i 487  ]
+[; ;Phases.c: 839: {
+"839
+{
+[; ;Phases.c: 840: currentPower2_2.phaseState = EXIT_POWER2;
+"840
+[e = . F4378 0 . `E4102 2 ]
+"841
+}
+[e :U 487 ]
+[; ;Phases.c: 841: }
+[; ;Phases.c: 842: LCDNokia_gotoXY(0,1);
+"842
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;Phases.c: 843: LCDNokia_sendString(fundamental_Total_Power);
+"843
+[e ( _LCDNokia_sendString (1 &U _fundamental_Total_Power ]
+[; ;Phases.c: 844: LCDNokia_printValue(ATM_registers(FUNDAMENTAL_POWER, TOTAL_ACTIVE_FUND_POWER));
+"844
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 9 . `E3957 53 `ul ]
+[; ;Phases.c: 845: LCDNokia_gotoXY(0,2);
+"845
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 846: LCDNokia_sendString(harmonic_Total_Power);
+"846
+[e ( _LCDNokia_sendString (1 &U _harmonic_Total_Power ]
+[; ;Phases.c: 847: LCDNokia_printValue(ATM_registers(HARMONIC_POWER, TOTAL_ACTIVE_HARM_POWER));
+"847
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 10 . `E3957 57 `ul ]
+[; ;Phases.c: 848: return (currentPower2_2);
+"848
+[e ) F4378 ]
+[e $UE 485  ]
+[; ;Phases.c: 849: }
+"849
+[e :UE 485 ]
+}
+"851
+[v _exitPower2 `(S371 ~T0 @X0 1 ef1`S371 ]
+"852
+{
+[; ;Phases.c: 851: PhasePower2_Type exitPower2(PhasePower2_Type data)
+[; ;Phases.c: 852: {
+[e :U _exitPower2 ]
+"851
+[v _data `S371 ~T0 @X0 1 r1 ]
+"852
+[f ]
+"854
+[v F4380 `S371 ~T0 @X0 1 s currentPower2_3 ]
+[; ;Phases.c: 854: static PhasePower2_Type currentPower2_3;
+[; ;Phases.c: 855: LCDNokia_clear();
+"855
+[e ( _LCDNokia_clear ..  ]
+[; ;Phases.c: 857: currentPower2_3.phaseState = data.phaseState;
+"857
+[e = . F4380 0 . _data 0 ]
+[; ;Phases.c: 858: currentPower2_3.stateMain = data.stateMain;
+"858
+[e = . F4380 1 . _data 1 ]
+[; ;Phases.c: 859: return (currentPower2_3);
+"859
+[e ) F4380 ]
+[e $UE 488  ]
+[; ;Phases.c: 860: }
+"860
+[e :UE 488 ]
+}
+"862
+[v _phRmsVI `(S373 ~T0 @X0 1 ef1`S373 ]
+"863
+{
+[; ;Phases.c: 862: PhaseRmsVI_Type phRmsVI(PhaseRmsVI_Type data)
+[; ;Phases.c: 863: {
+[e :U _phRmsVI ]
+"862
+[v _data `S373 ~T0 @X0 1 r1 ]
+"863
+[f ]
+"865
+[v F4382 `S373 ~T0 @X0 1 s currentRms1 ]
+"866
+[v F4383 `uc ~T0 @X0 1 s counter ]
+[i F4383
+-> -> 0 `i `uc
+]
+[; ;Phases.c: 865: static PhaseRmsVI_Type currentRms1;
+[; ;Phases.c: 866: static uint8_t counter = 0;
+[; ;Phases.c: 868: currentRms1.phaseState = PHASES_RMSVI;
+"868
+[e = . F4382 0 . `E4119 0 ]
+[; ;Phases.c: 869: currentRms1.stateMain = data.stateMain;
+"869
+[e = . F4382 1 . _data 1 ]
+[; ;Phases.c: 871: if(1 == PORTCbits.RC0)
+"871
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 0 `i 490  ]
+[; ;Phases.c: 872: {
+"872
+{
+[; ;Phases.c: 873: currentRms1.phaseState = EXIT_RMSVI;
+"873
+[e = . F4382 0 . `E4119 2 ]
+"874
+}
+[e :U 490 ]
+[; ;Phases.c: 874: }
+[; ;Phases.c: 875: if(1 == PORTCbits.RC1)
+"875
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 1 `i 491  ]
+[; ;Phases.c: 876: {
+"876
+{
+[; ;Phases.c: 877: currentRms1.phaseState = NEUTRAL_RMSVI;
+"877
+[e = . F4382 0 . `E4119 1 ]
+[; ;Phases.c: 878: LCDNokia_clear();
+"878
+[e ( _LCDNokia_clear ..  ]
+"879
+}
+[e :U 491 ]
+[; ;Phases.c: 879: }
+[; ;Phases.c: 880: if(1 == PORTCbits.RC2)
+"880
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 2 `i 492  ]
+[; ;Phases.c: 881: {
+"881
+{
+[; ;Phases.c: 882: counter++;
+"882
+[e ++ F4383 -> -> 1 `i `uc ]
+[; ;Phases.c: 883: LCDNokia_clear();
+"883
+[e ( _LCDNokia_clear ..  ]
+[; ;Phases.c: 884: if(counter > 1)
+"884
+[e $ ! > -> F4383 `i -> 1 `i 493  ]
+[; ;Phases.c: 885: {
+"885
+{
+[; ;Phases.c: 886: counter = 0;
+"886
+[e = F4383 -> -> 0 `i `uc ]
+"887
+}
+[e :U 493 ]
+"888
+}
+[e :U 492 ]
+[; ;Phases.c: 887: }
+[; ;Phases.c: 888: }
+[; ;Phases.c: 889: switch(counter)
+"889
+[e $U 495  ]
+[; ;Phases.c: 890: {
+"890
+{
+[; ;Phases.c: 891: case 0:
+"891
+[e :U 496 ]
+[; ;Phases.c: 892: LCDNokia_gotoXY(0,1);
+"892
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;Phases.c: 893: LCDNokia_sendString(voltage1_RMS);
+"893
+[e ( _LCDNokia_sendString (1 &U _voltage1_RMS ]
+[; ;Phases.c: 894: LCDNokia_printValue(ATM_registers(VOLTAGE_RMS, PHASE_A_VOLTAGE_RMS));
+"894
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 11 . `E3957 62 `ul ]
+[; ;Phases.c: 895: LCDNokia_gotoXY(0,2);
+"895
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 896: LCDNokia_sendString(voltage2_RMS);
+"896
+[e ( _LCDNokia_sendString (1 &U _voltage2_RMS ]
+[; ;Phases.c: 897: LCDNokia_printValue(ATM_registers(VOLTAGE_RMS, PHASE_B_VOLTAGE_RMS));
+"897
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 11 . `E3957 63 `ul ]
+[; ;Phases.c: 898: LCDNokia_gotoXY(0,3);
+"898
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
+[; ;Phases.c: 899: LCDNokia_sendString(voltage3_RMS);
+"899
+[e ( _LCDNokia_sendString (1 &U _voltage3_RMS ]
+[; ;Phases.c: 900: LCDNokia_printValue(ATM_registers(VOLTAGE_RMS, PHASE_C_VOLTAGE_RMS));
+"900
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 11 . `E3957 64 `ul ]
+[; ;Phases.c: 901: break;
+"901
+[e $U 494  ]
+[; ;Phases.c: 902: case 1:
+"902
+[e :U 497 ]
+[; ;Phases.c: 903: LCDNokia_gotoXY(0,1);
+"903
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;Phases.c: 904: LCDNokia_sendString(current1_RMS);
+"904
+[e ( _LCDNokia_sendString (1 &U _current1_RMS ]
+[; ;Phases.c: 905: LCDNokia_printValue(ATM_registers(CURRENT_RMS, PHASE_A_CURRENT_RMS));
+"905
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 12 . `E3957 66 `ul ]
+[; ;Phases.c: 906: LCDNokia_gotoXY(0,2);
+"906
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 907: LCDNokia_sendString(current2_RMS);
+"907
+[e ( _LCDNokia_sendString (1 &U _current2_RMS ]
+[; ;Phases.c: 908: LCDNokia_printValue(ATM_registers(CURRENT_RMS, PHASE_B_CURRENT_RMS));
+"908
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 12 . `E3957 67 `ul ]
+[; ;Phases.c: 909: LCDNokia_gotoXY(0,3);
+"909
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
+[; ;Phases.c: 910: LCDNokia_sendString(current3_RMS);
+"910
+[e ( _LCDNokia_sendString (1 &U _current3_RMS ]
+[; ;Phases.c: 911: LCDNokia_printValue(ATM_registers(CURRENT_RMS, PHASE_C_CURRENT_RMS));
+"911
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 12 . `E3957 68 `ul ]
+[; ;Phases.c: 912: break;
+"912
+[e $U 494  ]
+[; ;Phases.c: 913: default:
+"913
+[e :U 498 ]
+[; ;Phases.c: 914: break;
+"914
+[e $U 494  ]
+"915
+}
+[; ;Phases.c: 915: }
+[e $U 494  ]
+"889
+[e :U 495 ]
+[e [\ F4383 , $ -> -> 0 `i `uc 496
+ , $ -> -> 1 `i `uc 497
+ 498 ]
+"915
+[e :U 494 ]
+[; ;Phases.c: 916: return (currentRms1);
+"916
+[e ) F4382 ]
+[e $UE 489  ]
+[; ;Phases.c: 917: }
+"917
+[e :UE 489 ]
+}
+"919
+[v _neutralRmsVI `(S373 ~T0 @X0 1 ef1`S373 ]
+"920
+{
+[; ;Phases.c: 919: PhaseRmsVI_Type neutralRmsVI(PhaseRmsVI_Type data)
+[; ;Phases.c: 920: {
+[e :U _neutralRmsVI ]
+"919
+[v _data `S373 ~T0 @X0 1 r1 ]
+"920
+[f ]
+"922
+[v F4385 `S373 ~T0 @X0 1 s currentRms2 ]
+[; ;Phases.c: 922: static PhaseRmsVI_Type currentRms2;
+[; ;Phases.c: 924: currentRms2.phaseState = NEUTRAL_RMSVI;
+"924
+[e = . F4385 0 . `E4119 1 ]
+[; ;Phases.c: 925: currentRms2.stateMain = data.stateMain;
+"925
+[e = . F4385 1 . _data 1 ]
+[; ;Phases.c: 927: if(1 == PORTCbits.RC0)
+"927
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 0 `i 500  ]
+[; ;Phases.c: 928: {
+"928
+{
+[; ;Phases.c: 929: currentRms2.phaseState = EXIT_RMSVI;
+"929
+[e = . F4385 0 . `E4119 2 ]
+"931
+}
+[e :U 500 ]
+[; ;Phases.c: 931: }
+[; ;Phases.c: 932: if(1 == PORTCbits.RC1)
+"932
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 1 `i 501  ]
+[; ;Phases.c: 933: {
+"933
+{
+[; ;Phases.c: 934: currentRms2.phaseState = EXIT_RMSVI;
+"934
+[e = . F4385 0 . `E4119 2 ]
+"935
+}
+[e :U 501 ]
+[; ;Phases.c: 935: }
+[; ;Phases.c: 936: LCDNokia_gotoXY(0,1);
+"936
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;Phases.c: 937: LCDNokia_sendString(nline_calculated_RMS);
+"937
+[e ( _LCDNokia_sendString (1 &U _nline_calculated_RMS ]
+[; ;Phases.c: 938: LCDNokia_printValue(ATM_registers(CURRENT_RMS, NLINE_CALCULATED_CURRENT_RMS));
+"938
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 12 . `E3957 65 `ul ]
+[; ;Phases.c: 939: LCDNokia_gotoXY(0,2);
+"939
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 940: LCDNokia_sendString(nline_sampled_RMS);
+"940
+[e ( _LCDNokia_sendString (1 &U _nline_sampled_RMS ]
+[; ;Phases.c: 941: LCDNokia_printValue(ATM_registers(CURRENT_RMS, NLINE_SAMPLED_CURRENT_RMS));
+"941
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 12 . `E3957 61 `ul ]
+[; ;Phases.c: 943: return (currentRms2);
+"943
+[e ) F4385 ]
+[e $UE 499  ]
+[; ;Phases.c: 944: }
+"944
+[e :UE 499 ]
+}
+"946
+[v _exitRmsVI `(S373 ~T0 @X0 1 ef1`S373 ]
+"947
+{
+[; ;Phases.c: 946: PhaseRmsVI_Type exitRmsVI(PhaseRmsVI_Type data)
+[; ;Phases.c: 947: {
+[e :U _exitRmsVI ]
+"946
+[v _data `S373 ~T0 @X0 1 r1 ]
+"947
+[f ]
+"949
+[v F4387 `S373 ~T0 @X0 1 s currentRms3 ]
+[; ;Phases.c: 949: static PhaseRmsVI_Type currentRms3;
+[; ;Phases.c: 950: LCDNokia_clear();
+"950
+[e ( _LCDNokia_clear ..  ]
+[; ;Phases.c: 952: currentRms3.phaseState = data.phaseState;
+"952
+[e = . F4387 0 . _data 0 ]
+[; ;Phases.c: 953: currentRms3.stateMain = data.stateMain;
+"953
+[e = . F4387 1 . _data 1 ]
+[; ;Phases.c: 954: return (currentRms3);
+"954
+[e ) F4387 ]
+[e $UE 502  ]
+[; ;Phases.c: 955: }
+"955
+[e :UE 502 ]
+}
+"957
+[v _phPowerFactor `(S375 ~T0 @X0 1 ef1`S375 ]
+"958
+{
+[; ;Phases.c: 957: PhasePowerFactor_Type phPowerFactor(PhasePowerFactor_Type data)
+[; ;Phases.c: 958: {
+[e :U _phPowerFactor ]
+"957
+[v _data `S375 ~T0 @X0 1 r1 ]
+"958
+[f ]
+"960
+[v F4389 `S375 ~T0 @X0 1 s currentPowerFactor1 ]
+"961
+[v F4390 `uc ~T0 @X0 1 s counter ]
+[i F4390
+-> -> 0 `i `uc
+]
+[; ;Phases.c: 960: static PhasePowerFactor_Type currentPowerFactor1;
+[; ;Phases.c: 961: static uint8_t counter = 0;
+[; ;Phases.c: 964: currentPowerFactor1.phaseState = PHASES_PF;
+"964
+[e = . F4389 0 . `E4136 0 ]
+[; ;Phases.c: 965: currentPowerFactor1.stateMain = data.stateMain;
+"965
+[e = . F4389 1 . _data 1 ]
+[; ;Phases.c: 967: if(1 == PORTCbits.RC0)
+"967
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 0 `i 504  ]
+[; ;Phases.c: 968: {
+"968
+{
+[; ;Phases.c: 969: currentPowerFactor1.phaseState = EXIT_PF;
+"969
+[e = . F4389 0 . `E4136 1 ]
+"970
+}
+[e :U 504 ]
+[; ;Phases.c: 970: }
+[; ;Phases.c: 971: if(1 == PORTCbits.RC1)
+"971
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 1 `i 505  ]
+[; ;Phases.c: 972: {
+"972
+{
+[; ;Phases.c: 973: currentPowerFactor1.phaseState = EXIT_PF;
+"973
+[e = . F4389 0 . `E4136 1 ]
+"974
+}
+[e :U 505 ]
+[; ;Phases.c: 974: }
+[; ;Phases.c: 975: if(1 == PORTCbits.RC2)
+"975
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 2 `i 506  ]
+[; ;Phases.c: 976: {
+"976
+{
+[; ;Phases.c: 977: counter++;
+"977
+[e ++ F4390 -> -> 1 `i `uc ]
+[; ;Phases.c: 978: LCDNokia_clear();
+"978
+[e ( _LCDNokia_clear ..  ]
+[; ;Phases.c: 979: if(counter > 1)
+"979
+[e $ ! > -> F4390 `i -> 1 `i 507  ]
+[; ;Phases.c: 980: {
+"980
+{
+[; ;Phases.c: 981: counter = 0;
+"981
+[e = F4390 -> -> 0 `i `uc ]
+"982
+}
+[e :U 507 ]
+"983
+}
+[e :U 506 ]
+[; ;Phases.c: 982: }
+[; ;Phases.c: 983: }
+[; ;Phases.c: 984: switch(counter)
+"984
+[e $U 509  ]
+[; ;Phases.c: 985: {
+"985
+{
+[; ;Phases.c: 986: case 0:
+"986
+[e :U 510 ]
+[; ;Phases.c: 987: LCDNokia_gotoXY(0,1);
+"987
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;Phases.c: 988: LCDNokia_sendString(factor_powerP1);
+"988
+[e ( _LCDNokia_sendString (1 &U _factor_powerP1 ]
+[; ;Phases.c: 989: LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_A_POWER_FACTOR));
+"989
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 8 . `E3957 50 `ul ]
+[; ;Phases.c: 990: LCDNokia_gotoXY(0,2);
+"990
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 991: LCDNokia_sendString(factor_powerP2);
+"991
+[e ( _LCDNokia_sendString (1 &U _factor_powerP2 ]
+[; ;Phases.c: 992: LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_B_POWER_FACTOR));
+"992
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 8 . `E3957 51 `ul ]
+[; ;Phases.c: 993: LCDNokia_gotoXY(0,3);
+"993
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
+[; ;Phases.c: 994: LCDNokia_sendString(factor_powerP3);
+"994
+[e ( _LCDNokia_sendString (1 &U _factor_powerP3 ]
+[; ;Phases.c: 995: LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, PHASE_C_POWER_FACTOR));
+"995
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 8 . `E3957 52 `ul ]
+[; ;Phases.c: 996: break;
+"996
+[e $U 508  ]
+[; ;Phases.c: 997: case 1:
+"997
+[e :U 511 ]
+[; ;Phases.c: 998: LCDNokia_gotoXY(0,1);
+"998
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;Phases.c: 999: LCDNokia_sendString(total_factor_power);
+"999
+[e ( _LCDNokia_sendString (1 &U _total_factor_power ]
+[; ;Phases.c: 1000: LCDNokia_printValue(ATM_registers(POWER_FACTOR_TYPE, TOTAL_POWER_FACTOR));
+"1000
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 8 . `E3957 49 `ul ]
+[; ;Phases.c: 1001: break;
+"1001
+[e $U 508  ]
+[; ;Phases.c: 1002: default:
+"1002
+[e :U 512 ]
+[; ;Phases.c: 1003: break;
+"1003
+[e $U 508  ]
+"1004
+}
+[; ;Phases.c: 1004: }
+[e $U 508  ]
+"984
+[e :U 509 ]
+[e [\ F4390 , $ -> -> 0 `i `uc 510
+ , $ -> -> 1 `i `uc 511
+ 512 ]
+"1004
+[e :U 508 ]
+[; ;Phases.c: 1005: return (currentPowerFactor1);
+"1005
+[e ) F4389 ]
+[e $UE 503  ]
+[; ;Phases.c: 1006: }
+"1006
+[e :UE 503 ]
+}
+"1008
+[v _exitPowerFactor `(S375 ~T0 @X0 1 ef1`S375 ]
+"1009
+{
+[; ;Phases.c: 1008: PhasePowerFactor_Type exitPowerFactor(PhasePowerFactor_Type data)
+[; ;Phases.c: 1009: {
+[e :U _exitPowerFactor ]
+"1008
+[v _data `S375 ~T0 @X0 1 r1 ]
+"1009
+[f ]
+"1011
+[v F4392 `S375 ~T0 @X0 1 s currentPowerFactor2 ]
+[; ;Phases.c: 1011: static PhasePowerFactor_Type currentPowerFactor2;
+[; ;Phases.c: 1012: LCDNokia_clear();
+"1012
+[e ( _LCDNokia_clear ..  ]
+[; ;Phases.c: 1014: currentPowerFactor2.phaseState = data.phaseState;
+"1014
+[e = . F4392 0 . _data 0 ]
+[; ;Phases.c: 1015: currentPowerFactor2.stateMain = data.stateMain;
+"1015
+[e = . F4392 1 . _data 1 ]
+[; ;Phases.c: 1016: return (currentPowerFactor2);
+"1016
+[e ) F4392 ]
+[e $UE 513  ]
+[; ;Phases.c: 1017: }
+"1017
+[e :UE 513 ]
+}
+"1019
+[v _phPhaseAngle `(S377 ~T0 @X0 1 ef1`S377 ]
+"1020
+{
+[; ;Phases.c: 1019: PhasePhaseAngle_Type phPhaseAngle(PhasePhaseAngle_Type data)
+[; ;Phases.c: 1020: {
+[e :U _phPhaseAngle ]
+"1019
+[v _data `S377 ~T0 @X0 1 r1 ]
+"1020
+[f ]
+"1022
+[v F4394 `S377 ~T0 @X0 1 s currentPhaseAngle1 ]
+[; ;Phases.c: 1022: static PhasePhaseAngle_Type currentPhaseAngle1;
+[; ;Phases.c: 1024: currentPhaseAngle1.phaseState = PHASES_PA;
+"1024
+[e = . F4394 0 . `E4152 0 ]
+[; ;Phases.c: 1025: currentPhaseAngle1.stateMain = data.stateMain;
+"1025
+[e = . F4394 1 . _data 1 ]
+[; ;Phases.c: 1027: if(1 == PORTCbits.RC0)
+"1027
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 0 `i 515  ]
+[; ;Phases.c: 1028: {
+"1028
+{
+[; ;Phases.c: 1029: currentPhaseAngle1.phaseState = EXIT_PA;
+"1029
+[e = . F4394 0 . `E4152 3 ]
+"1030
+}
+[e :U 515 ]
+[; ;Phases.c: 1030: }
+[; ;Phases.c: 1031: if(1 == PORTCbits.RC1)
+"1031
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 1 `i 516  ]
+[; ;Phases.c: 1032: {
+"1032
+{
+[; ;Phases.c: 1033: currentPhaseAngle1.phaseState = VI_PA;
+"1033
+[e = . F4394 0 . `E4152 1 ]
+[; ;Phases.c: 1034: LCDNokia_clear();
+"1034
+[e ( _LCDNokia_clear ..  ]
+"1035
+}
+[e :U 516 ]
+[; ;Phases.c: 1035: }
+[; ;Phases.c: 1037: LCDNokia_gotoXY(0,1);
+"1037
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;Phases.c: 1038: LCDNokia_sendString(anglePhase1);
+"1038
+[e ( _LCDNokia_sendString (1 &U _anglePhase1 ]
+[; ;Phases.c: 1039: LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_A_MEAN_ANGLE_PHASE));
+"1039
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 15 . `E3957 76 `ul ]
+[; ;Phases.c: 1040: LCDNokia_gotoXY(0,2);
+"1040
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 1041: LCDNokia_sendString(anglePhase2);
+"1041
+[e ( _LCDNokia_sendString (1 &U _anglePhase2 ]
+[; ;Phases.c: 1042: LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_B_MEAN_ANGLE_PHASE));
+"1042
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 15 . `E3957 77 `ul ]
+[; ;Phases.c: 1043: LCDNokia_gotoXY(0,3);
+"1043
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
+[; ;Phases.c: 1044: LCDNokia_sendString(anglePhase3);
+"1044
+[e ( _LCDNokia_sendString (1 &U _anglePhase3 ]
+[; ;Phases.c: 1045: LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_C_MEAN_ANGLE_PHASE));
+"1045
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 15 . `E3957 78 `ul ]
+[; ;Phases.c: 1047: return (currentPhaseAngle1);
+"1047
+[e ) F4394 ]
+[e $UE 514  ]
+[; ;Phases.c: 1048: }
+"1048
+[e :UE 514 ]
+}
+"1050
+[v _viPhaseAngle `(S377 ~T0 @X0 1 ef1`S377 ]
+"1051
+{
+[; ;Phases.c: 1050: PhasePhaseAngle_Type viPhaseAngle(PhasePhaseAngle_Type data)
+[; ;Phases.c: 1051: {
+[e :U _viPhaseAngle ]
+"1050
+[v _data `S377 ~T0 @X0 1 r1 ]
+"1051
+[f ]
+"1053
+[v F4396 `S377 ~T0 @X0 1 s currentPhaseAngle2 ]
+[; ;Phases.c: 1053: static PhasePhaseAngle_Type currentPhaseAngle2;
+[; ;Phases.c: 1055: currentPhaseAngle2.phaseState = VI_PA;
+"1055
+[e = . F4396 0 . `E4152 1 ]
+[; ;Phases.c: 1056: currentPhaseAngle2.stateMain = data.stateMain;
+"1056
+[e = . F4396 1 . _data 1 ]
+[; ;Phases.c: 1058: if(1 == PORTCbits.RC0)
+"1058
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 0 `i 518  ]
+[; ;Phases.c: 1059: {
+"1059
+{
+[; ;Phases.c: 1060: currentPhaseAngle2.phaseState = EXIT_PA;
+"1060
+[e = . F4396 0 . `E4152 3 ]
+"1061
+}
+[e :U 518 ]
+[; ;Phases.c: 1061: }
+[; ;Phases.c: 1062: if(1 == PORTCbits.RC1)
+"1062
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 1 `i 519  ]
+[; ;Phases.c: 1063: {
+"1063
+{
+[; ;Phases.c: 1064: currentPhaseAngle2.phaseState = THDN_PA;
+"1064
+[e = . F4396 0 . `E4152 2 ]
+[; ;Phases.c: 1065: LCDNokia_clear();
+"1065
+[e ( _LCDNokia_clear ..  ]
+"1066
+}
+[e :U 519 ]
+[; ;Phases.c: 1066: }
+[; ;Phases.c: 1068: LCDNokia_gotoXY(0,1);
+"1068
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;Phases.c: 1069: LCDNokia_sendString(angle_VoltageP1);
+"1069
+[e ( _LCDNokia_sendString (1 &U _angle_VoltageP1 ]
+[; ;Phases.c: 1070: LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_A_VOLTAGE_ANGLE_PHASE));
+"1070
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 15 . `E3957 80 `ul ]
+[; ;Phases.c: 1071: LCDNokia_gotoXY(0,2);
+"1071
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 1072: LCDNokia_sendString(angle_VoltageP2);
+"1072
+[e ( _LCDNokia_sendString (1 &U _angle_VoltageP2 ]
+[; ;Phases.c: 1073: LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_B_VOLTAGE_ANGLE_PHASE));
+"1073
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 15 . `E3957 81 `ul ]
+[; ;Phases.c: 1074: LCDNokia_gotoXY(0,3);
+"1074
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
+[; ;Phases.c: 1075: LCDNokia_sendString(angle_VoltageP3);
+"1075
+[e ( _LCDNokia_sendString (1 &U _angle_VoltageP3 ]
+[; ;Phases.c: 1076: LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_C_VOLTAGE_ANGLE_PHASE));
+"1076
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 15 . `E3957 82 `ul ]
+[; ;Phases.c: 1078: return (currentPhaseAngle2);
+"1078
+[e ) F4396 ]
+[e $UE 517  ]
+[; ;Phases.c: 1079: }
+"1079
+[e :UE 517 ]
+}
+"1081
+[v _THDNPhaseAngle `(S377 ~T0 @X0 1 ef1`S377 ]
+"1082
+{
+[; ;Phases.c: 1081: PhasePhaseAngle_Type THDNPhaseAngle(PhasePhaseAngle_Type data)
+[; ;Phases.c: 1082: {
+[e :U _THDNPhaseAngle ]
+"1081
+[v _data `S377 ~T0 @X0 1 r1 ]
+"1082
+[f ]
+"1084
+[v F4398 `S377 ~T0 @X0 1 s currentPhaseAngle3 ]
+"1085
+[v F4399 `uc ~T0 @X0 1 s counter ]
+[i F4399
+-> -> 0 `i `uc
+]
+[; ;Phases.c: 1084: static PhasePhaseAngle_Type currentPhaseAngle3;
+[; ;Phases.c: 1085: static uint8_t counter = 0;
+[; ;Phases.c: 1088: currentPhaseAngle3.phaseState = THDN_PA;
+"1088
+[e = . F4398 0 . `E4152 2 ]
+[; ;Phases.c: 1089: currentPhaseAngle3.stateMain = data.stateMain;
+"1089
+[e = . F4398 1 . _data 1 ]
+[; ;Phases.c: 1091: if(1 == PORTCbits.RC0)
+"1091
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 0 `i 521  ]
+[; ;Phases.c: 1092: {
+"1092
+{
+[; ;Phases.c: 1093: currentPhaseAngle3.phaseState = EXIT_PA;
+"1093
+[e = . F4398 0 . `E4152 3 ]
+"1095
+}
+[e :U 521 ]
+[; ;Phases.c: 1095: }
+[; ;Phases.c: 1096: if(1 == PORTCbits.RC1)
+"1096
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 1 `i 522  ]
+[; ;Phases.c: 1097: {
+"1097
+{
+[; ;Phases.c: 1098: currentPhaseAngle3.phaseState = EXIT_PA;
+"1098
+[e = . F4398 0 . `E4152 3 ]
+"1099
+}
+[e :U 522 ]
+[; ;Phases.c: 1099: }
+[; ;Phases.c: 1100: if(1 == PORTCbits.RC2)
+"1100
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 2 `i 523  ]
+[; ;Phases.c: 1101: {
+"1101
+{
+[; ;Phases.c: 1102: counter++;
+"1102
+[e ++ F4399 -> -> 1 `i `uc ]
+[; ;Phases.c: 1103: LCDNokia_clear();
+"1103
+[e ( _LCDNokia_clear ..  ]
+[; ;Phases.c: 1104: if(counter > 1)
+"1104
+[e $ ! > -> F4399 `i -> 1 `i 524  ]
+[; ;Phases.c: 1105: {
+"1105
+{
+[; ;Phases.c: 1106: counter = 0;
+"1106
+[e = F4399 -> -> 0 `i `uc ]
+"1107
+}
+[e :U 524 ]
+"1108
+}
+[e :U 523 ]
+[; ;Phases.c: 1107: }
+[; ;Phases.c: 1108: }
+[; ;Phases.c: 1109: switch(counter)
+"1109
+[e $U 526  ]
+[; ;Phases.c: 1110: {
+"1110
+{
+[; ;Phases.c: 1111: case 0:
+"1111
+[e :U 527 ]
+[; ;Phases.c: 1112: LCDNokia_gotoXY(0,1);
+"1112
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;Phases.c: 1113: LCDNokia_sendString(voltage1_THDN);
+"1113
+[e ( _LCDNokia_sendString (1 &U _voltage1_THDN ]
+[; ;Phases.c: 1114: LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_A_VOLTAGE_ANGLE_PHASE));
+"1114
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 15 . `E3957 80 `ul ]
+[; ;Phases.c: 1115: LCDNokia_gotoXY(0,2);
+"1115
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 1116: LCDNokia_sendString(voltage2_THDN);
+"1116
+[e ( _LCDNokia_sendString (1 &U _voltage2_THDN ]
+[; ;Phases.c: 1117: LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_B_VOLTAGE_ANGLE_PHASE));
+"1117
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 15 . `E3957 81 `ul ]
+[; ;Phases.c: 1118: LCDNokia_gotoXY(0,3);
+"1118
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
+[; ;Phases.c: 1119: LCDNokia_sendString(voltage3_THDN);
+"1119
+[e ( _LCDNokia_sendString (1 &U _voltage3_THDN ]
+[; ;Phases.c: 1120: LCDNokia_printValue(ATM_registers(PHASE_ANGLE_TYPE, PHASE_C_VOLTAGE_ANGLE_PHASE));
+"1120
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 15 . `E3957 82 `ul ]
+[; ;Phases.c: 1121: break;
+"1121
+[e $U 525  ]
+[; ;Phases.c: 1122: case 1:
+"1122
+[e :U 528 ]
+[; ;Phases.c: 1123: LCDNokia_gotoXY(0,1);
+"1123
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;Phases.c: 1124: LCDNokia_sendString(current1_THDN);
+"1124
+[e ( _LCDNokia_sendString (1 &U _current1_THDN ]
+[; ;Phases.c: 1125: LCDNokia_printValue(ATM_registers(THDN_TYPE, PHASE_A_CURRENT_THDN));
+"1125
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 13 . `E3957 72 `ul ]
+[; ;Phases.c: 1126: LCDNokia_gotoXY(0,2);
+"1126
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 2 `i `uc ]
+[; ;Phases.c: 1127: LCDNokia_sendString(current2_THDN);
+"1127
+[e ( _LCDNokia_sendString (1 &U _current2_THDN ]
+[; ;Phases.c: 1128: LCDNokia_printValue(ATM_registers(THDN_TYPE, PHASE_B_CURRENT_THDN));
+"1128
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 13 . `E3957 73 `ul ]
+[; ;Phases.c: 1129: LCDNokia_gotoXY(0,3);
+"1129
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
+[; ;Phases.c: 1130: LCDNokia_sendString(current3_THDN);
+"1130
+[e ( _LCDNokia_sendString (1 &U _current3_THDN ]
+[; ;Phases.c: 1131: LCDNokia_printValue(ATM_registers(THDN_TYPE, PHASE_C_CURRENT_THDN));
+"1131
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 13 . `E3957 74 `ul ]
+[; ;Phases.c: 1132: break;
+"1132
+[e $U 525  ]
+[; ;Phases.c: 1133: default:
+"1133
+[e :U 529 ]
+[; ;Phases.c: 1134: break;
+"1134
+[e $U 525  ]
+"1135
+}
+[; ;Phases.c: 1135: }
+[e $U 525  ]
+"1109
+[e :U 526 ]
+[e [\ F4399 , $ -> -> 0 `i `uc 527
+ , $ -> -> 1 `i `uc 528
+ 529 ]
+"1135
+[e :U 525 ]
+[; ;Phases.c: 1136: return (currentPhaseAngle3);
+"1136
+[e ) F4398 ]
+[e $UE 520  ]
+[; ;Phases.c: 1137: }
+"1137
+[e :UE 520 ]
+}
+"1139
+[v _exitPhaseAngle `(S377 ~T0 @X0 1 ef1`S377 ]
+"1140
+{
+[; ;Phases.c: 1139: PhasePhaseAngle_Type exitPhaseAngle(PhasePhaseAngle_Type data)
+[; ;Phases.c: 1140: {
+[e :U _exitPhaseAngle ]
+"1139
+[v _data `S377 ~T0 @X0 1 r1 ]
+"1140
+[f ]
+"1142
+[v F4401 `S377 ~T0 @X0 1 s currentPhaseAngle3 ]
+[; ;Phases.c: 1142: static PhasePhaseAngle_Type currentPhaseAngle3;
+[; ;Phases.c: 1144: LCDNokia_clear();
+"1144
+[e ( _LCDNokia_clear ..  ]
+[; ;Phases.c: 1146: currentPhaseAngle3.phaseState = data.phaseState;
+"1146
+[e = . F4401 0 . _data 0 ]
+[; ;Phases.c: 1147: currentPhaseAngle3.stateMain = data.stateMain;
+"1147
+[e = . F4401 1 . _data 1 ]
+[; ;Phases.c: 1149: return (currentPhaseAngle3);
+"1149
+[e ) F4401 ]
+[e $UE 530  ]
+[; ;Phases.c: 1150: }
+"1150
+[e :UE 530 ]
+}
+"1152
+[v _showFreqTemp `(S379 ~T0 @X0 1 ef1`S379 ]
+"1153
+{
+[; ;Phases.c: 1152: PhaseFreqTemp_Type showFreqTemp(PhaseFreqTemp_Type data)
+[; ;Phases.c: 1153: {
+[e :U _showFreqTemp ]
+"1152
+[v _data `S379 ~T0 @X0 1 r1 ]
+"1153
+[f ]
+"1155
+[v F4403 `S379 ~T0 @X0 1 s currentFreqTemp1 ]
+[; ;Phases.c: 1155: static PhaseFreqTemp_Type currentFreqTemp1;
+[; ;Phases.c: 1158: currentFreqTemp1.phaseState = SHOW_FREQTEMP;
+"1158
+[e = . F4403 0 . `E4170 0 ]
+[; ;Phases.c: 1159: currentFreqTemp1.stateMain = data.stateMain;
+"1159
+[e = . F4403 1 . _data 1 ]
+[; ;Phases.c: 1161: if(1 == PORTCbits.RC0)
+"1161
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 0 `i 532  ]
+[; ;Phases.c: 1162: {
+"1162
+{
+[; ;Phases.c: 1163: currentFreqTemp1.phaseState = EXIT_FREQTEMP;
+"1163
+[e = . F4403 0 . `E4170 1 ]
+"1164
+}
+[e :U 532 ]
+[; ;Phases.c: 1164: }
+[; ;Phases.c: 1165: if(1 == PORTCbits.RC1)
+"1165
+[e $ ! == -> 1 `i -> . . _PORTCbits 0 1 `i 533  ]
+[; ;Phases.c: 1166: {
+"1166
+{
+[; ;Phases.c: 1167: currentFreqTemp1.phaseState = EXIT_FREQTEMP;
+"1167
+[e = . F4403 0 . `E4170 1 ]
+"1168
+}
+[e :U 533 ]
+[; ;Phases.c: 1168: }
+[; ;Phases.c: 1169: LCDNokia_gotoXY(0,1);
+"1169
+[e ( _LCDNokia_gotoXY (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;Phases.c: 1170: LCDNokia_sendString(frequency);
+"1170
+[e ( _LCDNokia_sendString (1 &U _frequency ]
+[; ;Phases.c: 1171: LCDNokia_printValue(ATM_registers(FREQUENCY_TYPE, FREQUENCY_REG));
+"1171
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 14 . `E3957 75 `ul ]
+[; ;Phases.c: 1172: LCDNokia_gotoXY(1,1);
+"1172
+[e ( _LCDNokia_gotoXY (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+[; ;Phases.c: 1173: LCDNokia_sendString(temperature);
+"1173
+[e ( _LCDNokia_sendString (1 &U _temperature ]
+[; ;Phases.c: 1174: LCDNokia_printValue(ATM_registers(TEMPERATURE_TYPE, TEMPERATURE_REG));
+"1174
+[e ( _LCDNokia_printValue (1 -> ( _ATM_registers (2 , . `E3938 16 . `E3957 79 `ul ]
+[; ;Phases.c: 1176: return (currentFreqTemp1);
+"1176
+[e ) F4403 ]
+[e $UE 531  ]
+[; ;Phases.c: 1177: }
+"1177
+[e :UE 531 ]
+}
+"1179
+[v _exitFreqTemp `(S379 ~T0 @X0 1 ef1`S379 ]
+"1180
+{
+[; ;Phases.c: 1179: PhaseFreqTemp_Type exitFreqTemp(PhaseFreqTemp_Type data)
+[; ;Phases.c: 1180: {
+[e :U _exitFreqTemp ]
+"1179
+[v _data `S379 ~T0 @X0 1 r1 ]
+"1180
+[f ]
+"1182
+[v F4405 `S379 ~T0 @X0 1 s currentFreqTemp2 ]
+[; ;Phases.c: 1182: static PhaseFreqTemp_Type currentFreqTemp2;
+[; ;Phases.c: 1184: LCDNokia_clear();
+"1184
+[e ( _LCDNokia_clear ..  ]
+[; ;Phases.c: 1186: currentFreqTemp2.phaseState = data.phaseState;
+"1186
+[e = . F4405 0 . _data 0 ]
+[; ;Phases.c: 1187: currentFreqTemp2.stateMain = data.stateMain;
+"1187
+[e = . F4405 1 . _data 1 ]
+[; ;Phases.c: 1189: return (currentFreqTemp2);
+"1189
+[e ) F4405 ]
+[e $UE 534  ]
+[; ;Phases.c: 1190: }
+"1190
+[e :UE 534 ]
 }

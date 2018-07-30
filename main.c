@@ -6,14 +6,14 @@
 // 'C' source line config statements
 
 // CONFIG1L
-#pragma config PLLDIV = 5       // PLL Prescaler Selection bits (Divide by 5 (20 MHz oscillator input))
+#pragma config PLLDIV = 1       // PLL Prescaler Selection bits (Divide by 5 (20 MHz oscillator input))
 #pragma config CPUDIV = OSC1_PLL2// System Clock Postscaler Selection bits ([Primary Oscillator Src: /1][96 MHz PLL Src: /2])
-#pragma config USBDIV = 1       // USB Clock Selection bit (used in Full-Speed USB mode only; UCFG:FSEN = 1) (USB clock source comes directly from the primary oscillator block with no postscale)
+#pragma config USBDIV = 2       // USB Clock Selection bit (used in Full-Speed USB mode only; UCFG:FSEN = 1) (USB clock source comes directly from the primary oscillator block with no postscale)
 
 // CONFIG1H
-#pragma config FOSC = EC_EC     // Oscillator Selection bits (EC oscillator, CLKO function on RA6 (EC))
-#pragma config FCMEN = ON       // Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor enabled)
-#pragma config IESO = ON        // Internal/External Oscillator Switchover bit (Oscillator Switchover mode enabled)
+#pragma config FOSC = HS    // Oscillator Selection bits (EC oscillator, CLKO function on RA6 (EC))
+#pragma config FCMEN = OFF       // Fail-Safe Clock Monitor Enable bit (Fail-Safe Clock Monitor enabled)
+#pragma config IESO = OFF      // Internal/External Oscillator Switchover bit (Oscillator Switchover mode enabled)
 
 // CONFIG2L
 #pragma config PWRT = OFF       // Power-up Timer Enable bit (PWRT disabled)
@@ -27,13 +27,13 @@
 
 // CONFIG3H
 #pragma config CCP2MX = ON      // CCP2 MUX bit (CCP2 input/output is multiplexed with RC1)
-#pragma config PBADEN = ON      // PORTB A/D Enable bit (PORTB<4:0> pins are configured as analog input channels on Reset)
+#pragma config PBADEN = OFF      // PORTB A/D Enable bit (PORTB<4:0> pins are configured as analog input channels on Reset)
 #pragma config LPT1OSC = OFF    // Low-Power Timer 1 Oscillator Enable bit (Timer1 configured for higher power operation)
 #pragma config MCLRE = OFF      // MCLR Pin Enable bit (RE3 input pin enabled; MCLR pin disabled)
 
 // CONFIG4L
 #pragma config STVREN = ON      // Stack Full/Underflow Reset Enable bit (Stack full/underflow will cause Reset)
-#pragma config LVP = OFF        // Single-Supply ICSP Enable bit (Single-Supply ICSP disabled)
+#pragma config LVP = ON        // Single-Supply ICSP Enable bit (Single-Supply ICSP disabled)
 #pragma config ICPRT = OFF      // Dedicated In-Circuit Debug/Programming Port (ICPORT) Enable bit (ICPORT disabled)
 #pragma config XINST = OFF      // Extended Instruction Set Enable bit (Instruction set extension and Indexed Addressing mode disabled (Legacy mode))
 
@@ -102,10 +102,20 @@ void main(void)
 	LCDNokia_clear();
     ButtonInt_config();
     
+    uint8_t test = 'o';
     for(;;)
     {    
+        LCDNokia_sendChar(test);
+        delay(1000);
+#if 0
+        GPIO_setPIN(GPIO_B, 4);
+        delay(400000);
+        GPIO_clearPIN(GPIO_B, 4);
+        delay(400000);
+#endif
+        
         /**Machine states based on tags**/
-    	mainFunctions = StateProgram[currentState].stateFunction;
-    	currentState = mainFunctions();
+    	//mainFunctions = StateProgram[currentState].stateFunction;
+    	//currentState = mainFunctions();
     }
 }

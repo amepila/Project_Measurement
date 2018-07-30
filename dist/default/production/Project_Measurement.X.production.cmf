@@ -1,0 +1,1028 @@
+%CMF
+# %PSECTS Section
+# For each object file, details of its psects are enumerated here.
+# The begining of the section is indicated by %PSECTS.  The first
+# line indicates the name of the first object file, e.g.
+#    $foo.obj
+# Each line that follows describes a psect in that object file, until
+# the next object file.  The lines that describe a psect have the
+# format:
+#    <psect name> <class name> <space> <link address> <load addresses> <length> <delta>
+# All addresses and the length are given in unqualified hexadecimal
+# in delta units.  Any other numeric values are decimal.
+%PSECTS
+$dist/default/production\Project_Measurement.X.production.obj
+cinit CODE 0 732A 732A 22 1
+text0 CODE 0 7464 7464 3C 1
+text1 CODE 0 7372 7372 28 1
+text2 CODE 0 74DE 74DE 48 1
+text3 CODE 0 73F8 73F8 34 1
+text4 CODE 0 74A0 74A0 3E 1
+text5 CODE 0 7526 7526 7E 1
+text6 CODE 0 734C 734C 26 1
+text7 CODE 0 75A4 75A4 80 1
+text8 CODE 0 73C6 73C6 32 1
+text9 CODE 0 7624 7624 A8 1
+text10 CODE 0 76CC 76CC B2 1
+text11 CODE 0 742C 742C 38 1
+text12 CODE 0 730E 730E 1C 1
+text13 CODE 0 72F4 72F4 1A 1
+text14 CODE 0 72E6 72E6 E 1
+text15 CODE 0 739A 739A 2C 1
+text16 CODE 0 777E 777E 15C 1
+cstackCOMRAM COMRAM 1 51 51 F 1
+bssBANK0 BANK0 1 60 60 94 1
+bssCOMRAM COMRAM 1 1 1 50 1
+mediumconst MEDIUMCONST 0 78DA 78DA 726 1
+$C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.obj
+idloc IDLOC 0 200000 200000 8 1
+init CODE 0 0 0 4 1
+config CONFIG 0 300000 300000 E 1
+# %UNUSED Section
+# This section enumerates the unused ranges of each CLASS. Each entry
+# is described on a single line as follows:
+#    <class name> <range> <delta>
+# Addresses given in the range are in hexadecimal and units of delta.
+%UNUSED
+RAM F4-7FF 1
+SFR F60-FFF 1
+BANK0 F4-FF 1
+BANK1 100-1FF 1
+BANK2 200-2FF 1
+BANK3 300-3FF 1
+BANK4 400-4FF 1
+BANK5 500-5FF 1
+BANK6 600-6FF 1
+BANK7 700-7FF 1
+CONST 4-72E5 1
+STACK F4-7FF 1
+SMALLCONST 800-72E5 1
+CODE 4-72E5 1
+BIGRAM F4-7FF 1
+EEDATA F00000-F000FF 1
+MEDIUMCONST 800-72E5 1
+# %LINETAB Section
+# This section enumerates the file/line to address mappings.
+# The beginning of the section is indicated by %LINETAB.
+# The first line indicates the name of the first object file, e.g.
+#   $foo.obj
+# Each line that follows describes a single mapping until the next
+# object file.  Mappings have the following format:
+#    <address> <psect name> <class name> ><line number>:<file name>
+# The address is absolute and given given in unqualified hex 
+# in delta units of the psect. All mappings within an object file
+# are in ascending order of addresses.
+# All other numeric values are in decimal.
+%LINETAB
+$dist/default/production\Project_Measurement.X.production.obj
+777E text16 CODE >26:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+777E text16 CODE >27:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7780 text16 CODE >29:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7782 text16 CODE >34:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7782 text16 CODE >35:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+779A text16 CODE >36:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+779C text16 CODE >37:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+779C text16 CODE >38:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+77B4 text16 CODE >39:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+77B6 text16 CODE >40:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+77B6 text16 CODE >41:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+77CE text16 CODE >42:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+77D0 text16 CODE >43:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+77D0 text16 CODE >44:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+77E8 text16 CODE >45:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+77EA text16 CODE >46:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+77EA text16 CODE >47:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7802 text16 CODE >51:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7804 text16 CODE >32:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7822 text16 CODE >52:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7824 text16 CODE >32:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7826 text16 CODE >56:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7826 text16 CODE >57:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+783E text16 CODE >58:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7840 text16 CODE >59:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7840 text16 CODE >60:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7858 text16 CODE >61:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+785A text16 CODE >62:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+785A text16 CODE >63:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7872 text16 CODE >64:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7874 text16 CODE >65:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7874 text16 CODE >66:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+788C text16 CODE >67:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+788E text16 CODE >68:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+788E text16 CODE >69:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+78A6 text16 CODE >73:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+78A8 text16 CODE >54:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+78C6 text16 CODE >77:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+78C8 text16 CODE >54:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+78CA text16 CODE >29:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+739A text15 CODE >138:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+739A text15 CODE >141:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+73A8 text15 CODE >143:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+73B6 text15 CODE >145:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+73C4 text15 CODE >146:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+72E6 text14 CODE >344:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+72E8 text14 CODE >347:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+72EC text14 CODE >348:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+72F0 text14 CODE >349:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+72F2 text14 CODE >352:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+72F4 text13 CODE >136:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+72F6 text13 CODE >138:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+72FC text13 CODE >140:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+72FE text13 CODE >141:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+7300 text13 CODE >142:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+7300 text13 CODE >144:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+7302 text13 CODE >145:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+7302 text13 CODE >146:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+7304 text13 CODE >147:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+730A text13 CODE >148:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+730C text13 CODE >149:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+730E text12 CODE >187:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+7310 text12 CODE >189:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+731C text12 CODE >190:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+7328 text12 CODE >191:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+742C text11 CODE >175:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+742C text11 CODE >177:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+7434 text11 CODE >179:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+7448 text11 CODE >181:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+7452 text11 CODE >179:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+7458 text11 CODE >184:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+7462 text11 CODE >185:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+76CC text10 CODE >105:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+76CC text10 CODE >106:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+76CE text10 CODE >108:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+76D0 text10 CODE >110:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+76D0 text10 CODE >111:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+76EA text10 CODE >112:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+76EC text10 CODE >113:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+76EC text10 CODE >114:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7706 text10 CODE >115:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7708 text10 CODE >116:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7708 text10 CODE >117:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7722 text10 CODE >118:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7724 text10 CODE >119:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7724 text10 CODE >120:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+773E text10 CODE >121:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7740 text10 CODE >122:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7740 text10 CODE >123:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+775A text10 CODE >127:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+775C text10 CODE >108:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7624 text9 CODE >80:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7624 text9 CODE >81:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7626 text9 CODE >83:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7628 text9 CODE >85:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7628 text9 CODE >86:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7640 text9 CODE >87:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7642 text9 CODE >88:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7642 text9 CODE >89:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+765A text9 CODE >90:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+765C text9 CODE >91:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+765C text9 CODE >92:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7674 text9 CODE >93:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7676 text9 CODE >94:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7676 text9 CODE >95:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+768E text9 CODE >96:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7690 text9 CODE >97:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7690 text9 CODE >98:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+76A8 text9 CODE >102:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+76AA text9 CODE >83:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+73C6 text8 CODE >193:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+73C6 text8 CODE >197:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+73F6 text8 CODE >200:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+75A4 text7 CODE >107:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+75A4 text7 CODE >110:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+75B2 text7 CODE >111:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+75C0 text7 CODE >112:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+75CE text7 CODE >114:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+75D8 text7 CODE >115:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+75DC text7 CODE >116:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+75E6 text7 CODE >118:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+75F0 text7 CODE >119:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+75FA text7 CODE >120:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+7604 text7 CODE >121:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+760E text7 CODE >122:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+7618 text7 CODE >123:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+7622 text7 CODE >124:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+734C text6 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\Umul16.c
+734C text6 CODE >37:C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\Umul16.c
+7358 text6 CODE >38:C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\Umul16.c
+7360 text6 CODE >39:C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\Umul16.c
+7368 text6 CODE >52:C:\Program Files (x86)\Microchip\xc8\v1.44\sources\common\Umul16.c
+7526 text5 CODE >151:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+7528 text5 CODE >153:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+7530 text5 CODE >155:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+753A text5 CODE >157:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+754E text5 CODE >159:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+7592 text5 CODE >157:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+7598 text5 CODE >164:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+75A2 text5 CODE >165:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\LCDNokia5110.c
+74A0 text4 CODE >270:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+74A2 text4 CODE >273:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+74A4 text4 CODE >275:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+74A6 text4 CODE >277:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+74A8 text4 CODE >284:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+74AA text4 CODE >285:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+74AC text4 CODE >287:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+74AE text4 CODE >289:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+74AE text4 CODE >290:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+74B0 text4 CODE >291:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+74B2 text4 CODE >292:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+74B2 text4 CODE >293:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+74B4 text4 CODE >297:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+74B6 text4 CODE >287:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+74C4 text4 CODE >299:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+74C6 text4 CODE >301:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+74C6 text4 CODE >302:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+74C8 text4 CODE >303:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+74CA text4 CODE >304:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+74CA text4 CODE >305:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+74CC text4 CODE >309:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+74CE text4 CODE >299:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+73F8 text3 CODE >312:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+73FA text3 CODE >314:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+73FC text3 CODE >316:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+73FC text3 CODE >317:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7400 text3 CODE >318:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7402 text3 CODE >319:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7402 text3 CODE >320:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7404 text3 CODE >321:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7406 text3 CODE >322:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7406 text3 CODE >323:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7408 text3 CODE >327:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+740A text3 CODE >314:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+741E text3 CODE >327:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+741E text3 CODE >330:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7420 text3 CODE >333:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7422 text3 CODE >334:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7426 text3 CODE >335:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+742A text3 CODE >336:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+74DE text2 CODE >338:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+74DE text2 CODE >340:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7508 text2 CODE >341:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7524 text2 CODE >342:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7372 text1 CODE >130:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7372 text1 CODE >134:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\GPIO.c
+7464 text0 CODE >93:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\main.c
+7464 text0 CODE >96:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\main.c
+7468 text0 CODE >100:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\main.c
+7474 text0 CODE >101:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\main.c
+7478 text0 CODE >102:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\main.c
+747C text0 CODE >103:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\main.c
+7480 text0 CODE >105:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\main.c
+7484 text0 CODE >107:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\main.c
+7484 text0 CODE >108:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\main.c
+748A text0 CODE >109:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\main.c
+749E text0 CODE >120:C:\Users\Andres Hernandez\MPLABXProjects\Project_Measurement.X\main.c
+732A cinit CODE >5191:C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.
+732A cinit CODE >5193:C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.
+732A cinit CODE >5196:C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.
+732A cinit CODE >5340:C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.
+732E cinit CODE >5341:C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.
+7330 cinit CODE >5342:C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.
+7330 cinit CODE >5343:C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.
+7332 cinit CODE >5344:C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.
+7334 cinit CODE >5345:C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.
+7336 cinit CODE >5348:C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.
+733A cinit CODE >5349:C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.
+733C cinit CODE >5350:C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.
+733C cinit CODE >5351:C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.
+733E cinit CODE >5352:C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.
+7340 cinit CODE >5353:C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.
+7342 cinit CODE >5359:C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.
+7342 cinit CODE >5362:C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.
+7344 cinit CODE >5363:C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.
+7346 cinit CODE >5364:C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.
+7348 cinit CODE >5365:C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.
+# %SYMTAB Section
+# An enumeration of all symbols in the program.
+# The beginning of the section is indicated by %SYMTAB.
+# Each line describes a single symbol as follows:
+#    <label> <value> [-]<load-adj> <class> <space> <psect> <file-name>
+# The value and load-adj are both in unqualified hexadecimal.
+# All other numeric values are in decimal.  The load-adj is the
+# quantity one needs to add to the symbol value in order to obtain the load
+# address of the symbol.  This value may be signed. If the symbol
+# was defined in a psect then <psect> will be "-". File-name
+# is the name of the object file in which the symbol was defined.
+%SYMTAB
+__size_of_LCDNokia_init 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__Lmediumconst 78DA 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_apparentVec_energyTotal 7B3A 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_ButtonInt_config 73C6 0 CODE 0 text15 dist/default/production\Project_Measurement.X.production.obj
+__Hspace_0 30000E 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__Hspace_1 F4 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__Hspace_2 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__CFG_IESO$OFF 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__end_of_reactive_Reverse1 7C9F 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_reactive_Reverse2 7C8F 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_reactive_Reverse3 7C7F 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+stateEnergy@phase 4F 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+stateFreqTemp@phase 49 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+neutralRmsVI@currentRms2 B 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__end_of_apparentVec_energyTotal 7B4D 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_stateFreqTemp 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__Hibigdata 0 0 CODE 0 ibigdata dist/default/production\Project_Measurement.X.production.obj
+__mediumconst 78DA 0 MEDIUMCONST 0 mediumconst C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.obj
+SPI_enableClock@phase 52 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__size_of_ButtonInt_config 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+generalView@currentMainMenu2 27 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production\Project_Measurement.X.production.obj
+__end_of_phasesPower1 7AF7 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_phasesPower2 7AF1 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_total_active_power 7D22 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_exitEnergy 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__end_of_buttonRight 7FFC 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_harmonicEnergy 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+THDNPhaseAngle@currentPhaseAngle3 F2 0 BANK0 1 bssBANK0 dist/default/production\Project_Measurement.X.production.obj
+_string1_RMS 7BFC 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_string2_RMS 7FEB 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__Lsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production\Project_Measurement.X.production.obj
+_harmonic_ReverseP1 7E37 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_harmonic_ReverseP2 7E2B 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_harmonic_ReverseP3 7E1F 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_reactive_powerP1 7F2B 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_reactive_powerP2 7F20 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_reactive_powerP3 7F15 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__size_of_SPI_enableClock 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+___sp 0 0 STACK 2 stack C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.obj
+_main 7464 0 CODE 0 text0 dist/default/production\Project_Measurement.X.production.obj
+LCDNokia_sendChar@character 5B 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+start 0 0 CODE 0 init C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.obj
+_exitRmsVI 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__end_of_nline_calculated_RMS 7D66 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__size_of_main 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__end_of_phasesMainMenu 7AE5 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_string1_FreqTemp 7F7F 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__HbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__end_of_fundamental_PowerP1 7F15 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_fundamental_PowerP2 7F0A 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_fundamental_PowerP3 7EFF 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_total_reactive_power 7D14 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_total_apparent_power 7C9F 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_LCDNokia_init 7624 0 CODE 0 text7 dist/default/production\Project_Measurement.X.production.obj
+?___wmul 51 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+_SPI_Config2 7FF0 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_phPhaseAngle 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__end_of_SPI_write 72F4 0 CODE 0 text14 dist/default/production\Project_Measurement.X.production.obj
+_reactive_Forward1 7BDA 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_reactive_Forward2 7BC9 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_reactive_Forward3 7BB8 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__Hpowerup 0 0 CODE 0 powerup dist/default/production\Project_Measurement.X.production.obj
+__size_of_SPI_write 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_current1_THDN 7DBF 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_current2_THDN 7DB3 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__accesstop 60 0 ABS 0 - C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.obj
+intlevel0 0 0 CODE 0 text C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.obj
+intlevel1 0 0 CODE 0 text C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.obj
+intlevel2 0 0 CODE 0 text C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.obj
+intlevel3 0 0 CODE 0 text C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.obj
+_total_active_power 7D14 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_current3_THDN 7DA7 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__CFG_USBDIV$2 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+SPI_init@SPI_Config 53 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__size_of_LCDNokia_clear 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production\Project_Measurement.X.production.obj
+__CFG_EBTR0$OFF 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__CFG_EBTR1$OFF 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__CFG_EBTR2$OFF 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__CFG_EBTR3$OFF 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__end_of_total_factor_power 7DFB 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_exitPower1 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_exitPower2 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+sendData@currentMainMenu4 23 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__end_of_harmonic_PowerP1 7EF4 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_harmonic_PowerP2 7EE9 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_harmonic_PowerP3 7EDE 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__CFG_EBTRB$OFF 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__end_of_buttonLeft_gv 7FE5 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_SPI_write 72E6 0 CODE 0 text14 dist/default/production\Project_Measurement.X.production.obj
+__Hifardata 0 0 CODE 0 ifardata dist/default/production\Project_Measurement.X.production.obj
+__Hclrtext 0 0 ABS 0 clrtext dist/default/production\Project_Measurement.X.production.obj
+_buttonLeft 7FF3 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_voltage1_RMS 7EC8 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_voltage2_RMS 7EBD 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_voltage3_RMS 7EB2 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+GPIO_clearPIN@pin 51 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+___wmul@multiplicand 53 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+_ADCON0 FC2 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_ADCON1 FC1 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+phPowerFactor@counter 3C 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+GPIO_setPIN@pin 51 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__size_of_GPIO_setPIN 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_reactive_Reverse1 7C8F 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_reactive_Reverse2 7C7F 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_reactive_Reverse3 7C6F 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+___inthi_sp 0 0 STACK 2 stack C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.obj
+__size_of_GPIO_dataDirectionPIN 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+___intlo_sp 0 0 STACK 2 stack C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.obj
+_phasesRmsVI 7AE5 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_THDNPhaseAngle 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__Hintcode_body 0 0 ABS 0 intcode_body dist/default/production\Project_Measurement.X.production.obj
+__end_of___wmul 7372 0 CODE 0 text6 dist/default/production\Project_Measurement.X.production.obj
+_generalView 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+activeEnergy@currentEnergy1 21 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+_string1_PowerFactor 7FCA 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+GPIO_clearPIN@portName 54 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__end_of_reactive_Forward_Total 7B27 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__Lintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production\Project_Measurement.X.production.obj
+__end_of_fund_ReverseTotal 7B3A 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_reactive_powerP1 7F36 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_reactive_powerP2 7F2B 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_reactive_powerP3 7F20 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_total_factor_power 7DEF 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_BAUDCONbits FB8 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__Hmediumconst 8000 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__Hintcodelo 0 0 CODE 0 intcodelo dist/default/production\Project_Measurement.X.production.obj
+_string_Energy 7FD8 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_voltage1_THDN 7DEF 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_factor_powerP1 7F9B 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_factor_powerP2 7F92 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_factor_powerP3 7F89 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+statePhaseAngle@phasePhaseAngle 2D 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+LCDNokia_clear@index 5B 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__end_of_voltage2_THDN 7DE3 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_phasesPowerFactor 7AFF 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+stateRmsVI@phaseRmsVI 31 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+_initialLoad 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+delay@delay 51 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+_string3_Power2 7FD1 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_voltage3_THDN 7DD7 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_fund_ForwardTotal 7B13 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__size_of_LCDNokia_writeByte 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__size_of_delay 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_SPI_enablePins 73F8 0 CODE 0 text3 dist/default/production\Project_Measurement.X.production.obj
+showFreqTemp@currentFreqTemp1 EE 0 BANK0 1 bssBANK0 dist/default/production\Project_Measurement.X.production.obj
+__end_of_buttonLeft 7FF6 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__Lintcodelo 0 0 CODE 0 intcodelo dist/default/production\Project_Measurement.X.production.obj
+__CFG_FCMEN$OFF 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__CFG_MCLRE$OFF 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__end_of_harmonic_Total_Power 7CF8 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_angle_VoltageP1 7E70 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_angle_VoltageP2 7E65 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_angle_VoltageP3 7E5A 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+start_initialization 732A 0 CODE 0 cinit dist/default/production\Project_Measurement.X.production.obj
+__end_of_active_Forward1 7CEA 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_active_Forward2 7CDB 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_active_Forward3 7CCC 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_harmonic_ReverseTotal 7CBD 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__HnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production\Project_Measurement.X.production.obj
+__end_of_temperature 7FAC 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_TRISBbits F93 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_TRISCbits F94 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_buttonCenter 7FF6 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_fhPower2 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__end_of_voltage1_RMS 7ED3 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_voltage2_RMS 7EC8 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_voltage3_RMS 7EBD 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_string2_Power1 7C0D 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_string2_Power2 7F7F 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+___rparam_used 1 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_apparent_powerP1 7E13 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_apparent_powerP2 7E07 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_apparent_powerP3 7DFB 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_stateRmsVI 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__CFG_WDTPS$32768 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_SSPBUF FC9 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+fhPower2@currentPower2_1 13 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+_typesPower1 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+viewMenu@currentMainMenu3 25 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__end_of_harmonic_ForwardTotal 7C3F 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_factor_powerP1 7FA4 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_factor_powerP2 7F9B 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_factor_powerP3 7F92 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+statePowerFactor@phase 4B 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+_harmonic_ReverseTotal 7CAE 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_phPowerFactor 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_fund_ForwardP1 7BA7 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_fund_ForwardP2 7B96 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_fund_ForwardP3 7B85 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_string3_Power2 7FD8 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+phPhaseAngle@currentPhaseAngle1 3 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__size_of_LCDNokia_sendChar 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__end_of_current1_THDN 7DCB 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+exitPower2@currentPower2_3 F 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__size_of_SPI_init 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__end_of_current2_THDN 7DBF 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__Hbank0 0 0 ABS 0 bank0 dist/default/production\Project_Measurement.X.production.obj
+__Hbank1 0 0 ABS 0 bank1 dist/default/production\Project_Measurement.X.production.obj
+__Hbank2 0 0 ABS 0 bank2 dist/default/production\Project_Measurement.X.production.obj
+__Hbank3 0 0 ABS 0 bank3 dist/default/production\Project_Measurement.X.production.obj
+__Hbank4 0 0 ABS 0 bank4 dist/default/production\Project_Measurement.X.production.obj
+__Hbank5 0 0 ABS 0 bank5 dist/default/production\Project_Measurement.X.production.obj
+__Hbank6 0 0 ABS 0 bank6 dist/default/production\Project_Measurement.X.production.obj
+__Hbank7 0 0 ABS 0 bank7 dist/default/production\Project_Measurement.X.production.obj
+__Hcinit 0 0 ABS 0 cinit dist/default/production\Project_Measurement.X.production.obj
+__Hconst 0 0 CONST 0 const dist/default/production\Project_Measurement.X.production.obj
+__Hidata 0 0 CODE 0 idata dist/default/production\Project_Measurement.X.production.obj
+__Hidloc 200008 0 IDLOC 0 idloc dist/default/production\Project_Measurement.X.production.obj
+__end_of_LCD_delay 73F8 0 CODE 0 text8 dist/default/production\Project_Measurement.X.production.obj
+_stateMainMenu 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__Hnvbit 0 0 COMRAM 1 nvbit dist/default/production\Project_Measurement.X.production.obj
+__Hparam 0 0 COMRAM 1 rparam dist/default/production\Project_Measurement.X.production.obj
+GPIO_dataDirectionPIN@state 52 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__Hrdata 0 0 COMRAM 1 rdata dist/default/production\Project_Measurement.X.production.obj
+__Hstack 0 0 STACK 2 stack dist/default/production\Project_Measurement.X.production.obj
+__Htext0 0 0 ABS 0 text0 dist/default/production\Project_Measurement.X.production.obj
+__Htext1 0 0 ABS 0 text1 dist/default/production\Project_Measurement.X.production.obj
+__Htext2 0 0 ABS 0 text2 dist/default/production\Project_Measurement.X.production.obj
+__Htext3 0 0 ABS 0 text3 dist/default/production\Project_Measurement.X.production.obj
+__Htext4 0 0 ABS 0 text4 dist/default/production\Project_Measurement.X.production.obj
+__Htext5 0 0 ABS 0 text5 dist/default/production\Project_Measurement.X.production.obj
+__Htext6 0 0 ABS 0 text6 dist/default/production\Project_Measurement.X.production.obj
+__Htext7 0 0 ABS 0 text7 dist/default/production\Project_Measurement.X.production.obj
+__Htext8 0 0 ABS 0 text8 dist/default/production\Project_Measurement.X.production.obj
+__Htext9 0 0 ABS 0 text9 dist/default/production\Project_Measurement.X.production.obj
+_active_Reverse_Total 7BEB 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_current3_THDN 7DB3 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_SPI_enablePins 742C 0 CODE 0 text3 dist/default/production\Project_Measurement.X.production.obj
+_fund_ReverseTotal 7B27 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__size_of_LCD_delay 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__end_of_active_Forward_Total 7B85 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production\Project_Measurement.X.production.obj
+__Hbigram 0 0 ABS 0 bigram dist/default/production\Project_Measurement.X.production.obj
+_harmonic_ForwardTotal 7C2F 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_string1_Power1 7C1E 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_string1_Power2 7E43 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__smallconst 0 0 SMALLCONST 0 smallconst C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.obj
+__end_of_active_Reverse1 7D4C 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_active_Reverse2 7D3E 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_active_Reverse3 7D30 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_string1_PowerFactor 7FD1 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__Hcomram 0 0 ABS 0 comram dist/default/production\Project_Measurement.X.production.obj
+__Hconfig 30000E 0 CONFIG 0 config dist/default/production\Project_Measurement.X.production.obj
+_angle_VoltageP1 7E65 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_angle_VoltageP2 7E5A 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_angle_VoltageP3 7E4F 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_active_powerP1 7F4C 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_active_powerP2 7F41 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_active_powerP3 7F36 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__CFG_LPT1OSC$OFF 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_active_Forward1 7CDB 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_active_Forward2 7CCC 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_active_Forward3 7CBD 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__Lbank0 0 0 ABS 0 bank0 dist/default/production\Project_Measurement.X.production.obj
+__Lbank1 0 0 ABS 0 bank1 dist/default/production\Project_Measurement.X.production.obj
+__Lbank2 0 0 ABS 0 bank2 dist/default/production\Project_Measurement.X.production.obj
+__Lbank3 0 0 ABS 0 bank3 dist/default/production\Project_Measurement.X.production.obj
+__Lbank4 0 0 ABS 0 bank4 dist/default/production\Project_Measurement.X.production.obj
+__Lbank5 0 0 ABS 0 bank5 dist/default/production\Project_Measurement.X.production.obj
+__Lbank6 0 0 ABS 0 bank6 dist/default/production\Project_Measurement.X.production.obj
+__Lbank7 0 0 ABS 0 bank7 dist/default/production\Project_Measurement.X.production.obj
+__Lcinit 0 0 ABS 0 cinit dist/default/production\Project_Measurement.X.production.obj
+__Lconst 0 0 CONST 0 const dist/default/production\Project_Measurement.X.production.obj
+__Lidata 0 0 CODE 0 idata dist/default/production\Project_Measurement.X.production.obj
+__Lidloc 200000 0 IDLOC 0 idloc dist/default/production\Project_Measurement.X.production.obj
+phPower2@currentPower2_2 11 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__Lnvbit 0 0 COMRAM 1 nvbit dist/default/production\Project_Measurement.X.production.obj
+_anglePhase1 7E86 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_anglePhase2 7E7B 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_anglePhase3 7E70 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__Lparam 0 0 COMRAM 1 rparam dist/default/production\Project_Measurement.X.production.obj
+__Lrdata 0 0 COMRAM 1 rdata dist/default/production\Project_Measurement.X.production.obj
+__Lstack 0 0 STACK 2 stack dist/default/production\Project_Measurement.X.production.obj
+_phasesPowerFactor 7AFB 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__Ltext0 0 0 ABS 0 text0 dist/default/production\Project_Measurement.X.production.obj
+__Ltext1 0 0 ABS 0 text1 dist/default/production\Project_Measurement.X.production.obj
+__Ltext2 0 0 ABS 0 text2 dist/default/production\Project_Measurement.X.production.obj
+__Ltext3 0 0 ABS 0 text3 dist/default/production\Project_Measurement.X.production.obj
+__Ltext4 0 0 ABS 0 text4 dist/default/production\Project_Measurement.X.production.obj
+__Ltext5 0 0 ABS 0 text5 dist/default/production\Project_Measurement.X.production.obj
+__Ltext6 0 0 ABS 0 text6 dist/default/production\Project_Measurement.X.production.obj
+__Ltext7 0 0 ABS 0 text7 dist/default/production\Project_Measurement.X.production.obj
+__Ltext8 0 0 ABS 0 text8 dist/default/production\Project_Measurement.X.production.obj
+__Ltext9 0 0 ABS 0 text9 dist/default/production\Project_Measurement.X.production.obj
+GPIO_setPIN@portName 54 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__Hfarbss 0 0 FARRAM 0 farbss dist/default/production\Project_Measurement.X.production.obj
+statePower1@phasePower1 35 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__end_of_string1_RMS 7C0D 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_string2_RMS 7FF0 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__Lintcode_body 0 0 ABS 0 intcode_body dist/default/production\Project_Measurement.X.production.obj
+viewMenu@counterMenu 44 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+LCDNokia_writeByte@DataOrCmd 58 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+_PORTBbits F81 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_PORTCbits F82 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_PORTDbits F83 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_fund_ForwardTotal 7AFF 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_string2_Power1 7C1E 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_string2_Power2 7F89 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_LCD_delay 73C6 0 CODE 0 text8 dist/default/production\Project_Measurement.X.production.obj
+__Habs1 0 0 ABS 0 abs1 dist/default/production\Project_Measurement.X.production.obj
+__Hdata 0 0 ABS 0 data dist/default/production\Project_Measurement.X.production.obj
+__Hinit 4 0 CODE 0 init dist/default/production\Project_Measurement.X.production.obj
+__Hrbit 0 0 COMRAM 1 rbit dist/default/production\Project_Measurement.X.production.obj
+__Hrbss 0 0 COMRAM 1 rbss dist/default/production\Project_Measurement.X.production.obj
+__Htemp 0 0 COMRAM 1 temp dist/default/production\Project_Measurement.X.production.obj
+__Htext 0 0 ABS 0 text dist/default/production\Project_Measurement.X.production.obj
+__Labs1 0 0 ABS 0 abs1 dist/default/production\Project_Measurement.X.production.obj
+__Ldata 0 0 ABS 0 data dist/default/production\Project_Measurement.X.production.obj
+__Linit 0 0 CODE 0 init dist/default/production\Project_Measurement.X.production.obj
+__Lrbit 0 0 COMRAM 1 rbit dist/default/production\Project_Measurement.X.production.obj
+__Lrbss 0 0 COMRAM 1 rbss dist/default/production\Project_Measurement.X.production.obj
+__Ltemp 0 0 COMRAM 1 temp dist/default/production\Project_Measurement.X.production.obj
+__Ltext 0 0 ABS 0 text dist/default/production\Project_Measurement.X.production.obj
+__CFG_XINST$OFF 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+delay@counter 55 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+_stateEnergy 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+___wmul 734C 0 CODE 0 text6 dist/default/production\Project_Measurement.X.production.obj
+generalView@lockClear 48 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__HcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__end_of_LCDNokia_gotoXY 732A 0 CODE 0 text12 dist/default/production\Project_Measurement.X.production.obj
+generalView@lockWrite 47 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+_apparentAri_energyTotal 7B4D 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__Hintret 0 0 ABS 0 intret dist/default/production\Project_Measurement.X.production.obj
+__Hirdata 0 0 CODE 0 irdata dist/default/production\Project_Measurement.X.production.obj
+__S0 30000E 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__S1 F4 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__S2 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__CFG_VREGEN$OFF 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__end_of_SPI_Config2 7FF3 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_reactive_Reverse_Total 7B60 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_nline_calculated_RMS 7D59 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_apparentAri_energyTotal 7B60 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_buttonCenter 7FF9 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_fund_ForwardP1 7BB8 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_fund_ForwardP2 7BA7 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_fund_ForwardP3 7B96 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_total_reactive_power 7D06 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+statePower1@phase 4E 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__CFG_PLLDIV$1 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__CFG_PBADEN$OFF 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_SPI_init 74DE 0 CODE 0 text2 dist/default/production\Project_Measurement.X.production.obj
+__end_of_nline_sampled_RMS 7D59 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_string1_PhaseAngle 7FCA 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_apparent_powerP1 7E1F 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_apparent_powerP2 7E13 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_apparent_powerP3 7E07 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+LCDNokia_writeByte@data 57 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+_GPIO_setPIN 7624 0 CODE 0 text9 dist/default/production\Project_Measurement.X.production.obj
+__end_of_string_Energy 7FDF 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__Lbigdata 0 0 BIGRAM 1 bigdata dist/default/production\Project_Measurement.X.production.obj
+ATM_calibration@F4043 A2 0 BANK0 1 bssBANK0 dist/default/production\Project_Measurement.X.production.obj
+ATM_calibration@F4045 8C 0 BANK0 1 bssBANK0 dist/default/production\Project_Measurement.X.production.obj
+ATM_calibration@F4047 76 0 BANK0 1 bssBANK0 dist/default/production\Project_Measurement.X.production.obj
+ATM_calibration@F4049 60 0 BANK0 1 bssBANK0 dist/default/production\Project_Measurement.X.production.obj
+ATM_calibration@F4051 E2 0 BANK0 1 bssBANK0 dist/default/production\Project_Measurement.X.production.obj
+ATM_calibration@F4053 DC 0 BANK0 1 bssBANK0 dist/default/production\Project_Measurement.X.production.obj
+ATM_calibration@F4055 D6 0 BANK0 1 bssBANK0 dist/default/production\Project_Measurement.X.production.obj
+ATM_calibration@F4057 CC 0 BANK0 1 bssBANK0 dist/default/production\Project_Measurement.X.production.obj
+ATM_calibration@F4059 C2 0 BANK0 1 bssBANK0 dist/default/production\Project_Measurement.X.production.obj
+ATM_calibration@F4061 B8 0 BANK0 1 bssBANK0 dist/default/production\Project_Measurement.X.production.obj
+__Hnvrram 0 0 COMRAM 1 nvrram dist/default/production\Project_Measurement.X.production.obj
+_string2_PowerFactor 7FB4 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+LCDNokia_gotoXY@x 5A 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+LCDNokia_gotoXY@y 59 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+viewMenu@lockClear 46 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+_active_Reverse1 7D3E 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_active_Reverse2 7D30 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_active_Reverse3 7D22 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_string1_Power1 7C2F 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_string1_Power2 7E4F 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_activeEnergy 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+viewMenu@lockWrite 45 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+_neutralRmsVI 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__end_of_SPI_init 7526 0 CODE 0 text2 dist/default/production\Project_Measurement.X.production.obj
+__end_of_active_powerP1 7F57 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_active_powerP2 7F4C 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_active_powerP3 7F41 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__Lintentry 0 0 ABS 0 intentry dist/default/production\Project_Measurement.X.production.obj
+typesPower1@counter 3F 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__Hramtop 800 0 RAM 0 ramtop dist/default/production\Project_Measurement.X.production.obj
+phRmsVI@currentRms1 D 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__Hrparam 0 0 COMRAM 1 rparam dist/default/production\Project_Measurement.X.production.obj
+_phPower1 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_phPower2 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_phasesFreqTemp 7AF7 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_statePower1 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_statePower2 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__activetblptr 2 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__Hstruct 0 0 COMRAM 1 struct dist/default/production\Project_Measurement.X.production.obj
+__size_of___wmul 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__LbssBANK0 0 0 ABS 0 bssBANK0 dist/default/production\Project_Measurement.X.production.obj
+__Htext10 0 0 ABS 0 text10 dist/default/production\Project_Measurement.X.production.obj
+__Htext11 0 0 ABS 0 text11 dist/default/production\Project_Measurement.X.production.obj
+__Htext12 0 0 ABS 0 text12 dist/default/production\Project_Measurement.X.production.obj
+__Htext13 0 0 ABS 0 text13 dist/default/production\Project_Measurement.X.production.obj
+__Htext14 0 0 ABS 0 text14 dist/default/production\Project_Measurement.X.production.obj
+__Htext15 0 0 ABS 0 text15 dist/default/production\Project_Measurement.X.production.obj
+__Htext16 0 0 ABS 0 text16 dist/default/production\Project_Measurement.X.production.obj
+_phasesPhaseAngle 7ACD 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_LCDNokia_clear 742C 0 CODE 0 text11 dist/default/production\Project_Measurement.X.production.obj
+_RCSTAbits FAB 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_LCDNokia_gotoXY 730E 0 CODE 0 text12 dist/default/production\Project_Measurement.X.production.obj
+_viewMenu 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+SPI_enablePins@serial 51 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+exitPhaseAngle@currentPhaseAngle3 F0 0 BANK0 1 bssBANK0 dist/default/production\Project_Measurement.X.production.obj
+__end_of_phasesRmsVI 7AEB 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_string1_PhaseAngle 7FC3 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__ptext10 76CC 0 CODE 0 text10 dist/default/production\Project_Measurement.X.production.obj
+__ptext11 742C 0 CODE 0 text11 dist/default/production\Project_Measurement.X.production.obj
+__ptext12 730E 0 CODE 0 text12 dist/default/production\Project_Measurement.X.production.obj
+__ptext13 72F4 0 CODE 0 text13 dist/default/production\Project_Measurement.X.production.obj
+__ptext14 72E6 0 CODE 0 text14 dist/default/production\Project_Measurement.X.production.obj
+__ptext15 739A 0 CODE 0 text15 dist/default/production\Project_Measurement.X.production.obj
+__ptext16 777E 0 CODE 0 text16 dist/default/production\Project_Measurement.X.production.obj
+__end_of_LCDNokia_sendChar 75A4 0 CODE 0 text5 dist/default/production\Project_Measurement.X.production.obj
+__Lbigbss 0 0 BIGRAM 1 bigbss dist/default/production\Project_Measurement.X.production.obj
+__Lbigram 0 0 ABS 0 bigram dist/default/production\Project_Measurement.X.production.obj
+__CFG_BOR$ON 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__CFG_BORV$3 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+exitEnergy@currentEnergy6 1B 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__Lcomram 0 0 ABS 0 comram dist/default/production\Project_Measurement.X.production.obj
+__Lconfig 300000 0 CONFIG 0 config dist/default/production\Project_Measurement.X.production.obj
+harmonicEnergy@counter 40 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+_GPIO_clearPIN 76CC 0 CODE 0 text10 dist/default/production\Project_Measurement.X.production.obj
+THDNPhaseAngle@counter 3B 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+stateRmsVI@phase 4C 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+___wmul@multiplier 51 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+_buttonRight 7FF9 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_total_apparent_power 7CAE 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+main@test 5F 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__Lfarbss 0 0 FARRAM 0 farbss dist/default/production\Project_Measurement.X.production.obj
+_fund_ReverseP1 7C5F 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_fund_ReverseP2 7C4F 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_fund_ReverseP3 7C3F 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+LCD_delay@counter 51 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__Lfardata 0 0 FARRAM 0 fardata dist/default/production\Project_Measurement.X.production.obj
+__end_of_apparent_energyP1 7F75 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_apparent_energyP2 7F6B 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_apparent_energyP3 7F61 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+fhPower2@counter 3E 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__CFG_CCP2MX$ON 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+harmonicEnergy@currentEnergy5 1D 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+activeEnergy@counterPhase 42 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+stackhi 7FF 0 ABS 0 - C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.obj
+stacklo F4 0 ABS 0 - C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.obj
+__Lintcode 0 0 CODE 0 intcode dist/default/production\Project_Measurement.X.production.obj
+__end_of_phasesFreqTemp 7AFB 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__Lintret 0 0 ABS 0 intret dist/default/production\Project_Measurement.X.production.obj
+__Lirdata 0 0 CODE 0 irdata dist/default/production\Project_Measurement.X.production.obj
+GPIO_dataDirectionPIN@pin 51 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__end_of_harmonic_ForwardP1 7D8D 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_harmonic_ForwardP2 7D80 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_harmonic_ForwardP3 7D73 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__CFG_ICPRT$OFF 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_SPI_Config 7FFC 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__Lspace_0 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__Lspace_1 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__Lspace_2 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_sendData 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_nline_sampled_RMS 7D4C 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__pbssCOMRAM 1 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__end_of_frequency 7FB4 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+exitPowerFactor@currentPowerFactor2 5 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__end_of_LCDNokia_clear 7464 0 CODE 0 text11 dist/default/production\Project_Measurement.X.production.obj
+__end_of_string2_PhaseAngle 7FC3 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_PIR1bits F9E 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__CFG_LVP$ON 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+stateFreqTemp@phaseFreqTemp 2B 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__LcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+GPIO_dataDirectionPIN@portName 55 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+_fundamental_Total_Power 7CF8 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__CFG_CPUDIV$OSC1_PLL2 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+end_of_initialization 7342 0 CODE 0 cinit dist/default/production\Project_Measurement.X.production.obj
+phRmsVI@counter 3D 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+exitRmsVI@currentRms3 9 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__end_of_string2_PowerFactor 7FBC 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+fundamentalEnergy@currentEnergy4 1F 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__Lnvrram 0 0 COMRAM 1 nvrram dist/default/production\Project_Measurement.X.production.obj
+__Hintentry 0 0 ABS 0 intentry dist/default/production\Project_Measurement.X.production.obj
+__end_of_fundamental_Total_Power 7D06 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__CFG_STVREN$ON 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__end_of_GPIO_dataDirectionPIN 78DA 0 CODE 0 text16 dist/default/production\Project_Measurement.X.production.obj
+_harmonic_Total_Power 7CEA 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+exitFreqTemp@currentFreqTemp2 EC 0 BANK0 1 bssBANK0 dist/default/production\Project_Measurement.X.production.obj
+__end_of_SPI_enableClock 74DE 0 CODE 0 text4 dist/default/production\Project_Measurement.X.production.obj
+__Hreset_vec 0 0 CODE 0 reset_vec dist/default/production\Project_Measurement.X.production.obj
+__HbssBANK0 0 0 ABS 0 bssBANK0 dist/default/production\Project_Measurement.X.production.obj
+stateEnergy@phaseEnergy 37 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__end_of_phasesPhaseAngle 7AD5 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_frequency 7FAC 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+statePower2@phasePower2 33 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__Lramtop 800 0 RAM 0 ramtop dist/default/production\Project_Measurement.X.production.obj
+_viPhaseAngle 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__Lrparam 0 0 COMRAM 1 rparam dist/default/production\Project_Measurement.X.production.obj
+__pcinit 732A 0 CODE 0 cinit dist/default/production\Project_Measurement.X.production.obj
+_SSPCON1bits FC6 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__end_of_fund_ReverseP1 7C6F 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_fund_ReverseP2 7C5F 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_fund_ReverseP3 7C4F 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__ptext0 7464 0 CODE 0 text0 dist/default/production\Project_Measurement.X.production.obj
+__ptext1 7372 0 CODE 0 text1 dist/default/production\Project_Measurement.X.production.obj
+__ptext2 74DE 0 CODE 0 text2 dist/default/production\Project_Measurement.X.production.obj
+__ptext3 73F8 0 CODE 0 text3 dist/default/production\Project_Measurement.X.production.obj
+__ptext4 74A0 0 CODE 0 text4 dist/default/production\Project_Measurement.X.production.obj
+__ptext5 7526 0 CODE 0 text5 dist/default/production\Project_Measurement.X.production.obj
+__ptext6 734C 0 CODE 0 text6 dist/default/production\Project_Measurement.X.production.obj
+__ptext7 75A4 0 CODE 0 text7 dist/default/production\Project_Measurement.X.production.obj
+__ptext8 73C6 0 CODE 0 text8 dist/default/production\Project_Measurement.X.production.obj
+__ptext9 7624 0 CODE 0 text9 dist/default/production\Project_Measurement.X.production.obj
+_buttonRight_gv 7FE5 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__Lstruct 0 0 COMRAM 1 struct dist/default/production\Project_Measurement.X.production.obj
+_showFreqTemp 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+phPowerFactor@currentPowerFactor1 7 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+_harmonic_ForwardP1 7D80 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_harmonic_ForwardP2 7D73 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_harmonic_ForwardP3 7D66 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_phasesEnergy 7AD5 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__size_of_LCDNokia_gotoXY 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__Ltext10 0 0 ABS 0 text10 dist/default/production\Project_Measurement.X.production.obj
+__Ltext11 0 0 ABS 0 text11 dist/default/production\Project_Measurement.X.production.obj
+__Ltext12 0 0 ABS 0 text12 dist/default/production\Project_Measurement.X.production.obj
+__Ltext13 0 0 ABS 0 text13 dist/default/production\Project_Measurement.X.production.obj
+__Ltext14 0 0 ABS 0 text14 dist/default/production\Project_Measurement.X.production.obj
+__Ltext15 0 0 ABS 0 text15 dist/default/production\Project_Measurement.X.production.obj
+__Ltext16 0 0 ABS 0 text16 dist/default/production\Project_Measurement.X.production.obj
+viPhaseAngle@currentPhaseAngle2 1 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__ramtop 800 0 RAM 0 ramtop C:\Users\ANDRES~1\AppData\Local\Temp\s6mk.obj
+_GPIO_dataDirectionPIN 777E 0 CODE 0 text16 dist/default/production\Project_Measurement.X.production.obj
+_current1_RMS 7EA7 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_current2_RMS 7E9C 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_current3_RMS 7E91 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_reactive_Reverse_Total 7B73 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__Lpowerup 0 0 CODE 0 powerup dist/default/production\Project_Measurement.X.production.obj
+_string2_PhaseAngle 7FBC 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__Leeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production\Project_Measurement.X.production.obj
+_LCDNokia_sendChar 7526 0 CODE 0 text5 dist/default/production\Project_Measurement.X.production.obj
+_phRmsVI 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_LCDNokia_init 75A4 0 CODE 0 text7 dist/default/production\Project_Measurement.X.production.obj
+statePhaseAngle@phase 4A 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+main@currentState 5E 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+initialLoad@currentMainMenu1 29 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+statePower2@phase 4D 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__Lreset_vec 0 0 CODE 0 reset_vec dist/default/production\Project_Measurement.X.production.obj
+stateMainMenu@phaseMain 39 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+exitPower1@currentPower1_4 15 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+_fundamentalEnergy 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+fundamentalEnergy@counter 41 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__CFG_FOSC$HS 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_StateProgram 7ABB 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_ButtonInt_config 739A 0 CODE 0 text15 dist/default/production\Project_Measurement.X.production.obj
+__end_of_SPI_Config 7FFF 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+___param_bank 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__size_of_GPIO_clearPIN 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__CFG_WDT$OFF 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__Hbigdata 0 0 BIGRAM 1 bigdata dist/default/production\Project_Measurement.X.production.obj
+__end_of__initialization 7342 0 CODE 0 cinit dist/default/production\Project_Measurement.X.production.obj
+__end_of_LCDNokia_writeByte 730E 0 CODE 0 text13 dist/default/production\Project_Measurement.X.production.obj
+__CFG_WRT0$OFF 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__CFG_WRT1$OFF 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__CFG_WRT2$OFF 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__CFG_WRT3$OFF 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_active_Forward_Total 7B73 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_anglePhase1 7E91 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_anglePhase2 7E86 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_anglePhase3 7E7B 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__CFG_WRTB$OFF 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__Libigdata 0 0 CODE 0 ibigdata dist/default/production\Project_Measurement.X.production.obj
+__CFG_WRTC$OFF 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__CFG_WRTD$OFF 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__size_of_SPI_enablePins 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_apparent_energyP1 7F6B 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_apparent_energyP2 7F61 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_apparent_energyP3 7F57 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_msgInitial1_gv 7D9A 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_msgInitial2_gv 7D8D 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__Lclrtext 0 0 ABS 0 clrtext dist/default/production\Project_Measurement.X.production.obj
+LCDNokia_sendChar@index 5C 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+_SPI_enableClock 74A0 0 CODE 0 text4 dist/default/production\Project_Measurement.X.production.obj
+phPower1@currentPower1_2 17 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+_fundamental_PowerP1 7F0A 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_fundamental_PowerP2 7EFF 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_fundamental_PowerP3 7EF4 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__CFG_PWRT$OFF 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+statePowerFactor@phasePowerFactor 2F 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+_buttonLeft_gv 7FDF 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__pcstackCOMRAM 51 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+_phasesPower1 7AF1 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_phasesPower2 7AEB 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+stateMainMenu@phase 50 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+_TXSTAbits FAC 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_statePowerFactor 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__pmediumconst 78DA 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+activeEnergy@counter 43 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+_SSPCON1 FC6 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_SSPSTAT FC7 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_string1_FreqTemp 7F75 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_buttonRight_gv 7FEB 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_exitPhaseAngle 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__end_of_main 74A0 0 CODE 0 text0 dist/default/production\Project_Measurement.X.production.obj
+__end_of_ASCII 7ABB 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_GPIO_clearPIN 777E 0 CODE 0 text10 dist/default/production\Project_Measurement.X.production.obj
+_ASCII 78DB 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_reactive_Forward1 7BEB 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_reactive_Forward2 7BDA 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_reactive_Forward3 7BC9 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_delay 739A 0 CODE 0 text1 dist/default/production\Project_Measurement.X.production.obj
+_PORTA F80 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_PORTB F81 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_PORTC F82 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_PORTD F83 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_PORTE F84 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_SPBRG FAF 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_TRISA F92 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_TRISB F93 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_TRISC F94 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_TRISD F95 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_TRISE F96 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_TXREG FAD 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__CFG_CP0$OFF 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__CFG_CP1$OFF 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__HRAM 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__Hbss 0 0 RAM 1 bss dist/default/production\Project_Measurement.X.production.obj
+__Hram 0 0 ABS 0 ram dist/default/production\Project_Measurement.X.production.obj
+__Hsfr 0 0 ABS 0 sfr dist/default/production\Project_Measurement.X.production.obj
+__LRAM 1 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__Lbss 0 0 RAM 1 bss dist/default/production\Project_Measurement.X.production.obj
+__Lram 0 0 ABS 0 ram dist/default/production\Project_Measurement.X.production.obj
+__Lsfr 0 0 ABS 0 sfr dist/default/production\Project_Measurement.X.production.obj
+__CFG_CP2$OFF 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__CFG_CP3$OFF 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_delay 7372 0 CODE 0 text1 dist/default/production\Project_Measurement.X.production.obj
+_reactive_Forward_Total 7B13 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_LCDNokia_writeByte 72F4 0 CODE 0 text13 dist/default/production\Project_Measurement.X.production.obj
+__end_of_GPIO_setPIN 76CC 0 CODE 0 text9 dist/default/production\Project_Measurement.X.production.obj
+__CFG_CPB$OFF 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__CFG_CPD$OFF 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_exitPowerFactor 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+_temperature 7FA4 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_SSPSTATbits FC7 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__end_of_phasesEnergy 7ADD 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_current1_RMS 7EB2 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_current2_RMS 7EA7 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_current3_RMS 7E9C 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_phasesMainMenu 7ADD 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__initialization 732A 0 CODE 0 cinit dist/default/production\Project_Measurement.X.production.obj
+__pbssBANK0 60 0 BANK0 1 bssBANK0 dist/default/production\Project_Measurement.X.production.obj
+_statePhaseAngle 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+typesPower1@currentPower1_1 19 0 COMRAM 1 bssCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__end_of_msgInitial1_gv 7DA7 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_msgInitial2_gv 7D9A 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+SPI_enableClock@cpol 51 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__Hfardata 0 0 FARRAM 0 fardata dist/default/production\Project_Measurement.X.production.obj
+___wmul@product 55 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+__end_of_harmonic_ReverseP1 7E43 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_harmonic_ReverseP2 7E37 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_harmonic_ReverseP3 7E2B 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__Hsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production\Project_Measurement.X.production.obj
+expBASE10@value E8 0 BANK0 1 bssBANK0 dist/default/production\Project_Measurement.X.production.obj
+_harmonic_PowerP1 7EE9 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_harmonic_PowerP2 7EDE 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_harmonic_PowerP3 7ED3 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_voltage1_THDN 7DE3 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+_exitFreqTemp 0 0 ABS 0 - dist/default/production\Project_Measurement.X.production.obj
+__Lifardata 0 0 CODE 0 ifardata dist/default/production\Project_Measurement.X.production.obj
+SPI_write@data 51 0 COMRAM 1 cstackCOMRAM dist/default/production\Project_Measurement.X.production.obj
+_voltage2_THDN 7DD7 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__end_of_active_Reverse_Total 7BFC 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__Hintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production\Project_Measurement.X.production.obj
+__end_of_StateProgram 7ACD 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+__Hintcode 0 0 CODE 0 intcode dist/default/production\Project_Measurement.X.production.obj
+_voltage3_THDN 7DCB 0 MEDIUMCONST 0 mediumconst dist/default/production\Project_Measurement.X.production.obj
+# %SPLITSTAB Section
+# This section enumerates all the psect splits performed by the assembler.
+# The beginning of the section is indicated by %SPLITSTAB.
+# Each line is a record a particular split, where the parent psect is on
+# the left and the child on the right.  Note that a child psect is always
+# split form the top of the parent psect. All splits from a given parent
+# are listed in the order in which they occurred.
+%SPLITSTAB
+# %DABS Section
+# This section contains a table of all usuage of the assember
+# directive DABS in the program. Each line has the following format:
+#   <name> <space> <address> <size>
+# If the DABS was originally labelled then that shall be <name>,
+# otherwise name will be "-".  The <space> number is in decimal.
+# <address> and <size> are in byte units as unqaulified hexadecimal
+%DABS
+# %SEGMENTS Section
+# This sections enumerates the segments of the program.  Each segment
+# is described on a single line as follows:
+#    <name> <space> <link address> <file address> <size> <delta>
+# Addresses and size are in unqualified hexadecimal.  The link address
+# and size are in units of delta. The file address is in units of bytes.
+# All other numeric quantities are in decimal.
+%SEGMENTS
+cinit 0 732A 732A 22 1
+idloc 0 200000 200000 8 1
+text0 0 7464 7464 3C 1
+text1 0 7372 7372 28 1
+text2 0 74DE 74DE 48 1
+text3 0 73F8 73F8 34 1
+text4 0 74A0 74A0 3E 1
+text5 0 7526 7526 7E 1
+text6 0 734C 734C 26 1
+text7 0 75A4 75A4 80 1
+text8 0 73C6 73C6 32 1
+text9 0 7624 7624 A8 1
+text10 0 76CC 76CC B2 1
+text11 0 742C 742C 38 1
+text12 0 730E 730E 1C 1
+text13 0 72F4 72F4 1A 1
+text14 0 72E6 72E6 E 1
+text15 0 739A 739A 2C 1
+text16 0 777E 777E 15C 1
+reset_vec 0 0 0 4 1
+bssBANK0 1 60 60 94 1
+bssCOMRAM 1 1 1 5F 1
+mediumconst 0 78DA 78DA 726 1
+config 0 300000 300000 E 1
